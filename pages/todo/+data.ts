@@ -1,10 +1,5 @@
-// https://vike.dev/data
+export type Data = {};
 
-import type { PageContextServer } from "vike/types";
-
-export type Data = Awaited<ReturnType<typeof data>>;
-
-export async function data(_pageContext: PageContextServer) {
-  const todoItemsInitial = [{ text: "Buy milk" }, { text: "Buy strawberries" }];
-  return { todoItemsInitial };
+export async function data() {
+  return {};
 }

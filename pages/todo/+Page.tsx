@@ -1,10 +1,8 @@
-import { TodoList } from "./TodoList.js";
-
 export default function Page() {
   return (
-    <>
-      <h1>To-do List</h1>
-      <TodoList />
-    </>
+    <div>
+      <h1>Todo</h1>
+      <p>Todo page content goes here</p>
+    </div>
   );
 }

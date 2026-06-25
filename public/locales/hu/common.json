@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Főoldal",
+    "openMenu": "Menü megnyitása",
+    "navigationMenu": "Navigációs menü"
+  },
+  "footer": {
+    "allRightsReserved": "Minden jog fenntartva."
+  },
+  "a11y": {
+    "skipToContent": "Ugrás a tartalomhoz"
+  }
+}

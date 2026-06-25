@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Home",
+    "openMenu": "Open menu",
+    "navigationMenu": "Navigation menu"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved."
+  },
+  "a11y": {
+    "skipToContent": "Skip to content"
+  }
+}

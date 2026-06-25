@@ -1,5 +1,6 @@
 import { MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
 import { useMounted } from "@/src/hooks/use-mounted";
@@ -13,12 +14,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BRAND_NAME, NAV_LINKS } from "./site";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const mounted = useMounted();
   const pageContext = usePageContext();
   const { urlPathname } = pageContext;
+  const { t } = useTranslation();
 
   const isActive = (href: string) =>
     href === "/" ? urlPathname === href : urlPathname.startsWith(href);
@@ -43,6 +46,10 @@ export function Navbar() {
           ))}
         </nav>
 
+        <div className="hidden items-center md:flex">
+          <LanguageSwitcher />
+        </div>
+
         <div className="md:hidden">
           {mounted ? (
             <Sheet open={open} onOpenChange={setOpen}>
@@ -50,7 +57,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  aria-label="Open menu"
+                  aria-label={t("nav.openMenu")}
                   onClick={() => setOpen(true)}
                   className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
                 >
@@ -74,7 +81,7 @@ export function Navbar() {
               >
                 <SheetHeader>
                   <SheetTitle>{BRAND_NAME}</SheetTitle>
-                  <SheetDescription className="text-white/70">Navigation menu</SheetDescription>
+                  <SheetDescription className="text-white/70">{t("nav.navigationMenu")}</SheetDescription>
                 </SheetHeader>
 
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
@@ -100,7 +107,7 @@ export function Navbar() {
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Open menu"
+              aria-label={t("nav.openMenu")}
               disabled
               className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
             >

@@ -25,6 +25,8 @@ export function PageLoading() {
           <img
             src={logoUrl}
             alt={BRAND_NAME}
+            width="48"
+            height="48"
             className="size-12 object-contain"
             onError={() => setLogoError(true)}
           />

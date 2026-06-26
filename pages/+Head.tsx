@@ -59,7 +59,14 @@ export function Head() {
       />
 
       {/* Preload the primary (Latin) font — high priority to unblock LCP */}
-      <link rel="preload" href={geistFontUrl} as="font" type="font/woff2" crossOrigin="anonymous" fetchPriority="high" />
+      <link
+        rel="preload"
+        href={geistFontUrl}
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+        fetchPriority="high"
+      />
     </>
   );
 }

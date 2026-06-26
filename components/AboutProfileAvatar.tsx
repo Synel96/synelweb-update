@@ -3,7 +3,7 @@ type AboutProfileAvatarProps = {
   alt?: string;
 };
 
-const ABOUT_AVATAR_URL = "/me_duhoxs.webp";
+const ABOUT_AVATAR_URL = "/me.webp";
 
 export function AboutProfileAvatar({ className, alt = "Profile avatar" }: AboutProfileAvatarProps) {
   return (
@@ -16,7 +16,7 @@ export function AboutProfileAvatar({ className, alt = "Profile avatar" }: AboutP
         <img
           src={ABOUT_AVATAR_URL}
           alt={alt}
-          className="aspect-square w-full rounded-full object-cover"
+          className="aspect-square w-full rounded-full object-cover object-[center_18%]"
           loading="eager"
           decoding="async"
         />

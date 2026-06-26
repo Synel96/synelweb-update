@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über mich",
+    "technology": "Technologie",
+    "projects": "Projekte",
+    "reviews": "Kundenstimmen",
+    "contact": "Kontakt",
+    "openMenu": "Menü öffnen",
+    "navigationMenu": "Navigationsmenü"
+  },
+  "footer": {
+    "allRightsReserved": "Alle Rechte vorbehalten."
+  },
+  "a11y": {
+    "skipToContent": "Zum Inhalt springen"
+  },
+  "hero": {
+    "slogan": "<engineered>Entwickelt</engineered> für Wachstum, <designed>gestaltet</designed> für Wirkung.",
+    "supportingLine": "Zukunftssichere Architektur und ein kompromissloses digitales Erlebnis, das dein Unternehmen voranbringt."
+  },
+  "about": {
+    "label": "Über mich",
+    "heading": "Hallo, ich bin Szilveszter!",
+    "avatarAlt": "Profilfoto von Szilveszter",
+    "intro": "Seit über einem Jahr arbeite ich in der Webentwicklung und konzentriere mich auf moderne Technologien, die sich auch in Enterprise-Umgebungen bewährt haben. Ich arbeite mit Systemen, die von Unternehmen wie Facebook, Instagram, Pinterest und sogar von Verwaltungsplattformen der NASA genutzt werden.",
+    "introStrong": "In der Praxis bedeutet das: Deine Website wird kein träges Baukastensystem, sondern eine blitzschnelle, sichere und zukunftsfähige Plattform, die auch auf Mobilgeräten sofort lädt.",
+    "highlights": {
+      "speed": {
+        "title": "Geschwindigkeit",
+        "text": "Blitzschnelle, mobil optimierte Websites."
+      },
+      "security": {
+        "title": "Sicherheit",
+        "text": "Stabile, zukunftssichere Technologie-Basis."
+      },
+      "custom": {
+        "title": "Individualität",
+        "text": "Kein Template, sondern eine Lösung, die zu dir passt."
+      }
+    },
+    "accordion": {
+      "title": "Was bekommst du in der Zusammenarbeit?",
+      "items": [
+        {
+          "title": "Was macht eine gute Website wirklich?",
+          "content": "Eine gute Website ist nicht nur eine digitale Visitenkarte und nicht nur schön anzusehen. Eine professionelle Seite bringt echte Kunden, übernimmt die Vorqualifizierung, zeigt deine Referenzen und macht dein Unternehmen rund um die Uhr erreichbar, ohne dass ständig dein Telefon klingeln muss. Sie automatisiert Prozesse und baut Vertrauen bei zukünftigen Kunden auf, bevor ihr überhaupt persönlich sprecht."
+        },
+        {
+          "title": "Worin unterscheide ich mich von Template-Lösungen?",
+          "content": "Viele Websites am Markt basieren auf schweren WordPress-Templates und instabilen Plugins. Ich arbeite mit vollständig individuellem Code. Für dich bedeutet das maximale Designfreiheit, hohe Datensicherheit und Ladegeschwindigkeiten, die Google mit besseren Rankings belohnt."
+        },
+        {
+          "title": "Einfaches Admin-Panel - schwer kaputtzumachen",
+          "content": "Vergiss überladene und unübersichtliche Oberflächen. Du bekommst ein klares, auf dein Unternehmen zugeschnittenes Admin-Panel, in dem du Texte, Bilder oder Preise in Sekunden aktualisieren kannst - auch am Smartphone. Ich baue es so auf, dass das Layout nicht versehentlich zerstört werden kann."
+        },
+        {
+          "title": "Sichtbarkeit und Google-Ranking (Technisches SEO)",
+          "content": "Selbst die beste Website bringt nichts, wenn potenzielle Kunden sie nicht finden. Deshalb liegt der Fokus schon ab der ersten Codezeile auf SEO. Durch saubere technische Grundlagen, individuelle Meta-Daten und moderne Struktur startet deine Website mit einem technischen Vorsprung gegenüber lokalen Mitbewerbern."
+        },
+        {
+          "title": "Komplettservice von Planung bis Launch",
+          "content": "Nach dem Coding lasse ich dich nicht allein. Die Zusammenarbeit umfasst den gesamten Prozess: Konzept, modernes UI/UX-Design, performante Entwicklung, optimierte Content-Einrichtung, sichere Hosting- und Domain-Unterstützung sowie die Anbindung an Google-Dienste."
+        }
+      ]
+    },
+    "process": {
+      "title": "Wie läuft ein Projekt ab?",
+      "cards": [
+        {
+          "title": "Agiler, transparenter Ablauf",
+          "content": "Ich arbeite agil mit kontinuierlicher und ehrlicher Kommunikation. So weißt du jederzeit, wo wir stehen, und das Ergebnis passt genau zu deinen Erwartungen."
+        },
+        {
+          "title": "Für lokale Unternehmen optimiert",
+          "content": "SynelWeb erstellt Websites, die verständlich, schnell und einfach zu bedienen sind. Ziel ist eine Website, die dich im Alltag wirklich unterstützt."
+        },
+        {
+          "title": "Starke lokale Marktkenntnis",
+          "content": "Ein großer Teil meiner Arbeit findet in und um Sopron statt, daher kenne ich die Bedürfnisse lokaler Unternehmen genau. Die fertigen Websites laufen auch mobil zuverlässig und bieten eine stabile Basis für die Zukunft."
+        },
+        {
+          "title": "Persönliche und Online-Begleitung",
+          "content": "Während der Entwicklung bin ich persönlich und online erreichbar. Das Ziel ist eine Website, die nicht überkompliziert ist, sondern klar und effektiv funktioniert."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Kostenloses Strategiegespräch",
+      "title": "Lass uns dein digitales Wachstum starten!",
+      "text": "Lass uns den nächsten Schritt machen und die Konkurrenz mit einer Website überholen, die Besucher und Google lieben. Wir sprechen über deine Ziele persönlich in Sopron oder online.",
+      "button": "Kostenlose Beratung anfragen",
+      "ariaLabel": "Kostenlose Beratung anfragen"
+    }
+  }
+}

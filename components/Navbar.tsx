@@ -1,5 +1,5 @@
 import { MenuIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
@@ -19,11 +19,26 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const mounted = useMounted();
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
   const { urlPathname } = pageContext;
+  const isHome = urlPathname === "/";
   const lang = pageContext.lang ?? DEFAULT_LANG;
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!isHome) return;
+
+    const updateScrollProgress = () => {
+      const nextProgress = Math.min(window.scrollY / 180, 1);
+      setScrollProgress(nextProgress);
+    };
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrollProgress);
+  }, [isHome]);
 
   // Build a URL with the current lang prefix
   const langHref = (href: string) => (href === "/" ? `/${lang}/` : `/${lang}${href}`);
@@ -36,12 +51,31 @@ export function Navbar() {
       ? "font-medium text-(--brand-on-surface)"
       : "text-white/70 transition-colors hover:text-(--brand-on-surface)";
 
+  const navLabel = (item: (typeof NAV_LINKS)[number]) =>
+    t(item.labelKey, {
+      defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
+    });
+
+  const headerProgress = isHome ? scrollProgress : 1;
+  const headerAlpha = 0.9 * headerProgress;
+  const headerStyle = {
+    backgroundColor: `rgba(11, 15, 25, ${headerAlpha})`,
+    borderBottomColor: `rgba(255, 255, 255, ${0.1 * headerProgress})`,
+    boxShadow: `0 14px 40px -24px rgba(0, 0, 0, ${0.5 * headerProgress})`,
+    backdropFilter: `blur(${6 + 10 * headerProgress}px)`,
+  } as React.CSSProperties;
+
   return (
-    <header className="border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) backdrop-blur supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)]">
+    <header
+      style={headerStyle}
+      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] ${
+        isHome ? "transition-colors duration-200" : ""
+      }`}
+    >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a
           href={langHref("/")}
-          className="text-base font-semibold tracking-tight text-(--brand-on-surface)"
+          className="brand-tech text-base font-semibold text-(--brand-on-surface)"
         >
           {BRAND_NAME}
         </a>
@@ -49,7 +83,7 @@ export function Navbar() {
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((item) => (
             <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
-              {t(item.labelKey)}
+              {navLabel(item)}
             </a>
           ))}
         </nav>
@@ -106,7 +140,7 @@ export function Navbar() {
                             : "text-white/75 hover:bg-white/10 hover:text-(--brand-on-surface)"
                         }`}
                       >
-                        {t(item.labelKey)}
+                        {navLabel(item)}
                       </a>
                     </SheetClose>
                   ))}

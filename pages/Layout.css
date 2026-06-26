@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "@fontsource/orbitron/600.css";
 @import "./tokens.css";
 
 @source "../pages";
@@ -39,6 +40,71 @@ body.page-transition #page-content {
   opacity: 0;
 }
 
+body.content-animate
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]) {
+  opacity: 0;
+  transform: translateY(16px) scale(0.985);
+  filter: blur(6px);
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]) {
+  animation: content-reveal 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]):nth-child(
+    1
+  ) {
+  animation-delay: 40ms;
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]):nth-child(
+    2
+  ) {
+  animation-delay: 90ms;
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]):nth-child(
+    3
+  ) {
+  animation-delay: 140ms;
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]):nth-child(
+    4
+  ) {
+  animation-delay: 190ms;
+}
+
+body.content-animate.content-ready
+  #page-content
+  :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]):nth-child(
+    n + 5
+  ) {
+  animation-delay: 240ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.content-animate
+    #page-content
+    :is(h1, h2, h3, p, article, details, img, ul, ol, blockquote, .btn-cta, [data-reveal]) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    animation: none;
+  }
+}
+
 .page-loading-overlay {
   opacity: 0;
   pointer-events: none;
@@ -64,6 +130,20 @@ body.page-transition .page-loading-overlay {
   }
 }
 
+@keyframes content-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
 * {
   border-color: var(--border);
   box-sizing: border-box;
@@ -71,10 +151,149 @@ body.page-transition .page-loading-overlay {
 
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      color-mix(in oklab, var(--color-secondary-hot), transparent 80%) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 82% 4%,
+      color-mix(in oklab, var(--color-secondary-warm), transparent 84%) 0%,
+      transparent 40%
+    ),
+    var(--background);
   color: var(--foreground);
 }
 
 html {
   font-family: "Geist Variable", sans-serif;
+}
+
+.brand-tech {
+  font-family: "Orbitron", "Geist Variable", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bento-card {
+  border: 1px solid color-mix(in oklab, var(--border), transparent 5%);
+  background: linear-gradient(
+    155deg,
+    color-mix(in oklab, var(--card), var(--color-secondary-warm) 8%),
+    color-mix(in oklab, var(--card), var(--color-secondary-hot) 6%)
+  );
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent), transparent 88%) inset;
+}
+
+.bento-card.is-featured {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--accent), transparent 70%) inset,
+    0 20px 44px -28px var(--accent-glow);
+}
+
+.btn-cta {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--color-accent), white 6%),
+      var(--color-accent) 50%,
+      color-mix(in oklab, var(--color-secondary-hot), var(--color-accent) 34%)
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-secondary-hot), transparent 35%),
+      color-mix(in oklab, var(--color-secondary-warm), transparent 18%)
+    );
+  background-size:
+    100% 100%,
+    200% 100%;
+  color: var(--accent-foreground);
+  border-color: color-mix(in oklab, var(--color-secondary-hot), black 18%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-secondary-hot), transparent 30%) inset,
+    0 12px 32px -18px color-mix(in oklab, var(--color-secondary-hot), transparent 8%),
+    0 20px 46px -24px var(--accent-glow);
+}
+
+.btn-cta:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.06);
+}
+
+.btn-cta a {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cta-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    rgba(255, 255, 255, 0.42) 48%,
+    rgba(255, 255, 255, 0.06) 58%,
+    transparent 78%
+  );
+  transform: translateX(-120%) skewX(-18deg);
+  animation: cta-shine 4.4s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+.btn-cta:hover .btn-cta-shine {
+  animation-duration: 2.8s;
+}
+
+@keyframes hero-emphasis-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px color-mix(in oklab, var(--emphasis-color), transparent 50%);
+  }
+
+  50% {
+    text-shadow: 0 0 20px color-mix(in oklab, var(--emphasis-color), transparent 30%);
+  }
+}
+
+.hero-emphasis {
+  display: inline-block;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--emphasis-color), white 22%),
+    var(--emphasis-color) 65%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hero-emphasis-pulse 3.4s ease-in-out infinite;
+}
+
+.hero-emphasis-warm {
+  --emphasis-color: var(--primary);
+}
+
+.hero-emphasis-accent {
+  --emphasis-color: var(--accent);
+}
+
+@keyframes cta-shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+
+  45% {
+    transform: translateX(130%) skewX(-18deg);
+  }
+
+  100% {
+    transform: translateX(130%) skewX(-18deg);
+  }
 }

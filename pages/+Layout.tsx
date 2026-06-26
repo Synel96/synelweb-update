@@ -1,4 +1,5 @@
 import "./Layout.css";
+import { useEffect } from "react";
 import { Footer } from "../components/Footer";
 import { I18nProvider } from "../components/I18nProvider";
 import { Navbar } from "../components/Navbar";
@@ -7,6 +8,18 @@ import { useTranslation } from "react-i18next";
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    document.body.classList.add("content-animate");
+    document.body.classList.remove("content-ready");
+
+    const frameId = requestAnimationFrame(() => {
+      document.body.classList.add("content-ready");
+    });
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col">
       <a href="#page-content" className="skip-link">

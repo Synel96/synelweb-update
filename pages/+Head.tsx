@@ -1,6 +1,5 @@
 // https://vike.dev/Head
 
-import logoUrl from "../assets/logo.svg";
 import geistFontUrl from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
 import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL, BRAND_NAME } from "../components/site";
@@ -26,7 +25,6 @@ export function Head() {
 
   return (
     <>
-      <link rel="icon" href={logoUrl} />
       <link rel="canonical" href={meta.canonicalUrl} />
 
       {/* hreflang alternates — tells Google which URL serves which language */}

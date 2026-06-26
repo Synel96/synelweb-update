@@ -1,6 +1,12 @@
 {
   "nav": {
     "home": "Főoldal",
+    "services": "Szolgáltatások",
+    "about": "Rólam",
+    "technology": "Technológia",
+    "projects": "Projektek",
+    "reviews": "Vélemények",
+    "contact": "Kapcsolat",
     "openMenu": "Menü megnyitása",
     "navigationMenu": "Navigációs menü"
   },
@@ -9,5 +15,83 @@
   },
   "a11y": {
     "skipToContent": "Ugrás a tartalomhoz"
+  },
+  "hero": {
+    "slogan": "Növekedésre <engineered>tervezve,</engineered> kitűnésre <designed>hangolva.</designed>",
+    "supportingLine": "Jövőálló architektúra és kompromisszummentes digitális élmény, amely növekedésre ítéli a vállalkozásod."
+  },
+  "about": {
+    "label": "Rólam",
+    "heading": "Szia, Szilveszter vagyok!",
+    "avatarAlt": "Szilveszter profilképe",
+    "intro": "Több mint egy éve foglalkozom webfejlesztéssel, azon belül is modern, nagyvállalati környezetben is bizonyított technológiákkal. Olyan rendszerekkel dolgozom, amelyeket olyan óriások használnak, mint a Facebook, Instagram, Pinterest, vagy akár a NASA adminisztrációs rendszerei.",
+    "introStrong": "Ez a gyakorlatban azt jelenti, hogy az általad kapott weboldal nem egy sablonos, lassan döcögő rendszer lesz, hanem egy villámgyors, biztonságos és jövőálló platform, ami mobilon is azonnal betölt.",
+    "highlights": {
+      "speed": {
+        "title": "Sebesség",
+        "text": "Villámgyors, mobilra optimalizált oldalak."
+      },
+      "security": {
+        "title": "Biztonság",
+        "text": "Stabil, jövőálló technológiai alapokkal."
+      },
+      "custom": {
+        "title": "Egyediség",
+        "text": "Nem sablon, hanem rád szabott megoldás."
+      }
+    },
+    "accordion": {
+      "title": "Mit kapsz a közös munkában?",
+      "items": [
+        {
+          "title": "Mit csinál egy jó weboldal valójában?",
+          "content": "Egy jó weboldal nemcsak egy digitális névjegykártya, és nem csupán arról szól, hogy szép legyen. Egy profi oldal valódi ügyfeleket hoz, elvégzi helyetted az előszűrést, bemutatja a referenciáidat, és éjjel-nappal elérhetővé teszi a vállalkozásodat anélkül, hogy folyamatosan csörögnie kellene a telefonodnak. Automatizálja a folyamataidat, és bizalmat épít a jövőbeli ügyfeleidben, mielőtt még személyesen beszélnétek."
+        },
+        {
+          "title": "Miben vagyok más, mint a sablonmegoldások?",
+          "content": "Míg a legtöbb piacon elérhető weboldal nehézkes, egymásra halmozott WordPress-sablonokra és instabil bővítményekre épül, én teljesen egyedi kóddal dolgozom. Ez számodra kompromisszummentes tervezési szabadságot, maximális adatbiztonságot és olyan elképesztő betöltési sebességet jelent, amit a Google kiemelten jó helyezésekkel hálál meg a találati listán."
+        },
+        {
+          "title": "Könnyen kezelhető admin felület - amit nem tudsz elrontani",
+          "content": "Elfelejtheted a túlbonyolított, átláthatatlan kezelőfelületeket. Egy teljesen rád és a vállalkozásodra szabott, letisztult adminisztrációs felületet kapsz, ahol pár kattintással, másodpercek alatt módosíthatsz szövegeket, tölthetsz fel új képeket vagy frissítheted az áraidat akár a telefonodról is. Úgy építem fel, hogy képtelenség legyen szétbarmolni az oldal kinézetét."
+        },
+        {
+          "title": "Láthatóság és Google-helyezés (Technikai SEO)",
+          "content": "Egy zseniális weboldal semmit sem ér, ha a potenciális ügyfeleid nem találnak rá. A fejlesztés során már a legelső kódsortól kezdve kőkeményen fókuszálok a keresőoptimalizálásra. A precíz technikai beállításoknak, az egyedi meta leírásoknak és a modern strukturális felépítésnek köszönhetően az oldalad technikai fölénnyel indul a helyi versenytársaid előtt."
+        },
+        {
+          "title": "Teljes körű szolgáltatás a tervezéstől az élesítésig",
+          "content": "Nem engedem el a kezed a kódolás végén. A közös munka magában foglalja a teljes folyamatot: a koncepció átbeszélését, a modern UI/UX dizájn megtervezését, a villámgyors fejlesztést, az optimalizált tartalomkezelő beállítását, a biztonságos tárhely- és domain-ügyintézést, valamint az oldal Google-rendszerekbe való bekötését is."
+        }
+      ]
+    },
+    "process": {
+      "title": "Hogyan zajlik egy projekt?",
+      "cards": [
+        {
+          "title": "Agilis, átlátható folyamat",
+          "content": "Agilis szemléletben dolgozom, ahol a folyamatos és őszinte kommunikáció kulcsfontosságú. Így végig látod, hol tartunk, és a végeredmény pontosan olyan lesz, amilyet elképzeltél."
+        },
+        {
+          "title": "Helyi vállalkozásokra optimalizálva",
+          "content": "A SynelWeb olyan oldalakat épít, amelyek érthetők, gyorsak és könnyen használhatók. Célom, hogy a weboldal ténylegesen megkönnyítse a mindennapjaidat, és azonnal megtalálhatóvá tegye a fontos információkat."
+        },
+        {
+          "title": "Soproni piacismeret",
+          "content": "Mivel a munkám jelentős része Sopronban és környékén zajlik, pontosan értem a helyi vállalkozások igényeit. Az elkészült oldalak mobilon is hibátlanok és hosszú távon is stabil alapot adnak."
+        },
+        {
+          "title": "Személyes és online támogatás",
+          "content": "A fejlesztés során személyesen és online is elérhető vagyok. A cél egy olyan weboldal, ami nem túlmagyarázott, nem túl bonyolult, hanem egyszerűen és hatékonyan teszi a dolgát."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Ingyenes stratégiai egyeztetés",
+      "title": "Indítsuk be a vállalkozásod digitális növekedését!",
+      "text": "Lépjünk szintet, és hagyjuk le a konkurenciát egy olyan oldallal, amit a látogatóid és a Google is imádni fognak. Beszéljük át a céljaidat személyesen Sopronban vagy egy online egyeztetés során.",
+      "button": "Ingyenes konzultációt kérek",
+      "ariaLabel": "Ingyenes konzultáció kérése"
+    }
   }
 }

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 const LABELS: Record<SupportedLang, string> = {
   en: "EN",
   hu: "HU",
+  de: "DE",
 };
 
 export function LanguageSwitcher() {

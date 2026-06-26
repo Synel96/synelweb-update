@@ -14,6 +14,10 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
   const lang = pageContext.lang ?? DEFAULT_LANG;
 
   const langHref = (href: string) => (href === "/" ? `/${lang}/` : `/${lang}${href}`);
+  const navLabel = (item: (typeof NAV_LINKS)[number]) =>
+    t(item.labelKey, {
+      defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
+    });
 
   return (
     <footer className="border-t border-white/10 bg-(--brand-surface) text-(--brand-on-surface)">
@@ -25,7 +29,7 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
               href={langHref(item.href)}
               className="text-white/85 transition-colors hover:text-white"
             >
-              {t(item.labelKey)}
+              {navLabel(item)}
             </a>
           ))}
         </nav>

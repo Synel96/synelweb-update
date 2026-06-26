@@ -6,8 +6,8 @@ import vikeReact from "vike-react/config";
 
 const config: Config = {
   // https://vike.dev/head-tags
-  title: "My Vike App",
-  description: "Demo showcasing Vike",
+  title: "SynelWeb",
+  description: "SynelWeb - modern webfejlesztés, gyors oldalak és prémium digitális élmény.",
 
   extends: [vikeReact],
 };

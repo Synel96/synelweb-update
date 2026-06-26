@@ -1,6 +1,12 @@
 {
   "nav": {
     "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "technology": "Technology",
+    "projects": "Projects",
+    "reviews": "Reviews",
+    "contact": "Contact",
     "openMenu": "Open menu",
     "navigationMenu": "Navigation menu"
   },
@@ -9,5 +15,83 @@
   },
   "a11y": {
     "skipToContent": "Skip to content"
+  },
+  "hero": {
+    "slogan": "<engineered>Engineered</engineered> to scale, <designed>Designed</designed> to stand out.",
+    "supportingLine": "Future-ready architecture and a no-compromise digital experience that pushes your business toward growth."
+  },
+  "about": {
+    "label": "About",
+    "heading": "Hi, I'm Szilveszter!",
+    "avatarAlt": "Profile photo of Szilveszter",
+    "intro": "I have been working in web development for over a year, focusing on modern technologies proven in enterprise environments. I work with systems used by companies such as Facebook, Instagram, Pinterest, and even administration platforms used by NASA.",
+    "introStrong": "In practice, this means your website will not be a template-based, sluggish system, but a lightning-fast, secure, future-proof platform that also loads instantly on mobile.",
+    "highlights": {
+      "speed": {
+        "title": "Speed",
+        "text": "Lightning-fast websites optimized for mobile."
+      },
+      "security": {
+        "title": "Security",
+        "text": "Stable, future-proof technology foundations."
+      },
+      "custom": {
+        "title": "Custom",
+        "text": "Not a template, but a solution tailored to you."
+      }
+    },
+    "accordion": {
+      "title": "What do you get from working with me?",
+      "items": [
+        {
+          "title": "What does a great website really do?",
+          "content": "A great website is not just a digital business card and it is not only about looking nice. A professional site brings real clients, pre-qualifies leads for you, presents your references, and keeps your business available 24/7 without your phone having to ring all day. It automates your processes and builds trust in future clients before you even speak in person."
+        },
+        {
+          "title": "How am I different from template solutions?",
+          "content": "While many websites on the market are built on heavy, stacked WordPress templates and unstable plugins, I work with fully custom code. For you, this means full design freedom, maximum data security, and outstanding load speed that Google rewards with better rankings."
+        },
+        {
+          "title": "Easy admin interface - hard to break",
+          "content": "Forget overcomplicated and confusing dashboards. You get a clean admin interface tailored to you and your business, where you can edit text, upload new images, or update pricing in seconds, even from your phone. I structure it so the visual layout cannot be accidentally broken."
+        },
+        {
+          "title": "Visibility and Google rankings (Technical SEO)",
+          "content": "Even the best website is useless if potential clients cannot find it. From the very first line of code, I focus heavily on SEO. Thanks to precise technical setup, custom metadata, and modern structure, your site starts with a technical advantage over local competitors."
+        },
+        {
+          "title": "Full-service delivery from planning to launch",
+          "content": "I do not disappear after coding is done. Our collaboration covers the full process: concept planning, modern UI/UX design, high-performance development, optimized content setup, secure hosting and domain support, and connecting your site to Google services."
+        }
+      ]
+    },
+    "process": {
+      "title": "How does a project run?",
+      "cards": [
+        {
+          "title": "Agile and transparent workflow",
+          "content": "I work with an agile mindset where continuous and honest communication is key. You always see where things stand, and the final result matches your expectations."
+        },
+        {
+          "title": "Built for local businesses",
+          "content": "SynelWeb builds websites that are clear, fast, and easy to use. My goal is to make your website genuinely useful in day-to-day operations and easy for visitors to navigate."
+        },
+        {
+          "title": "Strong local market insight",
+          "content": "A large part of my work happens in and around Sopron, so I understand local business needs. The resulting websites perform reliably on mobile and provide a strong long-term foundation."
+        },
+        {
+          "title": "Personal and online support",
+          "content": "During development I am available both in person and online. The goal is a website that is not overcomplicated or overexplained, but simply works effectively."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Free strategy call",
+      "title": "Let's kick off your business's digital growth!",
+      "text": "Let's level up and outrun your competitors with a website your visitors and Google will love. We can discuss your goals in person in Sopron or in an online session.",
+      "button": "Request a free consultation",
+      "ariaLabel": "Request a free consultation"
+    }
   }
 }

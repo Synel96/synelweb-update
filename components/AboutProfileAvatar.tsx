@@ -1,13 +1,9 @@
-import { cloudinaryImageUrl } from "@/src/cloudinary";
-
 type AboutProfileAvatarProps = {
   className?: string;
   alt?: string;
 };
 
-const ABOUT_AVATAR_UPLOAD_PATH =
-  "f_auto,q_auto,dpr_auto,w_720,h_720,c_fill,g_face/v1782514352/me_duhoxs.webp";
-const ABOUT_AVATAR_URL = cloudinaryImageUrl(ABOUT_AVATAR_UPLOAD_PATH);
+const ABOUT_AVATAR_URL = "/me_duhoxs.webp";
 
 export function AboutProfileAvatar({ className, alt = "Profile avatar" }: AboutProfileAvatarProps) {
   return (

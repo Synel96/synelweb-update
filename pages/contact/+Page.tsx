@@ -6,7 +6,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 
 const EMAIL = "info@synleweb.hu";
 const PHONE = "+36303645516";
-const FACEBOOK_HREF = "https://www.facebook.com/";
+const FACEBOOK_HREF = "https://www.facebook.com/profile.php?id=61586963195763";
 const LINKEDIN_HREF = "https://www.linkedin.com/in/szilveszter-nemeth-636689332/";
 const SOPRON_MAP_HREF = "https://www.google.com/maps?q=Sopron&z=14&output=embed";
 

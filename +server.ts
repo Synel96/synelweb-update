@@ -1,5 +1,7 @@
+import { importServerProductionEntry } from "@brillout/vite-plugin-server-entry/runtime";
+
 if (process.env.NODE_ENV === "production") {
-  await import("./dist/server/entry.mjs");
+  await importServerProductionEntry();
 }
 
 export default {

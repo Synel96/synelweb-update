@@ -8,7 +8,9 @@ const config: Config = {
   // https://vike.dev/head-tags
   title: "SynelWeb",
   description: "SynelWeb - modern webfejlesztés, gyors oldalak és prémium digitális élmény.",
-  server: true,
+  // Generate HTML at build-time and keep SPA-like navigation on the client.
+  server: false,
+  clientRouting: true,
 
   extends: [vikeReact],
 };

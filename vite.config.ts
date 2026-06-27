@@ -4,12 +4,11 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { vercel } from "vite-plugin-vercel/vite";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ isSsrBuild }) => ({
-  plugins: [react(), vike(), vercel(), tailwindcss()],
+  plugins: [tailwindcss(), vike(), react()],
   resolve: {
     alias: {
       "@": resolve(__dirname, "./"),

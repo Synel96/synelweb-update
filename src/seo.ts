@@ -37,7 +37,7 @@ export function buildMeta({ pathname, lang, title, description }: BuildMetaInput
     canonicalUrl,
     title: resolvedTitle,
     description: resolvedDescription,
-    image: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/me.webp`,
     alternates,
   };
 }

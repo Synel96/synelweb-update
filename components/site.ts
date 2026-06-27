@@ -11,7 +11,7 @@ export const NAV_LINKS = [
   { href: "/#reviews", labelKey: "nav.reviews" },
   { href: "/#technology", labelKey: "nav.technology" },
   {
-    href: "/#contact",
+    href: "/contact",
     labelKey: "nav.contact",
     fallbackLabel: {
       en: "Contact",

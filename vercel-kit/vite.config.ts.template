@@ -1,0 +1,39 @@
+import vike from 'vike/plugin'
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+export default defineConfig(({ isSsrBuild }) => ({
+  plugins: [tailwindcss(), vike(), react()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './'),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: isSsrBuild
+        ? undefined
+        : {
+            manualChunks(id) {
+              if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+                return 'vendor-react'
+              }
+
+              if (id.includes('node_modules/vike') || id.includes('node_modules/vike-react')) {
+                return 'vendor-vike'
+              }
+
+              return undefined
+            },
+            chunkFileNames: 'chunks/[name]-[hash].js',
+          },
+    },
+    chunkSizeWarningLimit: 500,
+    sourcemap: false,
+  },
+}))

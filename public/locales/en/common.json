@@ -93,5 +93,27 @@
       "button": "Request a free consultation",
       "ariaLabel": "Request a free consultation"
     }
+  },
+  "contact": {
+    "label": "Contact",
+    "heading": "Write, call, or check Sopron on the map.",
+    "intro": "If you want a fast, SEO-friendly and reliable website, you can reach me here easily. I reply by email, call back on the phone, and we can also meet in person around Sopron.",
+    "introStrong": "My goal is simple: you should not have to fight with your website. Instead, you should have a digital presence that brings clients and communicates clearly.",
+    "responseLabel": "Response time",
+    "responseText": "I usually reply within 1 business day.",
+    "locationLabel": "Location",
+    "locationText": "Sopron and online meetings",
+    "supportLabel": "Reach me via",
+    "supportText": "Phone, email, Facebook, and LinkedIn.",
+    "callButton": "Call now",
+    "emailButton": "Send email",
+    "mapLabel": "Sopron map",
+    "mapTitle": "Google Map for Sopron",
+    "mapText": "See where I work or plan an in-person meeting in just a few clicks.",
+    "socialLabel": "Social profiles",
+    "facebookButton": "Facebook",
+    "linkedinButton": "LinkedIn",
+    "closingTitle": "Got an idea? Let's talk it through.",
+    "closingText": "Right after the first message, you'll get a clearer picture of what your project could look like, how much time it may take, and which solution fits your goals best."
   }
 }

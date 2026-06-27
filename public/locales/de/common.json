@@ -93,5 +93,27 @@
       "button": "Kostenlose Beratung anfragen",
       "ariaLabel": "Kostenlose Beratung anfragen"
     }
+  },
+  "contact": {
+    "label": "Kontakt",
+    "heading": "Schreib, ruf an oder schau dir Sopron auf der Karte an.",
+    "intro": "Wenn du eine schnelle, SEO-freundliche und zuverlässige Website möchtest, erreichst du mich hier ganz einfach. Ich antworte per E-Mail, rufe telefonisch zurück und wir können uns auch persönlich in und um Sopron treffen.",
+    "introStrong": "Mein Ziel ist einfach: Du sollst nicht mit deiner Website kämpfen müssen. Stattdessen bekommst du einen digitalen Auftritt, der Kunden bringt und klar kommuniziert.",
+    "responseLabel": "Antwortzeit",
+    "responseText": "Ich antworte normalerweise innerhalb eines Werktags.",
+    "locationLabel": "Standort",
+    "locationText": "Sopron und Online-Meetings",
+    "supportLabel": "Erreichbar über",
+    "supportText": "Telefon, E-Mail, Facebook und LinkedIn.",
+    "callButton": "Jetzt anrufen",
+    "emailButton": "E-Mail senden",
+    "mapLabel": "Sopron-Karte",
+    "mapTitle": "Google Maps für Sopron",
+    "mapText": "Sieh dir an, wo ich arbeite, oder plane in wenigen Klicks ein persönliches Treffen.",
+    "socialLabel": "Social Profile",
+    "facebookButton": "Facebook",
+    "linkedinButton": "LinkedIn",
+    "closingTitle": "Eine Idee? Lass uns darüber sprechen.",
+    "closingText": "Schon nach der ersten Nachricht bekommst du ein klareres Bild davon, wie dein Projekt aussehen könnte, wie viel Zeit du ungefähr einplanen solltest und welche Lösung am besten zu deinen Zielen passt."
   }
 }

@@ -93,5 +93,27 @@
       "button": "Ingyenes konzultációt kérek",
       "ariaLabel": "Ingyenes konzultáció kérése"
     }
+  },
+  "contact": {
+    "label": "Kapcsolat",
+    "heading": "Írj, hívj, vagy nézd meg Sopront a térképen.",
+    "intro": "Ha gyors, SEO-barát és megbízható weboldalt szeretnél, itt könnyen elérsz. Válaszolok e-mailben, visszahívlak telefonon, és személyesen is tudunk egyeztetni Sopron környékén.",
+    "introStrong": "A célom egyszerű: ne kelljen küzdened a weboldaladdal. Inkább legyen egy olyan digitális felületed, ami ügyfeleket hoz és egyértelműen kommunikál.",
+    "responseLabel": "Válaszidő",
+    "responseText": "Általában 1 munkanapon belül válaszolok.",
+    "locationLabel": "Helyszín",
+    "locationText": "Sopron és online egyeztetés",
+    "supportLabel": "Elérhetőség",
+    "supportText": "Telefon, e-mail, Facebook és LinkedIn.",
+    "callButton": "Azonnali hívás",
+    "emailButton": "E-mail küldése",
+    "mapLabel": "Sopron térképen",
+    "mapTitle": "Google Térkép Sopronhoz",
+    "mapText": "Nézd meg, merre dolgozom, vagy tervezd meg a személyes találkozót pár kattintással.",
+    "socialLabel": "Közösségi profilok",
+    "facebookButton": "Facebook",
+    "linkedinButton": "LinkedIn",
+    "closingTitle": "Van egy ötleted? Beszéljük át.",
+    "closingText": "Már az első üzenet után pontosabb képet kapsz arról, hogyan nézne ki a projekted, mennyi idővel lehet számolni, és milyen megoldás illik legjobban a céljaidhoz."
   }
 }

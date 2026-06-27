@@ -1,0 +1,9 @@
+import type { Config } from 'vike/types'
+
+const config: Config = {
+  title: '__PROJECT_NAME__ | __PAGE_TITLE__',
+  description: '__PAGE_DESCRIPTION__',
+  prerender: true,
+}
+
+export default config

@@ -27,7 +27,7 @@ function readInfoItems(value: unknown): InfoItem[] {
 export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const contactHref = `/${lang}/#contact`;
+  const contactHref = `/${lang}/contact`;
   const { t } = useTranslation();
   const accordionItems = readInfoItems(t("about.accordion.items", { returnObjects: true }));
   const processCards = readInfoItems(t("about.process.cards", { returnObjects: true }));

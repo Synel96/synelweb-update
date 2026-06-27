@@ -1,0 +1,12 @@
+import type { Config } from 'vike/types'
+import vikeReact from 'vike-react/config'
+
+const config: Config = {
+  title: '__PROJECT_NAME__',
+  description: '__PROJECT_DESCRIPTION__',
+  server: false,
+  clientRouting: true,
+  extends: [vikeReact],
+}
+
+export default config

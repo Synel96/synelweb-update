@@ -1,6 +1,7 @@
 // https://vike.dev/Head
 
 import geistFontUrl from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import logoUrl from "../assets/logo.svg";
 import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL, BRAND_NAME } from "../components/site";
 import { buildMeta } from "../src/seo";
@@ -22,9 +23,11 @@ export function Head() {
     title: pageContext.config?.title,
     description: pageContext.config?.description,
   });
+  const organizationLogoUrl = new URL(logoUrl, SITE_URL).toString();
 
   return (
     <>
+      <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" />
       <link rel="canonical" href={meta.canonicalUrl} />
 
       {/* hreflang alternates — tells Google which URL serves which language */}
@@ -53,7 +56,7 @@ export function Head() {
             "@type": "Organization",
             name: BRAND_NAME,
             url: SITE_URL,
-            logo: `${SITE_URL}/logo.svg`,
+            logo: organizationLogoUrl,
           }),
         }}
       />

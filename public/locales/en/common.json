@@ -140,7 +140,7 @@
         "badge": "Experience",
         "title": "A lightning-fast and fluid user experience",
         "summary": "React is the world's most popular modern UI technology, updating content instantly and app-like without disruptive full page reloads.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "Your website feels faster and more premium to use, visitors are less likely to drop off while waiting, and they are more likely to stay engaged and reach out."
       },
       {
@@ -149,7 +149,7 @@
         "badge": "Design",
         "title": "No-compromise custom design and speed",
         "summary": "TailwindCSS makes it possible to craft a fully custom, pixel-precise and modern visual identity without dragging along heavy styling systems that slow the site down.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "You get a visual style tailored to your business together with lightning-fast loading. No unnecessary code bloat, just a clean, lightweight and premium experience that both Google and visitors appreciate."
       },
       {
@@ -158,7 +158,7 @@
         "badge": "Stability",
         "title": "Rock-solid and intelligent code",
         "summary": "TypeScript sits in the elite tier of modern web development: it catches hidden issues during development and leads to a clean, maintainable codebase.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "Your site becomes more stable, easier to expand, and far less likely to fail unexpectedly, while giving your business a technical foundation that can grow with it."
       },
       {
@@ -167,7 +167,7 @@
         "badge": "Future-ready",
         "title": "A future-ready and intelligent engine",
         "summary": "Python is one of the world's most versatile programming languages, trusted by major technology platforms and modern AI systems alike.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "You get a powerful backend with clean logic, ready for more complex business workflows, automations, and future expansion without unnecessary friction."
       },
       {
@@ -176,7 +176,7 @@
         "badge": "Security",
         "title": "A hardened digital fortress",
         "summary": "Django is a premium framework designed for secure, fast, and scalable server-side applications with battle-tested protections built in.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "Your data and your clients' data stay strongly protected, while background processes run quickly, reliably, and almost invisibly to the end user."
       },
       {
@@ -185,7 +185,7 @@
         "badge": "Precision",
         "title": "An intelligent and precise database",
         "summary": "PostgreSQL is one of the world's most advanced open-source databases, built to stay fast and accurate even under serious load.",
-        "valueLabel": "What does this mean for you?",
+        "valueLabel": "What does this mean for your business?",
         "valueText": "Whether your site handles products, bookings, messages, or user data, it will continue serving visitors quickly and reliably even during heavier traffic."
       }
     ],

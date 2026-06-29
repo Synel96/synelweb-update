@@ -140,7 +140,7 @@
         "badge": "Erlebnis",
         "title": "Ein blitzschnelles und flüssiges Nutzungserlebnis",
         "summary": "React ist die weltweit populärste moderne UI-Technologie und aktualisiert Inhalte sofort, app-ähnlich und ohne störende komplette Seiten-Neuladungen.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Ihre Website fühlt sich schneller und hochwertiger an, Besucher springen seltener wegen Wartezeit ab und bleiben eher bis zur Kontaktaufnahme oder Conversion auf der Seite."
       },
       {
@@ -149,7 +149,7 @@
         "badge": "Design",
         "title": "Kompromissloses, individuelles Design und Geschwindigkeit",
         "summary": "Mit TailwindCSS lässt sich ein vollständig individuelles, pixelgenaues und modernes Erscheinungsbild umsetzen, ohne schwere Styling-Systeme mitzuschleppen, die die Website ausbremsen.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Sie erhalten ein auf Ihr Unternehmen zugeschnittenes Erscheinungsbild zusammen mit blitzschnellen Ladezeiten. Keine unnötigen Code-Massen, sondern ein leichtes, sauberes und hochwertiges Erlebnis für Besucher und Suchmaschinen."
       },
       {
@@ -158,7 +158,7 @@
         "badge": "Stabilität",
         "title": "Felsfester und intelligenter Code",
         "summary": "TypeScript gehört zur Spitzenklasse moderner Webentwicklung: versteckte Fehler werden schon während der Entwicklung erkannt und die Codebasis bleibt sauber und wartbar.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Ihre Website wird stabiler, leichter erweiterbar und deutlich weniger anfällig für unerwartete Ausfälle. Gleichzeitig entsteht ein technisches Fundament, das mit Ihrem Unternehmen wachsen kann."
       },
       {
@@ -167,7 +167,7 @@
         "badge": "Zukunftssicherheit",
         "title": "Ein zukunftssicherer und intelligenter Motor",
         "summary": "Python ist eine der vielseitigsten Programmiersprachen der Welt und treibt sowohl große Technologie-Plattformen als auch moderne KI-Systeme an.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Sie erhalten ein leistungsstarkes Backend mit klarer Logik, das komplexere Geschäftsprozesse, Automatisierungen und spätere Erweiterungen problemlos mitträgt."
       },
       {
@@ -176,7 +176,7 @@
         "badge": "Sicherheit",
         "title": "Eine digitale Festung mit starker Absicherung",
         "summary": "Django ist ein Premium-Framework für sichere, schnelle und skalierbare Server-Anwendungen mit bewährten Schutzmechanismen direkt im Kern.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Ihre Daten und die Daten Ihrer Kunden bleiben zuverlässig geschützt, während Prozesse im Hintergrund schnell, stabil und für Nutzer nahezu unsichtbar ablaufen."
       },
       {
@@ -185,7 +185,7 @@
         "badge": "Präzision",
         "title": "Eine intelligente und präzise Datenbank",
         "summary": "PostgreSQL zählt zu den fortschrittlichsten Open-Source-Datenbanken der Welt und bleibt auch unter hoher Last schnell und exakt.",
-        "valueLabel": "Was bedeutet das für Sie?",
+        "valueLabel": "Was bedeutet das für dein Unternehmen?",
         "valueText": "Egal ob Produkte, Buchungen, Nachrichten oder Nutzerdaten verarbeitet werden: Ihre Website bedient Besucher auch bei höherem Traffic schnell und zuverlässig."
       }
     ],
@@ -208,7 +208,7 @@
         "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: <brandNASAPlain>NASA</brandNASAPlain> nutzt dieses Backend-Fundament gern für interne Verwaltungsoberflächen und Datenverarbeitung, weil die Sicherheit außergewöhnlich hoch ist. Auch <brandSpotifyPlain>Spotify</brandSpotifyPlain> und <brandInstagramPlain>Instagram</brandInstagramPlain> verlassen sich auf dieselbe Grundlage, um riesige Datenmengen pro Sekunde zu verarbeiten.",
         "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: Globale Technologieführer wie <brandApplePlain>Apple</brandApplePlain> und <brandUberPlain>Uber</brandUberPlain> vertrauen ihre kritischsten Daten seiner Präzision und Stabilität an."
       },
-      "valueTitle": "Was bedeutet das für Ihr Unternehmen?",
+      "valueTitle": "Was bedeutet das für dein Unternehmen?",
       "valueText": "Es bedeutet, dass hinter Ihrer Website kein billiger oder instabiler Unterbau steht, sondern ein <strong>weltklassiger, High-Tech-Digitalmotor</strong>. Eine Grundlage, die auch bei plötzlich steigendem Traffic stabil bleibt und Ihre Unternehmensdaten maximal schützt."
     },
     "cta": {

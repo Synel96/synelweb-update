@@ -8,9 +8,6 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BRAND_NAME, NAV_LINKS } from "./site";
@@ -80,7 +77,7 @@ export function Navbar() {
           {BRAND_NAME}
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {NAV_LINKS.map((item) => (
             <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
               {navLabel(item)}
@@ -88,11 +85,11 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <LanguageSwitcherDropdown />
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           {mounted ? (
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -121,13 +118,6 @@ export function Navbar() {
                 side="right"
                 className="w-80 border-r-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
               >
-                <SheetHeader>
-                  <SheetTitle>{BRAND_NAME}</SheetTitle>
-                  <SheetDescription className="text-white/70">
-                    {t("nav.navigationMenu")}
-                  </SheetDescription>
-                </SheetHeader>
-
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
                   {NAV_LINKS.map((item) => (
                     <SheetClose asChild key={item.href}>

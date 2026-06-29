@@ -84,7 +84,7 @@ export default function Page() {
           >
             <div className="flex items-center gap-3 text-(--accent)"><PhoneIcon className="size-5" /><span className="text-xs font-semibold tracking-[0.2em] uppercase">{t("contact.callButton")}</span></div>
             <p className="mt-4 text-2xl font-semibold text-white">{PHONE}</p>
-            <p className="mt-2 text-sm leading-6 text-white/75">Közvetlen telefonos egyeztetés gyors visszahívással.</p>
+            <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.callCardText")}</p>
           </a>
 
           <a
@@ -93,7 +93,7 @@ export default function Page() {
           >
             <div className="flex items-center gap-3 text-(--accent)"><MailIcon className="size-5" /><span className="text-xs font-semibold tracking-[0.2em] uppercase">{t("contact.emailButton")}</span></div>
             <p className="mt-4 text-2xl font-semibold text-white">{EMAIL}</p>
-            <p className="mt-2 text-sm leading-6 text-white/75">Írj részleteket, és válaszolok egy következő lépéssel.</p>
+            <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.emailCardText")}</p>
           </a>
 
           <a
@@ -110,8 +110,7 @@ export default function Page() {
                 {t("contact.facebookButton")}
               </span>
             </div>
-            <p className="mt-4 text-2xl font-semibold text-white">Facebook</p>
-            <p className="mt-2 text-sm leading-6 text-white/75">Később ezt a linket a konkrét oldaladra cserélhetjük.</p>
+            <p className="mt-4 text-sm leading-6 text-white/75">{t("contact.facebookCardText")}</p>
           </a>
 
           <a
@@ -128,8 +127,7 @@ export default function Page() {
                 {t("contact.linkedinButton")}
               </span>
             </div>
-            <p className="mt-4 text-2xl font-semibold text-white">LinkedIn</p>
-            <p className="mt-2 text-sm leading-6 text-white/75">Szakmai profil, referenciák és kapcsolatfelvétel egy helyen.</p>
+            <p className="mt-4 text-sm leading-6 text-white/75">{t("contact.linkedinCardText")}</p>
           </a>
         </div>
       </section>
@@ -142,9 +140,9 @@ export default function Page() {
             <p className="mt-4 max-w-xl text-base leading-8 text-white/78">{t("contact.mapText")}</p>
 
             <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
-              <p className="text-sm font-semibold text-white">Sopron, Hungary</p>
+              <p className="text-sm font-semibold text-white">{t("contact.mapLocationTitle")}</p>
               <p className="mt-2 text-sm leading-7 text-white/72">
-                Ha személyes egyeztetésben gondolkodsz, ez a térkép segít gyorsan beazonosítani a helyszínt.
+                {t("contact.mapLocationText")}
               </p>
             </div>
           </div>

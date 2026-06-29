@@ -144,6 +144,15 @@
         "valueText": "Ihre Website fühlt sich schneller und hochwertiger an, Besucher springen seltener wegen Wartezeit ab und bleiben eher bis zur Kontaktaufnahme oder Conversion auf der Seite."
       },
       {
+        "logo": "tailwind",
+        "name": "TailwindCSS",
+        "badge": "Design",
+        "title": "Kompromissloses, individuelles Design und Geschwindigkeit",
+        "summary": "Mit TailwindCSS lässt sich ein vollständig individuelles, pixelgenaues und modernes Erscheinungsbild umsetzen, ohne schwere Styling-Systeme mitzuschleppen, die die Website ausbremsen.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Sie erhalten ein auf Ihr Unternehmen zugeschnittenes Erscheinungsbild zusammen mit blitzschnellen Ladezeiten. Keine unnötigen Code-Massen, sondern ein leichtes, sauberes und hochwertiges Erlebnis für Besucher und Suchmaschinen."
+      },
+      {
         "logo": "typescript",
         "name": "TypeScript",
         "badge": "Stabilität",
@@ -183,6 +192,25 @@
     "llmLabel": "Warum ist das für KI-basierte Suche wichtig?",
     "llmTitle": "Algorithmen erkennen technische Qualität ebenfalls.",
     "llmText": "Wenn potenzielle Kunden künftig KI-Systeme nach Empfehlungen fragen, bewerten diese nicht nur Inhalte, sondern auch die technische Qualität einer Website. Eine moderne, saubere und professionelle Struktur hilft dabei, Sie als verlässlichen Experten an der Spitze einzuordnen.",
+    "trustedCompanies": {
+      "label": "Technologie auf Weltklasseniveau",
+      "title": "Technologien, denen auch globale Marktführer vertrauen",
+      "intro": "Wenn Sie sich für die Zusammenarbeit mit mir entscheiden, erhalten Sie keine experimentellen Einzellösungen, sondern dieselben technologischen Grundlagen, die einige der am stärksten belasteten und sichersten Systeme der Welt antreiben.",
+      "itemTitles": {
+        "react": "React",
+        "tailwind": "TailwindCSS",
+        "backend": "Python & Django",
+        "database": "PostgreSQL"
+      },
+      "items": {
+        "react": "<brandNetflix>Netflix</brandNetflix> / <brandInstagram>Instagram</brandInstagram>: <brandNetflixPlain>Netflix</brandNetflixPlain> nutzt diese Grundlage, damit die Benutzeroberfläche auf Fernsehern, Smartphones und Laptops gleichermaßen schnell und reibungslos bleibt. <brandInstagramPlain>Instagram</brandInstagramPlain> setzt auf denselben Ansatz, um täglich das Scrollen von Hunderten Millionen Nutzern sofort auszuliefern.",
+        "tailwind": "<brandOpenAI>OpenAI</brandOpenAI> (<brandChatGPT>ChatGPT</brandChatGPT>): Selbst der Vorreiter moderner KI, <brandOpenAIPlain>OpenAI</brandOpenAIPlain>, setzt auf diesen Ansatz, um die klare, moderne und extrem schnelle Oberfläche von <brandChatGPTPlain>ChatGPT</brandChatGPTPlain> zu gestalten.",
+        "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: <brandNASAPlain>NASA</brandNASAPlain> nutzt dieses Backend-Fundament gern für interne Verwaltungsoberflächen und Datenverarbeitung, weil die Sicherheit außergewöhnlich hoch ist. Auch <brandSpotifyPlain>Spotify</brandSpotifyPlain> und <brandInstagramPlain>Instagram</brandInstagramPlain> verlassen sich auf dieselbe Grundlage, um riesige Datenmengen pro Sekunde zu verarbeiten.",
+        "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: Globale Technologieführer wie <brandApplePlain>Apple</brandApplePlain> und <brandUberPlain>Uber</brandUberPlain> vertrauen ihre kritischsten Daten seiner Präzision und Stabilität an."
+      },
+      "valueTitle": "Was bedeutet das für Ihr Unternehmen?",
+      "valueText": "Es bedeutet, dass hinter Ihrer Website kein billiger oder instabiler Unterbau steht, sondern ein <strong>weltklassiger, High-Tech-Digitalmotor</strong>. Eine Grundlage, die auch bei plötzlich steigendem Traffic stabil bleibt und Ihre Unternehmensdaten maximal schützt."
+    },
     "cta": {
       "eyebrow": "Moderne technische Grundlagen",
       "title": "Lassen Sie uns eine Website bauen, die innen und außen Premium wirkt.",

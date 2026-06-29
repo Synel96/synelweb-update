@@ -2,8 +2,15 @@ import djangoLogo from "@/assets/django-svgrepo-com.svg?raw";
 import postgresLogo from "@/assets/postgresql-logo-svgrepo-com.svg?raw";
 import pythonLogo from "@/assets/python-svgrepo-com.svg?raw";
 import reactLogoUrl from "@/assets/1280px-React-icon.svg.png";
+import tailwindLogo from "@/assets/tailwind-css-svgrepo-com.svg?raw";
 
-export type TechnologyLogoName = "react" | "typescript" | "python" | "django" | "postgresql";
+export type TechnologyLogoName =
+  | "react"
+  | "tailwind"
+  | "typescript"
+  | "python"
+  | "django"
+  | "postgresql";
 
 const TYPESCRIPT_LOGO = `
 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%;max-width:100%;max-height:100%;">
@@ -13,6 +20,7 @@ const TYPESCRIPT_LOGO = `
 </svg>`;
 
 const SVG_LOGOS: Record<Exclude<TechnologyLogoName, "react">, string> = {
+  tailwind: tailwindLogo,
   typescript: TYPESCRIPT_LOGO,
   python: pythonLogo,
   django: djangoLogo,
@@ -35,6 +43,7 @@ function sanitizeSvg(svg: string) {
 export function isTechnologyLogoName(value: unknown): value is TechnologyLogoName {
   return (
     value === "react" ||
+    value === "tailwind" ||
     value === "typescript" ||
     value === "python" ||
     value === "django" ||

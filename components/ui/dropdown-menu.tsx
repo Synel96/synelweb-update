@@ -25,7 +25,7 @@ function DropdownMenuContent({
         data-slot="dropdown-menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 z-50 min-w-[9rem] overflow-hidden rounded-xl border border-white/10 bg-(--brand-surface)/95 p-1 shadow-xl backdrop-blur-sm",
+          "bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 z-50 min-w-36 overflow-hidden rounded-xl border border-white/10 bg-(--brand-surface)/95 p-1 shadow-xl backdrop-blur-sm",
           className
         )}
         {...props}

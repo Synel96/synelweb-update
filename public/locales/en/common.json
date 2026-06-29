@@ -144,6 +144,15 @@
         "valueText": "Your website feels faster and more premium to use, visitors are less likely to drop off while waiting, and they are more likely to stay engaged and reach out."
       },
       {
+        "logo": "tailwind",
+        "name": "TailwindCSS",
+        "badge": "Design",
+        "title": "No-compromise custom design and speed",
+        "summary": "TailwindCSS makes it possible to craft a fully custom, pixel-precise and modern visual identity without dragging along heavy styling systems that slow the site down.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "You get a visual style tailored to your business together with lightning-fast loading. No unnecessary code bloat, just a clean, lightweight and premium experience that both Google and visitors appreciate."
+      },
+      {
         "logo": "typescript",
         "name": "TypeScript",
         "badge": "Stability",
@@ -183,6 +192,25 @@
     "llmLabel": "Why does this matter for AI-driven search?",
     "llmTitle": "Algorithms can recognize technical quality too.",
     "llmText": "When future clients ask AI systems for provider recommendations, those systems will evaluate not only the content, but also the technical quality behind a website. A modern, clean, and professional structure helps position you as a reliable expert at the front of the field.",
+    "trustedCompanies": {
+      "label": "World-class technology foundations",
+      "title": "Technologies trusted by global leaders",
+      "intro": "When you choose to work with me, you are not getting experimental one-off solutions. You get the same technology foundations that power some of the world's most heavily used and most secure systems.",
+      "itemTitles": {
+        "react": "React",
+        "tailwind": "TailwindCSS",
+        "backend": "Python & Django",
+        "database": "PostgreSQL"
+      },
+      "items": {
+        "react": "<brandNetflix>Netflix</brandNetflix> / <brandInstagram>Instagram</brandInstagram>: <brandNetflixPlain>Netflix</brandNetflixPlain> uses this foundation to keep its interface equally fast and seamless across TVs, phones, and laptops. <brandInstagramPlain>Instagram</brandInstagramPlain> relies on the same approach to serve hundreds of millions of scrolling users every day.",
+        "tailwind": "<brandOpenAI>OpenAI</brandOpenAI> (<brandChatGPT>ChatGPT</brandChatGPT>): Even the pioneer of modern AI, <brandOpenAIPlain>OpenAI</brandOpenAIPlain>, chose this approach to shape the clean, modern, and remarkably fast interface behind <brandChatGPTPlain>ChatGPT</brandChatGPTPlain>.",
+        "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: <brandNASAPlain>NASA</brandNASAPlain> favors this backend foundation for internal admin tools and data handling because of its exceptional security. <brandSpotifyPlain>Spotify</brandSpotifyPlain> and <brandInstagramPlain>Instagram</brandInstagramPlain> also depend on the same foundation to handle massive data throughput every second.",
+        "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: Global technology leaders such as <brandApplePlain>Apple</brandApplePlain> and <brandUberPlain>Uber</brandUberPlain> trust its engineering precision and stability with some of their most critical data."
+      },
+      "valueTitle": "What does this mean for your business?",
+      "valueText": "It means your website is not standing on top of a cheap or unstable foundation, but on a <strong>world-class, high-tech digital engine</strong>. It is built to stay stable when traffic spikes and to protect your business data at the highest level."
+    },
     "cta": {
       "eyebrow": "Modern technical foundations",
       "title": "Let's build a website that feels premium inside and out.",

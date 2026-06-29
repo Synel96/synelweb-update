@@ -144,6 +144,15 @@
         "valueText": "A weboldal használata gyorsabbnak és prémiumabbnak érződik, csökken a várakozás miatti lemorzsolódás, és sokkal nagyobb eséllyel marad végig a látogató az oldalon vagy lép kapcsolatba veled."
       },
       {
+        "logo": "tailwind",
+        "name": "TailwindCSS",
+        "badge": "Dizájn",
+        "title": "A kompromisszummentes, egyedi dizájn és sebesség",
+        "summary": "A TailwindCSS lehetővé teszi, hogy teljesen egyedi, pixelpontos és modern arculatot kapjon a weboldal anélkül, hogy nehéz, lassító stílusrendszerek terhelnék.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "A vállalkozásodra szabott, látványos dizájnt kapsz villámgyors betöltéssel együtt. Nincsenek felesleges kódhalmok, csak tiszta, könnyű és prémium vizuális élmény, amit a Google és a látogatók is értékelnek."
+      },
+      {
         "logo": "typescript",
         "name": "TypeScript",
         "badge": "Stabilitás",
@@ -183,6 +192,25 @@
     "llmLabel": "Miért fontos ez az MI-alapú keresőknek?",
     "llmTitle": "A tiszta technikai struktúrát az algoritmusok is felismerik.",
     "llmText": "Amikor egy potenciális ügyfél a jövőben mesterséges intelligenciától kér ajánlást, az algoritmusok nemcsak a szöveget, hanem a weboldal technikai minőségét is értékelik. A modern, tiszta és professzionális struktúra segít abban, hogy a rendszer élvonalbeli, megbízható szakemberként azonosítson.",
+    "trustedCompanies": {
+      "label": "Világszintű technológiai alapok",
+      "title": "Technológiák, amelyekben a világóriások is megbíznak",
+      "intro": "Amikor mellettem dönt, nem egyedi kísérleti megoldásokat kap, hanem olyan technológiai alapokat, amelyek a világ legnagyobb terhelésű és legbiztonságosabb rendszereit is kiszolgálják. Ugyanazokkal az eszközökkel építem fel az Ön weboldalát, amelyekben a globális piacvezetők is feltétel nélkül megbíznak:",
+      "itemTitles": {
+        "react": "React",
+        "tailwind": "TailwindCSS",
+        "backend": "Python & Django",
+        "database": "PostgreSQL"
+      },
+      "items": {
+        "react": "<brandNetflix>Netflix</brandNetflix> / <brandInstagram>Instagram</brandInstagram>: A <brandNetflixPlain>Netflix</brandNetflixPlain> segítségével biztosítja, hogy a kezelőfelület tévékészülékeken, telefonokon és laptopokon is ugyanolyan villámgyors és akadásmentes legyen. Az <brandInstagramPlain>Instagram</brandInstagramPlain> szintén erre a technológiára épül, hogy naponta több százmillió ember görgetését szolgálja ki azonnal.",
+        "tailwind": "<brandOpenAI>OpenAI</brandOpenAI> (<brandChatGPT>ChatGPT</brandChatGPT>): Még a mesterséges intelligencia úttörője, az <brandOpenAIPlain>OpenAI</brandOpenAIPlain> is ezt választotta a <brandChatGPTPlain>ChatGPT</brandChatGPTPlain> letisztult, modern és rendkívül gyors felületének kialakításához.",
+        "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: A <brandNASAPlain>NASA</brandNASAPlain> előszeretettel használja ezt a technológiai párost a belső adminisztrációs felületeihez és adatkezeléséhez a rendkívüli biztonsága miatt. A <brandSpotifyPlain>Spotify</brandSpotifyPlain> és az <brandInstagramPlain>Instagram</brandInstagramPlain> teljes backend motorja szintén erre az alapra épül, hogy képes legyen kezelni a másodpercenkénti több millió adatlekérést.",
+        "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: A világ legértékesebb tech vállalatai, mint az <brandApplePlain>Apple</brandApplePlain> vagy az <brandUberPlain>Uber</brandUberPlain>, ennek a mérnöki precizitására és stabilitására bízzák a legkritikusabb adataik tárolását."
+      },
+      "valueTitle": "Mit jelent ez az Ön vállalkozásának?",
+      "valueText": "Azt, hogy az Ön weboldala mögött nem egy olcsó, instabil háttér fog állni, hanem egy <strong>világszínvonalú, high-tech digitális motor</strong>. Olyan alap, amely nem fog összeomlani, ha hirtelen megugrik a látogatók száma, és amely maximális védelmet nyújt a vállalkozása adatainak."
+    },
     "cta": {
       "eyebrow": "Modern technológiai alapok",
       "title": "Építsünk olyan weboldalt, ami kívül-belül prémium.",

@@ -246,6 +246,29 @@ html {
     0 20px 44px -28px var(--accent-glow);
 }
 
+.tech-card-hover-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 34%,
+    rgba(255, 255, 255, 0.16) 49%,
+    rgba(255, 255, 255, 0.05) 58%,
+    transparent 74%
+  );
+  transform: translateX(-135%) skewX(-18deg);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: screen;
+}
+
+.tech-card-hover:hover .tech-card-hover-shine {
+  opacity: 1;
+  animation: tech-card-shine 1.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 .btn-cta {
   position: relative;
   isolation: isolate;
@@ -349,5 +372,15 @@ html {
 
   100% {
     transform: translateX(130%) skewX(-18deg);
+  }
+}
+
+@keyframes tech-card-shine {
+  0% {
+    transform: translateX(-135%) skewX(-18deg);
+  }
+
+  100% {
+    transform: translateX(135%) skewX(-18deg);
   }
 }

@@ -14,7 +14,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { BRAND_NAME, NAV_LINKS } from "./site";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 
 export function Navbar() {
@@ -89,7 +89,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center md:flex">
-          <LanguageSwitcher />
+          <LanguageSwitcherDropdown />
         </div>
 
         <div className="md:hidden">

@@ -7,6 +7,16 @@ import { navigate } from "vike/client/router";
 import { usePageContext } from "vike-react/usePageContext";
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuTriggerIcon,
+} from "@/components/ui/dropdown-menu";
 
 const LABELS: Record<SupportedLang, string> = {
   en: "EN",
@@ -45,5 +55,46 @@ export function LanguageSwitcher() {
         </Button>
       ))}
     </div>
+  );
+}
+
+export function LanguageSwitcherDropdown() {
+  const pageContext = usePageContext() as { lang?: SupportedLang; urlPathname: string };
+  const currentLang = pageContext.lang ?? DEFAULT_LANG;
+  const logicalPath = pageContext.urlPathname;
+
+  const switchTo = (lang: SupportedLang) => {
+    const target = logicalPath === "/" ? `/${lang}/` : `/${lang}${logicalPath}`;
+    navigate(target);
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="ghost"
+          size="sm"
+          aria-label="Switch language"
+          className="h-9 rounded-xl px-3 text-white/85 hover:bg-white/10 hover:text-(--brand-on-surface)"
+        >
+          <span className="text-xs font-semibold tracking-[0.16em]">{LABELS[currentLang]}</span>
+          <DropdownMenuTriggerIcon />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuLabel>Language</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuRadioGroup
+          value={currentLang}
+          onValueChange={(value) => switchTo(value as SupportedLang)}
+        >
+          {SUPPORTED_LANGS.map((lang) => (
+            <DropdownMenuRadioItem key={lang} value={lang}>
+              {LABELS[lang]}
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

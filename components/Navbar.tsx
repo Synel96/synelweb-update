@@ -67,11 +67,15 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a
           href={langHref("/")}
-          className="brand-tech group relative inline-flex items-center text-base font-semibold"
+          className="brand-tech group relative isolate inline-flex items-center text-base font-semibold"
           aria-label={BRAND_NAME}
           title={BRAND_NAME}
         >
-          <span className="bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text text-lg leading-none font-semibold tracking-[0.14em] text-transparent drop-shadow-[0_0_10px_color-mix(in_oklab,var(--color-secondary-hot),transparent_60%)] transition-all duration-300 group-hover:brightness-110">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-x-2 -inset-y-1 hidden rounded-md bg-black/22 opacity-85 blur-[1.4px] transition-opacity duration-300 group-hover:opacity-100 lg:block"
+          />
+          <span className="relative z-10 bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text text-lg leading-none font-semibold tracking-[0.14em] text-transparent drop-shadow-[0_0_10px_color-mix(in_oklab,var(--color-secondary-hot),transparent_60%)] transition-all duration-300 group-hover:brightness-110">
             {BRAND_NAME}
           </span>
         </a>

@@ -121,5 +121,74 @@
     "linkedinCardText": "Professionelles Profil, Referenzen und direkter Kontakt an einem Ort.",
     "closingTitle": "Eine Idee? Lass uns darüber sprechen.",
     "closingText": "Schon nach der ersten Nachricht bekommst du ein klareres Bild davon, wie dein Projekt aussehen könnte, wie viel Zeit du ungefähr einplanen solltest und welche Lösung am besten zu deinen Zielen passt."
+  },
+  "technology": {
+    "label": "Technologie und Qualität",
+    "heading": "Auch unter der Haube baue ich Premium-Qualität.",
+    "intro": "Viele können optisch ansprechende Websites gestalten, doch das technische Fundament bleibt oft schwach, langsam und schwer wartbar. Hier steht hinter der schönen Oberfläche ein stabiles System, das auch geschäftlich überzeugt.",
+    "introStrong": "Ich bin überzeugt, dass herausragendes Design und ein technisches Premium-Fundament immer zusammengehören. Ich arbeite nicht mit Templates, sondern mit modernen Technologien für eine schnelle, sichere und zukunftsfähige digitale Präsenz.",
+    "beliefLabel": "Überzeugung",
+    "beliefTitle": "Kein Kompromiss zwischen Design und Technik.",
+    "beliefText": "Das Ziel ist nicht nur eine schöne Website, sondern ein System, das schnell lädt, sauber mitwächst, sicher bleibt und langfristig verlässlich funktioniert. Genau das macht aus einer Website ein echtes Geschäfts-Werkzeug.",
+    "stackLabel": "Der Technologie-Stack",
+    "stackTitle": "Ich arbeite nicht mit Vorlagen, sondern mit Spitzentechnologie.",
+    "stackIntro": "Die folgenden Technologien sorgen dafür, dass deine Website nicht nur modern aussieht, sondern technisch und geschäftlich das Maximum liefert.",
+    "cards": [
+      {
+        "logo": "react",
+        "name": "React",
+        "badge": "Erlebnis",
+        "title": "Ein blitzschnelles und flüssiges Nutzungserlebnis",
+        "summary": "React ist die weltweit populärste moderne UI-Technologie und aktualisiert Inhalte sofort, app-ähnlich und ohne störende komplette Seiten-Neuladungen.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Ihre Website fühlt sich schneller und hochwertiger an, Besucher springen seltener wegen Wartezeit ab und bleiben eher bis zur Kontaktaufnahme oder Conversion auf der Seite."
+      },
+      {
+        "logo": "typescript",
+        "name": "TypeScript",
+        "badge": "Stabilität",
+        "title": "Felsfester und intelligenter Code",
+        "summary": "TypeScript gehört zur Spitzenklasse moderner Webentwicklung: versteckte Fehler werden schon während der Entwicklung erkannt und die Codebasis bleibt sauber und wartbar.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Ihre Website wird stabiler, leichter erweiterbar und deutlich weniger anfällig für unerwartete Ausfälle. Gleichzeitig entsteht ein technisches Fundament, das mit Ihrem Unternehmen wachsen kann."
+      },
+      {
+        "logo": "python",
+        "name": "Python",
+        "badge": "Zukunftssicherheit",
+        "title": "Ein zukunftssicherer und intelligenter Motor",
+        "summary": "Python ist eine der vielseitigsten Programmiersprachen der Welt und treibt sowohl große Technologie-Plattformen als auch moderne KI-Systeme an.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Sie erhalten ein leistungsstarkes Backend mit klarer Logik, das komplexere Geschäftsprozesse, Automatisierungen und spätere Erweiterungen problemlos mitträgt."
+      },
+      {
+        "logo": "django",
+        "name": "Django Framework",
+        "badge": "Sicherheit",
+        "title": "Eine digitale Festung mit starker Absicherung",
+        "summary": "Django ist ein Premium-Framework für sichere, schnelle und skalierbare Server-Anwendungen mit bewährten Schutzmechanismen direkt im Kern.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Ihre Daten und die Daten Ihrer Kunden bleiben zuverlässig geschützt, während Prozesse im Hintergrund schnell, stabil und für Nutzer nahezu unsichtbar ablaufen."
+      },
+      {
+        "logo": "postgresql",
+        "name": "PostgreSQL",
+        "badge": "Präzision",
+        "title": "Eine intelligente und präzise Datenbank",
+        "summary": "PostgreSQL zählt zu den fortschrittlichsten Open-Source-Datenbanken der Welt und bleibt auch unter hoher Last schnell und exakt.",
+        "valueLabel": "Was bedeutet das für Sie?",
+        "valueText": "Egal ob Produkte, Buchungen, Nachrichten oder Nutzerdaten verarbeitet werden: Ihre Website bedient Besucher auch bei höherem Traffic schnell und zuverlässig."
+      }
+    ],
+    "llmLabel": "Warum ist das für KI-basierte Suche wichtig?",
+    "llmTitle": "Algorithmen erkennen technische Qualität ebenfalls.",
+    "llmText": "Wenn potenzielle Kunden künftig KI-Systeme nach Empfehlungen fragen, bewerten diese nicht nur Inhalte, sondern auch die technische Qualität einer Website. Eine moderne, saubere und professionelle Struktur hilft dabei, Sie als verlässlichen Experten an der Spitze einzuordnen.",
+    "cta": {
+      "eyebrow": "Moderne technische Grundlagen",
+      "title": "Lassen Sie uns eine Website bauen, die innen und außen Premium wirkt.",
+      "text": "Wenn Design, Performance und langfristige Zuverlässigkeit für Sie gleichzeitig wichtig sind, dann verdient auch das technische Fundament dieselbe Sorgfalt wie die visuelle Gestaltung.",
+      "button": "Projekt besprechen",
+      "ariaLabel": "Projekt besprechen"
+    }
   }
 }

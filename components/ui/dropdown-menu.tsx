@@ -8,7 +8,9 @@ function DropdownMenu({ ...props }: React.ComponentProps<typeof DropdownMenuPrim
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
 }
 
-function DropdownMenuTrigger({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+function DropdownMenuTrigger({
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
   return <DropdownMenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
 }
 
@@ -42,7 +44,7 @@ function DropdownMenuItem({
       data-slot="dropdown-menu-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-pointer items-center gap-2 rounded-md px-2.5 py-2 text-sm text-white/85 outline-none transition-colors select-none hover:bg-white/10 hover:text-(--brand-on-surface) focus:bg-white/10 focus:text-(--brand-on-surface) data-disabled:pointer-events-none data-disabled:opacity-50",
+        "relative flex cursor-pointer items-center gap-2 rounded-md px-2.5 py-2 text-sm text-white/85 transition-colors outline-none select-none hover:bg-white/10 hover:text-(--brand-on-surface) focus:bg-white/10 focus:text-(--brand-on-surface) data-disabled:pointer-events-none data-disabled:opacity-50",
         className
       )}
       {...props}
@@ -50,17 +52,26 @@ function DropdownMenuItem({
   );
 }
 
-function DropdownMenuLabel({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Label>) {
+function DropdownMenuLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Label>) {
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
-      className={cn("px-2.5 py-1.5 text-xs font-semibold tracking-[0.18em] text-white/60 uppercase", className)}
+      className={cn(
+        "px-2.5 py-1.5 text-xs font-semibold tracking-[0.18em] text-white/60 uppercase",
+        className
+      )}
       {...props}
     />
   );
 }
 
-function DropdownMenuSeparator({ className, ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
+function DropdownMenuSeparator({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
   return (
     <DropdownMenuPrimitive.Separator
       data-slot="dropdown-menu-separator"
@@ -85,7 +96,7 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "relative flex cursor-pointer items-center rounded-md py-2 pr-2.5 pl-8 text-sm text-white/85 outline-none transition-colors select-none hover:bg-white/10 hover:text-(--brand-on-surface) focus:bg-white/10 focus:text-(--brand-on-surface) data-disabled:pointer-events-none data-disabled:opacity-50",
+        "relative flex cursor-pointer items-center rounded-md py-2 pr-2.5 pl-8 text-sm text-white/85 transition-colors outline-none select-none hover:bg-white/10 hover:text-(--brand-on-surface) focus:bg-white/10 focus:text-(--brand-on-surface) data-disabled:pointer-events-none data-disabled:opacity-50",
         className
       )}
       {...props}

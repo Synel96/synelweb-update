@@ -121,5 +121,74 @@
     "linkedinCardText": "Professional profile, references, and direct contact in one place.",
     "closingTitle": "Got an idea? Let's talk it through.",
     "closingText": "Right after the first message, you'll get a clearer picture of what your project could look like, how much time it may take, and which solution fits your goals best."
+  },
+  "technology": {
+    "label": "Technology and quality",
+    "heading": "I build premium quality under the hood too.",
+    "intro": "Many people can create visually attractive websites, but the technical foundation often stays weak, slow, and hard to maintain. Here, the polished surface is backed by a stable system built for real business use.",
+    "introStrong": "I strongly believe outstanding design and premium engineering should always go hand in hand. I do not build from templates, but from modern technologies that create a fast, secure, and future-ready digital presence.",
+    "beliefLabel": "Core belief",
+    "beliefTitle": "No-compromise design and engineering working together.",
+    "beliefText": "The goal is not just a beautiful website, but a system that loads quickly, scales cleanly, stays secure, and remains dependable for years. That is what turns a website into a real business asset.",
+    "stackLabel": "The technology stack",
+    "stackTitle": "I do not rely on templates. I build with top-tier technologies.",
+    "stackIntro": "The technologies below ensure your website does not only look modern, but also delivers maximum value from both a technical and business perspective.",
+    "cards": [
+      {
+        "logo": "react",
+        "name": "React",
+        "badge": "Experience",
+        "title": "A lightning-fast and fluid user experience",
+        "summary": "React is the world's most popular modern UI technology, updating content instantly and app-like without disruptive full page reloads.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "Your website feels faster and more premium to use, visitors are less likely to drop off while waiting, and they are more likely to stay engaged and reach out."
+      },
+      {
+        "logo": "typescript",
+        "name": "TypeScript",
+        "badge": "Stability",
+        "title": "Rock-solid and intelligent code",
+        "summary": "TypeScript sits in the elite tier of modern web development: it catches hidden issues during development and leads to a clean, maintainable codebase.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "Your site becomes more stable, easier to expand, and far less likely to fail unexpectedly, while giving your business a technical foundation that can grow with it."
+      },
+      {
+        "logo": "python",
+        "name": "Python",
+        "badge": "Future-ready",
+        "title": "A future-ready and intelligent engine",
+        "summary": "Python is one of the world's most versatile programming languages, trusted by major technology platforms and modern AI systems alike.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "You get a powerful backend with clean logic, ready for more complex business workflows, automations, and future expansion without unnecessary friction."
+      },
+      {
+        "logo": "django",
+        "name": "Django Framework",
+        "badge": "Security",
+        "title": "A hardened digital fortress",
+        "summary": "Django is a premium framework designed for secure, fast, and scalable server-side applications with battle-tested protections built in.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "Your data and your clients' data stay strongly protected, while background processes run quickly, reliably, and almost invisibly to the end user."
+      },
+      {
+        "logo": "postgresql",
+        "name": "PostgreSQL",
+        "badge": "Precision",
+        "title": "An intelligent and precise database",
+        "summary": "PostgreSQL is one of the world's most advanced open-source databases, built to stay fast and accurate even under serious load.",
+        "valueLabel": "What does this mean for you?",
+        "valueText": "Whether your site handles products, bookings, messages, or user data, it will continue serving visitors quickly and reliably even during heavier traffic."
+      }
+    ],
+    "llmLabel": "Why does this matter for AI-driven search?",
+    "llmTitle": "Algorithms can recognize technical quality too.",
+    "llmText": "When future clients ask AI systems for provider recommendations, those systems will evaluate not only the content, but also the technical quality behind a website. A modern, clean, and professional structure helps position you as a reliable expert at the front of the field.",
+    "cta": {
+      "eyebrow": "Modern technical foundations",
+      "title": "Let's build a website that feels premium inside and out.",
+      "text": "If design, performance, and long-term reliability all matter to you at once, then the technical foundation deserves the same level of attention as the visual layer.",
+      "button": "Let's discuss the project",
+      "ariaLabel": "Let's discuss the project"
+    }
   }
 }

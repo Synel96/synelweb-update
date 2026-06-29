@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vike build",
-    "preview": "vike build && vike preview"
+    "preview": "vike build && node scripts/preview-static.mjs"
   },
   "dependencies": {
     "@cloudinary/url-gen": "^1.22.0",

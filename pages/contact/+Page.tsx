@@ -10,7 +10,15 @@ const FACEBOOK_HREF = "https://www.facebook.com/profile.php?id=61586963195763";
 const LINKEDIN_HREF = "https://www.linkedin.com/in/szilveszter-nemeth-636689332/";
 const SOPRON_MAP_HREF = "https://www.google.com/maps?q=Sopron&z=14&output=embed";
 
-function ContactPill({ icon: Icon, title, text }: { icon: ComponentType<{ className?: string }>; title: string; text: string; }) {
+function ContactPill({
+  icon: Icon,
+  title,
+  text,
+}: {
+  icon: ComponentType<{ className?: string }>;
+  title: string;
+  text: string;
+}) {
   return (
     <article className="bento-card rounded-2xl p-5">
       <div className="flex items-center gap-3">
@@ -40,7 +48,9 @@ export default function Page() {
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("contact.heading")}
             </h1>
-            <p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg">{t("contact.intro")}</p>
+            <p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
+              {t("contact.intro")}
+            </p>
             <p className="max-w-2xl text-base leading-8 font-semibold text-white sm:text-lg">
               {t("contact.introStrong")}
             </p>
@@ -69,9 +79,21 @@ export default function Page() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-            <ContactPill icon={SparklesIcon} title={t("contact.responseLabel")} text={t("contact.responseText")} />
-            <ContactPill icon={MapPinnedIcon} title={t("contact.locationLabel")} text={t("contact.locationText")} />
-            <ContactPill icon={MailIcon} title={t("contact.supportLabel")} text={t("contact.supportText")} />
+            <ContactPill
+              icon={SparklesIcon}
+              title={t("contact.responseLabel")}
+              text={t("contact.responseText")}
+            />
+            <ContactPill
+              icon={MapPinnedIcon}
+              title={t("contact.locationLabel")}
+              text={t("contact.locationText")}
+            />
+            <ContactPill
+              icon={MailIcon}
+              title={t("contact.supportLabel")}
+              text={t("contact.supportText")}
+            />
           </div>
         </div>
       </section>
@@ -82,7 +104,12 @@ export default function Page() {
             href={`tel:${PHONE}`}
             className="bento-card is-featured rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
           >
-            <div className="flex items-center gap-3 text-(--accent)"><PhoneIcon className="size-5" /><span className="text-xs font-semibold tracking-[0.2em] uppercase">{t("contact.callButton")}</span></div>
+            <div className="flex items-center gap-3 text-(--accent)">
+              <PhoneIcon className="size-5" />
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase">
+                {t("contact.callButton")}
+              </span>
+            </div>
             <p className="mt-4 text-2xl font-semibold text-white">{PHONE}</p>
             <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.callCardText")}</p>
           </a>
@@ -91,7 +118,12 @@ export default function Page() {
             href={`mailto:${EMAIL}`}
             className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
           >
-            <div className="flex items-center gap-3 text-(--accent)"><MailIcon className="size-5" /><span className="text-xs font-semibold tracking-[0.2em] uppercase">{t("contact.emailButton")}</span></div>
+            <div className="flex items-center gap-3 text-(--accent)">
+              <MailIcon className="size-5" />
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase">
+                {t("contact.emailButton")}
+              </span>
+            </div>
             <p className="mt-4 text-2xl font-semibold text-white">{EMAIL}</p>
             <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.emailCardText")}</p>
           </a>
@@ -103,7 +135,7 @@ export default function Page() {
             className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
-              <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] font-bold leading-none">
+              <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] leading-none font-bold">
                 f
               </span>
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">
@@ -120,7 +152,7 @@ export default function Page() {
             className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
-              <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] font-bold leading-none">
+              <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] leading-none font-bold">
                 in
               </span>
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">
@@ -135,15 +167,19 @@ export default function Page() {
       <section id="map" className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
           <div className="bento-card rounded-3xl p-6 sm:p-8">
-            <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">{t("contact.mapLabel")}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">{t("contact.mapTitle")}</h2>
-            <p className="mt-4 max-w-xl text-base leading-8 text-white/78">{t("contact.mapText")}</p>
+            <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
+              {t("contact.mapLabel")}
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
+              {t("contact.mapTitle")}
+            </h2>
+            <p className="mt-4 max-w-xl text-base leading-8 text-white/78">
+              {t("contact.mapText")}
+            </p>
 
             <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
               <p className="text-sm font-semibold text-white">{t("contact.mapLocationTitle")}</p>
-              <p className="mt-2 text-sm leading-7 text-white/72">
-                {t("contact.mapLocationText")}
-              </p>
+              <p className="mt-2 text-sm leading-7 text-white/72">{t("contact.mapLocationText")}</p>
             </div>
           </div>
 
@@ -151,7 +187,7 @@ export default function Page() {
             <iframe
               title={t("contact.mapTitle")}
               src={SOPRON_MAP_HREF}
-              className="h-[420px] w-full"
+              className="h-105 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -161,9 +197,15 @@ export default function Page() {
 
       <section className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
-          <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">{t("contact.closingTitle")}</p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{t("contact.closingTitle")}</h2>
-          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">{t("contact.closingText")}</p>
+          <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
+            {t("contact.closingTitle")}
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("contact.closingTitle")}
+          </h2>
+          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+            {t("contact.closingText")}
+          </p>
         </div>
       </section>
     </div>

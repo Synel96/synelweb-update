@@ -9,7 +9,7 @@ export const NAV_LINKS = [
   { href: "/#services", labelKey: "nav.services" },
   { href: "/#projects", labelKey: "nav.projects" },
   { href: "/#reviews", labelKey: "nav.reviews" },
-  { href: "/#technology", labelKey: "nav.technology" },
+  { href: "/technology", labelKey: "nav.technology" },
   {
     href: "/contact",
     labelKey: "nav.contact",

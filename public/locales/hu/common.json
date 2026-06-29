@@ -121,5 +121,74 @@
     "linkedinCardText": "Szakmai profil, referenciák és kapcsolatfelvétel egy helyen.",
     "closingTitle": "Van egy ötleted? Beszéljük át.",
     "closingText": "Már az első üzenet után pontosabb képet kapsz arról, hogyan nézne ki a projekted, mennyi idővel lehet számolni, és milyen megoldás illik legjobban a céljaidhoz."
+  },
+  "technology": {
+    "label": "Technológia és minőség",
+    "heading": "A motorháztető alatt is prémium minőséget építek.",
+    "intro": "Sokan tudnak látványos weboldalt készíteni, de a technikai háttér gyakran gyenge, lassú és nehezen karbantartható marad. Nálam a csillogó külső mögött is stabil, üzletileg használható rendszer dolgozik.",
+    "introStrong": "Meggyőződésem, hogy a kiemelkedő dizájn és a prémium technikai háttér kéz a kézben kell, hogy járjon. Nem sablonokból dolgozom, hanem olyan modern technológiákból, amelyek gyors, biztonságos és jövőálló digitális jelenlétet adnak.",
+    "beliefLabel": "Hitvallás",
+    "beliefTitle": "Kompromisszummentes dizájn és mérnöki háttér.",
+    "beliefText": "A cél nem pusztán egy szép oldal, hanem egy olyan rendszer, amely gyorsan tölt, könnyen bővíthető, biztonságos és hosszú távon is megbízható. Ettől válik a weboldal valódi üzleti eszközzé.",
+    "stackLabel": "A technológiai háttér",
+    "stackTitle": "Nem sablonokból dolgozom, hanem csúcstechnológiákból.",
+    "stackIntro": "Az alábbi technológiák biztosítják, hogy a weboldalad ne csak modernnek látszódjon, hanem technikai és üzleti szempontból is a maximumot nyújtsa.",
+    "cards": [
+      {
+        "logo": "react",
+        "name": "React",
+        "badge": "Élmény",
+        "title": "A villámgyors és gördülékeny felhasználói élmény",
+        "summary": "A React a világ legnépszerűbb modern kezelőfelület-technológiája, amely app-szerűen, azonnal és észrevétlenül frissíti a tartalmat a látogató előtt.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "A weboldal használata gyorsabbnak és prémiumabbnak érződik, csökken a várakozás miatti lemorzsolódás, és sokkal nagyobb eséllyel marad végig a látogató az oldalon vagy lép kapcsolatba veled."
+      },
+      {
+        "logo": "typescript",
+        "name": "TypeScript",
+        "badge": "Stabilitás",
+        "title": "A sziklaszilárd és intelligens kód",
+        "summary": "A TypeScript a modern webfejlesztés elit kategóriája: már fejlesztés közben kiszűri a rejtett hibákat, és tiszta, jól karbantartható kódbázist ad.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "Az oldalad stabilabb lesz, kevesebb váratlan hibával, gyorsabb továbbfejlesztéssel és olyan technikai alappal, ami együtt tud nőni a vállalkozásoddal."
+      },
+      {
+        "logo": "python",
+        "name": "Python",
+        "badge": "Jövőállóság",
+        "title": "A jövőálló és intelligens motor",
+        "summary": "A Python a világ egyik legsokoldalúbb programozási nyelve, amelyre a legnagyobb technológiai rendszerek és modern MI-megoldások is épülnek.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "Egy tiszta logikájú, bivalyerős háttérrendszert kap, amely készen áll összetettebb üzleti folyamatokra, automatizációkra és későbbi bővítésekre is."
+      },
+      {
+        "logo": "django",
+        "name": "Django Framework",
+        "badge": "Biztonság",
+        "title": "A feltörhetetlen digitális erőd",
+        "summary": "A Django prémium fejlesztői keretrendszer, amelyet kifejezetten gyors, biztonságos és jól skálázható szerveroldali működésre terveztek.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "Az adataid és az ügyfeleid adatai erős védelem mögé kerülnek, miközben a háttérfolyamatok gyorsan, megbízhatóan és észrevétlenül futnak."
+      },
+      {
+        "logo": "postgresql",
+        "name": "PostgreSQL",
+        "badge": "Pontosság",
+        "title": "Az intelligens és precíz adatbázis",
+        "summary": "A PostgreSQL a világ egyik legfejlettebb nyílt forráskódú adatbázis-kezelője, amely nagy terhelés alatt is gyors és pontos marad.",
+        "valueLabel": "Mit jelent ez az Ön számára?",
+        "valueText": "Akár termékeket, foglalásokat, üzeneteket vagy felhasználói adatokat kezelsz, az oldalad nagy forgalom mellett is megbízhatóan és gyorsan szolgálja ki a látogatókat."
+      }
+    ],
+    "llmLabel": "Miért fontos ez az MI-alapú keresőknek?",
+    "llmTitle": "A tiszta technikai struktúrát az algoritmusok is felismerik.",
+    "llmText": "Amikor egy potenciális ügyfél a jövőben mesterséges intelligenciától kér ajánlást, az algoritmusok nemcsak a szöveget, hanem a weboldal technikai minőségét is értékelik. A modern, tiszta és professzionális struktúra segít abban, hogy a rendszer élvonalbeli, megbízható szakemberként azonosítson.",
+    "cta": {
+      "eyebrow": "Modern technológiai alapok",
+      "title": "Építsünk olyan weboldalt, ami kívül-belül prémium.",
+      "text": "Ha fontos neked, hogy a dizájn, a teljesítmény és a hosszú távú megbízhatóság egyszerre legyen jelen, akkor tervezzük meg a technikai alapokat is ugyanazzal az igényességgel.",
+      "button": "Beszéljük át a projektet",
+      "ariaLabel": "Beszéljük át a projektet"
+    }
   }
 }

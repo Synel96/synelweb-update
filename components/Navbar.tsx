@@ -4,12 +4,7 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
 import { useMounted } from "@/src/hooks/use-mounted";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { BRAND_NAME, NAV_LINKS } from "./site";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
@@ -72,9 +67,13 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a
           href={langHref("/")}
-          className="brand-tech text-base font-semibold text-(--brand-on-surface)"
+          className="brand-tech group relative inline-flex items-center text-base font-semibold"
+          aria-label={BRAND_NAME}
+          title={BRAND_NAME}
         >
-          {BRAND_NAME}
+          <span className="bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text text-lg leading-none font-semibold tracking-[0.14em] text-transparent drop-shadow-[0_0_10px_color-mix(in_oklab,var(--color-secondary-hot),transparent_60%)] transition-all duration-300 group-hover:brightness-110">
+            {BRAND_NAME}
+          </span>
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">

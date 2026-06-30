@@ -150,6 +150,7 @@ export default function Page() {
             <ConversionCtaButton
               href={langHref("/contact")}
               ariaLabel={t("homeFlow.finalCta.ariaLabel")}
+              className="h-auto min-h-14 w-full max-w-full px-5 py-3 text-center leading-tight whitespace-normal sm:min-h-15 sm:w-auto sm:px-8 sm:py-0 sm:whitespace-nowrap"
             >
               {t("homeFlow.finalCta.cta")}
             </ConversionCtaButton>

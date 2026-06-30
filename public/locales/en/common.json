@@ -16,9 +16,53 @@
   "a11y": {
     "skipToContent": "Skip to content"
   },
+  "errorPage": {
+    "eyebrow": "Error Page",
+    "statusLabel": "Status:",
+    "pathLabel": "Path:",
+    "title404": "This page could not be found.",
+    "titleDefault": "Something went wrong while loading this page.",
+    "text404": "The page may have moved or no longer exists. Go back to the homepage or send a message and I will help you find what you need.",
+    "textDefault": "An unexpected error happened while processing this request. Please try again in a moment, or contact me and I will check it quickly.",
+    "primaryButton": "Back to homepage",
+    "secondaryButton": "Contact"
+  },
   "hero": {
     "slogan": "<engineered>Engineered</engineered> to scale, <designed>Designed</designed> to stand out.",
     "supportingLine": "Future-ready architecture and a no-compromise digital experience that pushes your business toward growth."
+  },
+  "homeFlow": {
+    "technology": {
+      "label": "Technologies",
+      "title": "Professional Foundation",
+      "text": "I work with cutting-edge technologies so your business gets the fastest and most secure digital foundation.",
+      "cta": "Explore technologies ->"
+    },
+    "projects": {
+      "label": "Projects",
+      "title": "Proof That Speaks",
+      "text": "They already chose me - do not miss out on the latest solutions.",
+      "cta": "References and performance ->"
+    },
+    "services": {
+      "label": "Services",
+      "title": "The Right Solution",
+      "text": "Tailored solutions: find the service that best fits your business growth goals.",
+      "cta": "Browse services ->"
+    },
+    "about": {
+      "label": "About",
+      "title": "Trust Layer",
+      "text": "Get to know the developer behind the projects.",
+      "cta": "Background and story ->"
+    },
+    "finalCta": {
+      "label": "Strategic CTA",
+      "title": "Not sure what you need yet? No problem, let's define the perfect strategy together.",
+      "text": "No distractions, no extra steps - just a direct path to the right digital solution.",
+      "cta": "Request consultation / Contact me",
+      "ariaLabel": "Request consultation"
+    }
   },
   "about": {
     "label": "About",

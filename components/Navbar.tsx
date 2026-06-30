@@ -73,7 +73,7 @@ export function Navbar() {
         >
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -inset-x-2 -inset-y-1 hidden rounded-md bg-black/22 opacity-85 blur-[1.4px] transition-opacity duration-300 group-hover:opacity-100 lg:block"
+            className="pointer-events-none absolute -inset-x-2 -inset-y-1 hidden rounded-md bg-black/22 opacity-85 blur-[1.4px] transition-opacity duration-300 group-hover:opacity-100 lg:block lg:bg-black/30 lg:opacity-95"
           />
           <span className="relative z-10 bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text text-lg leading-none font-semibold tracking-[0.14em] text-transparent drop-shadow-[0_0_10px_color-mix(in_oklab,var(--color-secondary-hot),transparent_60%)] transition-all duration-300 group-hover:brightness-110">
             {BRAND_NAME}

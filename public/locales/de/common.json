@@ -16,9 +16,53 @@
   "a11y": {
     "skipToContent": "Zum Inhalt springen"
   },
+  "errorPage": {
+    "eyebrow": "Fehlerseite",
+    "statusLabel": "Status:",
+    "pathLabel": "Pfad:",
+    "title404": "Diese Seite wurde nicht gefunden.",
+    "titleDefault": "Beim Laden dieser Seite ist ein Fehler aufgetreten.",
+    "text404": "Die Seite wurde vielleicht verschoben oder existiert nicht mehr. Geh zur Startseite zurück oder schreib mir, dann helfe ich dir schnell weiter.",
+    "textDefault": "Bei der Verarbeitung deiner Anfrage ist ein unerwarteter Fehler aufgetreten. Versuch es gleich noch einmal oder schreib mir kurz, dann sehe ich es mir direkt an.",
+    "primaryButton": "Zur Startseite",
+    "secondaryButton": "Kontakt"
+  },
   "hero": {
     "slogan": "<engineered>Entwickelt</engineered> für Wachstum, <designed>gestaltet</designed> für Wirkung.",
     "supportingLine": "Zukunftssichere Architektur und ein kompromissloses digitales Erlebnis, das dein Unternehmen voranbringt."
+  },
+  "homeFlow": {
+    "technology": {
+      "label": "Technologien",
+      "title": "Fachliche Basis",
+      "text": "Ich arbeite mit modernsten Technologien, damit dein Unternehmen die schnellste und sicherste digitale Grundlage bekommt.",
+      "cta": "Technologien ansehen →"
+    },
+    "projects": {
+      "label": "Projekte",
+      "title": "Unumstößlicher Nachweis",
+      "text": "Sie haben sich schon für mich entschieden - verpasse die neuesten Lösungen nicht.",
+      "cta": "Referenzen und Performance →"
+    },
+    "services": {
+      "label": "Leistungen",
+      "title": "Die Lösung",
+      "text": "Individuelle Lösungen: finde die Leistung, die am besten zum Wachstum deines Unternehmens passt.",
+      "cta": "Leistungen durchsuchen →"
+    },
+    "about": {
+      "label": "Über mich",
+      "title": "Vertrauen aufbauen",
+      "text": "Lerne den Entwickler hinter den Projekten kennen.",
+      "cta": "Hintergrund und Vorstellung →"
+    },
+    "finalCta": {
+      "label": "Strategischer Abschluss",
+      "title": "Du weißt noch nicht genau, was du brauchst? Kein Problem, wir entwickeln gemeinsam die perfekte Strategie.",
+      "text": "Keine Ablenkung, kein Umweg - nur der direkte Weg zur passenden digitalen Lösung.",
+      "cta": "Beratung anfragen / Schreib mir",
+      "ariaLabel": "Beratung anfragen"
+    }
   },
   "about": {
     "label": "Über mich",

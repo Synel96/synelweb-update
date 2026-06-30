@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Trans, useTranslation } from "react-i18next";
+import { usePageContext } from "vike-react/usePageContext";
+import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
+import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
@@ -8,6 +11,14 @@ const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
 export default function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useTranslation();
+  const pageContext = usePageContext() as { lang?: SupportedLang };
+  const lang = pageContext.lang ?? DEFAULT_LANG;
+
+  const langHref = (href: string) => {
+    if (href === "/") return `/${lang}/`;
+    if (href.startsWith("/#")) return `/${lang}/${href.slice(1)}`;
+    return `/${lang}${href}`;
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -50,6 +61,98 @@ export default function Page() {
             <p className="mt-6 max-w-xl text-sm leading-7 text-white/72 sm:text-base">
               {t("hero.supportingLine")}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.technology.title")}
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.technology.text")}
+          </p>
+          <a
+            href={langHref("/technology")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.technology.cta")}
+          </a>
+        </article>
+      </section>
+
+      <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(9,14,24,0.92),rgba(14,20,38,0.98))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.projects.title")}
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.projects.text")}
+          </p>
+
+          <a
+            href={langHref("/#projects")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.projects.cta")}
+          </a>
+        </article>
+      </section>
+
+      <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.88),rgba(15,21,40,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.services.title")}
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.services.text")}
+          </p>
+          <a
+            href={langHref("/#services")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.services.cta")}
+          </a>
+        </article>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(12,18,33,0.95),rgba(10,15,27,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.about.title")}
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.about.text")}
+          </p>
+          <a
+            href={langHref("/about")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.about.cta")}
+          </a>
+        </article>
+      </section>
+
+      <section
+        id="reviews"
+        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))]"
+        data-reveal
+      >
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
+          <h2 className="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.finalCta.title")}
+          </h2>
+          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+            {t("homeFlow.finalCta.text")}
+          </p>
+          <div>
+            <ConversionCtaButton
+              href={langHref("/contact")}
+              ariaLabel={t("homeFlow.finalCta.ariaLabel")}
+            >
+              {t("homeFlow.finalCta.cta")}
+            </ConversionCtaButton>
           </div>
         </div>
       </section>

@@ -16,9 +16,53 @@
   "a11y": {
     "skipToContent": "Ugrás a tartalomhoz"
   },
+  "errorPage": {
+    "eyebrow": "Hibaoldal",
+    "statusLabel": "Státuszkód:",
+    "pathLabel": "Útvonal:",
+    "title404": "Ezt az oldalt nem találom.",
+    "titleDefault": "Valami hiba történt az oldal betöltése közben.",
+    "text404": "Lehet, hogy az oldal címe megváltozott vagy már nem létezik. Ugorj vissza a főoldalra, vagy írj, és segítek megtalálni, amit keresel.",
+    "textDefault": "A kérés feldolgozása közben váratlan hiba történt. Próbáld meg újra pár pillanat múlva, vagy jelezd üzenetben, és gyorsan utánanézek.",
+    "primaryButton": "Vissza a főoldalra",
+    "secondaryButton": "Kapcsolat"
+  },
   "hero": {
     "slogan": "Növekedésre <engineered>tervezve,</engineered> kitűnésre <designed>hangolva.</designed>",
     "supportingLine": "Jövőálló architektúra és kompromisszummentes digitális élmény, amely növekedésre ítéli a vállalkozásod."
+  },
+  "homeFlow": {
+    "technology": {
+      "label": "Technológiák",
+      "title": "Modern technológiai alapok, amikre nyugodtan építhetsz.",
+      "text": "A legmodernebb eszközökkel dolgozom, hogy a weboldalad gyors, biztonságos és hosszú távon is stabil maradjon.",
+      "cta": "Megnézem a technológiákat →"
+    },
+    "projects": {
+      "label": "Projektek",
+      "title": "Nézd meg, hogyan működik ez a gyakorlatban.",
+      "text": "Valódi projekteken keresztül mutatom meg, milyen eredményt kapsz, ha együtt dolgozunk.",
+      "cta": "Referenciák és eredmények →"
+    },
+    "services": {
+      "label": "Szolgáltatások",
+      "title": "Találjuk meg együtt, mire van most a legnagyobb szükséged.",
+      "text": "Személyre szabott szolgáltatásokat kapsz, hogy pontosan azt fejlesszük, ami a vállalkozásod növekedését segíti.",
+      "cta": "Szolgáltatások böngészése →"
+    },
+    "about": {
+      "label": "Rólam",
+      "title": "Ismerj meg közelebbről, hogy lásd, kivel dolgozol együtt.",
+      "text": "Megmutatom a szemléletemet és a háttérből hozott tapasztalatot, amire a közös munka épül.",
+      "cta": "Bemutatkozás és háttér →"
+    },
+    "finalCta": {
+      "label": "Stratégiai zárás",
+      "title": "Nem kell elsőre mindent tudnod, egy rövid beszélgetéssel elindulunk.",
+      "text": "Mondd el, hol tartasz most, én pedig segítek összerakni a vállalkozásodhoz legjobban illő következő lépést.",
+      "cta": "Konzultációt kérek / Írj nekem",
+      "ariaLabel": "Konzultációt kérek"
+    }
   },
   "about": {
     "label": "Rólam",

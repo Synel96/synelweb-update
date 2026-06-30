@@ -34,32 +34,32 @@
   "homeFlow": {
     "technology": {
       "label": "Technologies",
-      "title": "Professional Foundation",
-      "text": "I work with cutting-edge technologies so your business gets the fastest and most secure digital foundation.",
-      "cta": "Explore technologies ->"
+      "title": "Modern technical foundations you can build on with confidence.",
+      "text": "I use modern, battle-tested tools so your website stays fast, secure, and stable as your business grows.",
+      "cta": "Explore technologies →"
     },
     "projects": {
       "label": "Projects",
-      "title": "Proof That Speaks",
-      "text": "They already chose me - do not miss out on the latest solutions.",
-      "cta": "References and performance ->"
+      "title": "See what this looks like in real projects.",
+      "text": "Real work, real outcomes. This is where you can see the level of quality you can expect from our collaboration.",
+      "cta": "References and results →"
     },
     "services": {
       "label": "Services",
-      "title": "The Right Solution",
-      "text": "Tailored solutions: find the service that best fits your business growth goals.",
-      "cta": "Browse services ->"
+      "title": "Let us find what your business needs most right now.",
+      "text": "You get tailored services focused on what actually moves your business forward, not unnecessary extras.",
+      "cta": "Browse services →"
     },
     "about": {
       "label": "About",
-      "title": "Trust Layer",
-      "text": "Get to know the developer behind the projects.",
-      "cta": "Background and story ->"
+      "title": "Get to know who you will be working with.",
+      "text": "You can see the mindset and experience behind the work, so the collaboration feels clear and trustworthy from day one.",
+      "cta": "Background and story →"
     },
     "finalCta": {
       "label": "Strategic CTA",
-      "title": "Not sure what you need yet? No problem, let's define the perfect strategy together.",
-      "text": "No distractions, no extra steps - just a direct path to the right digital solution.",
+      "title": "You do not need to have everything figured out before we start.",
+      "text": "Tell me where you are now, and I will help you define the next step that fits your business best.",
       "cta": "Request consultation / Contact me",
       "ariaLabel": "Request consultation"
     }

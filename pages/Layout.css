@@ -390,6 +390,11 @@ body {
 
 html {
   font-family: "Geist Variable", sans-serif;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
 }
 
 .brand-tech {

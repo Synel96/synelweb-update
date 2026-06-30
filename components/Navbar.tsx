@@ -119,7 +119,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-80 border-r-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
+                className="w-[min(20rem,100vw)] max-w-[100vw] border-l-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
               >
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
                   {NAV_LINKS.map((item) => (

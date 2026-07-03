@@ -6,9 +6,8 @@ export const SITE_URL = env.VITE_SITE_URL;
 
 export const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
-  { href: "/#services", labelKey: "nav.services" },
-  { href: "/#projects", labelKey: "nav.projects" },
-  { href: "/#reviews", labelKey: "nav.reviews" },
+  { href: "/services", labelKey: "nav.services" },
+  { href: "/projects", labelKey: "nav.projects" },
   { href: "/technology", labelKey: "nav.technology" },
   {
     href: "/contact",

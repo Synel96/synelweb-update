@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
-import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 
@@ -92,8 +92,8 @@ export default function Page() {
           </p>
 
           <a
-            href={langHref("/#projects")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+            href={langHref("/projects")}
+            className="mt-7 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
           >
             {t("homeFlow.projects.cta")}
           </a>
@@ -109,7 +109,7 @@ export default function Page() {
             {t("homeFlow.services.text")}
           </p>
           <a
-            href={langHref("/#services")}
+            href={langHref("/services")}
             className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
           >
             {t("homeFlow.services.cta")}
@@ -139,22 +139,22 @@ export default function Page() {
         className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))]"
         data-reveal
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
-          <h2 className="max-w-4xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.finalCta.title")}
-          </h2>
-          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
-            {t("homeFlow.finalCta.text")}
-          </p>
-          <div>
-            <ConversionCtaButton
-              href={langHref("/contact")}
-              ariaLabel={t("homeFlow.finalCta.ariaLabel")}
-              className="h-auto min-h-14 w-full max-w-full px-5 py-3 text-center leading-tight whitespace-normal sm:min-h-15 sm:w-auto sm:px-8 sm:py-0 sm:whitespace-nowrap"
-            >
-              {t("homeFlow.finalCta.cta")}
-            </ConversionCtaButton>
+        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+          <div className="mb-8 max-w-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {t("reviewsPage.sectionTitle")}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
+              {t("reviewsPage.sectionText")}
+            </p>
           </div>
+
+          <ReviewsCarousel
+            title={t("reviewsPage.carouselTitle")}
+            emptyRatingText={t("reviewsPage.emptyRatingText")}
+            actionLabel={t("reviewsPage.actionLabel")}
+            actionAriaLabel={t("reviewsPage.actionAriaLabel")}
+          />
         </div>
       </section>
     </>

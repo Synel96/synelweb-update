@@ -42,6 +42,19 @@
       "label": "Projects",
       "title": "See what this looks like in real projects.",
       "text": "Real work, real outcomes. This is where you can see the level of quality you can expect from our collaboration.",
+      "stackLabel": "Stack",
+      "lighthouseTitle": "Lighthouse Scores",
+      "scoreLabels": {
+        "performance": "Performance",
+        "accessibility": "Accessibility",
+        "bestPractices": "Best Practices",
+        "seo": "SEO"
+      },
+      "scoreGroups": {
+        "mobile": "Mobile",
+        "desktop": "Desktop"
+      },
+      "liveCta": "Visit the live site",
       "cta": "References and results →"
     },
     "services": {
@@ -62,6 +75,51 @@
       "text": "Tell me where you are now, and I will help you define the next step that fits your business best.",
       "cta": "Request consultation / Contact me",
       "ariaLabel": "Request consultation"
+    }
+  },
+  "servicesPage": {
+    "cardCta": "Request a quote",
+    "cardCtaAria": "Start quote request"
+  },
+  "underDevelopment": {
+    "title": "This page is under development.",
+    "text": "I am currently working on it and it will be available soon with full content.",
+    "ctaTitle": "Need help in the meantime?",
+    "ctaText": "Send me a message and I will help you with the best next step.",
+    "ctaButton": "Contact",
+    "ctaAriaLabel": "Start contact"
+  },
+  "reviewsPage": {
+    "carouselTitle": "Reviews",
+    "sectionTitle": "What do clients say about working together?",
+    "sectionText": "Real feedback from real projects. See what kind of experience and results clients got from our collaboration.",
+    "heading": "What clients say after working together.",
+    "intro": "Real feedback from real collaborations. Here you can see how clients experienced the process and the final results.",
+    "emptyRatingText": "Your feedback matters to me, please share your experience.",
+    "loading": "Loading reviews...",
+    "fetchError": "Could not load reviews right now. Please try again later.",
+    "ctaTitle": "Would you share your experience?",
+    "ctaText": "Even a short review helps others decide and gives me valuable feedback for future improvements.",
+    "actionLabel": "Share my review",
+    "actionAriaLabel": "Share your review",
+    "modal": {
+      "title": "Write your review",
+      "description": "Thank you for helping with a short feedback.",
+      "closeAria": "Close modal",
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "rating": "Rating",
+        "review": "Review"
+      },
+      "placeholders": {
+        "name": "Enter your name",
+        "email": "Enter your email",
+        "review": "Share your experience in a few lines"
+      },
+      "rateStarAria": "Rate {{value}} star",
+      "cancel": "Cancel",
+      "submit": "Submit review"
     }
   },
   "about": {

@@ -42,6 +42,19 @@
       "label": "Projekte",
       "title": "Sieh dir an, wie das in echten Projekten aussieht.",
       "text": "Reale Projekte, klare Ergebnisse. Hier bekommst du ein ehrliches Bild davon, was du in der Zusammenarbeit erwarten kannst.",
+      "stackLabel": "Stack",
+      "lighthouseTitle": "Lighthouse-Werte",
+      "scoreLabels": {
+        "performance": "Leistung",
+        "accessibility": "Barrierefreiheit",
+        "bestPractices": "Best Practices",
+        "seo": "SEO"
+      },
+      "scoreGroups": {
+        "mobile": "Mobil",
+        "desktop": "Desktop"
+      },
+      "liveCta": "Zur Live-Seite",
       "cta": "Referenzen und Ergebnisse →"
     },
     "services": {
@@ -62,6 +75,51 @@
       "text": "Sag mir, wo du gerade stehst, und ich helfe dir beim nächsten Schritt, der wirklich zu deinem Unternehmen passt.",
       "cta": "Beratung anfragen / Schreib mir",
       "ariaLabel": "Beratung anfragen"
+    }
+  },
+  "servicesPage": {
+    "cardCta": "Angebot anfordern",
+    "cardCtaAria": "Angebotsanfrage starten"
+  },
+  "underDevelopment": {
+    "title": "Diese Seite befindet sich in Entwicklung.",
+    "text": "Ich arbeite gerade daran und sie wird bald mit vollständigen Inhalten verfügbar sein.",
+    "ctaTitle": "Hast du bis dahin eine Frage?",
+    "ctaText": "Schreib mir gern, ich helfe dir beim besten nächsten Schritt.",
+    "ctaButton": "Kontakt",
+    "ctaAriaLabel": "Kontakt starten"
+  },
+  "reviewsPage": {
+    "carouselTitle": "Kundenstimmen",
+    "sectionTitle": "Was sagen Kundinnen und Kunden über die Zusammenarbeit?",
+    "sectionText": "Echtes Feedback aus echten Projekten. Sieh dir an, welche Erfahrungen und Ergebnisse Kundinnen und Kunden mitgenommen haben.",
+    "heading": "Was Kundinnen und Kunden nach der Zusammenarbeit sagen.",
+    "intro": "Echtes Feedback aus echten Projekten. Hier siehst du, wie die Zusammenarbeit und das Ergebnis wahrgenommen wurden.",
+    "emptyRatingText": "Dein Feedback ist mir wichtig, bitte teile deine Erfahrung.",
+    "loading": "Bewertungen werden geladen...",
+    "fetchError": "Bewertungen konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "ctaTitle": "Möchtest du deine Erfahrung teilen?",
+    "ctaText": "Schon eine kurze Bewertung hilft anderen bei der Entscheidung und gibt mir wertvolles Feedback für weitere Verbesserungen.",
+    "actionLabel": "Meine Bewertung teilen",
+    "actionAriaLabel": "Bewertung teilen",
+    "modal": {
+      "title": "Schreibe deine Bewertung",
+      "description": "Danke, dass du mit einem kurzen Feedback hilfst.",
+      "closeAria": "Modal schließen",
+      "fields": {
+        "name": "Name",
+        "email": "E-Mail",
+        "rating": "Bewertung",
+        "review": "Rezension"
+      },
+      "placeholders": {
+        "name": "Gib deinen Namen ein",
+        "email": "Gib deine E-Mail ein",
+        "review": "Beschreibe kurz deine Erfahrung"
+      },
+      "rateStarAria": "{{value}} Sterne bewerten",
+      "cancel": "Abbrechen",
+      "submit": "Bewertung senden"
     }
   },
   "about": {

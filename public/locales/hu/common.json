@@ -42,6 +42,20 @@
       "label": "Projektek",
       "title": "Nézd meg, hogyan működik ez a gyakorlatban.",
       "text": "Valódi projekteken keresztül mutatom meg, milyen eredményt kapsz, ha együtt dolgozunk.",
+      "cardDescription": "A SynelWeb saját webes projektje, ahol a cél a prémium vizuális megjelenés, a gyors betöltés és az erős technikai alapok összehangolása volt. Ez a demó azt mutatja meg, hogyan áll össze egy valós, üzletileg használható rendszer modern frontenddel és skálázható backend szemlélettel.",
+      "stackLabel": "Stack",
+      "lighthouseTitle": "Lighthouse pontszámok",
+      "scoreLabels": {
+        "performance": "Teljesítmény",
+        "accessibility": "Akadálymentesség",
+        "bestPractices": "Bevált gyakorlatok",
+        "seo": "SEO"
+      },
+      "scoreGroups": {
+        "mobile": "Mobil",
+        "desktop": "Asztali"
+      },
+      "liveCta": "Ugrás az élő oldalra",
       "cta": "Referenciák és eredmények →"
     },
     "services": {
@@ -62,6 +76,51 @@
       "text": "Mondd el, hol tartasz most, én pedig segítek összerakni a vállalkozásodhoz legjobban illő következő lépést.",
       "cta": "Konzultációt kérek / Írj nekem",
       "ariaLabel": "Konzultációt kérek"
+    }
+  },
+  "servicesPage": {
+    "cardCta": "Ajánlatot kérek",
+    "cardCtaAria": "Ajánlatkérés indítása"
+  },
+  "underDevelopment": {
+    "title": "Ez az oldal fejlesztés alatt áll.",
+    "text": "Dolgozom rajta, hogy hamarosan részletes, naprakész tartalommal legyen elérhető.",
+    "ctaTitle": "Kérdésed van addig is?",
+    "ctaText": "Írj bátran, és segítek megtalálni a legjobb következő lépést.",
+    "ctaButton": "Kapcsolatfelvétel",
+    "ctaAriaLabel": "Kapcsolatfelvétel indítása"
+  },
+  "reviewsPage": {
+    "carouselTitle": "Vélemények",
+    "sectionTitle": "Mit mondanak az ügyfelek a közös munkáról?",
+    "sectionText": "Valós visszajelzések valódi projektekről. Nézd meg, milyen élményt és eredményt kaptak azok, akik már velem dolgoztak.",
+    "heading": "Mit mondanak azok, akikkel már együtt dolgoztam.",
+    "intro": "Valós visszajelzések, valós tapasztalatok. Itt láthatod, hogyan élték meg az ügyfelek a közös munkát és az elkészült eredményeket.",
+    "emptyRatingText": "Fontos számomra a visszajelzés, kérlek oszd meg a tapasztalataid.",
+    "loading": "Vélemények betöltése...",
+    "fetchError": "A vélemények betöltése most nem sikerült. Próbáld meg később újra.",
+    "ctaTitle": "Megosztanád a tapasztalatodat?",
+    "ctaText": "Egy rövid vélemény is sokat segít másoknak a döntésben, és nekem is fontos visszajelzés a következő fejlesztésekhez.",
+    "actionLabel": "Megosztom a véleményem",
+    "actionAriaLabel": "Vélemény megosztása",
+    "modal": {
+      "title": "Írd meg a véleményed",
+      "description": "Köszönöm, hogy segítesz egy rövid visszajelzéssel.",
+      "closeAria": "Modal bezárása",
+      "fields": {
+        "name": "Név",
+        "email": "E-mail",
+        "rating": "Értékelés",
+        "review": "Vélemény"
+      },
+      "placeholders": {
+        "name": "Add meg a neved",
+        "email": "Add meg az e-mail címed",
+        "review": "Írd le röviden a tapasztalatod"
+      },
+      "rateStarAria": "{{value}} csillag értékelése",
+      "cancel": "Mégse",
+      "submit": "Vélemény elküldése"
     }
   },
   "about": {

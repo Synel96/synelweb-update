@@ -5,12 +5,14 @@ const envSchema = z.object({
   VITE_SITE_URL: z.string().url().default("https://example.com"),
   VITE_BRAND_NAME: z.string().min(1).default("SynelWeb"),
   VITE_CLOUDINARY_CLOUD_NAME: z.string().min(1).default("dmwulp3dl"),
+  VITE_API_BASE_URL: z.string().url().default("http://127.0.0.1:8000"),
 });
 
 const parsed = envSchema.safeParse({
   VITE_SITE_URL: import.meta.env.VITE_SITE_URL,
   VITE_BRAND_NAME: import.meta.env.VITE_BRAND_NAME,
   VITE_CLOUDINARY_CLOUD_NAME: import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+  VITE_API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
 });
 
 if (!parsed.success) {

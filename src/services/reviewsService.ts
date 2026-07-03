@@ -18,6 +18,8 @@ type ReviewApiItem = {
   rating: number;
   review?: string;
   comment?: string;
+  is_approved?: boolean;
+  isApproved?: boolean;
 };
 
 const API_BASE_URL = "https://synelweb.fly.dev";
@@ -32,12 +34,14 @@ export async function getReviews(): Promise<Review[]> {
 
   const data = (await response.json()) as ReviewApiItem[];
 
-  return data.map((item) => ({
-    id: item.id,
-    name: item.name,
-    rating: item.rating,
-    review: item.review ?? item.comment ?? "",
-  }));
+  return data
+    .filter((item) => item.is_approved === true || item.isApproved === true)
+    .map((item) => ({
+      id: item.id,
+      name: item.name,
+      rating: item.rating,
+      review: item.review ?? item.comment ?? "",
+    }));
 }
 
 export async function createReview(input: CreateReviewInput): Promise<void> {

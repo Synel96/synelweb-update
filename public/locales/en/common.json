@@ -119,7 +119,14 @@
       },
       "rateStarAria": "Rate {{value}} star",
       "cancel": "Cancel",
-      "submit": "Submit review"
+      "submit": "Submit review",
+      "submitting": "Submitting...",
+      "submitError": "Could not submit your review right now. Please try again."
+    },
+    "toast": {
+      "success": "We received your review and it is waiting for approval!",
+      "error": "Your review could not be submitted. Please try again!",
+      "closeAria": "Close notification"
     }
   },
   "about": {

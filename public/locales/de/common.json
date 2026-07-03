@@ -119,7 +119,14 @@
       },
       "rateStarAria": "{{value}} Sterne bewerten",
       "cancel": "Abbrechen",
-      "submit": "Bewertung senden"
+      "submit": "Bewertung senden",
+      "submitting": "Wird gesendet...",
+      "submitError": "Deine Bewertung konnte gerade nicht gesendet werden. Bitte versuche es erneut."
+    },
+    "toast": {
+      "success": "Wir haben deine Bewertung erhalten, sie wartet auf Freigabe!",
+      "error": "Deine Bewertung konnte nicht gesendet werden. Bitte versuche es erneut!",
+      "closeAria": "Benachrichtigung schließen"
     }
   },
   "about": {

@@ -120,7 +120,14 @@
       },
       "rateStarAria": "{{value}} csillag értékelése",
       "cancel": "Mégse",
-      "submit": "Vélemény elküldése"
+      "submit": "Vélemény elküldése",
+      "submitting": "Küldés...",
+      "submitError": "A vélemény elküldése most nem sikerült. Kérlek, próbáld újra."
+    },
+    "toast": {
+      "success": "Véleményét megkaptuk és jóváhagyásra vár!",
+      "error": "A vélemény beküldése nem sikerült. Kérjük, próbálja újra!",
+      "closeAria": "Értesítés bezárása"
     }
   },
   "about": {

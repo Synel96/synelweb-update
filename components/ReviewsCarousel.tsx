@@ -251,30 +251,17 @@ export function ReviewsCarousel({
     );
   }
 
-  if (fetchError) {
-    return (
-      <div className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 sm:p-8">
-        <p className="text-sm leading-7 text-white/78">{fetchError}</p>
-      </div>
-    );
-  }
-
-  if (reviews.length === 0) {
+  if (fetchError || reviews.length === 0) {
     return (
       <>
-        <div className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 sm:p-8">
-          <p className="text-sm leading-7 text-white/78">{emptyRatingText}</p>
-          <div className="mt-5">
-            <Button
-              type="button"
-              onClick={openModal}
-              aria-label={actionAriaLabel}
-              className="btn-cta group relative h-12 w-full overflow-hidden rounded-[1.15rem] border border-white/15 px-5 py-3 text-sm font-extrabold tracking-[0.08em] text-[#140814] uppercase shadow-[0_18px_44px_-18px_var(--accent-glow)] ring-1 ring-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_-18px_var(--accent-glow)]"
-            >
-              {actionLabel}
-            </Button>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{title}</p>
+
+          <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
+            <p className="text-sm leading-7 text-white/82 sm:text-base">{emptyRatingText}</p>
+            {fetchError ? <p className="mt-3 text-sm leading-7 text-white/60">{fetchError}</p> : null}
           </div>
-        </div>
+        </article>
         {renderModal()}
         <Snackbar
           open={Boolean(toast)}

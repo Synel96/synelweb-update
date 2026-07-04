@@ -261,6 +261,17 @@ export function ReviewsCarousel({
             <p className="text-sm leading-7 text-white/82 sm:text-base">{emptyRatingText}</p>
             {fetchError ? <p className="mt-3 text-sm leading-7 text-white/60">{fetchError}</p> : null}
           </div>
+
+          <div className="mt-6">
+            <Button
+              type="button"
+              onClick={openModal}
+              aria-label={actionAriaLabel}
+              className="btn-cta group relative h-12 w-full overflow-hidden rounded-[1.15rem] border border-white/15 px-5 py-3 text-sm font-extrabold tracking-[0.08em] text-[#140814] uppercase shadow-[0_18px_44px_-18px_var(--accent-glow)] ring-1 ring-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_-18px_var(--accent-glow)]"
+            >
+              {actionLabel}
+            </Button>
+          </div>
         </article>
         {renderModal()}
         <Snackbar

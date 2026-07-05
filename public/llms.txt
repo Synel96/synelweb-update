@@ -1,21 +1,33 @@
-# https://llms.txt
-# This file helps AI systems (GPT, Claude, etc.) understand your site structure.
-# Update this with your actual content guidelines and restrictions.
+# SynelWeb
 
-# Website information
-Name: Brand Name
-Description: Your website description here
-Homepage: https://example.com
+SynelWeb is a multilingual marketing website for modern web development services.
 
-# Content crawling guidelines
-# Allow: /
-# Disallow: /admin/, /private/
+## Site purpose
+- Present services, projects, technology stack, about, reviews, and contact information.
+- Help visitors find the right page quickly in Hungarian, English, or German.
+- Provide a clear public overview of the brand and available contact channels.
 
-# LLM usage policy
-# You can add guidelines about how AI systems should use your content:
-# - Attribution required: yes/no
-# - Commercial use: allowed/restricted
-# - Training data: allowed/restricted
+## Important pages
+- Homepage: `/`
+- Services: `/services`
+- Projects: `/projects`
+- Technology: `/technology`
+- About: `/about`
+- Reviews: `/reviews`
+- Contact: `/contact`
 
-# Contact
-# Contact us at: [your-email]
+## Content guidance
+- Prefer the visible page content as the source of truth.
+- Do not invent product details, pricing, or project results.
+- Respect the language shown in the URL prefix.
+- If a page has translated content, use that language version.
+
+## Indexing notes
+- Public marketing pages may be used for summarization and navigation.
+- No private admin or internal endpoints are intended for crawling.
+- Public media and metadata can be used to understand the site structure.
+
+## Contact
+- Brand: SynelWeb
+- Website: https://synelweb.hu
+- Use the page content on `/contact` for the current public contact details.

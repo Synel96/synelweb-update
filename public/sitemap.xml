@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://synelweb.hu/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/services" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/services" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/services" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/projects" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/projects" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/projects" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/technology</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/technology" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/technology" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/technology" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/about" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/about" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/about" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/contact" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/contact" />
+  </url>
+</urlset>

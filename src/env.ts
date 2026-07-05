@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const envSchema = z.object({
   // Public values exposed to the browser (Vite convention: VITE_*)
-  VITE_SITE_URL: z.string().url().default("https://example.com"),
+  VITE_SITE_URL: z.string().url().default("https://synelweb.hu"),
   VITE_BRAND_NAME: z.string().min(1).default("SynelWeb"),
   VITE_CLOUDINARY_CLOUD_NAME: z.string().min(1).default("dmwulp3dl"),
   VITE_API_BASE_URL: z.string().url().default("http://127.0.0.1:8000"),

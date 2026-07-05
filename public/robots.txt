@@ -8,4 +8,4 @@ Allow: /
 # Disallow: /admin/
 # Disallow: /private/
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://synelweb.hu/sitemap.xml

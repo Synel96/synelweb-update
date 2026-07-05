@@ -54,6 +54,38 @@ export async function getReviews(lang: AppLang): Promise<Review[]> {
     }));
 }
 
+async function getErrorMessage(response: Response) {
+  const contentType = response.headers.get("content-type") ?? "";
+
+  if (contentType.includes("application/json")) {
+    const payload = (await response.json().catch(() => null)) as
+      | Record<string, unknown>
+      | null;
+
+    if (payload) {
+      if (typeof payload.detail === "string" && payload.detail.trim()) {
+        return payload.detail;
+      }
+
+      for (const value of Object.values(payload)) {
+        if (typeof value === "string" && value.trim()) {
+          return value;
+        }
+
+        if (Array.isArray(value)) {
+          const firstMessage = value.find((item) => typeof item === "string" && item.trim());
+          if (typeof firstMessage === "string") {
+            return firstMessage;
+          }
+        }
+      }
+    }
+  }
+
+  const fallbackText = await response.text().catch(() => "");
+  return fallbackText.trim() || "Failed to create review.";
+}
+
 export async function createReview(input: CreateReviewInput, lang: AppLang): Promise<void> {
   const response = await fetch(API_REVIEWS_ENDPOINT, {
     method: "POST",
@@ -71,6 +103,6 @@ export async function createReview(input: CreateReviewInput, lang: AppLang): Pro
   });
 
   if (!response.ok) {
-    throw new Error("Failed to create review.");
+    throw new Error(await getErrorMessage(response));
   }
 }

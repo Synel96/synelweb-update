@@ -39,7 +39,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pb-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-6">
             <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
@@ -55,7 +55,7 @@ export default function Page() {
               {t("contact.introStrong")}
             </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
               <ConversionCtaButton href={`tel:${PHONE}`} ariaLabel={t("contact.callButton")}>
                 {t("contact.callButton")}
               </ConversionCtaButton>

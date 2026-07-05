@@ -46,7 +46,7 @@
       "lighthouseTitle": "Lighthouse-Werte",
       "scoreLabels": {
         "performance": "Leistung",
-        "accessibility": "Barrierearm",
+        "accessibility": "Barrierefreiheit",
         "bestPractices": "Best Practice",
         "seo": "SEO"
       },

@@ -85,10 +85,11 @@ export function ReviewsCarousel({
     setSubmitError(null);
 
     if (formRating < 1) {
-      setSubmitError(t("reviewsPage.modal.submitError"));
+      const message = t("reviewsPage.modal.submitError");
+      setSubmitError(message);
       setToast({
         type: "error",
-        message: t("reviewsPage.modal.submitError"),
+        message,
       });
       return;
     }
@@ -98,10 +99,10 @@ export function ReviewsCarousel({
 
       await createReview(
         {
-        name: formName,
-        email: formEmail,
-        rating: formRating,
-        review: formReview,
+          name: formName,
+          email: formEmail,
+          rating: formRating,
+          review: formReview,
         },
         activeLang
       );
@@ -118,10 +119,11 @@ export function ReviewsCarousel({
         message: t("reviewsPage.toast.success"),
       });
     } catch {
-      setSubmitError(t("reviewsPage.modal.submitError"));
+      const message = t("reviewsPage.modal.submitError");
+      setSubmitError(message);
       setToast({
         type: "error",
-        message: t("reviewsPage.toast.error"),
+        message,
       });
     } finally {
       setIsSubmitting(false);
@@ -214,7 +216,7 @@ export function ReviewsCarousel({
                 {t("reviewsPage.modal.fields.review")}
               </span>
               <textarea
-                required
+                spellCheck={true}
                 value={formReview}
                 onChange={(event) => setFormReview(event.target.value)}
                 placeholder={t("reviewsPage.modal.placeholders.review")}

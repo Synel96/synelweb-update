@@ -11,7 +11,7 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
 
   return (
     <div className="flex min-h-[7.4rem] flex-col items-center justify-between rounded-2xl border border-white/10 bg-white/4 p-2.5 text-center sm:min-h-[7.75rem] sm:p-3">
-      <p className="min-h-[2rem] max-w-[8rem] text-[0.58rem] leading-4 font-semibold tracking-[0.08em] text-white/65 uppercase sm:text-[0.62rem]">
+      <p className="min-h-[2rem] max-w-[8rem] text-center text-[0.58rem] leading-tight font-semibold tracking-[0.08em] text-white/65 uppercase [overflow-wrap:anywhere] sm:text-[0.62rem]">
         {label}
       </p>
       <div className="relative mt-2 flex items-center justify-center">

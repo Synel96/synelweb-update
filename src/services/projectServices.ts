@@ -1,4 +1,5 @@
 import type { AppLang } from "./serviceCardsService";
+import { cloudinaryImageUrl, withCloudinaryAutoParams } from "@/src/cloudinary";
 
 type LocalizedText = {
   hu?: string;
@@ -27,6 +28,13 @@ type ApiProject = {
   isActive?: boolean;
   order?: number;
   images?: string[];
+  previewImage?: string;
+  preview_image?: string;
+  previewImageUrl?: string;
+  preview_image_url?: string;
+  image?: string;
+  imageUrl?: string;
+  cloudinaryUrl?: string;
 };
 
 export type Project = {
@@ -51,6 +59,41 @@ function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
   return candidate.trim();
 }
 
+function normalizeImageUrl(value: string): string {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+
+  const isAbsoluteUrl = /^https?:\/\//i.test(trimmed);
+  if (isAbsoluteUrl) {
+    return withCloudinaryAutoParams(trimmed);
+  }
+
+  return cloudinaryImageUrl(trimmed);
+}
+
+function resolveProjectImages(item: ApiProject): string[] {
+  const candidates = [
+    ...(Array.isArray(item.images) ? item.images : []),
+    item.previewImage,
+    item.preview_image,
+    item.previewImageUrl,
+    item.preview_image_url,
+    item.image,
+    item.imageUrl,
+    item.cloudinaryUrl,
+  ];
+
+  const unique = new Set<string>();
+  for (const candidate of candidates) {
+    if (typeof candidate !== "string") continue;
+    const normalized = normalizeImageUrl(candidate);
+    if (!normalized) continue;
+    unique.add(normalized);
+  }
+
+  return Array.from(unique);
+}
+
 export async function getProjects(lang: AppLang): Promise<Project[]> {
   const response = await fetch(PROJECTS_ENDPOINT, {
     headers: {
@@ -67,7 +110,7 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
   return data
     .filter((item) => item.isActive !== false)
     .map((item) => {
-      const images = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
+      const images = resolveProjectImages(item);
       return {
         id: String(item.id),
         name: item.name,

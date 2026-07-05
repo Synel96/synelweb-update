@@ -25,7 +25,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="notranslate flex min-h-screen flex-col" translate="no">
       <a href="#page-content" className="skip-link">
         {t("a11y.skipToContent")}
       </a>

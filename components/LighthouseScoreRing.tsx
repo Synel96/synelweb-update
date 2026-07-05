@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 type LighthouseScoreRingProps = {
   label: string;
   score: number;
@@ -5,12 +7,54 @@ type LighthouseScoreRingProps = {
 
 export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) {
   const clamped = Math.max(0, Math.min(100, score));
+  const ringRef = useRef<HTMLDivElement | null>(null);
+  const hasAnimatedRef = useRef(false);
+  const [displayScore, setDisplayScore] = useState(0);
   const radius = 26;
   const circumference = 2 * Math.PI * radius;
-  const dashOffset = circumference * (1 - clamped / 100);
+
+  useEffect(() => {
+    const element = ringRef.current;
+    if (!element || hasAnimatedRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAnimatedRef.current) return;
+
+        hasAnimatedRef.current = true;
+        setDisplayScore(0);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setDisplayScore(clamped);
+          });
+        });
+
+        observer.disconnect();
+      },
+      {
+        threshold: 0.45,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [clamped]);
+
+  useEffect(() => {
+    if (hasAnimatedRef.current) {
+      setDisplayScore(clamped);
+    }
+  }, [clamped]);
+
+  const dashOffset = circumference * (1 - displayScore / 100);
 
   return (
-    <div className="flex min-h-[7.4rem] flex-col items-center justify-between rounded-2xl border border-white/10 bg-white/4 p-2.5 text-center sm:min-h-[7.75rem] sm:p-3">
+    <div
+      ref={ringRef}
+      className="flex min-h-[7.4rem] flex-col items-center justify-between rounded-2xl border border-white/10 bg-white/4 p-2.5 text-center sm:min-h-[7.75rem] sm:p-3"
+    >
       <p className="min-h-[2rem] max-w-[8rem] text-center text-[0.58rem] leading-tight font-semibold tracking-[0.08em] text-white/65 uppercase [overflow-wrap:anywhere] sm:text-[0.62rem]">
         {label}
       </p>
@@ -38,7 +82,7 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
           />
         </svg>
         <span className="pointer-events-none absolute text-sm font-extrabold text-[#22c55e]">
-          {clamped}
+          {Math.round(displayScore)}
         </span>
       </div>
     </div>

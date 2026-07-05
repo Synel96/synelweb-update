@@ -52,7 +52,7 @@ export default function Page() {
   );
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+    <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
       <header className="mb-10" data-reveal>
         <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
           {t("homeFlow.projects.label")}

@@ -55,7 +55,7 @@ export default function Page() {
               {t("contact.introStrong")}
             </p>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <ConversionCtaButton href={`tel:${PHONE}`} ariaLabel={t("contact.callButton")}>
                 {t("contact.callButton")}
               </ConversionCtaButton>
@@ -99,7 +99,7 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <a
             href={`tel:${PHONE}`}
             className="bento-card is-featured rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"

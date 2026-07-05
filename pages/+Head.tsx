@@ -27,6 +27,7 @@ export function Head() {
 
   return (
     <>
+      <meta name="google" content="notranslate" />
       <link rel="icon" type="image/svg+xml" href="/sw-favicon.svg" />
       <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />

@@ -10,6 +10,8 @@ type ServiceCardProps = {
   discountedPrice: string;
   hasDiscount: boolean;
   discountLabel: string;
+  expandLabel: string;
+  collapseLabel: string;
   slug: string;
   images: string[];
   contactBaseHref: string;
@@ -24,6 +26,8 @@ export function ServiceCard({
   discountedPrice,
   hasDiscount,
   discountLabel,
+  expandLabel,
+  collapseLabel,
   slug,
   images,
   contactBaseHref,
@@ -32,6 +36,8 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const hasLongDescription = description.trim().length > 220;
 
   const prev = () =>
     setActiveIndex((prevIndex) =>
@@ -45,12 +51,31 @@ export function ServiceCard({
   const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}`;
 
   return (
-    <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+    <article className="flex h-full flex-col rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {serviceName}
       </h3>
 
-      <p className="mt-4 text-sm leading-7 text-white/80 sm:text-base">{description}</p>
+      <div className="mt-4 min-h-[8.5rem]">
+        <p
+          className={`text-sm leading-7 text-white/80 sm:text-base ${
+            !isDescriptionExpanded && hasLongDescription ? "line-clamp-4" : ""
+          }`}
+        >
+          {description}
+        </p>
+
+        {hasLongDescription ? (
+          <button
+            type="button"
+            className="mt-3 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80"
+            onClick={() => setIsDescriptionExpanded((current) => !current)}
+            aria-expanded={isDescriptionExpanded}
+          >
+            {isDescriptionExpanded ? collapseLabel : expandLabel}
+          </button>
+        ) : null}
+      </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-3">
         {hasDiscount ? (
@@ -144,7 +169,7 @@ export function ServiceCard({
         </div>
       ) : null}
 
-      <div className="mt-6">
+      <div className="mt-auto pt-6">
         <ConversionCtaButton
           href={quoteHref}
           ariaLabel={ctaAriaLabel}

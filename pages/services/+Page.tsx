@@ -76,6 +76,8 @@ export default function Page() {
               discountedPrice={card.discountedPrice}
               hasDiscount={card.hasDiscount}
               discountLabel={t("servicesPage.discountBadge")}
+              expandLabel={t("servicesPage.expandDescription")}
+              collapseLabel={t("servicesPage.collapseDescription")}
               slug={card.slug}
               images={card.images}
               contactBaseHref={contactHref}

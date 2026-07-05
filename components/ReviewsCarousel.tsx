@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon, XIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -130,9 +131,9 @@ export function ReviewsCarousel({
   const renderModal = () => {
     if (!isModalOpen) return null;
 
-    return (
+    const modal = (
       <div className="fixed inset-0 z-70 flex items-start justify-center overflow-y-auto bg-black/70 p-4 sm:items-center">
-        <div className="my-4 flex max-h-[calc(100vh-2rem)] w-full max-w-xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.96),rgba(12,18,33,0.98))] p-6 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-8">
+        <div className="my-4 flex max-h-[calc(100vh-2rem)] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.96),rgba(12,18,33,0.98))] p-6 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
@@ -246,6 +247,12 @@ export function ReviewsCarousel({
         </div>
       </div>
     );
+
+    if (typeof document === "undefined") {
+      return modal;
+    }
+
+    return createPortal(modal, document.body);
   };
 
   if (isLoading) {

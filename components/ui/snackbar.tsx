@@ -44,7 +44,7 @@ export function Snackbar({
         : "border-sky-300/35 bg-[linear-gradient(155deg,rgba(13,22,40,0.94),rgba(9,16,30,0.98))]";
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-3 fixed right-4 bottom-4 left-4 z-60 mx-auto w-full max-w-md duration-300">
+    <div className="animate-in fade-in slide-in-from-bottom-3 fixed right-4 bottom-4 left-4 z-80 mx-auto w-full max-w-md duration-300">
       <div
         className={cn(
           "rounded-2xl border px-4 py-3 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.7)] backdrop-blur",

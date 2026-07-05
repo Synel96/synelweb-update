@@ -1,3 +1,5 @@
+const SCROLL_RESTORE_KEY = "synelweb:preserve-scroll-y";
+
 export async function onPageTransitionEnd() {
   // Keep the loader visible a bit longer in development to make animation testing easy.
   const MIN_LOADING_OVERLAY_MS = import.meta.env.DEV ? 700 : 0;
@@ -15,4 +17,10 @@ export async function onPageTransitionEnd() {
   requestAnimationFrame(() => {
     document.body.classList.add("content-ready");
   });
+
+  const preservedScrollY = Number(sessionStorage.getItem(SCROLL_RESTORE_KEY));
+  if (!Number.isNaN(preservedScrollY)) {
+    window.scrollTo({ top: Math.max(0, preservedScrollY), behavior: "auto" });
+    sessionStorage.removeItem(SCROLL_RESTORE_KEY);
+  }
 }

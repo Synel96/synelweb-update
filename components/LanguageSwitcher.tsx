@@ -24,6 +24,8 @@ const LABELS: Record<SupportedLang, string> = {
   de: "DE",
 };
 
+const SCROLL_RESTORE_KEY = "synelweb:preserve-scroll-y";
+
 export function LanguageSwitcher() {
   const pageContext = usePageContext() as { lang?: SupportedLang; urlPathname: string };
   const currentLang = pageContext.lang ?? DEFAULT_LANG;
@@ -32,6 +34,7 @@ export function LanguageSwitcher() {
 
   const switchTo = (lang: SupportedLang) => {
     const target = logicalPath === "/" ? `/${lang}/` : `/${lang}${logicalPath}`;
+    sessionStorage.setItem(SCROLL_RESTORE_KEY, String(window.scrollY));
     navigate(target);
   };
 
@@ -65,6 +68,7 @@ export function LanguageSwitcherDropdown() {
 
   const switchTo = (lang: SupportedLang) => {
     const target = logicalPath === "/" ? `/${lang}/` : `/${lang}${logicalPath}`;
+    sessionStorage.setItem(SCROLL_RESTORE_KEY, String(window.scrollY));
     navigate(target);
   };
 

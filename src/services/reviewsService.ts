@@ -65,6 +65,7 @@ export async function createReview(input: CreateReviewInput, lang: AppLang): Pro
       name: input.name,
       email: input.email,
       rating: input.rating,
+      review: input.review,
       comment: input.review,
     }),
   });

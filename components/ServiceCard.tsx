@@ -65,6 +65,8 @@ export function ServiceCard({
                     className="aspect-[16/10] w-full object-cover"
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
               ))}

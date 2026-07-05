@@ -78,12 +78,13 @@ export default function Page() {
         </div>
       ) : (
         <div className="space-y-6" data-reveal>
-          {projects.map((project) => (
+          {projects.map((project, projectIndex) => (
             <ProjectShowcaseCard
               key={project.id}
               title={project.name}
               previewImage={project.previewImage}
               otherImages={project.otherImages}
+              prioritizeImage={projectIndex === 0}
               description={project.description}
               stackTitle={t("homeFlow.projects.stackLabel")}
               stack={project.stack

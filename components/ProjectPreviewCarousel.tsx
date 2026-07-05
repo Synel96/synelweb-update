@@ -1,22 +1,49 @@
 import { useMemo, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  cloudinarySizedImageUrl,
+  isCloudinaryImageUrl,
+  withCloudinaryAutoParams,
+} from "@/src/cloudinary";
 
 type ProjectPreviewCarouselProps = {
   previewImage: string;
   otherImages: string[];
   title: string;
+  prioritize?: boolean;
 };
 
 export function ProjectPreviewCarousel({
   previewImage,
   otherImages,
   title,
+  prioritize = false,
 }: ProjectPreviewCarouselProps) {
-  const slides = useMemo(
-    () => [previewImage, ...otherImages].filter((src) => src.trim().length > 0),
-    [previewImage, otherImages]
-  );
+  const slides = useMemo(() => {
+    const rawSlides = [previewImage, ...otherImages].filter((src) => src.trim().length > 0);
+    return rawSlides.map((src) => {
+      const normalized = withCloudinaryAutoParams(src);
+      if (!isCloudinaryImageUrl(normalized)) {
+        return {
+          src: normalized,
+          srcSet: undefined as string | undefined,
+          sizes: undefined as string | undefined,
+        };
+      }
+
+      const widths = [480, 768, 1024, 1360];
+      const srcSet = widths
+        .map((width) => `${cloudinarySizedImageUrl(normalized, width)} ${width}w`)
+        .join(", ");
+
+      return {
+        src: cloudinarySizedImageUrl(normalized, 1024),
+        srcSet,
+        sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 86vw, 960px",
+      };
+    });
+  }, [previewImage, otherImages]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   if (slides.length === 0) {
@@ -39,14 +66,19 @@ export function ProjectPreviewCarousel({
           className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
-          {slides.map((src, index) => (
-            <div key={`${src}-${index}`} className="w-full shrink-0">
+          {slides.map((slide, index) => (
+            <div key={`${slide.src}-${index}`} className="w-full shrink-0">
               <img
-                src={src}
+                src={slide.src}
+                srcSet={slide.srcSet}
+                sizes={slide.sizes}
                 alt={`${title} preview ${index + 1}`}
                 className="aspect-[16/10] w-full object-cover"
-                loading={index === 0 ? "eager" : "lazy"}
+                loading={prioritize && index === 0 ? "eager" : "lazy"}
                 decoding="async"
+                fetchPriority={prioritize && index === 0 ? "high" : "auto"}
+                crossOrigin="anonymous"
+                referrerPolicy="no-referrer"
               />
             </div>
           ))}

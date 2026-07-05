@@ -12,6 +12,7 @@ type ProjectShowcaseCardProps = {
   title: string;
   previewImage: string;
   otherImages: string[];
+  prioritizeImage?: boolean;
   description: string;
   stackTitle: string;
   stack: Array<{ name: string; logo: TechnologyLogoName }>;
@@ -28,6 +29,7 @@ export function ProjectShowcaseCard({
   title,
   previewImage,
   otherImages,
+  prioritizeImage = false,
   description,
   stackTitle,
   stack,
@@ -65,6 +67,7 @@ export function ProjectShowcaseCard({
           previewImage={previewImage}
           otherImages={otherImages}
           title={title}
+          prioritize={prioritizeImage}
         />
       </div>
 

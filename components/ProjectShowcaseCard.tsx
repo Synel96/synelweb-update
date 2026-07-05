@@ -10,6 +10,7 @@ type ScoreItem = {
 
 type ProjectShowcaseCardProps = {
   title: string;
+  headingLevel?: "h2" | "h3";
   previewImage: string;
   otherImages: string[];
   prioritizeImage?: boolean;
@@ -27,6 +28,7 @@ type ProjectShowcaseCardProps = {
 
 export function ProjectShowcaseCard({
   title,
+  headingLevel = "h3",
   previewImage,
   otherImages,
   prioritizeImage = false,
@@ -41,9 +43,13 @@ export function ProjectShowcaseCard({
   liveHref,
   liveLabel,
 }: ProjectShowcaseCardProps) {
+  const HeadingTag = headingLevel;
+
   return (
     <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
-      <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{title}</h3>
+      <HeadingTag className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        {title}
+      </HeadingTag>
 
       <div className="mt-5">
         <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">

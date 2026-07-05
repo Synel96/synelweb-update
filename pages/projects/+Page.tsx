@@ -82,6 +82,7 @@ export default function Page() {
             <ProjectShowcaseCard
               key={project.id}
               title={project.name}
+              headingLevel="h2"
               previewImage={project.previewImage}
               otherImages={project.otherImages}
               prioritizeImage={projectIndex === 0}

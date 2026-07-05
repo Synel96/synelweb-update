@@ -1,5 +1,6 @@
 // https://vike.dev/Head
 
+import "./Layout.css";
 import geistFontUrl from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
 import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL, BRAND_NAME } from "../components/site";
@@ -27,6 +28,8 @@ export function Head() {
   return (
     <>
       <link rel="icon" type="image/svg+xml" href="/sw-favicon.svg" />
+      <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
       <link rel="canonical" href={meta.canonicalUrl} />
 
       {/* hreflang alternates — tells Google which URL serves which language */}

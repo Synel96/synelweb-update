@@ -1,4 +1,3 @@
-import "./Layout.css";
 import { useEffect } from "react";
 import { Footer } from "../components/Footer";
 import { I18nProvider } from "../components/I18nProvider";
@@ -8,6 +7,11 @@ import { useTranslation } from "react-i18next";
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    // Defer non-critical animation CSS so it doesn't block first paint.
+    void import("./Layout.noncritical.css");
+  }, []);
 
   useEffect(() => {
     document.body.classList.add("content-animate");

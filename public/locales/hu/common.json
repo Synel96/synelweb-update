@@ -82,6 +82,7 @@
     "loading": "Szolgáltatások betöltése...",
     "fetchError": "A szolgáltatások betöltése most nem sikerült. Próbáld meg később újra.",
     "emptyState": "Jelenleg nincs elérhető szolgáltatás.",
+    "discountBadge": "Akció",
     "cardCta": "Ajánlatot kérek",
     "cardCtaAria": "Ajánlatkérés indítása"
   },

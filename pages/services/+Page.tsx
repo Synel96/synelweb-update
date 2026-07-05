@@ -72,7 +72,10 @@ export default function Page() {
               key={card.id}
               serviceName={card.name}
               description={card.description}
-              price={card.price}
+              regularPrice={card.regularPrice}
+              discountedPrice={card.discountedPrice}
+              hasDiscount={card.hasDiscount}
+              discountLabel={t("servicesPage.discountBadge")}
               slug={card.slug}
               images={card.images}
               contactBaseHref={contactHref}

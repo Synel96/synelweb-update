@@ -81,6 +81,7 @@
     "loading": "Dienstleistungen werden geladen...",
     "fetchError": "Dienstleistungen konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Dienstleistungen verfügbar.",
+    "discountBadge": "Angebot",
     "cardCta": "Angebot anfordern",
     "cardCtaAria": "Angebotsanfrage starten"
   },

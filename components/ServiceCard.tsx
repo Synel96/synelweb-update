@@ -6,7 +6,10 @@ import { Button } from "@/components/ui/button";
 type ServiceCardProps = {
   serviceName: string;
   description: string;
-  price: string;
+  regularPrice: string;
+  discountedPrice: string;
+  hasDiscount: boolean;
+  discountLabel: string;
   slug: string;
   images: string[];
   contactBaseHref: string;
@@ -17,7 +20,10 @@ type ServiceCardProps = {
 export function ServiceCard({
   serviceName,
   description,
-  price,
+  regularPrice,
+  discountedPrice,
+  hasDiscount,
+  discountLabel,
   slug,
   images,
   contactBaseHref,
@@ -46,9 +52,25 @@ export function ServiceCard({
 
       <p className="mt-4 text-sm leading-7 text-white/80 sm:text-base">{description}</p>
 
-      <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase">
-        {price}
-      </p>
+      <div className="mt-4 flex flex-wrap items-center gap-3">
+        {hasDiscount ? (
+          <>
+            <span className="inline-flex items-center rounded-full border border-amber-300/35 bg-amber-300/12 px-3 py-1 text-[0.68rem] font-bold tracking-[0.18em] text-amber-200 uppercase">
+              {discountLabel}
+            </span>
+            <p className="text-sm font-semibold tracking-[0.08em] text-white/50 line-through decoration-white/45 uppercase">
+              {regularPrice}
+            </p>
+            <p className="text-lg font-extrabold tracking-[0.08em] text-emerald-300 uppercase sm:text-xl">
+              {discountedPrice}
+            </p>
+          </>
+        ) : (
+          <p className="text-sm font-semibold tracking-[0.08em] text-emerald-400 uppercase">
+            {regularPrice}
+          </p>
+        )}
+      </div>
 
       {slides.length > 0 ? (
         <div className="mt-6 space-y-3">

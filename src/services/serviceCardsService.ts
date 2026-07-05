@@ -28,7 +28,9 @@ export type ServiceCard = {
   name: string;
   slug: string;
   description: string;
-  price: string;
+  regularPrice: string;
+  discountedPrice: string;
+  hasDiscount: boolean;
   images: string[];
   order: number;
 };
@@ -64,13 +66,17 @@ export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
   return data
     .filter((item) => item.isActive !== false)
     .map((item) => {
-      const normalPrice = formatPrice(item.salePrice ?? item.price);
+      const regularPrice = formatPrice(item.price);
+      const discountedPrice = formatPrice(item.salePrice);
+      const hasDiscount = discountedPrice.length > 0;
       return {
         id: String(item.id),
         name: pickLocalized(item.title, lang),
         slug: pickLocalized(item.slug, lang),
         description: pickLocalized(item.description, lang),
-        price: normalPrice,
+        regularPrice,
+        discountedPrice,
+        hasDiscount,
         images: Array.isArray(item.images) ? item.images.filter(Boolean) : [],
         order: typeof item.order === "number" ? item.order : Number(item.id) || 0,
       };

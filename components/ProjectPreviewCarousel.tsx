@@ -40,7 +40,7 @@ export function ProjectPreviewCarousel({
       return {
         src: cloudinarySizedImageUrl(normalized, 1024),
         srcSet,
-        sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 86vw, 960px",
+        sizes: "(max-width: 640px) 92vw, (max-width: 1024px) 86vw, (max-width: 1280px) 52vw, 620px",
       };
     });
   }, [previewImage, otherImages]);
@@ -73,7 +73,7 @@ export function ProjectPreviewCarousel({
                 srcSet={slide.srcSet}
                 sizes={slide.sizes}
                 alt={`${title} preview ${index + 1}`}
-                className="aspect-[16/10] w-full object-cover"
+                className="aspect-[16/9] w-full object-cover lg:aspect-[6/5]"
                 loading={prioritize && index === 0 ? "eager" : "lazy"}
                 decoding="async"
                 fetchPriority={prioritize && index === 0 ? "high" : "auto"}

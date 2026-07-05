@@ -34,38 +34,18 @@ export function ServiceCard({
   ctaLabel,
   ctaAriaLabel,
 }: ServiceCardProps) {
+  const COLLAPSED_DESCRIPTION_HEIGHT = 112;
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const hasLongDescription = description.trim().length > 220;
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
-  const [collapsedHeight, setCollapsedHeight] = useState(0);
   const [expandedHeight, setExpandedHeight] = useState(0);
 
   useEffect(() => {
     const element = descriptionRef.current;
     if (!element) return;
-
-    const previousWebkitLineClamp = element.style.webkitLineClamp;
-    const previousOverflow = element.style.overflow;
-    const previousDisplay = element.style.display;
-    const previousWebkitBoxOrient = element.style.webkitBoxOrient;
-
-    element.style.overflow = "hidden";
-    element.style.display = "-webkit-box";
-    element.style.webkitBoxOrient = "vertical";
-    element.style.webkitLineClamp = "4";
-    setCollapsedHeight(element.scrollHeight);
-
-    element.style.webkitLineClamp = "unset";
-    element.style.display = "block";
-    element.style.webkitBoxOrient = "initial";
     setExpandedHeight(element.scrollHeight);
-
-    element.style.webkitLineClamp = previousWebkitLineClamp;
-    element.style.overflow = previousOverflow;
-    element.style.display = previousDisplay;
-    element.style.webkitBoxOrient = previousWebkitBoxOrient;
   }, [description]);
 
   const prev = () =>
@@ -80,25 +60,23 @@ export function ServiceCard({
   const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}`;
 
   return (
-    <article className="flex min-h-[44rem] flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:min-h-[46rem] sm:p-8">
+    <article className="flex flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {serviceName}
       </h3>
 
       <div className="mt-4">
         <div
-          className="overflow-hidden transition-[max-height] duration-300 ease-out"
+          className="overflow-hidden transition-[max-height] duration-400 ease-in-out"
           style={{
             maxHeight: hasLongDescription
-              ? `${isDescriptionExpanded ? expandedHeight : collapsedHeight}px`
+              ? `${isDescriptionExpanded ? expandedHeight : COLLAPSED_DESCRIPTION_HEIGHT}px`
               : undefined,
           }}
         >
           <p
             ref={descriptionRef}
-            className={`text-sm leading-7 text-white/80 sm:text-base ${
-              !isDescriptionExpanded && hasLongDescription ? "line-clamp-4" : ""
-            }`}
+            className="text-sm leading-7 text-white/80 sm:text-base"
           >
             {description}
           </p>

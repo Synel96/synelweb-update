@@ -90,7 +90,7 @@ export function ProjectShowcaseCard({
                 <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {mobileScoresLabel}
                 </p>
-                <div className="mt-2 grid grid-cols-2 gap-2.5 sm:grid-cols-4 xl:grid-cols-2">
+                <div className="mt-2 grid grid-cols-2 gap-2.5">
                   {mobileScores.map((item) => (
                     <LighthouseScoreRing
                       key={`mobile-${item.label}`}
@@ -105,7 +105,7 @@ export function ProjectShowcaseCard({
                 <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {desktopScoresLabel}
                 </p>
-                <div className="mt-2 grid grid-cols-2 gap-2.5 sm:grid-cols-4 xl:grid-cols-2">
+                <div className="mt-2 grid grid-cols-2 gap-2.5">
                   {desktopScores.map((item) => (
                     <LighthouseScoreRing
                       key={`desktop-${item.label}`}

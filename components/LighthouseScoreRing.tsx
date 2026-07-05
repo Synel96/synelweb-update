@@ -10,8 +10,8 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
   const dashOffset = circumference * (1 - clamped / 100);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/4 p-3">
-      <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
+    <div className="rounded-2xl border border-white/10 bg-white/4 p-3 text-center">
+      <p className="min-h-[2rem] text-[0.58rem] leading-4 font-semibold tracking-[0.1em] text-white/65 uppercase sm:text-[0.62rem]">
         {label}
       </p>
       <div className="mt-2 flex items-center justify-center">

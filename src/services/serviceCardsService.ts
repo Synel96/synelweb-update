@@ -52,7 +52,6 @@ export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
   const response = await fetch(SERVICES_ENDPOINT, {
     headers: {
       "Accept-Language": lang,
-      "X-App-Language": lang,
     },
   });
 

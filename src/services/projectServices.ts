@@ -55,7 +55,6 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
   const response = await fetch(PROJECTS_ENDPOINT, {
     headers: {
       "Accept-Language": lang,
-      "X-App-Language": lang,
     },
   });
 

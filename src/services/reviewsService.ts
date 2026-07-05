@@ -30,7 +30,6 @@ const API_REVIEWS_ENDPOINT = `${API_BASE_URL}/api/reviews/`;
 function languageHeaders(lang: AppLang) {
   return {
     "Accept-Language": lang,
-    "X-App-Language": lang,
   };
 }
 

@@ -35,10 +35,12 @@ export function ServiceCard({
   ctaAriaLabel,
 }: ServiceCardProps) {
   const COLLAPSED_DESCRIPTION_HEIGHT = 112;
+  const EXPAND_SCROLL_OFFSET = 96;
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const hasLongDescription = description.trim().length > 220;
+  const articleRef = useRef<HTMLElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
   const [expandedHeight, setExpandedHeight] = useState(0);
 
@@ -47,6 +49,32 @@ export function ServiceCard({
     if (!element) return;
     setExpandedHeight(element.scrollHeight);
   }, [description]);
+
+  useEffect(() => {
+    if (!isDescriptionExpanded) return;
+
+    const articleElement = articleRef.current;
+    if (!articleElement) return;
+
+    const scrollIntoComfortView = () => {
+      const rect = articleElement.getBoundingClientRect();
+      const targetTop = window.scrollY + rect.top - EXPAND_SCROLL_OFFSET;
+      const currentTop = window.scrollY;
+
+      if (Math.abs(targetTop - currentTop) < 12) return;
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+    };
+
+    const frameId = window.requestAnimationFrame(() => {
+      window.setTimeout(scrollIntoComfortView, 140);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [isDescriptionExpanded, expandedHeight]);
 
   const prev = () =>
     setActiveIndex((prevIndex) =>
@@ -60,7 +88,10 @@ export function ServiceCard({
   const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}`;
 
   return (
-    <article className="flex flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+    <article
+      ref={articleRef}
+      className="flex flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8"
+    >
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {serviceName}
       </h3>

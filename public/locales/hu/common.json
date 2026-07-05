@@ -47,8 +47,8 @@
       "lighthouseTitle": "Lighthouse pontszámok",
       "scoreLabels": {
         "performance": "Teljesítmény",
-        "accessibility": "Akadálymentesség",
-        "bestPractices": "Bevált gyakorlatok",
+        "accessibility": "Akadálymentes",
+        "bestPractices": "Best practice",
         "seo": "SEO"
       },
       "scoreGroups": {

@@ -10,11 +10,11 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
   const dashOffset = circumference * (1 - clamped / 100);
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/4 p-3 text-center">
-      <p className="min-h-[2rem] text-[0.58rem] leading-4 font-semibold tracking-[0.1em] text-white/65 uppercase sm:text-[0.62rem]">
+    <div className="flex min-h-[7.4rem] flex-col items-center justify-between rounded-2xl border border-white/10 bg-white/4 p-2.5 text-center sm:min-h-[7.75rem] sm:p-3">
+      <p className="min-h-[2rem] max-w-[8rem] text-[0.58rem] leading-4 font-semibold tracking-[0.08em] text-white/65 uppercase sm:text-[0.62rem]">
         {label}
       </p>
-      <div className="mt-2 flex items-center justify-center">
+      <div className="relative mt-2 flex items-center justify-center">
         <svg viewBox="0 0 64 64" className="size-16 -rotate-90" aria-hidden="true">
           <circle
             cx="32"

@@ -66,7 +66,7 @@ export default function Page() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-6 lg:grid-cols-2" data-reveal>
+        <div className="grid items-start gap-6 lg:grid-cols-2" data-reveal>
           {cards.map((card) => (
             <ServiceCard
               key={card.id}

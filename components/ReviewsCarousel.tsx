@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Snackbar } from "@/components/ui/snackbar";
 import { createReview, getReviews, type Review } from "@/src/services/reviewsService";
+import type { AppLang } from "@/src/services/serviceCardsService";
 
 type ToastState = {
   type: "success" | "error";
@@ -23,7 +24,8 @@ export function ReviewsCarousel({
   actionLabel,
   actionAriaLabel,
 }: ReviewsCarouselProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const activeLang = ((i18n.resolvedLanguage || "hu").slice(0, 2) as AppLang);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
@@ -45,7 +47,7 @@ export function ReviewsCarousel({
       setFetchError(null);
 
       try {
-        const data = await getReviews();
+        const data = await getReviews(activeLang);
         if (!isMounted) return;
         setReviews(data);
       } catch {
@@ -62,7 +64,7 @@ export function ReviewsCarousel({
     return () => {
       isMounted = false;
     };
-  }, [t]);
+  }, [activeLang, t]);
 
   const openModal = () => {
     setSubmitError(null);
@@ -93,14 +95,17 @@ export function ReviewsCarousel({
     try {
       setIsSubmitting(true);
 
-      await createReview({
+      await createReview(
+        {
         name: formName,
         email: formEmail,
         rating: formRating,
         review: formReview,
-      });
+        },
+        activeLang
+      );
 
-      const updated = await getReviews();
+      const updated = await getReviews(activeLang);
       setReviews(updated);
       closeModal();
       setFormName("");
@@ -255,11 +260,15 @@ export function ReviewsCarousel({
     return (
       <>
         <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
-          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{title}</p>
+          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+            {title}
+          </p>
 
           <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
             <p className="text-sm leading-7 text-white/82 sm:text-base">{emptyRatingText}</p>
-            {fetchError ? <p className="mt-3 text-sm leading-7 text-white/60">{fetchError}</p> : null}
+            {fetchError ? (
+              <p className="mt-3 text-sm leading-7 text-white/60">{fetchError}</p>
+            ) : null}
           </div>
 
           <div className="mt-6">

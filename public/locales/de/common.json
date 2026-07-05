@@ -78,8 +78,15 @@
     }
   },
   "servicesPage": {
+    "loading": "Dienstleistungen werden geladen...",
+    "fetchError": "Dienstleistungen konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "emptyState": "Derzeit sind keine Dienstleistungen verfügbar.",
     "cardCta": "Angebot anfordern",
     "cardCtaAria": "Angebotsanfrage starten"
+  },
+  "projectsPage": {
+    "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "emptyState": "Derzeit sind keine Projekte verfügbar."
   },
   "underDevelopment": {
     "title": "Diese Seite befindet sich in Entwicklung.",

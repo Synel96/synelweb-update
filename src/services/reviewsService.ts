@@ -1,3 +1,5 @@
+import type { AppLang } from "./serviceCardsService";
+
 export type Review = {
   id: number;
   name: string;
@@ -23,10 +25,19 @@ type ReviewApiItem = {
 };
 
 const API_BASE_URL = "https://synelweb.fly.dev";
-const REVIEWS_ENDPOINT = `${API_BASE_URL}/review/reviews/`;
+const API_REVIEWS_ENDPOINT = `${API_BASE_URL}/api/reviews/`;
 
-export async function getReviews(): Promise<Review[]> {
-  const response = await fetch(REVIEWS_ENDPOINT);
+function languageHeaders(lang: AppLang) {
+  return {
+    "Accept-Language": lang,
+    "X-App-Language": lang,
+  };
+}
+
+export async function getReviews(lang: AppLang): Promise<Review[]> {
+  const response = await fetch(API_REVIEWS_ENDPOINT, {
+    headers: languageHeaders(lang),
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch reviews.");
@@ -44,11 +55,12 @@ export async function getReviews(): Promise<Review[]> {
     }));
 }
 
-export async function createReview(input: CreateReviewInput): Promise<void> {
-  const response = await fetch(REVIEWS_ENDPOINT, {
+export async function createReview(input: CreateReviewInput, lang: AppLang): Promise<void> {
+  const response = await fetch(API_REVIEWS_ENDPOINT, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      ...languageHeaders(lang),
     },
     body: JSON.stringify({
       name: input.name,

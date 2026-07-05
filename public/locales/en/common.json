@@ -78,8 +78,15 @@
     }
   },
   "servicesPage": {
+    "loading": "Loading services...",
+    "fetchError": "Services could not be loaded right now. Please try again later.",
+    "emptyState": "No services are available right now.",
     "cardCta": "Request a quote",
     "cardCtaAria": "Start quote request"
+  },
+  "projectsPage": {
+    "fetchError": "Projects could not be loaded right now. Please try again later.",
+    "emptyState": "No projects are available right now."
   },
   "underDevelopment": {
     "title": "This page is under development.",

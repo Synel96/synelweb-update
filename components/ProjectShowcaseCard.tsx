@@ -44,7 +44,9 @@ export function ProjectShowcaseCard({
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{title}</h3>
 
       <div className="mt-5">
-        <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{stackTitle}</p>
+        <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+          {stackTitle}
+        </p>
         <ul className="mt-3 flex flex-wrap gap-2.5">
           {stack.map((item) => (
             <li
@@ -59,13 +61,19 @@ export function ProjectShowcaseCard({
       </div>
 
       <div className="mt-6">
-        <ProjectPreviewCarousel previewImage={previewImage} otherImages={otherImages} title={title} />
+        <ProjectPreviewCarousel
+          previewImage={previewImage}
+          otherImages={otherImages}
+          title={title}
+        />
       </div>
 
       <p className="mt-6 text-sm leading-7 text-white/80 sm:text-base">{description}</p>
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-black/22 p-4 sm:p-5">
-        <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{scoresTitle}</p>
+        <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+          {scoresTitle}
+        </p>
         <div className="mt-4 space-y-5">
           <div>
             <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
@@ -73,7 +81,11 @@ export function ProjectShowcaseCard({
             </p>
             <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {mobileScores.map((item) => (
-                <LighthouseScoreRing key={`mobile-${item.label}`} label={item.label} score={item.value} />
+                <LighthouseScoreRing
+                  key={`mobile-${item.label}`}
+                  label={item.label}
+                  score={item.value}
+                />
               ))}
             </div>
           </div>
@@ -84,7 +96,11 @@ export function ProjectShowcaseCard({
             </p>
             <div className="mt-2 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {desktopScores.map((item) => (
-                <LighthouseScoreRing key={`desktop-${item.label}`} label={item.label} score={item.value} />
+                <LighthouseScoreRing
+                  key={`desktop-${item.label}`}
+                  label={item.label}
+                  score={item.value}
+                />
               ))}
             </div>
           </div>

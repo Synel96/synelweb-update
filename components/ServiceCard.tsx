@@ -40,11 +40,15 @@ export function ServiceCard({
 
   return (
     <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
-      <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{serviceName}</h3>
+      <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        {serviceName}
+      </h3>
 
       <p className="mt-4 text-sm leading-7 text-white/80 sm:text-base">{description}</p>
 
-      <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase">{price}</p>
+      <p className="mt-4 text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase">
+        {price}
+      </p>
 
       {slides.length > 0 ? (
         <div className="mt-6 space-y-3">
@@ -103,7 +107,9 @@ export function ServiceCard({
                   key={index}
                   type="button"
                   className={`h-1.5 rounded-full transition-all ${
-                    index === activeIndex ? "w-5 bg-(--accent)" : "w-2 bg-white/30 hover:bg-white/55"
+                    index === activeIndex
+                      ? "w-5 bg-(--accent)"
+                      : "w-2 bg-white/30 hover:bg-white/55"
                   }`}
                   onClick={() => setActiveIndex(index)}
                   aria-label={`Go to image ${index + 1}`}

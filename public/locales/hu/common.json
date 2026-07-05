@@ -79,8 +79,15 @@
     }
   },
   "servicesPage": {
+    "loading": "Szolgáltatások betöltése...",
+    "fetchError": "A szolgáltatások betöltése most nem sikerült. Próbáld meg később újra.",
+    "emptyState": "Jelenleg nincs elérhető szolgáltatás.",
     "cardCta": "Ajánlatot kérek",
     "cardCtaAria": "Ajánlatkérés indítása"
+  },
+  "projectsPage": {
+    "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
+    "emptyState": "Jelenleg nincs megjeleníthető projekt."
   },
   "underDevelopment": {
     "title": "Ez az oldal fejlesztés alatt áll.",

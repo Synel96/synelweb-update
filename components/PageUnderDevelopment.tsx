@@ -12,7 +12,9 @@ export function PageUnderDevelopment({ sectionLabel, contactHref }: PageUnderDev
   return (
     <div className="text-(--brand-on-surface)">
       <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-12 sm:pt-32 sm:pb-16" data-reveal>
-        <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">{sectionLabel}</p>
+        <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">
+          {sectionLabel}
+        </p>
         <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
           {t("underDevelopment.title")}
         </h1>

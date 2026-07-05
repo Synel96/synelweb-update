@@ -13,11 +13,24 @@ export function ProjectPreviewCarousel({
   otherImages,
   title,
 }: ProjectPreviewCarouselProps) {
-  const slides = useMemo(() => [previewImage, ...otherImages], [previewImage, otherImages]);
+  const slides = useMemo(
+    () => [previewImage, ...otherImages].filter((src) => src.trim().length > 0),
+    [previewImage, otherImages]
+  );
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const prev = () => setActiveIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-  const next = () => setActiveIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
+  if (slides.length === 0) {
+    return (
+      <div className="rounded-2xl border border-white/10 bg-black/20 p-8 text-center text-sm text-white/70">
+        {title}
+      </div>
+    );
+  }
+
+  const prev = () =>
+    setActiveIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+  const next = () =>
+    setActiveIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
 
   return (
     <div className="space-y-3">

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { ServiceCard } from "@/components/ServiceCard";
+import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import {
   getServiceCards,
@@ -58,7 +59,12 @@ export default function Page() {
       </header>
 
       {isLoading ? (
-        <p className="text-sm text-white/75">{t("servicesPage.loading")}</p>
+        <div className="grid items-start gap-6 lg:grid-cols-2" aria-hidden="true">
+          <ServiceCardSkeleton />
+          <ServiceCardSkeleton />
+          <ServiceCardSkeleton />
+          <ServiceCardSkeleton />
+        </div>
       ) : fetchError || cards.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">

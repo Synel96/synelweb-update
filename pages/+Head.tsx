@@ -6,6 +6,10 @@ import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL, BRAND_NAME } from "../components/site";
 import { buildMeta } from "../src/seo";
 import { DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
+import { resolveLanguageAndLogicalPath } from "../src/localizedRoutes";
+
+const HERO_VIDEO_POSTER_URL =
+  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
 
 export function Head() {
   const pageContext = usePageContext() as {
@@ -17,6 +21,8 @@ export function Head() {
     pathname: pageContext.urlPathname,
     lang,
   });
+  const { logicalPath } = resolveLanguageAndLogicalPath(pageContext.urlPathname);
+  const isHomePage = logicalPath === "/";
   const organizationLogoUrl = new URL("/sw-favicon.svg", SITE_URL).toString();
 
   return (
@@ -25,6 +31,9 @@ export function Head() {
       <link rel="icon" type="image/svg+xml" href="/sw-favicon.svg" />
       <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+      {isHomePage ? (
+        <link rel="preload" as="image" href={HERO_VIDEO_POSTER_URL} fetchPriority="high" />
+      ) : null}
       <link rel="canonical" href={meta.canonicalUrl} />
 
       {/* hreflang alternates — tells Google which URL serves which language */}

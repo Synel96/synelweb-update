@@ -42,6 +42,7 @@ function PaginationLink({
 }: PaginationLinkProps & Pick<React.ComponentProps<typeof Button>, "size">) {
   return (
     <button
+      type="button"
       aria-current={isActive ? "page" : undefined}
       data-slot="pagination-link"
       data-active={isActive}
@@ -59,6 +60,7 @@ function PaginationLink({
 
 function PaginationPrevious({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
@@ -69,13 +71,14 @@ function PaginationPrevious({
       {...props}
     >
       <ChevronLeft className="size-4" />
-      <span>Previous</span>
+      <span>{children ?? "Previous"}</span>
     </PaginationLink>
   )
 }
 
 function PaginationNext({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) {
   return (
@@ -85,7 +88,7 @@ function PaginationNext({
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}
     >
-      <span>Next</span>
+      <span>{children ?? "Next"}</span>
       <ChevronRight className="size-4" />
     </PaginationLink>
   )

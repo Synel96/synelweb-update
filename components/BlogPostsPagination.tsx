@@ -38,8 +38,15 @@ function getPageRange(currentPage: number, totalPages: number): Array<number | "
 }
 
 function translationOrFallback(t: TFunction, key: string, fallback: string) {
-  const translated = t(key);
-  return translated === key ? fallback : translated;
+  const translated = t(key, { defaultValue: fallback });
+  if (typeof translated !== "string") return fallback;
+
+  // In some production i18n setups missing keys can come back namespaced.
+  if (translated === key || translated.endsWith(`:${key}`)) {
+    return fallback;
+  }
+
+  return translated;
 }
 
 export default function BlogPostsPagination({

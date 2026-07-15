@@ -5,6 +5,7 @@ export const KNOWN_LOGICAL_PATHS = [
   "/about",
   "/services",
   "/projects",
+  "/blog",
   "/technology",
   "/contact",
 ] as const;
@@ -26,6 +27,11 @@ const LOCALIZED_SEGMENTS: Record<Exclude<KnownLogicalPath, "/">, Record<Supporte
     en: "projects",
     hu: "projektek",
     de: "projekte",
+  },
+  "/blog": {
+    en: "blog",
+    hu: "blog",
+    de: "blog",
   },
   "/technology": {
     en: "technology",

@@ -8,6 +8,7 @@ export const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
   { href: "/services", labelKey: "nav.services" },
   { href: "/projects", labelKey: "nav.projects" },
+  { href: "/blog", labelKey: "nav.blog" },
   { href: "/technology", labelKey: "nav.technology" },
   {
     href: "/contact",

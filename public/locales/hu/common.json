@@ -3,6 +3,7 @@
     "home": "Főoldal",
     "services": "Szolgáltatások",
     "about": "Rólam",
+    "blog": "Blog",
     "technology": "Technológia",
     "projects": "Projektek",
     "reviews": "Vélemények",
@@ -91,6 +92,20 @@
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
     "emptyState": "Jelenleg nincs megjeleníthető projekt."
+  },
+  "blogPage": {
+    "label": "Blog",
+    "title": "Szakmai cikkek, gyakorlati jegyzetek és webes stratégiai írások.",
+    "intro": "Itt találod a szakmai bejegyzéseimet, megvalósítási tapasztalataimat és a valós webes projektekből származó gyakorlati megfigyeléseket.",
+    "fetchError": "A blogbejegyzések most nem tölthetők be. Kérlek, próbáld meg később.",
+    "emptyState": "Jelenleg nincs elérhető blogbejegyzés.",
+    "categoryFallback": "Cikk",
+    "untitled": "Névtelen bejegyzés",
+    "descriptionFallback": "Ehhez a bejegyzéshez jelenleg nincs rövid leírás.",
+    "categories": {
+      "professional": "Szakmai",
+      "educational": "Oktatási"
+    }
   },
   "underDevelopment": {
     "title": "Ez az oldal fejlesztés alatt áll.",

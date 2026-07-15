@@ -3,6 +3,7 @@
     "home": "Startseite",
     "services": "Dienstleistungen",
     "about": "Über mich",
+    "blog": "Blog",
     "technology": "Technologie",
     "projects": "Projekte",
     "reviews": "Kundenstimmen",
@@ -90,6 +91,20 @@
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Projekte verfügbar."
+  },
+  "blogPage": {
+    "label": "Blog",
+    "title": "Fachartikel, praktische Notizen und strategische Web-Beiträge.",
+    "intro": "Hier findest du Fachbeiträge, Umsetzungsnotizen und praktische Beobachtungen aus realen Webprojekten.",
+    "fetchError": "Die Blogbeiträge konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "emptyState": "Derzeit sind keine Blogbeiträge verfügbar.",
+    "categoryFallback": "Artikel",
+    "untitled": "Unbenannter Beitrag",
+    "descriptionFallback": "Für diesen Beitrag gibt es derzeit keine Kurzbeschreibung.",
+    "categories": {
+      "professional": "Fachlich",
+      "educational": "Lehrreich"
+    }
   },
   "underDevelopment": {
     "title": "Diese Seite befindet sich in Entwicklung.",

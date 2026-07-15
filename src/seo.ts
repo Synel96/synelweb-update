@@ -36,6 +36,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Real projects and real technical quality: fast, modern, business-ready web solutions.",
     },
+    "/blog": {
+      title: "Blog | SynelWeb",
+      description:
+        "Insights, practical web development notes, and business-focused articles from SynelWeb.",
+    },
     "/technology": {
       title: "Technology | SynelWeb",
       description:
@@ -67,6 +72,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Valós projektek, valós technikai minőség: gyors, modern és üzletileg használható webes megoldások.",
     },
+    "/blog": {
+      title: "Blog | SynelWeb",
+      description:
+        "Szakmai cikkek, gyakorlati webfejlesztési tapasztalatok és üzleti szemléletű bejegyzések a SynelWebtől.",
+    },
     "/technology": {
       title: "Technológia | SynelWeb",
       description:
@@ -97,6 +107,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       title: "Projekte | SynelWeb",
       description:
         "Reale Projekte und echte technische Qualität: schnelle, moderne und geschäftstaugliche Weblösungen.",
+    },
+    "/blog": {
+      title: "Blog | SynelWeb",
+      description:
+        "Fachartikel, praktische Webentwicklungsnotizen und geschäftsorientierte Einblicke von SynelWeb.",
     },
     "/technology": {
       title: "Technologie | SynelWeb",

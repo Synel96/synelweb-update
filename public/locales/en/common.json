@@ -3,6 +3,7 @@
     "home": "Home",
     "services": "Services",
     "about": "About",
+    "blog": "Blog",
     "technology": "Technology",
     "projects": "Projects",
     "reviews": "Reviews",
@@ -90,6 +91,20 @@
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",
     "emptyState": "No projects are available right now."
+  },
+  "blogPage": {
+    "label": "Blog",
+    "title": "Insights, practical notes, and web strategy articles.",
+    "intro": "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
+    "fetchError": "Blog posts could not be loaded right now. Please try again later.",
+    "emptyState": "No blog posts are available right now.",
+    "categoryFallback": "Article",
+    "untitled": "Untitled post",
+    "descriptionFallback": "This post currently has no short description.",
+    "categories": {
+      "professional": "Professional",
+      "educational": "Educational"
+    }
   },
   "underDevelopment": {
     "title": "This page is under development.",

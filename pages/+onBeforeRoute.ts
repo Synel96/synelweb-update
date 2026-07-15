@@ -8,31 +8,17 @@
 // /hu/        → urlLogical: /,      lang: "hu"
 // /unknown    → urlLogical: /unknown, lang: "en" (default)
 
-import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
+import { resolveLanguageAndLogicalPath } from "../src/localizedRoutes";
 
 export function onBeforeRoute(pageContext: { urlOriginal: string }) {
   const { urlOriginal } = pageContext;
   const url = new URL(urlOriginal, "http://localhost");
-  const pathname = url.pathname;
+  const { lang, logicalPath } = resolveLanguageAndLogicalPath(url.pathname);
 
-  const segments = pathname.split("/").filter(Boolean);
-  const maybeLang = segments[0] as SupportedLang;
-
-  if ((SUPPORTED_LANGS as ReadonlyArray<string>).includes(maybeLang)) {
-    const lang = maybeLang;
-    const logicalPath = segments.length > 1 ? "/" + segments.slice(1).join("/") : "/";
-    return {
-      pageContext: {
-        lang,
-        urlLogical: logicalPath + url.search + url.hash,
-      },
-    };
-  }
-
-  // No lang prefix (including bare /) — serve with default lang, no redirect
   return {
     pageContext: {
-      lang: DEFAULT_LANG,
+      lang,
+      urlLogical: logicalPath + url.search + url.hash,
     },
   };
 }

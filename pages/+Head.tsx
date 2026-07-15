@@ -11,17 +11,11 @@ export function Head() {
   const pageContext = usePageContext() as {
     urlPathname: string;
     lang?: SupportedLang;
-    config?: {
-      title?: string;
-      description?: string;
-    };
   };
   const lang = pageContext.lang ?? DEFAULT_LANG;
   const meta = buildMeta({
     pathname: pageContext.urlPathname,
     lang,
-    title: pageContext.config?.title,
-    description: pageContext.config?.description,
   });
   const organizationLogoUrl = new URL("/sw-favicon.svg", SITE_URL).toString();
 
@@ -40,9 +34,8 @@ export function Head() {
 
       {/* Open Graph / Social Media */}
       <meta property="og:type" content="website" />
+      <meta property="og:locale" content={lang} />
       <meta property="og:url" content={meta.canonicalUrl} />
-      <meta property="og:title" content={meta.title} />
-      <meta property="og:description" content={meta.description} />
       <meta property="og:image" content={meta.image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={meta.canonicalUrl} />

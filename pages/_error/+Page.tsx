@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 
 type ErrorPageContext = {
   abortStatusCode?: number;
@@ -15,8 +16,8 @@ export default function Page() {
   const statusCode = pageContext.abortStatusCode ?? (pageContext.is404 ? 404 : 500);
   const pathname = pageContext.urlPathname ?? "/";
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const homeHref = `/${lang}/`;
-  const contactHref = `/${lang}/contact`;
+  const homeHref = localizePath("/", lang);
+  const contactHref = localizePath("/contact", lang);
   const is404 = statusCode === 404;
   const title = is404 ? t("errorPage.title404") : t("errorPage.titleDefault");
   const text = is404 ? t("errorPage.text404") : t("errorPage.textDefault");

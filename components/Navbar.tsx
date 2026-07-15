@@ -8,6 +8,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/s
 import { BRAND_NAME, NAV_LINKS } from "./site";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export function Navbar() {
   }, [isHome]);
 
   // Build a URL with the current lang prefix
-  const langHref = (href: string) => (href === "/" ? `/${lang}/` : `/${lang}${href}`);
+  const langHref = (href: string) => localizePath(href, lang);
 
   const isActive = (href: string) =>
     href === "/" ? urlPathname === href : urlPathname.startsWith(href);

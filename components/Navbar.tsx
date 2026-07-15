@@ -12,7 +12,7 @@ import { localizePath } from "@/src/localizedRoutes";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const mounted = useMounted();
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
   const { urlPathname } = pageContext;
@@ -23,14 +23,14 @@ export function Navbar() {
   useEffect(() => {
     if (!isHome) return;
 
-    const updateScrollProgress = () => {
-      const nextProgress = Math.min(window.scrollY / 180, 1);
-      setScrollProgress(nextProgress);
+    const updateScrolledState = () => {
+      const nextHasScrolled = window.scrollY > 12;
+      setHasScrolled((current) => (current === nextHasScrolled ? current : nextHasScrolled));
     };
 
-    updateScrollProgress();
-    window.addEventListener("scroll", updateScrollProgress, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    updateScrolledState();
+    window.addEventListener("scroll", updateScrolledState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolledState);
   }, [isHome]);
 
   // Build a URL with the current lang prefix
@@ -49,20 +49,14 @@ export function Navbar() {
       defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
     });
 
-  const headerProgress = isHome ? scrollProgress : 1;
-  const headerAlpha = 0.9 * headerProgress;
-  const headerStyle = {
-    backgroundColor: `rgba(11, 15, 25, ${headerAlpha})`,
-    borderBottomColor: `rgba(255, 255, 255, ${0.1 * headerProgress})`,
-    boxShadow: `0 14px 40px -24px rgba(0, 0, 0, ${0.5 * headerProgress})`,
-    backdropFilter: `blur(${6 + 10 * headerProgress}px)`,
-  } as React.CSSProperties;
+  const headerIsSolid = !isHome || hasScrolled;
 
   return (
     <header
-      style={headerStyle}
-      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] ${
-        isHome ? "transition-colors duration-200" : ""
+      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md ${
+        headerIsSolid
+          ? "border-white/10 bg-[rgba(11,15,25,0.88)] shadow-[0_14px_40px_-24px_rgba(0,0,0,0.5)]"
+          : "border-transparent bg-transparent shadow-none"
       }`}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">

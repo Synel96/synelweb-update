@@ -15,6 +15,8 @@ export default defineConfig(({ isSsrBuild }) => ({
     },
   },
   build: {
+    minify: "esbuild",
+    cssMinify: true,
     rollupOptions: {
       output: isSsrBuild
         ? undefined

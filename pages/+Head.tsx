@@ -9,7 +9,7 @@ import { DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
 import { resolveLanguageAndLogicalPath } from "../src/localizedRoutes";
 
 const HERO_VIDEO_POSTER_URL =
-  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
+  "https://res.cloudinary.com/dmwulp3dl/image/upload/f_auto,q_auto:low,w_960,c_limit,dpr_auto/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
 
 export function Head() {
   const pageContext = usePageContext() as {

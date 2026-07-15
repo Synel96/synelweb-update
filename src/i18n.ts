@@ -23,7 +23,7 @@ function getInitialClientLang(): SupportedLang {
   return maybeLang && SUPPORTED_LANGS.includes(maybeLang) ? maybeLang : DEFAULT_LANG;
 }
 
-async function loadCommonMessages(lang: SupportedLang): Promise<CommonMessages> {
+async function loadCommonMessagesFromBundle(lang: SupportedLang): Promise<CommonMessages> {
   switch (lang) {
     case "hu": {
       const mod = await import("../public/locales/hu/common.json");
@@ -41,8 +41,28 @@ async function loadCommonMessages(lang: SupportedLang): Promise<CommonMessages> 
   }
 }
 
+async function loadCommonMessagesFromHttp(lang: SupportedLang): Promise<CommonMessages> {
+  const response = await fetch(`/locales/${lang}/common.json`, {
+    cache: "force-cache",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to load locale common.json for ${lang}`);
+  }
+
+  return (await response.json()) as CommonMessages;
+}
+
+async function loadCommonMessages(lang: SupportedLang): Promise<CommonMessages> {
+  if (import.meta.env.SSR) {
+    return loadCommonMessagesFromBundle(lang);
+  }
+
+  return loadCommonMessagesFromHttp(lang);
+}
+
 async function loadInitialResources() {
-  if (typeof window === "undefined") {
+  if (import.meta.env.SSR) {
     const [en, hu, de] = await Promise.all([
       loadCommonMessages("en"),
       loadCommonMessages("hu"),

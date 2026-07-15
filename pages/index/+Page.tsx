@@ -8,7 +8,7 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
 const HERO_VIDEO_POSTER_URL =
-  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
+  "https://res.cloudinary.com/dmwulp3dl/image/upload/f_auto,q_auto:low,w_960,c_limit,dpr_auto/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
 
 export default function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -34,7 +34,10 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
+      <section
+        className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center"
+        data-reveal
+      >
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] text-(--primary) uppercase">
             {t("about.label")}
@@ -74,7 +77,10 @@ export default function Page() {
         <AboutProfileAvatar alt={t("about.avatarAlt")} />
       </section>
 
-      <section className="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.86),rgba(15,21,40,0.92))] px-4 py-5 sm:px-6 sm:py-6">
+      <section
+        className="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.86),rgba(15,21,40,0.92))] px-4 py-5 sm:px-6 sm:py-6"
+        data-reveal
+      >
         <h2 className="px-2 text-xl font-semibold sm:text-2xl">{t("about.accordion.title")}</h2>
         <div className="mt-4 space-y-3">
           {accordionItems.map((item) => (
@@ -94,7 +100,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
         <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           {t("about.process.title")}
         </h2>
@@ -108,7 +114,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]">
+      <section
+        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
+        data-reveal
+      >
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
             {t("about.cta.eyebrow")}

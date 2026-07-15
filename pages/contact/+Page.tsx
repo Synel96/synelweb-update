@@ -39,7 +39,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20" data-reveal>
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-6">
             <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
@@ -98,7 +98,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <a
             href={`tel:${PHONE}`}
@@ -164,7 +164,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="map" className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
+      <section id="map" className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
           <div className="bento-card rounded-3xl p-6 sm:p-8">
             <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
@@ -195,7 +195,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]">
+      <section
+        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
+        data-reveal
+      >
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
             {t("contact.closingTitle")}

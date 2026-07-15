@@ -91,7 +91,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18">
+      <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18" data-reveal>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">
@@ -122,7 +122,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="max-w-3xl">
           <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
             {t("technology.stackLabel")}
@@ -180,7 +180,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
           <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
             {t("technology.llmLabel")}
@@ -194,7 +194,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]">
+      <section
+        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
+        data-reveal
+      >
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
             {t("technology.cta.eyebrow")}

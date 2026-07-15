@@ -101,6 +101,11 @@
     "categoryFallback": "Article",
     "untitled": "Untitled post",
     "descriptionFallback": "This post currently has no short description.",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page"
+    },
     "categories": {
       "professional": "Professional",
       "educational": "Educational"

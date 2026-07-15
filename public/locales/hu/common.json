@@ -102,6 +102,11 @@
     "categoryFallback": "Cikk",
     "untitled": "Névtelen bejegyzés",
     "descriptionFallback": "Ehhez a bejegyzéshez jelenleg nincs rövid leírás.",
+    "pagination": {
+      "previous": "Előző",
+      "next": "Következő",
+      "page": "Oldal"
+    },
     "categories": {
       "professional": "Szakmai",
       "educational": "Oktatási"

@@ -101,6 +101,11 @@
     "categoryFallback": "Artikel",
     "untitled": "Unbenannter Beitrag",
     "descriptionFallback": "Für diesen Beitrag gibt es derzeit keine Kurzbeschreibung.",
+    "pagination": {
+      "previous": "Zurück",
+      "next": "Weiter",
+      "page": "Seite"
+    },
     "categories": {
       "professional": "Fachlich",
       "educational": "Lehrreich"

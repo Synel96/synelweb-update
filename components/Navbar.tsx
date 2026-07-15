@@ -16,8 +16,11 @@ export function Navbar() {
   const mounted = useMounted();
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
   const { urlPathname } = pageContext;
-  const isHome = urlPathname === "/";
   const lang = pageContext.lang ?? DEFAULT_LANG;
+  const isHome =
+    urlPathname === "/" ||
+    urlPathname === `/${lang}` ||
+    urlPathname === `/${lang}/`;
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md ${
+      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md ${
         headerIsSolid
           ? "border-white/10 bg-[rgba(11,15,25,0.88)] shadow-[0_14px_40px_-24px_rgba(0,0,0,0.5)]"
           : "border-transparent bg-transparent shadow-none"

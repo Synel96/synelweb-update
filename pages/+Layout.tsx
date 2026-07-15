@@ -9,19 +9,33 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
 
   useEffect(() => {
-    // Defer non-critical animation CSS so it doesn't block first paint.
-    void import("./Layout.noncritical.css");
-  }, []);
+    let isActive = true;
+    let firstFrameId = 0;
+    let secondFrameId = 0;
 
-  useEffect(() => {
-    document.body.classList.add("content-animate");
-    document.body.classList.remove("content-ready");
+    const triggerContentReveal = () => {
+      document.body.classList.add("content-animate");
+      document.body.classList.remove("content-ready");
 
-    const frameId = requestAnimationFrame(() => {
-      document.body.classList.add("content-ready");
+      firstFrameId = requestAnimationFrame(() => {
+        secondFrameId = requestAnimationFrame(() => {
+          document.body.classList.add("content-ready");
+        });
+      });
+    };
+
+    // Defer non-critical animation CSS so it doesn't block first paint,
+    // then trigger reveal once styles are available.
+    void import("./Layout.noncritical.css").finally(() => {
+      if (!isActive) return;
+      triggerContentReveal();
     });
 
-    return () => cancelAnimationFrame(frameId);
+    return () => {
+      isActive = false;
+      cancelAnimationFrame(firstFrameId);
+      cancelAnimationFrame(secondFrameId);
+    };
   }, []);
 
   return (

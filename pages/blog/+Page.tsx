@@ -29,6 +29,7 @@ export default function Page() {
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [fetchError, setFetchError] = useState(initialFetchError);
   const locale = i18n.resolvedLanguage || i18n.language || "en";
+  const isHungarianLocale = locale.toLowerCase().startsWith("hu");
   const [currentPage, setCurrentPage] = useState(1);
 
   const blogLabel = t("blogPage.label", { defaultValue: "Blog" });
@@ -99,6 +100,19 @@ export default function Page() {
         </h1>
         <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">{blogIntro}</p>
       </header>
+
+      {!isHungarianLocale ? (
+        <div
+          className="mb-8 rounded-2xl border border-amber-300/40 bg-amber-500/10 px-5 py-4"
+          role="status"
+        >
+          <p className="text-sm font-medium leading-7 text-amber-100 sm:text-base">
+            {t("blogPage.languageNotice", {
+              defaultValue: "This blog is currently available only in Hungarian.",
+            })}
+          </p>
+        </div>
+      ) : null}
 
       {fetchError ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">

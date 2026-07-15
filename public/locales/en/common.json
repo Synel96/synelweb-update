@@ -96,6 +96,7 @@
     "label": "Blog",
     "title": "Insights, practical notes, and web strategy articles.",
     "intro": "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
+    "languageNotice": "This blog is currently available only in Hungarian.",
     "fetchError": "Blog posts could not be loaded right now. Please try again later.",
     "emptyState": "No blog posts are available right now.",
     "categoryFallback": "Article",

@@ -1,7 +1,7 @@
 import type { Config } from "vike/types";
 
 const config: Config = {
-  prerender: false,
+  prerender: true,
 };
 
 export default config;

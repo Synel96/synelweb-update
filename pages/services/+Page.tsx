@@ -1,48 +1,20 @@
-import { useEffect, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { ServiceCard } from "@/components/ServiceCard";
-import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
-import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import {
-  getServiceCards,
   type ServiceCard as ServiceCardItem,
-  type AppLang,
 } from "@/src/services/serviceCardsService";
 
+type Data = {
+  cards: ServiceCardItem[];
+  fetchError: boolean;
+  contactHref: string;
+};
+
 export default function Page() {
-  const pageContext = usePageContext() as { lang?: SupportedLang };
-  const lang = (pageContext.lang ?? DEFAULT_LANG) as AppLang;
+  const pageContext = usePageContext() as { data?: Data };
+  const { cards = [], fetchError = true, contactHref = "/contact" } = pageContext.data ?? {};
   const { t } = useTranslation();
-  const contactHref = `/${lang}/contact`;
-  const [cards, setCards] = useState<ServiceCardItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState(false);
-
-  useEffect(() => {
-    let mounted = true;
-
-    const load = async () => {
-      setIsLoading(true);
-      setFetchError(false);
-      try {
-        const items = await getServiceCards(lang);
-        if (mounted) setCards(items);
-      } catch {
-        if (mounted) {
-          setCards([]);
-          setFetchError(true);
-        }
-      } finally {
-        if (mounted) setIsLoading(false);
-      }
-    };
-
-    void load();
-    return () => {
-      mounted = false;
-    };
-  }, [lang]);
 
   return (
     <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
@@ -58,14 +30,7 @@ export default function Page() {
         </p>
       </header>
 
-      {isLoading ? (
-        <div className="grid items-start gap-6 lg:grid-cols-2" aria-hidden="true">
-          <ServiceCardSkeleton />
-          <ServiceCardSkeleton />
-          <ServiceCardSkeleton />
-          <ServiceCardSkeleton />
-        </div>
-      ) : fetchError || cards.length === 0 ? (
+      {fetchError || cards.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">
             {fetchError ? t("servicesPage.fetchError") : t("servicesPage.emptyState")}

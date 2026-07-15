@@ -5,8 +5,8 @@ import vikeReact from "vike-react/config";
 // https://vike.dev/config
 
 const config: Config = {
-  // Generate HTML at build-time and keep SPA-like navigation on the client.
-  server: false,
+  // Enable server-side rendering so pages output SEO-friendly HTML.
+  server: true,
   clientRouting: true,
 
   extends: [vikeReact],

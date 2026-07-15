@@ -1,45 +1,19 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ProjectShowcaseCard } from "@/components/ProjectShowcaseCard";
-import { ProjectsShowcaseSkeleton } from "@/components/ProjectsShowcaseSkeleton";
-import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
-import { getProjects, type Project } from "@/src/services/projectServices";
+import type { Project } from "@/src/services/projectServices";
 import { isTechnologyLogoName } from "@/components/TechnologyLogo";
-import type { AppLang } from "@/src/services/serviceCardsService";
+
+type Data = {
+  projects: Project[];
+  fetchError: boolean;
+};
 
 export default function Page() {
-  const pageContext = usePageContext() as { lang?: SupportedLang };
-  const lang = (pageContext.lang ?? DEFAULT_LANG) as AppLang;
   const { t } = useTranslation();
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState(false);
-
-  useEffect(() => {
-    let mounted = true;
-
-    const load = async () => {
-      setIsLoading(true);
-      setFetchError(false);
-      try {
-        const items = await getProjects(lang);
-        if (mounted) setProjects(items);
-      } catch {
-        if (mounted) {
-          setProjects([]);
-          setFetchError(true);
-        }
-      } finally {
-        if (mounted) setIsLoading(false);
-      }
-    };
-
-    void load();
-    return () => {
-      mounted = false;
-    };
-  }, [lang]);
+  const pageContext = usePageContext() as { data?: Data };
+  const { projects = [], fetchError = true } = pageContext.data ?? {};
 
   const scoreLabelMap = useMemo(
     () => ({
@@ -65,12 +39,7 @@ export default function Page() {
         </p>
       </header>
 
-      {isLoading ? (
-        <div className="space-y-6">
-          <ProjectsShowcaseSkeleton />
-          <ProjectsShowcaseSkeleton />
-        </div>
-      ) : fetchError || projects.length === 0 ? (
+      {fetchError || projects.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">
             {fetchError ? t("projectsPage.fetchError") : t("projectsPage.emptyState")}

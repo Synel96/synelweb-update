@@ -2,6 +2,7 @@ import { env } from "@/src/env";
 import type { AppLang } from "./serviceCardsService";
 
 type ApiBlogPost = {
+  id?: string | number;
   title?: string;
   description?: string;
   preview_image_url?: string | null;
@@ -18,7 +19,22 @@ export type BlogPost = {
   createdAt: string;
 };
 
-const BLOG_POSTS_ENDPOINT = `${env.VITE_API_BASE_URL}/blog/blogposts/`;
+const DEFAULT_PROD_API_BASE_URL = "https://synelweb.fly.dev";
+
+function resolveApiBaseUrl() {
+  const configured = env.VITE_API_BASE_URL.trim();
+
+  if (
+    import.meta.env.PROD &&
+    (configured.includes("127.0.0.1") || configured.includes("localhost"))
+  ) {
+    return DEFAULT_PROD_API_BASE_URL;
+  }
+
+  return configured;
+}
+
+const BLOG_POSTS_ENDPOINT = `${resolveApiBaseUrl()}/blog/blogposts/`;
 
 function normalizeText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -26,6 +42,12 @@ function normalizeText(value: unknown): string {
 
 function normalizeImageUrl(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
+}
+
+function normalizeId(value: unknown): string {
+  if (typeof value === "number" && Number.isFinite(value)) return String(value);
+  if (typeof value === "string") return value.trim();
+  return "";
 }
 
 export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
@@ -42,11 +64,12 @@ export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
   const data = (await response.json()) as ApiBlogPost[];
 
   return data.map((item, index) => {
+    const apiId = normalizeId(item.id);
     const title = normalizeText(item.title);
     const createdAt = normalizeText(item.created_at);
 
     return {
-      id: `${title || "blog-post"}-${createdAt || index}`,
+      id: apiId || `${title || "blog-post"}-${createdAt || "date"}-${index}`,
       title,
       description: normalizeText(item.description),
       previewImageUrl: normalizeImageUrl(item.preview_image_url),

@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import BlogPostsDisplay from "@/components/BlogPostsDisplay";
 import BlogPostsPagination from "@/components/BlogPostsPagination";
-import type { BlogPost } from "@/src/services/blogPostsService";
+import { getBlogPosts, type BlogPost } from "@/src/services/blogPostsService";
+import type { AppLang } from "@/src/services/serviceCardsService";
 
 type Data = {
   posts: BlogPost[];
@@ -12,12 +13,52 @@ type Data = {
 
 const POSTS_PER_PAGE = 6;
 
+function toAppLang(language: string): AppLang {
+  const normalized = language.toLowerCase();
+  if (normalized.startsWith("hu")) return "hu";
+  if (normalized.startsWith("de")) return "de";
+  return "en";
+}
+
 export default function Page() {
   const { t, i18n } = useTranslation();
   const pageContext = usePageContext() as { data?: Data };
-  const { posts = [], fetchError = true } = pageContext.data ?? {};
+  const initialPosts = pageContext.data?.posts ?? [];
+  const initialFetchError = pageContext.data?.fetchError ?? true;
+
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
+  const [fetchError, setFetchError] = useState(initialFetchError);
   const locale = i18n.resolvedLanguage || i18n.language || "en";
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setPosts(initialPosts);
+    setFetchError(initialFetchError);
+  }, [initialPosts, initialFetchError]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function refreshPosts() {
+      const lang = toAppLang(locale);
+
+      try {
+        const latestPosts = await getBlogPosts(lang);
+        if (!isMounted) return;
+
+        setPosts(latestPosts);
+        setFetchError(false);
+      } catch {
+        if (!isMounted) return;
+      }
+    }
+
+    refreshPosts();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [locale]);
 
   useEffect(() => {
     setCurrentPage(1);

@@ -23,6 +23,8 @@ function formatDate(value: string, locale: string) {
     year: "numeric",
     month: "long",
     day: "numeric",
+    // Keep SSR and client output identical to avoid hydration mismatch.
+    timeZone: "UTC",
   }).format(new Date(parsed));
 }
 

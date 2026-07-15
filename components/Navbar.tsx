@@ -54,9 +54,9 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md ${
+      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
         headerIsSolid
-          ? "border-white/10 bg-[rgba(11,15,25,0.88)] shadow-[0_14px_40px_-24px_rgba(0,0,0,0.5)]"
+          ? "border-white/10 bg-[rgba(11,15,25,0.88)] shadow-[0_14px_40px_-24px_rgba(0,0,0,0.5)] supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md"
           : "border-transparent bg-transparent shadow-none"
       }`}
     >

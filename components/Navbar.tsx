@@ -8,7 +8,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/s
 import { BRAND_NAME, NAV_LINKS } from "./site";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
-import { localizePath } from "@/src/localizedRoutes";
+import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,10 +17,8 @@ export function Navbar() {
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
   const { urlPathname } = pageContext;
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const isHome =
-    urlPathname === "/" ||
-    urlPathname === `/${lang}` ||
-    urlPathname === `/${lang}/`;
+  const { logicalPath } = resolveLanguageAndLogicalPath(urlPathname);
+  const isHome = logicalPath === "/";
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -40,7 +38,7 @@ export function Navbar() {
   const langHref = (href: string) => localizePath(href, lang);
 
   const isActive = (href: string) =>
-    href === "/" ? urlPathname === href : urlPathname.startsWith(href);
+    href === "/" ? logicalPath === href : logicalPath.startsWith(href);
 
   const navLinkClass = (href: string) =>
     isActive(href)

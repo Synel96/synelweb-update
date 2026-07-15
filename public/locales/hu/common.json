@@ -109,7 +109,8 @@
     },
     "categories": {
       "professional": "Szakmai",
-      "educational": "Oktatási"
+      "educational": "Oktatási",
+      "casual": "Könnyed"
     }
   },
   "underDevelopment": {

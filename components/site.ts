@@ -8,7 +8,15 @@ export const NAV_LINKS = [
   { href: "/", labelKey: "nav.home" },
   { href: "/services", labelKey: "nav.services" },
   { href: "/projects", labelKey: "nav.projects" },
-  { href: "/blog", labelKey: "nav.blog" },
+  {
+    href: "/blog",
+    labelKey: "nav.blog",
+    fallbackLabel: {
+      en: "Blog",
+      hu: "Blog",
+      de: "Blog",
+    } satisfies Record<SupportedLang, string>,
+  },
   { href: "/technology", labelKey: "nav.technology" },
   {
     href: "/contact",

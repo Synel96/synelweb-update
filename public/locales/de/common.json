@@ -108,7 +108,8 @@
     },
     "categories": {
       "professional": "Fachlich",
-      "educational": "Lehrreich"
+      "educational": "Lehrreich",
+      "casual": "Allgemein"
     }
   },
   "underDevelopment": {

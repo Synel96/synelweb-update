@@ -8,15 +8,11 @@ type BlogPostsDisplayProps = {
   t: TFunction;
 };
 
-function formatCategoryLabel(category: string, t: TFunction) {
+function formatCategoryLabel(category: string) {
   const normalized = category.trim().toLowerCase();
-  if (!normalized) return t("blogPage.categoryFallback");
-
-  const translationKey = `blogPage.categories.${normalized}` as const;
-  const translated = t(translationKey);
-  if (translated !== translationKey) return translated;
-
-  return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+  if (normalized === "casual" || normalized === "causula") return "Hétköznapi";
+  if (normalized === "professional") return "Szakmai";
+  return "Szakmai";
 }
 
 function formatDate(value: string, locale: string) {
@@ -40,7 +36,7 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
   return (
     <div className="grid gap-6 lg:grid-cols-2" data-reveal>
       {posts.map((post) => {
-        const categoryLabel = formatCategoryLabel(post.category, t);
+        const categoryLabel = formatCategoryLabel(post.category);
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
 

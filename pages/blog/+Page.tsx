@@ -31,6 +31,15 @@ export default function Page() {
   const locale = i18n.resolvedLanguage || i18n.language || "en";
   const [currentPage, setCurrentPage] = useState(1);
 
+  const blogLabel = t("blogPage.label", { defaultValue: "Blog" });
+  const blogTitle = t("blogPage.title", {
+    defaultValue: "Insights, practical notes, and web strategy articles.",
+  });
+  const blogIntro = t("blogPage.intro", {
+    defaultValue:
+      "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
+  });
+
   useEffect(() => {
     setPosts(initialPosts);
     setFetchError(initialFetchError);
@@ -83,12 +92,12 @@ export default function Page() {
     <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
       <header className="mb-10 max-w-3xl" data-reveal>
         <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-          {t("blogPage.label")}
+          {blogLabel}
         </p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("blogPage.title")}
+          {blogTitle}
         </h1>
-        <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">{t("blogPage.intro")}</p>
+        <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">{blogIntro}</p>
       </header>
 
       {fetchError ? (

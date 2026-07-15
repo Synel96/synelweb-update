@@ -108,7 +108,8 @@
     },
     "categories": {
       "professional": "Professional",
-      "educational": "Educational"
+      "educational": "Educational",
+      "casual": "Casual"
     }
   },
   "underDevelopment": {

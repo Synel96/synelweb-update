@@ -30,7 +30,7 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ) {
-  animation: content-reveal 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: content-reveal 940ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body.content-animate.content-ready
@@ -41,7 +41,7 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ):nth-child(1) {
-  animation-delay: 40ms;
+  animation-delay: 80ms;
 }
 
 body.content-animate.content-ready
@@ -52,7 +52,7 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ):nth-child(2) {
-  animation-delay: 90ms;
+  animation-delay: 160ms;
 }
 
 body.content-animate.content-ready
@@ -63,7 +63,7 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ):nth-child(3) {
-  animation-delay: 140ms;
+  animation-delay: 240ms;
 }
 
 body.content-animate.content-ready
@@ -74,7 +74,7 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ):nth-child(4) {
-  animation-delay: 190ms;
+  animation-delay: 320ms;
 }
 
 body.content-animate.content-ready
@@ -85,7 +85,21 @@ body.content-animate.content-ready
     [data-reveal-text],
     .page-reveal-item
   ):nth-child(n + 5) {
-  animation-delay: 240ms;
+  animation-delay: 400ms;
+}
+
+body.content-animate .hero-motto,
+body.content-animate .hero-support {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+body.content-animate.content-ready .hero-motto {
+  animation: hero-motto-reveal 1.05s cubic-bezier(0.16, 1, 0.3, 1) 140ms both;
+}
+
+body.content-animate.content-ready .hero-support {
+  animation: hero-support-reveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -97,6 +111,13 @@ body.content-animate.content-ready
       [data-reveal-text],
       .page-reveal-item
     ) {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  body.content-animate .hero-motto,
+  body.content-animate .hero-support {
     opacity: 1;
     transform: none;
     animation: none;
@@ -191,6 +212,30 @@ body.page-transition .page-loading-overlay {
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-motto-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-support-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

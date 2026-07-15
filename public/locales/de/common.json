@@ -111,7 +111,16 @@
       "professional": "Fachlich",
       "educational": "Lehrreich",
       "casual": "Allgemein"
-    }
+    },
+    "readMore": "Vollständigen Beitrag lesen"
+  },
+  "blogDetail": {
+    "backToList": "← Zurück zum Blog",
+    "fetchError": "Die Beitragsdetails konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "notFound": "Der angeforderte Beitrag wurde nicht gefunden.",
+    "emptySections": "Dieser Beitrag enthält derzeit keine detaillierten Abschnitte.",
+    "sectionFallbackTitle": "Abschnitt",
+    "sectionFallbackContent": "Für diesen Abschnitt gibt es derzeit keinen Inhalt."
   },
   "underDevelopment": {
     "title": "Diese Seite befindet sich in Entwicklung.",

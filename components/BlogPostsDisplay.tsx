@@ -1,5 +1,6 @@
 import type { TFunction } from "i18next";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import { DEFAULT_LANG, SUPPORTED_LANGS, type SupportedLang } from "@/src/i18n-config";
 import type { BlogPost } from "@/src/services/blogPostsService";
 
 type BlogPostsDisplayProps = {
@@ -10,9 +11,9 @@ type BlogPostsDisplayProps = {
 
 function formatCategoryLabel(category: string) {
   const normalized = category.trim().toLowerCase();
-  if (normalized === "casual" || normalized === "causula") return "Hétköznapi";
-  if (normalized === "professional") return "Szakmai";
-  return "Szakmai";
+  if (normalized === "casual") return "casual";
+  if (normalized === "educational") return "educational";
+  return "professional";
 }
 
 function formatDate(value: string, locale: string) {
@@ -34,13 +35,24 @@ function getPostPreviewImageUrl(url: string): string {
   return withCloudinaryAutoParams(normalized);
 }
 
+function resolveLangPrefix(locale: string): SupportedLang {
+  const base = locale.trim().toLowerCase().split(/[-_]/)[0];
+  return SUPPORTED_LANGS.find((lang) => lang === base) ?? DEFAULT_LANG;
+}
+
 export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayProps) {
+  const langPrefix = resolveLangPrefix(locale);
+
   return (
     <div className="grid gap-6 lg:grid-cols-2" data-reveal>
       {posts.map((post) => {
-        const categoryLabel = formatCategoryLabel(post.category);
+        const categoryKey = formatCategoryLabel(post.category);
+        const categoryLabel = t(`blogPage.categories.${categoryKey}`, {
+          defaultValue: t("blogPage.categoryFallback"),
+        });
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
+        const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;
 
         return (
           <article
@@ -73,6 +85,15 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
               <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
                 {post.description || t("blogPage.descriptionFallback")}
               </p>
+
+              <div className="mt-6">
+                <a
+                  href={detailHref}
+                  className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
+                >
+                  {t("blogPage.readMore", { defaultValue: "Teljes cikk" })}
+                </a>
+              </div>
             </div>
           </article>
         );

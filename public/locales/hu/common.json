@@ -111,7 +111,16 @@
       "professional": "Szakmai",
       "educational": "Oktatási",
       "casual": "Könnyed"
-    }
+    },
+    "readMore": "Teljes cikk"
+  },
+  "blogDetail": {
+    "backToList": "← Vissza a bloghoz",
+    "fetchError": "A bejegyzés részletei most nem tölthetők be. Kérlek, próbáld meg később.",
+    "notFound": "A keresett bejegyzés nem található.",
+    "emptySections": "Ehhez a bejegyzéshez jelenleg nincs részletes tartalom.",
+    "sectionFallbackTitle": "Szekció",
+    "sectionFallbackContent": "Ehhez a szekcióhoz jelenleg nincs tartalom."
   },
   "underDevelopment": {
     "title": "Ez az oldal fejlesztés alatt áll.",

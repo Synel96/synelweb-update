@@ -31,7 +31,7 @@ export default function Page() {
 
   return (
     <>
-      <section className="relative min-h-svh overflow-hidden">
+      <section className="relative min-h-svh overflow-hidden" data-home-hero>
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full object-cover object-[center_38%]"

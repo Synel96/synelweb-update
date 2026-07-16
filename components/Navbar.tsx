@@ -12,7 +12,7 @@ import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRout
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
+  const [homeScrollProgress, setHomeScrollProgress] = useState(0);
   const mounted = useMounted();
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
   const { urlPathname } = pageContext;
@@ -25,13 +25,24 @@ export function Navbar() {
     if (!isHome) return;
 
     const updateScrolledState = () => {
-      const nextHasScrolled = window.scrollY > 12;
-      setHasScrolled((current) => (current === nextHasScrolled ? current : nextHasScrolled));
+      const heroSection = document.querySelector<HTMLElement>("[data-home-hero]");
+      const heroBottom = heroSection
+        ? heroSection.offsetTop + heroSection.offsetHeight
+        : window.innerHeight;
+      const nextProgress = Math.min(1, Math.max(0, window.scrollY / heroBottom));
+
+      setHomeScrollProgress((current) =>
+        Math.abs(current - nextProgress) < 0.01 ? current : nextProgress,
+      );
     };
 
     updateScrolledState();
     window.addEventListener("scroll", updateScrolledState, { passive: true });
-    return () => window.removeEventListener("scroll", updateScrolledState);
+    window.addEventListener("resize", updateScrolledState);
+    return () => {
+      window.removeEventListener("scroll", updateScrolledState);
+      window.removeEventListener("resize", updateScrolledState);
+    };
   }, [isHome]);
 
   // Build a URL with the current lang prefix
@@ -50,15 +61,20 @@ export function Navbar() {
       defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
     });
 
-  const headerIsSolid = !isHome || hasScrolled;
+  const navbarAlpha = isHome ? 0.88 * homeScrollProgress : 0.88;
+  const navbarBorderAlpha = isHome ? 0.1 * homeScrollProgress : 0.1;
+  const navbarShadowAlpha = isHome ? 0.5 * homeScrollProgress : 0.5;
+  const navbarBlur = isHome ? 12 * homeScrollProgress : 12;
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ${
-        headerIsSolid
-          ? "border-white/10 bg-[rgba(11,15,25,0.88)] shadow-[0_14px_40px_-24px_rgba(0,0,0,0.5)] supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)] supports-backdrop-filter:backdrop-blur-md"
-          : "border-transparent bg-transparent shadow-none"
-      }`}
+      className="fixed top-0 right-0 left-0 z-50 border-b text-(--brand-on-surface) transition-[background-color,border-color,box-shadow,backdrop-filter] duration-150"
+      style={{
+        borderColor: `rgba(255,255,255,${navbarBorderAlpha})`,
+        backgroundColor: `rgba(11,15,25,${navbarAlpha})`,
+        boxShadow: `0 14px 40px -24px rgba(0,0,0,${navbarShadowAlpha})`,
+        backdropFilter: `blur(${navbarBlur}px)`,
+      }}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a

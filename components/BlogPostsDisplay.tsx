@@ -24,13 +24,25 @@ function formatDate(value: string, locale: string) {
   const parsed = Date.parse(value);
   if (Number.isNaN(parsed)) return "";
 
-  return new Intl.DateTimeFormat(locale, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    // Keep SSR and client output identical to avoid hydration mismatch.
-    timeZone: "UTC",
-  }).format(new Date(parsed));
+  const date = new Date(parsed);
+  const year = date.getUTCFullYear();
+  const huMonths = [
+    "január",
+    "február",
+    "március",
+    "április",
+    "május",
+    "június",
+    "július",
+    "augusztus",
+    "szeptember",
+    "október",
+    "november",
+    "december",
+  ];
+  const month = huMonths[date.getUTCMonth()];
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}. ${month} ${day}.`;
 }
 
 function getPostPreviewImageUrl(url: string): string {

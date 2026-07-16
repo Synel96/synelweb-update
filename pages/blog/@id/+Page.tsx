@@ -19,12 +19,25 @@ function formatDate(value: string, locale: string) {
   const parsed = Date.parse(value);
   if (Number.isNaN(parsed)) return "";
 
-  return new Intl.DateTimeFormat(locale, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(parsed));
+  const date = new Date(parsed);
+  const year = date.getUTCFullYear();
+  const huMonths = [
+    "január",
+    "február",
+    "március",
+    "április",
+    "május",
+    "június",
+    "július",
+    "augusztus",
+    "szeptember",
+    "október",
+    "november",
+    "december",
+  ];
+  const month = huMonths[date.getUTCMonth()];
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}. ${month} ${day}.`;
 }
 
 function getPostPreviewImageUrl(url: string): string {
@@ -58,12 +71,19 @@ export default function Page() {
   const blogListHref = `/${pageContext.lang ?? "en"}/blog`;
   const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
   const backToTopLabel = translateWithFallback(t, "blogDetail.backToTop", "↑ Oldal tetejére");
+  const notFoundLabel = translateWithFallback(t, "blogDetail.notFound", "A keresett bejegyzés nem található.");
+  const fetchErrorLabel = translateWithFallback(
+    t,
+    "blogDetail.fetchError",
+    "A bejegyzés részletei most nem tölthetők be. Kérlek, próbáld meg később.",
+  );
+  const blogLabel = translateWithFallback(t, "blogPage.label", "Blog");
 
   if (data.notFound) {
     return (
       <section className="mx-auto w-full max-w-4xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
-          <p className="text-base text-white/86">{t("blogDetail.notFound")}</p>
+          <p className="text-base text-white/86">{notFoundLabel}</p>
           <a
             href={blogListHref}
             className="mt-6 inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
@@ -79,7 +99,7 @@ export default function Page() {
     return (
       <section className="mx-auto w-full max-w-4xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
-          <p className="text-base text-white/86">{t("blogDetail.fetchError")}</p>
+          <p className="text-base text-white/86">{fetchErrorLabel}</p>
           <a
             href={blogListHref}
             className="mt-6 inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
@@ -124,7 +144,7 @@ export default function Page() {
 
         <div className="px-6 pt-6 pb-7 sm:px-10 sm:pt-8 sm:pb-9">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.16em] uppercase">
-            <p className="text-(--accent)">{t("blogPage.label")}</p>
+            <p className="text-(--accent)">{blogLabel}</p>
             <span className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-(--accent)">
               {categoryLabel}
             </span>

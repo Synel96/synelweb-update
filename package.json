@@ -2,7 +2,7 @@
   "name": "hydration-starter-kit",
   "scripts": {
     "dev": "vite",
-    "build": "vike build",
+    "build": "vike build && node scripts/sync-server-css-assets.mjs",
     "preview": "vike build && node scripts/preview-static.mjs"
   },
   "dependencies": {

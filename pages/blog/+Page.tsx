@@ -21,7 +21,7 @@ function toAppLang(language: string): AppLang {
 }
 
 export default function Page() {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation("common");
   const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
   const initialPosts = pageContext.data?.posts ?? [];
   const initialFetchError = pageContext.data?.fetchError ?? true;
@@ -29,7 +29,7 @@ export default function Page() {
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [fetchError, setFetchError] = useState(initialFetchError);
   const routeLang = pageContext.lang ?? "en";
-  const t = i18n.getFixedT(routeLang);
+  const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
   const isHungarianLocale = routeLang === "hu";
   const [currentPage, setCurrentPage] = useState(1);

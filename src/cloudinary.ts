@@ -3,6 +3,7 @@ import { env } from "@/src/env";
 const CLOUDINARY_VIDEO_UPLOAD_BASE = `https://res.cloudinary.com/${env.VITE_CLOUDINARY_CLOUD_NAME}/video/upload/`;
 const CLOUDINARY_IMAGE_UPLOAD_BASE = `https://res.cloudinary.com/${env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload/`;
 const CLOUDINARY_IMAGE_UPLOAD_SEGMENT = "/image/upload/";
+const CLOUDINARY_IMAGE_FETCH_SEGMENT = "/image/fetch/";
 
 function isVersionSegment(segment: string) {
   return /^v\d+$/.test(segment);
@@ -11,9 +12,17 @@ function isVersionSegment(segment: string) {
 function splitCloudinaryImageUrl(url: string) {
   const trimmed = url.trim();
   const uploadIndex = trimmed.indexOf(CLOUDINARY_IMAGE_UPLOAD_SEGMENT);
-  if (uploadIndex === -1) return null;
+  if (uploadIndex !== -1) {
+    const prefixEnd = uploadIndex + CLOUDINARY_IMAGE_UPLOAD_SEGMENT.length;
+    const prefix = trimmed.slice(0, prefixEnd);
+    const remainder = trimmed.slice(prefixEnd);
+    return { prefix, remainder };
+  }
 
-  const prefixEnd = uploadIndex + CLOUDINARY_IMAGE_UPLOAD_SEGMENT.length;
+  const fetchIndex = trimmed.indexOf(CLOUDINARY_IMAGE_FETCH_SEGMENT);
+  if (fetchIndex === -1) return null;
+
+  const prefixEnd = fetchIndex + CLOUDINARY_IMAGE_FETCH_SEGMENT.length;
   const prefix = trimmed.slice(0, prefixEnd);
   const remainder = trimmed.slice(prefixEnd);
   return { prefix, remainder };

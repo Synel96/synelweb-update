@@ -12,7 +12,6 @@ type Data = {
 function normalizeCategory(category: string) {
   const normalized = category.trim().toLowerCase();
   if (normalized === "casual") return "casual";
-  if (normalized === "educational") return "educational";
   return "professional";
 }
 
@@ -34,8 +33,17 @@ function getPostPreviewImageUrl(url: string): string {
   return withCloudinaryAutoParams(normalized);
 }
 
+function translateWithFallback(
+  t: (key: string, options?: { defaultValue?: string }) => string,
+  key: string,
+  fallback: string,
+) {
+  const value = t(key, { defaultValue: fallback });
+  return value === key ? fallback : value;
+}
+
 export default function Page() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
 
   const data = pageContext.data ?? {
@@ -44,8 +52,11 @@ export default function Page() {
     notFound: false,
   };
 
-  const locale = i18n.resolvedLanguage || i18n.language || "en";
+  const routeLang = pageContext.lang ?? "en";
+  const t = i18n.getFixedT(routeLang);
+  const locale = routeLang;
   const blogListHref = `/${pageContext.lang ?? "en"}/blog`;
+  const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
 
   if (data.notFound) {
     return (
@@ -56,7 +67,7 @@ export default function Page() {
             href={blogListHref}
             className="mt-6 inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
           >
-            {t("blogDetail.backToList")}
+            {backToListLabel}
           </a>
         </div>
       </section>
@@ -72,7 +83,7 @@ export default function Page() {
             href={blogListHref}
             className="mt-6 inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
           >
-            {t("blogDetail.backToList")}
+            {backToListLabel}
           </a>
         </div>
       </section>
@@ -81,9 +92,10 @@ export default function Page() {
 
   const { post } = data;
   const categoryKey = normalizeCategory(post.category);
-  const categoryLabel = t(`blogPage.categories.${categoryKey}`, {
-    defaultValue: t("blogPage.categoryFallback"),
-  });
+  const categoryLabel =
+    categoryKey === "casual"
+      ? translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi")
+      : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
   const createdAtLabel = formatDate(post.createdAt, locale);
   const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
 
@@ -93,7 +105,7 @@ export default function Page() {
         href={blogListHref}
         className="mb-6 inline-flex items-center text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:text-white"
       >
-        {t("blogDetail.backToList")}
+        {backToListLabel}
       </a>
 
       <header className="overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(160deg,rgba(14,20,38,0.95),rgba(8,12,24,0.96))] shadow-[0_24px_80px_-42px_rgba(0,0,0,0.72)]">

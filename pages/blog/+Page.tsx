@@ -21,15 +21,17 @@ function toAppLang(language: string): AppLang {
 }
 
 export default function Page() {
-  const { t, i18n } = useTranslation();
-  const pageContext = usePageContext() as { data?: Data };
+  const { i18n } = useTranslation();
+  const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
   const initialPosts = pageContext.data?.posts ?? [];
   const initialFetchError = pageContext.data?.fetchError ?? true;
 
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [fetchError, setFetchError] = useState(initialFetchError);
-  const locale = i18n.resolvedLanguage || i18n.language || "en";
-  const isHungarianLocale = locale.toLowerCase().startsWith("hu");
+  const routeLang = pageContext.lang ?? "en";
+  const t = i18n.getFixedT(routeLang);
+  const locale = routeLang;
+  const isHungarianLocale = routeLang === "hu";
   const [currentPage, setCurrentPage] = useState(1);
 
   const blogLabel = t("blogPage.label", { defaultValue: "Blog" });
@@ -50,7 +52,7 @@ export default function Page() {
     let isMounted = true;
 
     async function refreshPosts() {
-      const lang = toAppLang(locale);
+      const lang = toAppLang(routeLang);
 
       try {
         const latestPosts = await getBlogPosts(lang);
@@ -68,7 +70,7 @@ export default function Page() {
     return () => {
       isMounted = false;
     };
-  }, [locale]);
+  }, [routeLang]);
 
   useEffect(() => {
     setCurrentPage(1);

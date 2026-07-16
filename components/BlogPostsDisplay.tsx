@@ -9,10 +9,14 @@ type BlogPostsDisplayProps = {
   t: TFunction;
 };
 
+function translateWithFallback(t: TFunction, key: string, fallback: string) {
+  const value = t(key, { defaultValue: fallback });
+  return value === key ? fallback : value;
+}
+
 function formatCategoryLabel(category: string) {
   const normalized = category.trim().toLowerCase();
   if (normalized === "casual") return "casual";
-  if (normalized === "educational") return "educational";
   return "professional";
 }
 
@@ -47,9 +51,10 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
     <div className="grid gap-6 lg:grid-cols-2" data-reveal>
       {posts.map((post) => {
         const categoryKey = formatCategoryLabel(post.category);
-        const categoryLabel = t(`blogPage.categories.${categoryKey}`, {
-          defaultValue: t("blogPage.categoryFallback"),
-        });
+        const categoryLabel =
+          categoryKey === "casual"
+            ? translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi")
+            : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
         const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;
@@ -91,7 +96,7 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
                   href={detailHref}
                   className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
                 >
-                  {t("blogPage.readMore", { defaultValue: "Teljes cikk" })}
+                  {translateWithFallback(t, "blogPage.readMore", "Teljes cikk")}
                 </a>
               </div>
             </div>

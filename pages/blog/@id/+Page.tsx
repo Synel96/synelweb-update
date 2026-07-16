@@ -43,7 +43,7 @@ function translateWithFallback(
 }
 
 export default function Page() {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation("common");
   const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
 
   const data = pageContext.data ?? {
@@ -53,10 +53,11 @@ export default function Page() {
   };
 
   const routeLang = pageContext.lang ?? "en";
-  const t = i18n.getFixedT(routeLang);
+  const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
   const blogListHref = `/${pageContext.lang ?? "en"}/blog`;
   const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
+  const backToTopLabel = translateWithFallback(t, "blogDetail.backToTop", "↑ Oldal tetejére");
 
   if (data.notFound) {
     return (
@@ -100,7 +101,7 @@ export default function Page() {
   const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
 
   return (
-    <article className="mx-auto w-full max-w-4xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
+    <article id="blog-post-top" className="mx-auto w-full max-w-4xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
       <a
         href={blogListHref}
         className="mb-6 inline-flex items-center text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:text-white"
@@ -156,6 +157,21 @@ export default function Page() {
           ))
         )}
       </section>
+
+      <div className="mt-10 flex flex-wrap items-center gap-3">
+        <a
+          href={blogListHref}
+          className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
+        >
+          {backToListLabel}
+        </a>
+        <a
+          href="#blog-post-top"
+          className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"
+        >
+          {backToTopLabel}
+        </a>
+      </div>
     </article>
   );
 }

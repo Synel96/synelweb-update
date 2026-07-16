@@ -116,6 +116,7 @@
   },
   "blogDetail": {
     "backToList": "← Zurück zum Blog",
+    "backToTop": "↑ Nach oben",
     "fetchError": "Die Beitragsdetails konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "notFound": "Der angeforderte Beitrag wurde nicht gefunden.",
     "emptySections": "Dieser Beitrag enthält derzeit keine detaillierten Abschnitte.",

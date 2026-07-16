@@ -2,7 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import BlogPostsDisplay from "@/components/BlogPostsDisplay";
+import BlogPostsDisplaySkeleton from "@/components/BlogPostsDisplaySkeleton";
 import BlogPostsPagination from "@/components/BlogPostsPagination";
+import BlogPostsPaginationSkeleton from "@/components/BlogPostsPaginationSkeleton";
 import { getBlogPosts, type BlogPost } from "@/src/services/blogPostsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
@@ -37,6 +39,7 @@ export default function Page() {
 
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [fetchError, setFetchError] = useState(initialFetchError);
+  const [isLoading, setIsLoading] = useState(initialPosts.length === 0 && !initialFetchError);
   const routeLang = pageContext.lang ?? "en";
   const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
@@ -73,6 +76,7 @@ export default function Page() {
   useEffect(() => {
     setPosts(initialPosts);
     setFetchError(initialFetchError);
+    setIsLoading(initialPosts.length === 0 && !initialFetchError);
   }, [initialPosts, initialFetchError]);
 
   useEffect(() => {
@@ -80,6 +84,8 @@ export default function Page() {
 
     async function refreshPosts() {
       const lang = toAppLang(routeLang);
+      setIsLoading(true);
+      setFetchError(false);
 
       try {
         const latestPosts = await getBlogPosts(lang);
@@ -89,6 +95,10 @@ export default function Page() {
         setFetchError(false);
       } catch {
         if (!isMounted) return;
+        setFetchError(true);
+      } finally {
+        if (!isMounted) return;
+        setIsLoading(false);
       }
     }
 
@@ -139,7 +149,12 @@ export default function Page() {
         </div>
       ) : null}
 
-      {fetchError ? (
+      {isLoading ? (
+        <>
+          <BlogPostsDisplaySkeleton />
+          <BlogPostsPaginationSkeleton />
+        </>
+      ) : fetchError ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">{fetchErrorLabel}</p>
         </div>

@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
+import SharePostButton from "@/components/SharePostButton";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
@@ -119,6 +120,16 @@ export default function Page() {
       : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
   const createdAtLabel = formatDate(post.createdAt, locale);
   const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
+  const postHref = `/${routeLang}/blog/${encodeURIComponent(post.id)}`;
+  const shareActionLabel = translateWithFallback(t, "blogPage.share.action", "Megosztás");
+  const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", "Link másolása");
+  const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", "Link másolva");
+  const shareFallbackTitle = translateWithFallback(t, "blogPage.share.fallbackTitle", "Megosztás");
+  const shareNativeHintLabel = translateWithFallback(
+    t,
+    "blogPage.share.nativeHint",
+    "Instagram/Story opció mobilon a rendszer megosztóban érhető el.",
+  );
 
   return (
     <article id="blog-post-top" className="mx-auto w-full max-w-4xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
@@ -185,6 +196,17 @@ export default function Page() {
         >
           {backToListLabel}
         </a>
+        <SharePostButton
+          url={postHref}
+          title={post.title || t("blogPage.untitled")}
+          text={post.description || ""}
+          actionLabel={shareActionLabel}
+          copyLabel={shareCopyLabel}
+          copiedLabel={shareCopiedLabel}
+          fallbackTitle={shareFallbackTitle}
+          nativeHintLabel={shareNativeHintLabel}
+          className="inline-flex items-center rounded-full border border-white/20 bg-white/6 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"
+        />
         <a
           href="#blog-post-top"
           className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"

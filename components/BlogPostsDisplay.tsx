@@ -1,5 +1,6 @@
 import type { TFunction } from "i18next";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import SharePostButton from "@/components/SharePostButton";
 import { DEFAULT_LANG, SUPPORTED_LANGS, type SupportedLang } from "@/src/i18n-config";
 import type { BlogPost } from "@/src/services/blogPostsService";
 
@@ -58,6 +59,15 @@ function resolveLangPrefix(locale: string): SupportedLang {
 
 export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayProps) {
   const langPrefix = resolveLangPrefix(locale);
+  const shareActionLabel = translateWithFallback(t, "blogPage.share.action", "Megosztás");
+  const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", "Link másolása");
+  const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", "Link másolva");
+  const shareFallbackTitle = translateWithFallback(t, "blogPage.share.fallbackTitle", "Megosztás");
+  const shareNativeHintLabel = translateWithFallback(
+    t,
+    "blogPage.share.nativeHint",
+    "Instagram/Story opció mobilon a rendszer megosztóban érhető el.",
+  );
 
   return (
     <div className="grid gap-6 lg:grid-cols-2" data-reveal>
@@ -103,13 +113,24 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
                 {post.description || t("blogPage.descriptionFallback")}
               </p>
 
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap items-center gap-3">
                 <a
                   href={detailHref}
                   className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
                 >
                   {translateWithFallback(t, "blogPage.readMore", "Teljes cikk")}
                 </a>
+                <SharePostButton
+                  url={detailHref}
+                  title={post.title || t("blogPage.untitled")}
+                  text={post.description || ""}
+                  actionLabel={shareActionLabel}
+                  copyLabel={shareCopyLabel}
+                  copiedLabel={shareCopiedLabel}
+                  fallbackTitle={shareFallbackTitle}
+                  nativeHintLabel={shareNativeHintLabel}
+                  className="inline-flex items-center rounded-full border border-white/20 bg-white/6 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"
+                />
               </div>
             </div>
           </article>

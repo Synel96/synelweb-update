@@ -13,6 +13,15 @@ type Data = {
 
 const POSTS_PER_PAGE = 6;
 
+function translateWithFallback(
+  t: (key: string, options?: { defaultValue?: string }) => string,
+  key: string,
+  fallback: string,
+) {
+  const value = t(key, { defaultValue: fallback });
+  return value === key ? fallback : value;
+}
+
 function toAppLang(language: string): AppLang {
   const normalized = language.toLowerCase();
   if (normalized.startsWith("hu")) return "hu";
@@ -34,14 +43,32 @@ export default function Page() {
   const isHungarianLocale = routeLang === "hu";
   const [currentPage, setCurrentPage] = useState(1);
 
-  const blogLabel = t("blogPage.label", { defaultValue: "Blog" });
-  const blogTitle = t("blogPage.title", {
-    defaultValue: "Insights, practical notes, and web strategy articles.",
-  });
-  const blogIntro = t("blogPage.intro", {
-    defaultValue:
-      "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
-  });
+  const blogLabel = translateWithFallback(t, "blogPage.label", "Blog");
+  const blogTitle = translateWithFallback(
+    t,
+    "blogPage.title",
+    "Insights, practical notes, and web strategy articles.",
+  );
+  const blogIntro = translateWithFallback(
+    t,
+    "blogPage.intro",
+    "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
+  );
+  const languageNotice = translateWithFallback(
+    t,
+    "blogPage.languageNotice",
+    "This blog is currently available only in Hungarian.",
+  );
+  const fetchErrorLabel = translateWithFallback(
+    t,
+    "blogPage.fetchError",
+    "Blog posts could not be loaded right now. Please try again later.",
+  );
+  const emptyStateLabel = translateWithFallback(
+    t,
+    "blogPage.emptyState",
+    "No blog posts are available right now.",
+  );
 
   useEffect(() => {
     setPosts(initialPosts);
@@ -108,21 +135,17 @@ export default function Page() {
           className="mb-8 rounded-2xl border border-amber-300/40 bg-amber-500/10 px-5 py-4"
           role="status"
         >
-          <p className="text-sm font-medium leading-7 text-amber-100 sm:text-base">
-            {t("blogPage.languageNotice", {
-              defaultValue: "This blog is currently available only in Hungarian.",
-            })}
-          </p>
+          <p className="text-sm font-medium leading-7 text-amber-100 sm:text-base">{languageNotice}</p>
         </div>
       ) : null}
 
       {fetchError ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
-          <p className="text-base text-white/86">{t("blogPage.fetchError")}</p>
+          <p className="text-base text-white/86">{fetchErrorLabel}</p>
         </div>
       ) : posts.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
-          <p className="text-base text-white/86">{t("blogPage.emptyState")}</p>
+          <p className="text-base text-white/86">{emptyStateLabel}</p>
         </div>
       ) : (
         <>

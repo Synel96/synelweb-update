@@ -112,7 +112,14 @@
       "educational": "Educational",
       "casual": "Casual"
     },
-    "readMore": "Read full post"
+    "readMore": "Read full post",
+    "share": {
+      "action": "Share",
+      "fallbackTitle": "Share",
+      "copy": "Copy link",
+      "copied": "Link copied",
+      "nativeHint": "Instagram/Story options are available in the native share sheet on mobile."
+    }
   },
   "blogDetail": {
     "backToList": "← Back to blog",

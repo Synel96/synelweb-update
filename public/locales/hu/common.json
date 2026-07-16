@@ -112,7 +112,14 @@
       "educational": "Oktatási",
       "casual": "Hétköznapi"
     },
-    "readMore": "Teljes cikk"
+    "readMore": "Teljes cikk",
+    "share": {
+      "action": "Megosztás",
+      "fallbackTitle": "Megosztás",
+      "copy": "Link másolása",
+      "copied": "Link másolva",
+      "nativeHint": "Instagram/Story opció mobilon a rendszer megosztóban érhető el."
+    }
   },
   "blogDetail": {
     "backToList": "← Vissza a bloghoz",

@@ -112,7 +112,14 @@
       "educational": "Lehrreich",
       "casual": "Allgemein"
     },
-    "readMore": "Vollständigen Beitrag lesen"
+    "readMore": "Vollständigen Beitrag lesen",
+    "share": {
+      "action": "Teilen",
+      "fallbackTitle": "Teilen",
+      "copy": "Link kopieren",
+      "copied": "Link kopiert",
+      "nativeHint": "Instagram/Story-Optionen sind auf Mobilgeräten im nativen Teilen-Menü verfügbar."
+    }
   },
   "blogDetail": {
     "backToList": "← Zurück zum Blog",

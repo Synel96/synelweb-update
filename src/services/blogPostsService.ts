@@ -30,6 +30,7 @@ type ApiBlogSection = {
 type ApiBlogPostDetail = {
   id?: string | number;
   title?: string;
+  description?: string;
   preview_image_url?: string | null;
   category?: string;
   created_at?: string;
@@ -55,6 +56,7 @@ export type BlogPostSection = {
 export type BlogPostDetail = {
   id: string;
   title: string;
+  description: string;
   previewImageUrl: string;
   category: string;
   createdAt: string;
@@ -149,6 +151,7 @@ export async function getBlogPostDetail(id: string, lang: AppLang): Promise<Blog
   return {
     id: resolvedId,
     title: normalizeText(data.title),
+    description: normalizeText(data.description),
     previewImageUrl: normalizeImageUrl(data.preview_image_url),
     category: normalizeText(data.category),
     createdAt: normalizeText(data.created_at),

@@ -1,6 +1,7 @@
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import {
   BlogApiError,
+  getBlogPosts,
   getBlogPostDetail,
   type BlogPostDetail,
 } from "@/src/services/blogPostsService";
@@ -33,10 +34,18 @@ export async function data(pageContext: PageContext) {
   const lang = toAppLang(pageContext.lang ?? DEFAULT_LANG);
 
   try {
-    const post = await getBlogPostDetail(id, lang);
+    const [post, posts] = await Promise.all([
+      getBlogPostDetail(id, lang),
+      getBlogPosts(lang).catch(() => []),
+    ]);
+    const listEntry = posts.find((item) => item.id === post.id || item.id === id);
+    const resolvedDescription = post.description || listEntry?.description || "";
 
     return {
-      post,
+      post: {
+        ...post,
+        description: resolvedDescription,
+      },
       fetchError: false,
       notFound: false,
     };

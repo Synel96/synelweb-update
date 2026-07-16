@@ -13,6 +13,7 @@ type BuildMetaInput = {
   lang: SupportedLang;
   title?: string | null;
   description?: string | null;
+  image?: string | null;
 };
 
 export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>> = {
@@ -131,7 +132,7 @@ export function getSeoEntry(pathname: string, lang: SupportedLang): SeoEntry {
   return PAGE_SEO[lang][logicalPath] ?? { title: BRAND_NAME, description: "" };
 }
 
-export function buildMeta({ pathname, lang, title, description }: BuildMetaInput) {
+export function buildMeta({ pathname, lang, title, description, image }: BuildMetaInput) {
   const logicalPath = normalizeLogicalPath(pathname) as KnownLogicalPath;
   const fallbackMeta = getSeoEntry(logicalPath, lang);
   const canonicalUrl = new URL(localizePath(logicalPath, lang), SITE_URL).toString();
@@ -140,6 +141,7 @@ export function buildMeta({ pathname, lang, title, description }: BuildMetaInput
     description && description.trim().length > 0
       ? description
       : fallbackMeta.description;
+  const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/me.webp`;
 
   // hreflang alternates for every supported language + x-default pointing to default lang
   const alternates = [
@@ -157,7 +159,7 @@ export function buildMeta({ pathname, lang, title, description }: BuildMetaInput
     canonicalUrl,
     title: resolvedTitle,
     description: resolvedDescription,
-    image: `${SITE_URL}/me.webp`,
+    image: resolvedImage,
     alternates,
   };
 }

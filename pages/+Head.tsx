@@ -7,6 +7,26 @@ import { SITE_URL, BRAND_NAME } from "../components/site";
 import { buildMeta } from "../src/seo";
 import { DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
 import { resolveLanguageAndLogicalPath } from "../src/localizedRoutes";
+import { withCloudinaryAutoParams } from "@/src/cloudinary";
+
+type BlogDetailData = {
+  post?: {
+    title?: string;
+    description?: string;
+    previewImageUrl?: string;
+  } | null;
+};
+
+function toAbsoluteUrl(url: string): string {
+  const trimmed = url.trim();
+  if (!trimmed) return "";
+
+  try {
+    return new URL(trimmed, SITE_URL).toString();
+  } catch {
+    return "";
+  }
+}
 
 const HERO_VIDEO_POSTER_URL =
   "https://res.cloudinary.com/dmwulp3dl/image/upload/f_auto,q_auto:low,w_960,c_limit,dpr_auto/v1784120435/coverr-temp-sftfwatermarkedvideo00436be495bc341e4b7274f83a560daa2mp4-5896-1080p_1__exported_0_dkidt5.webp";
@@ -15,11 +35,21 @@ export function Head() {
   const pageContext = usePageContext() as {
     urlPathname: string;
     lang?: SupportedLang;
+    data?: BlogDetailData;
   };
   const lang = pageContext.lang ?? DEFAULT_LANG;
+  const postTitle = pageContext.data?.post?.title?.trim() ?? "";
+  const postDescription = pageContext.data?.post?.description?.trim() ?? "";
+  const postPreviewImage = pageContext.data?.post?.previewImageUrl?.trim() ?? "";
+  const resolvedPostImage = postPreviewImage
+    ? toAbsoluteUrl(withCloudinaryAutoParams(postPreviewImage))
+    : "";
   const meta = buildMeta({
     pathname: pageContext.urlPathname,
     lang,
+    title: postTitle || null,
+    description: postDescription || null,
+    image: resolvedPostImage || null,
   });
   const { logicalPath } = resolveLanguageAndLogicalPath(pageContext.urlPathname);
   const isHomePage = logicalPath === "/";
@@ -45,6 +75,8 @@ export function Head() {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={lang} />
       <meta property="og:url" content={meta.canonicalUrl} />
+      <meta property="og:title" content={meta.title} />
+      <meta property="og:description" content={meta.description} />
       <meta property="og:image" content={meta.image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={meta.canonicalUrl} />

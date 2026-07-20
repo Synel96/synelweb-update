@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://synelweb.hu/en/</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/" />
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/services</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/services" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/szolgaltatasok" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/dienstleistungen" />
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/projects</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/projects" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/projektek" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/projekte" />
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/technology</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/technology" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/technologia" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/technologie" />
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/about</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/about" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/rolam" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/ueber-mich" />
@@ -42,10 +42,26 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/contact</loc>
-    <lastmod>2026-07-15</lastmod>
+    <lastmod>2026-07-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/contact" />
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/kapcsolat" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/kontakt" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://synelweb.hu/en/contact" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/en/blog</loc>
+    <lastmod>2026-07-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/blog" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://synelweb.hu/en/blog" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/en/blog/1</loc>
+    <lastmod>2026-07-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/blog/1" />
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/1" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/blog/1" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://synelweb.hu/en/blog/1" />
   </url>
 </urlset>

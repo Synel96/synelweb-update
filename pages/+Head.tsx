@@ -51,6 +51,42 @@ export function Head() {
 
   return (
     <>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(() => {
+  if (!Array.prototype.at) {
+    Object.defineProperty(Array.prototype, "at", {
+      value: function (n) {
+        const len = this.length >>> 0;
+        let index = Number(n) || 0;
+        if (index < 0) index += len;
+        if (index < 0 || index >= len) return undefined;
+        return this[index];
+      },
+      writable: true,
+      enumerable: false,
+      configurable: true
+    });
+  }
+
+  if (!String.prototype.at) {
+    Object.defineProperty(String.prototype, "at", {
+      value: function (n) {
+        const s = String(this);
+        const len = s.length;
+        let index = Number(n) || 0;
+        if (index < 0) index += len;
+        if (index < 0 || index >= len) return undefined;
+        return s.charAt(index);
+      },
+      writable: true,
+      enumerable: false,
+      configurable: true
+    });
+  }
+})();`,
+        }}
+      />
       <meta name="google" content="notranslate" />
       <link rel="icon" type="image/svg+xml" href="/sw-favicon.svg" />
       <link rel="dns-prefetch" href="https://res.cloudinary.com" />

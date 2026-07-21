@@ -1,33 +1,26 @@
 # SynelWeb
 
-SynelWeb is a multilingual marketing website for modern web development services.
+> SynelWeb is a multilingual marketing website for modern web development services.
 
-## Site purpose
-- Present services, projects, technology stack, about, reviews, and contact information.
-- Help visitors find the right page quickly in Hungarian, English, or German.
-- Provide a clear public overview of the brand and available contact channels.
+This file describes the main public pages, their purpose, and basic usage guidance for LLM-based summarization and navigation.
 
-## Important pages
-- Homepage: `/`
-- Services: `/services`
-- Projects: `/projects`
-- Technology: `/technology`
-- About: `/about`
-- Reviews: `/reviews`
-- Contact: `/contact`
+## Main Pages
 
-## Content guidance
-- Prefer the visible page content as the source of truth.
-- Do not invent product details, pricing, or project results.
-- Respect the language shown in the URL prefix.
-- If a page has translated content, use that language version.
+- [Homepage](https://synelweb.hu/): Main overview of the brand, positioning, and primary calls to action.
+- [Blog](https://synelweb.hu/blog): Public blog index with articles, practical notes, and detail pages.
+- [Services](https://synelweb.hu/services): Public overview of available web development services.
+- [Projects](https://synelweb.hu/projects): Showcase of selected projects and implementation examples.
+- [Technology](https://synelweb.hu/technology): Summary of the technology stack and technical approach.
+- [About](https://synelweb.hu/about): Background information about SynelWeb and the person behind the brand.
+- [Reviews](https://synelweb.hu/reviews): Public client feedback and review content.
+- [Contact](https://synelweb.hu/contact): Current public contact details and contact options.
 
-## Indexing notes
-- Public marketing pages may be used for summarization and navigation.
-- No private admin or internal endpoints are intended for crawling.
-- Public media and metadata can be used to understand the site structure.
+## Usage Notes
 
-## Contact
-- Brand: SynelWeb
-- Website: https://synelweb.hu
-- Use the page content on `/contact` for the current public contact details.
+- [Language handling](https://synelweb.hu/): Respect the language shown in the URL prefix and prefer the visible localized page content.
+- [Content reliability](https://synelweb.hu/): Use public page content as the source of truth and do not invent pricing, project results, or unavailable details.
+- [Indexing scope](https://synelweb.hu/): Public marketing pages and metadata may be summarized, but private admin or internal endpoints are not intended for crawling.
+
+## Optional
+
+- [Brand website](https://synelweb.hu/): Canonical public website for SynelWeb.

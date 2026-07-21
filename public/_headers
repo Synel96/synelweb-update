@@ -5,9 +5,12 @@
 /chunks/*
   Cache-Control: public, max-age=31536000, immutable
 
-# HTML/doc routes: security headers + always revalidate
+/locales/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# HTML/doc routes: short browser cache + CDN revalidation window
 /*
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=86400
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff

@@ -108,3 +108,15 @@ export function resolveLanguageAndLogicalPath(pathname: string) {
     hasLangPrefix: false,
   };
 }
+
+export function resolveCurrentLang(lang?: SupportedLang) {
+  if (lang && SUPPORTED_LANGS.includes(lang)) {
+    return lang;
+  }
+
+  if (typeof window !== "undefined") {
+    return resolveLanguageAndLogicalPath(window.location.pathname).lang;
+  }
+
+  return DEFAULT_LANG;
+}

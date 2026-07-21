@@ -5,6 +5,7 @@ import BlogPostsDisplay from "@/components/BlogPostsDisplay";
 import BlogPostsDisplaySkeleton from "@/components/BlogPostsDisplaySkeleton";
 import BlogPostsPagination from "@/components/BlogPostsPagination";
 import BlogPostsPaginationSkeleton from "@/components/BlogPostsPaginationSkeleton";
+import { resolveCurrentLang } from "@/src/localizedRoutes";
 import { getBlogPosts, type BlogPost } from "@/src/services/blogPostsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
@@ -40,7 +41,7 @@ export default function Page() {
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
   const [fetchError, setFetchError] = useState(initialFetchError);
   const [isLoading, setIsLoading] = useState(initialPosts.length === 0 && !initialFetchError);
-  const routeLang = pageContext.lang ?? "en";
+  const routeLang = resolveCurrentLang(pageContext.lang);
   const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
   const isHungarianLocale = routeLang === "hu";

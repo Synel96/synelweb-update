@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import SharePostButton from "@/components/SharePostButton";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import { resolveCurrentLang } from "@/src/localizedRoutes";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
 type Data = {
@@ -67,10 +68,10 @@ export default function Page() {
     notFound: false,
   };
 
-  const routeLang = pageContext.lang ?? "en";
+  const routeLang = resolveCurrentLang(pageContext.lang);
   const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
-  const blogListHref = `/${pageContext.lang ?? "en"}/blog`;
+  const blogListHref = `/${routeLang}/blog`;
   const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
   const backToTopLabel = translateWithFallback(t, "blogDetail.backToTop", "↑ Oldal tetejére");
   const notFoundLabel = translateWithFallback(t, "blogDetail.notFound", "A keresett bejegyzés nem található.");

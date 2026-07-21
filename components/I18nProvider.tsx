@@ -8,11 +8,12 @@ import { type ReactNode, useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import i18n, { ensureLanguageResources } from "@/src/i18n";
-import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { type SupportedLang } from "@/src/i18n-config";
+import { resolveCurrentLang } from "@/src/localizedRoutes";
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const pageContext = usePageContext() as { lang?: SupportedLang };
-  const lang = pageContext.lang ?? DEFAULT_LANG;
+  const lang = resolveCurrentLang(pageContext.lang);
   const isServer = typeof window === "undefined";
 
   // Server: isolate each render with its own i18n instance and fixed language.

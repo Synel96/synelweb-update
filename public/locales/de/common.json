@@ -110,7 +110,8 @@
     "categories": {
       "professional": "Fachlich",
       "educational": "Lehrreich",
-      "casual": "Allgemein"
+      "casual": "Allgemein",
+      "dirtyFinancials": "Heikle Finanzen"
     },
     "readMore": "Vollständigen Beitrag lesen",
     "share": {

@@ -18,6 +18,7 @@ function translateWithFallback(t: TFunction, key: string, fallback: string) {
 function formatCategoryLabel(category: string) {
   const normalized = category.trim().toLowerCase();
   if (normalized === "casual") return "casual";
+  if (normalized === "dirty-financials") return "dirtyFinancials";
   return "professional";
 }
 
@@ -76,7 +77,9 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
         const categoryLabel =
           categoryKey === "casual"
             ? translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi")
-            : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
+            : categoryKey === "dirtyFinancials"
+              ? translateWithFallback(t, "blogPage.categories.dirtyFinancials", "Piszkos anyagiak")
+              : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
         const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;

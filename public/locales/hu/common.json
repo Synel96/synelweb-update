@@ -110,7 +110,8 @@
     "categories": {
       "professional": "Szakmai",
       "educational": "Oktatási",
-      "casual": "Hétköznapi"
+      "casual": "Hétköznapi",
+      "dirtyFinancials": "Piszkos anyagiak"
     },
     "readMore": "Teljes cikk",
     "share": {

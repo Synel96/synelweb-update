@@ -110,7 +110,8 @@
     "categories": {
       "professional": "Professional",
       "educational": "Educational",
-      "casual": "Casual"
+      "casual": "Casual",
+      "dirtyFinancials": "Dirty financials"
     },
     "readMore": "Read full post",
     "share": {

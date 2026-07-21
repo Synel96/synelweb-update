@@ -13,6 +13,7 @@ type Data = {
 function normalizeCategory(category: string) {
   const normalized = category.trim().toLowerCase();
   if (normalized === "casual") return "casual";
+  if (normalized === "dirty-financials") return "dirtyFinancials";
   return "professional";
 }
 
@@ -79,6 +80,12 @@ export default function Page() {
     "A bejegyzés részletei most nem tölthetők be. Kérlek, próbáld meg később.",
   );
   const blogLabel = translateWithFallback(t, "blogPage.label", "Blog");
+  const languageNotice = translateWithFallback(
+    t,
+    "blogPage.languageNotice",
+    "This blog is currently available only in Hungarian.",
+  );
+  const showLanguageNotice = routeLang === "en" || routeLang === "de";
 
   if (data.notFound) {
     return (
@@ -117,6 +124,8 @@ export default function Page() {
   const categoryLabel =
     categoryKey === "casual"
       ? translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi")
+      : categoryKey === "dirtyFinancials"
+        ? translateWithFallback(t, "blogPage.categories.dirtyFinancials", "Piszkos anyagiak")
       : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
   const createdAtLabel = formatDate(post.createdAt, locale);
   const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
@@ -166,6 +175,15 @@ export default function Page() {
           {createdAtLabel ? <p className="mt-4 text-sm text-white/65">{createdAtLabel}</p> : null}
         </div>
       </header>
+
+      {showLanguageNotice ? (
+        <div
+          className="mt-7 rounded-2xl border border-amber-300/40 bg-amber-500/10 px-5 py-4"
+          role="status"
+        >
+          <p className="text-sm font-medium leading-7 text-amber-100 sm:text-base">{languageNotice}</p>
+        </div>
+      ) : null}
 
       <section className="mt-10 space-y-7">
         {post.sections.length === 0 ? (

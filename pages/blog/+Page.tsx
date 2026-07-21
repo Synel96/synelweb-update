@@ -16,6 +16,39 @@ type Data = {
 
 const POSTS_PER_PAGE = 6;
 
+function getBlogPageFallbacks(lang: "en" | "hu" | "de") {
+  if (lang === "de") {
+    return {
+      label: "Blog",
+      title: "Fachartikel, praktische Notizen und strategische Web-Beiträge.",
+      intro: "Hier findest du Fachbeiträge, Umsetzungsnotizen und praktische Beobachtungen aus realen Webprojekten.",
+      languageNotice: "Dieser Blog ist derzeit nur auf Ungarisch verfügbar.",
+      fetchError: "Die Blogbeiträge konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+      emptyState: "Derzeit sind keine Blogbeiträge verfügbar.",
+    };
+  }
+
+  if (lang === "en") {
+    return {
+      label: "Blog",
+      title: "Insights, practical notes, and web strategy articles.",
+      intro: "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
+      languageNotice: "This blog is currently available only in Hungarian.",
+      fetchError: "Blog posts could not be loaded right now. Please try again later.",
+      emptyState: "No blog posts are available right now.",
+    };
+  }
+
+  return {
+    label: "Blog",
+    title: "Szakmai cikkek, gyakorlati jegyzetek és webes stratégiai írások.",
+    intro: "Itt találod a szakmai bejegyzéseimet, megvalósítási tapasztalataimat és a valós webes projektekből származó gyakorlati megfigyeléseket.",
+    languageNotice: "Ez a blog jelenleg csak magyar nyelven érhető el.",
+    fetchError: "A blogbejegyzések most nem tölthetők be. Kérlek, próbáld meg később.",
+    emptyState: "Jelenleg nincs elérhető blogbejegyzés.",
+  };
+}
+
 function translateWithFallback(
   t: (key: string, options?: { defaultValue?: string }) => string,
   key: string,
@@ -42,37 +75,18 @@ export default function Page() {
   const [fetchError, setFetchError] = useState(initialFetchError);
   const [isLoading, setIsLoading] = useState(initialPosts.length === 0 && !initialFetchError);
   const routeLang = resolveCurrentLang(pageContext.lang);
+  const fallbacks = getBlogPageFallbacks(routeLang);
   const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
   const isHungarianLocale = routeLang === "hu";
   const [currentPage, setCurrentPage] = useState(1);
 
-  const blogLabel = translateWithFallback(t, "blogPage.label", "Blog");
-  const blogTitle = translateWithFallback(
-    t,
-    "blogPage.title",
-    "Insights, practical notes, and web strategy articles.",
-  );
-  const blogIntro = translateWithFallback(
-    t,
-    "blogPage.intro",
-    "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
-  );
-  const languageNotice = translateWithFallback(
-    t,
-    "blogPage.languageNotice",
-    "This blog is currently available only in Hungarian.",
-  );
-  const fetchErrorLabel = translateWithFallback(
-    t,
-    "blogPage.fetchError",
-    "Blog posts could not be loaded right now. Please try again later.",
-  );
-  const emptyStateLabel = translateWithFallback(
-    t,
-    "blogPage.emptyState",
-    "No blog posts are available right now.",
-  );
+  const blogLabel = translateWithFallback(t, "blogPage.label", fallbacks.label);
+  const blogTitle = translateWithFallback(t, "blogPage.title", fallbacks.title);
+  const blogIntro = translateWithFallback(t, "blogPage.intro", fallbacks.intro);
+  const languageNotice = translateWithFallback(t, "blogPage.languageNotice", fallbacks.languageNotice);
+  const fetchErrorLabel = translateWithFallback(t, "blogPage.fetchError", fallbacks.fetchError);
+  const emptyStateLabel = translateWithFallback(t, "blogPage.emptyState", fallbacks.emptyState);
 
   useEffect(() => {
     setPosts(initialPosts);

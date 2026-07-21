@@ -10,6 +10,50 @@ type BlogPostsDisplayProps = {
   t: TFunction;
 };
 
+function getBlogDisplayFallbacks(locale: string) {
+  const lang = resolveLangPrefix(locale);
+
+  if (lang === "de") {
+    return {
+      casual: "Allgemein",
+      dirtyFinancials: "Heikle Finanzen",
+      professional: "Fachlich",
+      shareAction: "Teilen",
+      shareCopy: "Link kopieren",
+      shareCopied: "Link kopiert",
+      shareFallbackTitle: "Teilen",
+      shareNativeHint: "Instagram/Story-Optionen sind auf Mobilgeräten im nativen Teilen-Menü verfügbar.",
+      readMore: "Vollständigen Beitrag lesen",
+    };
+  }
+
+  if (lang === "en") {
+    return {
+      casual: "Casual",
+      dirtyFinancials: "Dirty financials",
+      professional: "Professional",
+      shareAction: "Share",
+      shareCopy: "Copy link",
+      shareCopied: "Link copied",
+      shareFallbackTitle: "Share",
+      shareNativeHint: "Instagram/Story options are available in the native share sheet on mobile.",
+      readMore: "Read full post",
+    };
+  }
+
+  return {
+    casual: "Hétköznapi",
+    dirtyFinancials: "Piszkos anyagiak",
+    professional: "Szakmai",
+    shareAction: "Megosztás",
+    shareCopy: "Link másolása",
+    shareCopied: "Link másolva",
+    shareFallbackTitle: "Megosztás",
+    shareNativeHint: "Instagram/Story opció mobilon a rendszer megosztóban érhető el.",
+    readMore: "Teljes cikk",
+  };
+}
+
 function translateWithFallback(t: TFunction, key: string, fallback: string) {
   const value = t(key, { defaultValue: fallback });
   return value === key ? fallback : value;
@@ -60,14 +104,15 @@ function resolveLangPrefix(locale: string): SupportedLang {
 
 export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayProps) {
   const langPrefix = resolveLangPrefix(locale);
-  const shareActionLabel = translateWithFallback(t, "blogPage.share.action", "Megosztás");
-  const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", "Link másolása");
-  const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", "Link másolva");
-  const shareFallbackTitle = translateWithFallback(t, "blogPage.share.fallbackTitle", "Megosztás");
+  const fallbacks = getBlogDisplayFallbacks(locale);
+  const shareActionLabel = translateWithFallback(t, "blogPage.share.action", fallbacks.shareAction);
+  const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", fallbacks.shareCopy);
+  const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", fallbacks.shareCopied);
+  const shareFallbackTitle = translateWithFallback(t, "blogPage.share.fallbackTitle", fallbacks.shareFallbackTitle);
   const shareNativeHintLabel = translateWithFallback(
     t,
     "blogPage.share.nativeHint",
-    "Instagram/Story opció mobilon a rendszer megosztóban érhető el.",
+    fallbacks.shareNativeHint,
   );
 
   return (
@@ -76,10 +121,10 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
         const categoryKey = formatCategoryLabel(post.category);
         const categoryLabel =
           categoryKey === "casual"
-            ? translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi")
+            ? translateWithFallback(t, "blogPage.categories.casual", fallbacks.casual)
             : categoryKey === "dirtyFinancials"
-              ? translateWithFallback(t, "blogPage.categories.dirtyFinancials", "Piszkos anyagiak")
-              : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
+              ? translateWithFallback(t, "blogPage.categories.dirtyFinancials", fallbacks.dirtyFinancials)
+              : translateWithFallback(t, "blogPage.categories.professional", fallbacks.professional);
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
         const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;
@@ -121,7 +166,7 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
                   href={detailHref}
                   className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
                 >
-                  {translateWithFallback(t, "blogPage.readMore", "Teljes cikk")}
+                  {translateWithFallback(t, "blogPage.readMore", fallbacks.readMore)}
                 </a>
                 <SharePostButton
                   url={detailHref}

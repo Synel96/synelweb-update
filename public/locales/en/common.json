@@ -125,6 +125,9 @@
   "blogDetail": {
     "backToList": "← Back to blog",
     "backToTop": "↑ Back to top",
+    "postNavigation": "Post navigation",
+    "previousPost": "← Previous post",
+    "nextPost": "Next post →",
     "fetchError": "The post details could not be loaded right now. Please try again later.",
     "notFound": "The requested post could not be found.",
     "emptySections": "This post currently has no detailed sections.",

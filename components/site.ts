@@ -11,6 +11,7 @@ export const NAV_LINKS = [
   {
     href: "/blog",
     labelKey: "nav.blog",
+    hiddenInLangs: ["en", "de"] as const,
     fallbackLabel: {
       en: "Blog",
       hu: "Blog",

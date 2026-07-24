@@ -19,12 +19,13 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
     t(item.labelKey, {
       defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
     });
+  const visibleNavLinks = NAV_LINKS.filter((item) => !item.hiddenInLangs?.includes(lang));
 
   return (
     <footer className="border-t border-white/10 bg-(--brand-surface) text-(--brand-on-surface)">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-3 px-6 py-4 text-sm text-white/80">
         <nav aria-label="Footer links" className="flex flex-wrap items-center justify-center gap-4">
-          {NAV_LINKS.map((item) => (
+          {visibleNavLinks.map((item) => (
             <a
               key={item.href}
               href={langHref(item.href)}

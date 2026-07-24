@@ -7,6 +7,8 @@ import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
 type Data = {
   post: BlogPostDetail | null;
+  previousPost: { id: string; title: string } | null;
+  nextPost: { id: string; title: string } | null;
   fetchError: boolean;
   notFound: boolean;
 };
@@ -64,6 +66,8 @@ export default function Page() {
 
   const data = pageContext.data ?? {
     post: null,
+    previousPost: null,
+    nextPost: null,
     fetchError: true,
     notFound: false,
   };
@@ -87,6 +91,9 @@ export default function Page() {
     "This blog is currently available only in Hungarian.",
   );
   const showLanguageNotice = routeLang === "en" || routeLang === "de";
+  const previousPostLabel = translateWithFallback(t, "blogDetail.previousPost", "← Előző cikk");
+  const nextPostLabel = translateWithFallback(t, "blogDetail.nextPost", "Következő cikk →");
+  const postNavigationLabel = translateWithFallback(t, "blogDetail.postNavigation", "Cikk navigáció");
 
   if (data.notFound) {
     return (
@@ -207,6 +214,42 @@ export default function Page() {
           ))
         )}
       </section>
+
+      {data.previousPost || data.nextPost ? (
+        <nav aria-label={postNavigationLabel} className="mt-10 grid gap-4 sm:grid-cols-2">
+          {data.previousPost ? (
+            <a
+              href={`/${routeLang}/blog/${encodeURIComponent(data.previousPost.id)}`}
+              className="group rounded-3xl border border-white/10 bg-white/4 px-5 py-5 transition hover:border-(--accent)/35 hover:bg-white/6"
+            >
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+                {previousPostLabel}
+              </span>
+              <span className="mt-2 block text-lg font-semibold leading-snug text-white transition group-hover:text-(--accent)">
+                {data.previousPost.title || t("blogPage.untitled")}
+              </span>
+            </a>
+          ) : (
+            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5" aria-hidden="true" />
+          )}
+
+          {data.nextPost ? (
+            <a
+              href={`/${routeLang}/blog/${encodeURIComponent(data.nextPost.id)}`}
+              className="group rounded-3xl border border-white/10 bg-white/4 px-5 py-5 text-right transition hover:border-(--accent)/35 hover:bg-white/6"
+            >
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+                {nextPostLabel}
+              </span>
+              <span className="mt-2 block text-lg font-semibold leading-snug text-white transition group-hover:text-(--accent)">
+                {data.nextPost.title || t("blogPage.untitled")}
+              </span>
+            </a>
+          ) : (
+            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5" aria-hidden="true" />
+          )}
+        </nav>
+      ) : null}
 
       <div className="mt-10 flex flex-wrap items-center gap-3">
         <a

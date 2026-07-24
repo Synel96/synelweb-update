@@ -125,6 +125,9 @@
   "blogDetail": {
     "backToList": "← Vissza a bloghoz",
     "backToTop": "↑ Oldal tetejére",
+    "postNavigation": "Cikk navigáció",
+    "previousPost": "← Előző cikk",
+    "nextPost": "Következő cikk →",
     "fetchError": "A bejegyzés részletei most nem tölthetők be. Kérlek, próbáld meg később.",
     "notFound": "A keresett bejegyzés nem található.",
     "emptySections": "Ehhez a bejegyzéshez jelenleg nincs részletes tartalom.",

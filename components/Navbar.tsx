@@ -61,6 +61,8 @@ export function Navbar() {
       defaultValue: item.fallbackLabel?.[lang] ?? item.labelKey,
     });
 
+  const visibleNavLinks = NAV_LINKS.filter((item) => !item.hiddenInLangs?.includes(lang));
+
   const navbarAlpha = isHome ? 0.88 * homeScrollProgress : 0.88;
   const navbarBorderAlpha = isHome ? 0.1 * homeScrollProgress : 0.1;
   const navbarShadowAlpha = isHome ? 0.5 * homeScrollProgress : 0.5;
@@ -93,7 +95,7 @@ export function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {NAV_LINKS.map((item) => (
+          {visibleNavLinks.map((item) => (
             <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
               {navLabel(item)}
             </a>
@@ -134,7 +136,7 @@ export function Navbar() {
                 className="w-[min(20rem,100vw)] max-w-[100vw] border-l-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
               >
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
-                  {NAV_LINKS.map((item) => (
+                  {visibleNavLinks.map((item) => (
                     <SheetClose asChild key={item.href}>
                       <a
                         href={langHref(item.href)}

@@ -94,8 +94,8 @@ export default function Page() {
   const previousPostLabel = translateWithFallback(t, "blogDetail.previousPost", "← Előző cikk");
   const nextPostLabel = translateWithFallback(t, "blogDetail.nextPost", "Következő cikk →");
   const postNavigationLabel = translateWithFallback(t, "blogDetail.postNavigation", "Cikk navigáció");
-  const oldestPostLabel = translateWithFallback(t, "blogDetail.oldestPost", "Ez a legrégebbi cikk");
-  const newestPostLabel = translateWithFallback(t, "blogDetail.newestPost", "Ez a legfrissebb cikk");
+  const oldestPostLabel = translateWithFallback(t, "blogDetail.oldestPost", "Nincs korábbi cikk");
+  const newestPostLabel = translateWithFallback(t, "blogDetail.newestPost", "Nincs frissebb cikk");
 
   if (data.notFound) {
     return (
@@ -240,7 +240,7 @@ export default function Page() {
                 {translateWithFallback(
                   t,
                   "blogDetail.oldestPostHint",
-                  "Ez után már nincs korábbi bejegyzés, de a bloglistából bármikor vissza tudsz menni.",
+                  "Ez a blog első bejegyzése. A bloglistából bármikor vissza tudsz menni.",
                 )}
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function Page() {
                 {translateWithFallback(
                   t,
                   "blogDetail.newestPostHint",
-                  "Ez után már nincs frissebb bejegyzés, de a bloglistából tovább böngészhetsz.",
+                  "Ez a legfrissebb bejegyzés. A bloglistából tovább böngészhetsz.",
                 )}
               </p>
             </div>

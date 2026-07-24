@@ -129,7 +129,7 @@ body.content-animate.content-ready .hero-support {
   pointer-events: none;
 }
 
-body.page-transition .page-loading-overlay {
+body.page-transition.page-transition-show-loader .page-loading-overlay {
   opacity: 1;
   pointer-events: auto;
 }

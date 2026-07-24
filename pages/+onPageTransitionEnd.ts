@@ -1,4 +1,5 @@
 const SCROLL_RESTORE_KEY = "synelweb:preserve-scroll-y";
+const TRANSITION_LOADER_TIMER_KEY = "transitionLoaderTimer";
 
 export async function onPageTransitionEnd() {
   // Keep the loader visible a bit longer in development to make animation testing easy.
@@ -11,7 +12,14 @@ export async function onPageTransitionEnd() {
     await new Promise((resolve) => setTimeout(resolve, remaining));
   }
 
+  const loaderTimerId = Number(document.body.dataset[TRANSITION_LOADER_TIMER_KEY] ?? 0);
+  if (loaderTimerId > 0) {
+    clearTimeout(loaderTimerId);
+  }
+
   delete document.body.dataset.transitionStartedAt;
+  delete document.body.dataset[TRANSITION_LOADER_TIMER_KEY];
+  document.body.classList.remove("page-transition-show-loader");
   document.body.classList.remove("page-transition");
 
   requestAnimationFrame(() => {

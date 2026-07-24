@@ -4,4 +4,4 @@
 
 export const SUPPORTED_LANGS = ["en", "hu", "de"] as const;
 export type SupportedLang = (typeof SUPPORTED_LANGS)[number];
-export const DEFAULT_LANG: SupportedLang = "en";
+export const DEFAULT_LANG: SupportedLang = "hu";

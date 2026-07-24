@@ -44,8 +44,8 @@ export async function data(pageContext: PageContext) {
       getBlogPosts(lang).catch(() => []),
     ]);
     const listEntryIndex = posts.findIndex((item) => item.id === post.id || item.id === id);
-    const previousPost = listEntryIndex > 0 ? posts[listEntryIndex - 1] : null;
-    const nextPost = listEntryIndex >= 0 && listEntryIndex < posts.length - 1 ? posts[listEntryIndex + 1] : null;
+    const previousPost = listEntryIndex >= 0 && listEntryIndex < posts.length - 1 ? posts[listEntryIndex + 1] : null;
+    const nextPost = listEntryIndex > 0 ? posts[listEntryIndex - 1] : null;
     const listEntry = listEntryIndex >= 0 ? posts[listEntryIndex] : null;
     const resolvedDescription = post.description || listEntry?.description || "";
 

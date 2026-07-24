@@ -99,9 +99,17 @@
     "languageNotice": "This blog is currently available only in Hungarian.",
     "fetchError": "Blog posts could not be loaded right now. Please try again later.",
     "emptyState": "No blog posts are available right now.",
+    "filteredEmptyState": "No posts match the selected filters.",
     "categoryFallback": "Article",
     "untitled": "Untitled post",
     "descriptionFallback": "This post currently has no short description.",
+    "controls": {
+      "category": "Category",
+      "allCategories": "All categories",
+      "sort": "Sort",
+      "newest": "Newest first",
+      "oldest": "Oldest first"
+    },
     "pagination": {
       "previous": "Previous",
       "next": "Next",

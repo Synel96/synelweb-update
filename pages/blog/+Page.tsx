@@ -15,6 +15,20 @@ type Data = {
 };
 
 const POSTS_PER_PAGE = 6;
+type CategoryFilter = "all" | "professional" | "casual" | "dirtyFinancials";
+type SortOrder = "newest" | "oldest";
+
+function normalizeCategory(category: string): Exclude<CategoryFilter, "all"> {
+  const normalized = category.trim().toLowerCase();
+  if (normalized === "casual") return "casual";
+  if (normalized === "dirty-financials") return "dirtyFinancials";
+  return "professional";
+}
+
+function parseCreatedAt(value: string): number {
+  const timestamp = Date.parse(value);
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
 
 function getBlogPageFallbacks(lang: "en" | "hu" | "de") {
   if (lang === "de") {
@@ -80,6 +94,8 @@ export default function Page() {
   const locale = routeLang;
   const isHungarianLocale = routeLang === "hu";
   const [currentPage, setCurrentPage] = useState(1);
+  const [categoryFilter, setCategoryFilter] = useState<CategoryFilter>("all");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("newest");
 
   const blogLabel = translateWithFallback(t, "blogPage.label", fallbacks.label);
   const blogTitle = translateWithFallback(t, "blogPage.title", fallbacks.title);
@@ -87,6 +103,23 @@ export default function Page() {
   const languageNotice = translateWithFallback(t, "blogPage.languageNotice", fallbacks.languageNotice);
   const fetchErrorLabel = translateWithFallback(t, "blogPage.fetchError", fallbacks.fetchError);
   const emptyStateLabel = translateWithFallback(t, "blogPage.emptyState", fallbacks.emptyState);
+  const controlsCategoryLabel = translateWithFallback(t, "blogPage.controls.category", "Kategória");
+  const controlsSortLabel = translateWithFallback(t, "blogPage.controls.sort", "Rendezés");
+  const controlsAllCategoriesLabel = translateWithFallback(t, "blogPage.controls.allCategories", "Minden kategória");
+  const controlsProfessionalLabel = translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
+  const controlsCasualLabel = translateWithFallback(t, "blogPage.categories.casual", "Hétköznapi");
+  const controlsDirtyFinancialsLabel = translateWithFallback(
+    t,
+    "blogPage.categories.dirtyFinancials",
+    "Piszkos anyagiak",
+  );
+  const controlsNewestLabel = translateWithFallback(t, "blogPage.controls.newest", "Legújabb elöl");
+  const controlsOldestLabel = translateWithFallback(t, "blogPage.controls.oldest", "Legrégebbi elöl");
+  const filteredEmptyStateLabel = translateWithFallback(
+    t,
+    "blogPage.filteredEmptyState",
+    "Nincs találat a kiválasztott szűrésre.",
+  );
 
   useEffect(() => {
     setPosts(initialPosts);
@@ -126,17 +159,30 @@ export default function Page() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [posts]);
+  }, [posts, categoryFilter, sortOrder]);
+
+  const visiblePosts = useMemo(() => {
+    const filtered =
+      categoryFilter === "all"
+        ? posts
+        : posts.filter((post) => normalizeCategory(post.category) === categoryFilter);
+
+    return [...filtered].sort((a, b) => {
+      const aDate = parseCreatedAt(a.createdAt);
+      const bDate = parseCreatedAt(b.createdAt);
+      return sortOrder === "newest" ? bDate - aDate : aDate - bDate;
+    });
+  }, [posts, categoryFilter, sortOrder]);
 
   const totalPages = useMemo(() => {
-    return Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
-  }, [posts.length]);
+    return Math.max(1, Math.ceil(visiblePosts.length / POSTS_PER_PAGE));
+  }, [visiblePosts.length]);
 
   const paginatedPosts = useMemo(() => {
     const page = Math.min(Math.max(1, currentPage), totalPages);
     const startIndex = (page - 1) * POSTS_PER_PAGE;
-    return posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
-  }, [posts, currentPage, totalPages]);
+    return visiblePosts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  }, [visiblePosts, currentPage, totalPages]);
 
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages || page === currentPage) return;
@@ -164,6 +210,39 @@ export default function Page() {
         </div>
       ) : null}
 
+      {!isLoading && !fetchError && posts.length > 0 ? (
+        <div
+          className="mb-8 grid gap-4 rounded-2xl border border-white/12 bg-[linear-gradient(145deg,rgba(14,20,38,0.78),rgba(9,13,27,0.86))] p-4 sm:grid-cols-2 sm:p-5"
+          data-reveal
+        >
+          <label className="flex flex-col gap-2 text-sm font-semibold text-white/82">
+            <span>{controlsCategoryLabel}</span>
+            <select
+              value={categoryFilter}
+              onChange={(event) => setCategoryFilter(event.target.value as CategoryFilter)}
+              className="h-11 rounded-xl border border-white/18 bg-[#11192f] px-3 text-sm text-white outline-none transition focus:border-(--accent)"
+            >
+              <option value="all">{controlsAllCategoriesLabel}</option>
+              <option value="professional">{controlsProfessionalLabel}</option>
+              <option value="casual">{controlsCasualLabel}</option>
+              <option value="dirtyFinancials">{controlsDirtyFinancialsLabel}</option>
+            </select>
+          </label>
+
+          <label className="flex flex-col gap-2 text-sm font-semibold text-white/82">
+            <span>{controlsSortLabel}</span>
+            <select
+              value={sortOrder}
+              onChange={(event) => setSortOrder(event.target.value as SortOrder)}
+              className="h-11 rounded-xl border border-white/18 bg-[#11192f] px-3 text-sm text-white outline-none transition focus:border-(--accent)"
+            >
+              <option value="newest">{controlsNewestLabel}</option>
+              <option value="oldest">{controlsOldestLabel}</option>
+            </select>
+          </label>
+        </div>
+      ) : null}
+
       {isLoading ? (
         <>
           <BlogPostsDisplaySkeleton />
@@ -176,6 +255,10 @@ export default function Page() {
       ) : posts.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">{emptyStateLabel}</p>
+        </div>
+      ) : visiblePosts.length === 0 ? (
+        <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
+          <p className="text-base text-white/86">{filteredEmptyStateLabel}</p>
         </div>
       ) : (
         <>

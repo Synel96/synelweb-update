@@ -99,9 +99,17 @@
     "intro": "Itt találod a szakmai bejegyzéseimet, megvalósítási tapasztalataimat és a valós webes projektekből származó gyakorlati megfigyeléseket.",
     "fetchError": "A blogbejegyzések most nem tölthetők be. Kérlek, próbáld meg később.",
     "emptyState": "Jelenleg nincs elérhető blogbejegyzés.",
+    "filteredEmptyState": "Nincs találat a kiválasztott szűrésre.",
     "categoryFallback": "Cikk",
     "untitled": "Névtelen bejegyzés",
     "descriptionFallback": "Ehhez a bejegyzéshez jelenleg nincs rövid leírás.",
+    "controls": {
+      "category": "Kategória",
+      "allCategories": "Minden kategória",
+      "sort": "Rendezés",
+      "newest": "Legújabb elöl",
+      "oldest": "Legrégebbi elöl"
+    },
     "pagination": {
       "previous": "Előző",
       "next": "Következő",

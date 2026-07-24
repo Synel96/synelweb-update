@@ -99,9 +99,17 @@
     "languageNotice": "Dieser Blog ist derzeit nur auf Ungarisch verfügbar.",
     "fetchError": "Die Blogbeiträge konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Blogbeiträge verfügbar.",
+    "filteredEmptyState": "Keine Beiträge entsprechen den gewählten Filtern.",
     "categoryFallback": "Artikel",
     "untitled": "Unbenannter Beitrag",
     "descriptionFallback": "Für diesen Beitrag gibt es derzeit keine Kurzbeschreibung.",
+    "controls": {
+      "category": "Kategorie",
+      "allCategories": "Alle Kategorien",
+      "sort": "Sortierung",
+      "newest": "Neueste zuerst",
+      "oldest": "Älteste zuerst"
+    },
     "pagination": {
       "previous": "Zurück",
       "next": "Weiter",

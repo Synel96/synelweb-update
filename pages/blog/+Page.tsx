@@ -212,34 +212,36 @@ export default function Page() {
 
       {!isLoading && !fetchError && posts.length > 0 ? (
         <div
-          className="mb-8 grid gap-4 rounded-2xl border border-white/12 bg-[linear-gradient(145deg,rgba(14,20,38,0.78),rgba(9,13,27,0.86))] p-4 sm:grid-cols-2 sm:p-5"
+          className="mb-8 rounded-3xl border border-white/14 bg-[linear-gradient(150deg,rgba(18,26,48,0.88),rgba(10,15,30,0.94))] p-5 shadow-[0_20px_52px_-34px_rgba(0,0,0,0.82)] sm:p-6"
           data-reveal
         >
-          <label className="flex flex-col gap-2 text-sm font-semibold text-white/82">
-            <span>{controlsCategoryLabel}</span>
-            <select
-              value={categoryFilter}
-              onChange={(event) => setCategoryFilter(event.target.value as CategoryFilter)}
-              className="h-11 rounded-xl border border-white/18 bg-[#11192f] px-3 text-sm text-white outline-none transition focus:border-(--accent)"
-            >
-              <option value="all">{controlsAllCategoriesLabel}</option>
-              <option value="professional">{controlsProfessionalLabel}</option>
-              <option value="casual">{controlsCasualLabel}</option>
-              <option value="dirtyFinancials">{controlsDirtyFinancialsLabel}</option>
-            </select>
-          </label>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="flex flex-col gap-2 text-sm font-semibold text-white/85">
+              <span className="text-xs tracking-[0.08em] text-white/62 uppercase">{controlsCategoryLabel}</span>
+              <select
+                value={categoryFilter}
+                onChange={(event) => setCategoryFilter(event.target.value as CategoryFilter)}
+                className="h-12 cursor-pointer rounded-2xl border border-white/16 bg-[linear-gradient(165deg,rgba(22,32,58,0.96),rgba(13,19,36,0.98))] px-4 pr-11 text-[0.95rem] text-white/92 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] outline-none transition duration-200 hover:border-white/30 focus:border-(--accent) focus:shadow-[0_0_0_3px_rgba(88,177,255,0.22)]"
+              >
+                <option value="all">{controlsAllCategoriesLabel}</option>
+                <option value="professional">{controlsProfessionalLabel}</option>
+                <option value="casual">{controlsCasualLabel}</option>
+                <option value="dirtyFinancials">{controlsDirtyFinancialsLabel}</option>
+              </select>
+            </label>
 
-          <label className="flex flex-col gap-2 text-sm font-semibold text-white/82">
-            <span>{controlsSortLabel}</span>
-            <select
-              value={sortOrder}
-              onChange={(event) => setSortOrder(event.target.value as SortOrder)}
-              className="h-11 rounded-xl border border-white/18 bg-[#11192f] px-3 text-sm text-white outline-none transition focus:border-(--accent)"
-            >
-              <option value="newest">{controlsNewestLabel}</option>
-              <option value="oldest">{controlsOldestLabel}</option>
-            </select>
-          </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-white/85">
+              <span className="text-xs tracking-[0.08em] text-white/62 uppercase">{controlsSortLabel}</span>
+              <select
+                value={sortOrder}
+                onChange={(event) => setSortOrder(event.target.value as SortOrder)}
+                className="h-12 cursor-pointer rounded-2xl border border-white/16 bg-[linear-gradient(165deg,rgba(22,32,58,0.96),rgba(13,19,36,0.98))] px-4 pr-11 text-[0.95rem] text-white/92 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] outline-none transition duration-200 hover:border-white/30 focus:border-(--accent) focus:shadow-[0_0_0_3px_rgba(88,177,255,0.22)]"
+              >
+                <option value="newest">{controlsNewestLabel}</option>
+                <option value="oldest">{controlsOldestLabel}</option>
+              </select>
+            </label>
+          </div>
         </div>
       ) : null}
 

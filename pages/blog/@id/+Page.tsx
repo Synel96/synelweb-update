@@ -94,6 +94,8 @@ export default function Page() {
   const previousPostLabel = translateWithFallback(t, "blogDetail.previousPost", "← Előző cikk");
   const nextPostLabel = translateWithFallback(t, "blogDetail.nextPost", "Következő cikk →");
   const postNavigationLabel = translateWithFallback(t, "blogDetail.postNavigation", "Cikk navigáció");
+  const oldestPostLabel = translateWithFallback(t, "blogDetail.oldestPost", "Ez a legrégebbi cikk");
+  const newestPostLabel = translateWithFallback(t, "blogDetail.newestPost", "Ez a legfrissebb cikk");
 
   if (data.notFound) {
     return (
@@ -230,7 +232,18 @@ export default function Page() {
               </span>
             </a>
           ) : (
-            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5" aria-hidden="true" />
+            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5">
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+                {oldestPostLabel}
+              </span>
+              <p className="mt-2 text-sm leading-6 text-white/68">
+                {translateWithFallback(
+                  t,
+                  "blogDetail.oldestPostHint",
+                  "Ez után már nincs korábbi bejegyzés, de a bloglistából bármikor vissza tudsz menni.",
+                )}
+              </p>
+            </div>
           )}
 
           {data.nextPost ? (
@@ -246,7 +259,18 @@ export default function Page() {
               </span>
             </a>
           ) : (
-            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5" aria-hidden="true" />
+            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5 text-right">
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+                {newestPostLabel}
+              </span>
+              <p className="mt-2 text-sm leading-6 text-white/68">
+                {translateWithFallback(
+                  t,
+                  "blogDetail.newestPostHint",
+                  "Ez után már nincs frissebb bejegyzés, de a bloglistából tovább böngészhetsz.",
+                )}
+              </p>
+            </div>
           )}
         </nav>
       ) : null}

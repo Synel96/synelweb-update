@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { AboutProfileAvatar } from "@/components/AboutProfileAvatar";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 
 type InfoItem = {
   title: string;
@@ -27,7 +28,7 @@ function readInfoItems(value: unknown): InfoItem[] {
 export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const contactHref = `/${lang}/contact`;
+  const contactHref = localizePath("/contact", lang);
   const { t } = useTranslation();
   const accordionItems = readInfoItems(t("about.accordion.items", { returnObjects: true }));
   const processCards = readInfoItems(t("about.process.cards", { returnObjects: true }));

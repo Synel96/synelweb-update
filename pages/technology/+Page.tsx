@@ -3,6 +3,7 @@ import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { TechnologyStackCard } from "@/components/TechnologyStackCard";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
 type TechnologyCard = {
@@ -52,7 +53,7 @@ type TrustedCompanyKey = (typeof TRUSTED_COMPANY_KEYS)[number];
 export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const contactHref = `/${lang}/contact`;
+  const contactHref = localizePath("/contact", lang);
   const { t } = useTranslation();
   const cards = readTechnologyCards(t("technology.cards", { returnObjects: true }));
   const brandComponents = {

@@ -4,6 +4,7 @@ import { usePageContext } from "vike-react/usePageContext";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
@@ -16,11 +17,8 @@ export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
 
-  const langHref = (href: string) => {
-    if (href === "/") return `/${lang}/`;
-    if (href.startsWith("/#")) return `/${lang}/${href.slice(1)}`;
-    return `/${lang}${href}`;
-  };
+  const langHref = (href: string) =>
+    href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
 
   useEffect(() => {
     const video = videoRef.current;

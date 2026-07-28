@@ -64,7 +64,11 @@ export function normalizeLogicalPath(path: string) {
 }
 
 export function localizePath(path: string, lang: SupportedLang) {
-  const normalizedPath = normalizeLogicalPath(path);
+  // Accept both logical paths ("/contact") and already-prefixed paths
+  // ("/en/contact") so callers can't produce a double-prefixed URL
+  // (e.g. "/hu/en/contact") by passing the wrong kind of input.
+  const { logicalPath } = resolveLanguageAndLogicalPath(path);
+  const normalizedPath = normalizeLogicalPath(logicalPath);
 
   if (normalizedPath === "/") {
     return `/${lang}/`;

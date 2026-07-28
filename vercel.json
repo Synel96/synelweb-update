@@ -1,5 +1,27 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist/client"
+  "outputDirectory": "dist/client",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.synelweb.hu" }],
+      "destination": "https://synelweb.hu/:path*",
+      "permanent": true
+    },
+    { "source": "/about", "destination": "/hu/rolam", "permanent": true },
+    { "source": "/about/", "destination": "/hu/rolam", "permanent": true },
+    { "source": "/contact", "destination": "/hu/kapcsolat", "permanent": true },
+    { "source": "/contact/", "destination": "/hu/kapcsolat", "permanent": true },
+    { "source": "/services", "destination": "/hu/szolgaltatasok", "permanent": true },
+    { "source": "/services/", "destination": "/hu/szolgaltatasok", "permanent": true },
+    { "source": "/projects", "destination": "/hu/projektek", "permanent": true },
+    { "source": "/projects/", "destination": "/hu/projektek", "permanent": true },
+    { "source": "/technology", "destination": "/hu/technologia", "permanent": true },
+    { "source": "/technology/", "destination": "/hu/technologia", "permanent": true },
+    { "source": "/blog", "destination": "/hu/blog", "permanent": true },
+    { "source": "/blog/", "destination": "/hu/blog", "permanent": true },
+    { "source": "/blog/:id", "destination": "/hu/blog/:id", "permanent": true },
+    { "source": "/blog/:id/", "destination": "/hu/blog/:id", "permanent": true }
+  ]
 }

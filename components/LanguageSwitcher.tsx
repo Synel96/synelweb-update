@@ -6,7 +6,7 @@
 import { navigate } from "vike/client/router";
 import { usePageContext } from "vike-react/usePageContext";
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
-import { localizePath } from "@/src/localizedRoutes";
+import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
 import { Button } from "@/components/ui/button";
 
 const LABELS: Record<SupportedLang, string> = {
@@ -20,9 +20,9 @@ const SCROLL_RESTORE_KEY = "synelweb:preserve-scroll-y";
 export function LanguageSwitcher() {
   const pageContext = usePageContext() as { lang?: SupportedLang; urlPathname: string };
   const currentLang = pageContext.lang ?? DEFAULT_LANG;
-  const logicalPath = pageContext.urlPathname;
 
   const switchTo = (lang: SupportedLang) => {
+    const { logicalPath } = resolveLanguageAndLogicalPath(pageContext.urlPathname);
     const target = localizePath(logicalPath, lang);
     sessionStorage.setItem(SCROLL_RESTORE_KEY, String(window.scrollY));
     navigate(target);
@@ -54,9 +54,9 @@ export function LanguageSwitcher() {
 export function LanguageSwitcherDropdown() {
   const pageContext = usePageContext() as { lang?: SupportedLang; urlPathname: string };
   const currentLang = pageContext.lang ?? DEFAULT_LANG;
-  const logicalPath = pageContext.urlPathname;
 
   const switchTo = (lang: SupportedLang) => {
+    const { logicalPath } = resolveLanguageAndLogicalPath(pageContext.urlPathname);
     const target = localizePath(logicalPath, lang);
     sessionStorage.setItem(SCROLL_RESTORE_KEY, String(window.scrollY));
     navigate(target);

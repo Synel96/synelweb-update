@@ -152,10 +152,7 @@ body.page-transition.page-transition-show-loader .page-loading-overlay {
 
 .page-loading-ring-glow {
   border: 4px solid transparent;
-  border-top-color: var(--color-secondary-warm);
-  border-right-color: color-mix(in oklab, var(--color-secondary-hot), white 18%);
-  border-bottom-color: color-mix(in oklab, var(--color-secondary-warm), transparent 55%);
-  border-left-color: color-mix(in oklab, var(--color-secondary-hot), transparent 62%);
+  border-color: var(--color-secondary-warm) color-mix(in oklab, var(--color-secondary-hot), white 18%) color-mix(in oklab, var(--color-secondary-warm), transparent 55%) color-mix(in oklab, var(--color-secondary-hot), transparent 62%);
   box-shadow:
     0 0 16px color-mix(in oklab, var(--color-secondary-hot), transparent 40%),
     0 0 28px color-mix(in oklab, var(--color-secondary-warm), transparent 54%),
@@ -246,9 +243,9 @@ body.page-transition.page-transition-show-loader .page-loading-overlay {
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.03) 34%,
-    rgba(255, 255, 255, 0.16) 49%,
-    rgba(255, 255, 255, 0.05) 58%,
+    rgb(255 255 255 / 3%) 34%,
+    rgb(255 255 255 / 16%) 49%,
+    rgb(255 255 255 / 5%) 58%,
     transparent 74%
   );
   transform: translateX(-135%) skewX(-18deg);
@@ -269,9 +266,9 @@ body.page-transition.page-transition-show-loader .page-loading-overlay {
   background: linear-gradient(
     115deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.04) 35%,
-    rgba(255, 255, 255, 0.42) 48%,
-    rgba(255, 255, 255, 0.06) 58%,
+    rgb(255 255 255 / 4%) 35%,
+    rgb(255 255 255 / 42%) 48%,
+    rgb(255 255 255 / 6%) 58%,
     transparent 78%
   );
   transform: translateX(-120%) skewX(-18deg);

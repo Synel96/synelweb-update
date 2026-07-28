@@ -1,5 +1,6 @@
 import type { AppLang } from "./serviceCardsService";
 import { cloudinaryImageUrl, withCloudinaryAutoParams } from "@/src/cloudinary";
+import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 
 type LocalizedText = {
   hu?: string;
@@ -50,8 +51,7 @@ export type Project = {
   order: number;
 };
 
-const API_BASE_URL = "https://synelweb.fly.dev";
-const PROJECTS_ENDPOINT = `${API_BASE_URL}/api/projects/`;
+const PROJECTS_ENDPOINT = `${resolveApiBaseUrl()}/api/projects/`;
 
 function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
   if (!text) return "";

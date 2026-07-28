@@ -12,7 +12,8 @@
           "layer",
           "config",
           "import",
-          "screen"
+          "screen",
+          "source"
         ]
       }
     ],

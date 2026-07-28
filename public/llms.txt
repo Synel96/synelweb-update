@@ -12,7 +12,7 @@ This file describes the main public pages, their purpose, and basic usage guidan
 - [Projects](https://synelweb.hu/projects): Showcase of selected projects and implementation examples.
 - [Technology](https://synelweb.hu/technology): Summary of the technology stack and technical approach.
 - [About](https://synelweb.hu/about): Background information about SynelWeb and the person behind the brand.
-- [Reviews](https://synelweb.hu/reviews): Public client feedback and review content.
+- [Reviews](https://synelweb.hu/#reviews): Public client feedback and review content (a section on the homepage).
 - [Contact](https://synelweb.hu/contact): Current public contact details and contact options.
 
 ## Usage Notes

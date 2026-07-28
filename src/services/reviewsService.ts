@@ -1,4 +1,5 @@
 import type { AppLang } from "./serviceCardsService";
+import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 
 export type Review = {
   id: number;
@@ -24,8 +25,7 @@ type ReviewApiItem = {
   isApproved?: boolean;
 };
 
-const API_BASE_URL = "https://synelweb.fly.dev";
-const API_REVIEWS_ENDPOINT = `${API_BASE_URL}/api/reviews/`;
+const API_REVIEWS_ENDPOINT = `${resolveApiBaseUrl()}/api/reviews/`;
 
 function languageHeaders(lang: AppLang) {
   return {
@@ -58,9 +58,7 @@ async function getErrorMessage(response: Response) {
   const contentType = response.headers.get("content-type") ?? "";
 
   if (contentType.includes("application/json")) {
-    const payload = (await response.json().catch(() => null)) as
-      | Record<string, unknown>
-      | null;
+    const payload = (await response.json().catch(() => null)) as Record<string, unknown> | null;
 
     if (payload) {
       if (typeof payload.detail === "string" && payload.detail.trim()) {

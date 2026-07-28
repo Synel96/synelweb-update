@@ -1,4 +1,4 @@
-import { env } from "@/src/env";
+import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import type { AppLang } from "./serviceCardsService";
 
 export class BlogApiError extends Error {
@@ -62,21 +62,6 @@ export type BlogPostDetail = {
   createdAt: string;
   sections: BlogPostSection[];
 };
-
-const DEFAULT_PROD_API_BASE_URL = "https://synelweb.fly.dev";
-
-function resolveApiBaseUrl() {
-  const configured = env.VITE_API_BASE_URL.trim();
-
-  if (
-    import.meta.env.PROD &&
-    (configured.includes("127.0.0.1") || configured.includes("localhost"))
-  ) {
-    return DEFAULT_PROD_API_BASE_URL;
-  }
-
-  return configured;
-}
 
 const BLOG_POSTS_ENDPOINT = `${resolveApiBaseUrl()}/blog/blogposts/`;
 

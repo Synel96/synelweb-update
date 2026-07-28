@@ -1,3 +1,5 @@
+import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+
 export type AppLang = "hu" | "en" | "de";
 
 type LocalizedText = {
@@ -35,8 +37,7 @@ export type ServiceCard = {
   order: number;
 };
 
-const API_BASE_URL = "https://synelweb.fly.dev";
-const SERVICES_ENDPOINT = `${API_BASE_URL}/api/services/`;
+const SERVICES_ENDPOINT = `${resolveApiBaseUrl()}/api/services/`;
 
 function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
   if (!text) return "";

@@ -16,7 +16,7 @@ type TechnologyCard = {
   badge: string;
 };
 
-function BrandWord({ children, className }: { children: React.ReactNode; className: string }) {
+function BrandWord({ children, className }: { children?: React.ReactNode; className: string }) {
   return <span className={className}>{children}</span>;
 }
 

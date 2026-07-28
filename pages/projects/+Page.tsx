@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ProjectShowcaseCard } from "@/components/ProjectShowcaseCard";
 import type { Project } from "@/src/services/projectServices";
-import { isTechnologyLogoName } from "@/components/TechnologyLogo";
+import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
 type Data = {
   projects: Project[];
@@ -58,7 +58,9 @@ export default function Page() {
               description={project.description}
               stackTitle={t("homeFlow.projects.stackLabel")}
               stack={project.stack
-                .filter((item) => isTechnologyLogoName(item.logo))
+                .filter((item): item is { name: string; logo: TechnologyLogoName } =>
+                  isTechnologyLogoName(item.logo)
+                )
                 .map((item) => ({
                   name: item.name,
                   logo: item.logo,
@@ -67,13 +69,11 @@ export default function Page() {
               mobileScoresLabel={t("homeFlow.projects.scoreGroups.mobile")}
               desktopScoresLabel={t("homeFlow.projects.scoreGroups.desktop")}
               mobileScores={project.mobileScores.map((item) => ({
-                label:
-                  scoreLabelMap[item.label as keyof typeof scoreLabelMap] ?? item.label,
+                label: scoreLabelMap[item.label as keyof typeof scoreLabelMap] ?? item.label,
                 value: item.value,
               }))}
               desktopScores={project.desktopScores.map((item) => ({
-                label:
-                  scoreLabelMap[item.label as keyof typeof scoreLabelMap] ?? item.label,
+                label: scoreLabelMap[item.label as keyof typeof scoreLabelMap] ?? item.label,
                 value: item.value,
               }))}
               liveHref={project.liveUrl}

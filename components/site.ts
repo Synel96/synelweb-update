@@ -4,19 +4,26 @@ import type { SupportedLang } from "@/src/i18n-config";
 export const BRAND_NAME = env.VITE_BRAND_NAME;
 export const SITE_URL = env.VITE_SITE_URL;
 
-export const NAV_LINKS = [
+type NavLink = {
+  href: string;
+  labelKey: string;
+  hiddenInLangs?: readonly SupportedLang[];
+  fallbackLabel?: Record<SupportedLang, string>;
+};
+
+export const NAV_LINKS: readonly NavLink[] = [
   { href: "/", labelKey: "nav.home" },
   { href: "/services", labelKey: "nav.services" },
   { href: "/projects", labelKey: "nav.projects" },
   {
     href: "/blog",
     labelKey: "nav.blog",
-    hiddenInLangs: ["en", "de"] as const,
+    hiddenInLangs: ["en", "de"],
     fallbackLabel: {
       en: "Blog",
       hu: "Blog",
       de: "Blog",
-    } satisfies Record<SupportedLang, string>,
+    },
   },
   { href: "/technology", labelKey: "nav.technology" },
   {
@@ -26,7 +33,7 @@ export const NAV_LINKS = [
       en: "Contact",
       hu: "Kapcsolat",
       de: "Kontakt",
-    } satisfies Record<SupportedLang, string>,
+    },
   },
   { href: "/about", labelKey: "nav.about" },
-] as const;
+];

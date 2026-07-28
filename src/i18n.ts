@@ -102,7 +102,6 @@ if (!i18n.isInitialized) {
     partialBundledLanguages: true,
     defaultNS: "common",
     ns: ["common"],
-    initImmediate: false,
     react: { useSuspense: false },
     interpolation: { escapeValue: false },
   });

@@ -20,7 +20,6 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const i18nInstance = isServer
     ? i18n.cloneInstance({
         lng: lang,
-        initImmediate: false,
       })
     : i18n;
 

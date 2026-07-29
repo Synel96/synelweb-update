@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { Button } from "@/components/ui/button";
+import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 
 type ServiceCardProps = {
   serviceName: string;
@@ -35,6 +38,9 @@ export function ServiceCard({
   const COLLAPSED_DESCRIPTION_HEIGHT = 112;
   const EXPAND_SCROLL_OFFSET = 96;
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
+  const { scrollRef, activeIndex, scrollToIndex, prev, next, handleScroll } = useSnapCarousel(
+    slides.length
+  );
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const hasLongDescription = description.trim().length > 220;
   const articleRef = useRef<HTMLElement | null>(null);
@@ -131,22 +137,70 @@ export function ServiceCard({
       </div>
 
       {slides.length > 0 ? (
-        <div className="relative mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/25">
-          <div className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth">
-            {slides.map((src, index) => (
-              <div key={`${src}-${index}`} className="w-full shrink-0 snap-center">
-                <img
-                  src={src}
-                  alt={`${serviceName} image ${index + 1}`}
-                  className="aspect-[16/10] w-full object-cover"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  crossOrigin="anonymous"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
+        <div className="mt-6 space-y-3">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+            <div
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
+            >
+              {slides.map((src, index) => (
+                <div key={`${src}-${index}`} className="w-full shrink-0 snap-center">
+                  <img
+                    src={src}
+                    alt={`${serviceName} image ${index + 1}`}
+                    className="aspect-[16/10] w-full object-cover"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+
+          {slides.length > 1 ? (
+            <div className="flex items-center justify-between">
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={prev}
+                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                aria-label="Previous image"
+              >
+                <ChevronLeftIcon className="size-4" />
+              </Button>
+
+              <div className="flex items-center gap-1.5">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`h-1.5 rounded-full transition-all ${
+                      index === activeIndex
+                        ? "w-5 bg-(--accent)"
+                        : "w-2 bg-white/30 hover:bg-white/55"
+                    }`}
+                    onClick={() => scrollToIndex(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={next}
+                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                aria-label="Next image"
+              >
+                <ChevronRightIcon className="size-4" />
+              </Button>
+            </div>
+          ) : null}
         </div>
       ) : null}
 

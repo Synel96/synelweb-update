@@ -91,6 +91,16 @@ function normalizeCategory(category: string) {
   return "professional";
 }
 
+function getCategoryBadgeClassName(categoryKey: ReturnType<typeof normalizeCategory>) {
+  if (categoryKey === "casual") {
+    return "border-(--secondary)/40 bg-(--secondary)/12 text-(--secondary)";
+  }
+  if (categoryKey === "dirtyFinancials") {
+    return "border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] text-[#1a0a06]";
+  }
+  return "border-white/12 bg-white/6 text-(--accent)";
+}
+
 function formatDate(value: string, locale: string) {
   const parsed = Date.parse(value);
   if (Number.isNaN(parsed)) return "";
@@ -257,7 +267,9 @@ export default function Page() {
         <div className="px-6 pt-6 pb-7 sm:px-10 sm:pt-8 sm:pb-9">
           <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.16em] uppercase">
             <p className="text-(--accent)">{blogLabel}</p>
-            <span className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-(--accent)">
+            <span
+              className={`rounded-full border px-3 py-1 ${getCategoryBadgeClassName(categoryKey)}`}
+            >
               {categoryLabel}
             </span>
           </div>

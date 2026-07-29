@@ -26,7 +26,7 @@ export function ReviewsCarousel({
   actionAriaLabel,
 }: ReviewsCarouselProps) {
   const { t, i18n } = useTranslation();
-  const activeLang = ((i18n.resolvedLanguage || "hu").slice(0, 2) as AppLang);
+  const activeLang = (i18n.resolvedLanguage || "hu").slice(0, 2) as AppLang;
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
@@ -199,11 +199,11 @@ export function ReviewsCarousel({
                       key={starValue}
                       type="button"
                       onClick={() => setModalRating(starValue)}
-                      className="rounded-md p-1.5 text-white/65 transition-colors hover:text-amber-300"
+                      className="rounded-md p-1.5 text-white/65 transition-colors hover:text-(--color-secondary-hot)"
                       aria-label={t("reviewsPage.modal.rateStarAria", { value: starValue })}
                     >
                       <StarIcon
-                        className={`size-6 ${isActive ? "fill-amber-400 text-amber-400" : "fill-transparent"}`}
+                        className={`size-6 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent"}`}
                       />
                     </button>
                   );
@@ -325,7 +325,7 @@ export function ReviewsCarousel({
               return (
                 <span key={starValue} className="rounded-md p-1.5 text-white/65">
                   <StarIcon
-                    className={`size-5 ${isActive ? "fill-amber-400 text-amber-400" : "fill-transparent"}`}
+                    className={`size-5 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent"}`}
                     aria-hidden="true"
                   />
                 </span>

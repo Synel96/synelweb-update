@@ -40,7 +40,7 @@ export function LanguageSwitcher() {
           aria-label={`Switch to ${lang.toUpperCase()}`}
           className={
             currentLang === lang
-              ? "font-semibold text-(--brand-on-surface)"
+              ? "[background-image:linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text font-semibold text-transparent hover:text-transparent"
               : "text-white/60 hover:text-(--brand-on-surface)"
           }
         >
@@ -74,7 +74,7 @@ export function LanguageSwitcherDropdown() {
           aria-label={`Switch to ${lang.toUpperCase()}`}
           className={
             currentLang === lang
-              ? "h-9 rounded-xl bg-white/12 px-2 font-semibold text-(--brand-on-surface)"
+              ? "h-9 rounded-xl border border-(--color-secondary-hot)/40 bg-[linear-gradient(120deg,color-mix(in_oklab,var(--color-secondary-warm),transparent_78%),color-mix(in_oklab,var(--color-secondary-hot),transparent_78%))] px-2 font-semibold text-(--brand-on-surface)"
               : "h-9 rounded-xl px-2 text-white/65 hover:bg-white/10 hover:text-(--brand-on-surface)"
           }
         >

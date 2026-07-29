@@ -90,6 +90,11 @@ export default function BlogPostsPagination({
                 isActive={item === currentPage}
                 onClick={() => onPageChange(item)}
                 aria-label={`${pageLabelPrefix} ${item}`}
+                className={
+                  item === currentPage
+                    ? "border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] text-[#1a0a06] hover:brightness-110"
+                    : undefined
+                }
               >
                 {item}
               </PaginationLink>

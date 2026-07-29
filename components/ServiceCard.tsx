@@ -105,10 +105,7 @@ export function ServiceCard({
               : undefined,
           }}
         >
-          <p
-            ref={descriptionRef}
-            className="text-sm leading-7 text-white/80 sm:text-base"
-          >
+          <p ref={descriptionRef} className="text-sm leading-7 text-white/80 sm:text-base">
             {description}
           </p>
         </div>
@@ -128,10 +125,10 @@ export function ServiceCard({
       <div className="mt-4 flex flex-wrap items-center gap-3">
         {hasDiscount ? (
           <>
-            <span className="inline-flex items-center rounded-full border border-amber-300/35 bg-amber-300/12 px-3 py-1 text-[0.68rem] font-bold tracking-[0.18em] text-amber-200 uppercase">
+            <span className="inline-flex items-center rounded-full border border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] px-3 py-1 text-[0.68rem] font-bold tracking-[0.18em] text-[#1a0a06] uppercase">
               {discountLabel}
             </span>
-            <p className="text-sm font-semibold tracking-[0.08em] text-white/50 line-through decoration-white/45 uppercase">
+            <p className="text-sm font-semibold tracking-[0.08em] text-white/50 uppercase line-through decoration-white/45">
               {regularPrice}
             </p>
             <p className="text-lg font-extrabold tracking-[0.08em] text-emerald-300 uppercase sm:text-xl">

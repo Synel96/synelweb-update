@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { ExternalLinkIcon } from "lucide-react";
 import { TechnologyLogo, type TechnologyLogoName } from "@/components/TechnologyLogo";
 import { LighthouseScoreRing } from "@/components/LighthouseScoreRing";
@@ -15,6 +16,8 @@ type ProjectShowcaseCardProps = {
   otherImages: string[];
   prioritizeImage?: boolean;
   description: string;
+  expandLabel: string;
+  collapseLabel: string;
   stackTitle: string;
   stack: Array<{ name: string; logo: TechnologyLogoName }>;
   scoresTitle: string;
@@ -26,6 +29,9 @@ type ProjectShowcaseCardProps = {
   liveLabel: string;
 };
 
+const COLLAPSED_DESCRIPTION_HEIGHT = 112;
+const EXPAND_SCROLL_OFFSET = 96;
+
 export function ProjectShowcaseCard({
   title,
   headingLevel = "h3",
@@ -33,6 +39,8 @@ export function ProjectShowcaseCard({
   otherImages,
   prioritizeImage = false,
   description,
+  expandLabel,
+  collapseLabel,
   stackTitle,
   stack,
   scoresTitle,
@@ -44,9 +52,49 @@ export function ProjectShowcaseCard({
   liveLabel,
 }: ProjectShowcaseCardProps) {
   const HeadingTag = headingLevel;
+  const hasLongDescription = description.trim().length > 220;
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [expandedHeight, setExpandedHeight] = useState(0);
+  const articleRef = useRef<HTMLElement | null>(null);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const element = descriptionRef.current;
+    if (!element) return;
+    setExpandedHeight(element.scrollHeight);
+  }, [description]);
+
+  useEffect(() => {
+    if (!isDescriptionExpanded) return;
+
+    const articleElement = articleRef.current;
+    if (!articleElement) return;
+
+    const scrollIntoComfortView = () => {
+      const rect = articleElement.getBoundingClientRect();
+      const targetTop = window.scrollY + rect.top - EXPAND_SCROLL_OFFSET;
+      const currentTop = window.scrollY;
+
+      if (Math.abs(targetTop - currentTop) < 12) return;
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: "smooth",
+      });
+    };
+
+    const frameId = window.requestAnimationFrame(() => {
+      window.setTimeout(scrollIntoComfortView, 140);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [isDescriptionExpanded, expandedHeight]);
 
   return (
-    <article className="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-4 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-6 lg:p-7">
+    <article
+      ref={articleRef}
+      className="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-4 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-6 lg:p-7"
+    >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-6">
         <div className="lg:order-2">
           <ProjectPreviewCarousel
@@ -62,7 +110,29 @@ export function ProjectShowcaseCard({
             {title}
           </HeadingTag>
 
-          <p className="mt-4 text-sm leading-7 text-white/80 sm:text-[0.96rem]">{description}</p>
+          <div
+            className="mt-4 overflow-hidden transition-[max-height] duration-400 ease-in-out"
+            style={{
+              maxHeight: hasLongDescription
+                ? `${isDescriptionExpanded ? expandedHeight : COLLAPSED_DESCRIPTION_HEIGHT}px`
+                : undefined,
+            }}
+          >
+            <p ref={descriptionRef} className="text-sm leading-7 text-white/80 sm:text-[0.96rem]">
+              {description}
+            </p>
+          </div>
+
+          {hasLongDescription ? (
+            <button
+              type="button"
+              className="mt-3 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80"
+              onClick={() => setIsDescriptionExpanded((current) => !current)}
+              aria-expanded={isDescriptionExpanded}
+            >
+              {isDescriptionExpanded ? collapseLabel : expandLabel}
+            </button>
+          ) : null}
 
           <div className="mt-5">
             <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">

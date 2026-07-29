@@ -90,7 +90,9 @@
   },
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",
-    "emptyState": "No projects are available right now."
+    "emptyState": "No projects are available right now.",
+    "expandDescription": "Read more",
+    "collapseDescription": "Show less"
   },
   "blogPage": {
     "label": "Blog",

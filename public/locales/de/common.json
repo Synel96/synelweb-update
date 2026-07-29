@@ -90,7 +90,9 @@
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
-    "emptyState": "Derzeit sind keine Projekte verfügbar."
+    "emptyState": "Derzeit sind keine Projekte verfügbar.",
+    "expandDescription": "Mehr",
+    "collapseDescription": "Weniger"
   },
   "blogPage": {
     "label": "Blog",

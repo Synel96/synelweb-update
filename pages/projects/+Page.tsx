@@ -56,6 +56,8 @@ export default function Page() {
               otherImages={project.otherImages}
               prioritizeImage={projectIndex === 0}
               description={project.description}
+              expandLabel={t("projectsPage.expandDescription")}
+              collapseLabel={t("projectsPage.collapseDescription")}
               stackTitle={t("homeFlow.projects.stackLabel")}
               stack={project.stack
                 .filter((item): item is { name: string; logo: TechnologyLogoName } =>

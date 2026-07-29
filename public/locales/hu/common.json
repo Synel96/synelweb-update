@@ -91,7 +91,9 @@
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
-    "emptyState": "Jelenleg nincs megjeleníthető projekt."
+    "emptyState": "Jelenleg nincs megjeleníthető projekt.",
+    "expandDescription": "Több",
+    "collapseDescription": "Kevesebb"
   },
   "blogPage": {
     "label": "Blog",

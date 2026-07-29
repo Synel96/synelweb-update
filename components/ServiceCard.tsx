@@ -158,52 +158,47 @@ export function ServiceCard({
                 </div>
               ))}
             </div>
-
-            {slides.length > 1 ? (
-              <>
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon-sm"
-                    onClick={prev}
-                    className="pointer-events-auto rounded-full border border-white/20 bg-black/45 text-white hover:bg-black/65"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeftIcon className="size-4" />
-                  </Button>
-                </div>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon-sm"
-                    onClick={next}
-                    className="pointer-events-auto rounded-full border border-white/20 bg-black/45 text-white hover:bg-black/65"
-                    aria-label="Next image"
-                  >
-                    <ChevronRightIcon className="size-4" />
-                  </Button>
-                </div>
-              </>
-            ) : null}
           </div>
 
           {slides.length > 1 ? (
-            <div className="flex items-center justify-center gap-1.5">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === activeIndex
-                      ? "w-5 bg-(--accent)"
-                      : "w-2 bg-white/30 hover:bg-white/55"
-                  }`}
-                  onClick={() => scrollToIndex(index)}
-                  aria-label={`Go to image ${index + 1}`}
-                />
-              ))}
+            <div className="flex items-center justify-between">
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={prev}
+                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                aria-label="Previous image"
+              >
+                <ChevronLeftIcon className="size-4" />
+              </Button>
+
+              <div className="flex items-center gap-1.5">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`h-1.5 rounded-full transition-all ${
+                      index === activeIndex
+                        ? "w-5 bg-(--accent)"
+                        : "w-2 bg-white/30 hover:bg-white/55"
+                    }`}
+                    onClick={() => scrollToIndex(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                onClick={next}
+                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                aria-label="Next image"
+              >
+                <ChevronRightIcon className="size-4" />
+              </Button>
             </div>
           ) : null}
         </div>

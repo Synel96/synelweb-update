@@ -61,13 +61,13 @@ export default function Page() {
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.speed.text")}</p>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/5 p-4">
-              <p className="text-xs font-semibold tracking-[0.14em] text-(--accent) uppercase">
+              <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-warm) uppercase">
                 {t("about.highlights.security.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.security.text")}</p>
             </article>
             <article className="rounded-xl border border-white/10 bg-white/5 p-4">
-              <p className="text-xs font-semibold tracking-[0.14em] text-(--accent) uppercase">
+              <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-hot) uppercase">
                 {t("about.highlights.custom.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.custom.text")}</p>

@@ -55,7 +55,7 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
       ref={ringRef}
       className="flex min-h-[7.4rem] flex-col items-center justify-between rounded-2xl border border-white/10 bg-white/4 p-2.5 text-center sm:min-h-[7.75rem] sm:p-3"
     >
-      <p className="min-h-[2rem] max-w-[8rem] text-center text-[0.58rem] leading-tight font-semibold tracking-[0.08em] text-white/65 uppercase [overflow-wrap:anywhere] sm:text-[0.62rem]">
+      <p className="min-h-[2rem] max-w-[8rem] text-center text-[0.58rem] leading-tight font-semibold tracking-[0.08em] [overflow-wrap:anywhere] text-white/65 uppercase sm:text-[0.62rem]">
         {label}
       </p>
       <div className="relative mt-2 flex items-center justify-center">
@@ -73,7 +73,7 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
             cy="32"
             r={radius}
             fill="none"
-            stroke="#22c55e"
+            className="stroke-emerald-400"
             strokeWidth="6"
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -81,7 +81,7 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
             style={{ transition: "stroke-dashoffset 500ms ease" }}
           />
         </svg>
-        <span className="pointer-events-none absolute text-sm font-extrabold text-[#22c55e]">
+        <span className="pointer-events-none absolute text-sm font-extrabold text-emerald-400">
           {Math.round(displayScore)}
         </span>
       </div>

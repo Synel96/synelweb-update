@@ -94,7 +94,7 @@ export default function Page() {
 
           <a
             href={langHref("/projects")}
-            className="mt-7 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+            className="mt-7 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
           >
             {t("homeFlow.projects.cta")}
           </a>
@@ -128,7 +128,7 @@ export default function Page() {
           </p>
           <a
             href={langHref("/about")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
           >
             {t("homeFlow.about.cta")}
           </a>

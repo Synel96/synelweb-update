@@ -142,7 +142,7 @@ export function ServiceCard({
             <div
               ref={scrollRef}
               onScroll={handleScroll}
-              className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
+              className="no-scrollbar flex touch-pan-y snap-x snap-mandatory overflow-x-auto scroll-smooth lg:touch-auto"
             >
               {slides.map((src, index) => (
                 <div key={`${src}-${index}`} className="w-full shrink-0 snap-center">

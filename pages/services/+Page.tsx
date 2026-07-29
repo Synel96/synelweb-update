@@ -1,7 +1,14 @@
+import { useEffect, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { ServiceCard } from "@/components/ServiceCard";
-import { type ServiceCard as ServiceCardItem } from "@/src/services/serviceCardsService";
+import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
+import { resolveCurrentLang } from "@/src/localizedRoutes";
+import {
+  getServiceCards,
+  type AppLang,
+  type ServiceCard as ServiceCardItem,
+} from "@/src/services/serviceCardsService";
 
 type Data = {
   cards: ServiceCardItem[];
@@ -9,10 +16,59 @@ type Data = {
   contactHref: string;
 };
 
+function toAppLang(language: string): AppLang {
+  const normalized = language.toLowerCase();
+  if (normalized.startsWith("hu")) return "hu";
+  if (normalized.startsWith("de")) return "de";
+  return "en";
+}
+
 export default function Page() {
-  const pageContext = usePageContext() as { data?: Data };
-  const { cards = [], fetchError = true, contactHref = "/contact" } = pageContext.data ?? {};
+  const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
+  const initialCards = pageContext.data?.cards ?? [];
+  const initialFetchError = pageContext.data?.fetchError ?? true;
+  const contactHref = pageContext.data?.contactHref ?? "/contact";
   const { t } = useTranslation();
+  const routeLang = resolveCurrentLang(pageContext.lang);
+
+  const [cards, setCards] = useState<ServiceCardItem[]>(initialCards);
+  const [fetchError, setFetchError] = useState(initialFetchError);
+  const [isLoading, setIsLoading] = useState(initialCards.length === 0 && !initialFetchError);
+
+  useEffect(() => {
+    setCards(initialCards);
+    setFetchError(initialFetchError);
+    setIsLoading(initialCards.length === 0 && !initialFetchError);
+  }, [initialCards, initialFetchError]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function refreshCards() {
+      setIsLoading(true);
+      setFetchError(false);
+
+      try {
+        const latestCards = await getServiceCards(toAppLang(routeLang));
+        if (!isMounted) return;
+
+        setCards(latestCards);
+        setFetchError(false);
+      } catch {
+        if (!isMounted) return;
+        setFetchError(true);
+      } finally {
+        if (!isMounted) return;
+        setIsLoading(false);
+      }
+    }
+
+    refreshCards();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [routeLang]);
 
   return (
     <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
@@ -28,7 +84,21 @@ export default function Page() {
         </p>
       </header>
 
-      {fetchError || cards.length === 0 ? (
+      {isLoading ? (
+        <div
+          className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+          data-reveal
+        >
+          {Array.from({ length: 2 }, (_, index) => (
+            <div
+              key={`service-skeleton-${index}`}
+              className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-auto lg:shrink"
+            >
+              <ServiceCardSkeleton />
+            </div>
+          ))}
+        </div>
+      ) : fetchError || cards.length === 0 ? (
         <div className="rounded-3xl border border-dashed border-white/15 bg-white/3 p-8 text-center">
           <p className="text-base text-white/86">
             {fetchError ? t("servicesPage.fetchError") : t("servicesPage.emptyState")}

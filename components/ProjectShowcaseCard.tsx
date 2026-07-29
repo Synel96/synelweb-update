@@ -3,6 +3,7 @@ import { ExternalLinkIcon } from "lucide-react";
 import { TechnologyLogo, type TechnologyLogoName } from "@/components/TechnologyLogo";
 import { LighthouseScoreRing } from "@/components/LighthouseScoreRing";
 import { ProjectPreviewCarousel } from "@/components/ProjectPreviewCarousel";
+import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 
 type ScoreItem = {
   label: string;
@@ -79,7 +80,7 @@ export function ProjectShowcaseCard({
 
       window.scrollTo({
         top: Math.max(0, targetTop),
-        behavior: "smooth",
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
       });
     };
 

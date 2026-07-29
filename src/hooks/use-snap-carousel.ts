@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 
 export function useSnapCarousel(slideCount: number) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -7,7 +8,10 @@ export function useSnapCarousel(slideCount: number) {
   const scrollToIndex = useCallback((index: number) => {
     const element = scrollRef.current;
     if (!element) return;
-    element.scrollTo({ left: index * element.clientWidth, behavior: "smooth" });
+    element.scrollTo({
+      left: index * element.clientWidth,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
   }, []);
 
   const prev = useCallback(() => {

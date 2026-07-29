@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { Button } from "@/components/ui/button";
 import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
+import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 
 type ServiceCardProps = {
   serviceName: string;
@@ -68,7 +69,7 @@ export function ServiceCard({
 
       window.scrollTo({
         top: Math.max(0, targetTop),
-        behavior: "smooth",
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
       });
     };
 

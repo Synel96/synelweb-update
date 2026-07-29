@@ -9,6 +9,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "./i18n-config";
+
+declare const __LOCALE_VERSION__: string;
 // Re-export so components can import everything from one place
 export { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang };
 
@@ -42,7 +44,7 @@ async function loadCommonMessagesFromBundle(lang: SupportedLang): Promise<Common
 }
 
 async function loadCommonMessagesFromHttp(lang: SupportedLang): Promise<CommonMessages> {
-  const response = await fetch(`/locales/${lang}/common.json`, {
+  const response = await fetch(`/locales/${lang}/common.json?v=${__LOCALE_VERSION__}`, {
     cache: "force-cache",
   });
 

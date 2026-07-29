@@ -8,6 +8,12 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ isSsrBuild }) => ({
+  define: {
+    // Cache-busts /public/locales/*.json across deploys — the query string
+    // changes per build, so browsers with a stale locale bundle (from the
+    // long-lived Cache-Control on /locales/*) fetch the fresh one instead.
+    __LOCALE_VERSION__: JSON.stringify(Date.now().toString(36)),
+  },
   plugins: [tailwindcss(), vike(), react()],
   resolve: {
     alias: {

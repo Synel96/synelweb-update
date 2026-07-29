@@ -93,12 +93,12 @@ function normalizeCategory(category: string) {
 
 function getCategoryBadgeClassName(categoryKey: ReturnType<typeof normalizeCategory>) {
   if (categoryKey === "casual") {
-    return "border-(--secondary)/40 bg-(--secondary)/12 text-(--secondary)";
+    return "border-transparent bg-(--secondary) text-white";
   }
   if (categoryKey === "dirtyFinancials") {
     return "border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] text-[#1a0a06]";
   }
-  return "border-white/12 bg-white/6 text-(--accent)";
+  return "border-transparent bg-(--accent) text-white";
 }
 
 function formatDate(value: string, locale: string) {

@@ -7,7 +7,7 @@ type BlogPostsDisplaySkeletonProps = {
 export default function BlogPostsDisplaySkeleton({ count = 6 }: BlogPostsDisplaySkeletonProps) {
   return (
     <div
-      className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+      className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
       data-reveal
     >
       {Array.from({ length: count }, (_, index) => (

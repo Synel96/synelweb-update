@@ -36,7 +36,7 @@ export default function Page() {
         </div>
       ) : (
         <div
-          className="no-scrollbar -mx-6 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+          className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
           data-reveal
         >
           {cards.map((card) => (

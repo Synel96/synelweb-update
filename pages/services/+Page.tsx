@@ -1,9 +1,7 @@
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { ServiceCard } from "@/components/ServiceCard";
-import {
-  type ServiceCard as ServiceCardItem,
-} from "@/src/services/serviceCardsService";
+import { type ServiceCard as ServiceCardItem } from "@/src/services/serviceCardsService";
 
 type Data = {
   cards: ServiceCardItem[];
@@ -37,24 +35,31 @@ export default function Page() {
           </p>
         </div>
       ) : (
-        <div className="grid items-start gap-6 lg:grid-cols-2" data-reveal>
+        <div
+          className="no-scrollbar -mx-6 flex snap-x snap-mandatory items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+          data-reveal
+        >
           {cards.map((card) => (
-            <ServiceCard
+            <div
               key={card.id}
-              serviceName={card.name}
-              description={card.description}
-              regularPrice={card.regularPrice}
-              discountedPrice={card.discountedPrice}
-              hasDiscount={card.hasDiscount}
-              discountLabel={t("servicesPage.discountBadge")}
-              expandLabel={t("servicesPage.expandDescription")}
-              collapseLabel={t("servicesPage.collapseDescription")}
-              slug={card.slug}
-              images={card.images}
-              contactBaseHref={contactHref}
-              ctaLabel={t("servicesPage.cardCta")}
-              ctaAriaLabel={t("servicesPage.cardCtaAria")}
-            />
+              className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-auto lg:shrink"
+            >
+              <ServiceCard
+                serviceName={card.name}
+                description={card.description}
+                regularPrice={card.regularPrice}
+                discountedPrice={card.discountedPrice}
+                hasDiscount={card.hasDiscount}
+                discountLabel={t("servicesPage.discountBadge")}
+                expandLabel={t("servicesPage.expandDescription")}
+                collapseLabel={t("servicesPage.collapseDescription")}
+                slug={card.slug}
+                images={card.images}
+                contactBaseHref={contactHref}
+                ctaLabel={t("servicesPage.cardCta")}
+                ctaAriaLabel={t("servicesPage.cardCtaAria")}
+              />
+            </div>
           ))}
         </div>
       )}

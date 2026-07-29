@@ -89,6 +89,14 @@ html {
   text-transform: uppercase;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .bento-card {
   border: 1px solid color-mix(in oklab, var(--border), transparent 5%);
   background: linear-gradient(

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Snackbar } from "@/components/ui/snackbar";
 import { createReview, getReviews, type Review } from "@/src/services/reviewsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
+import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 
 type ToastState = {
   type: "success" | "error";
@@ -30,7 +31,9 @@ export function ReviewsCarousel({
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { scrollRef, activeIndex, scrollToIndex, prev, next, handleScroll } = useSnapCarousel(
+    reviews.length
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
@@ -303,39 +306,43 @@ export function ReviewsCarousel({
     );
   }
 
-  const activeReview = reviews[activeIndex];
-
-  const prev = () =>
-    setActiveIndex((prevIndex) => (prevIndex === 0 ? reviews.length - 1 : prevIndex - 1));
-  const next = () =>
-    setActiveIndex((prevIndex) => (prevIndex === reviews.length - 1 ? 0 : prevIndex + 1));
-
   return (
     <>
       <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
         <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{title}</p>
 
-        <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
-          <p className="text-lg font-semibold text-white sm:text-xl">{activeReview.name}</p>
-          <p className="mt-3 text-sm leading-7 text-white/82 sm:text-base">{activeReview.review}</p>
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
+        >
+          {reviews.map((review) => (
+            <div
+              key={review.id}
+              className="w-full shrink-0 snap-center rounded-2xl border border-white/10 bg-black/20 p-5"
+            >
+              <p className="text-lg font-semibold text-white sm:text-xl">{review.name}</p>
+              <p className="mt-3 text-sm leading-7 text-white/82 sm:text-base">{review.review}</p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-2">
-            {[1, 2, 3, 4, 5].map((starValue) => {
-              const isActive = starValue <= activeReview.rating;
-              return (
-                <span key={starValue} className="rounded-md p-1.5 text-white/65">
-                  <StarIcon
-                    className={`size-5 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent"}`}
-                    aria-hidden="true"
-                  />
-                </span>
-              );
-            })}
-          </div>
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                {[1, 2, 3, 4, 5].map((starValue) => {
+                  const isActive = starValue <= review.rating;
+                  return (
+                    <span key={starValue} className="rounded-md p-1.5 text-white/65">
+                      <StarIcon
+                        className={`size-5 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent"}`}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  );
+                })}
+              </div>
 
-          {activeReview.rating === 0 ? (
-            <p className="mt-3 text-sm leading-7 text-white/70">{emptyRatingText}</p>
-          ) : null}
+              {review.rating === 0 ? (
+                <p className="mt-3 text-sm leading-7 text-white/70">{emptyRatingText}</p>
+              ) : null}
+            </div>
+          ))}
         </div>
 
         <div className="mt-4 flex items-center justify-between">
@@ -358,7 +365,7 @@ export function ReviewsCarousel({
                 className={`h-1.5 rounded-full transition-all ${
                   index === activeIndex ? "w-5 bg-(--accent)" : "w-2 bg-white/30 hover:bg-white/55"
                 }`}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => scrollToIndex(index)}
                 aria-label={`Go to review ${index + 1}`}
               />
             ))}

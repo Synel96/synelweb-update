@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -6,6 +6,7 @@ import {
   isCloudinaryImageUrl,
   withCloudinaryAutoParams,
 } from "@/src/cloudinary";
+import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 
 type ProjectPreviewCarouselProps = {
   previewImage: string;
@@ -44,7 +45,9 @@ export function ProjectPreviewCarousel({
       };
     });
   }, [previewImage, otherImages]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { scrollRef, activeIndex, scrollToIndex, prev, next, handleScroll } = useSnapCarousel(
+    slides.length
+  );
 
   if (slides.length === 0) {
     return (
@@ -54,20 +57,16 @@ export function ProjectPreviewCarousel({
     );
   }
 
-  const prev = () =>
-    setActiveIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
-  const next = () =>
-    setActiveIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
-
   return (
     <div className="space-y-3">
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
         <div
-          className="flex transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
         >
           {slides.map((slide, index) => (
-            <div key={`${slide.src}-${index}`} className="w-full shrink-0">
+            <div key={`${slide.src}-${index}`} className="w-full shrink-0 snap-center">
               <img
                 src={slide.src}
                 srcSet={slide.srcSet}
@@ -118,7 +117,7 @@ export function ProjectPreviewCarousel({
             className={`h-1.5 rounded-full transition-all ${
               index === activeIndex ? "w-5 bg-(--accent)" : "w-2 bg-white/30 hover:bg-white/55"
             }`}
-            onClick={() => setActiveIndex(index)}
+            onClick={() => scrollToIndex(index)}
             aria-label={`Go to image ${index + 1}`}
           />
         ))}

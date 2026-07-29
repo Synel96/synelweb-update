@@ -131,7 +131,10 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
   );
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2" data-reveal>
+    <div
+      className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+      data-reveal
+    >
       {posts.map((post) => {
         const categoryKey = formatCategoryLabel(post.category);
         const categoryLabel =
@@ -155,7 +158,7 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
         return (
           <article
             key={post.id}
-            className="overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)]"
+            className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] lg:w-auto lg:shrink"
           >
             {previewImageUrl ? (
               <img

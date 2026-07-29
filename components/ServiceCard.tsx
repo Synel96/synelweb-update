@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { Button } from "@/components/ui/button";
+import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 
 type ServiceCardProps = {
   serviceName: string;
@@ -37,7 +38,9 @@ export function ServiceCard({
   const COLLAPSED_DESCRIPTION_HEIGHT = 112;
   const EXPAND_SCROLL_OFFSET = 96;
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const { scrollRef, activeIndex, scrollToIndex, prev, next, handleScroll } = useSnapCarousel(
+    slides.length
+  );
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const hasLongDescription = description.trim().length > 220;
   const articleRef = useRef<HTMLElement | null>(null);
@@ -75,15 +78,6 @@ export function ServiceCard({
 
     return () => window.cancelAnimationFrame(frameId);
   }, [isDescriptionExpanded, expandedHeight]);
-
-  const prev = () =>
-    setActiveIndex((prevIndex) =>
-      prevIndex === 0 ? Math.max(slides.length - 1, 0) : prevIndex - 1
-    );
-  const next = () =>
-    setActiveIndex((prevIndex) =>
-      prevIndex === Math.max(slides.length - 1, 0) ? 0 : prevIndex + 1
-    );
 
   const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}`;
 
@@ -146,11 +140,12 @@ export function ServiceCard({
         <div className="mt-6 space-y-3">
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
             <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto scroll-smooth"
             >
               {slides.map((src, index) => (
-                <div key={`${src}-${index}`} className="w-full shrink-0">
+                <div key={`${src}-${index}`} className="w-full shrink-0 snap-center">
                   <img
                     src={src}
                     alt={`${serviceName} image ${index + 1}`}
@@ -205,7 +200,7 @@ export function ServiceCard({
                       ? "w-5 bg-(--accent)"
                       : "w-2 bg-white/30 hover:bg-white/55"
                   }`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => scrollToIndex(index)}
                   aria-label={`Go to image ${index + 1}`}
                 />
               ))}

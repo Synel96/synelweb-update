@@ -55,9 +55,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
   },
   hu: {
     "/": {
-      title: "Honlapkészítés Sopron | SynelWeb",
+      title: "Weboldal készítés Sopron | SynelWeb",
       description:
-        "Honlapkészítés Sopronban és online: modern, gyors, prémium weboldalak vállalkozásoknak.",
+        "Weboldal készítés Sopronban és online: modern, gyors, prémium weboldalak vállalkozásoknak.",
     },
     "/about": {
       title: "Rólam | SynelWeb",
@@ -65,9 +65,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
     },
     "/services": {
-      title: "Honlap árak és szolgáltatások | SynelWeb",
+      title: "Weblap árak és szolgáltatások | SynelWeb",
       description:
-        "Átlátható honlap árak és szolgáltatások egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
+        "Átlátható weblap árak és szolgáltatások egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
     },
     "/projects": {
       title: "Projektek | SynelWeb",

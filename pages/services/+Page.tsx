@@ -82,10 +82,10 @@ export default function Page() {
           <img
             src={SERVICES_HERO_BACKGROUND_URL}
             alt=""
-            className="h-full w-full object-cover opacity-70"
+            className="h-full w-full object-cover object-[center_70%]"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0.35)_0%,rgba(11,15,25,0.78)_65%,rgba(11,15,25,1)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0)_0%,rgba(11,15,25,0.2)_80%,rgba(11,15,25,1)_100%)]" />
         </div>
 
         <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14" data-reveal>

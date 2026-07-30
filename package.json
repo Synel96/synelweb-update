@@ -5,6 +5,9 @@
     "build": "vike build && node scripts/sync-server-css-assets.mjs",
     "preview": "vike build && node scripts/preview-static.mjs",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint": "stylelint \"pages/**/*.css\"",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -35,11 +38,16 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.1",
     "@tailwindcss/vite": "^4.3.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^26.0.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^4.1.10",
     "autoprefixer": "^10.5.0",
+    "jsdom": "^30.0.1",
     "postcss": "^8.5.15",
     "postcss-import": "^16.1.1",
     "prettier": "^3.8.4",
@@ -49,7 +57,8 @@
     "stylelint-config-tailwindcss": "^1.0.1",
     "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
-    "vite": "^8.0.16"
+    "vite": "^8.0.16",
+    "vitest": "^4.1.10"
   },
   "type": "module"
 }

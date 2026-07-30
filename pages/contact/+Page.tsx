@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 
-const EMAIL = "info@synleweb.hu";
+const EMAIL = "info@synelweb.hu";
 const PHONE = "+36303645516";
 const FACEBOOK_HREF = "https://www.facebook.com/profile.php?id=61586963195763";
 const LINKEDIN_HREF = "https://www.linkedin.com/in/szilveszter-nemeth-636689332/";

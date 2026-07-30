@@ -11,8 +11,6 @@ type BlogPostsDisplayProps = {
   t: TFunction;
 };
 
-const COLLAPSED_DESCRIPTION_HEIGHT = 96;
-
 function getBlogDisplayFallbacks(locale: string) {
   const lang = resolveLangPrefix(locale);
 
@@ -197,29 +195,30 @@ function BlogPostCard({
           {post.title || untitledLabel}
         </h2>
 
+        {/* Collapsed to 0 on phones so the list only shows titles by default;
+            on sm+ screens a long description still gets a fixed-height preview,
+            while a short one is simply shown in full (no collapsing needed there). */}
         <div
-          className="mt-4 overflow-hidden transition-[max-height] duration-400 ease-in-out"
-          style={{
-            maxHeight: hasLongDescription
-              ? `${isDescriptionExpanded ? expandedHeight : COLLAPSED_DESCRIPTION_HEIGHT}px`
-              : undefined,
-          }}
+          className={`mt-4 max-h-0 overflow-hidden transition-[max-height] duration-400 ease-in-out ${
+            hasLongDescription ? "sm:max-h-24" : "sm:max-h-none"
+          }`}
+          style={isDescriptionExpanded ? { maxHeight: `${expandedHeight}px` } : undefined}
         >
           <p ref={descriptionRef} className="text-sm leading-7 text-white/78 sm:text-base">
             {description}
           </p>
         </div>
 
-        {hasLongDescription ? (
-          <button
-            type="button"
-            className="mt-3 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80"
-            onClick={() => setIsDescriptionExpanded((current) => !current)}
-            aria-expanded={isDescriptionExpanded}
-          >
-            {isDescriptionExpanded ? collapseLabel : expandLabel}
-          </button>
-        ) : null}
+        <button
+          type="button"
+          className={`mt-3 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80 ${
+            hasLongDescription ? "" : "sm:hidden"
+          }`}
+          onClick={() => setIsDescriptionExpanded((current) => !current)}
+          aria-expanded={isDescriptionExpanded}
+        >
+          {isDescriptionExpanded ? collapseLabel : expandLabel}
+        </button>
 
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <a

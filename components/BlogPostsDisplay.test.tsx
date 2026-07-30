@@ -81,10 +81,31 @@ describe("BlogPostsDisplay", () => {
     expect(screen.queryByText(/^\d{4}\./)).not.toBeInTheDocument();
   });
 
-  it("does not show an expand toggle for a short description", async () => {
+  it("hides the toggle on sm+ screens for a short description (mobile still gets one to collapse to the title)", async () => {
     const t = await getT("en");
     render(<BlogPostsDisplay posts={[post]} locale="en" t={t} />);
-    expect(screen.queryByRole("button", { name: "Read more" })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Read more" }).className).toContain("sm:hidden");
+  });
+
+  it("keeps the toggle visible on sm+ screens for a long description", async () => {
+    const t = await getT("en");
+    const longDescription = "L".repeat(221);
+    render(
+      <BlogPostsDisplay posts={[{ ...post, description: longDescription }]} locale="en" t={t} />
+    );
+    expect(screen.getByRole("button", { name: "Read more" }).className).not.toContain("sm:hidden");
+  });
+
+  it("expands a short description on mobile too when the (mobile-only) toggle is clicked", async () => {
+    const t = await getT("en");
+    render(<BlogPostsDisplay posts={[post]} locale="en" t={t} />);
+    const user = userEvent.setup();
+
+    await user.click(screen.getByRole("button", { name: "Read more" }));
+    expect(screen.getByRole("button", { name: "Show less" })).toHaveAttribute(
+      "aria-expanded",
+      "true"
+    );
   });
 
   it("shows a localized expand/collapse toggle for a long description and expands it on click", async () => {

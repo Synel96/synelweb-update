@@ -65,9 +65,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
     },
     "/services": {
-      title: "Szolgáltatások | SynelWeb",
+      title: "Honlap árak és szolgáltatások | SynelWeb",
       description:
-        "Szolgáltatásaim és fejlesztési szemléletem egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
+        "Átlátható honlap árak és szolgáltatások egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
     },
     "/projects": {
       title: "Projektek | SynelWeb",

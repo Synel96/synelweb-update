@@ -188,7 +188,8 @@
       "cancel": "Cancel",
       "submit": "Submit review",
       "submitting": "Submitting...",
-      "submitError": "Could not submit your review right now. Please try again."
+      "submitError": "Could not submit your review right now. Please try again.",
+      "privacyNotice": "By submitting your review, you accept the <privacyLink>Adatkezelési tájékoztató</privacyLink> (Privacy Notice, in Hungarian)."
     },
     "toast": {
       "success": "We received your review and it is waiting for approval!",

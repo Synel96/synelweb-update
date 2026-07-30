@@ -188,7 +188,8 @@
       "cancel": "Abbrechen",
       "submit": "Bewertung senden",
       "submitting": "Wird gesendet...",
-      "submitError": "Deine Bewertung konnte gerade nicht gesendet werden. Bitte versuche es erneut."
+      "submitError": "Deine Bewertung konnte gerade nicht gesendet werden. Bitte versuche es erneut.",
+      "privacyNotice": "Mit dem Absenden deiner Bewertung akzeptierst du die <privacyLink>Adatkezelési tájékoztató</privacyLink> (Datenschutzhinweis, auf Ungarisch)."
     },
     "toast": {
       "success": "Wir haben deine Bewertung erhalten, sie wartet auf Freigabe!",

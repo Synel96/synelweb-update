@@ -34,6 +34,9 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
               {navLabel(item)}
             </a>
           ))}
+          <a href="/adatkezeles" className="text-white/85 transition-colors hover:text-white">
+            Adatkezelési tájékoztató
+          </a>
         </nav>
         <span>
           {year} {brandName}. {t("footer.allRightsReserved")}

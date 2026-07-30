@@ -188,7 +188,8 @@
       "cancel": "Mégse",
       "submit": "Vélemény elküldése",
       "submitting": "Küldés...",
-      "submitError": "A vélemény elküldése most nem sikerült. Kérlek, próbáld újra."
+      "submitError": "A vélemény elküldése most nem sikerült. Kérlek, próbáld újra.",
+      "privacyNotice": "A vélemény elküldésével elfogadod az <privacyLink>Adatkezelési tájékoztatót</privacyLink>."
     },
     "toast": {
       "success": "Véleményét megkaptuk és jóváhagyásra vár!",

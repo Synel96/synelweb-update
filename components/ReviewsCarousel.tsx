@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon, XIcon } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Snackbar } from "@/components/ui/snackbar";
 import { createReview, getReviews, type Review } from "@/src/services/reviewsService";
@@ -229,6 +229,15 @@ export function ReviewsCarousel({
             </label>
 
             {submitError ? <p className="text-sm text-rose-300">{submitError}</p> : null}
+
+            <p className="text-xs leading-6 text-white/60">
+              <Trans
+                i18nKey="reviewsPage.modal.privacyNotice"
+                components={{
+                  privacyLink: <a href="/adatkezeles" className="underline underline-offset-4" />,
+                }}
+              />
+            </p>
 
             <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-end">
               <Button

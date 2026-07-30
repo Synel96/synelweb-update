@@ -39,6 +39,7 @@ export function ReviewsCarousel({
   const [formEmail, setFormEmail] = useState("");
   const [formRating, setFormRating] = useState(0);
   const [formReview, setFormReview] = useState("");
+  const [consentAccepted, setConsentAccepted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [toast, setToast] = useState<ToastState | null>(null);
@@ -97,6 +98,16 @@ export function ReviewsCarousel({
       return;
     }
 
+    if (!consentAccepted) {
+      const message = t("reviewsPage.modal.consentError");
+      setSubmitError(message);
+      setToast({
+        type: "error",
+        message,
+      });
+      return;
+    }
+
     try {
       setIsSubmitting(true);
 
@@ -117,6 +128,7 @@ export function ReviewsCarousel({
       setFormEmail("");
       setFormRating(0);
       setFormReview("");
+      setConsentAccepted(false);
       setToast({
         type: "success",
         message: t("reviewsPage.toast.success"),
@@ -230,14 +242,23 @@ export function ReviewsCarousel({
 
             {submitError ? <p className="text-sm text-rose-300">{submitError}</p> : null}
 
-            <p className="text-xs leading-6 text-white/60">
-              <Trans
-                i18nKey="reviewsPage.modal.privacyNotice"
-                components={{
-                  privacyLink: <a href="/adatkezeles" className="underline underline-offset-4" />,
-                }}
+            <label className="flex items-start gap-2.5 text-xs leading-6 text-white/60">
+              <input
+                type="checkbox"
+                required
+                checked={consentAccepted}
+                onChange={(event) => setConsentAccepted(event.target.checked)}
+                className="mt-0.5 size-4 shrink-0 rounded border-white/25 bg-black/25 accent-(--accent)"
               />
-            </p>
+              <span>
+                <Trans
+                  i18nKey="reviewsPage.modal.privacyNotice"
+                  components={{
+                    privacyLink: <a href="/adatkezeles" className="underline underline-offset-4" />,
+                  }}
+                />
+              </span>
+            </label>
 
             <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-end">
               <Button
@@ -251,7 +272,7 @@ export function ReviewsCarousel({
 
               <Button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !consentAccepted}
                 className="btn-cta relative h-12 overflow-hidden rounded-[1.15rem] border border-white/15 px-5 py-3 text-sm font-extrabold tracking-[0.08em] text-[#140814] uppercase shadow-[0_18px_44px_-18px_var(--accent-glow)] ring-1 ring-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_24px_54px_-18px_var(--accent-glow)] disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isSubmitting ? t("reviewsPage.modal.submitting") : t("reviewsPage.modal.submit")}

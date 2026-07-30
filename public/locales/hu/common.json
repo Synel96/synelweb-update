@@ -189,7 +189,8 @@
       "submit": "Vélemény elküldése",
       "submitting": "Küldés...",
       "submitError": "A vélemény elküldése most nem sikerült. Kérlek, próbáld újra.",
-      "privacyNotice": "A vélemény elküldésével elfogadod az <privacyLink>Adatkezelési tájékoztatót</privacyLink>."
+      "privacyNotice": "Elolvastam és elfogadom az <privacyLink>Adatkezelési tájékoztatót</privacyLink>.",
+      "consentError": "Kérjük, fogadd el az Adatkezelési tájékoztatót a beküldéshez."
     },
     "toast": {
       "success": "Véleményét megkaptuk és jóváhagyásra vár!",

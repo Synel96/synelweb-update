@@ -189,7 +189,8 @@
       "submit": "Submit review",
       "submitting": "Submitting...",
       "submitError": "Could not submit your review right now. Please try again.",
-      "privacyNotice": "By submitting your review, you accept the <privacyLink>Adatkezelési tájékoztató</privacyLink> (Privacy Notice, in Hungarian)."
+      "privacyNotice": "I have read and accept the <privacyLink>Adatkezelési tájékoztató</privacyLink> (Privacy Notice, in Hungarian).",
+      "consentError": "Please accept the Privacy Notice to submit your review."
     },
     "toast": {
       "success": "We received your review and it is waiting for approval!",

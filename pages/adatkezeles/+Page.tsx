@@ -73,7 +73,27 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section title="5. Az érintettek jogai">
+        <Section title="5. Külső szolgáltató által beágyazott tartalom (Google Térkép)">
+          <p>
+            A Kapcsolat oldalon a szolgáltatás helyszínének bemutatásához a Google Térkép (Google
+            Maps) beágyazott térképét használjuk. A térkép betöltésekor a böngésződ közvetlenül
+            kapcsolatba lép a Google szervereivel; ennek során a Google adatokat gyűjthet (például
+            IP-cím, eszközadatok), és cookie-kat helyezhet el a saját adatvédelmi szabályzata szerint.
+            Ezen adatkezelés felett nincs ráhatásunk; arra a Google (Google Ireland Limited)
+            adatvédelmi tájékoztatója az irányadó:{" "}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-4"
+            >
+              policies.google.com/privacy
+            </a>
+            .
+          </p>
+        </Section>
+
+        <Section title="6. Az érintettek jogai">
           <p>Az érintett a fenti elérhetőségeken (info@synelweb.hu) bármikor:</p>
           <ul className="list-disc space-y-1 pl-6">
             <li>tájékoztatást kérhet a rá vonatkozó adatkezelésről,</li>
@@ -89,7 +109,7 @@ export default function Page() {
           </ul>
         </Section>
 
-        <Section title="6. Jogorvoslati lehetőségek">
+        <Section title="7. Jogorvoslati lehetőségek">
           <p>
             Amennyiben úgy ítéli meg, hogy adatainak kezelése sérti a GDPR rendelkezéseit, panasszal
             élhet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):
@@ -108,7 +128,7 @@ export default function Page() {
           <p>Az érintett a jogainak megsértése esetén bírósághoz is fordulhat.</p>
         </Section>
 
-        <Section title="7. A tájékoztató módosítása">
+        <Section title="8. A tájékoztató módosítása">
           <p>
             Amennyiben a Weboldalon kezelt adatok köre vagy célja bővül (például kapcsolatfelvételi
             űrlap, hírlevél vagy statisztikai mérés bevezetésével), jelen tájékoztatót frissítjük, és

@@ -189,7 +189,8 @@
       "submit": "Bewertung senden",
       "submitting": "Wird gesendet...",
       "submitError": "Deine Bewertung konnte gerade nicht gesendet werden. Bitte versuche es erneut.",
-      "privacyNotice": "Mit dem Absenden deiner Bewertung akzeptierst du die <privacyLink>Adatkezelési tájékoztató</privacyLink> (Datenschutzhinweis, auf Ungarisch)."
+      "privacyNotice": "Ich habe die <privacyLink>Adatkezelési tájékoztató</privacyLink> (Datenschutzhinweis, auf Ungarisch) gelesen und akzeptiere sie.",
+      "consentError": "Bitte akzeptiere den Datenschutzhinweis, um deine Bewertung zu senden."
     },
     "toast": {
       "success": "Wir haben deine Bewertung erhalten, sie wartet auf Freigabe!",

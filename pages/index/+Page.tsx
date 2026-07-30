@@ -32,7 +32,7 @@ export default function Page() {
       <section className="relative min-h-svh overflow-hidden" data-home-hero>
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover object-[center_38%]"
+          className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
           autoPlay
           muted
           loop

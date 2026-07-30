@@ -173,7 +173,10 @@ export function ReviewsCarousel({
             </Button>
           </div>
 
-          <form className="mt-6 space-y-4 overflow-y-auto pr-1" onSubmit={handleSubmit}>
+          <form
+            className="mt-6 min-h-0 flex-1 space-y-4 overflow-y-auto pr-1"
+            onSubmit={handleSubmit}
+          >
             <label className="block">
               <span className="text-xs font-semibold tracking-[0.14em] text-white/72 uppercase">
                 {t("reviewsPage.modal.fields.name")}

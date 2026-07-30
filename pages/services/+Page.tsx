@@ -77,29 +77,27 @@ export default function Page() {
 
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10" aria-hidden="true">
-          <img
-            src={SERVICES_HERO_BACKGROUND_URL}
-            alt=""
-            className="h-full w-full object-cover object-[center_70%]"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0)_0%,rgba(11,15,25,0.2)_80%,rgba(11,15,25,1)_100%)]" />
-        </div>
+      <div className="fixed inset-0 -z-10" aria-hidden="true">
+        <img
+          src={SERVICES_HERO_BACKGROUND_URL}
+          alt=""
+          className="h-full w-full object-cover object-[center_70%]"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-[rgba(11,15,25,0.35)]" />
+      </div>
 
-        <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14" data-reveal>
-          <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-            {t("homeFlow.services.label")}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.services.title")}
-          </h1>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.services.text")}
-          </p>
-        </header>
-      </section>
+      <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14" data-reveal>
+        <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+          {t("homeFlow.services.label")}
+        </p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          {t("homeFlow.services.title")}
+        </h1>
+        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+          {t("homeFlow.services.text")}
+        </p>
+      </header>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
         {isLoading ? (

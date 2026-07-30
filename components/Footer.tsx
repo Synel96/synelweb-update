@@ -34,8 +34,28 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
               {navLabel(item)}
             </a>
           ))}
-          <a href="/adatkezeles" className="text-white/85 transition-colors hover:text-white">
+        </nav>
+        <nav
+          aria-label="Legal links"
+          className="flex flex-wrap items-center justify-center gap-4 text-sky-400"
+        >
+          <a
+            href="/adatkezeles"
+            className="underline underline-offset-4 transition-colors hover:text-sky-300"
+          >
             Adatkezelési tájékoztató
+          </a>
+          <a
+            href="/impresszum"
+            className="underline underline-offset-4 transition-colors hover:text-sky-300"
+          >
+            Impresszum
+          </a>
+          <a
+            href="/aszf"
+            className="underline underline-offset-4 transition-colors hover:text-sky-300"
+          >
+            ÁSZF
           </a>
         </nav>
         <span>

@@ -18,6 +18,14 @@ describe("Footer", () => {
     );
   });
 
+  it("always links to the (Hungarian-only) impresszum and ÁSZF regardless of active language", async () => {
+    usePageContext.mockReturnValue({ lang: "en" });
+    await renderWithI18n(<Footer />, "en");
+
+    expect(screen.getByRole("link", { name: "Impresszum" })).toHaveAttribute("href", "/impresszum");
+    expect(screen.getByRole("link", { name: "ÁSZF" })).toHaveAttribute("href", "/aszf");
+  });
+
   it("renders localized nav links, hiding blog outside hu", async () => {
     usePageContext.mockReturnValue({ lang: "de" });
     await renderWithI18n(<Footer />, "de");

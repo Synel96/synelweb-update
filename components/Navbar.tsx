@@ -1,4 +1,4 @@
-import { MenuIcon, XIcon } from "lucide-react";
+import { MailIcon, MenuIcon, PhoneIcon, XIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
@@ -32,7 +32,7 @@ export function Navbar() {
       const nextProgress = Math.min(1, Math.max(0, window.scrollY / heroBottom));
 
       setHomeScrollProgress((current) =>
-        Math.abs(current - nextProgress) < 0.01 ? current : nextProgress,
+        Math.abs(current - nextProgress) < 0.01 ? current : nextProgress
       );
     };
 
@@ -153,8 +153,25 @@ export function Navbar() {
                   ))}
                 </nav>
 
-                <div className="border-t border-white/10 px-4 pt-4 pb-6">
+                <div className="border-t border-white/10 px-4 pt-4 pb-4">
                   <LanguageSwitcher />
+                </div>
+
+                <div className="flex flex-col gap-2 border-t border-white/10 px-4 pt-4 pb-6">
+                  <a
+                    href="tel:+36303645516"
+                    className="flex items-center gap-2 text-sm font-medium text-(--accent) transition-colors hover:text-(--accent)/80"
+                  >
+                    <PhoneIcon className="size-4" aria-hidden="true" />
+                    +36 30 364 5516
+                  </a>
+                  <a
+                    href="mailto:info@synelweb.hu"
+                    className="flex items-center gap-2 text-sm font-medium text-(--accent) transition-colors hover:text-(--accent)/80"
+                  >
+                    <MailIcon className="size-4" aria-hidden="true" />
+                    info@synelweb.hu
+                  </a>
                 </div>
               </SheetContent>
             </Sheet>

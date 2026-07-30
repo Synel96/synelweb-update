@@ -39,16 +39,23 @@ export type ServiceCard = {
 
 const SERVICES_ENDPOINT = `${resolveApiBaseUrl()}/api/services/`;
 
+const LOCALE_BY_LANG: Record<AppLang, string> = {
+  hu: "hu-HU",
+  en: "en-US",
+  de: "de-DE",
+};
+
 function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
   if (!text) return "";
   const candidate = text[lang] ?? text.hu ?? text.en ?? text.de ?? "";
   return candidate.trim();
 }
 
-function formatPrice(price: ApiPrice | null | undefined): string {
+function formatPrice(price: ApiPrice | null | undefined, lang: AppLang): string {
   if (!price || typeof price.amount !== "number") return "";
   const currency = (price.currency || "HUF").trim() || "HUF";
-  return `${new Intl.NumberFormat("hu-HU").format(price.amount)} ${currency}`;
+  const locale = LOCALE_BY_LANG[lang] ?? LOCALE_BY_LANG.hu;
+  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(price.amount);
 }
 
 export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
@@ -67,8 +74,8 @@ export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
   return data
     .filter((item) => item.isActive !== false)
     .map((item) => {
-      const regularPrice = formatPrice(item.price);
-      const discountedPrice = formatPrice(item.salePrice);
+      const regularPrice = formatPrice(item.price, lang);
+      const discountedPrice = formatPrice(item.salePrice, lang);
       const hasDiscount = discountedPrice.length > 0;
       return {
         id: String(item.id),

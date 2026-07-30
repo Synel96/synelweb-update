@@ -30,7 +30,10 @@
   },
   "hero": {
     "slogan": "<engineered>Engineered</engineered> to scale, <designed>Designed</designed> to stand out.",
-    "supportingLine": "Future-ready architecture and a no-compromise digital experience that pushes your business toward growth."
+    "supportingLine": "Future-ready architecture, premium design, and a no-compromise digital experience that pushes your business toward growth.",
+    "ctaLabel": "Let's get started!",
+    "ctaAriaLabel": "Let's get started — jump to contact",
+    "performanceBadge": "90+ mobile performance"
   },
   "homeFlow": {
     "technology": {

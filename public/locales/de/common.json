@@ -30,7 +30,10 @@
   },
   "hero": {
     "slogan": "<engineered>Entwickelt</engineered> für Wachstum, <designed>gestaltet</designed> für Wirkung.",
-    "supportingLine": "Zukunftssichere Architektur und ein kompromissloses digitales Erlebnis, das dein Unternehmen voranbringt."
+    "supportingLine": "Zukunftssichere Architektur, Premium-Design und ein kompromissloses digitales Erlebnis, das dein Unternehmen voranbringt.",
+    "ctaLabel": "Jetzt loslegen!",
+    "ctaAriaLabel": "Jetzt loslegen — zum Kontakt springen",
+    "performanceBadge": "90+ mobile Leistung"
   },
   "homeFlow": {
     "technology": {

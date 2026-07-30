@@ -26,9 +26,12 @@ export async function onPageTransitionEnd() {
     document.body.classList.add("content-ready");
   });
 
-  const preservedScrollY = Number(sessionStorage.getItem(SCROLL_RESTORE_KEY));
-  if (!Number.isNaN(preservedScrollY)) {
-    window.scrollTo({ top: Math.max(0, preservedScrollY), behavior: "auto" });
+  const storedScrollY = sessionStorage.getItem(SCROLL_RESTORE_KEY);
+  if (storedScrollY !== null) {
     sessionStorage.removeItem(SCROLL_RESTORE_KEY);
+    const preservedScrollY = Number(storedScrollY);
+    if (!Number.isNaN(preservedScrollY)) {
+      window.scrollTo({ top: Math.max(0, preservedScrollY), behavior: "auto" });
+    }
   }
 }

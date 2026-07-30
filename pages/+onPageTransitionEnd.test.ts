@@ -73,17 +73,26 @@ describe("onPageTransitionEnd", () => {
     expect(sessionStorage.getItem("synelweb:preserve-scroll-y")).toBeNull();
   });
 
-  it("still scrolls to top when nothing was preserved, since Number(null) is 0 (not NaN)", async () => {
-    // Documents a subtle real behavior: `Number(sessionStorage.getItem(key))` is 0,
-    // not NaN, when the key is absent, so the `!Number.isNaN(...)` guard doesn't
-    // actually distinguish "nothing stored" from "stored value of 0".
+  it("does not call scrollTo when there is no preserved scroll position", async () => {
     const scrollToSpy = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
 
     const promise = onPageTransitionEnd();
     await vi.runAllTimersAsync();
     await promise;
 
-    expect(scrollToSpy).toHaveBeenCalledWith({ top: 0, behavior: "auto" });
+    expect(scrollToSpy).not.toHaveBeenCalled();
+  });
+
+  it("clears a garbage (non-numeric) stored value without calling scrollTo", async () => {
+    sessionStorage.setItem("synelweb:preserve-scroll-y", "not-a-number");
+    const scrollToSpy = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
+
+    const promise = onPageTransitionEnd();
+    await vi.runAllTimersAsync();
+    await promise;
+
+    expect(scrollToSpy).not.toHaveBeenCalled();
+    expect(sessionStorage.getItem("synelweb:preserve-scroll-y")).toBeNull();
   });
 
   it("clamps a negative preserved scroll position to 0", async () => {

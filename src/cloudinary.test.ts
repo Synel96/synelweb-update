@@ -105,13 +105,26 @@ describe("withCloudinaryAutoParams", () => {
     );
   });
 
-  it("treats the first path segment as an existing transformation list when there is no version segment", () => {
-    // Known limitation: without a vNNN segment, splitCloudinaryImageUrl can't tell a folder
-    // name apart from an existing transformation string, so "demo" gets merged in as if it
-    // were one, rather than preserved as a path segment.
+  it("preserves a plain folder name (no version segment) instead of merging into it", () => {
     expect(
       withCloudinaryAutoParams(`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/demo/pic.jpg`)
-    ).toBe(`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/demo,f_auto,q_auto/pic.jpg`);
+    ).toBe(`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/demo/pic.jpg`);
+  });
+
+  it("still merges into a real transformation segment even without a version segment", () => {
+    expect(
+      withCloudinaryAutoParams(
+        `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_100/pic.jpg`
+      )
+    ).toBe(`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/c_fill,w_100,f_auto,q_auto/pic.jpg`);
+  });
+
+  it("preserves a folder name containing an underscore that isn't a known transformation prefix", () => {
+    expect(
+      withCloudinaryAutoParams(
+        `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/user_uploads/pic.jpg`
+      )
+    ).toBe(`https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/user_uploads/pic.jpg`);
   });
 
   it("leaves a non-Cloudinary URL untouched (aside from trimming)", () => {

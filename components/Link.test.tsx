@@ -7,15 +7,12 @@ vi.mock("vike-react/usePageContext", () => ({ usePageContext }));
 import { Link } from "./Link";
 
 // Note: this component isn't referenced anywhere else in the codebase (Navbar
-// implements its own active-link logic instead, calling
-// resolveLanguageAndLogicalPath to strip the lang prefix first). Link.tsx
-// compares the raw pageContext.urlPathname directly against the bare `href`
-// prop without stripping a lang prefix, so `isActive` only works correctly
-// when urlPathname has no lang prefix — these tests describe that literal
-// behavior, not a claim that it behaves correctly for prefixed app routes.
+// implements its own active-link logic inline instead), but it now strips the
+// lang prefix from pageContext.urlPathname the same way Navbar does before
+// comparing against the bare `href` prop.
 describe("Link", () => {
   it("localizes the href for the current language", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/about", lang: "hu" });
+    usePageContext.mockReturnValue({ urlPathname: "/en/about", lang: "hu" });
     render(<Link href="/about">Rólam</Link>);
     expect(screen.getByRole("link", { name: "Rólam" })).toHaveAttribute("href", "/hu/rolam");
   });
@@ -26,33 +23,36 @@ describe("Link", () => {
     expect(screen.getByRole("link", { name: "Rólam" })).toHaveAttribute("href", "/hu/rolam");
   });
 
-  it("marks the link active when urlPathname starts with an unprefixed href", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/services/sub-page", lang: "en" });
+  it("marks the link active against a real, lang-prefixed urlPathname", () => {
+    usePageContext.mockReturnValue({ urlPathname: "/en/services", lang: "en" });
     render(<Link href="/services">Services</Link>);
     expect(screen.getByRole("link", { name: "Services" })).toHaveClass("is-active");
   });
 
+  it("marks the link active as a prefix match for an unmapped (non-localized-segment) path", () => {
+    // KNOWN_LOGICAL_PATHS sub-paths aren't remapped by resolveLanguageAndLogicalPath
+    // (only exact localized segments are), so prefix matching is only meaningfully
+    // testable here on a path outside that mapping, like /adatkezeles.
+    usePageContext.mockReturnValue({ urlPathname: "/adatkezeles/sub-page", lang: "hu" });
+    render(<Link href="/adatkezeles">Privacy</Link>);
+    expect(screen.getByRole("link", { name: "Privacy" })).toHaveClass("is-active");
+  });
+
   it("does not mark non-matching links active", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/services", lang: "en" });
+    usePageContext.mockReturnValue({ urlPathname: "/en/services", lang: "en" });
     render(<Link href="/about">About</Link>);
     expect(screen.getByRole("link", { name: "About" })).not.toHaveClass("is-active");
   });
 
   it("only marks the root link active on an exact match, not as a prefix", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/services", lang: "en" });
+    usePageContext.mockReturnValue({ urlPathname: "/en/services", lang: "en" });
     render(<Link href="/">Home</Link>);
     expect(screen.getByRole("link", { name: "Home" })).not.toHaveClass("is-active");
   });
 
-  it("marks the root link active when urlPathname is exactly /", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/", lang: "en" });
+  it("marks the root link active when the path is exactly the localized root", () => {
+    usePageContext.mockReturnValue({ urlPathname: "/en/", lang: "en" });
     render(<Link href="/">Home</Link>);
     expect(screen.getByRole("link", { name: "Home" })).toHaveClass("is-active");
-  });
-
-  it("does NOT mark a link active against a real (lang-prefixed) urlPathname, illustrating the gap", () => {
-    usePageContext.mockReturnValue({ urlPathname: "/en/services", lang: "en" });
-    render(<Link href="/services">Services</Link>);
-    expect(screen.getByRole("link", { name: "Services" })).not.toHaveClass("is-active");
   });
 });

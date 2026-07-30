@@ -9,6 +9,28 @@ function isVersionSegment(segment: string) {
   return /^v\d+$/.test(segment);
 }
 
+// Known Cloudinary transformation parameter prefixes. Used to tell an actual
+// transformation segment (e.g. "c_fill,w_800") apart from a plain folder name
+// in the upload path (e.g. "demo" or "user_uploads") when there's no version
+// segment to anchor on — a folder name is never assumed to be a transformation
+// unless every comma-separated part matches one of these known prefixes.
+const TRANSFORMATION_PREFIXES = new Set([
+  "a", "ar", "b", "bo", "c", "co", "cs", "dpr", "du", "e", "eo", "f", "fl",
+  "g", "h", "if", "l", "o", "pg", "q", "r", "so", "sp", "t", "u", "vc", "vs",
+  "w", "x", "y", "z",
+]);
+
+function isTransformationSegment(segment: string) {
+  const parts = segment.split(",").filter(Boolean);
+  if (parts.length === 0) return false;
+
+  return parts.every((part) => {
+    const underscoreIndex = part.indexOf("_");
+    if (underscoreIndex === -1) return false;
+    return TRANSFORMATION_PREFIXES.has(part.slice(0, underscoreIndex));
+  });
+}
+
 function splitCloudinaryImageUrl(url: string) {
   const trimmed = url.trim();
   const uploadIndex = trimmed.indexOf(CLOUDINARY_IMAGE_UPLOAD_SEGMENT);
@@ -62,7 +84,9 @@ function withCloudinaryTransformations(url: string, transformations: string[]) {
   const firstSegment = remainder.slice(0, firstSlashIndex);
   const rest = remainder.slice(firstSlashIndex + 1);
 
-  if (isVersionSegment(firstSegment)) {
+  // A version segment (vNNN) or a plain folder/path segment: insert the new
+  // transformations right before it rather than merging into it.
+  if (isVersionSegment(firstSegment) || !isTransformationSegment(firstSegment)) {
     return `${prefix}${transformations.join(",")}/${remainder}`;
   }
 

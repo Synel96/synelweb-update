@@ -124,6 +124,8 @@
       "dirtyFinancials": "Heikle Finanzen"
     },
     "readMore": "Vollständigen Beitrag lesen",
+    "expandDescription": "Mehr",
+    "collapseDescription": "Weniger",
     "share": {
       "action": "Teilen",
       "fallbackTitle": "Teilen",

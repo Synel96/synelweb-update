@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import type { TFunction } from "i18next";
 import { getTestI18n } from "../test/i18n-test-instance";
 import BlogPostsDisplay from "./BlogPostsDisplay";
@@ -78,5 +79,51 @@ describe("BlogPostsDisplay", () => {
     const t = await getT("en");
     render(<BlogPostsDisplay posts={[{ ...post, createdAt: "not-a-date" }]} locale="en" t={t} />);
     expect(screen.queryByText(/^\d{4}\./)).not.toBeInTheDocument();
+  });
+
+  it("does not show an expand toggle for a short description", async () => {
+    const t = await getT("en");
+    render(<BlogPostsDisplay posts={[post]} locale="en" t={t} />);
+    expect(screen.queryByRole("button", { name: "Read more" })).not.toBeInTheDocument();
+  });
+
+  it("shows a localized expand/collapse toggle for a long description and expands it on click", async () => {
+    const t = await getT("hu");
+    const longDescription = "L".repeat(221);
+    render(
+      <BlogPostsDisplay posts={[{ ...post, description: longDescription }]} locale="hu" t={t} />
+    );
+    const user = userEvent.setup();
+
+    const toggle = screen.getByRole("button", { name: "Több" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+    await user.click(toggle);
+    expect(screen.getByRole("button", { name: "Kevesebb" })).toHaveAttribute(
+      "aria-expanded",
+      "true"
+    );
+  });
+
+  it("keeps each blog card's expand state independent from the others", async () => {
+    const t = await getT("en");
+    const longDescription = "L".repeat(221);
+    render(
+      <BlogPostsDisplay
+        posts={[
+          { ...post, id: "1", title: "First", description: longDescription },
+          { ...post, id: "2", title: "Second", description: longDescription },
+        ]}
+        locale="en"
+        t={t}
+      />
+    );
+    const user = userEvent.setup();
+
+    const [firstToggle, secondToggle] = screen.getAllByRole("button", { name: "Read more" });
+    await user.click(firstToggle);
+
+    expect(screen.getByRole("button", { name: "Show less" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Read more" })).toBe(secondToggle);
   });
 });

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import type { TFunction } from "i18next";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
 import SharePostButton from "@/components/SharePostButton";
@@ -9,6 +10,8 @@ type BlogPostsDisplayProps = {
   locale: string;
   t: TFunction;
 };
+
+const COLLAPSED_DESCRIPTION_HEIGHT = 96;
 
 function getBlogDisplayFallbacks(locale: string) {
   const lang = resolveLangPrefix(locale);
@@ -25,6 +28,8 @@ function getBlogDisplayFallbacks(locale: string) {
       shareNativeHint:
         "Instagram/Story-Optionen sind auf Mobilgeräten im nativen Teilen-Menü verfügbar.",
       readMore: "Vollständigen Beitrag lesen",
+      expandDescription: "Mehr",
+      collapseDescription: "Weniger",
     };
   }
 
@@ -39,6 +44,8 @@ function getBlogDisplayFallbacks(locale: string) {
       shareFallbackTitle: "Share",
       shareNativeHint: "Instagram/Story options are available in the native share sheet on mobile.",
       readMore: "Read full post",
+      expandDescription: "Read more",
+      collapseDescription: "Show less",
     };
   }
 
@@ -52,6 +59,8 @@ function getBlogDisplayFallbacks(locale: string) {
     shareFallbackTitle: "Megosztás",
     shareNativeHint: "Instagram/Story opció mobilon a rendszer megosztóban érhető el.",
     readMore: "Teljes cikk",
+    expandDescription: "Több",
+    collapseDescription: "Kevesebb",
   };
 }
 
@@ -113,9 +122,144 @@ function resolveLangPrefix(locale: string): SupportedLang {
   return SUPPORTED_LANGS.find((lang) => lang === base) ?? DEFAULT_LANG;
 }
 
+type BlogPostCardProps = {
+  post: BlogPost;
+  categoryLabel: string;
+  categoryClassName: string;
+  createdAtLabel: string;
+  previewImageUrl: string;
+  detailHref: string;
+  untitledLabel: string;
+  descriptionFallbackLabel: string;
+  readMoreLabel: string;
+  expandLabel: string;
+  collapseLabel: string;
+  shareActionLabel: string;
+  shareCopyLabel: string;
+  shareCopiedLabel: string;
+  shareFallbackTitle: string;
+  shareNativeHintLabel: string;
+};
+
+function BlogPostCard({
+  post,
+  categoryLabel,
+  categoryClassName,
+  createdAtLabel,
+  previewImageUrl,
+  detailHref,
+  untitledLabel,
+  descriptionFallbackLabel,
+  readMoreLabel,
+  expandLabel,
+  collapseLabel,
+  shareActionLabel,
+  shareCopyLabel,
+  shareCopiedLabel,
+  shareFallbackTitle,
+  shareNativeHintLabel,
+}: BlogPostCardProps) {
+  const description = post.description || descriptionFallbackLabel;
+  const hasLongDescription = description.trim().length > 220;
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [expandedHeight, setExpandedHeight] = useState(0);
+  const descriptionRef = useRef<HTMLParagraphElement | null>(null);
+
+  useEffect(() => {
+    const element = descriptionRef.current;
+    if (!element) return;
+    setExpandedHeight(element.scrollHeight);
+  }, [description]);
+
+  return (
+    <article className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] lg:w-auto lg:shrink">
+      {previewImageUrl ? (
+        <img
+          src={previewImageUrl}
+          alt={post.title || untitledLabel}
+          className="h-56 w-full object-cover"
+          loading="lazy"
+          decoding="async"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+      ) : null}
+
+      <div className="p-6 sm:p-7">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.14em] uppercase">
+          <span className={`rounded-full border px-3 py-1 ${categoryClassName}`}>
+            {categoryLabel}
+          </span>
+          {createdAtLabel ? <span className="text-white/50">{createdAtLabel}</span> : null}
+        </div>
+
+        <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+          {post.title || untitledLabel}
+        </h2>
+
+        <div
+          className="mt-4 overflow-hidden transition-[max-height] duration-400 ease-in-out"
+          style={{
+            maxHeight: hasLongDescription
+              ? `${isDescriptionExpanded ? expandedHeight : COLLAPSED_DESCRIPTION_HEIGHT}px`
+              : undefined,
+          }}
+        >
+          <p ref={descriptionRef} className="text-sm leading-7 text-white/78 sm:text-base">
+            {description}
+          </p>
+        </div>
+
+        {hasLongDescription ? (
+          <button
+            type="button"
+            className="mt-3 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80"
+            onClick={() => setIsDescriptionExpanded((current) => !current)}
+            aria-expanded={isDescriptionExpanded}
+          >
+            {isDescriptionExpanded ? collapseLabel : expandLabel}
+          </button>
+        ) : null}
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href={detailHref}
+            className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
+          >
+            {readMoreLabel}
+          </a>
+          <SharePostButton
+            url={detailHref}
+            title={post.title || untitledLabel}
+            text={post.description || ""}
+            actionLabel={shareActionLabel}
+            copyLabel={shareCopyLabel}
+            copiedLabel={shareCopiedLabel}
+            fallbackTitle={shareFallbackTitle}
+            nativeHintLabel={shareNativeHintLabel}
+            className="inline-flex items-center rounded-full border border-white/20 bg-white/6 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"
+          />
+        </div>
+      </div>
+    </article>
+  );
+}
+
 export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayProps) {
   const langPrefix = resolveLangPrefix(locale);
   const fallbacks = getBlogDisplayFallbacks(locale);
+  const untitledLabel = t("blogPage.untitled");
+  const descriptionFallbackLabel = t("blogPage.descriptionFallback");
+  const expandLabel = translateWithFallback(
+    t,
+    "blogPage.expandDescription",
+    fallbacks.expandDescription
+  );
+  const collapseLabel = translateWithFallback(
+    t,
+    "blogPage.collapseDescription",
+    fallbacks.collapseDescription
+  );
   const shareActionLabel = translateWithFallback(t, "blogPage.share.action", fallbacks.shareAction);
   const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", fallbacks.shareCopy);
   const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", fallbacks.shareCopied);
@@ -156,60 +300,25 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
         const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;
 
         return (
-          <article
+          <BlogPostCard
             key={post.id}
-            className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] lg:w-auto lg:shrink"
-          >
-            {previewImageUrl ? (
-              <img
-                src={previewImageUrl}
-                alt={post.title || t("blogPage.untitled")}
-                className="h-56 w-full object-cover"
-                loading="lazy"
-                decoding="async"
-                crossOrigin="anonymous"
-                referrerPolicy="no-referrer"
-              />
-            ) : null}
-
-            <div className="p-6 sm:p-7">
-              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.14em] uppercase">
-                <span
-                  className={`rounded-full border px-3 py-1 ${getCategoryBadgeClassName(categoryKey)}`}
-                >
-                  {categoryLabel}
-                </span>
-                {createdAtLabel ? <span className="text-white/50">{createdAtLabel}</span> : null}
-              </div>
-
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
-                {post.title || t("blogPage.untitled")}
-              </h2>
-              <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
-                {post.description || t("blogPage.descriptionFallback")}
-              </p>
-
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <a
-                  href={detailHref}
-                  className="inline-flex items-center rounded-full border border-(--accent)/55 bg-(--accent)/15 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-(--accent) transition hover:border-(--accent)/75 hover:bg-(--accent)/24"
-                >
-                  {translateWithFallback(t, "blogPage.readMore", fallbacks.readMore)}
-                </a>
-                <SharePostButton
-                  url={detailHref}
-                  title={post.title || t("blogPage.untitled")}
-                  text={post.description || ""}
-                  actionLabel={shareActionLabel}
-                  copyLabel={shareCopyLabel}
-                  copiedLabel={shareCopiedLabel}
-                  fallbackTitle={shareFallbackTitle}
-                  nativeHintLabel={shareNativeHintLabel}
-                  className="inline-flex items-center rounded-full border border-white/20 bg-white/6 px-5 py-2 text-sm font-semibold tracking-[0.04em] text-white/86 transition hover:border-white/35 hover:bg-white/10"
-                />
-              </div>
-            </div>
-          </article>
+            post={post}
+            categoryLabel={categoryLabel}
+            categoryClassName={getCategoryBadgeClassName(categoryKey)}
+            createdAtLabel={createdAtLabel}
+            previewImageUrl={previewImageUrl}
+            detailHref={detailHref}
+            untitledLabel={untitledLabel}
+            descriptionFallbackLabel={descriptionFallbackLabel}
+            readMoreLabel={translateWithFallback(t, "blogPage.readMore", fallbacks.readMore)}
+            expandLabel={expandLabel}
+            collapseLabel={collapseLabel}
+            shareActionLabel={shareActionLabel}
+            shareCopyLabel={shareCopyLabel}
+            shareCopiedLabel={shareCopiedLabel}
+            shareFallbackTitle={shareFallbackTitle}
+            shareNativeHintLabel={shareNativeHintLabel}
+          />
         );
       })}
     </div>

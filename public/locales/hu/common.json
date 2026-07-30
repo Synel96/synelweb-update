@@ -124,6 +124,8 @@
       "dirtyFinancials": "Piszkos anyagiak"
     },
     "readMore": "Teljes cikk",
+    "expandDescription": "Több",
+    "collapseDescription": "Kevesebb",
     "share": {
       "action": "Megosztás",
       "fallbackTitle": "Megosztás",

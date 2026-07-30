@@ -124,6 +124,8 @@
       "dirtyFinancials": "Dirty financials"
     },
     "readMore": "Read full post",
+    "expandDescription": "Read more",
+    "collapseDescription": "Show less",
     "share": {
       "action": "Share",
       "fallbackTitle": "Share",

@@ -8,25 +8,6 @@ import { TechnologyLogo } from "@/components/TechnologyLogo";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
-import { useScrollReveal } from "@/src/hooks/use-scroll-reveal";
-
-type SectionTone = "accent" | "warm";
-
-const SECTION_TONE_BACKGROUND: Record<SectionTone, string> = {
-  accent:
-    "bg-[var(--section-surface-accent)] bg-[radial-gradient(circle_at_50%_12%,var(--section-glow-accent),transparent_55%)]",
-  warm: "bg-[var(--section-surface-warm)] bg-[radial-gradient(circle_at_50%_12%,var(--section-glow-warm),transparent_55%)]",
-};
-
-const SECTION_TONE_HEADING: Record<SectionTone, string> = {
-  accent: "[text-shadow:0_0_36px_var(--section-glow-accent)]",
-  warm: "[text-shadow:0_0_36px_var(--section-glow-warm)]",
-};
-
-const SECTION_TONE_CTA: Record<SectionTone, string> = {
-  accent: "text-(--accent) hover:text-(--primary)",
-  warm: "text-(--color-secondary-warm) hover:text-(--color-secondary-hot)",
-};
 
 const HERO_TECH_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
 
@@ -40,12 +21,6 @@ export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-
-  const technologyReveal = useScrollReveal<HTMLDivElement>();
-  const projectsReveal = useScrollReveal<HTMLDivElement>();
-  const servicesReveal = useScrollReveal<HTMLDivElement>();
-  const aboutReveal = useScrollReveal<HTMLDivElement>();
-  const reviewsReveal = useScrollReveal<HTMLDivElement>();
 
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
@@ -118,104 +93,86 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        className={`flex min-h-svh w-full flex-col items-center justify-center px-6 py-20 ${SECTION_TONE_BACKGROUND.accent}`}
-      >
-        <div ref={technologyReveal} className="mx-auto w-full max-w-3xl text-center" data-reveal>
-          <h2
-            className={`text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl ${SECTION_TONE_HEADING.accent}`}
-          >
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.technology.title")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.technology.text")}
           </p>
           <a
             href={langHref("/technology")}
-            className={`mt-8 inline-flex items-center text-sm font-semibold tracking-[0.08em] uppercase transition-colors ${SECTION_TONE_CTA.accent}`}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
           >
             {t("homeFlow.technology.cta")}
           </a>
-        </div>
+        </article>
       </section>
 
-      <section
-        id="projects"
-        className={`flex min-h-svh w-full flex-col items-center justify-center px-6 py-20 ${SECTION_TONE_BACKGROUND.warm}`}
-      >
-        <div ref={projectsReveal} className="mx-auto w-full max-w-3xl text-center" data-reveal>
-          <h2
-            className={`text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl ${SECTION_TONE_HEADING.warm}`}
-          >
+      <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(9,14,24,0.92),rgba(14,20,38,0.98))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.projects.title")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.projects.text")}
           </p>
+
           <a
             href={langHref("/projects")}
-            className={`mt-8 inline-flex items-center text-sm font-semibold tracking-[0.08em] uppercase transition-colors ${SECTION_TONE_CTA.warm}`}
+            className="mt-7 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
           >
             {t("homeFlow.projects.cta")}
           </a>
-        </div>
+        </article>
       </section>
 
-      <section
-        id="services"
-        className={`flex min-h-svh w-full flex-col items-center justify-center px-6 py-20 ${SECTION_TONE_BACKGROUND.accent}`}
-      >
-        <div ref={servicesReveal} className="mx-auto w-full max-w-3xl text-center" data-reveal>
-          <h2
-            className={`text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl ${SECTION_TONE_HEADING.accent}`}
-          >
+      <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.88),rgba(15,21,40,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.services.title")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.services.text")}
           </p>
           <a
             href={langHref("/services")}
-            className={`mt-8 inline-flex items-center text-sm font-semibold tracking-[0.08em] uppercase transition-colors ${SECTION_TONE_CTA.accent}`}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
           >
             {t("homeFlow.services.cta")}
           </a>
-        </div>
+        </article>
       </section>
 
-      <section
-        className={`flex min-h-svh w-full flex-col items-center justify-center px-6 py-20 ${SECTION_TONE_BACKGROUND.warm}`}
-      >
-        <div ref={aboutReveal} className="mx-auto w-full max-w-3xl text-center" data-reveal>
-          <h2
-            className={`text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl ${SECTION_TONE_HEADING.warm}`}
-          >
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(12,18,33,0.95),rgba(10,15,27,0.95))] p-7 sm:p-9">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.about.title")}
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-white/80 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.about.text")}
           </p>
           <a
             href={langHref("/about")}
-            className={`mt-8 inline-flex items-center text-sm font-semibold tracking-[0.08em] uppercase transition-colors ${SECTION_TONE_CTA.warm}`}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
           >
             {t("homeFlow.about.cta")}
           </a>
-        </div>
+        </article>
       </section>
 
       <section
         id="reviews"
-        className={`flex min-h-svh w-full flex-col items-center justify-center px-6 py-20 ${SECTION_TONE_BACKGROUND.accent}`}
+        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))]"
+        data-reveal
       >
-        <div ref={reviewsReveal} className="mx-auto w-full max-w-4xl" data-reveal>
-          <div className="mb-8 text-center">
-            <h2
-              className={`text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl ${SECTION_TONE_HEADING.accent}`}
-            >
+        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+          <div className="mb-8 max-w-4xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {t("reviewsPage.sectionTitle")}
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
+            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
               {t("reviewsPage.sectionText")}
             </p>
           </div>

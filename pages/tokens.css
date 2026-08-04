@@ -40,6 +40,17 @@
   --color-secondary-hot: #f43f5e;
   --color-accent: #ff007f;
   --accent-glow: color-mix(in oklab, var(--color-accent), transparent 65%);
+
+  /* Alternating full-viewport section surfaces below the hero video, tuned
+     for a neon glow that matches the hero's warm/accent lighting. */
+  --section-surface-warm: color-mix(
+    in oklab,
+    var(--color-secondary-warm) 24%,
+    var(--color-dominant)
+  );
+  --section-surface-accent: color-mix(in oklab, var(--color-accent) 24%, var(--color-dominant));
+  --section-glow-warm: color-mix(in oklab, var(--color-secondary-warm), transparent 28%);
+  --section-glow-accent: color-mix(in oklab, var(--color-accent), transparent 28%);
 }
 
 .dark {
@@ -81,4 +92,12 @@
   --color-secondary-hot: #f43f5e;
   --color-accent: #ff007f;
   --accent-glow: color-mix(in oklab, var(--color-accent), transparent 65%);
+  --section-surface-warm: color-mix(
+    in oklab,
+    var(--color-secondary-warm) 24%,
+    var(--color-dominant)
+  );
+  --section-surface-accent: color-mix(in oklab, var(--color-accent) 24%, var(--color-dominant));
+  --section-glow-warm: color-mix(in oklab, var(--color-secondary-warm), transparent 28%);
+  --section-glow-accent: color-mix(in oklab, var(--color-accent), transparent 28%);
 }

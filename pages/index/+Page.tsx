@@ -25,7 +25,9 @@ const SECTION_TONE_HEADING: Record<SectionTone, string> = {
 
 const SECTION_TONE_CTA: Record<SectionTone, string> = {
   accent: "text-(--accent) hover:text-(--primary)",
-  warm: "text-(--color-secondary-warm) hover:text-(--color-secondary-hot)",
+  // Magenta pops against the warm/orange section backdrop; the same
+  // orange-on-orange combo used elsewhere would have too little contrast here.
+  warm: "text-(--accent) hover:text-(--color-secondary-hot)",
 };
 
 const HERO_TECH_LOGOS = ["react", "typescript", "tailwind", "django"] as const;

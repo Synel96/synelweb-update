@@ -51,6 +51,16 @@ body.content-animate.content-ready
   animation-delay: 400ms;
 }
 
+/* The hero CTA renders immediately with no reveal animation. */
+body.content-animate #page-content [data-home-hero] .btn-cta {
+  opacity: 1;
+  transform: none;
+}
+
+body.content-animate.content-ready #page-content [data-home-hero] .btn-cta {
+  animation: none;
+}
+
 /* Sections reveal individually as they scroll into view (see Layout.tsx's
    IntersectionObserver), instead of all at once on page load. */
 body.content-animate #page-content [data-reveal] {

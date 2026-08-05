@@ -37,7 +37,6 @@
   "homeFlow": {
     "technology": {
       "label": "Technologien",
-      "performanceBadge": "90+ Lighthouse Performance-Score",
       "title": "Moderne technische Grundlagen, auf die du dich verlassen kannst.",
       "text": "Ich arbeite mit modernen, bewährten Technologien, damit deine Website schnell, sicher und langfristig stabil bleibt.",
       "cta": "Technologien ansehen →"
@@ -46,6 +45,11 @@
       "label": "Projekte",
       "title": "Sieh dir an, wie das in echten Projekten aussieht.",
       "text": "Reale Projekte, klare Ergebnisse. Hier bekommst du ein ehrliches Bild davon, was du in der Zusammenarbeit erwarten kannst.",
+      "badges": {
+        "lighthouse": "90+ Lighthouse-Performance-Score",
+        "customCode": "Individueller Code, keine Vorlage",
+        "liveReferences": "Live-Referenzen"
+      },
       "stackLabel": "Stack",
       "lighthouseTitle": "Lighthouse-Werte",
       "scoreLabels": {
@@ -74,6 +78,7 @@
         "landing": "Landingpage",
         "business": "Business-Website",
         "webshop": "Webshop",
+        "seo": "SEO inklusive",
         "readyMade": "Fertige Websites",
         "comingSoon": "Demnächst"
       },

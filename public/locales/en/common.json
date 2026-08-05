@@ -37,7 +37,6 @@
   "homeFlow": {
     "technology": {
       "label": "Technologies",
-      "performanceBadge": "90+ Lighthouse performance score",
       "title": "Modern technical foundations you can build on with confidence.",
       "text": "I use modern, battle-tested tools so your website stays fast, secure, and stable as your business grows.",
       "cta": "Explore technologies →"
@@ -46,6 +45,11 @@
       "label": "Projects",
       "title": "See what this looks like in real projects.",
       "text": "Real work, real outcomes. This is where you can see the level of quality you can expect from our collaboration.",
+      "badges": {
+        "lighthouse": "90+ Lighthouse performance score",
+        "customCode": "Custom code, not a template",
+        "liveReferences": "Live references"
+      },
       "stackLabel": "Stack",
       "lighthouseTitle": "Lighthouse Scores",
       "scoreLabels": {
@@ -74,6 +78,7 @@
         "landing": "Landing page",
         "business": "Business site",
         "webshop": "Webshop",
+        "seo": "SEO included as standard",
         "readyMade": "Ready-made sites",
         "comingSoon": "Coming soon"
       },

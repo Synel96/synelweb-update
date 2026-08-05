@@ -1,10 +1,13 @@
 import { useEffect, useRef } from "react";
 import {
   BriefcaseIcon,
+  Code2Icon,
+  ExternalLinkIcon,
   GaugeIcon,
   HandshakeIcon,
   MapPinIcon,
   RocketIcon,
+  SearchIcon,
   ShieldCheckIcon,
   ShoppingCartIcon,
   SparklesIcon,
@@ -31,6 +34,13 @@ const SERVICE_BADGES = [
   { key: "landing", Icon: RocketIcon },
   { key: "business", Icon: BriefcaseIcon },
   { key: "webshop", Icon: ShoppingCartIcon },
+  { key: "seo", Icon: SearchIcon },
+] as const;
+
+const PROJECT_BADGES = [
+  { key: "lighthouse", Icon: GaugeIcon },
+  { key: "customCode", Icon: Code2Icon },
+  { key: "liveReferences", Icon: ExternalLinkIcon },
 ] as const;
 
 const ABOUT_BADGES = [
@@ -114,17 +124,10 @@ export default function Page() {
           {t("homeFlow.technology.text")}
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm">
-            <GaugeIcon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
-            {t("homeFlow.technology.performanceBadge")}
-          </span>
-
-          <div className="flex items-center gap-2">
-            {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
-              <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
-            ))}
-          </div>
+        <div className="mt-6 flex items-center gap-2">
+          {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
+            <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
+          ))}
         </div>
 
         <a
@@ -142,6 +145,18 @@ export default function Page() {
         <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
           {t("homeFlow.projects.text")}
         </p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          {PROJECT_BADGES.map(({ key, Icon }) => (
+            <span
+              key={key}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+            >
+              <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+              {t(`homeFlow.projects.badges.${key}`)}
+            </span>
+          ))}
+        </div>
 
         <ProjectsPreviewCarousel
           projects={projects}

@@ -37,7 +37,6 @@
   "homeFlow": {
     "technology": {
       "label": "Technológiák",
-      "performanceBadge": "90+ Lighthouse teljesítmény pontszám",
       "title": "Modern technológiai alapok, amikre nyugodtan építhetsz.",
       "text": "A legmodernebb eszközökkel dolgozom, hogy a weboldalad gyors, biztonságos és hosszú távon is stabil maradjon.",
       "cta": "Megnézem a technológiákat →"
@@ -46,6 +45,11 @@
       "label": "Projektek",
       "title": "Nézd meg, hogyan működik ez a gyakorlatban.",
       "text": "Valódi projekteken keresztül mutatom meg, milyen eredményt kapsz, ha együtt dolgozunk.",
+      "badges": {
+        "lighthouse": "90+ Lighthouse teljesítmény pontszám",
+        "customCode": "Egyedi kód, nem sablon",
+        "liveReferences": "Élő referenciák"
+      },
       "cardDescription": "A SynelWeb saját webes projektje, ahol a cél a prémium vizuális megjelenés, a gyors betöltés és az erős technikai alapok összehangolása volt. Ez a demó azt mutatja meg, hogyan áll össze egy valós, üzletileg használható rendszer modern frontenddel és skálázható backend szemlélettel.",
       "stackLabel": "Stack",
       "lighthouseTitle": "Lighthouse pontszámok",
@@ -75,6 +79,7 @@
         "landing": "Landing oldal",
         "business": "Üzleti oldal",
         "webshop": "Webshop",
+        "seo": "SEO alapárban",
         "readyMade": "Kész weblapok",
         "comingSoon": "Hamarosan"
       },

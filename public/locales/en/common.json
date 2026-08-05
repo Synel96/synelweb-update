@@ -32,12 +32,12 @@
     "slogan": "<engineered>Engineered</engineered> to scale, <designed>Designed</designed> to stand out.",
     "supportingLine": "Future-ready architecture, premium design, and a no-compromise digital experience that pushes your business toward growth.",
     "ctaLabel": "Let's get started!",
-    "ctaAriaLabel": "Let's get started — jump to contact",
-    "performanceBadge": "90+ mobile performance"
+    "ctaAriaLabel": "Let's get started — jump to contact"
   },
   "homeFlow": {
     "technology": {
       "label": "Technologies",
+      "performanceBadge": "90+ Lighthouse performance score",
       "title": "Modern technical foundations you can build on with confidence.",
       "text": "I use modern, battle-tested tools so your website stays fast, secure, and stable as your business grows.",
       "cta": "Explore technologies →"

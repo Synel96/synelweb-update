@@ -32,12 +32,12 @@
     "slogan": "Növekedésre <engineered>tervezve,</engineered> kitűnésre <designed>hangolva.</designed>",
     "supportingLine": "Jövőálló architektúra, prémium dizájn és kompromisszummentes digitális élmény, amely növekedésre ítéli a vállalkozásod.",
     "ctaLabel": "Kezdjük el most!",
-    "ctaAriaLabel": "Kezdjük el most — ugrás a kapcsolatfelvételhez",
-    "performanceBadge": "90+ mobil teljesítmény"
+    "ctaAriaLabel": "Kezdjük el most — ugrás a kapcsolatfelvételhez"
   },
   "homeFlow": {
     "technology": {
       "label": "Technológiák",
+      "performanceBadge": "90+ Lighthouse teljesítmény pontszám",
       "title": "Modern technológiai alapok, amikre nyugodtan építhetsz.",
       "text": "A legmodernebb eszközökkel dolgozom, hogy a weboldalad gyors, biztonságos és hosszú távon is stabil maradjon.",
       "cta": "Megnézem a technológiákat →"

@@ -32,12 +32,12 @@
     "slogan": "<engineered>Entwickelt</engineered> für Wachstum, <designed>gestaltet</designed> für Wirkung.",
     "supportingLine": "Zukunftssichere Architektur, Premium-Design und ein kompromissloses digitales Erlebnis, das dein Unternehmen voranbringt.",
     "ctaLabel": "Jetzt loslegen!",
-    "ctaAriaLabel": "Jetzt loslegen — zum Kontakt springen",
-    "performanceBadge": "90+ mobile Leistung"
+    "ctaAriaLabel": "Jetzt loslegen — zum Kontakt springen"
   },
   "homeFlow": {
     "technology": {
       "label": "Technologien",
+      "performanceBadge": "90+ Lighthouse Performance-Score",
       "title": "Moderne technische Grundlagen, auf die du dich verlassen kannst.",
       "text": "Ich arbeite mit modernen, bewährten Technologien, damit deine Website schnell, sicher und langfristig stabil bleibt.",
       "cta": "Technologien ansehen →"

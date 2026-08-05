@@ -9,7 +9,7 @@ import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 
-const HERO_TECH_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
+const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
@@ -68,26 +68,10 @@ export default function Page() {
               {t("hero.supportingLine")}
             </p>
 
-            <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-8">
               <ConversionCtaButton href={langHref("/contact")} ariaLabel={t("hero.ctaAriaLabel")}>
                 {t("hero.ctaLabel")}
               </ConversionCtaButton>
-
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm">
-                  <GaugeIcon
-                    className="size-3.5 text-(--color-secondary-warm)"
-                    aria-hidden="true"
-                  />
-                  {t("hero.performanceBadge")}
-                </span>
-
-                <div className="flex items-center gap-2">
-                  {HERO_TECH_LOGOS.map((logo) => (
-                    <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
-                  ))}
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -101,6 +85,20 @@ export default function Page() {
           <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.technology.text")}
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm">
+              <GaugeIcon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+              {t("homeFlow.technology.performanceBadge")}
+            </span>
+
+            <div className="flex items-center gap-2">
+              {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
+                <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
+              ))}
+            </div>
+          </div>
+
           <a
             href={langHref("/technology")}
             className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"

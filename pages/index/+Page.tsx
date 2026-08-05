@@ -143,14 +143,17 @@ export default function Page() {
             </div>
           </div>
         </div>
+
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] sm:h-24 md:h-32"
+        />
       </section>
 
-      <div
-        aria-hidden="true"
-        className="h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] sm:h-24 md:h-32"
-      />
-
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+      <section
+        className="mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center px-6 py-16 sm:py-20"
+        data-reveal
+      >
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.technology.title")}
@@ -174,7 +177,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+      <section
+        id="projects"
+        className="mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center px-6 py-16 sm:py-20"
+        data-reveal
+      >
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.projects.title")}
@@ -213,7 +220,11 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+      <section
+        id="services"
+        className="mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center px-6 py-16 sm:py-20"
+        data-reveal
+      >
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.services.title")}
@@ -251,7 +262,10 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
+      <section
+        className="mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center px-6 py-16 sm:py-20"
+        data-reveal
+      >
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.about.title")}
@@ -286,7 +300,7 @@ export default function Page() {
           className="absolute inset-0 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))] [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+        <div className="relative mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center px-6 py-16 sm:py-20">
           <div className="mx-auto mb-8 max-w-3xl text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {t("reviewsPage.sectionTitle")}

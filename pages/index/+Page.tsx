@@ -89,7 +89,7 @@ export default function Page() {
           <source src={HERO_VIDEO_URL} type="video/webm" />
         </video>
 
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0.18)_0%,rgba(11,15,25,0.42)_42%,rgba(11,15,25,0.88)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0.18)_0%,rgba(11,15,25,0.42)_42%,rgba(11,15,25,1)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,0,127,0.18),transparent_40%)]" />
 
         <div className="relative mx-auto flex min-h-svh w-full max-w-6xl flex-col justify-end px-6 pt-32 pb-16 sm:pb-20 md:justify-center md:pt-24 md:pb-14 lg:justify-end lg:pt-32 lg:pb-24">
@@ -247,12 +247,12 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        id="reviews"
-        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))]"
-        data-reveal
-      >
-        <div className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
+      <section id="reviews" className="relative" data-reveal>
+        <div
+          className="absolute inset-0 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))] [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
           <div className="mb-8 max-w-4xl">
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {t("reviewsPage.sectionTitle")}

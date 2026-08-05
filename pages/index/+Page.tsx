@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { GaugeIcon } from "lucide-react";
+import { BriefcaseIcon, GaugeIcon, RocketIcon, ShoppingCartIcon, SparklesIcon } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
@@ -10,6 +10,12 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 
 const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
+
+const SERVICE_BADGES = [
+  { key: "landing", Icon: RocketIcon },
+  { key: "business", Icon: BriefcaseIcon },
+  { key: "webshop", Icon: ShoppingCartIcon },
+] as const;
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
@@ -125,20 +131,39 @@ export default function Page() {
       </section>
 
       <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.88),rgba(15,21,40,0.95))] p-7 sm:p-9">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.services.title")}
-          </h2>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.services.text")}
-          </p>
-          <a
-            href={langHref("/services")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
-          >
-            {t("homeFlow.services.cta")}
-          </a>
-        </article>
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          {t("homeFlow.services.title")}
+        </h2>
+        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+          {t("homeFlow.services.text")}
+        </p>
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          {SERVICE_BADGES.map(({ key, Icon }) => (
+            <span
+              key={key}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+            >
+              <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+              {t(`homeFlow.services.badges.${key}`)}
+            </span>
+          ))}
+
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-white/20 bg-white/4 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/55 uppercase">
+            <SparklesIcon className="size-3.5 text-white/45" aria-hidden="true" />
+            {t("homeFlow.services.badges.readyMade")}
+            <span className="text-white/35 normal-case">
+              · {t("homeFlow.services.badges.comingSoon")}
+            </span>
+          </span>
+        </div>
+
+        <a
+          href={langHref("/services")}
+          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+        >
+          {t("homeFlow.services.cta")}
+        </a>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>

@@ -65,6 +65,13 @@
       "label": "Services",
       "title": "Let us find what your business needs most right now.",
       "text": "You get tailored services focused on what actually moves your business forward, not unnecessary extras.",
+      "badges": {
+        "landing": "Landing page",
+        "business": "Business site",
+        "webshop": "Webshop",
+        "readyMade": "Ready-made sites",
+        "comingSoon": "Coming soon"
+      },
       "cta": "Browse services →"
     },
     "about": {

@@ -65,6 +65,13 @@
       "label": "Leistungen",
       "title": "Lass uns gemeinsam herausfinden, was du jetzt wirklich brauchst.",
       "text": "Du bekommst individuelle Leistungen, die genau auf das einzahlen, was dein Unternehmen wirklich weiterbringt.",
+      "badges": {
+        "landing": "Landingpage",
+        "business": "Business-Website",
+        "webshop": "Webshop",
+        "readyMade": "Fertige Websites",
+        "comingSoon": "Demnächst"
+      },
       "cta": "Leistungen durchsuchen →"
     },
     "about": {

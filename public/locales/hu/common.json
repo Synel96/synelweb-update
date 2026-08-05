@@ -66,6 +66,13 @@
       "label": "Szolgáltatások",
       "title": "Találjuk meg együtt, mire van most a legnagyobb szükséged.",
       "text": "Személyre szabott szolgáltatásokat kapsz, hogy pontosan azt fejlesszük, ami a vállalkozásod növekedését segíti.",
+      "badges": {
+        "landing": "Landing oldal",
+        "business": "Üzleti oldal",
+        "webshop": "Webshop",
+        "readyMade": "Kész weblapok",
+        "comingSoon": "Hamarosan"
+      },
       "cta": "Szolgáltatások böngészése →"
     },
     "about": {

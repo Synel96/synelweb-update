@@ -6,68 +6,83 @@ import { PageLoading } from "../components/PageLoading";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 
+// Shared across the app lifetime so both effects below wait on the same
+// one-time setup instead of racing each other (dynamic import() of the same
+// module is deduped, so calling it again here is cheap).
+let contentRevealReadyPromise: Promise<void> | null = null;
+
+function ensureContentRevealReady(): Promise<void> {
+  if (!contentRevealReadyPromise) {
+    // Defer non-critical animation CSS so it doesn't block first paint,
+    // then flip the body classes once styles are available.
+    contentRevealReadyPromise = import("./Layout.noncritical.css").then(
+      () =>
+        new Promise<void>((resolve) => {
+          document.body.classList.add("content-animate");
+          document.body.classList.remove("content-ready");
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              document.body.classList.add("content-ready");
+              resolve();
+            });
+          });
+        })
+    );
+  }
+
+  return contentRevealReadyPromise;
+}
+
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { urlPathname?: string };
 
   useEffect(() => {
-    let isActive = true;
-    let firstFrameId = 0;
-    let secondFrameId = 0;
-
-    const triggerContentReveal = () => {
-      document.body.classList.add("content-animate");
-      document.body.classList.remove("content-ready");
-
-      firstFrameId = requestAnimationFrame(() => {
-        secondFrameId = requestAnimationFrame(() => {
-          document.body.classList.add("content-ready");
-        });
-      });
-    };
-
-    // Defer non-critical animation CSS so it doesn't block first paint,
-    // then trigger reveal once styles are available.
-    void import("./Layout.noncritical.css").finally(() => {
-      if (!isActive) return;
-      triggerContentReveal();
-    });
-
-    return () => {
-      isActive = false;
-      cancelAnimationFrame(firstFrameId);
-      cancelAnimationFrame(secondFrameId);
-    };
+    void ensureContentRevealReady();
   }, []);
 
   // Reveal [data-reveal] sections as they scroll into view rather than all
   // at once on page load, so content below the fold still animates in.
   // Re-runs on client-side navigation since Layout itself doesn't remount.
+  // Waits for ensureContentRevealReady() so elements already hidden by CSS
+  // when they're marked revealed — otherwise the animation's "both" fill
+  // mode can snap already-visible content back to hidden for an instant.
   useEffect(() => {
-    const elements = Array.from(
-      document.querySelectorAll<HTMLElement>("#page-content [data-reveal]")
-    );
-    if (elements.length === 0) return;
+    let cancelled = false;
+    let observer: IntersectionObserver | null = null;
 
-    if (typeof IntersectionObserver === "undefined") {
-      elements.forEach((element) => element.classList.add("is-revealed"));
-      return;
-    }
+    void ensureContentRevealReady().then(() => {
+      if (cancelled) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          entry.target.classList.add("is-revealed");
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
+      const elements = Array.from(
+        document.querySelectorAll<HTMLElement>("#page-content [data-reveal]")
+      );
+      if (elements.length === 0) return;
 
-    elements.forEach((element) => observer.observe(element));
+      if (typeof IntersectionObserver === "undefined") {
+        elements.forEach((element) => element.classList.add("is-revealed"));
+        return;
+      }
 
-    return () => observer.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.classList.add("is-revealed");
+            observer?.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+      );
+
+      elements.forEach((element) => observer?.observe(element));
+    });
+
+    return () => {
+      cancelled = true;
+      observer?.disconnect();
+    };
   }, [pageContext.urlPathname]);
 
   return (

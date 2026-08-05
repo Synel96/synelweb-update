@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   BriefcaseIcon,
   Code2Icon,
@@ -21,7 +21,8 @@ import { TechnologyLogo } from "@/components/TechnologyLogo";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
-import type { Project } from "@/src/services/projectServices";
+import { getProjects, type Project } from "@/src/services/projectServices";
+import type { AppLang } from "@/src/services/serviceCardsService";
 
 type Data = {
   projects: Project[];
@@ -63,7 +64,9 @@ export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { lang?: SupportedLang; data?: Data };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const projects = (pageContext.data?.projects ?? []).slice(0, HOMEPAGE_PROJECTS_LIMIT);
+  const [projects, setProjects] = useState<Project[]>(
+    (pageContext.data?.projects ?? []).slice(0, HOMEPAGE_PROJECTS_LIMIT)
+  );
 
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
@@ -74,6 +77,28 @@ export default function Page() {
 
     video.playbackRate = 0.75;
   }, []);
+
+  // The build-time prerender (pages/index/+data.ts) bakes projects into the
+  // static HTML for fast first paint and SEO, but that fetch can fail or go
+  // stale (e.g. the backend was cold-starting during the build). Re-fetch on
+  // mount, same as the blog and services pages, so a visitor's own browser
+  // self-heals a failed or outdated build-time snapshot.
+  useEffect(() => {
+    let isMounted = true;
+
+    getProjects(lang as AppLang)
+      .then((freshProjects) => {
+        if (!isMounted) return;
+        setProjects(freshProjects.slice(0, HOMEPAGE_PROJECTS_LIMIT));
+      })
+      .catch(() => {
+        // Keep whatever was already rendered (prerendered or previous fetch).
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [lang]);
 
   return (
     <>

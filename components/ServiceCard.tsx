@@ -16,6 +16,7 @@ type ServiceCardProps = {
   collapseLabel: string;
   slug: string;
   images: string[];
+  imageAlt?: (index: number) => string;
   contactBaseHref: string;
   ctaLabel: string;
   ctaAriaLabel: string;
@@ -32,6 +33,7 @@ export function ServiceCard({
   collapseLabel,
   slug,
   images,
+  imageAlt = (index) => `${serviceName} image ${index}`,
   contactBaseHref,
   ctaLabel,
   ctaAriaLabel,
@@ -149,7 +151,7 @@ export function ServiceCard({
                 <div key={`${src}-${index}`} className="w-full shrink-0 snap-center">
                   <img
                     src={src}
-                    alt={`${serviceName} image ${index + 1}`}
+                    alt={imageAlt(index + 1)}
                     className="aspect-[16/10] w-full object-cover"
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"

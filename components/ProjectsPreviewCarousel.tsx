@@ -19,6 +19,7 @@ type ProjectsPreviewCarouselProps = {
   prevAriaLabel: string;
   nextAriaLabel: string;
   goToAriaLabel: (index: number) => string;
+  previewAlt?: (name: string) => string;
 };
 
 export function ProjectsPreviewCarousel({
@@ -26,6 +27,7 @@ export function ProjectsPreviewCarousel({
   prevAriaLabel,
   nextAriaLabel,
   goToAriaLabel,
+  previewAlt = (name) => `${name} preview`,
 }: ProjectsPreviewCarouselProps) {
   const slides = useMemo(
     () =>
@@ -77,7 +79,7 @@ export function ProjectsPreviewCarousel({
                 src={slide.src}
                 srcSet={slide.srcSet}
                 sizes={slide.sizes}
-                alt={slide.name}
+                alt={previewAlt(slide.name)}
                 className="aspect-[16/9] w-full object-cover lg:aspect-[21/9]"
                 loading="lazy"
                 decoding="async"

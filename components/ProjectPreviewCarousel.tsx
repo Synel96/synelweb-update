@@ -13,6 +13,7 @@ type ProjectPreviewCarouselProps = {
   otherImages: string[];
   title: string;
   prioritize?: boolean;
+  previewAlt?: (index: number) => string;
 };
 
 export function ProjectPreviewCarousel({
@@ -20,6 +21,7 @@ export function ProjectPreviewCarousel({
   otherImages,
   title,
   prioritize = false,
+  previewAlt = (index) => `${title} preview ${index}`,
 }: ProjectPreviewCarouselProps) {
   const slides = useMemo(() => {
     const rawSlides = [previewImage, ...otherImages].filter((src) => src.trim().length > 0);
@@ -71,7 +73,7 @@ export function ProjectPreviewCarousel({
                 src={slide.src}
                 srcSet={slide.srcSet}
                 sizes={slide.sizes}
-                alt={`${title} preview ${index + 1}`}
+                alt={previewAlt(index + 1)}
                 className="aspect-[16/9] w-full object-cover lg:aspect-[6/5]"
                 loading={prioritize && index === 0 ? "eager" : "lazy"}
                 decoding="async"

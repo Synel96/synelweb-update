@@ -16,6 +16,7 @@ type ProjectShowcaseCardProps = {
   previewImage: string;
   otherImages: string[];
   prioritizeImage?: boolean;
+  previewAlt?: (index: number) => string;
   description: string;
   expandLabel: string;
   collapseLabel: string;
@@ -39,6 +40,7 @@ export function ProjectShowcaseCard({
   previewImage,
   otherImages,
   prioritizeImage = false,
+  previewAlt,
   description,
   expandLabel,
   collapseLabel,
@@ -103,6 +105,7 @@ export function ProjectShowcaseCard({
             otherImages={otherImages}
             title={title}
             prioritize={prioritizeImage}
+            previewAlt={previewAlt}
           />
         </div>
 

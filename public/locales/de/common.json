@@ -66,7 +66,8 @@
       "carousel": {
         "prevAria": "Vorheriges Projekt",
         "nextAria": "Nächstes Projekt",
-        "goToAria": "Zu Projekt {{index}} wechseln"
+        "goToAria": "Zu Projekt {{index}} wechseln",
+        "previewAlt": "Vorschaubild des Projekts {{title}}"
       },
       "cta": "Referenzen und Ergebnisse →"
     },
@@ -111,13 +112,15 @@
     "expandDescription": "Mehr",
     "collapseDescription": "Weniger",
     "cardCta": "Angebot anfordern",
-    "cardCtaAria": "Angebotsanfrage starten"
+    "cardCtaAria": "Angebotsanfrage starten",
+    "imageAlt": "Vorschaubild {{index}} von {{service}}"
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Projekte verfügbar.",
     "expandDescription": "Mehr",
-    "collapseDescription": "Weniger"
+    "collapseDescription": "Weniger",
+    "previewAlt": "Vorschaubild {{index}} des Projekts {{title}}"
   },
   "blogPage": {
     "label": "Blog",

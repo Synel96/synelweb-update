@@ -66,7 +66,8 @@
       "carousel": {
         "prevAria": "Previous project",
         "nextAria": "Next project",
-        "goToAria": "Go to project {{index}}"
+        "goToAria": "Go to project {{index}}",
+        "previewAlt": "Preview image of the {{title}} project"
       },
       "cta": "References and results →"
     },
@@ -111,13 +112,15 @@
     "expandDescription": "Read more",
     "collapseDescription": "Show less",
     "cardCta": "Request a quote",
-    "cardCtaAria": "Start quote request"
+    "cardCtaAria": "Start quote request",
+    "imageAlt": "Preview image {{index}} of {{service}}"
   },
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",
     "emptyState": "No projects are available right now.",
     "expandDescription": "Read more",
-    "collapseDescription": "Show less"
+    "collapseDescription": "Show less",
+    "previewAlt": "Preview image {{index}} of the {{title}} project"
   },
   "blogPage": {
     "label": "Blog",

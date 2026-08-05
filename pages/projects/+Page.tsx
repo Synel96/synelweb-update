@@ -55,6 +55,9 @@ export default function Page() {
               previewImage={project.previewImage}
               otherImages={project.otherImages}
               prioritizeImage={projectIndex === 0}
+              previewAlt={(index) =>
+                t("projectsPage.previewAlt", { title: project.name, index })
+              }
               description={project.description}
               expandLabel={t("projectsPage.expandDescription")}
               collapseLabel={t("projectsPage.collapseDescription")}

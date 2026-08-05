@@ -208,6 +208,7 @@ export default function Page() {
           prevAriaLabel={t("homeFlow.projects.carousel.prevAria")}
           nextAriaLabel={t("homeFlow.projects.carousel.nextAria")}
           goToAriaLabel={(index) => t("homeFlow.projects.carousel.goToAria", { index })}
+          previewAlt={(name) => t("homeFlow.projects.carousel.previewAlt", { title: name })}
         />
 
         <div className="text-center">

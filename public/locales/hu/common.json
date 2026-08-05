@@ -67,7 +67,8 @@
       "carousel": {
         "prevAria": "Előző projekt",
         "nextAria": "Következő projekt",
-        "goToAria": "Ugrás a(z) {{index}}. projekthez"
+        "goToAria": "Ugrás a(z) {{index}}. projekthez",
+        "previewAlt": "{{title}} projekt előnézeti képe"
       },
       "cta": "Referenciák és eredmények →"
     },
@@ -112,13 +113,15 @@
     "expandDescription": "Több",
     "collapseDescription": "Kevesebb",
     "cardCta": "Ajánlatot kérek",
-    "cardCtaAria": "Ajánlatkérés indítása"
+    "cardCtaAria": "Ajánlatkérés indítása",
+    "imageAlt": "{{service}} szolgáltatás bemutatóképe ({{index}}.)"
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
     "emptyState": "Jelenleg nincs megjeleníthető projekt.",
     "expandDescription": "Több",
-    "collapseDescription": "Kevesebb"
+    "collapseDescription": "Kevesebb",
+    "previewAlt": "{{title}} projekt előnézeti képe ({{index}}.)"
   },
   "blogPage": {
     "label": "Blog",

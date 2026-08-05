@@ -141,6 +141,7 @@ export default function Page() {
                   collapseLabel={t("servicesPage.collapseDescription")}
                   slug={card.slug}
                   images={card.images}
+                  imageAlt={(index) => t("servicesPage.imageAlt", { service: card.name, index })}
                   contactBaseHref={contactHref}
                   ctaLabel={t("servicesPage.cardCta")}
                   ctaAriaLabel={t("servicesPage.cardCtaAria")}

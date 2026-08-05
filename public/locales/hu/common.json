@@ -79,6 +79,11 @@
       "label": "Rólam",
       "title": "Ismerj meg közelebbről, hogy lásd, kivel dolgozol együtt.",
       "text": "Megmutatom a szemléletemet és a háttérből hozott tapasztalatot, amire a közös munka épül.",
+      "badges": {
+        "location": "Sopron",
+        "solo": "Egyéni vállalkozó",
+        "enterpriseStack": "Nagyvállalati tech stack"
+      },
       "cta": "Bemutatkozás és háttér →"
     },
     "finalCta": {

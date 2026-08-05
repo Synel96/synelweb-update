@@ -1,5 +1,14 @@
 import { useEffect, useRef } from "react";
-import { BriefcaseIcon, GaugeIcon, RocketIcon, ShoppingCartIcon, SparklesIcon } from "lucide-react";
+import {
+  BriefcaseIcon,
+  GaugeIcon,
+  HandshakeIcon,
+  MapPinIcon,
+  RocketIcon,
+  ShieldCheckIcon,
+  ShoppingCartIcon,
+  SparklesIcon,
+} from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
@@ -15,6 +24,12 @@ const SERVICE_BADGES = [
   { key: "landing", Icon: RocketIcon },
   { key: "business", Icon: BriefcaseIcon },
   { key: "webshop", Icon: ShoppingCartIcon },
+] as const;
+
+const ABOUT_BADGES = [
+  { key: "location", Icon: MapPinIcon },
+  { key: "solo", Icon: HandshakeIcon },
+  { key: "enterpriseStack", Icon: ShieldCheckIcon },
 ] as const;
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
@@ -174,6 +189,19 @@ export default function Page() {
           <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.about.text")}
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            {ABOUT_BADGES.map(({ key, Icon }) => (
+              <span
+                key={key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+              >
+                <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+                {t(`homeFlow.about.badges.${key}`)}
+              </span>
+            ))}
+          </div>
+
           <a
             href={langHref("/about")}
             className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"

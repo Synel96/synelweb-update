@@ -78,6 +78,11 @@
       "label": "Über mich",
       "title": "Lerne die Person hinter den Projekten kennen.",
       "text": "Ich zeige dir, wie ich arbeite und welche Erfahrung hinter den Ergebnissen steckt, damit du mit gutem Gefühl entscheiden kannst.",
+      "badges": {
+        "location": "Sopron, Ungarn",
+        "solo": "Einzelunternehmer",
+        "enterpriseStack": "Enterprise-Tech-Stack"
+      },
       "cta": "Hintergrund und Vorstellung →"
     },
     "finalCta": {

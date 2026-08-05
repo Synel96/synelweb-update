@@ -78,6 +78,11 @@
       "label": "About",
       "title": "Get to know who you will be working with.",
       "text": "You can see the mindset and experience behind the work, so the collaboration feels clear and trustworthy from day one.",
+      "badges": {
+        "location": "Sopron, Hungary",
+        "solo": "Solo founder",
+        "enterpriseStack": "Enterprise-grade stack"
+      },
       "cta": "Background and story →"
     },
     "finalCta": {

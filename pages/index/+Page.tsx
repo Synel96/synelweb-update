@@ -145,6 +145,11 @@ export default function Page() {
         </div>
       </section>
 
+      <div
+        aria-hidden="true"
+        className="h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] sm:h-24 md:h-32"
+      />
+
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">

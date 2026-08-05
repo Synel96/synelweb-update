@@ -12,6 +12,7 @@ import {
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
   buildOrganizationJsonLd,
+  buildWebSiteJsonLd,
   isKnownLogicalPath,
   type BreadcrumbItem,
 } from "../src/structuredData";
@@ -160,6 +161,10 @@ export function Head() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildOrganizationJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildWebSiteJsonLd()) }}
       />
 
       {breadcrumbItems ? (

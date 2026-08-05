@@ -47,7 +47,7 @@ export function isKnownLogicalPath(path: string): path is KnownLogicalPath {
 export function buildOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": ["ProfessionalService", "Organization"],
     "@id": `${SITE_URL}/#organization`,
     name: BRAND_NAME,
     alternateName: OWNER_NAME,
@@ -69,6 +69,17 @@ export function buildOrganizationJsonLd() {
       name: OWNER_NAME,
     },
     sameAs: SOCIAL_LINKS,
+  };
+}
+
+export function buildWebSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: BRAND_NAME,
+    url: SITE_URL,
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
 

@@ -22,7 +22,7 @@ describe("TechnologyStackCard", () => {
     expect(screen.getByText("Why it matters")).toBeInTheDocument();
     expect(screen.getByText("Keeps the UI consistent and maintainable.")).toBeInTheDocument();
     expect(screen.getByText("Frontend")).toBeInTheDocument();
-    expect(container.querySelector("img")).not.toBeNull();
+    expect(container.querySelector("svg")).not.toBeNull();
   });
 
   it("renders the title as a heading", () => {

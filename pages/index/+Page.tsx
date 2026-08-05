@@ -30,6 +30,10 @@ type Data = {
 
 const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
 
+// Keeps the homepage teaser light: the full project list (with every
+// preview image) lives on the dedicated /projects page.
+const HOMEPAGE_PROJECTS_LIMIT = 6;
+
 const SERVICE_BADGES = [
   { key: "landing", Icon: RocketIcon },
   { key: "business", Icon: BriefcaseIcon },
@@ -59,7 +63,7 @@ export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { lang?: SupportedLang; data?: Data };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const projects = pageContext.data?.projects ?? [];
+  const projects = (pageContext.data?.projects ?? []).slice(0, HOMEPAGE_PROJECTS_LIMIT);
 
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);

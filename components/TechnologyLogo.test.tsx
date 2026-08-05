@@ -17,12 +17,22 @@ describe("isTechnologyLogoName", () => {
 });
 
 describe("TechnologyLogo", () => {
-  it("renders an <img> for the react logo", () => {
-    const { container } = render(<TechnologyLogo name="react" />);
-    expect(container.querySelector("img")).not.toBeNull();
+  it("renders an inline, sanitized SVG for every logo, including react", () => {
+    for (const name of [
+      "react",
+      "typescript",
+      "python",
+      "django",
+      "postgresql",
+      "tailwind",
+    ] as const) {
+      const { container } = render(<TechnologyLogo name={name} />);
+      expect(container.querySelector("img")).toBeNull();
+      expect(container.querySelector("svg")).not.toBeNull();
+    }
   });
 
-  it("renders an inline, sanitized SVG for a non-react logo", () => {
+  it("strips explicit width/height attributes from the source SVG", () => {
     const { container } = render(<TechnologyLogo name="typescript" />);
     const svg = container.querySelector("svg");
     expect(svg).not.toBeNull();

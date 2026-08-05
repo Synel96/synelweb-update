@@ -19,8 +19,9 @@ type BuildMetaInput = {
 export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>> = {
   en: {
     "/": {
-      title: "SynelWeb | Home",
-      description: "SynelWeb builds modern, fast, premium websites for businesses.",
+      title: "Website Design Sopron | SynelWeb Web Development",
+      description:
+        "Custom, lightning-fast website design in Sopron. Forget slow templates! Premium design and future-ready architecture from SynelWeb.",
     },
     "/about": {
       title: "About | SynelWeb",
@@ -54,9 +55,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
   },
   hu: {
     "/": {
-      title: "Weboldal készítés Sopron | SynelWeb",
+      title: "Weboldal Készítés Sopron | SynelWeb Webfejlesztés",
       description:
-        "Weboldal készítés Sopronban és online: modern, gyors, prémium weboldalak vállalkozásoknak.",
+        "Egyedi, villámgyors weboldal készítés Sopronban. Felejtsd el a lassú sablonokat! Prémium dizájn és jövőálló architektúra a SynelWebtől.",
     },
     "/about": {
       title: "Rólam | SynelWeb",
@@ -91,8 +92,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
   },
   de: {
     "/": {
-      title: "SynelWeb | Startseite",
-      description: "SynelWeb erstellt moderne, schnelle und hochwertige Websites für Unternehmen.",
+      title: "Webdesign Sopron | SynelWeb Webentwicklung",
+      description:
+        "Individuelles, blitzschnelles Webdesign in Sopron. Vergiss langsame Vorlagen! Premium-Design und zukunftssichere Architektur von SynelWeb.",
     },
     "/about": {
       title: "Über mich | SynelWeb",

@@ -182,33 +182,31 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(12,18,33,0.95),rgba(10,15,27,0.95))] p-7 sm:p-9">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.about.title")}
-          </h2>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.about.text")}
-          </p>
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          {t("homeFlow.about.title")}
+        </h2>
+        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+          {t("homeFlow.about.text")}
+        </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            {ABOUT_BADGES.map(({ key, Icon }) => (
-              <span
-                key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-              >
-                <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
-                {t(`homeFlow.about.badges.${key}`)}
-              </span>
-            ))}
-          </div>
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          {ABOUT_BADGES.map(({ key, Icon }) => (
+            <span
+              key={key}
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+            >
+              <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+              {t(`homeFlow.about.badges.${key}`)}
+            </span>
+          ))}
+        </div>
 
-          <a
-            href={langHref("/about")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-          >
-            {t("homeFlow.about.cta")}
-          </a>
-        </article>
+        <a
+          href={langHref("/about")}
+          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
+        >
+          {t("homeFlow.about.cta")}
+        </a>
       </section>
 
       <section

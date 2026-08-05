@@ -22,11 +22,14 @@ import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { getProjects, type Project } from "@/src/services/projectServices";
+import type { Review } from "@/src/services/reviewsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
 type Data = {
   projects: Project[];
   fetchError: boolean;
+  reviews: Review[];
+  reviewsFetchError: boolean;
 };
 
 const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
@@ -301,6 +304,8 @@ export default function Page() {
             emptyRatingText={t("reviewsPage.emptyRatingText")}
             actionLabel={t("reviewsPage.actionLabel")}
             actionAriaLabel={t("reviewsPage.actionAriaLabel")}
+            initialReviews={pageContext.data?.reviews}
+            initialFetchError={pageContext.data?.reviewsFetchError}
           />
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon, XIcon } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
@@ -18,6 +18,11 @@ type ReviewsCarouselProps = {
   emptyRatingText: string;
   actionLabel: string;
   actionAriaLabel: string;
+  // Prerendered snapshot (e.g. from the homepage's +data.ts) so the carousel
+  // has something to show immediately instead of always starting from a
+  // loading state. Omit when no prerendered snapshot exists.
+  initialReviews?: Review[];
+  initialFetchError?: boolean;
 };
 
 export function ReviewsCarousel({
@@ -25,12 +30,17 @@ export function ReviewsCarousel({
   emptyRatingText,
   actionLabel,
   actionAriaLabel,
+  initialReviews,
+  initialFetchError,
 }: ReviewsCarouselProps) {
   const { t, i18n } = useTranslation();
   const activeLang = (i18n.resolvedLanguage || "hu").slice(0, 2) as AppLang;
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [fetchError, setFetchError] = useState<string | null>(null);
+  const hasInitialData = initialReviews !== undefined;
+  const [reviews, setReviews] = useState<Review[]>(initialReviews ?? []);
+  const [isLoading, setIsLoading] = useState(!hasInitialData);
+  const [fetchError, setFetchError] = useState<string | null>(
+    hasInitialData && initialFetchError ? t("reviewsPage.fetchError") : null
+  );
   const { scrollRef, activeIndex, scrollToIndex, prev, next, handleScroll } = useSnapCarousel(
     reviews.length
   );
@@ -44,20 +54,28 @@ export function ReviewsCarousel({
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [toast, setToast] = useState<ToastState | null>(null);
 
+  const reviewsRef = useRef(reviews);
+  useEffect(() => {
+    reviewsRef.current = reviews;
+  }, [reviews]);
+
   useEffect(() => {
     let isMounted = true;
 
     const fetchReviews = async () => {
-      setIsLoading(true);
-      setFetchError(null);
-
       try {
         const data = await getReviews(activeLang);
         if (!isMounted) return;
         setReviews(data);
+        setFetchError(null);
       } catch {
         if (!isMounted) return;
-        setFetchError(t("reviewsPage.fetchError"));
+        // Keep showing the already-loaded (e.g. prerendered) reviews instead
+        // of blanking the page; only surface the error when there's
+        // nothing to fall back to.
+        if (reviewsRef.current.length === 0) {
+          setFetchError(t("reviewsPage.fetchError"));
+        }
       } finally {
         if (!isMounted) return;
         setIsLoading(false);
@@ -69,7 +87,10 @@ export function ReviewsCarousel({
     return () => {
       isMounted = false;
     };
-  }, [activeLang, t]);
+    // `t` intentionally excluded: it tracks the i18n instance, not the
+    // resolved language, and re-fetching only needs to react to `activeLang`.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeLang]);
 
   const openModal = () => {
     setSubmitError(null);

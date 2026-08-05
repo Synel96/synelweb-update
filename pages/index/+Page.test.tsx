@@ -63,3 +63,46 @@ describe("Homepage projects section", () => {
     expect(screen.getByText("SynelWeb Demo Shop")).toBeInTheDocument();
   });
 });
+
+describe("Homepage reviews section", () => {
+  const sampleReview = { id: 1, name: "Anna", rating: 5, review: "Great work!" };
+
+  it("shows prerendered reviews immediately, without a loading flash", async () => {
+    usePageContext.mockReturnValue({
+      lang: "hu",
+      data: {
+        projects: [],
+        fetchError: false,
+        reviews: [sampleReview],
+        reviewsFetchError: false,
+      },
+    });
+    getProjects.mockResolvedValue([]);
+    getReviews.mockResolvedValue([sampleReview]);
+
+    await renderWithI18n(<Page />, "hu");
+
+    // Prerendered data is shown on first render, no "Loading reviews..." flash.
+    expect(screen.getByText("Anna")).toBeInTheDocument();
+  });
+
+  it("keeps the prerendered reviews when the client refetch fails", async () => {
+    usePageContext.mockReturnValue({
+      lang: "hu",
+      data: {
+        projects: [],
+        fetchError: false,
+        reviews: [sampleReview],
+        reviewsFetchError: false,
+      },
+    });
+    getProjects.mockResolvedValue([]);
+    getReviews.mockRejectedValue(new Error("network down"));
+
+    await renderWithI18n(<Page />, "hu");
+
+    expect(screen.getByText("Anna")).toBeInTheDocument();
+    await waitFor(() => expect(getReviews).toHaveBeenCalledWith("hu"));
+    expect(screen.getByText("Anna")).toBeInTheDocument();
+  });
+});

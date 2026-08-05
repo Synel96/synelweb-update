@@ -253,7 +253,7 @@ export default function Page() {
           aria-hidden="true"
         />
         <div className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
-          <div className="mb-8 max-w-4xl">
+          <div className="mx-auto mb-8 max-w-3xl text-center">
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {t("reviewsPage.sectionTitle")}
             </h2>

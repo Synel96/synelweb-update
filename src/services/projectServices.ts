@@ -1,6 +1,7 @@
 import type { AppLang } from "./serviceCardsService";
 import { cloudinaryImageUrl, withCloudinaryAutoParams } from "@/src/cloudinary";
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 
 type LocalizedText = {
   hu?: string;
@@ -95,7 +96,7 @@ function resolveProjectImages(item: ApiProject): string[] {
 }
 
 export async function getProjects(lang: AppLang): Promise<Project[]> {
-  const response = await fetch(PROJECTS_ENDPOINT, {
+  const response = await fetchWithTimeout(PROJECTS_ENDPOINT, {
     headers: {
       "Accept-Language": lang,
     },

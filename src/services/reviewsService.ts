@@ -1,5 +1,6 @@
 import type { AppLang } from "./serviceCardsService";
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 
 export type Review = {
   id: number;
@@ -34,7 +35,7 @@ function languageHeaders(lang: AppLang) {
 }
 
 export async function getReviews(lang: AppLang): Promise<Review[]> {
-  const response = await fetch(API_REVIEWS_ENDPOINT, {
+  const response = await fetchWithTimeout(API_REVIEWS_ENDPOINT, {
     headers: languageHeaders(lang),
   });
 

@@ -1,4 +1,5 @@
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 
 export type AppLang = "hu" | "en" | "de";
 
@@ -59,7 +60,7 @@ function formatPrice(price: ApiPrice | null | undefined, lang: AppLang): string 
 }
 
 export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
-  const response = await fetch(SERVICES_ENDPOINT, {
+  const response = await fetchWithTimeout(SERVICES_ENDPOINT, {
     headers: {
       "Accept-Language": lang,
     },

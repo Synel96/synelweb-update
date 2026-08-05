@@ -1,4 +1,5 @@
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 import type { AppLang } from "./serviceCardsService";
 
 export class BlogApiError extends Error {
@@ -85,7 +86,7 @@ function normalizeOrder(value: unknown): number {
 }
 
 export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
-  const response = await fetch(BLOG_POSTS_ENDPOINT, {
+  const response = await fetchWithTimeout(BLOG_POSTS_ENDPOINT, {
     headers: {
       "Accept-Language": lang,
     },
@@ -119,7 +120,7 @@ export async function getBlogPostDetail(id: string, lang: AppLang): Promise<Blog
     throw new Error("Blog post ID is required.");
   }
 
-  const response = await fetch(`${BLOG_POSTS_ENDPOINT}${encodeURIComponent(normalizedId)}/`, {
+  const response = await fetchWithTimeout(`${BLOG_POSTS_ENDPOINT}${encodeURIComponent(normalizedId)}/`, {
     headers: {
       "Accept-Language": lang,
     },

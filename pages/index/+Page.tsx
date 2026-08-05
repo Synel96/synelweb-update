@@ -117,45 +117,49 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("homeFlow.technology.title")}
-        </h2>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-          {t("homeFlow.technology.text")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.technology.title")}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.technology.text")}
+          </p>
 
-        <div className="mt-6 flex items-center gap-2">
-          {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
-            <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
-          ))}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
+              <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
+            ))}
+          </div>
+
+          <a
+            href={langHref("/technology")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.technology.cta")}
+          </a>
         </div>
-
-        <a
-          href={langHref("/technology")}
-          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
-        >
-          {t("homeFlow.technology.cta")}
-        </a>
       </section>
 
       <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("homeFlow.projects.title")}
-        </h2>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-          {t("homeFlow.projects.text")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.projects.title")}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.projects.text")}
+          </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          {PROJECT_BADGES.map(({ key, Icon }) => (
-            <span
-              key={key}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-            >
-              <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
-              {t(`homeFlow.projects.badges.${key}`)}
-            </span>
-          ))}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {PROJECT_BADGES.map(({ key, Icon }) => (
+              <span
+                key={key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+              >
+                <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
+                {t(`homeFlow.projects.badges.${key}`)}
+              </span>
+            ))}
+          </div>
         </div>
 
         <ProjectsPreviewCarousel
@@ -165,76 +169,82 @@ export default function Page() {
           goToAriaLabel={(index) => t("homeFlow.projects.carousel.goToAria", { index })}
         />
 
-        <a
-          href={langHref("/projects")}
-          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-        >
-          {t("homeFlow.projects.cta")}
-        </a>
+        <div className="text-center">
+          <a
+            href={langHref("/projects")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
+          >
+            {t("homeFlow.projects.cta")}
+          </a>
+        </div>
       </section>
 
       <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("homeFlow.services.title")}
-        </h2>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-          {t("homeFlow.services.text")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.services.title")}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.services.text")}
+          </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          {SERVICE_BADGES.map(({ key, Icon }) => (
-            <span
-              key={key}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-            >
-              <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
-              {t(`homeFlow.services.badges.${key}`)}
-            </span>
-          ))}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {SERVICE_BADGES.map(({ key, Icon }) => (
+              <span
+                key={key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+              >
+                <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
+                {t(`homeFlow.services.badges.${key}`)}
+              </span>
+            ))}
 
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-white/20 bg-white/4 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/55 uppercase">
-            <SparklesIcon className="size-3.5 text-white/45" aria-hidden="true" />
-            {t("homeFlow.services.badges.readyMade")}
-            <span className="text-white/35 normal-case">
-              · {t("homeFlow.services.badges.comingSoon")}
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-white/20 bg-white/4 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/55 uppercase">
+              <SparklesIcon className="size-3.5 text-white/45" aria-hidden="true" />
+              {t("homeFlow.services.badges.readyMade")}
+              <span className="text-white/35 normal-case">
+                · {t("homeFlow.services.badges.comingSoon")}
+              </span>
             </span>
-          </span>
+          </div>
+
+          <a
+            href={langHref("/services")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("homeFlow.services.cta")}
+          </a>
         </div>
-
-        <a
-          href={langHref("/services")}
-          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
-        >
-          {t("homeFlow.services.cta")}
-        </a>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("homeFlow.about.title")}
-        </h2>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-          {t("homeFlow.about.text")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.about.title")}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.about.text")}
+          </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          {ABOUT_BADGES.map(({ key, Icon }) => (
-            <span
-              key={key}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-            >
-              <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
-              {t(`homeFlow.about.badges.${key}`)}
-            </span>
-          ))}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {ABOUT_BADGES.map(({ key, Icon }) => (
+              <span
+                key={key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+              >
+                <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
+                {t(`homeFlow.about.badges.${key}`)}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href={langHref("/about")}
+            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
+          >
+            {t("homeFlow.about.cta")}
+          </a>
         </div>
-
-        <a
-          href={langHref("/about")}
-          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-        >
-          {t("homeFlow.about.cta")}
-        </a>
       </section>
 
       <section

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import BlogPostsDisplay from "@/components/BlogPostsDisplay";
@@ -127,13 +127,16 @@ export default function Page() {
     setIsLoading(initialPosts.length === 0 && !initialFetchError);
   }, [initialPosts, initialFetchError]);
 
+  const postsRef = useRef(posts);
+  useEffect(() => {
+    postsRef.current = posts;
+  }, [posts]);
+
   useEffect(() => {
     let isMounted = true;
 
     async function refreshPosts() {
       const lang = toAppLang(routeLang);
-      setIsLoading(true);
-      setFetchError(false);
 
       try {
         const latestPosts = await getBlogPosts(lang);
@@ -143,7 +146,12 @@ export default function Page() {
         setFetchError(false);
       } catch {
         if (!isMounted) return;
-        setFetchError(true);
+        // Keep showing the already-loaded (e.g. prerendered) posts instead
+        // of blanking the page; only surface the error when there's
+        // nothing to fall back to.
+        if (postsRef.current.length === 0) {
+          setFetchError(true);
+        }
       } finally {
         if (!isMounted) return;
         setIsLoading(false);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -46,13 +46,15 @@ export default function Page() {
     setIsLoading(initialCards.length === 0 && !initialFetchError);
   }, [initialCards, initialFetchError]);
 
+  const cardsRef = useRef(cards);
+  useEffect(() => {
+    cardsRef.current = cards;
+  }, [cards]);
+
   useEffect(() => {
     let isMounted = true;
 
     async function refreshCards() {
-      setIsLoading(true);
-      setFetchError(false);
-
       try {
         const latestCards = await getServiceCards(toAppLang(routeLang));
         if (!isMounted) return;
@@ -61,7 +63,12 @@ export default function Page() {
         setFetchError(false);
       } catch {
         if (!isMounted) return;
-        setFetchError(true);
+        // Keep showing the already-loaded (e.g. prerendered) cards instead
+        // of blanking the page; only surface the error when there's
+        // nothing to fall back to.
+        if (cardsRef.current.length === 0) {
+          setFetchError(true);
+        }
       } finally {
         if (!isMounted) return;
         setIsLoading(false);

@@ -10,82 +10,56 @@ body.page-transition #page-content {
   opacity: 0;
 }
 
-body.content-animate
-  #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ) {
+body.content-animate #page-content :is(.btn-cta, [data-reveal-text], .page-reveal-item) {
   opacity: 0;
   transform: translateY(12px) scale(0.99);
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item) {
   animation: content-reveal 940ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ):nth-child(1) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item):nth-child(1) {
   animation-delay: 80ms;
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ):nth-child(2) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item):nth-child(2) {
   animation-delay: 160ms;
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ):nth-child(3) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item):nth-child(3) {
   animation-delay: 240ms;
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ):nth-child(4) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item):nth-child(4) {
   animation-delay: 320ms;
 }
 
 body.content-animate.content-ready
   #page-content
-  :is(
-    .btn-cta,
-    [data-reveal],
-    [data-reveal-text],
-    .page-reveal-item
-  ):nth-child(n + 5) {
+  :is(.btn-cta, [data-reveal-text], .page-reveal-item):nth-child(n + 5) {
   animation-delay: 400ms;
+}
+
+/* Sections reveal individually as they scroll into view (see Layout.tsx's
+   IntersectionObserver), instead of all at once on page load. */
+body.content-animate #page-content [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px) scale(0.99);
+}
+
+body.content-animate #page-content [data-reveal].is-revealed {
+  animation: content-reveal 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body.content-animate .hero-motto,
@@ -105,12 +79,7 @@ body.content-animate.content-ready .hero-support {
 @media (prefers-reduced-motion: reduce) {
   body.content-animate
     #page-content
-    :is(
-      .btn-cta,
-      [data-reveal],
-      [data-reveal-text],
-      .page-reveal-item
-    ) {
+    :is(.btn-cta, [data-reveal], [data-reveal-text], .page-reveal-item) {
     opacity: 1;
     transform: none;
     animation: none;
@@ -152,7 +121,10 @@ body.page-transition.page-transition-show-loader .page-loading-overlay {
 
 .page-loading-ring-glow {
   border: 4px solid transparent;
-  border-color: var(--color-secondary-warm) color-mix(in oklab, var(--color-secondary-hot), white 18%) color-mix(in oklab, var(--color-secondary-warm), transparent 55%) color-mix(in oklab, var(--color-secondary-hot), transparent 62%);
+  border-color: var(--color-secondary-warm)
+    color-mix(in oklab, var(--color-secondary-hot), white 18%)
+    color-mix(in oklab, var(--color-secondary-warm), transparent 55%)
+    color-mix(in oklab, var(--color-secondary-hot), transparent 62%);
   box-shadow:
     0 0 16px color-mix(in oklab, var(--color-secondary-hot), transparent 40%),
     0 0 28px color-mix(in oklab, var(--color-secondary-warm), transparent 54%),

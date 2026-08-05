@@ -60,6 +60,11 @@
         "desktop": "Asztali"
       },
       "liveCta": "Ugrás az élő oldalra",
+      "carousel": {
+        "prevAria": "Előző projekt",
+        "nextAria": "Következő projekt",
+        "goToAria": "Ugrás a(z) {{index}}. projekthez"
+      },
       "cta": "Referenciák és eredmények →"
     },
     "services": {

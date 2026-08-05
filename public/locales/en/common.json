@@ -59,6 +59,11 @@
         "desktop": "Desktop"
       },
       "liveCta": "Visit the live site",
+      "carousel": {
+        "prevAria": "Previous project",
+        "nextAria": "Next project",
+        "goToAria": "Go to project {{index}}"
+      },
       "cta": "References and results →"
     },
     "services": {

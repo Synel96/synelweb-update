@@ -12,11 +12,18 @@ import {
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { ProjectsPreviewCarousel } from "@/components/ProjectsPreviewCarousel";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { TechnologyLogo } from "@/components/TechnologyLogo";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
+import type { Project } from "@/src/services/projectServices";
+
+type Data = {
+  projects: Project[];
+  fetchError: boolean;
+};
 
 const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
 
@@ -40,8 +47,9 @@ const HERO_VIDEO_POSTER_URL =
 export default function Page() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useTranslation();
-  const pageContext = usePageContext() as { lang?: SupportedLang };
+  const pageContext = usePageContext() as { lang?: SupportedLang; data?: Data };
   const lang = pageContext.lang ?? DEFAULT_LANG;
+  const projects = pageContext.data?.projects ?? [];
 
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
@@ -128,21 +136,26 @@ export default function Page() {
       </section>
 
       <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(9,14,24,0.92),rgba(14,20,38,0.98))] p-7 sm:p-9">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.projects.title")}
-          </h2>
-          <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.projects.text")}
-          </p>
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          {t("homeFlow.projects.title")}
+        </h2>
+        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
+          {t("homeFlow.projects.text")}
+        </p>
 
-          <a
-            href={langHref("/projects")}
-            className="mt-7 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-          >
-            {t("homeFlow.projects.cta")}
-          </a>
-        </article>
+        <ProjectsPreviewCarousel
+          projects={projects}
+          prevAriaLabel={t("homeFlow.projects.carousel.prevAria")}
+          nextAriaLabel={t("homeFlow.projects.carousel.nextAria")}
+          goToAriaLabel={(index) => t("homeFlow.projects.carousel.goToAria", { index })}
+        />
+
+        <a
+          href={langHref("/projects")}
+          className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
+        >
+          {t("homeFlow.projects.cta")}
+        </a>
       </section>
 
       <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>

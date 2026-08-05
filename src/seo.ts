@@ -49,8 +49,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     },
     "/contact": {
       title: "Contact | SynelWeb",
-      description:
-        "Contact SynelWeb by email, phone, or through an in-person meeting in Sopron.",
+      description: "Contact SynelWeb by email, phone, or through an in-person meeting in Sopron.",
     },
   },
   hu: {
@@ -139,10 +138,8 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
   const canonicalUrl = new URL(localizePath(logicalPath, lang), SITE_URL).toString();
   const resolvedTitle = title && title.trim().length > 0 ? title : fallbackMeta.title;
   const resolvedDescription =
-    description && description.trim().length > 0
-      ? description
-      : fallbackMeta.description;
-  const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/me.webp`;
+    description && description.trim().length > 0 ? description : fallbackMeta.description;
+  const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/og-image.png`;
 
   // hreflang alternates for every supported language + x-default pointing to default lang
   const alternates = [

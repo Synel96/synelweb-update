@@ -42,9 +42,9 @@ describe("buildMeta", () => {
     expect(meta.description).toContain("Learn how I work");
   });
 
-  it("defaults the image to the site avatar when none is given", () => {
+  it("defaults the image to the site share image when none is given", () => {
     const meta = buildMeta({ pathname: "/", lang: "hu" });
-    expect(meta.image).toBe("https://synelweb.hu/me.webp");
+    expect(meta.image).toBe("https://synelweb.hu/og-image.png");
   });
 
   it("uses a provided image when non-empty", () => {

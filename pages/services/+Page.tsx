@@ -94,7 +94,7 @@ export default function Page() {
         <div className="absolute inset-0 bg-[rgba(11,15,25,0.35)]" />
       </div>
 
-      <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14" data-reveal>
+      <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
           {t("homeFlow.services.label")}
         </p>

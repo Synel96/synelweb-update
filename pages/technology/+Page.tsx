@@ -92,7 +92,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18" data-reveal>
+      <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">

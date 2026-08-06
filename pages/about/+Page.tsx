@@ -35,10 +35,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
-      <section
-        className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center"
-        data-reveal
-      >
+      <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] text-(--primary) uppercase">
             {t("about.label")}

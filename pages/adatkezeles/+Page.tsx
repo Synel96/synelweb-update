@@ -12,7 +12,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function Page() {
   return (
     <div className="text-(--brand-on-surface)">
-      <section className="mx-auto w-full max-w-3xl px-6 pt-28 pb-8 sm:pt-32" data-reveal>
+      <section className="mx-auto w-full max-w-3xl px-6 pt-28 pb-8 sm:pt-32">
         <p className="text-sm font-semibold tracking-[0.2em] text-(--accent) uppercase">
           Jogi tájékoztató
         </p>

@@ -274,4 +274,28 @@ If backend wants to start small, the absolute minimum is:
 
 - /api/services returning multilingual title, description, slug, images, price, salePrice
 - /api/projects returning multilingual description, stack, mobile+desktop lighthouse arrays, liveUrl
+
+---
+
+## Deploy / Prerender Sync
+
+This frontend is statically prerendered at build time (services, projects,
+reviews and blog posts are fetched during the Vercel build, not on request).
+That means new/edited content in the admin does not appear on the live site
+until a new deploy runs.
+
+The backend (Django admin) triggers a Vercel Deploy Hook whenever admin
+content changes, so the site rebuilds automatically:
+
+- a review is approved (single edit or bulk "Kijelölt vélemények
+  jóváhagyása" action)
+- a service (Package) is created, updated or deleted
+- a blog post is created, updated or deleted
+
+Setup on the Vercel side: Project Settings → Git → Deploy Hooks → create a
+hook for the production branch, then set the resulting URL as
+`VERCEL_DEPLOY_HOOK_URL` on the backend (e.g. `fly secrets set
+VERCEL_DEPLOY_HOOK_URL=...`). Calls are debounced
+(`VERCEL_DEPLOY_HOOK_DEBOUNCE_SECONDS`, default 30s) so bulk admin actions
+collapse into a single deploy instead of one per row.
 - /api/reviews POST for submission and GET approved list for display

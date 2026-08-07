@@ -73,7 +73,13 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
             observer?.unobserve(entry.target);
           }
         },
-        { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+        // threshold is a ratio of the *target's own* area, so a section taller
+        // than the viewport (e.g. several stacked cards on mobile) can never
+        // reach a double-digit percentage on screen at once - it would stay
+        // at opacity:0 forever. 0 fires as soon as any pixel crosses into the
+        // rootMargin-trimmed viewport, which still delays the reveal until
+        // the section is actually approaching view.
+        { threshold: 0, rootMargin: "0px 0px -10% 0px" }
       );
 
       elements.forEach((element) => observer?.observe(element));

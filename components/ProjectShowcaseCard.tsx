@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ExternalLinkIcon } from "lucide-react";
+import { ChevronDownIcon, ExternalLinkIcon } from "lucide-react";
 import { TechnologyLogo, type TechnologyLogoName } from "@/components/TechnologyLogo";
 import { LighthouseScoreRing } from "@/components/LighthouseScoreRing";
 import { ProjectPreviewCarousel } from "@/components/ProjectPreviewCarousel";
@@ -158,19 +158,22 @@ export function ProjectShowcaseCard({
           </div>
 
           <div className="mt-5 rounded-2xl border border-white/10 bg-black/22 p-3.5 sm:p-4">
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
-                {scoresTitle}
-              </p>
-              <button
-                type="button"
-                className="inline-flex items-center text-[0.68rem] font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80 sm:hidden"
-                onClick={() => setIsScoresExpanded((current) => !current)}
-                aria-expanded={isScoresExpanded}
-              >
-                {isScoresExpanded ? scoresCollapseLabel : scoresExpandLabel}
-              </button>
-            </div>
+            <p className="hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:block">
+              {scoresTitle}
+            </p>
+            <button
+              type="button"
+              className="flex w-full items-center justify-between gap-3 text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase transition-opacity hover:opacity-80 sm:hidden"
+              onClick={() => setIsScoresExpanded((current) => !current)}
+              aria-expanded={isScoresExpanded}
+              aria-label={isScoresExpanded ? scoresCollapseLabel : scoresExpandLabel}
+            >
+              <span>{scoresTitle}</span>
+              <ChevronDownIcon
+                className={`size-4 shrink-0 transition-transform duration-300 ${isScoresExpanded ? "rotate-180" : ""}`}
+                aria-hidden="true"
+              />
+            </button>
             <div
               className={`mt-3 gap-4 xl:grid-cols-2 sm:grid ${isScoresExpanded ? "grid" : "hidden"}`}
             >

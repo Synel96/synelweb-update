@@ -16,6 +16,8 @@ const baseProps = {
   stackTitle: "Tech stack",
   stack: [{ name: "React", logo: "react" as const }],
   scoresTitle: "Lighthouse",
+  scoresExpandLabel: "View scores",
+  scoresCollapseLabel: "Hide scores",
   mobileScoresLabel: "Mobile",
   desktopScoresLabel: "Desktop",
   mobileScores: [{ label: "Performance", value: 95 }],

@@ -117,7 +117,9 @@
     "fetchError": "Projects could not be loaded right now. Please try again later.",
     "emptyState": "No projects are available right now.",
     "expandDescription": "Read more",
-    "collapseDescription": "Show less"
+    "collapseDescription": "Show less",
+    "expandScores": "View Lighthouse scores",
+    "collapseScores": "Hide Lighthouse scores"
   },
   "blogPage": {
     "label": "Blog",

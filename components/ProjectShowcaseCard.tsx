@@ -22,6 +22,8 @@ type ProjectShowcaseCardProps = {
   stackTitle: string;
   stack: Array<{ name: string; logo: TechnologyLogoName }>;
   scoresTitle: string;
+  scoresExpandLabel: string;
+  scoresCollapseLabel: string;
   mobileScoresLabel: string;
   desktopScoresLabel: string;
   mobileScores: ScoreItem[];
@@ -45,6 +47,8 @@ export function ProjectShowcaseCard({
   stackTitle,
   stack,
   scoresTitle,
+  scoresExpandLabel,
+  scoresCollapseLabel,
   mobileScoresLabel,
   desktopScoresLabel,
   mobileScores,
@@ -55,6 +59,7 @@ export function ProjectShowcaseCard({
   const HeadingTag = headingLevel;
   const hasLongDescription = description.trim().length > 220;
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [isScoresExpanded, setIsScoresExpanded] = useState(false);
   const [expandedHeight, setExpandedHeight] = useState(0);
   const articleRef = useRef<HTMLElement | null>(null);
   const descriptionRef = useRef<HTMLParagraphElement | null>(null);
@@ -153,10 +158,22 @@ export function ProjectShowcaseCard({
           </div>
 
           <div className="mt-5 rounded-2xl border border-white/10 bg-black/22 p-3.5 sm:p-4">
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
-              {scoresTitle}
-            </p>
-            <div className="mt-3 grid gap-4 xl:grid-cols-2">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
+                {scoresTitle}
+              </p>
+              <button
+                type="button"
+                className="inline-flex items-center text-[0.68rem] font-semibold tracking-[0.08em] text-(--accent) uppercase transition-opacity hover:opacity-80 sm:hidden"
+                onClick={() => setIsScoresExpanded((current) => !current)}
+                aria-expanded={isScoresExpanded}
+              >
+                {isScoresExpanded ? scoresCollapseLabel : scoresExpandLabel}
+              </button>
+            </div>
+            <div
+              className={`mt-3 gap-4 xl:grid-cols-2 sm:grid ${isScoresExpanded ? "grid" : "hidden"}`}
+            >
               <div>
                 <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {mobileScoresLabel}

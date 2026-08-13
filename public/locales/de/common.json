@@ -117,7 +117,9 @@
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Projekte verfügbar.",
     "expandDescription": "Mehr",
-    "collapseDescription": "Weniger"
+    "collapseDescription": "Weniger",
+    "expandScores": "Lighthouse-Werte anzeigen",
+    "collapseScores": "Lighthouse-Werte ausblenden"
   },
   "blogPage": {
     "label": "Blog",

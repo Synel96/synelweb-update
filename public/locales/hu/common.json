@@ -118,7 +118,9 @@
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
     "emptyState": "Jelenleg nincs megjeleníthető projekt.",
     "expandDescription": "Több",
-    "collapseDescription": "Kevesebb"
+    "collapseDescription": "Kevesebb",
+    "expandScores": "Lighthouse pontszámok megtekintése",
+    "collapseScores": "Lighthouse pontszámok elrejtése"
   },
   "blogPage": {
     "label": "Blog",

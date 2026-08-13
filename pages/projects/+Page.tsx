@@ -68,6 +68,8 @@ export default function Page() {
                   logo: item.logo,
                 }))}
               scoresTitle={t("homeFlow.projects.lighthouseTitle")}
+              scoresExpandLabel={t("projectsPage.expandScores")}
+              scoresCollapseLabel={t("projectsPage.collapseScores")}
               mobileScoresLabel={t("homeFlow.projects.scoreGroups.mobile")}
               desktopScoresLabel={t("homeFlow.projects.scoreGroups.desktop")}
               mobileScores={project.mobileScores.map((item) => ({

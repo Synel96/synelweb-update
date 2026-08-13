@@ -18,13 +18,14 @@ export function Navbar() {
   const { urlPathname } = pageContext;
   const lang = pageContext.lang ?? DEFAULT_LANG;
   const { logicalPath } = resolveLanguageAndLogicalPath(urlPathname);
+  const isHome = logicalPath === "/";
   const { t } = useTranslation();
 
   useEffect(() => {
-    // On the home page, fade in as the video hero scrolls out of view. Every
-    // other page lacks that marker, so fall back to one viewport height —
-    // the navbar still starts transparent over each page's own intro and
-    // settles into its floating state shortly after.
+    // Only the home page has a transparent video hero to fade in over; every
+    // other page keeps the navbar fully colored from the top.
+    if (!isHome) return;
+
     const updateScrolledState = () => {
       const heroSection = document.querySelector<HTMLElement>("[data-home-hero]");
       const heroBottom = heroSection
@@ -44,7 +45,7 @@ export function Navbar() {
       window.removeEventListener("scroll", updateScrolledState);
       window.removeEventListener("resize", updateScrolledState);
     };
-  }, []);
+  }, [isHome]);
 
   // Build a URL with the current lang prefix
   const langHref = (href: string) => localizePath(href, lang);
@@ -64,10 +65,10 @@ export function Navbar() {
 
   const visibleNavLinks = NAV_LINKS.filter((item) => !item.hiddenInLangs?.includes(lang));
 
-  const navbarAlpha = 0.88 * scrollProgress;
-  const navbarBorderAlpha = 0.14 * scrollProgress;
-  const navbarShadowAlpha = 0.55 * scrollProgress;
-  const navbarBlur = 16 * scrollProgress;
+  const navbarAlpha = isHome ? 0.88 * scrollProgress : 0.88;
+  const navbarBorderAlpha = isHome ? 0.14 * scrollProgress : 0.14;
+  const navbarShadowAlpha = isHome ? 0.55 * scrollProgress : 0.55;
+  const navbarBlur = isHome ? 16 * scrollProgress : 16;
 
   return (
     <header

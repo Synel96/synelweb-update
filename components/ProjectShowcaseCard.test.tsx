@@ -84,6 +84,20 @@ describe("ProjectShowcaseCard", () => {
     expect(screen.getAllByText("Performance")).toHaveLength(2);
   });
 
+  it("shows a Lighthouse scores toggle collapsed by default and expands it on click", async () => {
+    render(<ProjectShowcaseCard {...baseProps} />);
+    const user = userEvent.setup();
+
+    const toggle = screen.getByRole("button", { name: "View scores" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+    await user.click(toggle);
+    expect(screen.getByRole("button", { name: "Hide scores" })).toHaveAttribute(
+      "aria-expanded",
+      "true"
+    );
+  });
+
   it("renders a live link opening in a new tab", () => {
     render(<ProjectShowcaseCard {...baseProps} />);
     const link = screen.getByRole("link", { name: /visit site/i });

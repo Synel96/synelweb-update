@@ -68,14 +68,12 @@ describe("Navbar", () => {
     expect(header.style.backgroundColor).toBe("rgba(11, 15, 25, 0.44)");
   });
 
-  it("also fades the header in on scroll on non-home pages, using a viewport-height fallback", async () => {
-    Object.defineProperty(window, "innerHeight", { value: 500, configurable: true });
-    Object.defineProperty(window, "scrollY", { value: 0, configurable: true });
+  it("keeps a constant header background on non-home pages regardless of scroll", async () => {
     usePageContext.mockReturnValue({ urlPathname: "/en/about", lang: "en" });
     const { container } = await renderWithI18n(<Navbar />, "en");
 
     const header = container.querySelector("header") as HTMLElement;
-    expect(header.style.backgroundColor).toBe("rgba(11, 15, 25, 0)");
+    expect(header.style.backgroundColor).toBe("rgba(11, 15, 25, 0.88)");
 
     Object.defineProperty(window, "innerHeight", { value: 500, configurable: true });
     Object.defineProperty(window, "scrollY", { value: 500, configurable: true });

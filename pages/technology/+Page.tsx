@@ -201,11 +201,8 @@ export default function Page() {
         </div>
       </section>
 
-      <section
-        className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
-        data-reveal
-      >
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
+        <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--color-secondary-hot) uppercase">
             {t("technology.cta.eyebrow")}
           </p>

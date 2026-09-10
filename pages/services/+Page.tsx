@@ -138,23 +138,25 @@ export default function Page() {
       </div>
 
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
-        <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-          {t("homeFlow.services.label")}
-        </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          {t("homeFlow.services.title")}
-        </h1>
-        <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-          {t("homeFlow.services.text")}
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+            {t("homeFlow.services.label")}
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("homeFlow.services.title")}
+          </h1>
+          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+            {t("homeFlow.services.text")}
+          </p>
 
-        <div className="mt-6 max-w-3xl rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
-          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
-            {t("servicesPage.seoNote.label")}
-          </p>
-          <p className="mt-2 text-sm leading-7 text-white/85 sm:text-base">
-            {t("servicesPage.seoNote.text")}
-          </p>
+          <div className="mt-6 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
+            <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+              {t("servicesPage.seoNote.label")}
+            </p>
+            <p className="mt-2 text-sm leading-7 text-white/85 sm:text-base">
+              {t("servicesPage.seoNote.text")}
+            </p>
+          </div>
         </div>
       </header>
 
@@ -212,15 +214,17 @@ export default function Page() {
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
-          <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
-            {t("servicesPage.maintenance.label")}
-          </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            {t("servicesPage.maintenance.title")}
-          </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-white/78 sm:text-base">
-            {t("servicesPage.maintenance.text")}
-          </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
+              {t("servicesPage.maintenance.label")}
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              {t("servicesPage.maintenance.title")}
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
+              {t("servicesPage.maintenance.text")}
+            </p>
+          </div>
 
           <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {MAINTENANCE_ITEMS.map(({ key, Icon }) => (

@@ -226,14 +226,14 @@ export default function Page() {
             </p>
           </div>
 
-          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {MAINTENANCE_ITEMS.map(({ key, Icon }) => (
               <li
                 key={key}
                 className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/4 px-4 py-3"
               >
                 <Icon className="size-4 shrink-0 text-(--accent)" aria-hidden="true" />
-                <span className="text-xs font-medium text-white/85 sm:text-sm">
+                <span className="min-w-0 flex-1 text-xs font-medium break-words text-white/85 sm:text-sm">
                   {t(`servicesPage.maintenance.items.${key}`)}
                 </span>
               </li>

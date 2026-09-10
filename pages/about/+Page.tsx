@@ -38,17 +38,17 @@ export default function Page() {
     <div className="text-(--brand-on-surface)">
       <PageHeroBackground />
       <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
-        <div>
+        <div className="text-center">
           <p className="text-sm font-semibold tracking-[0.2em] text-(--primary) uppercase">
             {t("about.label")}
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
             {t("about.heading")}
           </h1>
-          <p className="mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
             {t("about.intro")}
           </p>
-          <p className="mt-6 max-w-4xl text-base leading-8 font-semibold text-(--brand-on-surface) sm:text-lg">
+          <p className="mx-auto mt-6 max-w-4xl text-base leading-8 font-semibold text-(--brand-on-surface) sm:text-lg">
             {t("about.introStrong")}
           </p>
 
@@ -81,7 +81,9 @@ export default function Page() {
         className="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.86),rgba(15,21,40,0.92))] px-4 py-5 sm:px-6 sm:py-6"
         data-reveal
       >
-        <h2 className="px-2 text-xl font-semibold sm:text-2xl">{t("about.accordion.title")}</h2>
+        <h2 className="px-2 text-center text-xl font-semibold sm:text-2xl">
+          {t("about.accordion.title")}
+        </h2>
         <div className="mt-4 space-y-3">
           {accordionItems.map((item) => (
             <details
@@ -101,7 +103,7 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+        <h2 className="text-center text-2xl font-semibold tracking-tight sm:text-3xl">
           {t("about.process.title")}
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -118,11 +120,11 @@ export default function Page() {
         className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
         data-reveal
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
             {t("about.cta.eyebrow")}
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("about.cta.title")}
           </h2>
           <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">

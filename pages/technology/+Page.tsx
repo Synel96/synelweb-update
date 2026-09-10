@@ -96,22 +96,22 @@ export default function Page() {
       <PageHeroBackground />
       <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <div>
+          <div className="text-center">
             <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">
               {t("technology.label")}
             </p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("technology.heading")}
             </h1>
-            <p className="mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
               {t("technology.intro")}
             </p>
-            <p className="mt-6 max-w-4xl text-base leading-8 font-semibold text-white sm:text-lg">
+            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 font-semibold text-white sm:text-lg">
               {t("technology.introStrong")}
             </p>
           </div>
 
-          <aside className="bento-card rounded-3xl p-6 sm:p-7">
+          <aside className="bento-card rounded-3xl p-6 text-center sm:p-7">
             <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
               {t("technology.beliefLabel")}
             </p>
@@ -126,7 +126,7 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold tracking-[0.22em] text-(--color-secondary-warm) uppercase">
             {t("technology.stackLabel")}
           </p>
@@ -145,15 +145,17 @@ export default function Page() {
         </div>
 
         <div className="mt-8 rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(9,14,24,0.92),rgba(14,20,38,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
-          <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
-            {t("technology.trustedCompanies.label")}
-          </p>
-          <h3 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("technology.trustedCompanies.title")}
-          </h3>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
-            {t("technology.trustedCompanies.intro")}
-          </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
+              {t("technology.trustedCompanies.label")}
+            </p>
+            <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {t("technology.trustedCompanies.title")}
+            </h3>
+            <p className="mt-5 text-base leading-8 text-white/78 sm:text-lg">
+              {t("technology.trustedCompanies.intro")}
+            </p>
+          </div>
           <ul className="mt-6 grid gap-4 text-sm leading-7 text-white/78 sm:text-base">
             {TRUSTED_COMPANY_KEYS.map((itemKey) => (
               <li key={itemKey} className="rounded-2xl border border-white/10 bg-white/4 p-5">
@@ -174,26 +176,30 @@ export default function Page() {
               </li>
             ))}
           </ul>
-          <h4 className="mt-8 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-            {t("technology.trustedCompanies.valueTitle")}
-          </h4>
-          <p className="mt-4 max-w-4xl text-base leading-8 text-slate-200 sm:text-lg">
-            <Trans i18nKey="technology.trustedCompanies.valueText" components={brandComponents} />
-          </p>
+          <div className="mx-auto mt-8 max-w-3xl text-center">
+            <h4 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+              {t("technology.trustedCompanies.valueTitle")}
+            </h4>
+            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
+              <Trans i18nKey="technology.trustedCompanies.valueText" components={brandComponents} />
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
-          <p className="text-sm font-semibold tracking-[0.22em] text-(--color-secondary-warm) uppercase">
-            {t("technology.llmLabel")}
-          </p>
-          <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("technology.llmTitle")}
-          </h2>
-          <p className="mt-5 max-w-4xl text-base leading-8 text-slate-200 sm:text-lg">
-            {t("technology.llmText")}
-          </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold tracking-[0.22em] text-(--color-secondary-warm) uppercase">
+              {t("technology.llmLabel")}
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {t("technology.llmTitle")}
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
+              {t("technology.llmText")}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -201,11 +207,11 @@ export default function Page() {
         className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
         data-reveal
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--color-secondary-hot) uppercase">
             {t("technology.cta.eyebrow")}
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("technology.cta.title")}
           </h2>
           <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">

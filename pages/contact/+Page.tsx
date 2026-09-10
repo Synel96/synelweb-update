@@ -43,21 +43,21 @@ export default function Page() {
       <PageHeroBackground />
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div className="space-y-6">
+          <div className="space-y-6 text-center">
             <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
               {t("contact.label")}
             </p>
-            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("contact.heading")}
             </h1>
-            <p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
+            <p className="mx-auto max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
               {t("contact.intro")}
             </p>
-            <p className="max-w-2xl text-base leading-8 font-semibold text-white sm:text-lg">
+            <p className="mx-auto max-w-2xl text-base leading-8 font-semibold text-white sm:text-lg">
               {t("contact.introStrong")}
             </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
               <ConversionCtaButton href={`tel:${PHONE}`} ariaLabel={t("contact.callButton")}>
                 {t("contact.callButton")}
               </ConversionCtaButton>
@@ -168,18 +168,18 @@ export default function Page() {
 
       <section id="map" className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <div className="bento-card rounded-3xl p-6 sm:p-8">
+          <div className="bento-card rounded-3xl p-6 text-center sm:p-8">
             <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
               {t("contact.mapLabel")}
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
               {t("contact.mapTitle")}
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-8 text-white/78">
+            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-white/78">
               {t("contact.mapText")}
             </p>
 
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5">
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
               <p className="text-sm font-semibold text-white">{t("contact.mapLocationTitle")}</p>
               <p className="mt-2 text-sm leading-7 text-white/72">{t("contact.mapLocationText")}</p>
             </div>
@@ -201,11 +201,11 @@ export default function Page() {
         className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"
         data-reveal
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-16 sm:py-20">
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center sm:py-20">
           <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
             {t("contact.closingTitle")}
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("contact.closingTitle")}
           </h2>
           <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">

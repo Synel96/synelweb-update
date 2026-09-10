@@ -112,7 +112,28 @@
     "expandDescription": "Több",
     "collapseDescription": "Kevesebb",
     "cardCta": "Ajánlatot kérek",
-    "cardCtaAria": "Ajánlatkérés indítása"
+    "cardCtaAria": "Ajánlatkérés indítása",
+    "seoNote": {
+      "label": "Miért éri ez meg neked",
+      "text": "A célom mindig egy olyan weboldal, ami üzletileg is helyt áll – ezért már az alapárban benne van a Google Trends-alapú SEO szövegezés is. Így a legegyszerűbb weboldalad is a saját kategóriájában tökéletes lesz: dizájnban, sebességben, reszponzivitásban és SEO-ban egyaránt."
+    },
+    "maintenance": {
+      "label": "Üzemeltetés",
+      "title": "Havi karbantartási és üzemeltetési díj",
+      "text": "Egy weboldal üzemeltetési és karbantartási díja sok mindentől függ, ezért mindig az igényeidhez igazítom. A havi díj jellemzően az alábbiakat foglalja magába:",
+      "items": {
+        "hosting": "Tárhely és domain",
+        "email": "Üzleti levelezőrendszer (igény esetén)",
+        "googleBusiness": "Google Business fiók beállítása",
+        "content": "Havi pár soros tartalommódosítás",
+        "vercel": "Vercel frontend host",
+        "flyio": "Fly.io backend host",
+        "neon": "Neon PostgreSQL adatbázis",
+        "cloudinary": "Cloudinary képkezelés"
+      },
+      "priceLabel": "Már {{price}}-tól / hó",
+      "cta": "Kérdésed van az üzemeltetésről? Írj nekem →"
+    }
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",

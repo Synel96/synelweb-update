@@ -111,7 +111,28 @@
     "expandDescription": "Mehr",
     "collapseDescription": "Weniger",
     "cardCta": "Angebot anfordern",
-    "cardCtaAria": "Angebotsanfrage starten"
+    "cardCtaAria": "Angebotsanfrage starten",
+    "seoNote": {
+      "label": "Warum sich das lohnt",
+      "text": "Mein Ziel ist immer eine Website, die sich auch geschäftlich bewährt – deshalb ist SEO-Text auf Basis von Google Trends bereits im Grundpreis enthalten. So ist auch deine einfachste Website in ihrer Klasse wirklich hervorragend: im Design, in der Geschwindigkeit, in der Responsivität und im SEO."
+    },
+    "maintenance": {
+      "label": "Betrieb",
+      "title": "Monatliche Betriebs- und Wartungsgebühr",
+      "text": "Die Betriebs- und Wartungsgebühr einer Website hängt von vielen Faktoren ab, deshalb passe ich sie immer an deine Bedürfnisse an. In der Regel umfasst sie Folgendes:",
+      "items": {
+        "hosting": "Hosting & Domain",
+        "email": "Geschäftliches E-Mail-System (bei Bedarf)",
+        "googleBusiness": "Einrichtung des Google-Unternehmensprofils",
+        "content": "Monatliche kleinere Inhaltsanpassungen",
+        "vercel": "Vercel Frontend-Hosting",
+        "flyio": "Fly.io Backend-Hosting",
+        "neon": "Neon PostgreSQL-Datenbank",
+        "cloudinary": "Cloudinary Bildverwaltung"
+      },
+      "priceLabel": "Ab {{price}} / Monat",
+      "cta": "Fragen zum Betrieb? Schreib mir →"
+    }
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",

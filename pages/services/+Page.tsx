@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
+import {
+  DatabaseIcon,
+  GlobeIcon,
+  ImageIcon,
+  MailIcon,
+  PenLineIcon,
+  RocketIcon,
+  StoreIcon,
+  TriangleIcon,
+} from "lucide-react";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
@@ -14,6 +24,37 @@ import {
 const SERVICES_HERO_BACKGROUND_URL = withCloudinaryAutoParams(
   "https://res.cloudinary.com/dmwulp3dl/image/upload/v1785435017/file_00000000ab7c81f4a2ae6d50ec63ad13_lakyk6.png"
 );
+
+const MAINTENANCE_ITEMS = [
+  { key: "hosting", Icon: GlobeIcon },
+  { key: "email", Icon: MailIcon },
+  { key: "googleBusiness", Icon: StoreIcon },
+  { key: "content", Icon: PenLineIcon },
+  { key: "vercel", Icon: TriangleIcon },
+  { key: "flyio", Icon: RocketIcon },
+  { key: "neon", Icon: DatabaseIcon },
+  { key: "cloudinary", Icon: ImageIcon },
+] as const;
+
+// Fixed, manually-set price points (not a live FX conversion) — update by
+// hand if the starting package price or exchange rates move meaningfully.
+const MAINTENANCE_STARTING_PRICE: Record<
+  AppLang,
+  { amount: number; currency: string; locale: string }
+> = {
+  hu: { amount: 25000, currency: "HUF", locale: "hu-HU" },
+  en: { amount: 70, currency: "USD", locale: "en-US" },
+  de: { amount: 65, currency: "EUR", locale: "de-DE" },
+};
+
+function formatMaintenanceStartingPrice(lang: AppLang): string {
+  const { amount, currency, locale } = MAINTENANCE_STARTING_PRICE[lang];
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
 
 type Data = {
   cards: ServiceCardItem[];
@@ -35,6 +76,8 @@ export default function Page() {
   const contactHref = pageContext.data?.contactHref ?? "/contact";
   const { t } = useTranslation();
   const routeLang = resolveCurrentLang(pageContext.lang);
+  const appLang = toAppLang(routeLang);
+  const maintenanceStartingPrice = formatMaintenanceStartingPrice(appLang);
 
   const [cards, setCards] = useState<ServiceCardItem[]>(initialCards);
   const [fetchError, setFetchError] = useState(initialFetchError);
@@ -56,7 +99,7 @@ export default function Page() {
 
     async function refreshCards() {
       try {
-        const latestCards = await getServiceCards(toAppLang(routeLang));
+        const latestCards = await getServiceCards(appLang);
         if (!isMounted) return;
 
         setCards(latestCards);
@@ -104,6 +147,15 @@ export default function Page() {
         <p className="mt-4 max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
           {t("homeFlow.services.text")}
         </p>
+
+        <div className="mt-6 max-w-3xl rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
+          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+            {t("servicesPage.seoNote.label")}
+          </p>
+          <p className="mt-2 text-sm leading-7 text-white/85 sm:text-base">
+            {t("servicesPage.seoNote.text")}
+          </p>
+        </div>
       </header>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20">
@@ -156,6 +208,46 @@ export default function Page() {
             ))}
           </div>
         )}
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
+        <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
+          <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
+            {t("servicesPage.maintenance.label")}
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            {t("servicesPage.maintenance.title")}
+          </h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-white/78 sm:text-base">
+            {t("servicesPage.maintenance.text")}
+          </p>
+
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {MAINTENANCE_ITEMS.map(({ key, Icon }) => (
+              <li
+                key={key}
+                className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/4 px-4 py-3"
+              >
+                <Icon className="size-4 shrink-0 text-(--accent)" aria-hidden="true" />
+                <span className="text-xs font-medium text-white/85 sm:text-sm">
+                  {t(`servicesPage.maintenance.items.${key}`)}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
+            <p className="text-base font-semibold text-emerald-300 sm:text-lg">
+              {t("servicesPage.maintenance.priceLabel", { price: maintenanceStartingPrice })}
+            </p>
+            <a
+              href={contactHref}
+              className="inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+            >
+              {t("servicesPage.maintenance.cta")}
+            </a>
+          </div>
+        </div>
       </section>
     </>
   );

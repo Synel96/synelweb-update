@@ -103,10 +103,10 @@ export default function Page() {
             <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("technology.heading")}
             </h1>
-            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
+            <p className="mx-auto mt-6 max-w-4xl text-left text-base leading-8 text-white/78 sm:text-lg">
               {t("technology.intro")}
             </p>
-            <p className="mx-auto mt-6 max-w-4xl text-base leading-8 font-semibold text-white sm:text-lg">
+            <p className="mx-auto mt-6 max-w-4xl text-left text-base leading-8 font-semibold text-white sm:text-lg">
               {t("technology.introStrong")}
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function Page() {
             <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
               {t("technology.beliefTitle")}
             </h2>
-            <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
+            <p className="mt-4 text-left text-sm leading-7 text-white/78 sm:text-base">
               {t("technology.beliefText")}
             </p>
           </aside>
@@ -133,7 +133,7 @@ export default function Page() {
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("technology.stackTitle")}
           </h2>
-          <p className="mt-4 text-base leading-8 text-white/78 sm:text-lg">
+          <p className="mt-4 text-left text-base leading-8 text-white/78 sm:text-lg">
             {t("technology.stackIntro")}
           </p>
         </div>
@@ -152,7 +152,7 @@ export default function Page() {
             <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               {t("technology.trustedCompanies.title")}
             </h3>
-            <p className="mt-5 text-base leading-8 text-white/78 sm:text-lg">
+            <p className="mt-5 text-left text-base leading-8 text-white/78 sm:text-lg">
               {t("technology.trustedCompanies.intro")}
             </p>
           </div>
@@ -180,7 +180,7 @@ export default function Page() {
             <h4 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
               {t("technology.trustedCompanies.valueTitle")}
             </h4>
-            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
+            <p className="mt-4 text-left text-base leading-8 text-slate-200 sm:text-lg">
               <Trans i18nKey="technology.trustedCompanies.valueText" components={brandComponents} />
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function Page() {
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("technology.llmTitle")}
           </h2>
-          <p className="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
+          <p className="mt-5 text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("technology.llmText")}
           </p>
         </div>
@@ -209,7 +209,7 @@ export default function Page() {
           <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("technology.cta.title")}
           </h2>
-          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+          <p className="w-full max-w-3xl text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("technology.cta.text")}
           </p>
           <ConversionCtaButton href={contactHref} ariaLabel={t("technology.cta.ariaLabel")}>

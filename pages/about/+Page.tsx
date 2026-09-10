@@ -45,10 +45,10 @@ export default function Page() {
           <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
             {t("about.heading")}
           </h1>
-          <p className="mx-auto mt-6 max-w-4xl text-base leading-8 text-white/78 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-4xl text-left text-base leading-8 text-white/78 sm:text-lg">
             {t("about.intro")}
           </p>
-          <p className="mx-auto mt-6 max-w-4xl text-base leading-8 font-semibold text-(--brand-on-surface) sm:text-lg">
+          <p className="mx-auto mt-6 max-w-4xl text-left text-base leading-8 font-semibold text-(--brand-on-surface) sm:text-lg">
             {t("about.introStrong")}
           </p>
 
@@ -127,7 +127,7 @@ export default function Page() {
           <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("about.cta.title")}
           </h2>
-          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+          <p className="w-full max-w-3xl text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("about.cta.text")}
           </p>
           <ConversionCtaButton href={contactHref} ariaLabel={t("about.cta.ariaLabel")}>

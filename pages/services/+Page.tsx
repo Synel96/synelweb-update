@@ -133,7 +133,7 @@ export default function Page() {
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("homeFlow.services.title")}
           </h1>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
+          <p className="mt-4 text-left text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.services.text")}
           </p>
 
@@ -141,7 +141,7 @@ export default function Page() {
             <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
               {t("servicesPage.seoNote.label")}
             </p>
-            <p className="mt-2 text-sm leading-7 text-white/85 sm:text-base">
+            <p className="mt-2 text-left text-sm leading-7 text-white/85 sm:text-base">
               {t("servicesPage.seoNote.text")}
             </p>
           </div>
@@ -208,7 +208,7 @@ export default function Page() {
           <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             {t("servicesPage.maintenance.title")}
           </h2>
-          <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
+          <p className="mt-4 text-left text-sm leading-7 text-white/78 sm:text-base">
             {t("servicesPage.maintenance.text")}
           </p>
         </div>

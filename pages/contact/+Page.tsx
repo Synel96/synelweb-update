@@ -50,10 +50,10 @@ export default function Page() {
             <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("contact.heading")}
             </h1>
-            <p className="mx-auto max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
+            <p className="mx-auto max-w-2xl text-left text-base leading-8 text-white/78 sm:text-lg">
               {t("contact.intro")}
             </p>
-            <p className="mx-auto max-w-2xl text-base leading-8 font-semibold text-white sm:text-lg">
+            <p className="mx-auto max-w-2xl text-left text-base leading-8 font-semibold text-white sm:text-lg">
               {t("contact.introStrong")}
             </p>
 
@@ -175,13 +175,15 @@ export default function Page() {
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
               {t("contact.mapTitle")}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-white/78">
+            <p className="mx-auto mt-4 max-w-xl text-left text-base leading-8 text-white/78">
               {t("contact.mapText")}
             </p>
 
             <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
               <p className="text-sm font-semibold text-white">{t("contact.mapLocationTitle")}</p>
-              <p className="mt-2 text-sm leading-7 text-white/72">{t("contact.mapLocationText")}</p>
+              <p className="mt-2 text-left text-sm leading-7 text-white/72">
+                {t("contact.mapLocationText")}
+              </p>
             </div>
           </div>
 
@@ -208,7 +210,7 @@ export default function Page() {
           <h2 className="max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {t("contact.closingTitle")}
           </h2>
-          <p className="max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">
+          <p className="w-full max-w-3xl text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("contact.closingText")}
           </p>
         </div>

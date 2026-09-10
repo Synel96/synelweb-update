@@ -229,7 +229,7 @@ export default function Page() {
           <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             {blogTitle}
           </h1>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">{blogIntro}</p>
+          <p className="mt-4 text-left text-base leading-8 text-white/80 sm:text-lg">{blogIntro}</p>
         </header>
 
         {!isHungarianLocale ? (

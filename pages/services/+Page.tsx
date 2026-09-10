@@ -213,44 +213,42 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
-        <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
-              {t("servicesPage.maintenance.label")}
-            </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              {t("servicesPage.maintenance.title")}
-            </h2>
-            <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
-              {t("servicesPage.maintenance.text")}
-            </p>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
+            {t("servicesPage.maintenance.label")}
+          </p>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            {t("servicesPage.maintenance.title")}
+          </h2>
+          <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">
+            {t("servicesPage.maintenance.text")}
+          </p>
+        </div>
 
-          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {MAINTENANCE_ITEMS.map(({ key, Icon }) => (
-              <li
-                key={key}
-                className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/4 px-4 py-3"
-              >
-                <Icon className="size-4 shrink-0 text-(--accent)" aria-hidden="true" />
-                <span className="min-w-0 flex-1 text-xs font-medium break-words text-white/85 sm:text-sm">
-                  {t(`servicesPage.maintenance.items.${key}`)}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6">
-            <p className="text-base font-semibold text-emerald-300 sm:text-lg">
-              {t("servicesPage.maintenance.priceLabel", { price: maintenanceStartingPrice })}
-            </p>
-            <a
-              href={contactHref}
-              className="inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+        <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {MAINTENANCE_ITEMS.map(({ key, Icon }) => (
+            <li
+              key={key}
+              className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/4 px-4 py-3"
             >
-              {t("servicesPage.maintenance.cta")}
-            </a>
-          </div>
+              <Icon className="size-4 shrink-0 text-(--accent)" aria-hidden="true" />
+              <span className="min-w-0 flex-1 text-xs font-medium break-words text-white/85 sm:text-sm">
+                {t(`servicesPage.maintenance.items.${key}`)}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-white/10 pt-6">
+          <p className="text-base font-semibold text-emerald-300 sm:text-lg">
+            {t("servicesPage.maintenance.priceLabel", { price: maintenanceStartingPrice })}
+          </p>
+          <a
+            href={contactHref}
+            className="inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {t("servicesPage.maintenance.cta")}
+          </a>
         </div>
       </section>
     </>

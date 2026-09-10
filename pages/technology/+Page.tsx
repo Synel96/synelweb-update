@@ -144,7 +144,7 @@ export default function Page() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(9,14,24,0.92),rgba(14,20,38,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
+        <div className="mt-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
               {t("technology.trustedCompanies.label")}
@@ -188,18 +188,16 @@ export default function Page() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
-        <div className="rounded-3xl border border-white/10 bg-[linear-gradient(145deg,rgba(11,15,25,0.95),rgba(15,21,40,0.98))] p-7 shadow-[0_30px_70px_-36px_rgba(0,0,0,0.75)] sm:p-9">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold tracking-[0.22em] text-(--color-secondary-warm) uppercase">
-              {t("technology.llmLabel")}
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              {t("technology.llmTitle")}
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
-              {t("technology.llmText")}
-            </p>
-          </div>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-semibold tracking-[0.22em] text-(--color-secondary-warm) uppercase">
+            {t("technology.llmLabel")}
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            {t("technology.llmTitle")}
+          </h2>
+          <p className="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
+            {t("technology.llmText")}
+          </p>
         </div>
       </section>
 

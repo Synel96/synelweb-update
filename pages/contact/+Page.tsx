@@ -3,6 +3,7 @@ import { MapPinnedIcon, MailIcon, PhoneIcon, RouteIcon, SparklesIcon } from "luc
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 
 const EMAIL = "info@synelweb.hu";
 const PHONE = "+36303645516";
@@ -39,6 +40,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
+      <PageHeroBackground />
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-6">

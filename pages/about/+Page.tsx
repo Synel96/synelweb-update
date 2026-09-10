@@ -2,6 +2,7 @@ import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import { AboutProfileAvatar } from "@/components/AboutProfileAvatar";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 
@@ -35,6 +36,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
+      <PageHeroBackground />
       <section className="mx-auto grid w-full max-w-6xl gap-10 px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
         <div>
           <p className="text-sm font-semibold tracking-[0.2em] text-(--primary) uppercase">

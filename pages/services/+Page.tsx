@@ -11,19 +11,15 @@ import {
   StoreIcon,
   TriangleIcon,
 } from "lucide-react";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
-import { withCloudinaryAutoParams } from "@/src/cloudinary";
 import { resolveCurrentLang } from "@/src/localizedRoutes";
 import {
   getServiceCards,
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
-
-const SERVICES_HERO_BACKGROUND_URL = withCloudinaryAutoParams(
-  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1785435017/file_00000000ab7c81f4a2ae6d50ec63ad13_lakyk6.png"
-);
 
 const MAINTENANCE_ITEMS = [
   { key: "hosting", Icon: GlobeIcon },
@@ -127,15 +123,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="fixed inset-0 -z-10" aria-hidden="true">
-        <img
-          src={SERVICES_HERO_BACKGROUND_URL}
-          alt=""
-          className="h-full w-full object-cover object-[center_70%]"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-[rgba(11,15,25,0.35)]" />
-      </div>
+      <PageHeroBackground />
 
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <div className="mx-auto max-w-3xl text-center">

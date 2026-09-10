@@ -1,6 +1,7 @@
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { TechnologyStackCard } from "@/components/TechnologyStackCard";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
@@ -92,6 +93,7 @@ export default function Page() {
 
   return (
     <div className="text-(--brand-on-surface)">
+      <PageHeroBackground />
       <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>

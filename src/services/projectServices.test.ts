@@ -77,12 +77,13 @@ describe("getProjects", () => {
     expect(project.otherImages).toEqual([]);
   });
 
-  it("sorts by order, falling back to id", async () => {
+  it("puts the newest project (highest id) first, regardless of order", async () => {
     mockFetchOnce([
-      { id: 5, name: "B", order: 2 },
-      { id: 1, name: "A", order: 1 },
+      { id: 1, name: "Oldest", order: 1 },
+      { id: 12, name: "Newest", order: 5 },
+      { id: 5, name: "Middle", order: 0 },
     ]);
     const projects = await getProjects("en");
-    expect(projects.map((p) => p.name)).toEqual(["A", "B"]);
+    expect(projects.map((p) => p.name)).toEqual(["Newest", "Middle", "Oldest"]);
   });
 });

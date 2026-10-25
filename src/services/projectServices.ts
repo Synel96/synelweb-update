@@ -95,6 +95,12 @@ function resolveProjectImages(item: ApiProject): string[] {
   return Array.from(unique);
 }
 
+// Non-numeric ids (shouldn't happen with the Django API) sort last.
+function creationRank(id: string): number {
+  const numeric = Number(id);
+  return Number.isFinite(numeric) ? numeric : Number.NEGATIVE_INFINITY;
+}
+
 export async function getProjects(lang: AppLang): Promise<Project[]> {
   const response = await fetchWithTimeout(PROJECTS_ENDPOINT, {
     headers: {
@@ -108,6 +114,9 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
 
   const data = (await response.json()) as ApiProject[];
 
+  // Newest first: the backend's auto-increment id follows creation order, so
+  // the most recently added project always leads (the admin "order" field is
+  // intentionally not used for this).
   return data
     .filter((item) => item.isActive !== false)
     .map((item) => {
@@ -125,5 +134,5 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
         order: typeof item.order === "number" ? item.order : Number(item.id) || 0,
       };
     })
-    .sort((a, b) => a.order - b.order);
+    .sort((a, b) => creationRank(b.id) - creationRank(a.id));
 }

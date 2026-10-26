@@ -19,9 +19,9 @@ type BuildMetaInput = {
 export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>> = {
   en: {
     "/": {
-      title: "Website Design Sopron | SynelWeb Web Development",
+      title: "Website Design in Hungary & Europe | SynelWeb Web Development",
       description:
-        "Custom, lightning-fast website design in Sopron. Forget slow templates! Premium design and future-ready architecture from SynelWeb.",
+        "Custom, lightning-fast website design, delivered online for clients across Hungary, Europe, and beyond. Forget slow templates! Premium design and future-ready architecture from SynelWeb.",
     },
     "/about": {
       title: "About | SynelWeb",
@@ -50,14 +50,15 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     },
     "/contact": {
       title: "Contact | SynelWeb",
-      description: "Contact SynelWeb by email, phone, or through an in-person meeting in Sopron.",
+      description:
+        "Contact SynelWeb by email, phone, or online — wherever in Hungary you are, with in-person meetings around Sopron.",
     },
   },
   hu: {
     "/": {
-      title: "Weboldal Készítés Sopron | SynelWeb Webfejlesztés",
+      title: "Weboldal Készítés Országosan | SynelWeb Webfejlesztés",
       description:
-        "Egyedi, villámgyors weboldal készítés Sopronban. Felejtsd el a lassú sablonokat! Prémium dizájn és jövőálló architektúra a SynelWebtől.",
+        "Egyedi, villámgyors weboldal készítés bárhol Magyarországon, online egyeztetéssel. Felejtsd el a lassú sablonokat! Prémium dizájn és jövőálló architektúra a SynelWebtől.",
     },
     "/about": {
       title: "Rólam | SynelWeb",
@@ -87,14 +88,14 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/contact": {
       title: "SynelWeb | Kapcsolat",
       description:
-        "Lépj kapcsolatba a SynelWebbel e-mailben, telefonon vagy a soproni térképes helyszínen.",
+        "Lépj kapcsolatba a SynelWebbel e-mailben, telefonon vagy online egyeztetéssel – bárhonnan Magyarországról, Sopronban személyesen is.",
     },
   },
   de: {
     "/": {
-      title: "Webdesign Sopron | SynelWeb Webentwicklung",
+      title: "Webdesign in Ungarn & Österreich | SynelWeb Webentwicklung",
       description:
-        "Individuelles, blitzschnelles Webdesign in Sopron. Vergiss langsame Vorlagen! Premium-Design und zukunftssichere Architektur von SynelWeb.",
+        "Individuelles, blitzschnelles Webdesign, online verfügbar in ganz Ungarn, Österreich und darüber hinaus. Vergiss langsame Vorlagen! Premium-Design und zukunftssichere Architektur von SynelWeb.",
     },
     "/about": {
       title: "Über mich | SynelWeb",
@@ -124,7 +125,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/contact": {
       title: "Kontakt | SynelWeb",
       description:
-        "Kontaktiere SynelWeb per E-Mail, telefonisch oder bei einem persönlichen Termin in Sopron.",
+        "Kontaktiere SynelWeb per E-Mail, telefonisch oder online – aus Ungarn, Österreich oder von überall sonst, mit persönlichen Terminen rund um Sopron.",
     },
   },
 };

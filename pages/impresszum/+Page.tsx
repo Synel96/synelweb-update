@@ -25,6 +25,11 @@ export default function Page() {
       <section className="mx-auto w-full max-w-3xl space-y-10 px-6 pb-24" data-reveal>
         <Section title="1. A szolgáltató adatai">
           <p>
+            Az alábbi adatok közzétételét az elektronikus kereskedelmi szolgáltatások, valamint az
+            információs társadalommal összefüggő szolgáltatások egyes kérdéseiről szóló 2001. évi
+            CVIII. törvény ("Eker. tv.") 4. §-a írja elő.
+          </p>
+          <p>
             Név: Németh Szilveszter, egyéni vállalkozó
             <br />
             Székhely / levelezési cím: 9400 Sopron, Hajnal tér 14.
@@ -33,12 +38,17 @@ export default function Page() {
             <br />
             Adószám: 92506769-1-28
             <br />
-            Nyilvántartó hatóság: a Kormányzati Ügyfélvonal, illetve az egyéni vállalkozók
-            nyilvántartását vezető hatóság
+            Nyilvántartó hatóság: az egyéni vállalkozók nyilvántartását vezető hatóság (a
+            nyilvántartásba vétel az egyéni vállalkozóról és az egyéni cégről szóló 2009. évi CXV.
+            törvény alapján történt)
           </p>
         </Section>
 
         <Section title="2. Elérhetőségek">
+          <p>
+            Az Eker. tv. 4. § b) pontja alapján az alábbi, rendszeresen használt elektronikus
+            levelezési cím szolgál a kapcsolattartásra:
+          </p>
           <p>
             E-mail:{" "}
             <a href="mailto:info@synelweb.hu" className="underline underline-offset-4">
@@ -55,6 +65,10 @@ export default function Page() {
         </Section>
 
         <Section title="3. Domain regisztrátor és tárhelyszolgáltatók">
+          <p>
+            Az Eker. tv. 4. § e) pontja alapján az információs társadalommal összefüggő szolgáltatás
+            nyújtásában közreműködő tárhelyszolgáltatók adatai:
+          </p>
           <p>A synelweb.hu domain regisztrátora: Rackhost Zrt.</p>
           <p>A Weboldal működéséhez emellett az alábbi szolgáltatókat vesszük igénybe:</p>
           <ul className="list-disc space-y-1 pl-6">
@@ -66,9 +80,13 @@ export default function Page() {
 
         <Section title="4. Jogérvényesítési lehetőségek">
           <p>
-            Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH), illetve
-            fogyasztóvédelmi ügyekben a lakóhely szerint illetékes járási hivatal fogyasztóvédelmi
-            hatóságánál vagy békéltető testületnél lehet élni.
+            Fogyasztóvédelmi ügyekben a fogyasztóvédelemről szóló 1997. évi CLV. törvény alapján a
+            lakóhely szerint illetékes járási hivatal fogyasztóvédelmi hatóságánál, illetve a
+            területileg illetékes békéltető testületnél lehet panasszal élni. Személyes adatok
+            kezelésével összefüggő panasszal a GDPR (az Európai Parlament és a Tanács (EU) 2016/679
+            rendelete) 77. cikke és az információs önrendelkezési jogról és az
+            információszabadságról szóló 2011. évi CXII. törvény (Infotv.) alapján a Nemzeti
+            Adatvédelmi és Információszabadság Hatósághoz (NAIH) lehet fordulni.
           </p>
           <p>
             NAIH elérhetősége: 1055 Budapest, Falk Miksa utca 9-11., telefon: +36 1 391 1400,

@@ -49,9 +49,11 @@ export default function Page() {
           <p>
             Jelen tájékoztató bemutatja, hogy a synelweb.hu weboldal (a továbbiakban: Weboldal)
             üzemeltetése során milyen személyes adatokat kezelünk, milyen célból, milyen jogalapon,
-            meddig, valamint hogy milyen jogok illetik meg az érintetteket. A tájékoztató az Európai
-            Parlament és a Tanács (EU) 2016/679 rendelete (általános adatvédelmi rendelet, GDPR)
-            alapján készült.
+            meddig, valamint hogy milyen jogok illetik meg az érintetteket. Az előzetes, átlátható
+            tájékoztatás kötelezettségét az Európai Parlament és a Tanács (EU) 2016/679 rendelete
+            (általános adatvédelmi rendelet, "GDPR") 12–14. cikke írja elő, a tájékoztató emellett
+            az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII.
+            törvény (Infotv.) rendelkezéseivel összhangban készült.
           </p>
         </Section>
 
@@ -69,7 +71,9 @@ export default function Page() {
             a vélemény beküldésével ad meg.
           </p>
           <p>
-            Megőrzési idő: az adatokat a törlésükig, illetve a hozzájárulás visszavonásáig kezeljük.
+            Megőrzési idő: az adatokat a törlésükig, illetve a hozzájárulás visszavonásáig kezeljük,
+            összhangban a GDPR 5. cikk (1) bekezdés e) pontjában foglalt korlátozott tárolhatóság
+            elvével.
           </p>
         </Section>
 
@@ -78,19 +82,21 @@ export default function Page() {
             A Weboldal üzemeltetéséhez az alábbi technikai szolgáltatókat vesszük igénybe, amelyek a
             személyes adatokhoz tárhely- és adatbázis-szolgáltatás nyújtása céljából férhetnek
             hozzá: Fly.io (alkalmazás-hoszting), Neon (adatbázis-hoszting) és Vercel (a Weboldal
-            megjelenítését szolgáló frontend hosztolása). Ezek a szolgáltatók adatfeldolgozóként
-            járnak el, az adatokat saját célra nem használják fel.
+            megjelenítését szolgáló frontend hosztolása). Ezek a szolgáltatók a GDPR 28. cikke
+            szerinti adatfeldolgozóként járnak el, az adatokat saját célra nem használják fel.
           </p>
         </Section>
 
         <Section title="5. Külső szolgáltató által beágyazott tartalom (Google Térkép)">
           <p>
             A Kapcsolat oldalon a szolgáltatás helyszínének bemutatásához a Google Térkép (Google
-            Maps) beágyazott térképét használjuk. A térkép betöltésekor a böngésződ közvetlenül
-            kapcsolatba lép a Google szervereivel; ennek során a Google adatokat gyűjthet (például
-            IP-cím, eszközadatok), és cookie-kat helyezhet el a saját adatvédelmi szabályzata
-            szerint. Ezen adatkezelés felett nincs ráhatásunk; arra a Google (Google Ireland
-            Limited) adatvédelmi tájékoztatója az irányadó:{" "}
+            Maps) beágyazott térképét használjuk. Ennek jogalapja a GDPR 6. cikk (1) bekezdés f)
+            pontja szerinti jogos érdek: a helyszín könnyű beazonosítása. A térkép betöltésekor a
+            böngésződ közvetlenül kapcsolatba lép a Google szervereivel; ennek során a Google
+            adatokat gyűjthet (például IP-cím, eszközadatok), és cookie-kat helyezhet el a saját
+            adatvédelmi szabályzata szerint. Ezen adatkezelés felett nincs ráhatásunk; arra a Google
+            (Google Ireland Limited) önálló adatkezelőként eljárva, saját adatvédelmi tájékoztatója
+            az irányadó:{" "}
             <a
               href="https://policies.google.com/privacy"
               target="_blank"
@@ -104,25 +110,31 @@ export default function Page() {
         </Section>
 
         <Section title="6. Az érintettek jogai">
-          <p>Az érintett a fenti elérhetőségeken (info@synelweb.hu) bármikor:</p>
+          <p>
+            Az érintett a fenti elérhetőségeken (info@synelweb.hu), a GDPR III. fejezetében (15–22.
+            cikk) foglalt jogai alapján bármikor:
+          </p>
           <ul className="list-disc space-y-1 pl-6">
-            <li>tájékoztatást kérhet a rá vonatkozó adatkezelésről,</li>
-            <li>kérheti adatai helyesbítését,</li>
-            <li>kérheti adatai törlését,</li>
-            <li>kérheti az adatkezelés korlátozását,</li>
-            <li>tiltakozhat az adatkezelés ellen,</li>
-            <li>élhet az adathordozhatósághoz való jogával,</li>
             <li>
-              bármikor, indoklás nélkül visszavonhatja a hozzájárulását — a visszavonás nem érinti a
-              visszavonás előtti adatkezelés jogszerűségét.
+              tájékoztatást, hozzáférést kérhet a rá vonatkozó adatkezelésről (GDPR 15. cikk),
+            </li>
+            <li>kérheti adatai helyesbítését (GDPR 16. cikk),</li>
+            <li>kérheti adatai törlését (GDPR 17. cikk),</li>
+            <li>kérheti az adatkezelés korlátozását (GDPR 18. cikk),</li>
+            <li>tiltakozhat az adatkezelés ellen (GDPR 21. cikk),</li>
+            <li>élhet az adathordozhatósághoz való jogával (GDPR 20. cikk),</li>
+            <li>
+              bármikor, indoklás nélkül visszavonhatja a hozzájárulását (GDPR 7. cikk (3) bekezdés)
+              — a visszavonás nem érinti a visszavonás előtti adatkezelés jogszerűségét.
             </li>
           </ul>
         </Section>
 
         <Section title="7. Jogorvoslati lehetőségek">
           <p>
-            Amennyiben úgy ítéli meg, hogy adatainak kezelése sérti a GDPR rendelkezéseit, panasszal
-            élhet a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):
+            Amennyiben úgy ítéli meg, hogy adatainak kezelése sérti a GDPR rendelkezéseit, a GDPR
+            77. cikke és az Infotv. alapján panasszal élhet a Nemzeti Adatvédelmi és
+            Információszabadság Hatóságnál (NAIH):
           </p>
           <p>
             Cím: 1055 Budapest, Falk Miksa utca 9-11.
@@ -135,7 +147,10 @@ export default function Page() {
             <br />
             Honlap: www.naih.hu
           </p>
-          <p>Az érintett a jogainak megsértése esetén bírósághoz is fordulhat.</p>
+          <p>
+            Az érintett a jogainak megsértése esetén a GDPR 79. cikke alapján bírósághoz is
+            fordulhat.
+          </p>
         </Section>
 
         <Section title="8. A tájékoztató módosítása">

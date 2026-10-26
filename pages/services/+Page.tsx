@@ -122,7 +122,6 @@ export default function Page() {
 
   return (
     <>
-
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
@@ -197,6 +196,22 @@ export default function Page() {
           </div>
         )}
       </section>
+
+      {appLang === "hu" ? (
+        <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold tracking-[0.18em] text-(--color-secondary-warm) uppercase">
+              {t("servicesPage.grants.label")}
+            </p>
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+              {t("servicesPage.grants.title")}
+            </h2>
+            <p className="mt-4 text-left text-sm leading-7 text-white/78 sm:text-base">
+              {t("servicesPage.grants.text")}
+            </p>
+          </div>
+        </section>
+      ) : null}
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>
         <div className="mx-auto max-w-3xl text-center">

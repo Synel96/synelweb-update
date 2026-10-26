@@ -120,6 +120,11 @@
       "label": "Ez az, amiért nálam nem kell külön fizetned",
       "text": "Nem árulok felesleges extrákat – olyan weboldalt építek, ami a legegyszerűbb csomagban is megállja a helyét. Ezért már az alapárban benne van a Google Trends-re épülő SEO szövegezés is, hogy az oldalad ne csak szépen nézzen ki, hanem meg is találjanak rajta. Dizájnban, sebességben, reszponzivitásban és SEO-ban egyaránt a saját kategóriája legjobbját kapod."
     },
+    "grants": {
+      "label": "Pályázati fejlesztéshez is",
+      "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",
+      "text": "Egyéni vállalkozóként szabadpiaci árajánlattal vállalok weboldal- és webshopfejlesztést olyan KKV-knak is, akik pályázati forrásból szeretnék fejleszteni digitális jelenlétüket. Modern, gyors (React/TypeScript), reszponzív, SEO-optimalizált és GDPR-konform megoldásokat készítek, és kérésre a projekthez szabályos árajánlatot és teljesítésigazolást is biztosítok. Pályázatíró partnerek megkeresését is szívesen fogadom."
+    },
     "maintenance": {
       "label": "Üzemeltetés",
       "title": "Havi karbantartási és üzemeltetési díj",

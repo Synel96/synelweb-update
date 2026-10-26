@@ -25,11 +25,23 @@ export default function Page() {
       <section className="mx-auto w-full max-w-3xl space-y-10 px-6 pb-24" data-reveal>
         <Section title="1. Az adatkezelő">
           <p>
-            Név: Németh Szilveszter
+            Név: Németh Szilveszter, egyéni vállalkozó
             <br />
-            E-mail: <a href="mailto:info@synelweb.hu" className="underline underline-offset-4">info@synelweb.hu</a>
+            Székhely / levelezési cím: 9400 Sopron, Hajnal tér 14.
             <br />
-            Telefon: <a href="tel:+36303645516" className="underline underline-offset-4">+36 30 364 5516</a>
+            Nyilvántartási szám: 63006362
+            <br />
+            Adószám: 92506769-1-28
+            <br />
+            E-mail:{" "}
+            <a href="mailto:info@synelweb.hu" className="underline underline-offset-4">
+              info@synelweb.hu
+            </a>
+            <br />
+            Telefon:{" "}
+            <a href="tel:+36303645516" className="underline underline-offset-4">
+              +36 30 364 5516
+            </a>
           </p>
         </Section>
 
@@ -45,9 +57,7 @@ export default function Page() {
 
         <Section title="3. A kezelt adatok köre, célja és jogalapja">
           <p className="font-semibold text-white">Vélemény / értékelés beküldése</p>
-          <p>
-            Kezelt adatok: név, e-mail cím, értékelés (csillagszám), a vélemény szövege.
-          </p>
+          <p>Kezelt adatok: név, e-mail cím, értékelés (csillagszám), a vélemény szövege.</p>
           <p>
             Cél: a beküldött vélemény moderálást követő közzététele a Weboldalon. A név, az
             értékelés és a vélemény szövege a jóváhagyást követően nyilvánosan megjelenik a
@@ -66,8 +76,8 @@ export default function Page() {
         <Section title="4. Adatfeldolgozók">
           <p>
             A Weboldal üzemeltetéséhez az alábbi technikai szolgáltatókat vesszük igénybe, amelyek a
-            személyes adatokhoz tárhely- és adatbázis-szolgáltatás nyújtása céljából férhetnek hozzá:
-            Fly.io (alkalmazás-hoszting), Neon (adatbázis-hoszting) és Vercel (a Weboldal
+            személyes adatokhoz tárhely- és adatbázis-szolgáltatás nyújtása céljából férhetnek
+            hozzá: Fly.io (alkalmazás-hoszting), Neon (adatbázis-hoszting) és Vercel (a Weboldal
             megjelenítését szolgáló frontend hosztolása). Ezek a szolgáltatók adatfeldolgozóként
             járnak el, az adatokat saját célra nem használják fel.
           </p>
@@ -78,9 +88,9 @@ export default function Page() {
             A Kapcsolat oldalon a szolgáltatás helyszínének bemutatásához a Google Térkép (Google
             Maps) beágyazott térképét használjuk. A térkép betöltésekor a böngésződ közvetlenül
             kapcsolatba lép a Google szervereivel; ennek során a Google adatokat gyűjthet (például
-            IP-cím, eszközadatok), és cookie-kat helyezhet el a saját adatvédelmi szabályzata szerint.
-            Ezen adatkezelés felett nincs ráhatásunk; arra a Google (Google Ireland Limited)
-            adatvédelmi tájékoztatója az irányadó:{" "}
+            IP-cím, eszközadatok), és cookie-kat helyezhet el a saját adatvédelmi szabályzata
+            szerint. Ezen adatkezelés felett nincs ráhatásunk; arra a Google (Google Ireland
+            Limited) adatvédelmi tájékoztatója az irányadó:{" "}
             <a
               href="https://policies.google.com/privacy"
               target="_blank"
@@ -131,8 +141,8 @@ export default function Page() {
         <Section title="8. A tájékoztató módosítása">
           <p>
             Amennyiben a Weboldalon kezelt adatok köre vagy célja bővül (például kapcsolatfelvételi
-            űrlap, hírlevél vagy statisztikai mérés bevezetésével), jelen tájékoztatót frissítjük, és
-            a Weboldalon közzétesszük annak aktuális, hatályos verzióját.
+            űrlap, hírlevél vagy statisztikai mérés bevezetésével), jelen tájékoztatót frissítjük,
+            és a Weboldalon közzétesszük annak aktuális, hatályos verzióját.
           </p>
         </Section>
       </section>

@@ -29,9 +29,9 @@ export default function Page() {
             <br />
             Székhely / levelezési cím: 9400 Sopron, Hajnal tér 14.
             <br />
-            Nyilvántartási szám: [KIEGÉSZÍTENDŐ — egyéni vállalkozói nyilvántartási szám]
+            Nyilvántartási szám: 63006362
             <br />
-            Adószám: [KIEGÉSZÍTENDŐ]
+            Adószám: 92506769-1-28
             <br />
             Nyilvántartó hatóság: a Kormányzati Ügyfélvonal, illetve az egyéni vállalkozók
             nyilvántartását vezető hatóság

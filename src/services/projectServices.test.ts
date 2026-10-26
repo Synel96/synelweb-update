@@ -85,4 +85,14 @@ describe("getProjects", () => {
     const projects = await getProjects("en");
     expect(projects.map((p) => p.name)).toEqual(["A", "B"]);
   });
+
+  it("defaults to newest-first when no project has an explicit order", async () => {
+    mockFetchOnce([
+      { id: 1, name: "Oldest" },
+      { id: 3, name: "Newest" },
+      { id: 2, name: "Middle" },
+    ]);
+    const projects = await getProjects("en");
+    expect(projects.map((p) => p.name)).toEqual(["Newest", "Middle", "Oldest"]);
+  });
 });

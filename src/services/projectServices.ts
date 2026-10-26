@@ -122,7 +122,10 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
         liveUrl: (item.liveUrl || "").trim(),
         previewImage: images[0] || "",
         otherImages: images.slice(1),
-        order: typeof item.order === "number" ? item.order : Number(item.id) || 0,
+        // Without an explicit order from the backend, default to newest-first
+        // (higher id = more recently added) instead of the id's natural
+        // ascending (oldest-first) order.
+        order: typeof item.order === "number" ? item.order : -(Number(item.id) || 0),
       };
     })
     .sort((a, b) => a.order - b.order);

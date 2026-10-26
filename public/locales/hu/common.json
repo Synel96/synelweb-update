@@ -90,7 +90,7 @@
       "title": "Ismerj meg közelebbről, hogy lásd, kivel dolgozol együtt.",
       "text": "Megmutatom a szemléletemet és a háttérből hozott tapasztalatot, amire a közös munka épül.",
       "badges": {
-        "location": "Sopron",
+        "location": "Sopron · Országosan online",
         "solo": "Egyéni vállalkozó",
         "enterpriseStack": "Nagyvállalati tech stack"
       },
@@ -305,8 +305,8 @@
           "content": "A SynelWeb olyan oldalakat épít, amelyek érthetők, gyorsak és könnyen használhatók. Célom, hogy a weboldal ténylegesen megkönnyítse a mindennapjaidat, és azonnal megtalálhatóvá tegye a fontos információkat."
         },
         {
-          "title": "Soproni piacismeret",
-          "content": "Mivel a munkám jelentős része Sopronban és környékén zajlik, pontosan értem a helyi vállalkozások igényeit. Az elkészült oldalak mobilon is hibátlanok és hosszú távon is stabil alapot adnak."
+          "title": "Soproni gyökerek, országos elérés",
+          "content": "Sopronban indultam, és pontosan értem a helyi vállalkozások igényeit – ma pedig ugyanilyen hatékonyan dolgozom együtt ügyfelekkel országszerte, online egyeztetéssel. Az elkészült oldalak mobilon is hibátlanok és hosszú távon is stabil alapot adnak, bárhol legyél is Magyarországon."
         },
         {
           "title": "Személyes és online támogatás",
@@ -317,20 +317,20 @@
     "cta": {
       "eyebrow": "Ingyenes stratégiai egyeztetés",
       "title": "Indítsuk be a vállalkozásod digitális növekedését!",
-      "text": "Lépjünk szintet, és hagyjuk le a konkurenciát egy olyan oldallal, amit a látogatóid és a Google is imádni fognak. Beszéljük át a céljaidat személyesen Sopronban vagy egy online egyeztetés során.",
+      "text": "Lépjünk szintet, és hagyjuk le a konkurenciát egy olyan oldallal, amit a látogatóid és a Google is imádni fognak. Beszéljük át a céljaidat egy online egyeztetés során, vagy – ha Sopron környékén vagy – akár személyesen is.",
       "button": "Ingyenes konzultációt kérek",
       "ariaLabel": "Ingyenes konzultáció kérése"
     }
   },
   "contact": {
     "label": "Kapcsolat",
-    "heading": "Írj, hívj vagy egyeztessünk személyesen Sopronban.",
-    "intro": "Ha gyors, SEO-barát és megbízható weboldalt szeretnél, itt könnyen elérsz. Válaszolok e-mailben, visszahívlak telefonon, és személyesen is tudunk egyeztetni Sopron környékén.",
+    "heading": "Írj, hívj, vagy egyeztessünk online – bárhonnan Magyarországról.",
+    "intro": "Ha gyors, SEO-barát és megbízható weboldalt szeretnél, országosan, bárhonnan könnyen elérsz. Válaszolok e-mailben, visszahívlak telefonon, Sopron környékén pedig személyesen is tudunk egyeztetni.",
     "introStrong": "Az a hitvallásom, hogy erős, gyors és megbízható weboldalt lehet építeni kiemelkedő dizájnnal és médiatartalmakkal is. Miközben sokan a piacon azt mondják, a kettő együtt lehetetlen, én kompromisszumok nélkül hozom ki a maximumot.",
     "responseLabel": "Válaszidő",
     "responseText": "Általában 1 munkanapon belül válaszolok.",
     "locationLabel": "Helyszín",
-    "locationText": "Sopron és online egyeztetés",
+    "locationText": "Országosan online, Sopronban személyesen is",
     "supportLabel": "Elérhetőség",
     "supportText": "Telefon, e-mail, Facebook és LinkedIn.",
     "callButton": "Azonnali hívás",

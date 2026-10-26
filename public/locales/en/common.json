@@ -89,7 +89,7 @@
       "title": "Get to know who you will be working with.",
       "text": "You can see the mindset and experience behind the work, so the collaboration feels clear and trustworthy from day one.",
       "badges": {
-        "location": "Sopron, Hungary",
+        "location": "Sopron, Hungary · Nationwide online",
         "solo": "Solo founder",
         "enterpriseStack": "Enterprise-grade stack"
       },
@@ -305,8 +305,8 @@
           "content": "SynelWeb builds websites that are clear, fast, and easy to use. My goal is to make your website genuinely useful in day-to-day operations and easy for visitors to navigate."
         },
         {
-          "title": "Strong local market insight",
-          "content": "A large part of my work happens in and around Sopron, so I understand local business needs. The resulting websites perform reliably on mobile and provide a strong long-term foundation."
+          "title": "Sopron roots, nationwide reach",
+          "content": "I started out in Sopron, so I understand what local businesses need — but today I work just as effectively with clients across Hungary over online calls. The sites I build are flawless on mobile and give you a stable, long-term foundation, wherever you are."
         },
         {
           "title": "Personal and online support",
@@ -317,20 +317,20 @@
     "cta": {
       "eyebrow": "Free strategy call",
       "title": "Let's kick off your business's digital growth!",
-      "text": "Let's level up and outrun your competitors with a website your visitors and Google will love. We can discuss your goals in person in Sopron or in an online session.",
+      "text": "Let's level up and outrun your competitors with a website your visitors and Google will love. We can discuss your goals in an online session, or in person if you're near Sopron.",
       "button": "Request a free consultation",
       "ariaLabel": "Request a free consultation"
     }
   },
   "contact": {
     "label": "Contact",
-    "heading": "Write or call, and let's also meet in person in Sopron.",
-    "intro": "If you want a fast, SEO-friendly and reliable website, you can reach me here easily. I reply by email, call back on the phone, and we can also meet in person around Sopron.",
+    "heading": "Message me, call me, or let's talk online — wherever in Hungary you are.",
+    "intro": "If you want a fast, SEO-friendly and reliable website, you can reach me easily from anywhere in Hungary. I reply by email, call you back by phone, and around Sopron we can also meet in person.",
     "introStrong": "My core belief is that you can build a powerful, fast, and reliable website together with standout design and rich media. While many in the market claim you cannot have both, I deliver the maximum without compromise.",
     "responseLabel": "Response time",
     "responseText": "I usually reply within 1 business day.",
     "locationLabel": "Location",
-    "locationText": "Sopron and online meetings",
+    "locationText": "Nationwide online, in person around Sopron",
     "supportLabel": "Reach me via",
     "supportText": "Phone, email, Facebook, and LinkedIn.",
     "callButton": "Call now",

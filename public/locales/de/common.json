@@ -89,7 +89,7 @@
       "title": "Lerne die Person hinter den Projekten kennen.",
       "text": "Ich zeige dir, wie ich arbeite und welche Erfahrung hinter den Ergebnissen steckt, damit du mit gutem Gefühl entscheiden kannst.",
       "badges": {
-        "location": "Sopron, Ungarn",
+        "location": "Sopron, Ungarn · Bundesweit online",
         "solo": "Einzelunternehmer",
         "enterpriseStack": "Enterprise-Tech-Stack"
       },
@@ -305,8 +305,8 @@
           "content": "SynelWeb erstellt Websites, die verständlich, schnell und einfach zu bedienen sind. Ziel ist eine Website, die dich im Alltag wirklich unterstützt."
         },
         {
-          "title": "Starke lokale Marktkenntnis",
-          "content": "Ein großer Teil meiner Arbeit findet in und um Sopron statt, daher kenne ich die Bedürfnisse lokaler Unternehmen genau. Die fertigen Websites laufen auch mobil zuverlässig und bieten eine stabile Basis für die Zukunft."
+          "title": "Wurzeln in Sopron, bundesweite Reichweite",
+          "content": "Ich habe in Sopron angefangen und verstehe deshalb genau, was lokale Unternehmen brauchen – heute arbeite ich aber genauso effektiv mit Kunden in ganz Ungarn zusammen, über Online-Termine. Die fertigen Websites laufen auch mobil einwandfrei und geben dir eine stabile, langfristige Grundlage, egal wo in Ungarn du bist."
         },
         {
           "title": "Persönliche und Online-Begleitung",
@@ -317,20 +317,20 @@
     "cta": {
       "eyebrow": "Kostenloses Strategiegespräch",
       "title": "Lass uns dein digitales Wachstum starten!",
-      "text": "Lass uns den nächsten Schritt machen und die Konkurrenz mit einer Website überholen, die Besucher und Google lieben. Wir sprechen über deine Ziele persönlich in Sopron oder online.",
+      "text": "Lass uns den nächsten Schritt machen und die Konkurrenz mit einer Website überholen, die Besucher und Google lieben. Wir besprechen deine Ziele in einem Online-Termin oder – wenn du in der Nähe von Sopron bist – auch persönlich.",
       "button": "Kostenlose Beratung anfragen",
       "ariaLabel": "Kostenlose Beratung anfragen"
     }
   },
   "contact": {
     "label": "Kontakt",
-    "heading": "Schreib oder ruf an, und wir können uns auch persönlich in Sopron treffen.",
-    "intro": "Wenn du eine schnelle, SEO-freundliche und zuverlässige Website möchtest, erreichst du mich hier ganz einfach. Ich antworte per E-Mail, rufe telefonisch zurück und wir können uns auch persönlich in und um Sopron treffen.",
+    "heading": "Schreib oder ruf an, oder lass uns online sprechen – von überall in Ungarn.",
+    "intro": "Wenn du eine schnelle, SEO-freundliche und zuverlässige Website möchtest, erreichst du mich problemlos von überall in Ungarn aus. Ich antworte per E-Mail, rufe dich zurück, und rund um Sopron können wir uns auch persönlich treffen.",
     "introStrong": "Meine klare Überzeugung ist: Eine starke, schnelle und zuverlässige Website lässt sich mit herausragendem Design und wirkungsvollen Medieninhalten verbinden. Während viele am Markt behaupten, beides gleichzeitig sei nicht möglich, liefere ich das Maximum ohne Kompromisse.",
     "responseLabel": "Antwortzeit",
     "responseText": "Ich antworte normalerweise innerhalb eines Werktags.",
     "locationLabel": "Standort",
-    "locationText": "Sopron und Online-Meetings",
+    "locationText": "Bundesweit online, in Sopron auch persönlich",
     "supportLabel": "Erreichbar über",
     "supportText": "Telefon, E-Mail, Facebook und LinkedIn.",
     "callButton": "Jetzt anrufen",

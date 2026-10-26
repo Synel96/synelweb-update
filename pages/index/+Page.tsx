@@ -5,12 +5,14 @@ import {
   ExternalLinkIcon,
   GaugeIcon,
   HandshakeIcon,
+  LanguagesIcon,
   MapPinIcon,
   RocketIcon,
   SearchIcon,
   ShieldCheckIcon,
   ShoppingCartIcon,
   SparklesIcon,
+  VideoIcon,
 } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
@@ -55,6 +57,8 @@ const ABOUT_BADGES = [
   { key: "location", Icon: MapPinIcon },
   { key: "solo", Icon: HandshakeIcon },
   { key: "enterpriseStack", Icon: ShieldCheckIcon },
+  { key: "multilingual", Icon: LanguagesIcon },
+  { key: "onlineMeetings", Icon: VideoIcon },
 ] as const;
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
@@ -150,7 +154,7 @@ export default function Page() {
 
       <div
         aria-hidden="true"
-        className="h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] blur-[6px] sm:h-24 sm:blur-[8px] md:h-32"
+        className="h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] blur-[6px] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] sm:h-24 sm:blur-[8px] md:h-32"
       />
 
       <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>

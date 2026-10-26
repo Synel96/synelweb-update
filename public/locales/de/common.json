@@ -92,7 +92,9 @@
       "badges": {
         "location": "Sopron, Ungarn · Bundesweit online",
         "solo": "Einzelunternehmer",
-        "enterpriseStack": "Enterprise-Tech-Stack"
+        "enterpriseStack": "Enterprise-Tech-Stack",
+        "multilingual": "Mehrsprachig (DE/EN/HU)",
+        "onlineMeetings": "Online-Termine"
       },
       "cta": "Hintergrund und Vorstellung →"
     },

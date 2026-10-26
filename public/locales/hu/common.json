@@ -93,7 +93,9 @@
       "badges": {
         "location": "Sopron · Országosan online",
         "solo": "Egyéni vállalkozó",
-        "enterpriseStack": "Nagyvállalati tech stack"
+        "enterpriseStack": "Nagyvállalati tech stack",
+        "multilingual": "Többnyelvű (HU/EN/DE)",
+        "onlineMeetings": "Online megbeszélések"
       },
       "cta": "Bemutatkozás és háttér →"
     },

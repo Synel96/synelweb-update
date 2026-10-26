@@ -93,9 +93,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
   },
   de: {
     "/": {
-      title: "Webdesign in Ungarn & Österreich | SynelWeb Webentwicklung",
+      title: "Webdesign in Ungarn & Österreich | SynelWeb Webagentur",
       description:
-        "Individuelles, blitzschnelles Webdesign, online verfügbar in ganz Ungarn, Österreich und darüber hinaus. Vergiss langsame Vorlagen! Premium-Design und zukunftssichere Architektur von SynelWeb.",
+        "Individuelles, blitzschnelles Webdesign und Homepage erstellen lassen – online verfügbar in ganz Ungarn, Österreich (auch Burgenland) und darüber hinaus. Vergiss langsame Vorlagen! Premium-Design von SynelWeb.",
     },
     "/about": {
       title: "Über mich | SynelWeb",
@@ -103,9 +103,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Erfahre, wie ich arbeite: individuelle Webentwicklung, technisches SEO und schnelle, sichere Lösungen für Unternehmen.",
     },
     "/services": {
-      title: "Leistungen | SynelWeb",
+      title: "Webdesign Preise & Leistungen | SynelWeb",
       description:
-        "Leistungen und Entwicklungsansatz an einem Ort: individuelle, schnelle und geschäftstaugliche Weblösungen.",
+        "Transparente Preise für Webdesign und Homepage erstellen lassen: individuelle, schnelle und geschäftstaugliche Weblösungen.",
     },
     "/projects": {
       title: "Projekte | SynelWeb",
@@ -125,7 +125,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/contact": {
       title: "Kontakt | SynelWeb",
       description:
-        "Kontaktiere SynelWeb per E-Mail, telefonisch oder online – aus Ungarn, Österreich oder von überall sonst, mit persönlichen Terminen rund um Sopron.",
+        "Kontaktiere SynelWeb per E-Mail, telefonisch oder online – aus Ungarn, Österreich (Burgenland, Wien) oder von überall sonst, mit persönlichen Terminen rund um Sopron.",
     },
   },
 };

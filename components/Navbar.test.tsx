@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { screen, fireEvent, waitFor } from "@testing-library/react";
+import { screen, fireEvent, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithI18n } from "../test/render";
 
@@ -11,10 +11,14 @@ import { Navbar } from "./Navbar";
 describe("Navbar", () => {
   it("renders every visible nav link with a localized href", async () => {
     usePageContext.mockReturnValue({ urlPathname: "/en/services", lang: "en" });
-    await renderWithI18n(<Navbar />, "en");
+    const { container } = await renderWithI18n(<Navbar />, "en");
+    // Scoped to the header: the mobile drawer stays mounted (inert) while
+    // closed so its exit animation can play, and portals its own copy of
+    // the links into document.body.
+    const header = within(container);
 
-    expect(screen.getByRole("link", { name: "Services" })).toHaveAttribute("href", "/en/services");
-    expect(screen.getByRole("link", { name: "Projects" })).toHaveAttribute("href", "/en/projects");
+    expect(header.getByRole("link", { name: "Services" })).toHaveAttribute("href", "/en/services");
+    expect(header.getByRole("link", { name: "Projects" })).toHaveAttribute("href", "/en/projects");
   });
 
   it("hides the blog link for non-hu languages", async () => {
@@ -31,8 +35,8 @@ describe("Navbar", () => {
 
   it("renders the language switcher dropdown", async () => {
     usePageContext.mockReturnValue({ urlPathname: "/en/", lang: "en" });
-    await renderWithI18n(<Navbar />, "en");
-    expect(screen.getByLabelText("Switch to HU")).toBeInTheDocument();
+    const { container } = await renderWithI18n(<Navbar />, "en");
+    expect(within(container).getByLabelText("Switch to HU")).toBeInTheDocument();
   });
 
   it("toggles the menu button's open/close icon state when clicked", async () => {

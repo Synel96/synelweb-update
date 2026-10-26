@@ -11,7 +11,6 @@ import {
   StoreIcon,
   TriangleIcon,
 } from "lucide-react";
-import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { resolveCurrentLang } from "@/src/localizedRoutes";
@@ -123,7 +122,6 @@ export default function Page() {
 
   return (
     <>
-      <PageHeroBackground />
 
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <div className="mx-auto max-w-3xl text-center">

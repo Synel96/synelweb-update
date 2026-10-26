@@ -5,7 +5,6 @@ import BlogPostsDisplay from "@/components/BlogPostsDisplay";
 import BlogPostsDisplaySkeleton from "@/components/BlogPostsDisplaySkeleton";
 import BlogPostsPagination from "@/components/BlogPostsPagination";
 import BlogPostsPaginationSkeleton from "@/components/BlogPostsPaginationSkeleton";
-import { PageHeroBackground } from "@/components/PageHeroBackground";
 import { resolveCurrentLang } from "@/src/localizedRoutes";
 import { getBlogPosts, type BlogPost } from "@/src/services/blogPostsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
@@ -220,7 +219,6 @@ export default function Page() {
 
   return (
     <>
-      <PageHeroBackground />
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-20">
         <header className="mx-auto mb-10 max-w-3xl text-center">
           <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">

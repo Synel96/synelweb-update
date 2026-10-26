@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { I18nProvider } from "../components/I18nProvider";
 import { Navbar } from "../components/Navbar";
+import { PageHeroBackground } from "../components/PageHeroBackground";
 import { PageLoading } from "../components/PageLoading";
+import { PushDrawerBody } from "../components/ui/push-drawer";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 
@@ -36,7 +38,17 @@ function ensureContentRevealReady(): Promise<void> {
 
 function LayoutInner({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
-  const pageContext = usePageContext() as { urlPathname?: string };
+  const pageContext = usePageContext() as {
+    urlPathname?: string;
+    config?: { heroBackground?: boolean };
+  };
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Client-side navigation (e.g. the drawer's language switcher) doesn't
+  // remount the layout, so make sure the page never stays pushed aside.
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pageContext.urlPathname]);
 
   useEffect(() => {
     void ensureContentRevealReady();
@@ -97,11 +109,17 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
         {t("a11y.skipToContent")}
       </a>
       <PageLoading />
-      <Navbar />
-      <main id="page-content" className="flex-1">
-        {children}
-      </main>
-      <Footer />
+      {/* Kept outside <PushDrawerBody>: its transform while the drawer is
+          open would turn `position: fixed` into "fixed to the wrapper", so
+          the background would stretch over the whole page and scroll. */}
+      {pageContext.config?.heroBackground ? <PageHeroBackground /> : null}
+      <Navbar menuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
+      <PushDrawerBody open={menuOpen} className="flex flex-1 flex-col">
+        <main id="page-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </PushDrawerBody>
     </div>
   );
 }

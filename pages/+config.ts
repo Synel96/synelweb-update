@@ -10,6 +10,23 @@ const config: Config = {
   clientRouting: true,
 
   extends: [vikeReact],
+
+  meta: {
+    // Pages set `heroBackground: true` to get the shared fixed hero
+    // background. The layout renders it (instead of the page itself) so it
+    // stays outside the mobile drawer's pushed-aside page wrapper.
+    heroBackground: {
+      env: { server: true, client: true },
+    },
+  },
 };
+
+declare global {
+  namespace Vike {
+    interface Config {
+      heroBackground?: boolean;
+    }
+  }
+}
 
 export default config;

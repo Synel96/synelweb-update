@@ -4,14 +4,32 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
 import { useMounted } from "@/src/hooks/use-mounted";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  PushDrawer,
+  PushDrawerClose,
+  PushDrawerContent,
+  PushDrawerTitle,
+  PushDrawerTrigger,
+} from "@/components/ui/push-drawer";
 import { BRAND_NAME, NAV_LINKS } from "./site";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
 
-export function Navbar() {
-  const [open, setOpen] = useState(false);
+type NavbarProps = {
+  // Optional so the navbar still works standalone; the layout passes these
+  // in so it can push the rest of the page aside while the drawer is open.
+  menuOpen?: boolean;
+  onMenuOpenChange?: (open: boolean) => void;
+};
+
+export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
+  const open = menuOpen ?? uncontrolledOpen;
+  const setOpen = (next: boolean) => {
+    if (menuOpen === undefined) setUncontrolledOpen(next);
+    onMenuOpenChange?.(next);
+  };
   const [scrollProgress, setScrollProgress] = useState(0);
   const mounted = useMounted();
   const pageContext = usePageContext() as { urlPathname: string; lang?: SupportedLang };
@@ -110,13 +128,12 @@ export function Navbar() {
 
         <div className="lg:hidden">
           {mounted ? (
-            <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger asChild>
+            <PushDrawer open={open} onOpenChange={setOpen}>
+              <PushDrawerTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
                   aria-label={t("nav.openMenu")}
-                  onClick={() => setOpen(true)}
                   className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
                 >
                   <span className="relative size-5">
@@ -132,17 +149,19 @@ export function Navbar() {
                     />
                   </span>
                 </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-[min(20rem,100vw)] max-w-[100vw] border-l-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
+              </PushDrawerTrigger>
+              <PushDrawerContent
+                open={open}
+                closeLabel={t("nav.closeMenu")}
+                aria-describedby={undefined}
+                className="border-l-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
               >
+                <PushDrawerTitle className="sr-only">{t("nav.navigationMenu")}</PushDrawerTitle>
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
                   {visibleNavLinks.map((item) => (
-                    <SheetClose asChild key={item.href}>
+                    <PushDrawerClose asChild key={item.href}>
                       <a
                         href={langHref(item.href)}
-                        onClick={() => setOpen(false)}
                         className={`rounded-md px-3 py-2 text-sm ${
                           isActive(item.href)
                             ? "bg-white/15 font-medium text-(--brand-on-surface)"
@@ -151,7 +170,7 @@ export function Navbar() {
                       >
                         {navLabel(item)}
                       </a>
-                    </SheetClose>
+                    </PushDrawerClose>
                   ))}
                 </nav>
 
@@ -175,8 +194,8 @@ export function Navbar() {
                     info@synelweb.hu
                   </a>
                 </div>
-              </SheetContent>
-            </Sheet>
+              </PushDrawerContent>
+            </PushDrawer>
           ) : (
             <Button
               variant="ghost"

@@ -1,5 +1,16 @@
 import type { ComponentType } from "react";
-import { MapPinnedIcon, MailIcon, PhoneIcon, RouteIcon, SparklesIcon } from "lucide-react";
+import {
+  HandshakeIcon,
+  LanguagesIcon,
+  MailIcon,
+  MapPinIcon,
+  MapPinnedIcon,
+  PhoneIcon,
+  RouteIcon,
+  ShieldCheckIcon,
+  SparklesIcon,
+  VideoIcon,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
@@ -9,6 +20,14 @@ const PHONE = "+36303645516";
 const FACEBOOK_HREF = "https://www.facebook.com/profile.php?id=61586963195763";
 const LINKEDIN_HREF = "https://www.linkedin.com/in/szilveszter-nemeth-636689332/";
 const SOPRON_MAP_HREF = "https://www.google.com/maps?q=Sopron&z=14&output=embed";
+
+const CAPABILITY_BADGES = [
+  { key: "location", Icon: MapPinIcon },
+  { key: "solo", Icon: HandshakeIcon },
+  { key: "enterpriseStack", Icon: ShieldCheckIcon },
+  { key: "multilingual", Icon: LanguagesIcon },
+  { key: "onlineMeetings", Icon: VideoIcon },
+] as const;
 
 function ContactPill({
   icon: Icon,
@@ -54,6 +73,18 @@ export default function Page() {
             <p className="mx-auto max-w-2xl text-left text-base leading-8 font-semibold text-white sm:text-lg">
               {t("contact.introStrong")}
             </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {CAPABILITY_BADGES.map(({ key, Icon }) => (
+                <span
+                  key={key}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+                >
+                  <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
+                  {t(`homeFlow.about.badges.${key}`)}
+                </span>
+              ))}
+            </div>
 
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
               <ConversionCtaButton href={`tel:${PHONE}`} ariaLabel={t("contact.callButton")}>

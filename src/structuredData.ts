@@ -63,7 +63,7 @@ export function buildOrganizationJsonLd() {
       postalCode: "9400",
       addressCountry: "HU",
     },
-    areaServed: ["HU", "AT"],
+    areaServed: ["HU", "AT", "US"],
     founder: {
       "@type": "Person",
       name: OWNER_NAME,

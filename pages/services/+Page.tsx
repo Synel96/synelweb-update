@@ -9,6 +9,7 @@ import {
   PenLineIcon,
   RocketIcon,
   StoreIcon,
+  TrendingUpIcon,
   TriangleIcon,
 } from "lucide-react";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -19,6 +20,11 @@ import {
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
+
+const SERVICES_BADGES = [
+  { key: "googleBusiness", Icon: StoreIcon },
+  { key: "trendsResearch", Icon: TrendingUpIcon },
+] as const;
 
 const MAINTENANCE_ITEMS = [
   { key: "hosting", Icon: GlobeIcon },
@@ -141,6 +147,18 @@ export default function Page() {
             <p className="mt-2 text-left text-sm leading-7 text-white/85 sm:text-base">
               {t("servicesPage.seoNote.text")}
             </p>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {SERVICES_BADGES.map(({ key, Icon }) => (
+              <span
+                key={key}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+              >
+                <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
+                {t(`servicesPage.badges.${key}`)}
+              </span>
+            ))}
           </div>
         </div>
       </header>

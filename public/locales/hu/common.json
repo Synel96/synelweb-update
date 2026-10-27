@@ -120,6 +120,10 @@
       "label": "Ez az, amiért nálam nem kell külön fizetned",
       "text": "Nem árulok felesleges extrákat – olyan weboldalt építek, ami a legegyszerűbb csomagban is megállja a helyét. Ezért már az alapárban benne van a Google Trends-re épülő SEO szövegezés is, hogy az oldalad ne csak szépen nézzen ki, hanem meg is találjanak rajta. Dizájnban, sebességben, reszponzivitásban és SEO-ban egyaránt a saját kategóriája legjobbját kapod."
     },
+    "badges": {
+      "googleBusiness": "Google cégprofil kezelés",
+      "trendsResearch": "Trends-alapú kulcsszókutatás"
+    },
     "grants": {
       "label": "Pályázati fejlesztéshez is",
       "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",

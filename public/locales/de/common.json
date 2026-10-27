@@ -119,6 +119,10 @@
       "label": "Dafür zahlst du bei mir nicht extra",
       "text": "Ich verkaufe keine unnötigen Extras – ich baue Websites, die sich auch im einfachsten Paket bewähren. Deshalb ist SEO-Text auf Basis von Google Trends bereits im Grundpreis enthalten, damit deine Website nicht nur gut aussieht, sondern auch gefunden wird. Im Design, in der Geschwindigkeit, in der Responsivität und im SEO bekommst du jeweils das Beste in ihrer Klasse."
     },
+    "badges": {
+      "googleBusiness": "Google-Unternehmensprofil-Pflege",
+      "trendsResearch": "Trends-basierte Keyword-Recherche"
+    },
     "maintenance": {
       "label": "Betrieb",
       "title": "Monatliche Betriebs- und Wartungsgebühr",

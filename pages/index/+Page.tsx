@@ -21,6 +21,7 @@ import { ProjectsPreviewCarousel } from "@/components/ProjectsPreviewCarousel";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { TechnologyLogo } from "@/components/TechnologyLogo";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
+import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { getProjects, type Project } from "@/src/services/projectServices";
@@ -78,10 +79,32 @@ export default function Page() {
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
 
+  // The video only gets its source once the page has loaded (the poster
+  // shows until then): with the source in the markup, the browser started
+  // downloading the multi-megabyte video straight away, competing with the
+  // page's own files and the poster (the LCP) for bandwidth, which made the
+  // mobile PageSpeed score swing from run to run. Visitors who ask for less
+  // motion or less data keep the poster.
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
+      .connection;
+    if (prefersReducedMotion() || connection?.saveData) return;
+
+    const start = () => setVideoSrc(HERO_VIDEO_URL);
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
+    // The default rate, not the current one: loading a new source resets
+    // playbackRate to it.
+    video.defaultPlaybackRate = 0.75;
     video.playbackRate = 0.75;
   }, []);
 
@@ -113,7 +136,7 @@ export default function Page() {
         <video
           ref={videoRef}
           className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
-          autoPlay
+          src={videoSrc ?? undefined}
           muted
           loop
           playsInline
@@ -121,9 +144,9 @@ export default function Page() {
           poster={HERO_VIDEO_POSTER_URL}
           preload="auto"
           aria-hidden="true"
-        >
-          <source src={HERO_VIDEO_URL} type="video/webm" />
-        </video>
+          // Starts once enough has buffered to play through without stalling.
+          onCanPlayThrough={(event) => void event.currentTarget.play().catch(() => {})}
+        />
 
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,15,25,0.18)_0%,rgba(11,15,25,0.42)_42%,rgba(11,15,25,1)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,0,127,0.18),transparent_40%)]" />

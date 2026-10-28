@@ -1,7 +1,6 @@
 // https://vike.dev/Head
 
 import "./Layout.css";
-import geistFontUrl from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
 import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL } from "../components/site";
 import { buildMeta } from "../src/seo";
@@ -183,14 +182,23 @@ export function Head() {
         />
       ) : null}
 
-      {/* Preload the primary (Latin) font — high priority to unblock LCP */}
+      {/* Both font files (see pages/Layout.css): Geist for all text, high
+          priority as the hero headline (the LCP) uses it; Orbitron for the
+          navbar wordmark. */}
       <link
         rel="preload"
-        href={geistFontUrl}
+        href="/fonts/geist-1.8.2-latin-wght-normal.woff2"
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"
         fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        href="/fonts/orbitron-5.2.8-latin-600-normal.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
       />
     </>
   );

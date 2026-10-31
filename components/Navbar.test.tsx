@@ -45,17 +45,21 @@ describe("Navbar", () => {
     // the icon swap is driven directly by our own `open` state, so it's a more
     // robust signal that the click handler actually toggled the menu.
     usePageContext.mockReturnValue({ urlPathname: "/en/about", lang: "en" });
-    const { container } = await renderWithI18n(<Navbar />, "en");
+    await renderWithI18n(<Navbar />, "en");
     const user = userEvent.setup();
 
     const menuButton = screen.getByRole("button", { name: /open menu/i });
-    const getCloseIconClass = () =>
-      container.querySelector(".lucide-x")?.getAttribute("class") ?? "";
+    const getBarClasses = () =>
+      Array.from(menuButton.querySelectorAll("span > span")).map(
+        (bar) => bar.getAttribute("class") ?? ""
+      );
 
-    expect(getCloseIconClass()).toContain("scale-0");
+    expect(getBarClasses().join(" ")).not.toContain("rotate-45");
 
     await user.click(menuButton);
-    expect(getCloseIconClass()).toContain("scale-100");
+    const openClasses = getBarClasses().join(" ");
+    expect(openClasses).toContain("rotate-45");
+    expect(openClasses).toContain("-rotate-45");
   });
 
   it("adjusts the header background alpha in response to scroll on the home page", async () => {

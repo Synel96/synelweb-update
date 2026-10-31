@@ -83,19 +83,35 @@ export function MobileStickyCta() {
           {t("stickyCta.call")}
         </a>
 
-        <button
-          type="button"
-          onClick={() => setExpanded((current) => !current)}
-          aria-expanded={expanded}
-          aria-label={expanded ? t("stickyCta.closeAria") : t("stickyCta.triggerAria")}
-          className="flex size-14 items-center justify-center rounded-full border border-white/15 bg-(--color-secondary-warm) text-[#140814] shadow-[0_18px_44px_-18px_color-mix(in_oklab,var(--color-secondary-warm),transparent_55%)] transition-transform duration-200 active:scale-95"
-        >
-          {expanded ? (
-            <XIcon className="size-5" aria-hidden="true" />
-          ) : (
-            <CalendarIcon className="size-5" aria-hidden="true" />
-          )}
-        </button>
+        <div className="relative">
+          {!expanded ? (
+            <span
+              className="sticky-cta-pulse absolute inset-0 rounded-full bg-(--color-secondary-warm)"
+              aria-hidden="true"
+            />
+          ) : null}
+
+          <button
+            type="button"
+            onClick={() => setExpanded((current) => !current)}
+            aria-expanded={expanded}
+            aria-label={expanded ? t("stickyCta.closeAria") : t("stickyCta.triggerAria")}
+            className="relative isolate z-10 flex size-14 items-center justify-center overflow-hidden rounded-full border border-white/25 text-[#140814] shadow-[0_18px_44px_-18px_color-mix(in_oklab,var(--color-secondary-warm),transparent_45%)] transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
+            style={{
+              background:
+                "radial-gradient(120% 120% at 30% 25%, color-mix(in oklab, var(--color-secondary-warm), white 32%) 0%, var(--color-secondary-warm) 55%, color-mix(in oklab, var(--color-secondary-warm), black 14%) 100%)",
+            }}
+          >
+            <span className="btn-cta-shine" aria-hidden="true" />
+            <span className="relative z-10">
+              {expanded ? (
+                <XIcon className="size-5" aria-hidden="true" />
+              ) : (
+                <CalendarIcon className="size-5" aria-hidden="true" />
+              )}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

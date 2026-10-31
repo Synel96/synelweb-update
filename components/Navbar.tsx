@@ -1,4 +1,4 @@
-import { MailIcon, MenuIcon, PhoneIcon, XIcon } from "lucide-react";
+import { MailIcon, PhoneIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
@@ -15,6 +15,23 @@ import { BRAND_NAME, NAV_LINKS } from "./site";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
+
+function MenuToggleIcon({ open }: { open: boolean }) {
+  return (
+    <span className="relative flex size-5 flex-col items-center justify-center">
+      <span
+        className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+          open ? "rotate-45" : "-translate-y-[5px]"
+        }`}
+      />
+      <span
+        className={`absolute h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+          open ? "-rotate-45" : "translate-y-[5px]"
+        }`}
+      />
+    </span>
+  );
+}
 
 type NavbarProps = {
   // Optional so the navbar still works standalone; the layout passes these
@@ -136,18 +153,7 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
                   aria-label={t("nav.openMenu")}
                   className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
                 >
-                  <span className="relative size-5">
-                    <MenuIcon
-                      className={`absolute inset-0 size-5 transition-all duration-300 ${
-                        open ? "scale-0 rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"
-                      }`}
-                    />
-                    <XIcon
-                      className={`absolute inset-0 size-5 transition-all duration-300 ${
-                        open ? "scale-100 rotate-0 opacity-100" : "scale-0 -rotate-90 opacity-0"
-                      }`}
-                    />
-                  </span>
+                  <MenuToggleIcon open={open} />
                 </Button>
               </PushDrawerTrigger>
               <PushDrawerContent
@@ -204,7 +210,7 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
               disabled
               className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
             >
-              <MenuIcon className="size-5" />
+              <MenuToggleIcon open={false} />
             </Button>
           )}
         </div>

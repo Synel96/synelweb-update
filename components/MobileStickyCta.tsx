@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { PhoneIcon, SendIcon, XIcon } from "lucide-react";
+import { CalendarIcon, PhoneIcon, SendIcon, XIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
@@ -59,7 +59,7 @@ export function MobileStickyCta() {
           href={localizePath("/contact", lang)}
           aria-hidden={!expanded}
           tabIndex={expanded ? 0 : -1}
-          className={`flex items-center gap-2 rounded-full border border-white/15 bg-(--accent) px-4 py-2.5 text-sm font-semibold text-[#140814] shadow-[0_12px_30px_-10px_var(--accent-glow)] transition-all duration-200 ${
+          className={`flex items-center gap-2 rounded-full border border-white/15 bg-(--color-secondary-warm) px-4 py-2.5 text-sm font-semibold text-[#140814] shadow-[0_12px_30px_-10px_color-mix(in_oklab,var(--color-secondary-warm),transparent_55%)] transition-all duration-200 ${
             expanded
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none translate-y-2 opacity-0"
@@ -88,12 +88,12 @@ export function MobileStickyCta() {
           onClick={() => setExpanded((current) => !current)}
           aria-expanded={expanded}
           aria-label={expanded ? t("stickyCta.closeAria") : t("stickyCta.triggerAria")}
-          className="flex size-14 items-center justify-center rounded-full border border-white/15 bg-(--accent) text-[#140814] shadow-[0_18px_44px_-18px_var(--accent-glow)] transition-transform duration-200 active:scale-95"
+          className="flex size-14 items-center justify-center rounded-full border border-white/15 bg-(--color-secondary-warm) text-[#140814] shadow-[0_18px_44px_-18px_color-mix(in_oklab,var(--color-secondary-warm),transparent_55%)] transition-transform duration-200 active:scale-95"
         >
           {expanded ? (
             <XIcon className="size-5" aria-hidden="true" />
           ) : (
-            <PhoneIcon className="size-5" aria-hidden="true" />
+            <CalendarIcon className="size-5" aria-hidden="true" />
           )}
         </button>
       </div>

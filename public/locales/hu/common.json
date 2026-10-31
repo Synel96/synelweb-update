@@ -334,6 +334,12 @@
       "ariaLabel": "Ingyenes konzultáció kérése"
     }
   },
+  "stickyCta": {
+    "triggerAria": "Kapcsolatfelvételi lehetőségek megnyitása",
+    "closeAria": "Bezárás",
+    "call": "Hívás",
+    "quote": "Ajánlatot kérek"
+  },
   "contact": {
     "label": "Kapcsolat",
     "heading": "Írj, hívj, vagy egyeztessünk online – bárhonnan Magyarországról.",

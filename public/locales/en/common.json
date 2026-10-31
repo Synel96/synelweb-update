@@ -329,6 +329,12 @@
       "ariaLabel": "Request a free consultation"
     }
   },
+  "stickyCta": {
+    "triggerAria": "Open contact options",
+    "closeAria": "Close",
+    "call": "Call",
+    "quote": "Get a quote"
+  },
   "contact": {
     "label": "Contact",
     "heading": "Message me, call me, or let's talk online — wherever in Hungary you are.",

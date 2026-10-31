@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { I18nProvider } from "../components/I18nProvider";
+import { MobileStickyCta } from "../components/MobileStickyCta";
 import { Navbar } from "../components/Navbar";
 import { PageHeroBackground } from "../components/PageHeroBackground";
 import { PageLoading } from "../components/PageLoading";
@@ -120,6 +121,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
         </main>
         <Footer />
       </PushDrawerBody>
+      <MobileStickyCta />
     </div>
   );
 }

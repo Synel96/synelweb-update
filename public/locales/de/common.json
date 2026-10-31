@@ -329,6 +329,12 @@
       "ariaLabel": "Kostenlose Beratung anfragen"
     }
   },
+  "stickyCta": {
+    "triggerAria": "Kontaktmöglichkeiten öffnen",
+    "closeAria": "Schließen",
+    "call": "Anrufen",
+    "quote": "Angebot anfragen"
+  },
   "contact": {
     "label": "Kontakt",
     "heading": "Schreib oder ruf an, oder lass uns online sprechen – von überall in Ungarn.",

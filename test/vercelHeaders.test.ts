@@ -41,7 +41,9 @@ describe("vercel.json headers", () => {
   it("caches hashed build output forever but keeps HTML revalidating", () => {
     expect(headerValue("/assets/(.*)", "Cache-Control")).toContain("immutable");
     expect(headerValue("/chunks/(.*)", "Cache-Control")).toContain("immutable");
-    expect(headerValue("/((?!assets/|chunks/|locales/).*)", "Cache-Control")).toContain(
+    // Font files carry their version in the name (public/fonts).
+    expect(headerValue("/fonts/(.*)", "Cache-Control")).toContain("immutable");
+    expect(headerValue("/((?!assets/|chunks/|locales/|fonts/).*)", "Cache-Control")).toContain(
       "max-age=0"
     );
   });

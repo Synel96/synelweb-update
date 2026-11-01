@@ -4,10 +4,19 @@ import { usePageContext } from "vike-react/usePageContext";
 import remarkGfm from "remark-gfm";
 import SharePostButton from "@/components/SharePostButton";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import { env } from "@/src/env";
 import { resolveCurrentLang } from "@/src/localizedRoutes";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
-const markdownComponents = {
+// A relative path ("/kapcsolat") or an absolute link back to the site itself
+// (post authors sometimes paste the full https://synelweb.hu/... URL) should
+// navigate in the same tab like any other internal link; only links that
+// actually leave the site belong in a new tab.
+function isInternalHref(href: string) {
+  return href.startsWith("/") || href.startsWith(env.VITE_SITE_URL);
+}
+
+export const markdownComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
     <h2 className="mt-6 text-xl font-semibold tracking-tight text-white sm:text-2xl">{children}</h2>
   ),
@@ -20,16 +29,19 @@ const markdownComponents = {
   p: ({ children }: { children?: React.ReactNode }) => (
     <p className="mt-4 text-base leading-8 text-white/84">{children}</p>
   ),
-  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-(--accent) underline underline-offset-2 hover:text-white"
-    >
-      {children}
-    </a>
-  ),
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
+    const external = !href || !isInternalHref(href);
+    return (
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className="text-(--accent) underline underline-offset-2 hover:text-white"
+      >
+        {children}
+      </a>
+    );
+  },
   ul: ({ children }: { children?: React.ReactNode }) => (
     <ul className="mt-4 list-disc space-y-2 pl-6 text-base leading-8 text-white/84">{children}</ul>
   ),

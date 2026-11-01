@@ -139,6 +139,10 @@
       },
       "priceLabel": "Starting from {{price}} / month",
       "cta": "Questions about maintenance? Contact me →"
+    },
+    "projectsLink": {
+      "text": "Curious what this looks like in production?",
+      "cta": "See my past projects →"
     }
   },
   "projectsPage": {
@@ -147,7 +151,14 @@
     "expandDescription": "Read more",
     "collapseDescription": "Show less",
     "expandScores": "View Lighthouse scores",
-    "collapseScores": "Hide Lighthouse scores"
+    "collapseScores": "Hide Lighthouse scores",
+    "cta": {
+      "title": "Like what you see?",
+      "text": "If you want an equally fast, reliable, and polished website for your business, let's go over your plans together.",
+      "contactLabel": "Request a quote",
+      "contactAriaLabel": "Start quote request",
+      "servicesLabel": "Services & pricing →"
+    }
   },
   "blogPage": {
     "label": "Blog",
@@ -203,7 +214,11 @@
     "notFound": "The requested post could not be found.",
     "emptySections": "This post currently has no detailed sections.",
     "sectionFallbackTitle": "Section",
-    "sectionFallbackContent": "This section currently has no content."
+    "sectionFallbackContent": "This section currently has no content.",
+    "ctaTitle": "Web development that actually brings in customers",
+    "ctaText": "If you need an equally well thought-out, fast, and SEO-friendly website, let's go over your needs together.",
+    "ctaServicesLabel": "See my web development services →",
+    "ctaContactLabel": "Request a free consultation →"
   },
   "underDevelopment": {
     "title": "This page is under development.",

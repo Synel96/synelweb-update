@@ -145,6 +145,10 @@
       },
       "priceLabel": "Már {{price}}-tól / hó",
       "cta": "Kérdésed van az üzemeltetésről? Írj nekem →"
+    },
+    "projectsLink": {
+      "text": "Kíváncsi vagy, hogyan néz ki mindez élesben?",
+      "cta": "Nézd meg korábbi munkáimat →"
     }
   },
   "projectsPage": {
@@ -153,7 +157,14 @@
     "expandDescription": "Több",
     "collapseDescription": "Kevesebb",
     "expandScores": "Lighthouse pontszámok megtekintése",
-    "collapseScores": "Lighthouse pontszámok elrejtése"
+    "collapseScores": "Lighthouse pontszámok elrejtése",
+    "cta": {
+      "title": "Tetszik, amit látsz?",
+      "text": "Ha hasonlóan gyors, megbízható és igényes weboldalt szeretnél a vállalkozásodnak, nézzük át közösen az elképzeléseidet.",
+      "contactLabel": "Ajánlatot kérek",
+      "contactAriaLabel": "Ajánlatkérés indítása",
+      "servicesLabel": "Szolgáltatások és árak →"
+    }
   },
   "blogPage": {
     "label": "Blog",
@@ -208,7 +219,11 @@
     "notFound": "A keresett bejegyzés nem található.",
     "emptySections": "Ehhez a bejegyzéshez jelenleg nincs részletes tartalom.",
     "sectionFallbackTitle": "Szekció",
-    "sectionFallbackContent": "Ehhez a szekcióhoz jelenleg nincs tartalom."
+    "sectionFallbackContent": "Ehhez a szekcióhoz jelenleg nincs tartalom.",
+    "ctaTitle": "Weboldal készítés, ami tényleg hoz ügyfeleket",
+    "ctaText": "Ha hasonlóan átgondolt, gyors és SEO-barát weboldalra van szükséged, nézzük át közösen az igényeidet.",
+    "ctaServicesLabel": "Nézd meg a weboldal készítés szolgáltatásaimat →",
+    "ctaContactLabel": "Kérj ingyenes konzultációt →"
   },
   "underDevelopment": {
     "title": "Ez az oldal fejlesztés alatt áll.",

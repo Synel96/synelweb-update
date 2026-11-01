@@ -4,8 +4,9 @@ import { usePageContext } from "vike-react/usePageContext";
 import remarkGfm from "remark-gfm";
 import SharePostButton from "@/components/SharePostButton";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { env } from "@/src/env";
-import { resolveCurrentLang } from "@/src/localizedRoutes";
+import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
 // A relative path ("/kapcsolat") or an absolute link back to the site itself
@@ -169,6 +170,8 @@ export default function Page() {
   const t = i18n.getFixedT(routeLang, "common");
   const locale = routeLang;
   const blogListHref = `/${routeLang}/blog`;
+  const servicesHref = localizePath("/services", routeLang);
+  const contactHref = localizePath("/contact", routeLang);
   const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
   const backToTopLabel = translateWithFallback(t, "blogDetail.backToTop", "↑ Oldal tetejére");
   const notFoundLabel = translateWithFallback(
@@ -330,6 +333,38 @@ export default function Page() {
           ))
         )}
       </section>
+
+      <div className="mt-10 rounded-3xl border border-white/10 bg-white/4 p-7 text-center sm:p-9">
+        <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+          {translateWithFallback(
+            t,
+            "blogDetail.ctaTitle",
+            "Weboldal készítés, ami tényleg hoz ügyfeleket"
+          )}
+        </h2>
+        <p className="mt-3 text-base leading-7 text-white/78">
+          {translateWithFallback(
+            t,
+            "blogDetail.ctaText",
+            "Ha hasonlóan átgondolt, gyors és SEO-barát weboldalra van szükséged, nézzük át közösen az igényeidet."
+          )}
+        </p>
+        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <ConversionCtaButton href={contactHref}>
+            {translateWithFallback(t, "blogDetail.ctaContactLabel", "Kérj ingyenes konzultációt →")}
+          </ConversionCtaButton>
+          <a
+            href={servicesHref}
+            className="text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+          >
+            {translateWithFallback(
+              t,
+              "blogDetail.ctaServicesLabel",
+              "Nézd meg a weboldal készítés szolgáltatásaimat →"
+            )}
+          </a>
+        </div>
+      </div>
 
       {data.previousPost || data.nextPost ? (
         <nav aria-label={postNavigationLabel} className="mt-10 grid gap-4 sm:grid-cols-2">

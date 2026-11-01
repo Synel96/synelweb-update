@@ -1,7 +1,10 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
+import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { ProjectShowcaseCard } from "@/components/ProjectShowcaseCard";
+import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
+import { localizePath } from "@/src/localizedRoutes";
 import type { Project } from "@/src/services/projectServices";
 import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
@@ -12,8 +15,9 @@ type Data = {
 
 export default function Page() {
   const { t } = useTranslation();
-  const pageContext = usePageContext() as { data?: Data };
+  const pageContext = usePageContext() as { data?: Data; lang?: SupportedLang };
   const { projects = [], fetchError = true } = pageContext.data ?? {};
+  const lang = pageContext.lang ?? DEFAULT_LANG;
 
   const scoreLabelMap = useMemo(
     () => ({
@@ -87,6 +91,30 @@ export default function Page() {
             ))}
           </div>
         )}
+
+        <div
+          className="mx-auto mt-16 max-w-2xl rounded-3xl border border-white/10 bg-white/4 p-8 text-center sm:p-10"
+          data-reveal
+        >
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            {t("projectsPage.cta.title")}
+          </h2>
+          <p className="mt-3 text-base leading-7 text-white/78">{t("projectsPage.cta.text")}</p>
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <ConversionCtaButton
+              href={localizePath("/contact", lang)}
+              ariaLabel={t("projectsPage.cta.contactAriaLabel")}
+            >
+              {t("projectsPage.cta.contactLabel")}
+            </ConversionCtaButton>
+            <a
+              href={localizePath("/services", lang)}
+              className="text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+            >
+              {t("projectsPage.cta.servicesLabel")}
+            </a>
+          </div>
+        </div>
       </section>
     </>
   );

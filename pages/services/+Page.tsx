@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
-import { resolveCurrentLang } from "@/src/localizedRoutes";
+import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import {
   getServiceCards,
   type AppLang,
@@ -213,6 +213,16 @@ export default function Page() {
             ))}
           </div>
         )}
+
+        <p className="mt-10 text-center text-sm leading-7 text-white/70">
+          {t("servicesPage.projectsLink.text")}{" "}
+          <a
+            href={localizePath("/projects", routeLang)}
+            className="font-semibold text-(--accent) transition-colors hover:text-(--primary)"
+          >
+            {t("servicesPage.projectsLink.cta")}
+          </a>
+        </p>
       </section>
 
       {appLang === "hu" ? (

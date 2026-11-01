@@ -139,6 +139,10 @@
       },
       "priceLabel": "Ab {{price}} / Monat",
       "cta": "Fragen zum Betrieb? Schreib mir →"
+    },
+    "projectsLink": {
+      "text": "Neugierig, wie das in der Praxis aussieht?",
+      "cta": "Meine bisherigen Projekte ansehen →"
     }
   },
   "projectsPage": {
@@ -147,7 +151,14 @@
     "expandDescription": "Mehr",
     "collapseDescription": "Weniger",
     "expandScores": "Lighthouse-Werte anzeigen",
-    "collapseScores": "Lighthouse-Werte ausblenden"
+    "collapseScores": "Lighthouse-Werte ausblenden",
+    "cta": {
+      "title": "Gefällt dir, was du siehst?",
+      "text": "Wenn du eine ebenso schnelle, zuverlässige und hochwertige Website für dein Unternehmen möchtest, besprechen wir gemeinsam deine Vorstellungen.",
+      "contactLabel": "Angebot anfordern",
+      "contactAriaLabel": "Angebotsanfrage starten",
+      "servicesLabel": "Leistungen & Preise →"
+    }
   },
   "blogPage": {
     "label": "Blog",
@@ -203,7 +214,11 @@
     "notFound": "Der angeforderte Beitrag wurde nicht gefunden.",
     "emptySections": "Dieser Beitrag enthält derzeit keine detaillierten Abschnitte.",
     "sectionFallbackTitle": "Abschnitt",
-    "sectionFallbackContent": "Für diesen Abschnitt gibt es derzeit keinen Inhalt."
+    "sectionFallbackContent": "Für diesen Abschnitt gibt es derzeit keinen Inhalt.",
+    "ctaTitle": "Webentwicklung, die tatsächlich Kunden bringt",
+    "ctaText": "Wenn du eine ebenso durchdachte, schnelle und SEO-freundliche Website brauchst, besprechen wir gemeinsam deine Anforderungen.",
+    "ctaServicesLabel": "Meine Webentwicklungs-Leistungen ansehen →",
+    "ctaContactLabel": "Kostenlose Beratung anfordern →"
   },
   "underDevelopment": {
     "title": "Diese Seite befindet sich in Entwicklung.",

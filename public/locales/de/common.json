@@ -94,7 +94,8 @@
         "solo": "Einzelunternehmer",
         "enterpriseStack": "Enterprise-Tech-Stack",
         "multilingual": "Mehrsprachig (DE/EN/HU)",
-        "onlineMeetings": "Online-Termine"
+        "onlineMeetings": "Online-Termine",
+        "cookieFreeAnalytics": "Cookie-freie Website-Analyse"
       },
       "cta": "Hintergrund und Vorstellung →"
     },
@@ -121,7 +122,8 @@
     },
     "badges": {
       "googleBusiness": "Google-Unternehmensprofil-Pflege",
-      "trendsResearch": "Trends-basierte Keyword-Recherche"
+      "trendsResearch": "Trends-basierte Keyword-Recherche",
+      "cookieFreeAnalytics": "Cookie-freie Website-Analyse"
     },
     "maintenance": {
       "label": "Betrieb",

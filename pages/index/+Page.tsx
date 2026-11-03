@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   BriefcaseIcon,
+  ChartNoAxesColumnIcon,
   Code2Icon,
   ExternalLinkIcon,
   GaugeIcon,
@@ -60,6 +61,7 @@ const ABOUT_BADGES = [
   { key: "enterpriseStack", Icon: ShieldCheckIcon },
   { key: "multilingual", Icon: LanguagesIcon },
   { key: "onlineMeetings", Icon: VideoIcon },
+  { key: "cookieFreeAnalytics", Icon: ChartNoAxesColumnIcon },
 ] as const;
 
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";

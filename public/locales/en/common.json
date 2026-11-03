@@ -94,7 +94,8 @@
         "solo": "Solo founder",
         "enterpriseStack": "Enterprise-grade stack",
         "multilingual": "Multilingual (EN/HU/DE)",
-        "onlineMeetings": "Online meetings"
+        "onlineMeetings": "Online meetings",
+        "cookieFreeAnalytics": "Cookie-free website analytics"
       },
       "cta": "Background and story →"
     },
@@ -121,7 +122,8 @@
     },
     "badges": {
       "googleBusiness": "Google Business management",
-      "trendsResearch": "Trends-based keyword research"
+      "trendsResearch": "Trends-based keyword research",
+      "cookieFreeAnalytics": "Cookie-free website analytics"
     },
     "maintenance": {
       "label": "Maintenance",

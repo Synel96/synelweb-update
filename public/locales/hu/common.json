@@ -95,7 +95,8 @@
         "solo": "Egyéni vállalkozó",
         "enterpriseStack": "Nagyvállalati tech stack",
         "multilingual": "Többnyelvű (HU/EN/DE)",
-        "onlineMeetings": "Online megbeszélések"
+        "onlineMeetings": "Online megbeszélések",
+        "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
       },
       "cta": "Bemutatkozás és háttér →"
     },
@@ -122,7 +123,8 @@
     },
     "badges": {
       "googleBusiness": "Google cégprofil kezelés",
-      "trendsResearch": "Trends-alapú kulcsszókutatás"
+      "trendsResearch": "Trends-alapú kulcsszókutatás",
+      "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
     },
     "grants": {
       "label": "Pályázati fejlesztéshez is",

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import {
+  ChartNoAxesColumnIcon,
   DatabaseIcon,
   GlobeIcon,
   ImageIcon,
@@ -24,6 +25,7 @@ import {
 const SERVICES_BADGES = [
   { key: "googleBusiness", Icon: StoreIcon },
   { key: "trendsResearch", Icon: TrendingUpIcon },
+  { key: "cookieFreeAnalytics", Icon: ChartNoAxesColumnIcon },
 ] as const;
 
 const MAINTENANCE_ITEMS = [

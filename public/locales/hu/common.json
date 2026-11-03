@@ -126,6 +126,10 @@
       "trendsResearch": "Trends-alapú kulcsszókutatás",
       "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
     },
+    "localDiscount": {
+      "label": "Helyi kedvezmény",
+      "text": "Sopron és környéke vállalkozásainak kedvezményes árazással dolgozom – ha a közelben vagy, írj, és személyesen is szívesen egyeztetünk a részletekről."
+    },
     "grants": {
       "label": "Pályázati fejlesztéshez is",
       "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",

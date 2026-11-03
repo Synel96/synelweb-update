@@ -151,6 +151,17 @@ export default function Page() {
             </p>
           </div>
 
+          {appLang === "hu" ? (
+            <div className="mt-6 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
+              <p className="text-xs font-semibold tracking-[0.16em] text-(--color-secondary-warm) uppercase">
+                {t("servicesPage.localDiscount.label")}
+              </p>
+              <p className="mt-2 text-left text-sm leading-7 text-white/85 sm:text-base">
+                {t("servicesPage.localDiscount.text")}
+              </p>
+            </div>
+          ) : null}
+
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             {SERVICES_BADGES.map(({ key, Icon }) => (
               <span

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "../components/Footer";
 import { I18nProvider } from "../components/I18nProvider";
 import { MobileStickyCta } from "../components/MobileStickyCta";
@@ -122,6 +123,7 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
         <Footer />
       </PushDrawerBody>
       <MobileStickyCta />
+      <Analytics />
     </div>
   );
 }

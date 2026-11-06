@@ -23,7 +23,7 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
 
   return (
     <footer className="border-t border-white/10 bg-(--brand-surface) text-(--brand-on-surface)">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-3 px-6 py-4 text-sm text-white/80">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-3 px-6 py-4 pb-24 text-sm text-white/80 lg:pb-4">
         <nav aria-label="Footer links" className="flex flex-wrap items-center justify-center gap-4">
           {visibleNavLinks.map((item) => (
             <a

@@ -51,10 +51,10 @@ export function MobileStickyCta() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-x-0 bottom-0 z-40 flex justify-end px-4 lg:hidden"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-end px-4 lg:hidden"
       style={{ paddingBottom: "calc(1rem + env(safe-area-inset-bottom))" }}
     >
-      <div className="flex flex-col items-end gap-2.5">
+      <div className="pointer-events-auto flex flex-col items-end gap-2.5">
         <a
           href={localizePath("/contact", lang)}
           aria-hidden={!expanded}

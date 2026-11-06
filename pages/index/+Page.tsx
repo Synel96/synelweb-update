@@ -23,6 +23,7 @@ import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { TechnologyLogo } from "@/components/TechnologyLogo";
 import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
+import { useBackgroundVideo } from "@/src/hooks/use-background-video";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { getProjects, type Project } from "@/src/services/projectServices";
@@ -99,6 +100,15 @@ export default function Page() {
     else window.addEventListener("load", start, { once: true });
     return () => window.removeEventListener("load", start);
   }, []);
+
+  // Keeps it playing after the browser pauses it (screen lock, app switch),
+  // pauses it off screen, and restarts it if it stalls. If it can't be
+  // played at all, the source goes and the poster shows instead of a frozen
+  // frame.
+  useBackgroundVideo(videoRef, videoSrc !== null, () => {
+    setVideoSrc(null);
+    videoRef.current?.load();
+  });
 
   useEffect(() => {
     const video = videoRef.current;

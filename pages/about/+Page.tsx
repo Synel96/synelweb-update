@@ -76,7 +76,7 @@ export default function Page() {
       </section>
 
       <section
-        className="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.86),rgba(15,21,40,0.92))] px-4 py-5 sm:px-6 sm:py-6"
+        className="fancy-card mx-auto w-full max-w-6xl rounded-2xl px-4 py-5 sm:px-6 sm:py-6"
         data-reveal
       >
         <h2 className="px-2 text-center text-xl font-semibold sm:text-2xl">
@@ -106,7 +106,7 @@ export default function Page() {
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {processCards.map((item) => (
-            <article key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <article key={item.title} className="fancy-card fancy-card-lift rounded-2xl p-5">
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="mt-3 text-sm leading-7 text-white/78 sm:text-base">{item.content}</p>
             </article>

@@ -97,10 +97,7 @@ export function ProjectShowcaseCard({
   }, [isDescriptionExpanded, expandedHeight]);
 
   return (
-    <article
-      ref={articleRef}
-      className="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-4 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-6 lg:p-7"
-    >
+    <article ref={articleRef} className="fancy-card rounded-[1.7rem] p-4 sm:p-6 lg:p-7">
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-6">
         <div className="lg:order-2">
           <ProjectPreviewCarousel
@@ -157,7 +154,7 @@ export function ProjectShowcaseCard({
             </ul>
           </div>
 
-          <div className="mt-5 rounded-2xl border border-white/10 bg-black/22 p-3.5 sm:p-4">
+          <div className="fancy-panel mt-5 rounded-2xl p-3.5 sm:p-4">
             <p className="hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:block">
               {scoresTitle}
             </p>
@@ -175,7 +172,7 @@ export function ProjectShowcaseCard({
               />
             </button>
             <div
-              className={`mt-3 gap-4 xl:grid-cols-2 sm:grid ${isScoresExpanded ? "grid" : "hidden"}`}
+              className={`mt-3 gap-4 sm:grid xl:grid-cols-2 ${isScoresExpanded ? "grid" : "hidden"}`}
             >
               <div>
                 <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">

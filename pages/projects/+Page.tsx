@@ -93,7 +93,7 @@ export default function Page() {
         )}
 
         <div
-          className="mx-auto mt-16 max-w-2xl rounded-3xl border border-white/10 bg-white/4 p-8 text-center sm:p-10"
+          className="fancy-card mx-auto mt-16 max-w-2xl rounded-3xl p-8 text-center sm:p-10"
           data-reveal
         >
           <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">

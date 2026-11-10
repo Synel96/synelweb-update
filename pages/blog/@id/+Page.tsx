@@ -266,7 +266,7 @@ export default function Page() {
         {backToListLabel}
       </a>
 
-      <header className="overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(160deg,rgba(14,20,38,0.95),rgba(8,12,24,0.96))] shadow-[0_24px_80px_-42px_rgba(0,0,0,0.72)]">
+      <header className="fancy-card overflow-hidden rounded-3xl">
         {previewImageUrl ? (
           <img
             src={previewImageUrl}
@@ -313,10 +313,7 @@ export default function Page() {
           </div>
         ) : (
           post.sections.map((section, index) => (
-            <section
-              key={section.id}
-              className="rounded-2xl border border-white/10 bg-[linear-gradient(145deg,rgba(17,24,44,0.78),rgba(11,16,31,0.88))] px-6 py-6 shadow-[0_18px_52px_-36px_rgba(0,0,0,0.75)] sm:px-8"
-            >
+            <section key={section.id} className="fancy-card rounded-2xl px-6 py-6 sm:px-8">
               <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
                 {section.subtitle || `${t("blogDetail.sectionFallbackTitle")} ${index + 1}`}
               </h2>
@@ -334,7 +331,7 @@ export default function Page() {
         )}
       </section>
 
-      <div className="mt-10 rounded-3xl border border-white/10 bg-white/4 p-7 text-center sm:p-9">
+      <div className="fancy-card mt-10 rounded-3xl p-7 text-center sm:p-9">
         <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
           {translateWithFallback(
             t,
@@ -371,7 +368,7 @@ export default function Page() {
           {data.previousPost ? (
             <a
               href={`/${routeLang}/blog/${encodeURIComponent(data.previousPost.id)}`}
-              className="group rounded-3xl border border-white/10 bg-white/4 px-5 py-5 transition hover:border-(--accent)/35 hover:bg-white/6"
+              className="group fancy-card fancy-card-lift rounded-3xl px-5 py-5"
             >
               <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
                 {previousPostLabel}
@@ -398,7 +395,7 @@ export default function Page() {
           {data.nextPost ? (
             <a
               href={`/${routeLang}/blog/${encodeURIComponent(data.nextPost.id)}`}
-              className="group rounded-3xl border border-white/10 bg-white/4 px-5 py-5 text-right transition hover:border-(--accent)/35 hover:bg-white/6"
+              className="group fancy-card fancy-card-lift rounded-3xl px-5 py-5 text-right"
             >
               <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
                 {nextPostLabel}

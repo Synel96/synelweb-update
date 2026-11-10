@@ -242,10 +242,7 @@ export default function Page() {
         ) : null}
 
         {!isLoading && !fetchError && posts.length > 0 ? (
-          <div
-            className="mb-8 rounded-3xl border border-white/14 bg-[linear-gradient(150deg,rgba(18,26,48,0.88),rgba(10,15,30,0.94))] p-5 shadow-[0_20px_52px_-34px_rgba(0,0,0,0.82)] sm:p-6"
-            data-reveal
-          >
+          <div className="fancy-card mb-8 rounded-3xl p-5 sm:p-6" data-reveal>
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-2 text-sm font-semibold text-white/85">
                 <span className="text-xs tracking-[0.08em] text-white/62 uppercase">

@@ -156,7 +156,7 @@ export default function Page() {
           </div>
           <ul className="mt-6 grid gap-4 text-sm leading-7 text-white/78 sm:text-base">
             {TRUSTED_COMPANY_KEYS.map((itemKey) => (
-              <li key={itemKey} className="rounded-2xl border border-white/10 bg-white/4 p-5">
+              <li key={itemKey} className="fancy-panel rounded-2xl p-5">
                 <div className="flex gap-4">
                   <span className="mt-1 size-2.5 shrink-0 rounded-full bg-(--accent) shadow-[0_0_18px_var(--accent-glow)]" />
                   <div>

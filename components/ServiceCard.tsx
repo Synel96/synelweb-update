@@ -85,7 +85,7 @@ export function ServiceCard({
   return (
     <article
       ref={articleRef}
-      className="flex flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8"
+      className="fancy-card flex flex-col self-start rounded-3xl p-6 sm:p-8"
     >
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {serviceName}

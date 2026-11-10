@@ -133,7 +133,7 @@ export default function Page() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <a
             href={`tel:${PHONE}`}
-            className="bento-card is-featured rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
+            className="bento-card is-featured fancy-card-lift rounded-2xl p-5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
               <PhoneIcon className="size-5" />
@@ -145,10 +145,7 @@ export default function Page() {
             <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.callCardText")}</p>
           </a>
 
-          <a
-            href={`mailto:${EMAIL}`}
-            className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
-          >
+          <a href={`mailto:${EMAIL}`} className="bento-card fancy-card-lift rounded-2xl p-5">
             <div className="flex items-center gap-3 text-(--accent)">
               <MailIcon className="size-5" />
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">
@@ -163,7 +160,7 @@ export default function Page() {
             href={FACEBOOK_HREF}
             target="_blank"
             rel="noreferrer"
-            className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
+            className="bento-card fancy-card-lift rounded-2xl p-5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
               <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] leading-none font-bold">
@@ -180,7 +177,7 @@ export default function Page() {
             href={LINKEDIN_HREF}
             target="_blank"
             rel="noreferrer"
-            className="bento-card rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-0.5"
+            className="bento-card fancy-card-lift rounded-2xl p-5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
               <span className="flex size-5 items-center justify-center rounded-full border border-current text-[0.65rem] leading-none font-bold">
@@ -208,7 +205,7 @@ export default function Page() {
               {t("contact.mapText")}
             </p>
 
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-5 text-center">
+            <div className="fancy-panel mt-8 rounded-2xl p-5 text-center">
               <p className="text-sm font-semibold text-white">{t("contact.mapLocationTitle")}</p>
               <p className="mt-2 text-left text-sm leading-7 text-white/72">
                 {t("contact.mapLocationText")}
@@ -216,7 +213,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/20 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.75)]">
+          <div className="fancy-card overflow-hidden rounded-3xl">
             <iframe
               title={t("contact.mapTitle")}
               src={SOPRON_MAP_HREF}

@@ -316,7 +316,7 @@ export function ReviewsCarousel({
 
   if (isLoading) {
     return (
-      <div className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 sm:p-8">
+      <div className="fancy-card rounded-3xl p-6 sm:p-8">
         <p className="text-sm leading-7 text-white/78">{t("reviewsPage.loading")}</p>
       </div>
     );
@@ -325,12 +325,12 @@ export function ReviewsCarousel({
   if (fetchError || reviews.length === 0) {
     return (
       <>
-        <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+        <article className="fancy-card rounded-3xl p-6 sm:p-8">
           <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
             {title}
           </p>
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-5">
+          <div className="fancy-panel mt-4 rounded-2xl p-5">
             <p className="text-sm leading-7 text-white/82 sm:text-base">{emptyRatingText}</p>
             {fetchError ? (
               <p className="mt-3 text-sm leading-7 text-white/60">{fetchError}</p>
@@ -362,7 +362,7 @@ export function ReviewsCarousel({
 
   return (
     <>
-      <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+      <article className="fancy-card rounded-3xl p-6 sm:p-8">
         <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{title}</p>
 
         <div
@@ -373,7 +373,7 @@ export function ReviewsCarousel({
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="w-full shrink-0 snap-center rounded-2xl border border-white/10 bg-black/20 p-5"
+              className="fancy-panel w-full shrink-0 snap-center rounded-2xl p-5"
             >
               <p className="text-lg font-semibold text-white sm:text-xl">{review.name}</p>
               <p className="mt-3 text-sm leading-7 text-white/82 sm:text-base">{review.review}</p>

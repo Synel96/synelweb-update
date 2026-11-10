@@ -170,7 +170,7 @@ function BlogPostCard({
   }, [description]);
 
   return (
-    <article className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] lg:w-auto lg:shrink">
+    <article className="fancy-card fancy-card-lift w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl sm:w-[60%] lg:w-auto lg:shrink">
       {previewImageUrl ? (
         <img
           src={previewImageUrl}

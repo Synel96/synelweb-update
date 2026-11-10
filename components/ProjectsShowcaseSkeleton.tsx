@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function ProjectsShowcaseSkeleton() {
   return (
-    <article className="rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 sm:p-8">
+    <article className="fancy-card rounded-3xl p-6 sm:p-8">
       <Skeleton className="h-9 w-56" />
 
       <div className="mt-5">

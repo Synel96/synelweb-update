@@ -95,20 +95,151 @@ html {
   display: none;
 }
 
+/* Cards ("fancy-card", and the older .bento-card it replaced the look of):
+   a warm-to-pink gradient ring instead of a flat grey border, soft corner
+   glows in the brand colours, and a spotlight that follows the pointer
+   (--fc-x / --fc-y, set in +Layout.tsx). The ring sits in ::after above the
+   content so flush images can't hide it; the glow sits in ::before under it. */
+@property --fc-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.fancy-card,
 .bento-card {
-  border: 1px solid color-mix(in oklab, var(--border), transparent 5%);
-  background: linear-gradient(
-    155deg,
-    color-mix(in oklab, var(--card), var(--color-secondary-warm) 8%),
-    color-mix(in oklab, var(--card), var(--color-secondary-hot) 6%)
+  position: relative;
+  isolation: isolate;
+  border: 1px solid transparent;
+  background:
+    radial-gradient(
+      120% 70% at 0% 0%,
+      color-mix(in oklab, var(--color-secondary-warm), transparent 83%),
+      transparent 60%
+    ),
+    radial-gradient(
+      110% 80% at 100% 100%,
+      color-mix(in oklab, var(--color-accent), transparent 82%),
+      transparent 62%
+    ),
+    linear-gradient(160deg, rgb(20 28 53 / 94%), rgb(10 15 29 / 97%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 7%),
+    0 2px 8px -3px rgb(0 0 0 / 55%),
+    0 26px 60px -38px var(--accent-glow);
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.fancy-card::after,
+.bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--fc-angle) at 30% 0%,
+    color-mix(in oklab, var(--color-secondary-warm), transparent 15%),
+    color-mix(in oklab, var(--color-secondary-hot), transparent 50%),
+    rgb(255 255 255 / 9%) 35%,
+    rgb(255 255 255 / 9%) 58%,
+    color-mix(in oklab, var(--color-accent), transparent 25%) 80%,
+    color-mix(in oklab, var(--color-secondary-warm), transparent 15%)
   );
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent), transparent 88%) inset;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.fancy-card::before,
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--fc-x, 50%) var(--fc-y, 0%),
+    color-mix(in oklab, var(--color-accent), transparent 80%),
+    color-mix(in oklab, var(--color-secondary-warm), transparent 92%) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .bento-card.is-featured {
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--accent), transparent 70%) inset,
-    0 20px 44px -28px var(--accent-glow);
+    inset 0 1px 0 rgb(255 255 255 / 9%),
+    0 2px 8px -3px rgb(0 0 0 / 55%),
+    0 24px 54px -26px var(--accent-glow);
+}
+
+.bento-card.is-featured::after {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .fancy-card:hover::before,
+  .bento-card:hover::before {
+    opacity: 1;
+  }
+
+  .fancy-card:hover::after,
+  .bento-card:hover::after {
+    opacity: 1;
+    animation: fancy-card-ring 5s linear infinite;
+  }
+
+  .fancy-card:hover,
+  .bento-card:hover {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 10%),
+      0 4px 14px -4px rgb(0 0 0 / 60%),
+      0 30px 70px -30px var(--accent-glow);
+  }
+
+  /* Opt-in lift for small, clickable cards; uses `translate` so it never
+     fights the reveal animation's `transform`. */
+  .fancy-card-lift:hover {
+    translate: 0 -4px;
+  }
+}
+
+@keyframes fancy-card-ring {
+  to {
+    --fc-angle: 360deg;
+  }
+}
+
+/* Inner boxes inside the cards: a glassy tint instead of plain white/4. */
+.fancy-panel {
+  border: 1px solid rgb(255 255 255 / 9%);
+  background:
+    linear-gradient(
+      150deg,
+      color-mix(in oklab, var(--color-secondary-warm), transparent 90%),
+      transparent 50%
+    ),
+    rgb(255 255 255 / 3.5%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .fancy-panel:hover {
+    border-color: color-mix(in oklab, var(--color-accent), transparent 65%);
+    background-color: rgb(255 255 255 / 5.5%);
+  }
 }
 
 .btn-cta {
@@ -171,5 +302,9 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .fancy-card-lift:hover {
+    translate: none;
   }
 }

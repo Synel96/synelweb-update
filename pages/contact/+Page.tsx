@@ -15,6 +15,10 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { QuoteRequestForm, type QuoteMode } from "@/components/QuoteRequestForm";
 import { QUOTE_FORM_ANCHOR } from "@/src/quoteForm";
+import { trackEvent, type ContactMethod } from "@/src/analytics";
+
+const trackContact = (method: ContactMethod, location: string) =>
+  trackEvent("contact_click", { method, location });
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
@@ -104,10 +108,18 @@ export default function Page() {
             </div>
 
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
-              <ConversionCtaButton href={`tel:${PHONE}`} ariaLabel={t("contact.callButton")}>
+              <ConversionCtaButton
+                href={`tel:${PHONE}`}
+                ariaLabel={t("contact.callButton")}
+                onClick={() => trackContact("phone", "contact_hero")}
+              >
                 {t("contact.callButton")}
               </ConversionCtaButton>
-              <ConversionCtaButton href={`mailto:${EMAIL}`} ariaLabel={t("contact.emailButton")}>
+              <ConversionCtaButton
+                href={`mailto:${EMAIL}`}
+                ariaLabel={t("contact.emailButton")}
+                onClick={() => trackContact("email", "contact_hero")}
+              >
                 {t("contact.emailButton")}
               </ConversionCtaButton>
               <Button
@@ -150,6 +162,7 @@ export default function Page() {
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <a
             href={`tel:${PHONE}`}
+            onClick={() => trackContact("phone", "contact_cards")}
             className="bento-card is-featured fancy-card-lift rounded-2xl p-5"
           >
             <div className="flex items-center gap-3 text-(--accent)">
@@ -162,7 +175,11 @@ export default function Page() {
             <p className="mt-2 text-sm leading-6 text-white/75">{t("contact.callCardText")}</p>
           </a>
 
-          <a href={`mailto:${EMAIL}`} className="bento-card fancy-card-lift rounded-2xl p-5">
+          <a
+            href={`mailto:${EMAIL}`}
+            onClick={() => trackContact("email", "contact_cards")}
+            className="bento-card fancy-card-lift rounded-2xl p-5"
+          >
             <div className="flex items-center gap-3 text-(--accent)">
               <MailIcon className="size-5" />
               <span className="text-xs font-semibold tracking-[0.2em] uppercase">
@@ -175,6 +192,7 @@ export default function Page() {
 
           <a
             href={FACEBOOK_HREF}
+            onClick={() => trackContact("facebook", "contact_cards")}
             target="_blank"
             rel="noreferrer"
             className="bento-card fancy-card-lift rounded-2xl p-5"
@@ -192,6 +210,7 @@ export default function Page() {
 
           <a
             href={LINKEDIN_HREF}
+            onClick={() => trackContact("linkedin", "contact_cards")}
             target="_blank"
             rel="noreferrer"
             className="bento-card fancy-card-lift rounded-2xl p-5"

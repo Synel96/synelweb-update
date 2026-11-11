@@ -2,12 +2,14 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { renderWithI18n } from "../test/render";
 
-const { getServiceCards, fetchWithTimeout } = vi.hoisted(() => ({
+const { getServiceCards, fetchWithTimeout, trackEvent } = vi.hoisted(() => ({
   getServiceCards: vi.fn(),
   fetchWithTimeout: vi.fn(),
+  trackEvent: vi.fn(),
 }));
 vi.mock("@/src/services/serviceCardsService", () => ({ getServiceCards }));
 vi.mock("@/src/fetchWithTimeout", () => ({ fetchWithTimeout }));
+vi.mock("@/src/analytics", () => ({ trackEvent }));
 
 import { QuoteRequestForm } from "./QuoteRequestForm";
 
@@ -170,6 +172,42 @@ describe("QuoteRequestForm", () => {
     expect(sentPayload()).toMatchObject({
       service: "unsure",
       serviceName: "Még nem tudom, segíts választani",
+    });
+  });
+
+  it("measures start (once), mode switch and the submit result, without personal data", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="webshop" />
+    );
+    await screen.findByRole("radio", { name: "Webshop" });
+
+    fireEvent.focus(screen.getByLabelText("Név"));
+    fireEvent.focus(screen.getByLabelText("E-mail"));
+    fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+    fillContact();
+    submit();
+    await screen.findByRole("status");
+
+    expect(trackEvent.mock.calls).toEqual([
+      ["quote_form_start", { mode: "simple" }],
+      ["quote_form_mode", { mode: "detailed" }],
+      ["quote_form_submit", { mode: "detailed", service: "webshop", result: "success" }],
+    ]);
+    expect(JSON.stringify(trackEvent.mock.calls)).not.toMatch(/Teszt|pelda\.hu/);
+  });
+
+  it("reports a failed submit", async () => {
+    fetchWithTimeout.mockResolvedValue({ ok: false, status: 500 });
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    submit();
+    await screen.findByRole("alert");
+
+    expect(trackEvent).toHaveBeenCalledWith("quote_form_submit", {
+      mode: "simple",
+      service: "unsure",
+      result: "error",
     });
   });
 

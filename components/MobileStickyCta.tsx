@@ -5,6 +5,7 @@ import { usePageContext } from "vike-react/usePageContext";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 
 const PHONE = "+36303645516";
 
@@ -62,6 +63,7 @@ export function MobileStickyCta() {
       <div className="flex flex-col items-end gap-2.5">
         <a
           href={quoteFormHref(lang)}
+          onClick={() => trackEvent("quote_cta_click", { location: "sticky_cta" })}
           aria-hidden={!expanded}
           tabIndex={expanded ? 0 : -1}
           className={`flex items-center gap-2 rounded-full border border-white/15 bg-(--color-secondary-warm) px-4 py-2.5 text-sm font-semibold text-[#140814] shadow-[0_12px_30px_-10px_color-mix(in_oklab,var(--color-secondary-warm),transparent_55%)] transition-all duration-200 ${
@@ -76,6 +78,7 @@ export function MobileStickyCta() {
 
         <a
           href={`tel:${PHONE}`}
+          onClick={() => trackEvent("contact_click", { method: "phone", location: "sticky_cta" })}
           aria-hidden={!expanded}
           tabIndex={expanded ? 0 : -1}
           className={`flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 ${

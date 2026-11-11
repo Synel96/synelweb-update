@@ -25,7 +25,7 @@ export function TechnologyStackCard({
       <span className="tech-card-hover-shine" aria-hidden="true" />
 
       <div className="flex items-start justify-between gap-4">
-        <div className="flex size-18 items-center justify-center rounded-2xl border border-white/10 bg-white/6 shadow-[0_18px_40px_-26px_var(--accent-glow)] transition-all duration-300 group-hover:scale-[1.04] group-hover:border-white/20 group-hover:bg-white/9">
+        <div className="fancy-tile flex size-18 items-center justify-center rounded-2xl shadow-[0_18px_40px_-26px_var(--accent-glow)] transition-all duration-300 group-hover:scale-[1.04]">
           <TechnologyLogo
             name={logo}
             className="size-11 transition-transform duration-300 group-hover:scale-105"

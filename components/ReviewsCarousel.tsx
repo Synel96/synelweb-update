@@ -407,7 +407,7 @@ export function ReviewsCarousel({
             variant="ghost"
             size="icon-sm"
             onClick={prev}
-            className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+            className="fancy-arrow rounded-full text-white hover:bg-black/40"
             aria-label="Previous review"
           >
             <ChevronLeftIcon className="size-4" />
@@ -432,7 +432,7 @@ export function ReviewsCarousel({
             variant="ghost"
             size="icon-sm"
             onClick={next}
-            className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+            className="fancy-arrow rounded-full text-white hover:bg-black/40"
             aria-label="Next review"
           >
             <ChevronRightIcon className="size-4" />

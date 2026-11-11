@@ -1,3 +1,4 @@
+import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
@@ -46,18 +47,15 @@ export default function Page() {
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-8 text-white/78 sm:text-lg">{text}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <ConversionCtaButton href={contactHref}>
+              {t("errorPage.secondaryButton")}
+            </ConversionCtaButton>
             <a
               href={homeHref}
-              className="inline-flex items-center rounded-xl border border-white/14 bg-white/7 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white/12"
+              className="fancy-action inline-flex h-14 items-center rounded-full px-6 text-sm font-semibold tracking-[0.08em] text-white uppercase sm:h-15"
             >
               {t("errorPage.primaryButton")}
-            </a>
-            <a
-              href={contactHref}
-              className="inline-flex items-center rounded-xl border border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] px-5 py-3 text-sm font-extrabold tracking-[0.08em] text-[#16090e] uppercase transition-transform hover:-translate-y-0.5"
-            >
-              {t("errorPage.secondaryButton")}
             </a>
           </div>
         </article>

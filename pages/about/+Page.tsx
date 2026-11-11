@@ -51,19 +51,19 @@ export default function Page() {
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--accent) uppercase">
                 {t("about.highlights.speed.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.speed.text")}</p>
             </article>
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-warm) uppercase">
                 {t("about.highlights.security.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.security.text")}</p>
             </article>
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-hot) uppercase">
                 {t("about.highlights.custom.title")}
               </p>
@@ -86,7 +86,7 @@ export default function Page() {
           {accordionItems.map((item) => (
             <details
               key={item.title}
-              className="group rounded-xl border border-white/10 bg-white/4 p-4 open:bg-white/6"
+              className="group fancy-panel rounded-xl p-4 open:border-(--accent)/40 open:bg-white/6"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-base font-semibold text-(--brand-on-surface) sm:text-lg">
                 <span>{item.title}</span>

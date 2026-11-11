@@ -229,7 +229,7 @@ export default function Page() {
             {PROJECT_BADGES.map(({ key, Icon }) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+                className="fancy-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase"
               >
                 <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
                 {t(`homeFlow.projects.badges.${key}`)}
@@ -268,7 +268,7 @@ export default function Page() {
             {SERVICE_BADGES.map(({ key, Icon }) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+                className="fancy-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase"
               >
                 <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
                 {t(`homeFlow.services.badges.${key}`)}
@@ -306,7 +306,7 @@ export default function Page() {
             {ABOUT_BADGES.map(({ key, Icon }) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+                className="fancy-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase"
               >
                 <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
                 {t(`homeFlow.about.badges.${key}`)}

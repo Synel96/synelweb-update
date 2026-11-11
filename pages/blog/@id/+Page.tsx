@@ -348,7 +348,7 @@ export default function Page() {
         </p>
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <ConversionCtaButton href={contactHref}>
-            {translateWithFallback(t, "blogDetail.ctaContactLabel", "Kérj ingyenes konzultációt →")}
+            {translateWithFallback(t, "blogDetail.ctaContactLabel", "Kérj ingyenes konzultációt")}
           </ConversionCtaButton>
           <a
             href={servicesHref}

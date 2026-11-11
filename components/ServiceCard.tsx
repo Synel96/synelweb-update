@@ -4,7 +4,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { Button } from "@/components/ui/button";
 import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
-import { QUOTE_FORM_ANCHOR } from "@/components/QuoteRequestForm";
+import { QUOTE_FORM_ANCHOR } from "@/src/quoteForm";
 
 type ServiceCardProps = {
   serviceName: string;

@@ -7,9 +7,6 @@ import { getServiceCards, type AppLang } from "@/src/services/serviceCardsServic
 
 export type QuoteMode = "simple" | "detailed";
 
-// The contact page section the form sits in; service cards link straight to it.
-export const QUOTE_FORM_ANCHOR = "ajanlatkeres";
-
 const UNSURE = "unsure";
 
 // Shown when the services can't be loaded, so the form still works.

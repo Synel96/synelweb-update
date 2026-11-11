@@ -28,6 +28,7 @@ import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { useBackgroundVideo } from "@/src/hooks/use-background-video";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
 import { getProjects, type Project } from "@/src/services/projectServices";
 import type { Review } from "@/src/services/reviewsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
@@ -282,7 +283,7 @@ export default function Page() {
             </p>
 
             <div className="mt-8">
-              <ConversionCtaButton href={langHref("/contact")} ariaLabel={t("hero.ctaAriaLabel")}>
+              <ConversionCtaButton href={quoteFormHref(lang)} ariaLabel={t("hero.ctaAriaLabel")}>
                 {t("hero.ctaLabel")}
               </ConversionCtaButton>
             </div>

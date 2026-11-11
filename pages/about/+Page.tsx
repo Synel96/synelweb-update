@@ -4,6 +4,7 @@ import { AboutProfileAvatar } from "@/components/AboutProfileAvatar";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
 
 type InfoItem = {
   title: string;
@@ -28,7 +29,8 @@ function readInfoItems(value: unknown): InfoItem[] {
 export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
   const lang = pageContext.lang ?? DEFAULT_LANG;
-  const contactHref = localizePath("/contact", lang);
+  // Its call to action goes straight to the quote form.
+  const contactHref = quoteFormHref(lang);
   const { t } = useTranslation();
   const accordionItems = readInfoItems(t("about.accordion.items", { returnObjects: true }));
   const processCards = readInfoItems(t("about.process.cards", { returnObjects: true }));

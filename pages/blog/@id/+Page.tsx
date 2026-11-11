@@ -7,6 +7,7 @@ import { withCloudinaryAutoParams } from "@/src/cloudinary";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { env } from "@/src/env";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
 // A relative path ("/kapcsolat") or an absolute link back to the site itself
@@ -171,7 +172,8 @@ export default function Page() {
   const locale = routeLang;
   const blogListHref = `/${routeLang}/blog`;
   const servicesHref = localizePath("/services", routeLang);
-  const contactHref = localizePath("/contact", routeLang);
+  // Its call to action goes straight to the quote form.
+  const contactHref = quoteFormHref(routeLang);
   const backToListLabel = translateWithFallback(t, "blogDetail.backToList", "← Vissza a bloghoz");
   const backToTopLabel = translateWithFallback(t, "blogDetail.backToTop", "↑ Oldal tetejére");
   const notFoundLabel = translateWithFallback(

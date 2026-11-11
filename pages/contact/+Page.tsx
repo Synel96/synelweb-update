@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
-import { QUOTE_FORM_ANCHOR, QuoteRequestForm, type QuoteMode } from "@/components/QuoteRequestForm";
+import { QuoteRequestForm, type QuoteMode } from "@/components/QuoteRequestForm";
+import { QUOTE_FORM_ANCHOR } from "@/src/quoteForm";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";

@@ -213,11 +213,22 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="fancy-card overflow-hidden rounded-3xl">
+          <div className="fancy-card relative overflow-hidden rounded-3xl">
+            {/* Shows until the lazily loaded map paints over it, instead of
+                an empty black box. */}
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_50%_45%,color-mix(in_oklab,var(--color-accent),transparent_85%),transparent_55%),repeating-linear-gradient(0deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px),repeating-linear-gradient(90deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px)]"
+              aria-hidden="true"
+            >
+              <MapPinIcon className="size-9 animate-bounce text-(--accent) motion-reduce:animate-none" />
+              <span className="text-sm font-semibold text-white/70">
+                {t("contact.mapLocationTitle")}
+              </span>
+            </div>
             <iframe
               title={t("contact.mapTitle")}
               src={SOPRON_MAP_HREF}
-              className="h-105 w-full"
+              className="relative h-105 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />

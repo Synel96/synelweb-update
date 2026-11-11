@@ -105,10 +105,21 @@ export default function Page() {
           {t("about.process.title")}
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {processCards.map((item) => (
-            <article key={item.title} className="fancy-card fancy-card-lift rounded-2xl p-5">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/78 sm:text-base">{item.content}</p>
+          {processCards.map((item, index) => (
+            <article
+              key={item.title}
+              className="fancy-card fancy-card-lift flex gap-4 rounded-2xl p-5 sm:gap-5 sm:p-6"
+            >
+              <span
+                className="bg-linear-to-b from-(--color-secondary-warm) to-(--accent) bg-clip-text text-3xl leading-none font-bold text-transparent tabular-nums sm:text-4xl"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/78 sm:text-base">{item.content}</p>
+              </div>
             </article>
           ))}
         </div>

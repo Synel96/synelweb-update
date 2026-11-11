@@ -378,11 +378,11 @@ export default function Page() {
               </span>
             </a>
           ) : (
-            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5">
-              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+            <div className="hidden px-5 py-5 sm:block">
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/35 uppercase">
                 {oldestPostLabel}
               </span>
-              <p className="mt-2 text-sm leading-6 text-white/68">
+              <p className="mt-2 text-sm leading-6 text-white/45">
                 {translateWithFallback(
                   t,
                   "blogDetail.oldestPostHint",
@@ -405,11 +405,11 @@ export default function Page() {
               </span>
             </a>
           ) : (
-            <div className="rounded-3xl border border-dashed border-white/10 bg-white/3 px-5 py-5 text-right">
-              <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
+            <div className="hidden px-5 py-5 text-right sm:block">
+              <span className="text-xs font-semibold tracking-[0.16em] text-white/35 uppercase">
                 {newestPostLabel}
               </span>
-              <p className="mt-2 text-sm leading-6 text-white/68">
+              <p className="mt-2 text-sm leading-6 text-white/45">
                 {translateWithFallback(
                   t,
                   "blogDetail.newestPostHint",

@@ -5,6 +5,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { ProjectShowcaseCard } from "@/components/ProjectShowcaseCard";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
 import type { Project } from "@/src/services/projectServices";
 import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
@@ -102,7 +103,7 @@ export default function Page() {
           <p className="mt-3 text-base leading-7 text-white/78">{t("projectsPage.cta.text")}</p>
           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <ConversionCtaButton
-              href={localizePath("/contact", lang)}
+              href={quoteFormHref(lang)}
               ariaLabel={t("projectsPage.cta.contactAriaLabel")}
             >
               {t("projectsPage.cta.contactLabel")}

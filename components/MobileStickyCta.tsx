@@ -3,7 +3,8 @@ import { CalendarIcon, PhoneIcon, SendIcon, XIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
-import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
+import { resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
 
 const PHONE = "+36303645516";
 
@@ -60,7 +61,7 @@ export function MobileStickyCta() {
           when expanded, the links themselves receive pointer events. */}
       <div className="flex flex-col items-end gap-2.5">
         <a
-          href={localizePath("/contact", lang)}
+          href={quoteFormHref(lang)}
           aria-hidden={!expanded}
           tabIndex={expanded ? 0 : -1}
           className={`flex items-center gap-2 rounded-full border border-white/15 bg-(--color-secondary-warm) px-4 py-2.5 text-sm font-semibold text-[#140814] shadow-[0_12px_30px_-10px_color-mix(in_oklab,var(--color-secondary-warm),transparent_55%)] transition-all duration-200 ${

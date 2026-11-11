@@ -29,6 +29,7 @@ import { useBackgroundVideo } from "@/src/hooks/use-background-video";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 import { getProjects, type Project } from "@/src/services/projectServices";
 import type { Review } from "@/src/services/reviewsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
@@ -283,7 +284,11 @@ export default function Page() {
             </p>
 
             <div className="mt-8">
-              <ConversionCtaButton href={quoteFormHref(lang)} ariaLabel={t("hero.ctaAriaLabel")}>
+              <ConversionCtaButton
+                href={quoteFormHref(lang)}
+                ariaLabel={t("hero.ctaAriaLabel")}
+                onClick={() => trackEvent("quote_cta_click", { location: "home_hero" })}
+              >
                 {t("hero.ctaLabel")}
               </ConversionCtaButton>
             </div>

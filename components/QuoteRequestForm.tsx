@@ -5,6 +5,7 @@ import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 import { getServiceCards, type AppLang } from "@/src/services/serviceCardsService";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
+import { trackEvent } from "@/src/analytics";
 
 export type QuoteMode = "simple" | "detailed";
 
@@ -200,6 +201,15 @@ export function QuoteRequestForm({
     card.focus({ preventScroll: true });
   }, [status]);
 
+  // Counted once per visit to the form: the first time anything in it gets
+  // focus, i.e. the visitor starts filling it in (or picks a mode/service).
+  const startedRef = useRef(false);
+  const markStarted = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    trackEvent("quote_form_start", { mode });
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (status === "sending") return;
@@ -237,6 +247,9 @@ export function QuoteRequestForm({
       });
     }
 
+    const report = (result: "success" | "error" | "throttled") =>
+      trackEvent("quote_form_submit", { mode, service: service || UNSURE, result });
+
     try {
       const response = await fetchWithTimeout(`${resolveApiBaseUrl()}/api/quote-requests/`, {
         method: "POST",
@@ -244,11 +257,14 @@ export function QuoteRequestForm({
         body: JSON.stringify(payload),
       });
       if (response.status === 429) {
+        report("throttled");
         setStatus("throttled");
         return;
       }
+      report(response.ok ? "success" : "error");
       setStatus(response.ok ? "sent" : "error");
     } catch {
+      report("error");
       setStatus("error");
     }
   };
@@ -276,7 +292,11 @@ export function QuoteRequestForm({
   ];
 
   return (
-    <form onSubmit={handleSubmit} className="fancy-card rounded-3xl p-5 sm:p-8">
+    <form
+      onSubmit={handleSubmit}
+      onFocusCapture={markStarted}
+      className="fancy-card rounded-3xl p-5 sm:p-8"
+    >
       <div
         role="radiogroup"
         aria-label={t("quoteForm.modeLabel")}
@@ -290,7 +310,10 @@ export function QuoteRequestForm({
               type="button"
               role="radio"
               aria-checked={isActive}
-              onClick={() => setMode(key)}
+              onClick={() => {
+                if (key !== mode) trackEvent("quote_form_mode", { mode: key });
+                setMode(key);
+              }}
               className={`flex items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors ${
                 isActive
                   ? "bg-linear-to-r from-(--color-secondary-warm)/20 to-(--accent)/25 text-white ring-1 ring-(--accent)/50"

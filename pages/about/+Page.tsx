@@ -5,6 +5,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 
 type InfoItem = {
   title: string;
@@ -141,7 +142,11 @@ export default function Page() {
           <p className="w-full max-w-3xl text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("about.cta.text")}
           </p>
-          <ConversionCtaButton href={contactHref} ariaLabel={t("about.cta.ariaLabel")}>
+          <ConversionCtaButton
+            href={contactHref}
+            ariaLabel={t("about.cta.ariaLabel")}
+            onClick={() => trackEvent("quote_cta_click", { location: "about" })}
+          >
             {t("about.cta.button")}
           </ConversionCtaButton>
         </div>

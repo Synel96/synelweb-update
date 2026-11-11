@@ -5,6 +5,7 @@ import { TechnologyStackCard } from "@/components/TechnologyStackCard";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 import {
   isTechnologyLogoName,
   TechnologyLogo,
@@ -222,7 +223,11 @@ export default function Page() {
           <p className="w-full max-w-3xl text-left text-base leading-8 text-slate-200 sm:text-lg">
             {t("technology.cta.text")}
           </p>
-          <ConversionCtaButton href={contactHref} ariaLabel={t("technology.cta.ariaLabel")}>
+          <ConversionCtaButton
+            href={contactHref}
+            ariaLabel={t("technology.cta.ariaLabel")}
+            onClick={() => trackEvent("quote_cta_click", { location: "technology" })}
+          >
             {t("technology.cta.button")}
           </ConversionCtaButton>
         </div>

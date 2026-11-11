@@ -8,6 +8,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { env } from "@/src/env";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 import type { BlogPostDetail } from "@/src/services/blogPostsService";
 
 // A relative path ("/kapcsolat") or an absolute link back to the site itself
@@ -349,7 +350,10 @@ export default function Page() {
           )}
         </p>
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <ConversionCtaButton href={contactHref}>
+          <ConversionCtaButton
+            href={contactHref}
+            onClick={() => trackEvent("quote_cta_click", { location: "blog_post" })}
+          >
             {translateWithFallback(t, "blogDetail.ctaContactLabel", "Kérj ingyenes konzultációt")}
           </ConversionCtaButton>
           <a

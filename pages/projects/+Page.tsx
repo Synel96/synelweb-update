@@ -6,6 +6,7 @@ import { ProjectShowcaseCard } from "@/components/ProjectShowcaseCard";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 import type { Project } from "@/src/services/projectServices";
 import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
@@ -104,6 +105,7 @@ export default function Page() {
           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <ConversionCtaButton
               href={quoteFormHref(lang)}
+              onClick={() => trackEvent("quote_cta_click", { location: "projects" })}
               ariaLabel={t("projectsPage.cta.contactAriaLabel")}
             >
               {t("projectsPage.cta.contactLabel")}

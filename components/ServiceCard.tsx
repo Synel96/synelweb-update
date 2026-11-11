@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { QUOTE_FORM_ANCHOR } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
 
 type ServiceCardProps = {
   serviceName: string;
@@ -211,6 +212,7 @@ export function ServiceCard({
         <ConversionCtaButton
           href={quoteHref}
           ariaLabel={ctaAriaLabel}
+          onClick={() => trackEvent("quote_cta_click", { location: "service_card", service: slug })}
           className="h-auto min-h-12 w-full max-w-full px-5 py-3 text-center leading-tight whitespace-normal"
         >
           {ctaLabel}

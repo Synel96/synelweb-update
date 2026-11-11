@@ -476,5 +476,93 @@
       "button": "Let's discuss the project",
       "ariaLabel": "Let's discuss the project"
     }
+  },
+  "quoteForm": {
+    "label": "Request a quote",
+    "title": "Get a quote in a few minutes",
+    "intro": "Pick the quick form if you'd like to write in a hurry, or the detailed one for a more accurate price in the first reply.",
+    "modeLabel": "Type of quote request",
+    "modes": {
+      "simple": {
+        "title": "Quick quote",
+        "hint": "About 1 minute, details later"
+      },
+      "detailed": {
+        "title": "Detailed quote",
+        "hint": "About 3 minutes, a more accurate price"
+      }
+    },
+    "service": "Which service are you interested in?",
+    "serviceUnsure": "Not sure yet, help me choose",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneHint": "Optional, but it lets me call you back sooner.",
+    "message": "A few words about the project",
+    "messagePlaceholder": "What does your business do, and what should the website achieve?",
+    "detailsTitle": "Details",
+    "existingSite": "Do you have a website already?",
+    "existingSiteOptions": {
+      "none": "Not yet",
+      "renew": "Yes, I'd like to redo it",
+      "extend": "Yes, I'd like to extend it"
+    },
+    "websiteUrl": "Current website address",
+    "size": "How big a site do you have in mind?",
+    "sizeOptions": {
+      "one_page": "1 page",
+      "few_pages": "3–5 pages",
+      "many_pages": "5+ pages",
+      "unsure": "Not sure yet"
+    },
+    "languages": "In which languages?",
+    "languageOptions": {
+      "hu": "Hungarian",
+      "en": "English",
+      "de": "German"
+    },
+    "addons": "Add-ons",
+    "addonOptions": {
+      "business_email": "Business email",
+      "google_search_ads": "Google Search ads",
+      "cookieless_analytics": "Cookie-free website analytics"
+    },
+    "newBadge": "New",
+    "timeline": "When do you need it?",
+    "timelineOptions": {
+      "urgent": "Urgently",
+      "one_two_months": "Within 1–2 months",
+      "flexible": "Flexible"
+    },
+    "budget": "Budget (optional)",
+    "budgetOptions": {
+      "under_200k": "Under HUF 200,000",
+      "200k_400k": "HUF 200,000 – 400,000",
+      "400k_800k": "HUF 400,000 – 800,000",
+      "over_800k": "Over HUF 800,000",
+      "unsure": "Not sure yet"
+    },
+    "contactPreference": "How would you like to talk?",
+    "contactPreferenceOptions": {
+      "email": "By email",
+      "phone": "By phone",
+      "online": "Online meeting",
+      "in_person": "In person"
+    },
+    "isLocal": "My business is near Sopron (local discount)",
+    "isGrantFunded": "I'd fund it from a grant (e.g. DIMOP Plusz)",
+    "consentBefore": "I have read and accept the",
+    "consentLink": "privacy notice",
+    "consentAfter": " and agree to my details being processed for this quote request.",
+    "submit": {
+      "simple": "Request a quote",
+      "detailed": "Request a detailed quote"
+    },
+    "sending": "Sending…",
+    "sentTitle": "Thank you, I've received your request!",
+    "sentText": "I usually reply within 1 business day, by email or phone.",
+    "error": "It couldn't be sent. Please try again in a few minutes, or email info@synelweb.hu directly.",
+    "throttled": "Too many requests came from this device in a short time. Please try again later, or email info@synelweb.hu.",
+    "responseTime": "I usually reply within 1 business day."
   }
 }

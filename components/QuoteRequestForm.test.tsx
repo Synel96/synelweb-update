@@ -1,0 +1,169 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { renderWithI18n } from "../test/render";
+
+const { getServiceCards, fetchWithTimeout } = vi.hoisted(() => ({
+  getServiceCards: vi.fn(),
+  fetchWithTimeout: vi.fn(),
+}));
+vi.mock("@/src/services/serviceCardsService", () => ({ getServiceCards }));
+vi.mock("@/src/fetchWithTimeout", () => ({ fetchWithTimeout }));
+
+import { QuoteRequestForm } from "./QuoteRequestForm";
+
+const SERVICES = [
+  { id: "1", name: "Landing oldal", slug: "landing-oldal" },
+  { id: "2", name: "Webshop", slug: "webshop" },
+];
+
+function fillContact() {
+  fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
+  fireEvent.change(screen.getByLabelText("E-mail"), { target: { value: "teszt@pelda.hu" } });
+  fireEvent.change(screen.getByLabelText("Pár mondat a projektről"), {
+    target: { value: "Egy egyszerű bemutatkozó oldal kellene." },
+  });
+  fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
+}
+
+function submit() {
+  fireEvent.submit(screen.getByRole("button", { name: /kérek/ }).closest("form")!);
+}
+
+function sentPayload() {
+  const [, init] = fetchWithTimeout.mock.calls[0];
+  return JSON.parse(init.body as string);
+}
+
+describe("QuoteRequestForm", () => {
+  beforeEach(() => {
+    getServiceCards.mockResolvedValue(SERVICES);
+    fetchWithTimeout.mockResolvedValue({ ok: true, status: 201 });
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("starts in the simplified mode without the detail fields", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    expect(screen.getByRole("radio", { name: /Egyszerűsített ajánlat/ })).toHaveAttribute(
+      "aria-checked",
+      "true"
+    );
+    expect(screen.queryByText("Kiegészítők")).not.toBeInTheDocument();
+  });
+
+  it("offers exactly the three add-ons in detailed mode, Google Search ads marked new", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+
+    const addons = screen.getByText("Kiegészítők").closest("fieldset")!;
+    const boxes = addons.querySelectorAll('input[type="checkbox"]');
+    expect(Array.from(boxes).map((box) => (box as HTMLInputElement).value)).toEqual([
+      "business_email",
+      "google_search_ads",
+      "cookieless_analytics",
+    ]);
+    expect(screen.getByText("Google keresőhirdetés").closest("label")).toHaveTextContent("Új");
+    expect(screen.getByText("Céges e-mail").closest("label")).not.toHaveTextContent("Új");
+  });
+
+  it("lists the live services and preselects the one passed in", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="webshop" />
+    );
+
+    await screen.findByRole("radio", { name: "Webshop" });
+    expect(screen.getByRole("radio", { name: "Webshop" })).toBeChecked();
+    expect(screen.getByRole("radio", { name: /Még nem tudom, segíts/ })).toBeInTheDocument();
+  });
+
+  it("falls back to 'not sure' for a service that isn't offered", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="megszunt" />
+    );
+
+    await waitFor(() =>
+      expect(screen.getByRole("radio", { name: /Még nem tudom, segíts/ })).toBeChecked()
+    );
+  });
+
+  it("sends a simplified request without detail fields", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="landing-oldal" />
+    );
+    await screen.findByRole("radio", { name: "Landing oldal" });
+
+    fillContact();
+    submit();
+
+    await screen.findByText("Köszönöm, megkaptam az ajánlatkérésed!");
+    const [url] = fetchWithTimeout.mock.calls[0];
+    expect(url).toMatch(/\/api\/quote-requests\/$/);
+    const payload = sentPayload();
+    expect(payload).toMatchObject({
+      mode: "simple",
+      service: "landing-oldal",
+      name: "Teszt Elek",
+      consent: true,
+      siteLanguage: "hu",
+      company: "",
+    });
+    expect(payload).not.toHaveProperty("addons");
+  });
+
+  it("sends the chosen details in detailed mode", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+    await screen.findByRole("radio", { name: "Webshop" });
+
+    fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+    fireEvent.click(screen.getByRole("radio", { name: "Webshop" }));
+    fillContact();
+    fireEvent.click(screen.getByRole("checkbox", { name: /Google keresőhirdetés/ }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "Német" }));
+    fireEvent.click(screen.getByRole("radio", { name: "200 000 – 400 000 Ft" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: /Sopron környéki/ }));
+    submit();
+
+    await screen.findByText("Köszönöm, megkaptam az ajánlatkérésed!");
+    expect(sentPayload()).toMatchObject({
+      mode: "detailed",
+      service: "webshop",
+      addons: ["google_search_ads"],
+      languages: ["hu", "de"],
+      budget: "200k_400k",
+      isLocal: true,
+    });
+  });
+
+  it("explains a rate limit and keeps the form", async () => {
+    fetchWithTimeout.mockResolvedValue({ ok: false, status: 429 });
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    submit();
+
+    expect(await screen.findByRole("alert")).toHaveTextContent(/túl sok ajánlatkérés/);
+    expect(screen.getByLabelText("Név")).toHaveValue("Teszt Elek");
+  });
+
+  it("shows an error with the e-mail fallback when sending fails", async () => {
+    fetchWithTimeout.mockRejectedValue(new Error("offline"));
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    submit();
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("info@synelweb.hu");
+  });
+
+  it("still offers the general service types when the services can't be loaded", async () => {
+    getServiceCards.mockRejectedValue(new Error("offline"));
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    expect(await screen.findByRole("radio", { name: "Landing oldal" })).toBeInTheDocument();
+    expect(screen.getByRole("radio", { name: "SEO alapárban" })).toBeInTheDocument();
+  });
+});

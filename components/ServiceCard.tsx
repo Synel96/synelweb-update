@@ -4,6 +4,7 @@ import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { Button } from "@/components/ui/button";
 import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
+import { QUOTE_FORM_ANCHOR } from "@/components/QuoteRequestForm";
 
 type ServiceCardProps = {
   serviceName: string;
@@ -80,7 +81,7 @@ export function ServiceCard({
     return () => window.cancelAnimationFrame(frameId);
   }, [isDescriptionExpanded, expandedHeight]);
 
-  const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}`;
+  const quoteHref = `${contactBaseHref}?service=${encodeURIComponent(slug)}#${QUOTE_FORM_ANCHOR}`;
 
   return (
     <article

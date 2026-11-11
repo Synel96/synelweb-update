@@ -244,15 +244,16 @@ html {
 
 /* Building blocks used inside cards, so every card shares one finish. */
 
-/* Section label with a short gradient tick in front ("STACK", "LIGHTHOUSE"). */
-.fancy-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
+/* Section label with a short gradient tick in front ("STACK", "LIGHTHOUSE").
+   No `display` on .fancy-eyebrow on purpose: it would override utilities
+   such as `hidden sm:block` on the same element (this file's rules are
+   unlayered, so they beat Tailwind's), which once showed a desktop-only
+   label twice on phones. The tick is an inline-block instead. */
 .fancy-eyebrow::before {
   content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.55rem;
   width: 1.1rem;
   height: 2px;
   border-radius: 9999px;
@@ -438,20 +439,6 @@ html {
 @media (hover: hover) {
   .fancy-tile:hover {
     border-color: color-mix(in oklab, #34d399, transparent 65%);
-  }
-}
-
-/* Fades the edges of a horizontally scrolling row on phones, hinting that
-   it continues. */
-@media (width < 40rem) {
-  .badge-scroller {
-    mask-image: linear-gradient(
-      90deg,
-      transparent,
-      #000 1.5rem,
-      #000 calc(100% - 1.5rem),
-      transparent
-    );
   }
 }
 

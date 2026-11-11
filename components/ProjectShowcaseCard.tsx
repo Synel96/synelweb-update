@@ -156,7 +156,7 @@ export function ProjectShowcaseCard({
           </div>
 
           <div className="fancy-panel mt-5 rounded-2xl p-3.5 sm:p-4">
-            <p className="fancy-eyebrow hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:flex">
+            <p className="fancy-eyebrow hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:block">
               {scoresTitle}
             </p>
             <button

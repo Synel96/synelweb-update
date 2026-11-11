@@ -67,22 +67,30 @@ function SectionHeader({ label, title, text }: { label: string; title: string; t
   );
 }
 
-// Phones: one swipeable row, so a stack of badges doesn't add a screen of
-// scrolling. Larger screens: equal-width cells instead of a centred
-// flex-wrap, which left a lone badge on the last line at most widths.
+// Equal-width cells instead of a centred flex-wrap, which left a lone badge
+// on the last line at most widths. Two columns on phones, where badge text
+// may wrap inside its cell, so every badge is visible without scrolling.
 function BadgeGrid({ className, children }: { className: string; children: React.ReactNode }) {
   return (
-    <ul
-      className={`badge-scroller no-scrollbar -mx-6 mt-6 flex snap-x gap-2.5 overflow-x-auto px-6 sm:mx-auto sm:grid sm:max-w-5xl sm:overflow-visible sm:px-0 ${className}`}
-    >
+    <ul className={`mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-2 sm:gap-2.5 ${className}`}>
       {children}
     </ul>
   );
 }
 
-function Badge({ Icon, label }: { Icon: LucideIcon; label: string }) {
+function Badge({
+  Icon,
+  label,
+  className = "",
+}: {
+  Icon: LucideIcon;
+  label: string;
+  className?: string;
+}) {
   return (
-    <li className="fancy-chip flex shrink-0 snap-start items-center justify-center gap-2 rounded-full px-3 py-2 text-center text-xs font-semibold tracking-[0.1em] whitespace-nowrap text-white/85 uppercase sm:whitespace-normal">
+    <li
+      className={`fancy-chip flex items-center justify-center gap-2 rounded-2xl px-3 py-2 text-center text-[0.65rem] leading-snug font-semibold tracking-[0.08em] text-white/85 uppercase sm:rounded-full sm:text-xs sm:tracking-[0.1em] ${className}`}
+    >
       <Icon className="size-3.5 shrink-0 text-(--accent)" aria-hidden="true" />
       {label}
     </li>
@@ -299,8 +307,13 @@ export default function Page() {
         />
 
         <BadgeGrid className="sm:grid-cols-3">
-          {PROJECT_BADGES.map(({ key, Icon }) => (
-            <Badge key={key} Icon={Icon} label={t(`homeFlow.projects.badges.${key}`)} />
+          {PROJECT_BADGES.map(({ key, Icon }, index) => (
+            <Badge
+              key={key}
+              Icon={Icon}
+              label={t(`homeFlow.projects.badges.${key}`)}
+              className={index === 0 ? "col-span-2 sm:col-span-1" : ""}
+            />
           ))}
         </BadgeGrid>
 
@@ -361,7 +374,7 @@ export default function Page() {
           text={t("homeFlow.about.text")}
         />
 
-        <BadgeGrid className="sm:grid-cols-2 lg:grid-cols-3">
+        <BadgeGrid className="lg:grid-cols-3">
           {ABOUT_BADGES.map(({ key, Icon }) => (
             <Badge key={key} Icon={Icon} label={t(`homeFlow.about.badges.${key}`)} />
           ))}

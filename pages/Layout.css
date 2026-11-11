@@ -441,6 +441,20 @@ html {
   }
 }
 
+/* Fades the edges of a horizontally scrolling row on phones, hinting that
+   it continues. */
+@media (width < 40rem) {
+  .badge-scroller {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 1.5rem,
+      #000 calc(100% - 1.5rem),
+      transparent
+    );
+  }
+}
+
 .btn-cta {
   position: relative;
   isolation: isolate;

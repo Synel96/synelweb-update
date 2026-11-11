@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
-import { ChevronLeftIcon, ChevronRightIcon, StarIcon, XIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, QuoteIcon, StarIcon, XIcon } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Snackbar } from "@/components/ui/snackbar";
@@ -373,31 +373,46 @@ export function ReviewsCarousel({
           className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
         >
           {reviews.map((review) => (
-            <div
-              key={review.id}
-              className="fancy-panel w-full shrink-0 snap-center rounded-2xl p-5"
-            >
-              <p className="text-lg font-semibold text-white sm:text-xl">{review.name}</p>
-              <p className="mt-3 text-sm leading-7 text-white/82 sm:text-base">{review.review}</p>
-
-              <div className="mt-5 flex flex-wrap items-center gap-2">
-                {[1, 2, 3, 4, 5].map((starValue) => {
-                  const isActive = starValue <= review.rating;
-                  return (
-                    <span key={starValue} className="rounded-md p-1.5 text-white/65">
+            <figure key={review.id} className="w-full shrink-0 snap-center px-1 py-2 sm:px-2">
+              <div className="flex items-start justify-between gap-4">
+                <QuoteIcon
+                  className="size-9 fill-(--accent)/25 text-(--accent)/70 sm:size-10"
+                  aria-hidden="true"
+                />
+                <div
+                  className="flex items-center gap-0.5"
+                  role="img"
+                  aria-label={`${review.rating}/5`}
+                >
+                  {[1, 2, 3, 4, 5].map((starValue) => {
+                    const isActive = starValue <= review.rating;
+                    return (
                       <StarIcon
-                        className={`size-5 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent"}`}
+                        key={starValue}
+                        className={`size-5 ${isActive ? "fill-(--color-secondary-warm) text-(--color-secondary-warm)" : "fill-transparent text-white/30"}`}
                         aria-hidden="true"
                       />
-                    </span>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
+
+              <blockquote className="mt-4 text-base leading-8 text-white/88 sm:text-lg">
+                {review.review}
+              </blockquote>
 
               {review.rating === 0 ? (
                 <p className="mt-3 text-sm leading-7 text-white/70">{emptyRatingText}</p>
               ) : null}
-            </div>
+
+              <figcaption className="mt-5 flex items-center gap-3">
+                <span
+                  className="h-px w-8 bg-linear-to-r from-(--color-secondary-warm) to-(--accent)"
+                  aria-hidden="true"
+                />
+                <span className="text-base font-semibold text-white">{review.name}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
 

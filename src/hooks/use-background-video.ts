@@ -3,6 +3,12 @@ import { useEffect, type RefObject } from "react";
 // Restarts before the watchdog gives up and leaves the poster showing.
 const MAX_STALLS = 3;
 const CHECK_INTERVAL_MS = 2000;
+// After the page is shown again the browser often needs a moment to bring the
+// video back (it may have dropped the decoder or the buffer while hidden), so
+// it can sit still for a few seconds without anything being wrong. Counting
+// that as a stall used to jump the video back to the start, again and again,
+// and then swap it for the poster: a flicker every time you came back.
+const RESUME_GRACE_MS = 6000;
 
 // Keeps a muted, looping background video playing while it is on screen:
 //
@@ -16,7 +22,8 @@ const CHECK_INTERVAL_MS = 2000;
 //   a damaged copy in the cache that ends early without "ended", so the loop
 //   never restarts it): restart it from the beginning. If it keeps stalling,
 //   this device can't play it: hide it, so the poster behind it shows instead
-//   of a frozen frame (`onGiveUp`).
+//   of a frozen frame (`onGiveUp`). Not moving while it is still loading data
+//   or seeking, or just after the page was shown again, is not a stall.
 //
 // `active`: whether the video has a source yet.
 export function useBackgroundVideo(
@@ -30,6 +37,9 @@ export function useBackgroundVideo(
 
     let inView = true;
     let gaveUp = false;
+    let lastTime = -1;
+    let stalls = 0;
+    let graceUntil = 0;
     const play = () => {
       if (inView && !gaveUp && document.visibilityState === "visible") {
         void video.play().catch(() => {});
@@ -46,15 +56,35 @@ export function useBackgroundVideo(
           });
     observer?.observe(video);
 
-    const resume = () => play();
+    let wasHidden = document.visibilityState !== "visible";
+    const resume = () => {
+      const visible = document.visibilityState === "visible";
+      if (visible && wasHidden) {
+        // Back from another tab/app or a minimised window: start the stall
+        // watch afresh, after giving the browser time to resume.
+        graceUntil = Date.now() + RESUME_GRACE_MS;
+        lastTime = -1;
+        stalls = 0;
+      }
+      wasHidden = !visible;
+      play();
+    };
     document.addEventListener("visibilitychange", resume);
     window.addEventListener("pageshow", resume);
     window.addEventListener("focus", resume);
 
-    let lastTime = -1;
-    let stalls = 0;
     const timer = window.setInterval(() => {
-      if (video.paused || !inView || document.visibilityState !== "visible") {
+      const loading =
+        video.seeking ||
+        (video.readyState < HTMLMediaElement.HAVE_FUTURE_DATA &&
+          video.networkState === HTMLMediaElement.NETWORK_LOADING);
+      if (
+        video.paused ||
+        !inView ||
+        document.visibilityState !== "visible" ||
+        loading ||
+        Date.now() < graceUntil
+      ) {
         lastTime = -1;
         return;
       }

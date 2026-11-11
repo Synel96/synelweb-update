@@ -148,6 +148,8 @@ const ABOUT_BADGES = [
   { key: "cookieFreeAnalytics", Icon: ChartNoAxesColumnIcon },
 ] as const;
 
+const VIDEO_FADE_MS = 700;
+
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
 const HERO_VIDEO_POSTER_URL =
@@ -172,6 +174,9 @@ export default function Page() {
   // mobile PageSpeed score swing from run to run. Visitors who ask for less
   // motion or less data keep the poster.
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  // Set when the video can't be played here: it fades out over the poster
+  // copy behind it instead of snapping from the last frame to the poster.
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
@@ -189,8 +194,11 @@ export default function Page() {
   // played at all, the source goes and the poster shows instead of a frozen
   // frame.
   useBackgroundVideo(videoRef, videoSrc !== null, () => {
-    setVideoSrc(null);
-    videoRef.current?.load();
+    setVideoFailed(true);
+    window.setTimeout(() => {
+      setVideoSrc(null);
+      videoRef.current?.load();
+    }, VIDEO_FADE_MS);
   });
 
   useEffect(() => {
@@ -228,9 +236,21 @@ export default function Page() {
   return (
     <>
       <section className="relative min-h-svh overflow-hidden" data-home-hero>
+        {/* The poster again, under the video: whenever the video has no frame
+            to show (giving up, or a browser briefly blanking it on resume),
+            this is what shows through, not the page background. */}
+        <img
+          src={HERO_VIDEO_POSTER_URL}
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+          className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
+        />
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
+          className={`absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] transition-opacity duration-700 md:scale-105 ${
+            videoFailed ? "opacity-0" : "opacity-100"
+          }`}
           src={videoSrc ?? undefined}
           muted
           loop

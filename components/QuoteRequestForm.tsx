@@ -16,6 +16,7 @@ const UNSURE = "unsure";
 const FALLBACK_SERVICE_KEYS = ["landing", "business", "webshop", "seo"] as const;
 
 const EXISTING_SITE = ["none", "renew", "extend"] as const;
+const DOMAIN = ["has", "none", "unsure"] as const;
 const SIZES = ["one_page", "few_pages", "many_pages", "unsure"] as const;
 const LANGUAGES = ["hu", "en", "de"] as const;
 const ADDONS = [
@@ -137,6 +138,8 @@ export function QuoteRequestForm({
 
   const [existingSite, setExistingSite] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
+  const [domain, setDomain] = useState("");
+  const [domainName, setDomainName] = useState("");
   const [size, setSize] = useState("");
   const [languages, setLanguages] = useState<string[]>([lang]);
   const [addons, setAddons] = useState<string[]>([]);
@@ -204,6 +207,8 @@ export function QuoteRequestForm({
       Object.assign(payload, {
         existingSite,
         websiteUrl: existingSite && existingSite !== "none" ? websiteUrl.trim() : "",
+        domain,
+        domainName: domain === "has" ? domainName.trim() : "",
         size,
         languages,
         addons,
@@ -368,6 +373,29 @@ export function QuoteRequestForm({
                   placeholder="https://"
                   value={websiteUrl}
                   onChange={(event) => setWebsiteUrl(event.target.value)}
+                  className={INPUT_CLASS}
+                />
+              </Field>
+            ) : null}
+
+            <ChoiceGroup
+              legend={t("quoteForm.domain")}
+              name={`${formId}-domain`}
+              type="radio"
+              options={options(DOMAIN, "quoteForm.domainOptions")}
+              value={domain}
+              onChange={(next) => setDomain(next as string)}
+            />
+            {domain === "has" ? (
+              <Field label={t("quoteForm.domainName")}>
+                <input
+                  type="text"
+                  inputMode="url"
+                  autoCapitalize="none"
+                  maxLength={253}
+                  placeholder={t("quoteForm.domainNamePlaceholder")}
+                  value={domainName}
+                  onChange={(event) => setDomainName(event.target.value)}
                   className={INPUT_CLASS}
                 />
               </Field>

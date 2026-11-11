@@ -508,6 +508,14 @@
       "extend": "Yes, I'd like to extend it"
     },
     "websiteUrl": "Current website address",
+    "domain": "Do you already have a domain?",
+    "domainOptions": {
+      "has": "Yes",
+      "none": "Not yet",
+      "unsure": "Not sure"
+    },
+    "domainName": "Domain name",
+    "domainNamePlaceholder": "e.g. yourcompany.com",
     "size": "How big a site do you have in mind?",
     "sizeOptions": {
       "one_page": "1 page",

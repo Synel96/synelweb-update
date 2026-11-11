@@ -508,6 +508,14 @@
       "extend": "Ja, ich möchte sie erweitern"
     },
     "websiteUrl": "Adresse der aktuellen Website",
+    "domain": "Hast du bereits eine Domain?",
+    "domainOptions": {
+      "has": "Ja",
+      "none": "Noch nicht",
+      "unsure": "Weiß ich nicht"
+    },
+    "domainName": "Name der Domain",
+    "domainNamePlaceholder": "z. B. firmenname.de",
     "size": "Wie groß soll die Website sein?",
     "sizeOptions": {
       "one_page": "1 Seite",

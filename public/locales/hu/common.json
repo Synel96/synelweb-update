@@ -517,6 +517,14 @@
       "extend": "Van, bővíteném"
     },
     "websiteUrl": "A jelenlegi weboldal címe",
+    "domain": "Van már domained?",
+    "domainOptions": {
+      "has": "Van",
+      "none": "Még nincs",
+      "unsure": "Nem tudom"
+    },
+    "domainName": "A domain neve",
+    "domainNamePlaceholder": "pl. cegnev.hu",
     "size": "Mekkora oldalra gondolsz?",
     "sizeOptions": {
       "one_page": "1 oldal",

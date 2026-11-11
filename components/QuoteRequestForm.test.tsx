@@ -121,6 +121,10 @@ describe("QuoteRequestForm", () => {
     fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
     fireEvent.click(screen.getByRole("radio", { name: "Webshop" }));
     fillContact();
+    fireEvent.click(screen.getByRole("radio", { name: "Van" }));
+    fireEvent.change(screen.getByLabelText("A domain neve"), {
+      target: { value: " pelda.hu " },
+    });
     fireEvent.click(screen.getByRole("checkbox", { name: /Google keresőhirdetés/ }));
     fireEvent.click(screen.getByRole("checkbox", { name: "Német" }));
     fireEvent.click(screen.getByRole("radio", { name: "200 000 – 400 000 Ft" }));
@@ -131,6 +135,8 @@ describe("QuoteRequestForm", () => {
     expect(sentPayload()).toMatchObject({
       mode: "detailed",
       service: "webshop",
+      domain: "has",
+      domainName: "pelda.hu",
       addons: ["google_search_ads"],
       languages: ["hu", "de"],
       budget: "200k_400k",

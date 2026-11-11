@@ -326,7 +326,7 @@ export function ReviewsCarousel({
     return (
       <>
         <article className="fancy-card rounded-3xl p-6 sm:p-8">
-          <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+          <p className="fancy-eyebrow text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
             {title}
           </p>
 
@@ -363,7 +363,9 @@ export function ReviewsCarousel({
   return (
     <>
       <article className="fancy-card rounded-3xl p-6 sm:p-8">
-        <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">{title}</p>
+        <p className="fancy-eyebrow text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
+          {title}
+        </p>
 
         <div
           ref={scrollRef}

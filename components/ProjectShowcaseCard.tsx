@@ -112,6 +112,7 @@ export function ProjectShowcaseCard({
           <HeadingTag className="text-xl font-semibold tracking-tight text-white sm:text-2xl lg:text-[1.7rem]">
             {title}
           </HeadingTag>
+          <span className="fancy-title-bar" aria-hidden="true" />
 
           <div
             className="mt-4 overflow-hidden transition-[max-height] duration-400 ease-in-out"
@@ -138,14 +139,14 @@ export function ProjectShowcaseCard({
           ) : null}
 
           <div className="mt-5">
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
+            <p className="fancy-eyebrow text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
               {stackTitle}
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {stack.map((item) => (
                 <li
                   key={item.name}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-2.5 py-1.5"
+                  className="fancy-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5"
                 >
                   <TechnologyLogo name={item.logo} className="size-3.5" />
                   <span className="text-[0.72rem] font-medium text-white/88">{item.name}</span>
@@ -155,7 +156,7 @@ export function ProjectShowcaseCard({
           </div>
 
           <div className="fancy-panel mt-5 rounded-2xl p-3.5 sm:p-4">
-            <p className="hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:block">
+            <p className="fancy-eyebrow hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:flex">
               {scoresTitle}
             </p>
             <button
@@ -165,7 +166,7 @@ export function ProjectShowcaseCard({
               aria-expanded={isScoresExpanded}
               aria-label={isScoresExpanded ? scoresCollapseLabel : scoresExpandLabel}
             >
-              <span>{scoresTitle}</span>
+              <span className="fancy-eyebrow">{scoresTitle}</span>
               <ChevronDownIcon
                 className={`size-4 shrink-0 transition-transform duration-300 ${isScoresExpanded ? "rotate-180" : ""}`}
                 aria-hidden="true"
@@ -211,7 +212,7 @@ export function ProjectShowcaseCard({
               href={liveHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/14 bg-white/8 px-4 py-2.5 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white/14"
+              className="fancy-action inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold tracking-[0.08em] text-white uppercase"
             >
               <span>{liveLabel}</span>
               <ExternalLinkIcon className="size-4" />

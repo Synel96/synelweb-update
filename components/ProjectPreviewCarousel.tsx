@@ -59,7 +59,7 @@ export function ProjectPreviewCarousel({
 
   return (
     <div className="space-y-3">
-      <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+      <div className="fancy-media relative overflow-hidden rounded-2xl">
         <div
           ref={scrollRef}
           onScroll={handleScroll}
@@ -90,7 +90,7 @@ export function ProjectPreviewCarousel({
           variant="ghost"
           size="icon-sm"
           onClick={prev}
-          className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+          className="fancy-arrow rounded-full text-white hover:bg-black/40"
           aria-label="Previous image"
         >
           <ChevronLeftIcon className="size-4" />
@@ -115,7 +115,7 @@ export function ProjectPreviewCarousel({
           variant="ghost"
           size="icon-sm"
           onClick={next}
-          className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+          className="fancy-arrow rounded-full text-white hover:bg-black/40"
           aria-label="Next image"
         >
           <ChevronRightIcon className="size-4" />

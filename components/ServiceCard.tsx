@@ -90,6 +90,7 @@ export function ServiceCard({
       <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
         {serviceName}
       </h3>
+      <span className="fancy-title-bar" aria-hidden="true" />
 
       <div className="mt-4">
         <div
@@ -139,7 +140,7 @@ export function ServiceCard({
 
       {slides.length > 0 ? (
         <div className="mt-6 space-y-3">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+          <div className="fancy-media relative overflow-hidden rounded-2xl">
             <div
               ref={scrollRef}
               onScroll={handleScroll}
@@ -168,7 +169,7 @@ export function ServiceCard({
                 variant="ghost"
                 size="icon-sm"
                 onClick={prev}
-                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                className="fancy-arrow rounded-full text-white hover:bg-black/40"
                 aria-label="Previous image"
               >
                 <ChevronLeftIcon className="size-4" />
@@ -195,7 +196,7 @@ export function ServiceCard({
                 variant="ghost"
                 size="icon-sm"
                 onClick={next}
-                className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+                className="fancy-arrow rounded-full text-white hover:bg-black/40"
                 aria-label="Next image"
               >
                 <ChevronRightIcon className="size-4" />

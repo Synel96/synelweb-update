@@ -31,16 +31,19 @@ export function TechnologyStackCard({
             className="size-11 transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-        <span className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-[0.7rem] font-semibold tracking-[0.18em] text-(--accent) uppercase transition-colors duration-300 group-hover:border-white/16 group-hover:bg-white/8">
+        <span className="fancy-chip rounded-full px-3 py-1 text-[0.7rem] font-semibold tracking-[0.18em] text-(--accent) uppercase">
           {badge}
         </span>
       </div>
 
       <div className="mt-6">
-        <p className="text-sm font-semibold tracking-[0.16em] text-(--accent) uppercase">{name}</p>
+        <p className="fancy-eyebrow text-sm font-semibold tracking-[0.16em] text-(--accent) uppercase">
+          {name}
+        </p>
         <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-(--brand-on-surface)">
           {title}
         </h3>
+        <span className="fancy-title-bar" aria-hidden="true" />
         <p className="mt-4 text-sm leading-7 text-white/78 sm:text-base">{summary}</p>
       </div>
 

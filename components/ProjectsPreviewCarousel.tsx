@@ -72,7 +72,7 @@ export function ProjectsPreviewCarousel({
       >
         {slides.map((slide) => (
           <div key={slide.id} className="w-full shrink-0 snap-center">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/25">
+            <div className="fancy-media relative overflow-hidden rounded-2xl">
               <img
                 src={slide.src}
                 srcSet={slide.srcSet}
@@ -84,7 +84,7 @@ export function ProjectsPreviewCarousel({
                 crossOrigin="anonymous"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-10">
+              <div className="absolute inset-x-0 bottom-0 z-[3] bg-gradient-to-t from-black/80 to-transparent p-4 pt-10">
                 <p className="text-sm font-semibold text-white sm:text-base">{slide.name}</p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export function ProjectsPreviewCarousel({
             variant="ghost"
             size="icon-sm"
             onClick={prev}
-            className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+            className="fancy-arrow rounded-full text-white hover:bg-black/40"
             aria-label={prevAriaLabel}
           >
             <ChevronLeftIcon className="size-4" />
@@ -124,7 +124,7 @@ export function ProjectsPreviewCarousel({
             variant="ghost"
             size="icon-sm"
             onClick={next}
-            className="rounded-full border border-white/20 bg-black/35 text-white hover:bg-black/55"
+            className="fancy-arrow rounded-full text-white hover:bg-black/40"
             aria-label={nextAriaLabel}
           >
             <ChevronRightIcon className="size-4" />

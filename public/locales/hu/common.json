@@ -485,5 +485,101 @@
       "button": "Beszéljük át a projektet",
       "ariaLabel": "Beszéljük át a projektet"
     }
+  },
+  "quoteForm": {
+    "label": "Ajánlatkérés",
+    "title": "Kérj ajánlatot pár perc alatt",
+    "intro": "Válaszd az egyszerűsített űrlapot, ha gyorsan írnál, vagy a részleteset, ha pontosabb árat szeretnél már az első válaszban.",
+    "modeLabel": "Ajánlatkérés típusa",
+    "modes": {
+      "simple": {
+        "title": "Egyszerűsített ajánlat",
+        "hint": "Kb. 1 perc, a részleteket később egyeztetjük"
+      },
+      "detailed": {
+        "title": "Részletes ajánlat",
+        "hint": "Kb. 3 perc, pontosabb árat kapsz"
+      }
+    },
+    "service": "Milyen szolgáltatás érdekel?",
+    "serviceUnsure": "Még nem tudom, segíts választani",
+    "name": "Név",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "phoneHint": "Nem kötelező, de ha megadod, gyorsabban vissza tudlak hívni.",
+    "message": "Pár mondat a projektről",
+    "messagePlaceholder": "Mivel foglalkozik a vállalkozásod, és mit szeretnél elérni az oldallal?",
+    "detailsTitle": "Részletek",
+    "existingSite": "Van már weboldalad?",
+    "existingSiteOptions": {
+      "none": "Még nincs",
+      "renew": "Van, megújítanám",
+      "extend": "Van, bővíteném"
+    },
+    "websiteUrl": "A jelenlegi weboldal címe",
+    "domain": "Van már domained?",
+    "domainOptions": {
+      "has": "Van",
+      "none": "Még nincs",
+      "unsure": "Nem tudom"
+    },
+    "domainName": "A domain neve",
+    "domainNamePlaceholder": "pl. cegnev.hu",
+    "size": "Mekkora oldalra gondolsz?",
+    "sizeOptions": {
+      "one_page": "1 oldal",
+      "few_pages": "3–5 oldal",
+      "many_pages": "5+ oldal",
+      "unsure": "Még nem tudom"
+    },
+    "languages": "Milyen nyelveken?",
+    "languageOptions": {
+      "hu": "Magyar",
+      "en": "Angol",
+      "de": "Német"
+    },
+    "addons": "Kiegészítők",
+    "addonOptions": {
+      "business_email": "Céges e-mail",
+      "google_search_ads": "Google keresőhirdetés",
+      "cookieless_analytics": "Süti-mentes weboldal-analitika"
+    },
+    "newBadge": "Új",
+    "timeline": "Mikorra kellene?",
+    "timelineOptions": {
+      "urgent": "Sürgős",
+      "one_two_months": "1–2 hónapon belül",
+      "flexible": "Rugalmas"
+    },
+    "budget": "Keretösszeg (nem kötelező)",
+    "budgetOptions": {
+      "under_200k": "200 000 Ft alatt",
+      "200k_400k": "200 000 – 400 000 Ft",
+      "400k_800k": "400 000 – 800 000 Ft",
+      "over_800k": "800 000 Ft felett",
+      "unsure": "Még nem tudom"
+    },
+    "contactPreference": "Hogyan egyeztetnél?",
+    "contactPreferenceOptions": {
+      "email": "E-mailben",
+      "phone": "Telefonon",
+      "online": "Online megbeszélésen",
+      "in_person": "Személyesen"
+    },
+    "isLocal": "Sopron környéki vállalkozás vagyok (helyi kedvezmény)",
+    "isGrantFunded": "Pályázati forrásból (pl. DIMOP Plusz) finanszíroznám",
+    "consentBefore": "Elolvastam és elfogadom az",
+    "consentLink": "adatkezelési tájékoztatót",
+    "consentAfter": ", és hozzájárulok, hogy az ajánlatkéréshez megadott adataimat kezeld.",
+    "submit": {
+      "simple": "Ajánlatot kérek",
+      "detailed": "Részletes ajánlatot kérek"
+    },
+    "sending": "Küldés…",
+    "sentTitle": "Köszönöm, megkaptam az ajánlatkérésed!",
+    "sentText": "Általában 1 munkanapon belül válaszolok a megadott e-mail-címre vagy telefonszámra.",
+    "error": "Nem sikerült elküldeni. Próbáld újra pár perc múlva, vagy írj közvetlenül az info@synelweb.hu címre.",
+    "throttled": "Rövid idő alatt túl sok ajánlatkérés érkezett erről az eszközről. Próbáld újra később, vagy írj az info@synelweb.hu címre.",
+    "responseTime": "Általában 1 munkanapon belül válaszolok."
   }
 }

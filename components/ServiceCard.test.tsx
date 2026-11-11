@@ -103,7 +103,7 @@ describe("ServiceCard", () => {
     render(<ServiceCard {...baseProps} slug="seo & ads" />);
     expect(screen.getByRole("link", { name: baseProps.ctaAriaLabel })).toHaveAttribute(
       "href",
-      "/en/contact?service=seo%20%26%20ads"
+      "/en/contact?service=seo%20%26%20ads#ajanlatkeres"
     );
   });
 });

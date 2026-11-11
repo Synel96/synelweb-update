@@ -1,4 +1,4 @@
-import type { ComponentType } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import {
   HandshakeIcon,
   LanguagesIcon,
@@ -12,6 +12,9 @@ import {
   VideoIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { usePageContext } from "vike-react/usePageContext";
+import { QUOTE_FORM_ANCHOR, QuoteRequestForm, type QuoteMode } from "@/components/QuoteRequestForm";
+import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { Button } from "@/components/ui/button";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 
@@ -55,6 +58,19 @@ function ContactPill({
 
 export default function Page() {
   const { t } = useTranslation();
+  const pageContext = usePageContext() as { lang?: SupportedLang };
+  const lang = pageContext.lang ?? DEFAULT_LANG;
+  // The page is prerendered, so the query string (a service card's
+  // ?service=, or ?mode=detailed) is only known in the browser.
+  const [preset, setPreset] = useState<{ service: string; mode: QuoteMode } | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setPreset({
+      service: params.get("service") ?? "",
+      mode: params.get("mode") === "detailed" ? "detailed" : "simple",
+    });
+  }, []);
 
   return (
     <div className="text-(--brand-on-surface)">
@@ -190,6 +206,31 @@ export default function Page() {
             <p className="mt-4 text-sm leading-6 text-white/75">{t("contact.linkedinCardText")}</p>
           </a>
         </div>
+      </section>
+
+      <section
+        id={QUOTE_FORM_ANCHOR}
+        className="mx-auto w-full max-w-3xl scroll-mt-28 px-6 pb-16 sm:pb-20"
+        data-reveal
+      >
+        <div className="mb-8 text-center">
+          <p className="fancy-eyebrow text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
+            {t("quoteForm.label")}
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+            {t("quoteForm.title")}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-pretty text-white/78">
+            {t("quoteForm.intro")}
+          </p>
+        </div>
+        <QuoteRequestForm
+          key={preset ? `${preset.service}-${preset.mode}` : "default"}
+          lang={lang}
+          privacyHref="/adatkezeles"
+          initialService={preset?.service}
+          initialMode={preset?.mode}
+        />
       </section>
 
       <section id="map" className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>

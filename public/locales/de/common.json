@@ -476,5 +476,101 @@
       "button": "Projekt besprechen",
       "ariaLabel": "Projekt besprechen"
     }
+  },
+  "quoteForm": {
+    "label": "Angebot anfordern",
+    "title": "In wenigen Minuten ein Angebot erhalten",
+    "intro": "Wähle das kurze Formular, wenn es schnell gehen soll, oder das ausführliche für einen genaueren Preis schon in der ersten Antwort.",
+    "modeLabel": "Art der Angebotsanfrage",
+    "modes": {
+      "simple": {
+        "title": "Kurzes Angebot",
+        "hint": "Ca. 1 Minute, Details später"
+      },
+      "detailed": {
+        "title": "Ausführliches Angebot",
+        "hint": "Ca. 3 Minuten, genauerer Preis"
+      }
+    },
+    "service": "Welche Leistung interessiert dich?",
+    "serviceUnsure": "Weiß ich noch nicht, hilf mir bei der Wahl",
+    "name": "Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "phoneHint": "Optional, aber so kann ich dich schneller zurückrufen.",
+    "message": "Ein paar Sätze zum Projekt",
+    "messagePlaceholder": "Was macht dein Unternehmen, und was soll die Website erreichen?",
+    "detailsTitle": "Details",
+    "existingSite": "Hast du bereits eine Website?",
+    "existingSiteOptions": {
+      "none": "Noch nicht",
+      "renew": "Ja, ich möchte sie erneuern",
+      "extend": "Ja, ich möchte sie erweitern"
+    },
+    "websiteUrl": "Adresse der aktuellen Website",
+    "domain": "Hast du bereits eine Domain?",
+    "domainOptions": {
+      "has": "Ja",
+      "none": "Noch nicht",
+      "unsure": "Weiß ich nicht"
+    },
+    "domainName": "Name der Domain",
+    "domainNamePlaceholder": "z. B. firmenname.de",
+    "size": "Wie groß soll die Website sein?",
+    "sizeOptions": {
+      "one_page": "1 Seite",
+      "few_pages": "3–5 Seiten",
+      "many_pages": "5+ Seiten",
+      "unsure": "Weiß ich noch nicht"
+    },
+    "languages": "In welchen Sprachen?",
+    "languageOptions": {
+      "hu": "Ungarisch",
+      "en": "Englisch",
+      "de": "Deutsch"
+    },
+    "addons": "Zusatzleistungen",
+    "addonOptions": {
+      "business_email": "Geschäftliche E-Mail",
+      "google_search_ads": "Google-Suchanzeigen",
+      "cookieless_analytics": "Cookie-freie Website-Analyse"
+    },
+    "newBadge": "Neu",
+    "timeline": "Bis wann?",
+    "timelineOptions": {
+      "urgent": "Dringend",
+      "one_two_months": "In 1–2 Monaten",
+      "flexible": "Flexibel"
+    },
+    "budget": "Budget (optional)",
+    "budgetOptions": {
+      "under_200k": "Unter 200.000 HUF",
+      "200k_400k": "200.000 – 400.000 HUF",
+      "400k_800k": "400.000 – 800.000 HUF",
+      "over_800k": "Über 800.000 HUF",
+      "unsure": "Weiß ich noch nicht"
+    },
+    "contactPreference": "Wie möchtest du dich abstimmen?",
+    "contactPreferenceOptions": {
+      "email": "Per E-Mail",
+      "phone": "Telefonisch",
+      "online": "Online-Meeting",
+      "in_person": "Persönlich"
+    },
+    "isLocal": "Mein Unternehmen liegt in der Nähe von Sopron (lokaler Rabatt)",
+    "isGrantFunded": "Ich finanziere es über Fördermittel (z. B. DIMOP Plusz)",
+    "consentBefore": "Ich habe die",
+    "consentLink": "Datenschutzerklärung",
+    "consentAfter": " gelesen, akzeptiere sie und stimme der Verarbeitung meiner Angaben für diese Anfrage zu.",
+    "submit": {
+      "simple": "Angebot anfordern",
+      "detailed": "Ausführliches Angebot anfordern"
+    },
+    "sending": "Wird gesendet…",
+    "sentTitle": "Danke, deine Anfrage ist angekommen!",
+    "sentText": "Ich antworte in der Regel innerhalb eines Werktags per E-Mail oder Telefon.",
+    "error": "Das Senden hat nicht geklappt. Bitte versuche es in ein paar Minuten erneut oder schreib direkt an info@synelweb.hu.",
+    "throttled": "Von diesem Gerät kamen in kurzer Zeit zu viele Anfragen. Bitte versuche es später erneut oder schreib an info@synelweb.hu.",
+    "responseTime": "Ich antworte in der Regel innerhalb eines Werktags."
   }
 }

@@ -51,19 +51,19 @@ export default function Page() {
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--accent) uppercase">
                 {t("about.highlights.speed.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.speed.text")}</p>
             </article>
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-warm) uppercase">
                 {t("about.highlights.security.title")}
               </p>
               <p className="mt-2 text-sm text-white/80">{t("about.highlights.security.text")}</p>
             </article>
-            <article className="rounded-xl border border-white/10 bg-white/5 p-4">
+            <article className="fancy-tile rounded-xl p-4">
               <p className="text-xs font-semibold tracking-[0.14em] text-(--color-secondary-hot) uppercase">
                 {t("about.highlights.custom.title")}
               </p>
@@ -76,7 +76,7 @@ export default function Page() {
       </section>
 
       <section
-        className="mx-auto w-full max-w-6xl rounded-2xl border border-white/10 bg-[linear-gradient(150deg,rgba(16,22,42,0.86),rgba(15,21,40,0.92))] px-4 py-5 sm:px-6 sm:py-6"
+        className="fancy-card mx-auto w-full max-w-6xl rounded-2xl px-4 py-5 sm:px-6 sm:py-6"
         data-reveal
       >
         <h2 className="px-2 text-center text-xl font-semibold sm:text-2xl">
@@ -86,7 +86,7 @@ export default function Page() {
           {accordionItems.map((item) => (
             <details
               key={item.title}
-              className="group rounded-xl border border-white/10 bg-white/4 p-4 open:bg-white/6"
+              className="group fancy-panel rounded-xl p-4 open:border-(--accent)/40 open:bg-white/6"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-base font-semibold text-(--brand-on-surface) sm:text-lg">
                 <span>{item.title}</span>
@@ -105,10 +105,21 @@ export default function Page() {
           {t("about.process.title")}
         </h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {processCards.map((item) => (
-            <article key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <h3 className="text-lg font-semibold">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-white/78 sm:text-base">{item.content}</p>
+          {processCards.map((item, index) => (
+            <article
+              key={item.title}
+              className="fancy-card fancy-card-lift flex gap-4 rounded-2xl p-5 sm:gap-5 sm:p-6"
+            >
+              <span
+                className="bg-linear-to-b from-(--color-secondary-warm) to-(--accent) bg-clip-text text-3xl leading-none font-bold text-transparent tabular-nums sm:text-4xl"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/78 sm:text-base">{item.content}</p>
+              </div>
             </article>
           ))}
         </div>

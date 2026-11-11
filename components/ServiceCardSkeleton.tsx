@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export function ServiceCardSkeleton() {
   return (
-    <article className="flex flex-col self-start rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-6 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-8">
+    <article className="fancy-card flex flex-col self-start rounded-3xl p-6 sm:p-8">
       <Skeleton className="h-10 w-56" />
 
       <div className="mt-4 space-y-2">

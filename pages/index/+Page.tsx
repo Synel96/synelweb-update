@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  ArrowRightIcon,
   BriefcaseIcon,
   ChartNoAxesColumnIcon,
   Code2Icon,
@@ -14,6 +15,7 @@ import {
   ShoppingCartIcon,
   SparklesIcon,
   VideoIcon,
+  type LucideIcon,
 } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
@@ -37,7 +39,80 @@ type Data = {
   reviewsFetchError: boolean;
 };
 
-const TECHNOLOGY_TEASER_LOGOS = ["react", "typescript", "tailwind", "django"] as const;
+// Product names, not translated.
+const TECHNOLOGY_TEASER = [
+  { logo: "react", name: "React" },
+  { logo: "typescript", name: "TypeScript" },
+  { logo: "tailwind", name: "Tailwind" },
+  { logo: "python", name: "Python" },
+  { logo: "django", name: "Django" },
+  { logo: "postgresql", name: "PostgreSQL" },
+] as const;
+
+// Tighter on phones: the page is long there, and the full desktop rhythm
+// left a lot of empty scrolling between sections.
+const SECTION_CLASS = "mx-auto w-full max-w-6xl px-6 py-12 sm:py-20";
+
+function SectionHeader({ label, title, text }: { label: string; title: string; text: string }) {
+  return (
+    <div className="mx-auto max-w-3xl text-center">
+      <p className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
+        {label}
+      </p>
+      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+        {title}
+      </h2>
+      <p className="mt-4 text-base leading-8 text-pretty text-white/80 sm:text-lg">{text}</p>
+    </div>
+  );
+}
+
+// Phones: one swipeable row, so a stack of badges doesn't add a screen of
+// scrolling. Larger screens: equal-width cells instead of a centred
+// flex-wrap, which left a lone badge on the last line at most widths.
+function BadgeGrid({ className, children }: { className: string; children: React.ReactNode }) {
+  return (
+    <ul
+      className={`badge-scroller no-scrollbar -mx-6 mt-6 flex snap-x gap-2.5 overflow-x-auto px-6 sm:mx-auto sm:grid sm:max-w-5xl sm:overflow-visible sm:px-0 ${className}`}
+    >
+      {children}
+    </ul>
+  );
+}
+
+function Badge({ Icon, label }: { Icon: LucideIcon; label: string }) {
+  return (
+    <li className="fancy-chip flex shrink-0 snap-start items-center justify-center gap-2 rounded-full px-3 py-2 text-center text-xs font-semibold tracking-[0.1em] whitespace-nowrap text-white/85 uppercase sm:whitespace-normal">
+      <Icon className="size-3.5 shrink-0 text-(--accent)" aria-hidden="true" />
+      {label}
+    </li>
+  );
+}
+
+function SectionLink({
+  href,
+  label,
+  warm = false,
+}: {
+  href: string;
+  label: string;
+  warm?: boolean;
+}) {
+  return (
+    <div className="mt-8 text-center">
+      <a
+        href={href}
+        className={`inline-flex items-center text-sm font-semibold tracking-[0.08em] uppercase transition-colors ${
+          warm
+            ? "text-(--color-secondary-warm) hover:text-(--color-secondary-hot)"
+            : "text-(--accent) hover:text-(--primary)"
+        }`}
+      >
+        {label}
+      </a>
+    </div>
+  );
+}
 
 // Keeps the homepage teaser light: the full project list (with every
 // preview image) lives on the dedicated /projects page.
@@ -192,51 +267,42 @@ export default function Page() {
         className="h-16 w-full bg-[linear-gradient(100deg,var(--color-secondary-warm),var(--color-accent))] blur-[6px] [clip-path:polygon(0_0,100%_0,100%_70%,0_100%)] sm:h-24 sm:blur-[8px] md:h-32"
       />
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.technology.title")}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.technology.text")}
-          </p>
+      <section className={SECTION_CLASS} data-reveal>
+        <SectionHeader
+          label={t("homeFlow.technology.label")}
+          title={t("homeFlow.technology.title")}
+          text={t("homeFlow.technology.text")}
+        />
 
-          <div className="mt-6 flex items-center justify-center gap-2">
-            {TECHNOLOGY_TEASER_LOGOS.map((logo) => (
-              <TechnologyLogo key={logo} name={logo} className="size-5 opacity-80" />
-            ))}
-          </div>
+        <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-3 gap-3 sm:grid-cols-6">
+          {TECHNOLOGY_TEASER.map(({ logo, name }) => (
+            <li
+              key={logo}
+              className="fancy-tile flex flex-col items-center gap-2.5 rounded-2xl px-2 py-4"
+            >
+              <TechnologyLogo name={logo} className="size-9" />
+              <span className="text-[0.7rem] font-semibold tracking-[0.06em] text-white/70">
+                {name}
+              </span>
+            </li>
+          ))}
+        </ul>
 
-          <a
-            href={langHref("/technology")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
-          >
-            {t("homeFlow.technology.cta")}
-          </a>
-        </div>
+        <SectionLink href={langHref("/technology")} label={t("homeFlow.technology.cta")} />
       </section>
 
-      <section id="projects" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.projects.title")}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.projects.text")}
-          </p>
+      <section id="projects" className={SECTION_CLASS} data-reveal>
+        <SectionHeader
+          label={t("homeFlow.projects.label")}
+          title={t("homeFlow.projects.title")}
+          text={t("homeFlow.projects.text")}
+        />
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {PROJECT_BADGES.map(({ key, Icon }) => (
-              <span
-                key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-              >
-                <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
-                {t(`homeFlow.projects.badges.${key}`)}
-              </span>
-            ))}
-          </div>
-        </div>
+        <BadgeGrid className="sm:grid-cols-3">
+          {PROJECT_BADGES.map(({ key, Icon }) => (
+            <Badge key={key} Icon={Icon} label={t(`homeFlow.projects.badges.${key}`)} />
+          ))}
+        </BadgeGrid>
 
         <ProjectsPreviewCarousel
           projects={projects}
@@ -245,82 +311,63 @@ export default function Page() {
           goToAriaLabel={(index) => t("homeFlow.projects.carousel.goToAria", { index })}
         />
 
-        <div className="text-center">
-          <a
-            href={langHref("/projects")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-          >
-            {t("homeFlow.projects.cta")}
-          </a>
-        </div>
+        <SectionLink href={langHref("/projects")} label={t("homeFlow.projects.cta")} warm />
       </section>
 
-      <section id="services" className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.services.title")}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.services.text")}
-          </p>
+      <section id="services" className={SECTION_CLASS} data-reveal>
+        <SectionHeader
+          label={t("homeFlow.services.label")}
+          title={t("homeFlow.services.title")}
+          text={t("homeFlow.services.text")}
+        />
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {SERVICE_BADGES.map(({ key, Icon }) => (
-              <span
-                key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+        <ul className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          {SERVICE_BADGES.map(({ key, Icon }) => (
+            <li key={key}>
+              <a
+                href={langHref("/services")}
+                className="fancy-card fancy-card-lift group flex h-full flex-col items-start gap-4 rounded-2xl p-4 sm:p-5"
               >
-                <Icon className="size-3.5 text-(--color-secondary-warm)" aria-hidden="true" />
-                {t(`homeFlow.services.badges.${key}`)}
-              </span>
-            ))}
+                <span className="flex size-11 items-center justify-center rounded-xl bg-linear-135 from-(--color-secondary-warm) to-(--color-accent) text-[#140814] shadow-[0_10px_24px_-12px_var(--accent-glow)]">
+                  <Icon className="size-5" aria-hidden="true" />
+                </span>
+                <span className="flex w-full items-center justify-between gap-2 text-sm font-semibold text-white sm:text-base">
+                  {t(`homeFlow.services.badges.${key}`)}
+                  <ArrowRightIcon
+                    className="size-4 shrink-0 text-white/40 transition-[translate,color] duration-300 group-hover:translate-x-0.5 group-hover:text-(--accent)"
+                    aria-hidden="true"
+                  />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-white/20 bg-white/4 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/55 uppercase">
-              <SparklesIcon className="size-3.5 text-white/45" aria-hidden="true" />
-              {t("homeFlow.services.badges.readyMade")}
-              <span className="text-white/35 normal-case">
-                · {t("homeFlow.services.badges.comingSoon")}
-              </span>
-            </span>
-          </div>
+        <p className="mt-5 flex items-center justify-center gap-1.5 text-xs font-semibold tracking-[0.1em] text-white/50 uppercase">
+          <SparklesIcon className="size-3.5 text-white/40" aria-hidden="true" />
+          {t("homeFlow.services.badges.readyMade")}
+          <span className="text-white/35 normal-case">
+            · {t("homeFlow.services.badges.comingSoon")}
+          </span>
+        </p>
 
-          <a
-            href={langHref("/services")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
-          >
-            {t("homeFlow.services.cta")}
-          </a>
-        </div>
+        <SectionLink href={langHref("/services")} label={t("homeFlow.services.cta")} />
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-16 sm:py-20" data-reveal>
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.about.title")}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/80 sm:text-lg">
-            {t("homeFlow.about.text")}
-          </p>
+      <section className={SECTION_CLASS} data-reveal>
+        <SectionHeader
+          label={t("homeFlow.about.label")}
+          title={t("homeFlow.about.title")}
+          text={t("homeFlow.about.text")}
+        />
 
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {ABOUT_BADGES.map(({ key, Icon }) => (
-              <span
-                key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
-              >
-                <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
-                {t(`homeFlow.about.badges.${key}`)}
-              </span>
-            ))}
-          </div>
+        <BadgeGrid className="sm:grid-cols-2 lg:grid-cols-3">
+          {ABOUT_BADGES.map(({ key, Icon }) => (
+            <Badge key={key} Icon={Icon} label={t(`homeFlow.about.badges.${key}`)} />
+          ))}
+        </BadgeGrid>
 
-          <a
-            href={langHref("/about")}
-            className="mt-6 inline-flex items-center text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
-          >
-            {t("homeFlow.about.cta")}
-          </a>
-        </div>
+        <SectionLink href={langHref("/about")} label={t("homeFlow.about.cta")} warm />
       </section>
 
       <section id="reviews" className="relative" data-reveal>
@@ -328,12 +375,12 @@ export default function Page() {
           className="absolute inset-0 bg-[linear-gradient(140deg,rgba(11,15,25,0.94),rgba(15,21,40,0.98))] [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20">
-          <div className="mx-auto mb-8 max-w-3xl text-center">
-            <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-12 sm:py-20">
+          <div className="mb-8 text-center">
+            <h2 className="mx-auto max-w-3xl text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
               {t("reviewsPage.sectionTitle")}
             </h2>
-            <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-pretty text-slate-200 sm:text-lg">
               {t("reviewsPage.sectionText")}
             </p>
           </div>

@@ -170,17 +170,23 @@ function BlogPostCard({
   }, [description]);
 
   return (
-    <article className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] lg:w-auto lg:shrink">
+    <article className="fancy-card fancy-card-lift w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl sm:w-[60%] lg:w-auto lg:shrink">
       {previewImageUrl ? (
-        <img
-          src={previewImageUrl}
-          alt={post.title || untitledLabel}
-          className="h-56 w-full object-cover"
-          loading="lazy"
-          decoding="async"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
+        <div className="fancy-zoom relative overflow-hidden">
+          <img
+            src={previewImageUrl}
+            alt={post.title || untitledLabel}
+            className="h-56 w-full object-cover"
+            loading="lazy"
+            decoding="async"
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#0d1324] to-transparent"
+            aria-hidden="true"
+          />
+        </div>
       ) : null}
 
       <div className="p-6 sm:p-7">
@@ -194,6 +200,7 @@ function BlogPostCard({
         <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white">
           {post.title || untitledLabel}
         </h2>
+        <span className="fancy-title-bar" aria-hidden="true" />
 
         {/* Collapsed to 0 on phones so the list only shows titles by default;
             on sm+ screens a long description still gets a fixed-height preview,

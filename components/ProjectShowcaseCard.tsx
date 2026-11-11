@@ -97,10 +97,7 @@ export function ProjectShowcaseCard({
   }, [isDescriptionExpanded, expandedHeight]);
 
   return (
-    <article
-      ref={articleRef}
-      className="rounded-[1.7rem] border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.9),rgba(12,18,33,0.95))] p-4 shadow-[0_22px_54px_-32px_var(--accent-glow)] sm:p-6 lg:p-7"
-    >
+    <article ref={articleRef} className="fancy-card rounded-[1.7rem] p-4 sm:p-6 lg:p-7">
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-start lg:gap-6">
         <div className="lg:order-2">
           <ProjectPreviewCarousel
@@ -115,6 +112,7 @@ export function ProjectShowcaseCard({
           <HeadingTag className="text-xl font-semibold tracking-tight text-white sm:text-2xl lg:text-[1.7rem]">
             {title}
           </HeadingTag>
+          <span className="fancy-title-bar" aria-hidden="true" />
 
           <div
             className="mt-4 overflow-hidden transition-[max-height] duration-400 ease-in-out"
@@ -141,14 +139,14 @@ export function ProjectShowcaseCard({
           ) : null}
 
           <div className="mt-5">
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
+            <p className="fancy-eyebrow text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase">
               {stackTitle}
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
               {stack.map((item) => (
                 <li
                   key={item.name}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-2.5 py-1.5"
+                  className="fancy-chip inline-flex items-center gap-2 rounded-full px-3 py-1.5"
                 >
                   <TechnologyLogo name={item.logo} className="size-3.5" />
                   <span className="text-[0.72rem] font-medium text-white/88">{item.name}</span>
@@ -157,8 +155,8 @@ export function ProjectShowcaseCard({
             </ul>
           </div>
 
-          <div className="mt-5 rounded-2xl border border-white/10 bg-black/22 p-3.5 sm:p-4">
-            <p className="hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:block">
+          <div className="fancy-panel mt-5 rounded-2xl p-3.5 sm:p-4">
+            <p className="fancy-eyebrow hidden text-[0.68rem] font-semibold tracking-[0.16em] text-(--accent) uppercase sm:flex">
               {scoresTitle}
             </p>
             <button
@@ -168,14 +166,14 @@ export function ProjectShowcaseCard({
               aria-expanded={isScoresExpanded}
               aria-label={isScoresExpanded ? scoresCollapseLabel : scoresExpandLabel}
             >
-              <span>{scoresTitle}</span>
+              <span className="fancy-eyebrow">{scoresTitle}</span>
               <ChevronDownIcon
                 className={`size-4 shrink-0 transition-transform duration-300 ${isScoresExpanded ? "rotate-180" : ""}`}
                 aria-hidden="true"
               />
             </button>
             <div
-              className={`mt-3 gap-4 xl:grid-cols-2 sm:grid ${isScoresExpanded ? "grid" : "hidden"}`}
+              className={`mt-3 gap-4 sm:grid xl:grid-cols-2 ${isScoresExpanded ? "grid" : "hidden"}`}
             >
               <div>
                 <p className="text-[0.68rem] font-semibold tracking-[0.14em] text-white/65 uppercase">
@@ -214,7 +212,7 @@ export function ProjectShowcaseCard({
               href={liveHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/14 bg-white/8 px-4 py-2.5 text-sm font-semibold tracking-[0.08em] text-white uppercase transition-colors hover:bg-white/14"
+              className="fancy-action inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold tracking-[0.08em] text-white uppercase"
             >
               <span>{liveLabel}</span>
               <ExternalLinkIcon className="size-4" />

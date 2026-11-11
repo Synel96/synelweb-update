@@ -46,7 +46,9 @@ describe("Footer", () => {
     usePageContext.mockReturnValue({ lang: "en" });
     await renderWithI18n(<Footer brandName="CustomBrand" />, "en");
 
-    expect(screen.getByText(/CustomBrand/)).toBeInTheDocument();
+    const year = new Date().getFullYear();
+    expect(screen.getByText(new RegExp(`${year} CustomBrand`))).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "CustomBrand" })).toHaveAttribute("href", "/en/");
   });
 
   it("defaults to the default language when pageContext.lang is unset", async () => {

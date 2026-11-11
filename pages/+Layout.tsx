@@ -56,6 +56,38 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
     void ensureContentRevealReady();
   }, []);
 
+  // Card spotlight: one delegated listener feeds the pointer position over a
+  // .fancy-card / .bento-card into --fc-x / --fc-y (see Layout.css). Mouse and
+  // pen only, at most once per frame.
+  useEffect(() => {
+    let frame = 0;
+    let pending: { card: HTMLElement; x: number; y: number } | null = null;
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      const card = target.closest<HTMLElement>(".fancy-card, .bento-card");
+      if (!card) return;
+      pending = { card, x: event.clientX, y: event.clientY };
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        if (!pending) return;
+        const rect = pending.card.getBoundingClientRect();
+        pending.card.style.setProperty("--fc-x", `${pending.x - rect.left}px`);
+        pending.card.style.setProperty("--fc-y", `${pending.y - rect.top}px`);
+        pending = null;
+      });
+    };
+
+    document.addEventListener("pointermove", onPointerMove, { passive: true });
+    return () => {
+      document.removeEventListener("pointermove", onPointerMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   // Reveal [data-reveal] sections as they scroll into view rather than all
   // at once on page load, so content below the fold still animates in.
   // Re-runs on client-side navigation since Layout itself doesn't remount.

@@ -9,6 +9,12 @@ type ConversionCtaButtonProps = {
   ariaLabel?: string;
 };
 
+// The button draws its own arrow icon, so drop a trailing "→" a label may
+// still carry (labels are shared with plain text links that do show one).
+function withoutTrailingArrow(children: ReactNode): ReactNode {
+  return typeof children === "string" ? children.replace(/\s*→\s*$/, "") : children;
+}
+
 export function ConversionCtaButton({
   href,
   children,
@@ -23,7 +29,7 @@ export function ConversionCtaButton({
     >
       <a href={href} aria-label={ariaLabel}>
         <span className="relative z-10 flex items-center justify-center gap-2">
-          <span>{children}</span>
+          <span>{withoutTrailingArrow(children)}</span>
           <ArrowRightIcon className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
         </span>
         <span className="btn-cta-shine" aria-hidden="true" />

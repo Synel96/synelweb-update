@@ -95,20 +95,364 @@ html {
   display: none;
 }
 
+/* Cards ("fancy-card", and the older .bento-card it replaced the look of):
+   a warm-to-pink gradient ring instead of a flat grey border, soft corner
+   glows in the brand colours, and a spotlight that follows the pointer
+   (--fc-x / --fc-y, set in +Layout.tsx). The ring sits in ::after above the
+   content so flush images can't hide it; the glow sits in ::before under it. */
+@property --fc-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.fancy-card,
 .bento-card {
-  border: 1px solid color-mix(in oklab, var(--border), transparent 5%);
-  background: linear-gradient(
-    155deg,
-    color-mix(in oklab, var(--card), var(--color-secondary-warm) 8%),
-    color-mix(in oklab, var(--card), var(--color-secondary-hot) 6%)
+  position: relative;
+  isolation: isolate;
+  border: 1px solid transparent;
+  background:
+    radial-gradient(
+      120% 70% at 0% 0%,
+      color-mix(in oklab, var(--color-secondary-warm), transparent 83%),
+      transparent 60%
+    ),
+    radial-gradient(
+      110% 80% at 100% 100%,
+      color-mix(in oklab, var(--color-accent), transparent 82%),
+      transparent 62%
+    ),
+    linear-gradient(160deg, rgb(20 28 53 / 94%), rgb(10 15 29 / 97%));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 7%),
+    0 2px 8px -3px rgb(0 0 0 / 55%),
+    0 26px 60px -38px var(--accent-glow);
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.fancy-card::after,
+.bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--fc-angle) at 30% 0%,
+    color-mix(in oklab, var(--color-secondary-warm), transparent 15%),
+    color-mix(in oklab, var(--color-secondary-hot), transparent 50%),
+    rgb(255 255 255 / 9%) 35%,
+    rgb(255 255 255 / 9%) 58%,
+    color-mix(in oklab, var(--color-accent), transparent 25%) 80%,
+    color-mix(in oklab, var(--color-secondary-warm), transparent 15%)
   );
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent), transparent 88%) inset;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.fancy-card::before,
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--fc-x, 50%) var(--fc-y, 0%),
+    color-mix(in oklab, var(--color-accent), transparent 80%),
+    color-mix(in oklab, var(--color-secondary-warm), transparent 92%) 40%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .bento-card.is-featured {
   box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--accent), transparent 70%) inset,
-    0 20px 44px -28px var(--accent-glow);
+    inset 0 1px 0 rgb(255 255 255 / 9%),
+    0 2px 8px -3px rgb(0 0 0 / 55%),
+    0 24px 54px -26px var(--accent-glow);
+}
+
+.bento-card.is-featured::after {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .fancy-card:hover::before,
+  .bento-card:hover::before {
+    opacity: 1;
+  }
+
+  .fancy-card:hover::after,
+  .bento-card:hover::after {
+    opacity: 1;
+    animation: fancy-card-ring 5s linear infinite;
+  }
+
+  .fancy-card:hover,
+  .bento-card:hover {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 10%),
+      0 4px 14px -4px rgb(0 0 0 / 60%),
+      0 30px 70px -30px var(--accent-glow);
+  }
+
+  /* Opt-in lift for small, clickable cards; uses `translate` so it never
+     fights the reveal animation's `transform`. */
+  .fancy-card-lift:hover {
+    translate: 0 -4px;
+  }
+}
+
+@keyframes fancy-card-ring {
+  to {
+    --fc-angle: 360deg;
+  }
+}
+
+/* Inner boxes inside the cards: a glassy tint instead of plain white/4. */
+.fancy-panel {
+  border: 1px solid rgb(255 255 255 / 9%);
+  background:
+    linear-gradient(
+      150deg,
+      color-mix(in oklab, var(--color-secondary-warm), transparent 90%),
+      transparent 50%
+    ),
+    rgb(255 255 255 / 3.5%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .fancy-panel:hover {
+    border-color: color-mix(in oklab, var(--color-accent), transparent 65%);
+    background-color: rgb(255 255 255 / 5.5%);
+  }
+}
+
+/* Building blocks used inside cards, so every card shares one finish. */
+
+/* Section label with a short gradient tick in front ("STACK", "LIGHTHOUSE"). */
+.fancy-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.fancy-eyebrow::before {
+  content: "";
+  width: 1.1rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--color-secondary-warm), var(--color-accent));
+  box-shadow: 0 0 10px color-mix(in oklab, var(--color-accent), transparent 40%);
+}
+
+/* Short gradient underline under a card title. */
+.fancy-title-bar {
+  display: block;
+  width: 2.75rem;
+  height: 3px;
+  margin-top: 0.7rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary-warm),
+    var(--color-secondary-hot) 55%,
+    var(--color-accent)
+  );
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .fancy-card:hover .fancy-title-bar {
+    width: 4.5rem;
+  }
+}
+
+/* Image frame: hairline ring drawn over the image, a soft bottom shade, and
+   a slow zoom while the card is hovered. */
+.fancy-media {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  background: rgb(0 0 0 / 25%);
+  box-shadow:
+    0 18px 40px -24px rgb(0 0 0 / 85%),
+    0 0 0 1px rgb(255 255 255 / 4%);
+}
+
+.fancy-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 62%, rgb(5 8 18 / 38%));
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 18%);
+}
+
+.fancy-media img,
+.fancy-zoom img {
+  transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .fancy-card:hover .fancy-media img,
+  .fancy-card:hover .fancy-zoom img {
+    scale: 1.035;
+  }
+}
+
+/* Small pill (tech stack, tags) with a hairline gradient edge. */
+.fancy-chip {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgb(19 26 48 / 96%), rgb(19 26 48 / 96%)) padding-box,
+    linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--color-secondary-warm), transparent 55%),
+        rgb(255 255 255 / 10%) 45%,
+        color-mix(in oklab, var(--color-accent), transparent 55%)
+      )
+      border-box;
+  box-shadow: 0 6px 16px -10px rgb(0 0 0 / 80%);
+  transition:
+    translate 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@media (hover: hover) {
+  .fancy-chip:hover {
+    translate: 0 -1px;
+    box-shadow: 0 8px 20px -10px var(--accent-glow);
+  }
+}
+
+/* Secondary action (e.g. "open live site"): glass pill whose gradient edge
+   lights up and whose icon nudges on hover. */
+.fancy-action {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgb(22 30 55 / 92%), rgb(22 30 55 / 92%)) padding-box,
+    linear-gradient(
+        120deg,
+        color-mix(in oklab, var(--color-secondary-warm), transparent 40%),
+        color-mix(in oklab, var(--color-accent), transparent 40%)
+      )
+      border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 8%),
+    0 10px 24px -16px var(--accent-glow);
+  transition:
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.fancy-action svg {
+  transition: translate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fancy-action:hover {
+  background:
+    linear-gradient(
+        120deg,
+        color-mix(in oklab, var(--color-secondary-warm), rgb(22 30 55) 82%),
+        color-mix(in oklab, var(--color-accent), rgb(22 30 55) 78%)
+      )
+      padding-box,
+    linear-gradient(120deg, var(--color-secondary-warm), var(--color-accent)) border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    0 14px 30px -14px var(--accent-glow);
+}
+
+.fancy-action:hover svg {
+  translate: 2px -2px;
+}
+
+.fancy-action:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+/* Round carousel arrows over/under images. */
+.fancy-arrow {
+  border: 1px solid rgb(255 255 255 / 16%);
+  background: rgb(10 14 28 / 60%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 16px -8px rgb(0 0 0 / 80%);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.fancy-arrow:hover {
+  border-color: color-mix(in oklab, var(--color-accent), transparent 45%);
+  box-shadow: 0 6px 18px -6px var(--accent-glow);
+}
+
+/* Thin gradient rule between sections inside a card. */
+.fancy-divider {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 12%) 20%,
+    color-mix(in oklab, var(--color-accent), transparent 70%) 50%,
+    rgb(255 255 255 / 12%) 80%,
+    transparent
+  );
+}
+
+/* Lighter tile for repeated items inside a panel (score rings), so a panel
+   of tiles doesn't read as boxes nested in boxes. */
+.fancy-tile {
+  border: 1px solid rgb(255 255 255 / 5%);
+  background: radial-gradient(
+    120% 90% at 50% 0%,
+    rgb(255 255 255 / 5%),
+    rgb(255 255 255 / 1.5%) 70%
+  );
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+@media (hover: hover) {
+  .fancy-tile:hover {
+    border-color: color-mix(in oklab, #34d399, transparent 65%);
+  }
+}
+
+/* Fades the edges of a horizontally scrolling row on phones, hinting that
+   it continues. */
+@media (width < 40rem) {
+  .badge-scroller {
+    mask-image: linear-gradient(
+      90deg,
+      transparent,
+      #000 1.5rem,
+      #000 calc(100% - 1.5rem),
+      transparent
+    );
+  }
 }
 
 .btn-cta {
@@ -171,5 +515,9 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .fancy-card-lift:hover {
+    translate: none;
   }
 }

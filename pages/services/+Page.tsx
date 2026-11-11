@@ -142,7 +142,7 @@ export default function Page() {
             {t("homeFlow.services.text")}
           </p>
 
-          <div className="mt-6 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
+          <div className="fancy-panel mt-6 rounded-2xl p-5 backdrop-blur-sm sm:p-6">
             <p className="text-xs font-semibold tracking-[0.16em] text-(--accent) uppercase">
               {t("servicesPage.seoNote.label")}
             </p>
@@ -152,7 +152,7 @@ export default function Page() {
           </div>
 
           {appLang === "hu" ? (
-            <div className="mt-6 rounded-2xl border border-white/15 bg-white/8 p-5 backdrop-blur-sm sm:p-6">
+            <div className="fancy-panel mt-6 rounded-2xl p-5 backdrop-blur-sm sm:p-6">
               <p className="text-xs font-semibold tracking-[0.16em] text-(--color-secondary-warm) uppercase">
                 {t("servicesPage.localDiscount.label")}
               </p>
@@ -166,7 +166,7 @@ export default function Page() {
             {SERVICES_BADGES.map(({ key, Icon }) => (
               <span
                 key={key}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase backdrop-blur-sm"
+                className="fancy-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase"
               >
                 <Icon className="size-3.5 text-(--accent)" aria-hidden="true" />
                 {t(`servicesPage.badges.${key}`)}
@@ -269,10 +269,7 @@ export default function Page() {
 
         <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {MAINTENANCE_ITEMS.map(({ key, Icon }) => (
-            <li
-              key={key}
-              className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/4 px-4 py-3"
-            >
+            <li key={key} className="fancy-panel flex items-center gap-2.5 rounded-2xl px-4 py-3">
               <Icon className="size-4 shrink-0 text-(--accent)" aria-hidden="true" />
               <span className="min-w-0 flex-1 text-xs font-medium break-words text-white/85 sm:text-sm">
                 {t(`servicesPage.maintenance.items.${key}`)}

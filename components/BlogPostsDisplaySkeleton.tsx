@@ -13,7 +13,7 @@ export default function BlogPostsDisplaySkeleton({ count = 6 }: BlogPostsDisplay
       {Array.from({ length: count }, (_, index) => (
         <article
           key={`blog-post-skeleton-${index}`}
-          className="w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(155deg,rgba(16,22,42,0.92),rgba(10,15,28,0.95))] p-6 shadow-[0_24px_70px_-42px_rgba(0,0,0,0.75)] sm:w-[60%] sm:p-7 lg:w-auto lg:shrink"
+          className="fancy-card w-[85%] shrink-0 snap-start overflow-hidden rounded-3xl p-6 sm:w-[60%] sm:p-7 lg:w-auto lg:shrink"
         >
           <Skeleton className="h-56 w-full rounded-2xl" />
 

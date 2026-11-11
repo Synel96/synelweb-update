@@ -1,9 +1,10 @@
-import { useEffect, useId, useMemo, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { CheckCircle2Icon, ClipboardListIcon, SendIcon, ZapIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 import { getServiceCards, type AppLang } from "@/src/services/serviceCardsService";
+import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 
 export type QuoteMode = "simple" | "detailed";
 
@@ -184,6 +185,21 @@ export function QuoteRequestForm({
   const options = <T extends string>(keys: readonly T[], prefix: string) =>
     keys.map((key) => ({ value: key, label: t(`${prefix}.${key}`) }));
 
+  // The thank-you card is much shorter than the form it replaces, so the page
+  // shrinks and the browser is left near the bottom of it. Bring the card
+  // into view (and focus, for keyboard and screen-reader users) instead.
+  const sentRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (status !== "sent") return;
+    const card = sentRef.current;
+    if (!card) return;
+    card.scrollIntoView({
+      block: "center",
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+    card.focus({ preventScroll: true });
+  }, [status]);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (status === "sending") return;
@@ -192,6 +208,10 @@ export function QuoteRequestForm({
     const payload: Record<string, unknown> = {
       mode,
       service: service || UNSURE,
+      // The id alone (a slug, or a number when a service has no slug) means
+      // nothing in the alert e-mail; send the name the visitor saw too.
+      serviceName:
+        serviceOptions.find((option) => option.value === (service || UNSURE))?.label ?? "",
       name: name.trim(),
       email: email.trim(),
       phone: phone.trim(),
@@ -235,7 +255,12 @@ export function QuoteRequestForm({
 
   if (status === "sent") {
     return (
-      <div className="fancy-card rounded-3xl p-8 text-center sm:p-10" role="status">
+      <div
+        ref={sentRef}
+        tabIndex={-1}
+        className="fancy-card scroll-mt-28 rounded-3xl p-8 text-center outline-none sm:p-10"
+        role="status"
+      >
         <CheckCircle2Icon className="mx-auto size-12 text-emerald-300" aria-hidden="true" />
         <h3 className="mt-4 text-2xl font-semibold text-white">{t("quoteForm.sentTitle")}</h3>
         <p className="mx-auto mt-3 max-w-xl text-base leading-7 text-white/78">

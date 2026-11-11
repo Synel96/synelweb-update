@@ -54,4 +54,10 @@ if (typeof window !== "undefined") {
   if (!Element.prototype.scrollTo) {
     Element.prototype.scrollTo = function scrollTo() {};
   }
+
+  // Nor scrollIntoView, which the quote form uses to bring its thank-you
+  // message into view.
+  if (!Element.prototype.scrollIntoView) {
+    Element.prototype.scrollIntoView = function scrollIntoView() {};
+  }
 }

@@ -106,6 +106,7 @@ describe("QuoteRequestForm", () => {
     expect(payload).toMatchObject({
       mode: "simple",
       service: "landing-oldal",
+      serviceName: "Landing oldal",
       name: "Teszt Elek",
       consent: true,
       siteLanguage: "hu",
@@ -141,6 +142,34 @@ describe("QuoteRequestForm", () => {
       languages: ["hu", "de"],
       budget: "200k_400k",
       isLocal: true,
+    });
+  });
+
+  it("brings the thank-you message into view and focuses it", async () => {
+    const scrollIntoView = vi
+      .spyOn(Element.prototype, "scrollIntoView")
+      .mockImplementation(() => {});
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    submit();
+
+    const thanks = await screen.findByRole("status");
+    expect(scrollIntoView).toHaveBeenCalledWith(expect.objectContaining({ block: "center" }));
+    expect(thanks).toHaveFocus();
+    scrollIntoView.mockRestore();
+  });
+
+  it("sends the visitor-facing name of 'not sure yet'", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    submit();
+
+    await screen.findByRole("status");
+    expect(sentPayload()).toMatchObject({
+      service: "unsure",
+      serviceName: "Még nem tudom, segíts választani",
     });
   });
 

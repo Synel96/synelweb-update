@@ -67,22 +67,30 @@ function SectionHeader({ label, title, text }: { label: string; title: string; t
   );
 }
 
-// Phones: one swipeable row, so a stack of badges doesn't add a screen of
-// scrolling. Larger screens: equal-width cells instead of a centred
-// flex-wrap, which left a lone badge on the last line at most widths.
+// Equal-width cells instead of a centred flex-wrap, which left a lone badge
+// on the last line at most widths. Two columns on phones, where badge text
+// may wrap inside its cell, so every badge is visible without scrolling.
 function BadgeGrid({ className, children }: { className: string; children: React.ReactNode }) {
   return (
-    <ul
-      className={`badge-scroller no-scrollbar -mx-6 mt-6 flex snap-x gap-2.5 overflow-x-auto px-6 sm:mx-auto sm:grid sm:max-w-5xl sm:overflow-visible sm:px-0 ${className}`}
-    >
+    <ul className={`mx-auto mt-6 grid max-w-5xl grid-cols-2 gap-2 sm:gap-2.5 ${className}`}>
       {children}
     </ul>
   );
 }
 
-function Badge({ Icon, label }: { Icon: LucideIcon; label: string }) {
+function Badge({
+  Icon,
+  label,
+  className = "",
+}: {
+  Icon: LucideIcon;
+  label: string;
+  className?: string;
+}) {
   return (
-    <li className="fancy-chip flex shrink-0 snap-start items-center justify-center gap-2 rounded-full px-3 py-2 text-center text-xs font-semibold tracking-[0.1em] whitespace-nowrap text-white/85 uppercase sm:whitespace-normal">
+    <li
+      className={`fancy-chip flex items-center justify-center gap-2 rounded-2xl px-3 py-2 text-center text-[0.65rem] leading-snug font-semibold tracking-[0.08em] text-white/85 uppercase sm:rounded-full sm:text-xs sm:tracking-[0.1em] ${className}`}
+    >
       <Icon className="size-3.5 shrink-0 text-(--accent)" aria-hidden="true" />
       {label}
     </li>
@@ -140,6 +148,8 @@ const ABOUT_BADGES = [
   { key: "cookieFreeAnalytics", Icon: ChartNoAxesColumnIcon },
 ] as const;
 
+const VIDEO_FADE_MS = 700;
+
 const HERO_VIDEO_UPLOAD_PATH = "f_auto,q_auto/v1782411197/hero_wujueq.webm";
 const HERO_VIDEO_URL = cloudinaryVideoUrl(HERO_VIDEO_UPLOAD_PATH);
 const HERO_VIDEO_POSTER_URL =
@@ -164,6 +174,9 @@ export default function Page() {
   // mobile PageSpeed score swing from run to run. Visitors who ask for less
   // motion or less data keep the poster.
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  // Set when the video can't be played here: it fades out over the poster
+  // copy behind it instead of snapping from the last frame to the poster.
+  const [videoFailed, setVideoFailed] = useState(false);
 
   useEffect(() => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
@@ -181,8 +194,11 @@ export default function Page() {
   // played at all, the source goes and the poster shows instead of a frozen
   // frame.
   useBackgroundVideo(videoRef, videoSrc !== null, () => {
-    setVideoSrc(null);
-    videoRef.current?.load();
+    setVideoFailed(true);
+    window.setTimeout(() => {
+      setVideoSrc(null);
+      videoRef.current?.load();
+    }, VIDEO_FADE_MS);
   });
 
   useEffect(() => {
@@ -220,9 +236,21 @@ export default function Page() {
   return (
     <>
       <section className="relative min-h-svh overflow-hidden" data-home-hero>
+        {/* The poster again, under the video: whenever the video has no frame
+            to show (giving up, or a browser briefly blanking it on resume),
+            this is what shows through, not the page background. */}
+        <img
+          src={HERO_VIDEO_POSTER_URL}
+          alt=""
+          aria-hidden="true"
+          decoding="sync"
+          className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
+        />
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
+          className={`absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] transition-opacity duration-700 md:scale-105 ${
+            videoFailed ? "opacity-0" : "opacity-100"
+          }`}
           src={videoSrc ?? undefined}
           muted
           loop
@@ -299,8 +327,13 @@ export default function Page() {
         />
 
         <BadgeGrid className="sm:grid-cols-3">
-          {PROJECT_BADGES.map(({ key, Icon }) => (
-            <Badge key={key} Icon={Icon} label={t(`homeFlow.projects.badges.${key}`)} />
+          {PROJECT_BADGES.map(({ key, Icon }, index) => (
+            <Badge
+              key={key}
+              Icon={Icon}
+              label={t(`homeFlow.projects.badges.${key}`)}
+              className={index === 0 ? "col-span-2 sm:col-span-1" : ""}
+            />
           ))}
         </BadgeGrid>
 
@@ -361,7 +394,7 @@ export default function Page() {
           text={t("homeFlow.about.text")}
         />
 
-        <BadgeGrid className="sm:grid-cols-2 lg:grid-cols-3">
+        <BadgeGrid className="lg:grid-cols-3">
           {ABOUT_BADGES.map(({ key, Icon }) => (
             <Badge key={key} Icon={Icon} label={t(`homeFlow.about.badges.${key}`)} />
           ))}

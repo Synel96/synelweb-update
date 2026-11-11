@@ -13,4 +13,14 @@ describe("PageHeroBackground", () => {
     expect(image?.getAttribute("alt")).toBe("");
     expect(image?.getAttribute("src")).toContain("res.cloudinary.com");
   });
+
+  it("asks for a screen-sized image, decoded with the page so it can't flash in late", () => {
+    const { container } = render(<PageHeroBackground />);
+    const image = container.querySelector("img");
+
+    expect(image?.getAttribute("src")).toContain("c_limit,w_1920");
+    expect(image?.getAttribute("srcset")).toContain("w_768");
+    expect(image?.getAttribute("srcset")).toContain("2560w");
+    expect(image?.getAttribute("decoding")).toBe("sync");
+  });
 });

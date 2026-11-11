@@ -30,6 +30,11 @@ function fakeVideo() {
   };
 }
 
+function setVisibility(state: DocumentVisibilityState) {
+  Object.defineProperty(document, "visibilityState", { configurable: true, get: () => state });
+  document.dispatchEvent(new Event("visibilitychange"));
+}
+
 describe("useBackgroundVideo", () => {
   beforeEach(() => {
     vi.useFakeTimers();
@@ -37,6 +42,10 @@ describe("useBackgroundVideo", () => {
 
   afterEach(() => {
     vi.useRealTimers();
+    Object.defineProperty(document, "visibilityState", {
+      configurable: true,
+      get: () => "visible",
+    });
   });
 
   it("plays the video again when the page is shown again after the browser paused it", () => {
@@ -88,6 +97,41 @@ describe("useBackgroundVideo", () => {
 
     document.dispatchEvent(new Event("visibilitychange"));
     expect(video.paused).toBe(true);
+  });
+
+  it("does not restart a video that is slow to resume after the page was hidden", () => {
+    const { video, setTime } = fakeVideo();
+    renderHook(() => useBackgroundVideo({ current: video }, true, () => {}));
+
+    setTime(4);
+    setVisibility("hidden");
+    setVisibility("visible");
+
+    // The browser takes a few seconds to bring the video back.
+    vi.advanceTimersByTime(6000);
+    expect(video.currentTime).toBe(4);
+
+    // Once the grace period is over, a real stall is still caught.
+    vi.advanceTimersByTime(2000);
+    vi.advanceTimersByTime(2000);
+    vi.advanceTimersByTime(2000);
+    expect(video.currentTime).toBe(0);
+  });
+
+  it("does not count waiting for data as a stall", () => {
+    const { video, setTime } = fakeVideo();
+    Object.defineProperty(video, "readyState", { get: () => HTMLMediaElement.HAVE_CURRENT_DATA });
+    Object.defineProperty(video, "networkState", {
+      get: () => HTMLMediaElement.NETWORK_LOADING,
+    });
+    const onGiveUp = vi.fn();
+    renderHook(() => useBackgroundVideo({ current: video }, true, onGiveUp));
+
+    setTime(3);
+    vi.advanceTimersByTime(20000);
+
+    expect(video.currentTime).toBe(3);
+    expect(onGiveUp).not.toHaveBeenCalled();
   });
 
   it("does nothing before the video has a source", () => {

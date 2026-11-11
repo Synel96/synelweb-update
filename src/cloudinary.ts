@@ -15,9 +15,37 @@ function isVersionSegment(segment: string) {
 // segment to anchor on — a folder name is never assumed to be a transformation
 // unless every comma-separated part matches one of these known prefixes.
 const TRANSFORMATION_PREFIXES = new Set([
-  "a", "ar", "b", "bo", "c", "co", "cs", "dpr", "du", "e", "eo", "f", "fl",
-  "g", "h", "if", "l", "o", "pg", "q", "r", "so", "sp", "t", "u", "vc", "vs",
-  "w", "x", "y", "z",
+  "a",
+  "ar",
+  "b",
+  "bo",
+  "c",
+  "co",
+  "cs",
+  "dpr",
+  "du",
+  "e",
+  "eo",
+  "f",
+  "fl",
+  "g",
+  "h",
+  "if",
+  "l",
+  "o",
+  "pg",
+  "q",
+  "r",
+  "so",
+  "sp",
+  "t",
+  "u",
+  "vc",
+  "vs",
+  "w",
+  "x",
+  "y",
+  "z",
 ]);
 
 function isTransformationSegment(segment: string) {
@@ -118,6 +146,17 @@ export function cloudinarySizedImageUrl(url: string, width: number, aspectRatio 
     `w_${safeWidth}`,
     `h_${height}`,
     "dpr_auto",
+    "f_auto",
+    "q_auto",
+  ]);
+}
+
+// Scales an image down to at most `width` pixels wide, keeping its aspect
+// ratio and never upscaling.
+export function cloudinaryWidthLimitedImageUrl(url: string, width: number): string {
+  return withCloudinaryTransformations(url.trim(), [
+    "c_limit",
+    `w_${Math.round(width)}`,
     "f_auto",
     "q_auto",
   ]);

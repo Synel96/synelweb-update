@@ -54,7 +54,11 @@ export function MobileStickyCta() {
       className="pointer-events-none fixed inset-x-0 bottom-0 z-40 flex justify-end px-4 lg:hidden"
       style={{ paddingBottom: "calc(1rem + env(safe-area-inset-bottom))" }}
     >
-      <div className="pointer-events-auto flex flex-col items-end gap-2.5">
+      {/* No pointer-events-auto here: while collapsed, the hidden menu links
+          still take up space above the button, and this column would swallow
+          taps there (e.g. on the footer's legal links). Only the button and,
+          when expanded, the links themselves receive pointer events. */}
+      <div className="flex flex-col items-end gap-2.5">
         <a
           href={localizePath("/contact", lang)}
           aria-hidden={!expanded}
@@ -83,7 +87,7 @@ export function MobileStickyCta() {
           {t("stickyCta.call")}
         </a>
 
-        <div className="relative">
+        <div className="pointer-events-auto relative">
           {!expanded ? (
             <span
               className="sticky-cta-pulse absolute inset-0 rounded-full bg-(--color-secondary-warm)"

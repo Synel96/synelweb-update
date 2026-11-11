@@ -243,7 +243,7 @@ export default function Page() {
           src={HERO_VIDEO_POSTER_URL}
           alt=""
           aria-hidden="true"
-          decoding="async"
+          decoding="sync"
           className="absolute inset-0 h-full w-full origin-bottom-left object-cover object-[center_38%] md:scale-105"
         />
         <video

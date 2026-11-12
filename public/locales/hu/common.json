@@ -308,7 +308,7 @@
     "label": "Rólam",
     "heading": "Szia, Szilveszter vagyok!",
     "avatarAlt": "Szilveszter profilképe",
-    "intro": "Több mint egy éve foglalkozom webfejlesztéssel, és az általam írt kód már élesben is bizonyított: az oldalaim jól teljesítenek a Google keresőben, és a Google hivatalos méréseiben (Lighthouse, PageSpeed Insights) is kiemelkedő pontszámokat érnek el. Ezért olyan weboldalt tudok építeni, amely a legtelítettebb piaci szegmensekben is versenyképes.",
+    "intro": "Már két éve foglalkozom webfejlesztéssel, és az általam írt kód már élesben is bizonyított: az oldalaim jól teljesítenek a Google keresőben, és a Google hivatalos méréseiben (Lighthouse, PageSpeed Insights) is kiemelkedő pontszámokat érnek el. Ezért olyan weboldalt tudok építeni, amely a legtelítettebb piaci szegmensekben is versenyképes.",
     "introStrong": "Ez a gyakorlatban azt jelenti, hogy az általad kapott weboldal nem egy sablonos, lassan döcögő rendszer lesz, hanem egy villámgyors, biztonságos és jövőálló platform, ami mobilon is azonnal betölt.",
     "highlights": {
       "speed": {

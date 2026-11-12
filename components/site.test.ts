@@ -15,6 +15,7 @@ describe("NAV_LINKS", () => {
       "/",
       "/services",
       "/projects",
+      "/certificates",
       "/blog",
       "/technology",
       "/contact",

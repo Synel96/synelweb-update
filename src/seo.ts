@@ -38,6 +38,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Real projects and real technical quality: fast, modern, business-ready web solutions.",
     },
+    "/certificates": {
+      title: "Certificates | SynelWeb",
+      description:
+        "Verifiable certificates in frontend, backend and full-stack web development and Google Search Ads – the knowledge behind every SynelWeb project.",
+    },
     "/blog": {
       title: "Blog | SynelWeb",
       description:
@@ -75,6 +80,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Valós projektek, valós technikai minőség: gyors, modern és üzletileg használható webes megoldások.",
     },
+    "/certificates": {
+      title: "Tanúsítványok | SynelWeb",
+      description:
+        "Ellenőrizhető tanúsítványok frontend, backend és fullstack webfejlesztésből, valamint Google keresőhirdetésből – a tudás, ami minden SynelWeb-projekt mögött áll.",
+    },
     "/blog": {
       title: "Blog | SynelWeb",
       description:
@@ -111,6 +121,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       title: "Projekte | SynelWeb",
       description:
         "Reale Projekte und echte technische Qualität: schnelle, moderne und geschäftstaugliche Weblösungen.",
+    },
+    "/certificates": {
+      title: "Zertifikate | SynelWeb",
+      description:
+        "Überprüfbare Zertifikate in Frontend-, Backend- und Full-Stack-Webentwicklung sowie Google-Suchanzeigen – das Wissen hinter jedem SynelWeb-Projekt.",
     },
     "/blog": {
       title: "Blog | SynelWeb",

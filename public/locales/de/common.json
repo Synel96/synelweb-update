@@ -10,7 +10,8 @@
     "contact": "Kontakt",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "navigationMenu": "Navigationsmenü"
+    "navigationMenu": "Navigationsmenü",
+    "certificates": "Zertifikate"
   },
   "footer": {
     "allRightsReserved": "Alle Rechte vorbehalten."
@@ -593,5 +594,54 @@
     "error": "Das Senden hat nicht geklappt. Bitte versuche es in ein paar Minuten erneut oder schreib direkt an info@synelweb.hu.",
     "throttled": "Von diesem Gerät kamen in kurzer Zeit zu viele Anfragen. Bitte versuche es später erneut oder schreib an info@synelweb.hu.",
     "responseTime": "Ich antworte in der Regel innerhalb eines Werktags."
+  },
+  "certificatesPage": {
+    "label": "Zertifikate",
+    "title": "Zertifiziertes Wissen, in der Praxis erprobt",
+    "intro": "Ich bilde mich laufend weiter, damit hinter deiner Website aktuelles Wissen steht. Hier siehst du meine Zertifikate und abgeschlossenen Kurse nach Fachgebiet – jedes ist auf der Seite des Ausstellers überprüfbar.",
+    "stats": {
+      "count": "{{count}} Zertifikate",
+      "areas": "{{count}} Fachgebiete",
+      "verifiable": "Alle überprüfbar"
+    },
+    "filterAll": "Alle",
+    "countLabel": "{{count}} Zertifikate",
+    "categories": {
+      "frontend": {
+        "title": "Frontend-Webentwicklung",
+        "text": "Benutzeroberflächen sowie responsive und barrierefreie Websites mit modernen Werkzeugen."
+      },
+      "backend": {
+        "title": "Backend",
+        "text": "Serverlogik, APIs und Datenbanken, die auch bei hohem Traffic stabil laufen."
+      },
+      "fullstack": {
+        "title": "Full-Stack",
+        "text": "Das ganze System aus einer Hand: Frontend, Backend, Datenbank und Deployment."
+      },
+      "marketing": {
+        "title": "Suchanzeigen und Marketing",
+        "text": "Suchanzeigen, Messung und Analyse, damit deine Website auch Kunden bringt."
+      }
+    },
+    "kind": {
+      "exam": "Prüfung",
+      "course": "Kurs"
+    },
+    "hours": "{{hours}} Stunden",
+    "validUntil": "Gültig bis {{date}}",
+    "expired": "Abgelaufen",
+    "verified": "Überprüfbar",
+    "view": "Zertifikat ansehen",
+    "swipeHint": "Wischen",
+    "swipePosition": "{{current}} / {{total}}",
+    "dotAria": "Zum {{index}}. Zertifikat",
+    "emptyState": "Meine Zertifikate erscheinen hier bald.",
+    "fetchError": "Die Zertifikate konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
+    "cta": {
+      "title": "Dieses Wissen bringe ich in dein Projekt ein",
+      "text": "Erzähl mir, was du brauchst, und ich melde mich innerhalb eines Werktags mit einem konkreten Angebot.",
+      "button": "Angebot anfordern"
+    }
   }
 }

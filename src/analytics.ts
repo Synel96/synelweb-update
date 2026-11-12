@@ -11,7 +11,8 @@ export type QuoteCtaLocation =
   | "projects"
   | "about"
   | "technology"
-  | "blog_post";
+  | "blog_post"
+  | "certificates";
 
 export type ContactMethod = "phone" | "email" | "facebook" | "linkedin";
 

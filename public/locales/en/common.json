@@ -10,7 +10,8 @@
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "navigationMenu": "Navigation menu"
+    "navigationMenu": "Navigation menu",
+    "certificates": "Certificates"
   },
   "footer": {
     "allRightsReserved": "All rights reserved."
@@ -593,5 +594,54 @@
     "error": "It couldn't be sent. Please try again in a few minutes, or email info@synelweb.hu directly.",
     "throttled": "Too many requests came from this device in a short time. Please try again later, or email info@synelweb.hu.",
     "responseTime": "I usually reply within 1 business day."
+  },
+  "certificatesPage": {
+    "label": "Certificates",
+    "title": "Certified skills, proven in practice",
+    "intro": "I keep learning so the technology behind your website stays current. Here you can see my certificates and completed courses by field – each one can be verified on the issuer's site.",
+    "stats": {
+      "count": "{{count}} certificates",
+      "areas": "{{count}} fields",
+      "verifiable": "All verifiable"
+    },
+    "filterAll": "All",
+    "countLabel": "{{count}} certificates",
+    "categories": {
+      "frontend": {
+        "title": "Frontend web development",
+        "text": "User interfaces and responsive, accessible websites built with modern tools."
+      },
+      "backend": {
+        "title": "Backend",
+        "text": "Server-side logic, APIs and databases that stay stable under heavy traffic."
+      },
+      "fullstack": {
+        "title": "Full stack",
+        "text": "The whole system in one hand: frontend, backend, database and deployment."
+      },
+      "marketing": {
+        "title": "Search Ads and marketing",
+        "text": "Search ads, tracking and analytics, so your website brings in clients."
+      }
+    },
+    "kind": {
+      "exam": "Exam",
+      "course": "Course"
+    },
+    "hours": "{{hours}} hours",
+    "validUntil": "Valid until {{date}}",
+    "expired": "Expired",
+    "verified": "Verifiable",
+    "view": "View certificate",
+    "swipeHint": "Swipe",
+    "swipePosition": "{{current}} / {{total}}",
+    "dotAria": "Go to certificate {{index}}",
+    "emptyState": "My certificates will be listed here soon.",
+    "fetchError": "The certificates couldn't be loaded right now. Please try again later.",
+    "cta": {
+      "title": "I'll bring this knowledge to your project",
+      "text": "Tell me what you need, and I'll get back to you with a concrete quote within 1 business day.",
+      "button": "Request a quote"
+    }
   }
 }

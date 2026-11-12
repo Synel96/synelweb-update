@@ -51,7 +51,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       {
         icon: "meet",
         title: "Személyes egyeztetés",
-        text: "Sopronban és környékén személyesen is leülünk: átbeszéljük a céljaidat, élőben mutatom a terveket, és bármikor kérdezhetsz. Ha neked kényelmesebb, videóhívással is megy.",
+        text: "Személyesen is leülünk: Sopronban és környékén, de egy megbeszélésre szívesen elutazom hozzád messzebbre is. Átbeszéljük a céljaidat, élőben mutatom a terveket, és bármikor kérdezhetsz. Ha neked kényelmesebb, videóhívással is megy.",
       },
       {
         icon: "languages",
@@ -104,7 +104,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       },
       {
         q: "Hol tudunk személyesen találkozni?",
-        a: "Sopronban és a környező településeken személyesen, ahogy neked kényelmes. Ha messzebb vagy, videóhívással (Google Meet) egyeztetünk.",
+        a: "Sopronban és a környező településeken személyesen, ahogy neked kényelmes – de egy megbeszélésre szívesen elutazom messzebbre is, ezt egyeztetjük. Ha az egyszerűbb, videóhívással (Google Meet) is megbeszélhetünk mindent.",
       },
       {
         q: "Tudsz német nyelvű oldalt is készíteni az osztrák vendégeknek?",
@@ -183,7 +183,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       },
       {
         q: "Können wir uns persönlich treffen?",
-        a: "Ja. Im Burgenland und in Wien komme ich nach Absprache gern vorbei, sonst sprechen wir per Videocall (Google Meet).",
+        a: "Ja. Im Burgenland und in Wien komme ich nach Absprache gern vorbei – und für ein Gespräch reise ich auch gern etwas weiter. Wenn es einfacher ist, sprechen wir per Videocall (Google Meet).",
       },
       {
         q: "Ist die Zusammenarbeit mit einem Anbieter aus Ungarn unkompliziert?",

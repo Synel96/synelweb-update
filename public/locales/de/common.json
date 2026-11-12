@@ -299,7 +299,7 @@
     "label": "Über mich",
     "heading": "Hallo, ich bin Szilveszter!",
     "avatarAlt": "Profilfoto von Szilveszter",
-    "intro": "Seit über einem Jahr arbeite ich in der Webentwicklung und konzentriere mich auf moderne Technologien, die sich auch in Enterprise-Umgebungen bewährt haben. Ich arbeite mit Systemen, die von Unternehmen wie Facebook, Instagram, Pinterest und sogar von Verwaltungsplattformen der NASA genutzt werden.",
+    "intro": "Seit zwei Jahren arbeite ich in der Webentwicklung, und der Code, den ich schreibe, hat sich bereits in der Praxis bewährt: Meine Seiten schneiden in der Google-Suche gut ab und erreichen in Googles offiziellen Messungen (Lighthouse, PageSpeed Insights) herausragende Werte. Deshalb kann ich Websites bauen, die selbst in den gesättigtsten Marktsegmenten wettbewerbsfähig sind.",
     "introStrong": "In der Praxis bedeutet das: Deine Website wird kein träges Baukastensystem, sondern eine blitzschnelle, sichere und zukunftsfähige Plattform, die auch auf Mobilgeräten sofort lädt.",
     "highlights": {
       "speed": {
@@ -479,24 +479,31 @@
     "llmLabel": "Warum ist das für KI-basierte Suche wichtig?",
     "llmTitle": "Algorithmen erkennen technische Qualität ebenfalls.",
     "llmText": "Wenn potenzielle Kunden künftig KI-Systeme nach Empfehlungen fragen, bewerten diese nicht nur Inhalte, sondern auch die technische Qualität einer Website. Eine moderne, saubere und professionelle Struktur hilft dabei, Sie als verlässlichen Experten an der Spitze einzuordnen.",
-    "trustedCompanies": {
-      "label": "Technologie auf Weltklasseniveau",
-      "title": "Technologien, denen auch globale Marktführer vertrauen",
-      "intro": "Wenn Sie sich für die Zusammenarbeit mit mir entscheiden, erhalten Sie keine experimentellen Einzellösungen, sondern dieselben technologischen Grundlagen, die einige der am stärksten belasteten und sichersten Systeme der Welt antreiben.",
-      "itemTitles": {
-        "react": "React",
-        "tailwind": "TailwindCSS",
-        "backend": "Python & Django",
-        "database": "PostgreSQL"
-      },
+    "proof": {
+      "label": "Nachweisbare Ergebnisse",
+      "title": "Kein Versprechen, sondern messbare Ergebnisse",
+      "intro": "Der Code, den ich schreibe, hat sich bereits live bewährt: in der Suche und in den offiziellen Messungen. Genau das zählt, wenn deine Website gegen die Konkurrenz antritt.",
       "items": {
-        "react": "<brandNetflix>Netflix</brandNetflix> / <brandInstagram>Instagram</brandInstagram>: <brandNetflixPlain>Netflix</brandNetflixPlain> nutzt diese Grundlage, damit die Benutzeroberfläche auf Fernsehern, Smartphones und Laptops gleichermaßen schnell und reibungslos bleibt. <brandInstagramPlain>Instagram</brandInstagramPlain> setzt auf denselben Ansatz, um täglich das Scrollen von Hunderten Millionen Nutzern sofort auszuliefern.",
-        "tailwind": "<brandOpenAI>OpenAI</brandOpenAI> (<brandChatGPT>ChatGPT</brandChatGPT>): Selbst der Vorreiter moderner KI, <brandOpenAIPlain>OpenAI</brandOpenAIPlain>, setzt auf diesen Ansatz, um die klare, moderne und extrem schnelle Oberfläche von <brandChatGPTPlain>ChatGPT</brandChatGPTPlain> zu gestalten.",
-        "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: <brandNASAPlain>NASA</brandNASAPlain> nutzt dieses Backend-Fundament gern für interne Verwaltungsoberflächen und Datenverarbeitung, weil die Sicherheit außergewöhnlich hoch ist. Auch <brandSpotifyPlain>Spotify</brandSpotifyPlain> und <brandInstagramPlain>Instagram</brandInstagramPlain> verlassen sich auf dieselbe Grundlage, um riesige Datenmengen pro Sekunde zu verarbeiten.",
-        "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: Globale Technologieführer wie <brandApplePlain>Apple</brandApplePlain> und <brandUberPlain>Uber</brandUberPlain> vertrauen ihre kritischsten Daten seiner Präzision und Stabilität an."
+        "search": {
+          "title": "Suche",
+          "text": "Die Seiten, die ich entwickle, schneiden in den organischen Google-Ergebnissen gut ab, weil ihr technisches Fundament – Geschwindigkeit, saubere Struktur, korrektes Markup – von Anfang an auf Suchmaschinen ausgelegt ist."
+        },
+        "measured": {
+          "title": "Offizielle Messungen",
+          "text": "Meine Seiten werden mit Googles eigenen Tools gemessen, Lighthouse und PageSpeed Insights – und erreichen dort durchweg herausragende Werte bei Performance, Barrierefreiheit und SEO."
+        },
+        "competitive": {
+          "title": "Auch in gesättigten Märkten",
+          "text": "Wo viele Wettbewerber um dieselben Suchanfragen kämpfen, entscheidet die technische Qualität. Eine so gebaute Seite bleibt selbst in den gesättigtsten Marktsegmenten wettbewerbsfähig."
+        },
+        "verifiable": {
+          "title": "Überprüfbar",
+          "text": "Du musst mir nicht einfach glauben: Bei meinen Referenzen siehst du neben jedem Projekt die Lighthouse-Werte."
+        }
       },
+      "projectsLink": "Referenzen ansehen",
       "valueTitle": "Was bedeutet das für dein Unternehmen?",
-      "valueText": "Es bedeutet, dass hinter Ihrer Website kein billiger oder instabiler Unterbau steht, sondern ein <strong>weltklassiger, High-Tech-Digitalmotor</strong>. Eine Grundlage, die auch bei plötzlich steigendem Traffic stabil bleibt und Ihre Unternehmensdaten maximal schützt."
+      "valueText": "Dass hinter deiner Website kein langsames Baukastensystem steht, sondern ein <strong>messbar schnelles, in der Suche wettbewerbsfähiges Fundament</strong>, das mehr Besucher bringt und auch bei plötzlichen Traffic-Spitzen nicht einbricht."
     },
     "cta": {
       "eyebrow": "Moderne technische Grundlagen",

@@ -127,10 +127,6 @@
       "trendsResearch": "Trends-alapú kulcsszókutatás",
       "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
     },
-    "localDiscount": {
-      "label": "Helyi kedvezmény",
-      "text": "Sopron és környéke vállalkozásainak kedvezményes árazással dolgozom – ha a közelben vagy, írj, és személyesen is szívesen egyeztetünk a részletekről."
-    },
     "grants": {
       "label": "Pályázati fejlesztéshez is",
       "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",
@@ -308,7 +304,7 @@
     "label": "Rólam",
     "heading": "Szia, Szilveszter vagyok!",
     "avatarAlt": "Szilveszter profilképe",
-    "intro": "Több mint egy éve foglalkozom webfejlesztéssel, azon belül is modern, nagyvállalati környezetben is bizonyított technológiákkal. Olyan rendszerekkel dolgozom, amelyeket olyan óriások használnak, mint a Facebook, Instagram, Pinterest, vagy akár a NASA adminisztrációs rendszerei.",
+    "intro": "Már két éve foglalkozom webfejlesztéssel, és az általam írt kód már élesben is bizonyított: az oldalaim jól teljesítenek a Google keresőben, és a Google hivatalos méréseiben (Lighthouse, PageSpeed Insights) is kiemelkedő pontszámokat érnek el. Ezért olyan weboldalt tudok építeni, amely a legtelítettebb piaci szegmensekben is versenyképes.",
     "introStrong": "Ez a gyakorlatban azt jelenti, hogy az általad kapott weboldal nem egy sablonos, lassan döcögő rendszer lesz, hanem egy villámgyors, biztonságos és jövőálló platform, ami mobilon is azonnal betölt.",
     "highlights": {
       "speed": {
@@ -488,24 +484,31 @@
     "llmLabel": "Miért fontos ez az MI-alapú keresőknek?",
     "llmTitle": "A tiszta technikai struktúrát az algoritmusok is felismerik.",
     "llmText": "Amikor egy potenciális ügyfél a jövőben mesterséges intelligenciától kér ajánlást, az algoritmusok nemcsak a szöveget, hanem a weboldal technikai minőségét is értékelik. A modern, tiszta és professzionális struktúra segít abban, hogy a rendszer élvonalbeli, megbízható szakemberként azonosítson.",
-    "trustedCompanies": {
-      "label": "Világszintű technológiai alapok",
-      "title": "Technológiák, amelyekben a világóriások is megbíznak",
-      "intro": "Amikor mellettem dönt, nem egyedi kísérleti megoldásokat kap, hanem olyan technológiai alapokat, amelyek a világ legnagyobb terhelésű és legbiztonságosabb rendszereit is kiszolgálják. Ugyanazokkal az eszközökkel építem fel az Ön weboldalát, amelyekben a globális piacvezetők is feltétel nélkül megbíznak:",
-      "itemTitles": {
-        "react": "React",
-        "tailwind": "TailwindCSS",
-        "backend": "Python & Django",
-        "database": "PostgreSQL"
-      },
+    "proof": {
+      "label": "Bizonyított eredmények",
+      "title": "Nem ígéret, hanem mérhető eredmény",
+      "intro": "Az általam írt kód már élesben bizonyított: a keresőben és a hivatalos méréseken is. Ez az, ami számít, amikor a te weboldalad a versenytársakkal áll szemben.",
       "items": {
-        "react": "<brandNetflix>Netflix</brandNetflix> / <brandInstagram>Instagram</brandInstagram>: A <brandNetflixPlain>Netflix</brandNetflixPlain> segítségével biztosítja, hogy a kezelőfelület tévékészülékeken, telefonokon és laptopokon is ugyanolyan villámgyors és akadásmentes legyen. Az <brandInstagramPlain>Instagram</brandInstagramPlain> szintén erre a technológiára épül, hogy naponta több százmillió ember görgetését szolgálja ki azonnal.",
-        "tailwind": "<brandOpenAI>OpenAI</brandOpenAI> (<brandChatGPT>ChatGPT</brandChatGPT>): Még a mesterséges intelligencia úttörője, az <brandOpenAIPlain>OpenAI</brandOpenAIPlain> is ezt választotta a <brandChatGPTPlain>ChatGPT</brandChatGPTPlain> letisztult, modern és rendkívül gyors felületének kialakításához.",
-        "backend": "<brandNASA>NASA</brandNASA> / <brandSpotify>Spotify</brandSpotify> / <brandInstagram>Instagram</brandInstagram>: A <brandNASAPlain>NASA</brandNASAPlain> előszeretettel használja ezt a technológiai párost a belső adminisztrációs felületeihez és adatkezeléséhez a rendkívüli biztonsága miatt. A <brandSpotifyPlain>Spotify</brandSpotifyPlain> és az <brandInstagramPlain>Instagram</brandInstagramPlain> teljes backend motorja szintén erre az alapra épül, hogy képes legyen kezelni a másodpercenkénti több millió adatlekérést.",
-        "database": "<brandApple>Apple</brandApple> / <brandUber>Uber</brandUber>: A világ legértékesebb tech vállalatai, mint az <brandApplePlain>Apple</brandApplePlain> vagy az <brandUberPlain>Uber</brandUberPlain>, ennek a mérnöki precizitására és stabilitására bízzák a legkritikusabb adataik tárolását."
+        "search": {
+          "title": "Keresés",
+          "text": "Az általam fejlesztett oldalak jól teljesítenek a Google organikus találatai között, mert a technikai alapjuk – sebesség, tiszta struktúra, helyes jelölések – eleve a keresőknek is megfelel."
+        },
+        "measured": {
+          "title": "Hivatalos mérések",
+          "text": "Az oldalaimat a Google saját eszközei, a Lighthouse és a PageSpeed Insights mérik – és ezeken rendre kiemelkedő pontszámokat érnek el teljesítményben, akadálymentességben és SEO-ban."
+        },
+        "competitive": {
+          "title": "Telített piacokon is",
+          "text": "Ott, ahol sok versenytárs küzd ugyanazokért a keresésekért, a technikai minőség dönt. Az így épített oldal a legtelítettebb piaci szegmensekben is versenyképes."
+        },
+        "verifiable": {
+          "title": "Ellenőrizhető",
+          "text": "Nem kell elhinned: a referenciáimnál minden projekt mellett megnézheted a Lighthouse pontszámokat."
+        }
       },
+      "projectsLink": "Referenciák megtekintése",
       "valueTitle": "Mit jelent ez a vállalkozásodnak?",
-      "valueText": "Azt, hogy az Ön weboldala mögött nem egy olcsó, instabil háttér fog állni, hanem egy <strong>világszínvonalú, high-tech digitális motor</strong>. Olyan alap, amely nem fog összeomlani, ha hirtelen megugrik a látogatók száma, és amely maximális védelmet nyújt a vállalkozása adatainak."
+      "valueText": "Azt, hogy a weboldalad mögött nem egy lassú, sablonos rendszer áll, hanem <strong>mérhetően gyors, a keresőkben is versenyképes alap</strong>, amely több látogatót hoz, és nem omlik össze akkor sem, ha hirtelen megugrik a forgalom."
     },
     "cta": {
       "eyebrow": "Modern technológiai alapok",

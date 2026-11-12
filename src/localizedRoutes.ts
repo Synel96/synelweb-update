@@ -51,6 +51,28 @@ const LOCALIZED_SEGMENTS: Record<Exclude<KnownLogicalPath, "/">, Record<Supporte
   },
 };
 
+// Regional landing pages exist in one language only (they target one market:
+// Sopron in Hungarian, Burgenland & Vienna in German), so they have no
+// cross-language siblings. In any other language they fall back to the
+// services page, e.g. when the language switcher is used on them.
+export const REGIONAL_PAGES = {
+  "/sopron": { lang: "hu", segment: "weboldal-keszites-sopron", fallback: "/services" },
+  "/austria": { lang: "de", segment: "webdesign-burgenland-wien", fallback: "/services" },
+} as const satisfies Record<
+  string,
+  { lang: SupportedLang; segment: string; fallback: Exclude<KnownLogicalPath, "/"> }
+>;
+
+export type RegionalLogicalPath = keyof typeof REGIONAL_PAGES;
+
+export function isRegionalLogicalPath(path: string): path is RegionalLogicalPath {
+  return Object.prototype.hasOwnProperty.call(REGIONAL_PAGES, path);
+}
+
+// Never matches a page, so a regional page asked for in the wrong language
+// (e.g. /en/sopron) is a 404 instead of the page in the wrong language.
+const UNAVAILABLE_LOGICAL_PATH = "/__unavailable";
+
 const LOGICAL_BY_SEGMENT = Object.fromEntries(
   SUPPORTED_LANGS.map((lang) => [
     lang,
@@ -69,7 +91,7 @@ export function normalizeLogicalPath(path: string) {
   return stripped.startsWith("/") ? stripped : `/${stripped}`;
 }
 
-export function localizePath(path: string, lang: SupportedLang) {
+export function localizePath(path: string, lang: SupportedLang): string {
   // Accept both logical paths ("/contact") and already-prefixed paths
   // ("/en/contact") so callers can't produce a double-prefixed URL
   // (e.g. "/hu/en/contact") by passing the wrong kind of input.
@@ -78,6 +100,13 @@ export function localizePath(path: string, lang: SupportedLang) {
 
   if (normalizedPath === "/") {
     return `/${lang}/`;
+  }
+
+  if (isRegionalLogicalPath(normalizedPath)) {
+    const regional = REGIONAL_PAGES[normalizedPath];
+    return regional.lang === lang
+      ? `/${lang}/${regional.segment}`
+      : localizePath(regional.fallback, lang);
   }
 
   const localizedSegment = LOCALIZED_SEGMENTS[normalizedPath as Exclude<KnownLogicalPath, "/">];
@@ -96,6 +125,10 @@ export function toLogicalPath(path: string, lang: SupportedLang) {
   }
 
   const slug = normalizedPath.slice(1);
+  for (const [logicalPath, regional] of Object.entries(REGIONAL_PAGES)) {
+    if (regional.lang === lang && regional.segment === slug) return logicalPath;
+  }
+  if (isRegionalLogicalPath(normalizedPath)) return UNAVAILABLE_LOGICAL_PATH;
   return LOGICAL_BY_SEGMENT[lang][slug] ?? normalizedPath;
 }
 

@@ -138,3 +138,29 @@ describe("certificates route", () => {
     expect(resolveLanguageAndLogicalPath("/de/zertifikate").logicalPath).toBe("/certificates");
   });
 });
+
+describe("regional landing pages", () => {
+  it("live under their own slug in their one language", () => {
+    expect(localizePath("/sopron", "hu")).toBe("/hu/weboldal-keszites-sopron");
+    expect(localizePath("/austria", "de")).toBe("/de/webdesign-burgenland-wien");
+    expect(resolveLanguageAndLogicalPath("/hu/weboldal-keszites-sopron").logicalPath).toBe(
+      "/sopron"
+    );
+    expect(resolveLanguageAndLogicalPath("/de/webdesign-burgenland-wien").logicalPath).toBe(
+      "/austria"
+    );
+  });
+
+  it("fall back to the services page in the other languages", () => {
+    expect(localizePath("/sopron", "en")).toBe("/en/services");
+    expect(localizePath("/sopron", "de")).toBe("/de/dienstleistungen");
+    expect(localizePath("/austria", "hu")).toBe("/hu/szolgaltatasok");
+  });
+
+  it("are not served in the wrong language", () => {
+    expect(resolveLanguageAndLogicalPath("/en/sopron").logicalPath).toBe("/__unavailable");
+    expect(resolveLanguageAndLogicalPath("/hu/webdesign-burgenland-wien").logicalPath).not.toBe(
+      "/austria"
+    );
+  });
+});

@@ -11,7 +11,8 @@ import {
   PushDrawerTitle,
   PushDrawerTrigger,
 } from "@/components/ui/push-drawer";
-import { BRAND_NAME, NAV_LINKS } from "./site";
+import { BRAND_NAME, NAV_LINKS, visibleSubLinks } from "./site";
+import { NavDropdown } from "./NavDropdown";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
@@ -85,8 +86,16 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
   // Build a URL with the current lang prefix
   const langHref = (href: string) => localizePath(href, lang);
 
-  const isActive = (href: string) =>
+  const isExactlyActive = (href: string) =>
     href === "/" ? logicalPath === href : logicalPath.startsWith(href);
+  // A link with a submenu is also active on its subpages (e.g. Services on
+  // the regional pages).
+  const isActive = (href: string) =>
+    isExactlyActive(href) ||
+    NAV_LINKS.some(
+      (item) =>
+        item.href === href && visibleSubLinks(item, lang).some((sub) => isExactlyActive(sub.href))
+    );
 
   const navLinkClass = (href: string) =>
     isActive(href)
@@ -134,11 +143,27 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
         <nav className="hidden items-center gap-6 lg:flex">
           {visibleNavLinks
             .filter((item) => !item.hiddenInDesktopNav)
-            .map((item) => (
-              <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
-                {navLabel(item)}
-              </a>
-            ))}
+            .map((item) => {
+              const subLinks = visibleSubLinks(item, lang);
+              return subLinks.length > 0 ? (
+                <NavDropdown
+                  key={item.href}
+                  label={navLabel(item)}
+                  href={langHref(item.href)}
+                  className={navLinkClass(item.href)}
+                  toggleLabel={`${navLabel(item)}: ${t("nav.navigationMenu")}`}
+                  items={subLinks.map((sub) => ({
+                    href: langHref(sub.href),
+                    label: sub.label,
+                    active: logicalPath === sub.href,
+                  }))}
+                />
+              ) : (
+                <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
+                  {navLabel(item)}
+                </a>
+              );
+            })}
         </nav>
 
         <div className="hidden items-center lg:flex">
@@ -167,18 +192,36 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
                 <PushDrawerTitle className="sr-only">{t("nav.navigationMenu")}</PushDrawerTitle>
                 <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
                   {visibleNavLinks.map((item) => (
-                    <PushDrawerClose asChild key={item.href}>
-                      <a
-                        href={langHref(item.href)}
-                        className={`rounded-md px-3 py-2 text-sm ${
-                          isActive(item.href)
-                            ? "bg-white/15 font-medium text-(--brand-on-surface)"
-                            : "text-white/75 hover:bg-white/10 hover:text-(--brand-on-surface)"
-                        }`}
-                      >
-                        {navLabel(item)}
-                      </a>
-                    </PushDrawerClose>
+                    <div key={item.href} className="flex flex-col gap-1">
+                      <PushDrawerClose asChild>
+                        <a
+                          href={langHref(item.href)}
+                          className={`rounded-md px-3 py-2 text-sm ${
+                            isActive(item.href)
+                              ? "bg-white/15 font-medium text-(--brand-on-surface)"
+                              : "text-white/75 hover:bg-white/10 hover:text-(--brand-on-surface)"
+                          }`}
+                        >
+                          {navLabel(item)}
+                        </a>
+                      </PushDrawerClose>
+                      {visibleSubLinks(item, lang)
+                        .filter((sub) => sub.href !== item.href)
+                        .map((sub) => (
+                          <PushDrawerClose asChild key={sub.href}>
+                            <a
+                              href={langHref(sub.href)}
+                              className={`ml-4 rounded-md border-l border-white/15 px-3 py-1.5 text-sm ${
+                                logicalPath === sub.href
+                                  ? "font-medium text-(--brand-on-surface)"
+                                  : "text-white/60 hover:bg-white/10 hover:text-(--brand-on-surface)"
+                              }`}
+                            >
+                              {sub.label}
+                            </a>
+                          </PushDrawerClose>
+                        ))}
+                    </div>
                   ))}
                 </nav>
 

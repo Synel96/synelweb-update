@@ -1,6 +1,10 @@
 import { BRAND_NAME, SITE_URL } from "@/components/site";
 import type { SupportedLang } from "@/src/i18n-config";
-import { KNOWN_LOGICAL_PATHS, type KnownLogicalPath } from "@/src/localizedRoutes";
+import {
+  KNOWN_LOGICAL_PATHS,
+  type KnownLogicalPath,
+  type RegionalLogicalPath,
+} from "@/src/localizedRoutes";
 
 const OWNER_NAME = "Németh Szilveszter";
 const BUSINESS_EMAIL = "info@synelweb.hu";
@@ -41,6 +45,11 @@ export const BREADCRUMB_LABELS: Record<SupportedLang, Record<KnownLogicalPath, s
     "/technology": "Technologie",
     "/contact": "Kontakt",
   },
+};
+
+export const REGIONAL_BREADCRUMB_LABELS: Record<RegionalLogicalPath, string> = {
+  "/sopron": "Weboldal készítés Sopron",
+  "/austria": "Webdesign Burgenland & Wien",
 };
 
 export function isKnownLogicalPath(path: string): path is KnownLogicalPath {
@@ -132,5 +141,32 @@ export function buildBlogPostingJsonLd({
       name: BRAND_NAME,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/sw-favicon.svg` },
     },
+  };
+}
+
+type RegionalServiceInput = {
+  url: string;
+  name: string;
+  description: string;
+  areasServed: string[];
+};
+
+// A regional landing page describes the same business serving one area.
+export function buildRegionalServiceJsonLd({
+  url,
+  name,
+  description,
+  areasServed,
+}: RegionalServiceInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    description,
+    url,
+    serviceType: "Web design and development",
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: areasServed.map((place) => ({ "@type": "Place", name: place })),
   };
 }

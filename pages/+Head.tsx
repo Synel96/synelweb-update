@@ -5,17 +5,20 @@ import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL } from "../components/site";
 import { buildMeta } from "../src/seo";
 import { DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
-import { localizePath, normalizeLogicalPath } from "../src/localizedRoutes";
+import { isRegionalLogicalPath, localizePath, normalizeLogicalPath } from "../src/localizedRoutes";
 import {
   BREADCRUMB_LABELS,
+  REGIONAL_BREADCRUMB_LABELS,
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
   buildOrganizationJsonLd,
+  buildRegionalServiceJsonLd,
   buildWebSiteJsonLd,
   isKnownLogicalPath,
   type BreadcrumbItem,
 } from "../src/structuredData";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
+import { REGIONAL_CONTENT } from "@/src/regionalPages";
 
 type BlogDetailData = {
   post?: {
@@ -76,12 +79,30 @@ export function Head() {
       },
       { name: postTitle, url: meta.canonicalUrl },
     ];
+  } else if (isRegionalLogicalPath(logicalPath)) {
+    breadcrumbItems = [
+      homeItem,
+      {
+        name: BREADCRUMB_LABELS[lang]["/services"],
+        url: new URL(localizePath("/services", lang), SITE_URL).toString(),
+      },
+      { name: REGIONAL_BREADCRUMB_LABELS[logicalPath], url: meta.canonicalUrl },
+    ];
   } else if (logicalPath !== "/" && isKnownLogicalPath(logicalPath)) {
     breadcrumbItems = [
       homeItem,
       { name: BREADCRUMB_LABELS[lang][logicalPath], url: meta.canonicalUrl },
     ];
   }
+
+  const regionalServiceJsonLd = isRegionalLogicalPath(logicalPath)
+    ? buildRegionalServiceJsonLd({
+        url: meta.canonicalUrl,
+        name: REGIONAL_CONTENT[logicalPath].title,
+        description: meta.description,
+        areasServed: REGIONAL_CONTENT[logicalPath].areasServed,
+      })
+    : null;
 
   const blogPostingJsonLd =
     isBlogPostPage && postTitle
@@ -172,6 +193,13 @@ export function Head() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(buildBreadcrumbJsonLd(breadcrumbItems)),
           }}
+        />
+      ) : null}
+
+      {regionalServiceJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(regionalServiceJsonLd) }}
         />
       ) : null}
 

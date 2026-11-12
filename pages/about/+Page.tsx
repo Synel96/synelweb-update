@@ -6,6 +6,10 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import { trackEvent } from "@/src/analytics";
+import { CertificatesHighlight } from "@/components/CertificatesHighlight";
+import { useCertificates } from "@/src/hooks/use-certificates";
+import type { Certificate } from "@/src/services/certificatesService";
+import type { AppLang } from "@/src/services/serviceCardsService";
 
 type InfoItem = {
   title: string;
@@ -28,8 +32,12 @@ function readInfoItems(value: unknown): InfoItem[] {
 }
 
 export default function Page() {
-  const pageContext = usePageContext() as { lang?: SupportedLang };
+  const pageContext = usePageContext() as {
+    lang?: SupportedLang;
+    data?: { certificates?: Certificate[] };
+  };
   const lang = pageContext.lang ?? DEFAULT_LANG;
+  const certificates = useCertificates(lang as AppLang, pageContext.data?.certificates ?? []);
   // Its call to action goes straight to the quote form.
   const contactHref = quoteFormHref(lang);
   const { t } = useTranslation();
@@ -127,6 +135,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <CertificatesHighlight certificates={certificates} lang={lang as AppLang} />
 
       <section
         className="border-y border-white/10 bg-[linear-gradient(140deg,rgba(11,15,25,0.92),rgba(15,21,40,0.96))]"

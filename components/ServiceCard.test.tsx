@@ -130,4 +130,22 @@ describe("ServiceCard", () => {
 
     expect(screen.queryByText("Egyszeri beállítás")).not.toBeInTheDocument();
   });
+
+  it("names the certificates that back the service, linked to their verification page", () => {
+    render(
+      <ServiceCard
+        {...baseProps}
+        certifiedLabel="Tanúsítvánnyal igazolva:"
+        certifications={[
+          { title: "Google Ads Search Certification", url: "https://skillshop.example/1" },
+        ]}
+      />
+    );
+
+    expect(screen.getByText("Tanúsítvánnyal igazolva:")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Google Ads Search Certification" })).toHaveAttribute(
+      "href",
+      "https://skillshop.example/1"
+    );
+  });
 });

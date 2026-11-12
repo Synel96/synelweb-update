@@ -123,7 +123,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
     eyebrow: "Burgenland & Wien",
     title: "Webdesign für Burgenland & Wien",
     intro:
-      "Ich entwickle individuelle, blitzschnelle Websites und Onlineshops für Unternehmen im Burgenland und in Wien – ohne Baukasten, mit persönlicher Betreuung. Mein Büro liegt in Sopron, direkt an der Grenze: Eisenstadt erreiche ich in rund einer halben Stunde.",
+      "Ich entwickle individuelle, blitzschnelle Websites und Onlineshops für Unternehmen im Burgenland und in Wien – ohne Baukasten, mit persönlicher Betreuung. Mein Büro liegt in Sopron, direkt an der Grenze: Nach Eisenstadt sind es rund 20 Minuten, nach Wien 40–50 Minuten.",
     introStrong:
       "Der Code, den ich schreibe, hat sich bereits live bewährt: in der Google-Suche und in Googles offiziellen Messungen. Genau das braucht eine Website, die sich gegen die Konkurrenz durchsetzen soll.",
     ctaButton: "Angebot anfordern",

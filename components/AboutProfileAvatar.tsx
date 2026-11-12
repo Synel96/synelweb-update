@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 type AboutProfileAvatarProps = {
@@ -10,6 +10,13 @@ const ABOUT_AVATAR_URL = "/me.webp";
 
 export function AboutProfileAvatar({ className, alt = "Profile avatar" }: AboutProfileAvatarProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // On a prerendered page the browser can finish loading the image before
+  // React hydrates, so onLoad never fires: check the already-loaded state.
+  useEffect(() => {
+    if (imgRef.current?.complete) setIsLoading(false);
+  }, []);
 
   return (
     <div
@@ -23,6 +30,7 @@ export function AboutProfileAvatar({ className, alt = "Profile avatar" }: AboutP
             <Skeleton className="absolute inset-0 rounded-full border border-white/10 bg-white/10" />
           ) : null}
           <img
+            ref={imgRef}
             src={ABOUT_AVATAR_URL}
             alt={alt}
             className={`block h-full w-full object-cover object-[center_18%] transition-opacity duration-300 ${

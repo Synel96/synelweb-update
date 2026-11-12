@@ -36,3 +36,21 @@ describe("AboutProfileAvatar", () => {
     expect(container.firstElementChild?.className).toContain("extra-class");
   });
 });
+
+describe("AboutProfileAvatar with a prerendered, already-loaded image", () => {
+  it("drops the skeleton on mount when the image finished before hydration", () => {
+    const complete = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, "complete");
+    Object.defineProperty(HTMLImageElement.prototype, "complete", {
+      configurable: true,
+      get: () => true,
+    });
+    try {
+      const { container } = render(<AboutProfileAvatar />);
+      expect(screen.getByRole("img").className).toContain("opacity-100");
+      expect(container.querySelector('[data-slot="skeleton"]')).toBeNull();
+    } finally {
+      if (complete) Object.defineProperty(HTMLImageElement.prototype, "complete", complete);
+      else delete (HTMLImageElement.prototype as { complete?: boolean }).complete;
+    }
+  });
+});

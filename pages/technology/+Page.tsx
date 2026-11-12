@@ -1,3 +1,4 @@
+import { GaugeIcon, SearchIcon, ShieldCheckIcon, TrophyIcon } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
@@ -6,11 +7,7 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import { trackEvent } from "@/src/analytics";
-import {
-  isTechnologyLogoName,
-  TechnologyLogo,
-  type TechnologyLogoName,
-} from "@/components/TechnologyLogo";
+import { isTechnologyLogoName, type TechnologyLogoName } from "@/components/TechnologyLogo";
 
 type TechnologyCard = {
   logo: TechnologyLogoName;
@@ -22,8 +19,6 @@ type TechnologyCard = {
   badge: string;
 };
 
-// Company names in the "trusted by" list are all set the same way: in their
-// own brand colours they read as a patchwork of reds, greens and blues.
 function BrandWord({ children, className }: { children?: React.ReactNode; className: string }) {
   return <span className={className}>{children}</span>;
 }
@@ -54,16 +49,15 @@ function readTechnologyCards(value: unknown): TechnologyCard[] {
     );
 }
 
-const TRUSTED_COMPANY_KEYS = ["react", "tailwind", "backend", "database"] as const;
-
-const TRUSTED_COMPANY_LOGOS: Record<(typeof TRUSTED_COMPANY_KEYS)[number], TechnologyLogoName> = {
-  react: "react",
-  tailwind: "tailwind",
-  backend: "python",
-  database: "postgresql",
-};
-
-type TrustedCompanyKey = (typeof TRUSTED_COMPANY_KEYS)[number];
+// What the sites built here have already shown: search results, Google's own
+// measurements, saturated markets, and scores anyone can check on the
+// references page.
+const PROOF_ITEMS = [
+  { key: "search", Icon: SearchIcon },
+  { key: "measured", Icon: GaugeIcon },
+  { key: "competitive", Icon: TrophyIcon },
+  { key: "verifiable", Icon: ShieldCheckIcon },
+] as const;
 
 export default function Page() {
   const pageContext = usePageContext() as { lang?: SupportedLang };
@@ -83,22 +77,6 @@ export default function Page() {
     techDjangoPlain: <BrandWord className="font-semibold text-white" />,
     techPostgres: <BrandWord className="font-semibold tracking-[0.04em] text-[#6aa6d1]" />,
     techPostgresPlain: <BrandWord className="font-semibold text-white" />,
-    brandNetflix: <BrandWord className="font-semibold text-white" />,
-    brandNetflixPlain: <BrandWord className="font-semibold text-white" />,
-    brandInstagram: <BrandWord className="font-semibold text-white" />,
-    brandInstagramPlain: <BrandWord className="font-semibold text-white" />,
-    brandOpenAI: <BrandWord className="font-semibold text-white" />,
-    brandOpenAIPlain: <BrandWord className="font-semibold text-white" />,
-    brandChatGPT: <BrandWord className="font-semibold text-white" />,
-    brandChatGPTPlain: <BrandWord className="font-semibold text-white" />,
-    brandNASA: <BrandWord className="font-semibold text-white" />,
-    brandNASAPlain: <BrandWord className="font-semibold text-white" />,
-    brandSpotify: <BrandWord className="font-semibold text-white" />,
-    brandSpotifyPlain: <BrandWord className="font-semibold text-white" />,
-    brandApple: <BrandWord className="font-semibold text-white" />,
-    brandApplePlain: <BrandWord className="font-semibold text-white" />,
-    brandUber: <BrandWord className="font-semibold text-white" />,
-    brandUberPlain: <BrandWord className="font-semibold text-white" />,
   };
 
   return (
@@ -156,32 +134,36 @@ export default function Page() {
         <div className="mt-8">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold tracking-[0.22em] text-(--accent) uppercase">
-              {t("technology.trustedCompanies.label")}
+              {t("technology.proof.label")}
             </p>
             <h3 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              {t("technology.trustedCompanies.title")}
+              {t("technology.proof.title")}
             </h3>
             <p className="mt-5 text-left text-base leading-8 text-white/78 sm:text-lg">
-              {t("technology.trustedCompanies.intro")}
+              {t("technology.proof.intro")}
             </p>
           </div>
           <ul className="mt-6 grid gap-4 text-sm leading-7 text-white/78 sm:text-base lg:grid-cols-2">
-            {TRUSTED_COMPANY_KEYS.map((itemKey) => (
-              <li key={itemKey} className="fancy-card rounded-2xl p-5">
+            {PROOF_ITEMS.map(({ key, Icon }) => (
+              <li key={key} className="fancy-card rounded-2xl p-5">
                 <div className="flex gap-4">
                   <span className="fancy-tile flex size-11 shrink-0 items-center justify-center rounded-xl">
-                    <TechnologyLogo name={TRUSTED_COMPANY_LOGOS[itemKey]} className="size-6" />
+                    <Icon className="size-5 text-(--accent)" aria-hidden="true" />
                   </span>
                   <div>
                     <p className="mt-1 text-sm font-semibold tracking-[0.16em] text-(--accent) uppercase">
-                      {t(`technology.trustedCompanies.itemTitles.${itemKey}` as const)}
+                      {t(`technology.proof.items.${key}.title` as const)}
                     </p>
-                    <p className="mt-3">
-                      <Trans
-                        i18nKey={`technology.trustedCompanies.items.${itemKey}`}
-                        components={brandComponents}
-                      />
-                    </p>
+                    <p className="mt-3">{t(`technology.proof.items.${key}.text` as const)}</p>
+                    {key === "verifiable" ? (
+                      <a
+                        href={localizePath("/projects", lang)}
+                        className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-(--accent) transition-colors hover:text-(--primary)"
+                      >
+                        {t("technology.proof.projectsLink")}
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </li>
@@ -189,10 +171,10 @@ export default function Page() {
           </ul>
           <div className="fancy-card mx-auto mt-8 max-w-3xl rounded-3xl p-6 sm:p-8">
             <h4 className="fancy-eyebrow text-xl font-semibold tracking-tight text-white sm:text-2xl">
-              {t("technology.trustedCompanies.valueTitle")}
+              {t("technology.proof.valueTitle")}
             </h4>
             <p className="mt-4 text-base leading-8 text-slate-200 sm:text-lg">
-              <Trans i18nKey="technology.trustedCompanies.valueText" components={brandComponents} />
+              <Trans i18nKey="technology.proof.valueText" components={brandComponents} />
             </p>
           </div>
         </div>

@@ -19,6 +19,7 @@ import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import { useHufFormatter } from "@/src/currency";
 import {
   getServiceCards,
+  SERVICE_CATEGORIES,
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
@@ -56,6 +57,8 @@ function toAppLang(language: string): AppLang {
   if (normalized.startsWith("de")) return "de";
   return "en";
 }
+
+const categoryAnchor = (category: string) => `szolgaltatas-${category}`;
 
 export default function Page() {
   const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
@@ -114,6 +117,12 @@ export default function Page() {
     };
   }, [routeLang]);
 
+  // One block per category that has services, in SERVICE_CATEGORIES order;
+  // a single block gets no heading or jump links.
+  const groups = SERVICE_CATEGORIES.map((category) => ({
+    category,
+    items: cards.filter((card) => card.category === category),
+  })).filter((group) => group.items.length > 0);
   return (
     <>
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
@@ -184,31 +193,84 @@ export default function Page() {
             </p>
           </div>
         ) : (
-          <div
-            className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
-            data-reveal
-          >
-            {cards.map((card) => (
-              <div
-                key={card.id}
-                className="w-[85%] shrink-0 snap-start sm:w-[60%] lg:w-auto lg:shrink"
+          <div className="space-y-14 sm:space-y-16">
+            {groups.length > 1 ? (
+              <nav
+                aria-label={t("servicesPage.categoryNav")}
+                className="flex flex-wrap justify-center gap-2"
               >
-                <ServiceCard
-                  serviceName={card.name}
-                  description={card.description}
-                  regularPrice={card.regularPrice}
-                  discountedPrice={card.discountedPrice}
-                  hasDiscount={card.hasDiscount}
-                  discountLabel={t("servicesPage.discountBadge")}
-                  expandLabel={t("servicesPage.expandDescription")}
-                  collapseLabel={t("servicesPage.collapseDescription")}
-                  slug={card.slug}
-                  images={card.images}
-                  contactBaseHref={contactHref}
-                  ctaLabel={t("servicesPage.cardCta")}
-                  ctaAriaLabel={t("servicesPage.cardCtaAria")}
-                />
-              </div>
+                {groups.map(({ category }) => (
+                  <a
+                    key={category}
+                    href={`#${categoryAnchor(category)}`}
+                    className="fancy-chip rounded-full px-4 py-2 text-xs font-semibold tracking-[0.1em] text-white/85 uppercase"
+                  >
+                    {t(`servicesPage.categories.${category}.label`)}
+                  </a>
+                ))}
+              </nav>
+            ) : null}
+
+            {groups.map(({ category, items }) => (
+              <section
+                key={category}
+                id={categoryAnchor(category)}
+                aria-labelledby={`${categoryAnchor(category)}-title`}
+                className="scroll-mt-28"
+              >
+                {groups.length > 1 ? (
+                  <header className="mb-6 text-center sm:mb-8">
+                    <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+                      {t(`servicesPage.categories.${category}.label`)}
+                    </p>
+                    <h2
+                      id={`${categoryAnchor(category)}-title`}
+                      className="mt-3 text-2xl font-semibold tracking-tight text-balance text-white sm:text-3xl"
+                    >
+                      {t(`servicesPage.categories.${category}.title`)}
+                    </h2>
+                    <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-pretty text-white/72 sm:text-base">
+                      {t(`servicesPage.categories.${category}.text`)}
+                    </p>
+                  </header>
+                ) : null}
+
+                <div
+                  className="no-scrollbar -mx-6 flex snap-x snap-mandatory scroll-px-6 items-start gap-6 overflow-x-auto scroll-smooth px-6 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:overflow-visible lg:px-0 lg:pb-0"
+                  data-reveal
+                >
+                  {items.map((card) => (
+                    <div
+                      key={card.id}
+                      className={`shrink-0 snap-start lg:w-auto lg:shrink ${
+                        items.length === 1
+                          ? "w-full lg:col-span-2 lg:mx-auto lg:max-w-2xl"
+                          : "w-[85%] sm:w-[60%]"
+                      }`}
+                    >
+                      <ServiceCard
+                        serviceName={card.name}
+                        description={card.description}
+                        regularPrice={card.regularPrice}
+                        discountedPrice={card.discountedPrice}
+                        hasDiscount={card.hasDiscount}
+                        discountLabel={t("servicesPage.discountBadge")}
+                        monthlyPrice={card.monthlyPrice}
+                        setupFeeLabel={t("servicesPage.setupFeeLabel")}
+                        monthlyFeeLabel={t("servicesPage.monthlyFeeLabel")}
+                        perMonth={(price) => t("servicesPage.perMonth", { price })}
+                        expandLabel={t("servicesPage.expandDescription")}
+                        collapseLabel={t("servicesPage.collapseDescription")}
+                        slug={card.slug}
+                        images={card.images}
+                        contactBaseHref={contactHref}
+                        ctaLabel={t("servicesPage.cardCta")}
+                        ctaAriaLabel={t("servicesPage.cardCtaAria")}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
             ))}
           </div>
         )}

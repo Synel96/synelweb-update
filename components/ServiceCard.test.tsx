@@ -106,4 +106,28 @@ describe("ServiceCard", () => {
       "/en/contact?service=seo%20%26%20ads#ajanlatkeres"
     );
   });
+
+  it("shows a one-time setup fee and a monthly fee for monthly services", () => {
+    render(
+      <ServiceCard
+        {...baseProps}
+        regularPrice="60 000 Ft"
+        monthlyPrice="30 000 Ft"
+        setupFeeLabel="Egyszeri beállítás"
+        monthlyFeeLabel="Havi díj"
+        perMonth={(price) => `${price} / hó`}
+      />
+    );
+
+    expect(screen.getByText("Egyszeri beállítás")).toBeInTheDocument();
+    expect(screen.getByText("60 000 Ft")).toBeInTheDocument();
+    expect(screen.getByText("Havi díj")).toBeInTheDocument();
+    expect(screen.getByText("30 000 Ft / hó")).toBeInTheDocument();
+  });
+
+  it("shows no fee labels for a one-off service", () => {
+    render(<ServiceCard {...baseProps} setupFeeLabel="Egyszeri beállítás" />);
+
+    expect(screen.queryByText("Egyszeri beállítás")).not.toBeInTheDocument();
+  });
 });

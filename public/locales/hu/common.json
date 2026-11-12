@@ -155,6 +155,27 @@
     "projectsLink": {
       "text": "Kíváncsi vagy, hogyan néz ki mindez élesben?",
       "cta": "Nézd meg korábbi munkáimat →"
+    },
+    "setupFeeLabel": "Egyszeri beállítás",
+    "monthlyFeeLabel": "Havi kezelési, konfigurálási és elemzési díj",
+    "perMonth": "{{price}} / hó",
+    "categoryNav": "Ugrás a szolgáltatásokhoz",
+    "categories": {
+      "website": {
+        "label": "Weboldal-fejlesztés",
+        "title": "Weboldalak és webshopok",
+        "text": "Egyszeri díjas fejlesztés, az első egyeztetéstől az élesítésig."
+      },
+      "marketing": {
+        "label": "Láthatóság és marketing",
+        "title": "Hogy meg is találjanak",
+        "text": "Havi díjas szolgáltatások: beállítás, folyamatos kezelés és rendszeres elemzés. A hirdetési keretet közvetlenül a Google-nek fizeted."
+      },
+      "operations": {
+        "label": "Üzemeltetés és kiegészítők",
+        "title": "Ami az indulás után kell",
+        "text": "Tárhely, karbantartás és kiegészítők, hogy az oldalad hosszú távon is rendben működjön."
+      }
     }
   },
   "projectsPage": {

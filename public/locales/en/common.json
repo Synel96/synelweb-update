@@ -145,6 +145,27 @@
     "projectsLink": {
       "text": "Curious what this looks like in production?",
       "cta": "See my past projects →"
+    },
+    "setupFeeLabel": "One-time setup",
+    "monthlyFeeLabel": "Monthly management, configuration and analytics fee",
+    "perMonth": "{{price}} / month",
+    "categoryNav": "Jump to services",
+    "categories": {
+      "website": {
+        "label": "Web development",
+        "title": "Websites and online shops",
+        "text": "One-time fee, from the first call to going live."
+      },
+      "marketing": {
+        "label": "Visibility and marketing",
+        "title": "So people actually find you",
+        "text": "Monthly services: setup, ongoing management and regular analytics. You pay the ad budget directly to Google."
+      },
+      "operations": {
+        "label": "Operations and add-ons",
+        "title": "What you need after launch",
+        "text": "Hosting, maintenance and add-ons to keep your site running well for the long term."
+      }
     }
   },
   "projectsPage": {

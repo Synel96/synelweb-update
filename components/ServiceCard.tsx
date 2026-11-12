@@ -14,6 +14,11 @@ type ServiceCardProps = {
   discountedPrice: string;
   hasDiscount: boolean;
   discountLabel: string;
+  // With a monthly fee, the regular/discounted price is the one-time setup fee.
+  monthlyPrice?: string;
+  setupFeeLabel?: string;
+  monthlyFeeLabel?: string;
+  perMonth?: (price: string) => string;
   expandLabel: string;
   collapseLabel: string;
   slug: string;
@@ -30,6 +35,10 @@ export function ServiceCard({
   discountedPrice,
   hasDiscount,
   discountLabel,
+  monthlyPrice = "",
+  setupFeeLabel = "",
+  monthlyFeeLabel = "",
+  perMonth = (price) => price,
   expandLabel,
   collapseLabel,
   slug,
@@ -120,7 +129,12 @@ export function ServiceCard({
         ) : null}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
+      {monthlyPrice ? (
+        <p className="mt-4 text-[0.68rem] font-semibold tracking-[0.16em] text-white/55 uppercase">
+          {setupFeeLabel}
+        </p>
+      ) : null}
+      <div className={`${monthlyPrice ? "mt-1.5" : "mt-4"} flex flex-wrap items-center gap-3`}>
         {hasDiscount ? (
           <>
             <span className="inline-flex items-center rounded-full border border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] px-3 py-1 text-[0.68rem] font-bold tracking-[0.18em] text-[#1a0a06] uppercase">
@@ -139,6 +153,17 @@ export function ServiceCard({
           </p>
         )}
       </div>
+
+      {monthlyPrice ? (
+        <div className="mt-3">
+          <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/55 uppercase">
+            {monthlyFeeLabel}
+          </p>
+          <p className="mt-1.5 text-lg font-extrabold tracking-[0.06em] text-emerald-300 sm:text-xl">
+            {perMonth(monthlyPrice)}
+          </p>
+        </div>
+      ) : null}
 
       {slides.length > 0 ? (
         <div className="mt-6 space-y-3">

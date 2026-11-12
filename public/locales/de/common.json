@@ -145,6 +145,27 @@
     "projectsLink": {
       "text": "Neugierig, wie das in der Praxis aussieht?",
       "cta": "Meine bisherigen Projekte ansehen →"
+    },
+    "setupFeeLabel": "Einmalige Einrichtung",
+    "monthlyFeeLabel": "Monatliche Betreuung, Konfiguration und Analyse",
+    "perMonth": "{{price}} / Monat",
+    "categoryNav": "Zu den Leistungen springen",
+    "categories": {
+      "website": {
+        "label": "Webentwicklung",
+        "title": "Websites und Onlineshops",
+        "text": "Einmalige Gebühr, vom ersten Gespräch bis zum Livegang."
+      },
+      "marketing": {
+        "label": "Sichtbarkeit und Marketing",
+        "title": "Damit man dich auch findet",
+        "text": "Monatliche Leistungen: Einrichtung, laufende Betreuung und regelmäßige Analyse. Das Werbebudget zahlst du direkt an Google."
+      },
+      "operations": {
+        "label": "Betrieb und Zusatzleistungen",
+        "title": "Was nach dem Start wichtig ist",
+        "text": "Hosting, Wartung und Zusatzleistungen, damit deine Website langfristig zuverlässig läuft."
+      }
     }
   },
   "projectsPage": {

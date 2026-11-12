@@ -23,18 +23,34 @@ type ApiServiceCard = {
   images?: string[];
   price?: ApiPrice;
   salePrice?: ApiPrice | null;
+  monthlyPrice?: ApiPrice | null;
+  category?: string;
   isActive?: boolean;
   order?: number;
 };
 
+// The blocks of the services page, in order (Package.category in the admin).
+export const SERVICE_CATEGORIES = ["website", "marketing", "operations"] as const;
+export type ServiceCategory = (typeof SERVICE_CATEGORIES)[number];
+
+function normalizeCategory(value: unknown): ServiceCategory {
+  return SERVICE_CATEGORIES.includes(value as ServiceCategory)
+    ? (value as ServiceCategory)
+    : "website";
+}
+
 export type ServiceCard = {
   id: string;
+  category: ServiceCategory;
   name: string;
   slug: string;
   description: string;
   regularPrice: string;
   discountedPrice: string;
   hasDiscount: boolean;
+  // Set for services with a monthly fee (e.g. ad management); regularPrice /
+  // discountedPrice are then the one-time setup fee.
+  monthlyPrice: string;
   images: string[];
   order: number;
 };
@@ -75,12 +91,14 @@ export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
       const hasDiscount = discountedPrice.length > 0;
       return {
         id: String(item.id),
+        category: normalizeCategory(item.category),
         name: pickLocalized(item.title, lang),
         slug: pickLocalized(item.slug, lang),
         description: pickLocalized(item.description, lang),
         regularPrice,
         discountedPrice,
         hasDiscount,
+        monthlyPrice: formatPrice(item.monthlyPrice, lang),
         images: Array.isArray(item.images) ? item.images.filter(Boolean) : [],
         order: typeof item.order === "number" ? item.order : Number(item.id) || 0,
       };

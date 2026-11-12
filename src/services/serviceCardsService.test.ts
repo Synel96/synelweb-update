@@ -121,4 +121,26 @@ describe("getServiceCards", () => {
     const [card] = await getServiceCards("en");
     expect(card.images).toEqual(["https://a.png"]);
   });
+
+  it("reads the category and a monthly fee, defaulting to a one-off website service", async () => {
+    mockFetchOnce([
+      {
+        id: 1,
+        title: { hu: "Google keresőhirdetés" },
+        category: "marketing",
+        price: { amount: 60000, currency: "HUF" },
+        monthlyPrice: { amount: 30000, currency: "HUF" },
+      },
+      { id: 2, title: { hu: "Landing oldal" }, price: { amount: 149000, currency: "HUF" } },
+      { id: 3, title: { hu: "Ismeretlen" }, category: "valami-mas" },
+    ]);
+    const [ads, landing, unknown] = await getServiceCards("hu");
+
+    expect(ads.category).toBe("marketing");
+    expect(ads.regularPrice.replace(/\s/g, " ")).toBe("60 000 Ft");
+    expect(ads.monthlyPrice.replace(/\s/g, " ")).toBe("30 000 Ft");
+    expect(landing.category).toBe("website");
+    expect(landing.monthlyPrice).toBe("");
+    expect(unknown.category).toBe("website");
+  });
 });

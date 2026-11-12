@@ -16,6 +16,7 @@ import {
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
+import { useHufFormatter } from "@/src/currency";
 import {
   getServiceCards,
   type AppLang,
@@ -39,25 +40,9 @@ const MAINTENANCE_ITEMS = [
   { key: "cloudinary", Icon: ImageIcon },
 ] as const;
 
-// Fixed, manually-set price points (not a live FX conversion) — update by
-// hand if the starting package price or exchange rates move meaningfully.
-const MAINTENANCE_STARTING_PRICE: Record<
-  AppLang,
-  { amount: number; currency: string; locale: string }
-> = {
-  hu: { amount: 25000, currency: "HUF", locale: "hu-HU" },
-  en: { amount: 70, currency: "USD", locale: "en-US" },
-  de: { amount: 65, currency: "EUR", locale: "de-DE" },
-};
-
-function formatMaintenanceStartingPrice(lang: AppLang): string {
-  const { amount, currency, locale } = MAINTENANCE_STARTING_PRICE[lang];
-  return new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
+// The maintenance fee starts at this many HUF; the German and English pages
+// show it converted with the backend's daily rate (see useHufFormatter).
+const MAINTENANCE_STARTING_PRICE_HUF = 25_000;
 
 type Data = {
   cards: ServiceCardItem[];
@@ -80,7 +65,8 @@ export default function Page() {
   const { t } = useTranslation();
   const routeLang = resolveCurrentLang(pageContext.lang);
   const appLang = toAppLang(routeLang);
-  const maintenanceStartingPrice = formatMaintenanceStartingPrice(appLang);
+  const formatHuf = useHufFormatter(appLang);
+  const maintenanceStartingPrice = formatHuf(MAINTENANCE_STARTING_PRICE_HUF);
 
   const [cards, setCards] = useState<ServiceCardItem[]>(initialCards);
   const [fetchError, setFetchError] = useState(initialFetchError);

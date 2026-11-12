@@ -553,10 +553,10 @@
     },
     "budget": "Keretösszeg (nem kötelező)",
     "budgetOptions": {
-      "under_200k": "200 000 Ft alatt",
-      "200k_400k": "200 000 – 400 000 Ft",
-      "400k_800k": "400 000 – 800 000 Ft",
-      "over_800k": "800 000 Ft felett",
+      "under_200k": "{{to}} alatt",
+      "200k_400k": "{{from}} – {{to}}",
+      "400k_800k": "{{from}} – {{to}}",
+      "over_800k": "{{from}} felett",
       "unsure": "Még nem tudom"
     },
     "contactPreference": "Hogyan egyeztetnél?",

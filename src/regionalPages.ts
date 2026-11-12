@@ -25,6 +25,9 @@ export type RegionalContent = {
   servicesText: string;
   servicesLink: string;
   perMonth: string;
+  // Shown under the services; {{price}} is the converted starting fee.
+  maintenanceLine: string;
+  maintenancePrice: string;
   areasLabel: string;
   areasTitle: string;
   areas: string[];
@@ -81,6 +84,8 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       "Sopron és környéke vállalkozásainak kedvezményes árazással dolgozom: az alábbi listaárakból a helyi kedvezményt az ajánlatban kapod meg. A részleteket és a kiegészítőket a szolgáltatások oldalon látod.",
     servicesLink: "Összes szolgáltatás részletesen",
     perMonth: "/ hó",
+    maintenanceLine: "Üzemeltetés és karbantartás – az átadás után is",
+    maintenancePrice: "{{price}}-tól / hó",
     areasLabel: "Ahol személyesen is ott vagyok",
     areasTitle: "Sopron és vonzáskörzete",
     areas: [
@@ -112,7 +117,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       },
       {
         q: "Ki kezeli az oldalt, miután elkészült?",
-        a: "Te magad, egy egyszerű admin felületen: szöveget, képet, árat pár kattintással módosíthatsz. Ha nem szeretnél ezzel foglalkozni, karbantartást is vállalok.",
+        a: "A tartalmat – szöveget, képet, árat – te magad is frissítheted egy egyszerű admin felületen. Az oldal üzemeltetését és karbantartását (szerverek, adatbázis, biztonsági frissítések) az átadás után is én végzem: ez minden projekt része, havi {{maintenance}}-tól.",
       },
     ],
     finalTitle: "Beszéljük át személyesen, mire van szükséged",
@@ -163,6 +168,8 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       "Alle Leistungen mit Details und Zusatzoptionen findest du auf der Leistungsseite.",
     servicesLink: "Alle Leistungen im Detail",
     perMonth: "/ Monat",
+    maintenanceLine: "Betrieb & Wartung – auch nach der Übergabe",
+    maintenancePrice: "ab {{price}} / Monat",
     areasLabel: "Persönlich vor Ort",
     areasTitle: "Burgenland und Wien",
     areas: [
@@ -191,7 +198,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       },
       {
         q: "Wer pflegt die Website danach?",
-        a: "Du selbst, über eine einfache Admin-Oberfläche: Texte, Bilder und Preise änderst du mit wenigen Klicks. Wenn du dich nicht darum kümmern willst, übernehme ich auch die Wartung.",
+        a: "Inhalte – Texte, Bilder, Preise – kannst du selbst über eine einfache Admin-Oberfläche ändern. Betrieb und Wartung der Website (Server, Datenbank, Sicherheitsupdates) übernehme ich auch nach der Übergabe: Das gehört zu jedem Projekt, ab {{maintenance}} pro Monat.",
       },
     ],
     finalTitle: "Lass uns über dein Projekt sprechen",

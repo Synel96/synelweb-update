@@ -134,8 +134,8 @@
     },
     "maintenance": {
       "label": "Üzemeltetés",
-      "title": "Havi karbantartási és üzemeltetési díj",
-      "text": "Egy weboldal üzemeltetési és karbantartási díja sok mindentől függ, ezért mindig az igényeidhez igazítom. A havi díj jellemzően az alábbiakat foglalja magába:",
+      "title": "Havi üzemeltetési és karbantartási díj",
+      "text": "Az átadás után is én üzemeltetem és tartom karban az oldaladat – ez minden projekt része, mert a modern technikai háttér (szerverek, adatbázis, biztonsági frissítések) folyamatos felügyeletet igényel. A havi díj az igényeidhez igazodik, és jellemzően az alábbiakat foglalja magába:",
       "items": {
         "hosting": "Tárhely és domain",
         "email": "Üzleti levelezőrendszer (igény esetén)",
@@ -161,7 +161,7 @@
       "website": {
         "label": "Weboldal-fejlesztés",
         "title": "Weboldalak és webshopok",
-        "text": "Egyszeri díjas fejlesztés, az első egyeztetéstől az élesítésig."
+        "text": "Egyszeri díjas fejlesztés az első egyeztetéstől az élesítésig, utána havi üzemeltetéssel és karbantartással."
       },
       "marketing": {
         "label": "Láthatóság és marketing",

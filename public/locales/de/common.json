@@ -129,7 +129,7 @@
     "maintenance": {
       "label": "Betrieb",
       "title": "Monatliche Betriebs- und Wartungsgebühr",
-      "text": "Die Betriebs- und Wartungsgebühr einer Website hängt von vielen Faktoren ab, deshalb passe ich sie immer an deine Bedürfnisse an. In der Regel umfasst sie Folgendes:",
+      "text": "Auch nach der Übergabe betreibe und warte ich deine Website – das gehört zu jedem Projekt, denn ein modernes technisches Fundament (Server, Datenbank, Sicherheitsupdates) braucht laufende Betreuung. Die monatliche Gebühr richtet sich nach deinen Anforderungen und umfasst in der Regel Folgendes:",
       "items": {
         "hosting": "Hosting & Domain",
         "email": "Geschäftliches E-Mail-System (bei Bedarf)",
@@ -155,7 +155,7 @@
       "website": {
         "label": "Webentwicklung",
         "title": "Websites und Onlineshops",
-        "text": "Einmalige Gebühr, vom ersten Gespräch bis zum Livegang."
+        "text": "Einmalige Gebühr vom ersten Gespräch bis zum Livegang, danach eine monatliche Betriebs- und Wartungsgebühr."
       },
       "marketing": {
         "label": "Sichtbarkeit und Marketing",

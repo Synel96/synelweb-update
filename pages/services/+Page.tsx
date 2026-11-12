@@ -19,6 +19,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import { useHufFormatter } from "@/src/currency";
+import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
 import { useCertificates } from "@/src/hooks/use-certificates";
 import type { Certificate, CertificateCategory } from "@/src/services/certificatesService";
 import {
@@ -58,10 +59,6 @@ const MAINTENANCE_ITEMS = [
   { key: "neon", Icon: DatabaseIcon },
   { key: "cloudinary", Icon: ImageIcon },
 ] as const;
-
-// The maintenance fee starts at this many HUF; the German and English pages
-// show it converted with the backend's daily rate (see useHufFormatter).
-const MAINTENANCE_STARTING_PRICE_HUF = 25_000;
 
 type Data = {
   certificates?: Certificate[];

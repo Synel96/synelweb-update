@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { trackEvent } from "@/src/analytics";
+import { useHufFormatter } from "@/src/currency";
+import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
 import { localizePath, type RegionalLogicalPath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import { REGIONAL_CONTENT, type RegionalBenefitIcon } from "@/src/regionalPages";
@@ -52,6 +54,8 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
   const content = REGIONAL_CONTENT[page];
   const [services, setServices] = useState(initial.services);
   const [reference, setReference] = useState(initial.reference);
+  const formatHuf = useHufFormatter(lang);
+  const maintenancePrice = formatHuf(MAINTENANCE_STARTING_PRICE_HUF);
   const quoteHref = quoteFormHref(lang);
   const servicesHref = localizePath("/services", lang);
   const location = page === "/sopron" ? "sopron" : "austria";
@@ -215,6 +219,12 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
                 </li>
               );
             })}
+            <li className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-4">
+              <span className="font-medium text-white">{content.maintenanceLine}</span>
+              <span className="text-sm font-semibold text-(--color-secondary-warm)">
+                {content.maintenancePrice.replace("{{price}}", maintenancePrice)}
+              </span>
+            </li>
           </ul>
           <div className="mt-6 text-center">
             <a
@@ -267,7 +277,9 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
                   aria-hidden="true"
                 />
               </summary>
-              <p className="mt-3 text-base leading-7 text-white/78">{a}</p>
+              <p className="mt-3 text-base leading-7 text-white/78">
+                {a.replace("{{maintenance}}", maintenancePrice)}
+              </p>
             </details>
           ))}
         </div>

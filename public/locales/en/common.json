@@ -128,8 +128,8 @@
     },
     "maintenance": {
       "label": "Maintenance",
-      "title": "Monthly maintenance & hosting fee",
-      "text": "A website's ongoing hosting and maintenance fee depends on a lot of factors, so I always tailor it to your needs. It typically covers the following:",
+      "title": "Monthly hosting & maintenance fee",
+      "text": "I keep running and maintaining your site after handover too – it's part of every project, because a modern technical foundation (servers, database, security updates) needs ongoing care. The monthly fee is tailored to your needs and typically covers the following:",
       "items": {
         "hosting": "Hosting & domain",
         "email": "Business email system (if needed)",
@@ -155,7 +155,7 @@
       "website": {
         "label": "Web development",
         "title": "Websites and online shops",
-        "text": "One-time fee, from the first call to going live."
+        "text": "One-time fee from the first call to going live, then a monthly hosting & maintenance fee."
       },
       "marketing": {
         "label": "Visibility and marketing",

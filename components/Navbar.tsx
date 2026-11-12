@@ -131,19 +131,21 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 xl:flex">
-          {visibleNavLinks.map((item) => (
-            <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
-              {navLabel(item)}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-6 lg:flex">
+          {visibleNavLinks
+            .filter((item) => !item.hiddenInDesktopNav)
+            .map((item) => (
+              <a key={item.href} href={langHref(item.href)} className={navLinkClass(item.href)}>
+                {navLabel(item)}
+              </a>
+            ))}
         </nav>
 
-        <div className="hidden items-center xl:flex">
+        <div className="hidden items-center lg:flex">
           <LanguageSwitcherDropdown />
         </div>
 
-        <div className="xl:hidden">
+        <div className="lg:hidden">
           {mounted ? (
             <PushDrawer open={open} onOpenChange={setOpen}>
               <PushDrawerTrigger asChild>

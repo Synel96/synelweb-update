@@ -28,6 +28,12 @@ describe("NAV_LINKS", () => {
     expect(blogLink?.hiddenInLangs).toEqual(["en", "de"]);
   });
 
+  it("keeps the certificates link out of the desktop row only", () => {
+    const certificates = NAV_LINKS.find((link) => link.href === "/certificates");
+    expect(certificates?.hiddenInDesktopNav).toBe(true);
+    expect(NAV_LINKS.filter((link) => link.hiddenInDesktopNav)).toHaveLength(1);
+  });
+
   it("does not hide non-blog links in any language", () => {
     const nonBlogLinks = NAV_LINKS.filter((link) => link.href !== "/blog");
     for (const link of nonBlogLinks) {

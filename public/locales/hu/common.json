@@ -177,7 +177,8 @@
         "title": "Ami az indulás után kell",
         "text": "Tárhely, karbantartás és kiegészítők, hogy az oldalad hosszú távon is rendben működjön."
       }
-    }
+    },
+    "certifiedWith": "Tanúsítvánnyal igazolva:"
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
@@ -375,6 +376,12 @@
       "text": "Lépjünk szintet, és hagyjuk le a konkurenciát egy olyan oldallal, amit a látogatóid és a Google is imádni fognak. Beszéljük át a céljaidat egy online egyeztetés során, vagy – ha Sopron környékén vagy – akár személyesen is.",
       "button": "Ingyenes konzultációt kérek",
       "ariaLabel": "Ingyenes konzultáció kérése"
+    },
+    "certificates": {
+      "label": "Tanúsítványok",
+      "title": "Ellenőrizhető tudás",
+      "text": "Néhány a tanúsítványaim közül – mindegyik a kiállító oldalán ellenőrizhető.",
+      "all": "Mind a {{count}} tanúsítvány"
     }
   },
   "stickyCta": {

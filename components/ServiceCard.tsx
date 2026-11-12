@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { BadgeCheckIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { Button } from "@/components/ui/button";
 import { useSnapCarousel } from "@/src/hooks/use-snap-carousel";
@@ -19,6 +19,9 @@ type ServiceCardProps = {
   setupFeeLabel?: string;
   monthlyFeeLabel?: string;
   perMonth?: (price: string) => string;
+  // Certificates that back this service (e.g. Google Ads for ad management).
+  certifications?: Array<{ title: string; url: string }>;
+  certifiedLabel?: string;
   expandLabel: string;
   collapseLabel: string;
   slug: string;
@@ -39,6 +42,8 @@ export function ServiceCard({
   setupFeeLabel = "",
   monthlyFeeLabel = "",
   perMonth = (price) => price,
+  certifications = [],
+  certifiedLabel = "",
   expandLabel,
   collapseLabel,
   slug,
@@ -163,6 +168,30 @@ export function ServiceCard({
             {perMonth(monthlyPrice)}
           </p>
         </div>
+      ) : null}
+
+      {certifications.length > 0 ? (
+        <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-white/70">
+          <BadgeCheckIcon className="size-4 shrink-0 text-emerald-300" aria-hidden="true" />
+          <span>{certifiedLabel}</span>
+          {certifications.map((cert, index) => (
+            <span key={cert.url || cert.title}>
+              {cert.url ? (
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-emerald-300 underline decoration-emerald-300/40 underline-offset-4 transition-colors hover:text-emerald-200"
+                >
+                  {cert.title}
+                </a>
+              ) : (
+                <span className="font-semibold text-emerald-300">{cert.title}</span>
+              )}
+              {index < certifications.length - 1 ? "," : ""}
+            </span>
+          ))}
+        </p>
       ) : null}
 
       {slides.length > 0 ? (

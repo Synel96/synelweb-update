@@ -17,6 +17,8 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import { useHufFormatter } from "@/src/currency";
+import { useCertificates } from "@/src/hooks/use-certificates";
+import type { Certificate, CertificateCategory } from "@/src/services/certificatesService";
 import {
   getServiceCards,
   SERVICE_CATEGORIES,
@@ -46,6 +48,7 @@ const MAINTENANCE_ITEMS = [
 const MAINTENANCE_STARTING_PRICE_HUF = 25_000;
 
 type Data = {
+  certificates?: Certificate[];
   cards: ServiceCardItem[];
   fetchError: boolean;
   contactHref: string;
@@ -60,6 +63,11 @@ function toAppLang(language: string): AppLang {
 
 const categoryAnchor = (category: string) => `szolgaltatas-${category}`;
 
+// Service block -> certificate fields shown as proof on its cards.
+const SERVICE_CERTIFICATE_FIELDS: Partial<Record<string, CertificateCategory[]>> = {
+  marketing: ["marketing"],
+};
+
 export default function Page() {
   const pageContext = usePageContext() as { data?: Data; lang?: "en" | "hu" | "de" };
   const initialCards = pageContext.data?.cards ?? [];
@@ -69,6 +77,15 @@ export default function Page() {
   const routeLang = resolveCurrentLang(pageContext.lang);
   const appLang = toAppLang(routeLang);
   const formatHuf = useHufFormatter(appLang);
+  const certificates = useCertificates(appLang, pageContext.data?.certificates ?? []);
+  // Which certificates back a service category: valid exam certificates of the
+  // matching field (e.g. Google Ads for ad management).
+  const certificationsFor = (category: ServiceCardItem["category"]) => {
+    const fields = SERVICE_CERTIFICATE_FIELDS[category] ?? [];
+    return certificates
+      .filter((c) => c.kind === "exam" && !c.isExpired && fields.includes(c.category))
+      .map((c) => ({ title: c.title, url: c.credentialUrl }));
+  };
   const maintenanceStartingPrice = formatHuf(MAINTENANCE_STARTING_PRICE_HUF);
 
   const [cards, setCards] = useState<ServiceCardItem[]>(initialCards);
@@ -259,6 +276,8 @@ export default function Page() {
                         setupFeeLabel={t("servicesPage.setupFeeLabel")}
                         monthlyFeeLabel={t("servicesPage.monthlyFeeLabel")}
                         perMonth={(price) => t("servicesPage.perMonth", { price })}
+                        certifications={certificationsFor(card.category)}
+                        certifiedLabel={t("servicesPage.certifiedWith")}
                         expandLabel={t("servicesPage.expandDescription")}
                         collapseLabel={t("servicesPage.collapseDescription")}
                         slug={card.slug}

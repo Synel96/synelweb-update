@@ -8,6 +8,9 @@ type NavLink = {
   href: string;
   labelKey: string;
   hiddenInLangs?: readonly SupportedLang[];
+  // Left out of the desktop link row (it only has room for seven); still in
+  // the mobile menu and the footer.
+  hiddenInDesktopNav?: boolean;
   fallbackLabel?: Record<SupportedLang, string>;
 };
 
@@ -15,7 +18,7 @@ export const NAV_LINKS: readonly NavLink[] = [
   { href: "/", labelKey: "nav.home" },
   { href: "/services", labelKey: "nav.services" },
   { href: "/projects", labelKey: "nav.projects" },
-  { href: "/certificates", labelKey: "nav.certificates" },
+  { href: "/certificates", labelKey: "nav.certificates", hiddenInDesktopNav: true },
   {
     href: "/blog",
     labelKey: "nav.blog",

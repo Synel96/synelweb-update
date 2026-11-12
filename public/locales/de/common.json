@@ -167,7 +167,8 @@
         "title": "Was nach dem Start wichtig ist",
         "text": "Hosting, Wartung und Zusatzleistungen, damit deine Website langfristig zuverlässig läuft."
       }
-    }
+    },
+    "certifiedWith": "Nachgewiesen durch:"
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
@@ -366,6 +367,12 @@
       "text": "Lass uns den nächsten Schritt machen und die Konkurrenz mit einer Website überholen, die Besucher und Google lieben. Wir besprechen deine Ziele in einem Online-Termin oder – wenn du in der Nähe von Sopron bist – auch persönlich.",
       "button": "Kostenlose Beratung anfragen",
       "ariaLabel": "Kostenlose Beratung anfragen"
+    },
+    "certificates": {
+      "label": "Zertifikate",
+      "title": "Überprüfbares Wissen",
+      "text": "Einige meiner Zertifikate – jedes ist auf der Seite des Ausstellers überprüfbar.",
+      "all": "Alle {{count}} Zertifikate"
     }
   },
   "stickyCta": {

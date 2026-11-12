@@ -544,10 +544,10 @@
     },
     "budget": "Budget (optional)",
     "budgetOptions": {
-      "under_200k": "Unter 200.000 HUF",
-      "200k_400k": "200.000 – 400.000 HUF",
-      "400k_800k": "400.000 – 800.000 HUF",
-      "over_800k": "Über 800.000 HUF",
+      "under_200k": "Unter {{to}}",
+      "200k_400k": "{{from}} – {{to}}",
+      "400k_800k": "{{from}} – {{to}}",
+      "over_800k": "Über {{from}}",
       "unsure": "Weiß ich noch nicht"
     },
     "contactPreference": "Wie möchtest du dich abstimmen?",

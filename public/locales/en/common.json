@@ -544,10 +544,10 @@
     },
     "budget": "Budget (optional)",
     "budgetOptions": {
-      "under_200k": "Under HUF 200,000",
-      "200k_400k": "HUF 200,000 – 400,000",
-      "400k_800k": "HUF 400,000 – 800,000",
-      "over_800k": "Over HUF 800,000",
+      "under_200k": "Under {{to}}",
+      "200k_400k": "{{from}} – {{to}}",
+      "400k_800k": "{{from}} – {{to}}",
+      "over_800k": "Over {{from}}",
       "unsure": "Not sure yet"
     },
     "contactPreference": "How would you like to talk?",

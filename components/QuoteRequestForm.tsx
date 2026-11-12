@@ -6,6 +6,7 @@ import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 import { getServiceCards, type AppLang } from "@/src/services/serviceCardsService";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { trackEvent } from "@/src/analytics";
+import { useHufFormatter } from "@/src/currency";
 
 export type QuoteMode = "simple" | "detailed";
 
@@ -25,6 +26,14 @@ const ADDONS = [
 ] as const;
 const TIMELINES = ["urgent", "one_two_months", "flexible"] as const;
 const BUDGETS = ["under_200k", "200k_400k", "400k_800k", "over_800k", "unsure"] as const;
+// The band limits in HUF; shown in the page's currency (see useHufFormatter).
+const BUDGET_LIMITS_HUF: Record<(typeof BUDGETS)[number], { from?: number; to?: number }> = {
+  under_200k: { to: 200_000 },
+  "200k_400k": { from: 200_000, to: 400_000 },
+  "400k_800k": { from: 400_000, to: 800_000 },
+  over_800k: { from: 800_000 },
+  unsure: {},
+};
 const CONTACT_PREFERENCES = ["email", "phone", "online", "in_person"] as const;
 
 type Status = "idle" | "sending" | "sent" | "error" | "throttled";
@@ -124,6 +133,7 @@ export function QuoteRequestForm({
   const { t } = useTranslation();
   const formId = useId();
   const [mode, setMode] = useState<QuoteMode>(initialMode);
+  const formatHuf = useHufFormatter(lang);
   const [services, setServices] = useState<ServiceOption[]>([]);
   const [status, setStatus] = useState<Status>("idle");
 
@@ -490,7 +500,16 @@ export function QuoteRequestForm({
               legend={t("quoteForm.budget")}
               name={`${formId}-budget`}
               type="radio"
-              options={options(BUDGETS, "quoteForm.budgetOptions")}
+              options={BUDGETS.map((key) => {
+                const { from, to } = BUDGET_LIMITS_HUF[key];
+                return {
+                  value: key,
+                  label: t(`quoteForm.budgetOptions.${key}`, {
+                    from: from === undefined ? "" : formatHuf(from),
+                    to: to === undefined ? "" : formatHuf(to),
+                  }),
+                };
+              })}
               value={budget}
               onChange={(next) => setBudget(next as string)}
             />

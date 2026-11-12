@@ -130,7 +130,7 @@ describe("QuoteRequestForm", () => {
     });
     fireEvent.click(screen.getByRole("checkbox", { name: /Google keresőhirdetés/ }));
     fireEvent.click(screen.getByRole("checkbox", { name: "Német" }));
-    fireEvent.click(screen.getByRole("radio", { name: "200 000 – 400 000 Ft" }));
+    fireEvent.click(screen.getByRole("radio", { name: /^200\s000\sFt – 400\s000\sFt$/ }));
     fireEvent.click(screen.getByRole("checkbox", { name: /Sopron környéki/ }));
     submit();
 

@@ -84,7 +84,7 @@ describe("getServiceCards", () => {
       },
     ]);
     const [card] = await getServiceCards("en");
-    expect(card.regularPrice).toBe("$135.00");
+    expect(card.regularPrice).toBe("$140"); // converted prices are rounded, no cents
   });
 
   it("reports a discount when a sale price is present", async () => {
@@ -98,7 +98,7 @@ describe("getServiceCards", () => {
     ]);
     const [card] = await getServiceCards("en");
     expect(card.hasDiscount).toBe(true);
-    expect(card.discountedPrice).toBe("$150.00");
+    expect(card.discountedPrice).toBe("$150");
   });
 
   it("returns an empty price string when the price is missing", async () => {

@@ -1,5 +1,6 @@
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import { fetchWithTimeout } from "@/src/fetchWithTimeout";
+import { formatMoney } from "@/src/currency";
 
 export type AppLang = "hu" | "en" | "de";
 
@@ -40,12 +41,6 @@ export type ServiceCard = {
 
 const SERVICES_ENDPOINT = `${resolveApiBaseUrl()}/api/services/`;
 
-const LOCALE_BY_LANG: Record<AppLang, string> = {
-  hu: "hu-HU",
-  en: "en-US",
-  de: "de-DE",
-};
-
 function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
   if (!text) return "";
   const candidate = text[lang] ?? text.hu ?? text.en ?? text.de ?? "";
@@ -55,8 +50,8 @@ function pickLocalized(text: LocalizedText | undefined, lang: AppLang): string {
 function formatPrice(price: ApiPrice | null | undefined, lang: AppLang): string {
   if (!price || typeof price.amount !== "number") return "";
   const currency = (price.currency || "HUF").trim() || "HUF";
-  const locale = LOCALE_BY_LANG[lang] ?? LOCALE_BY_LANG.hu;
-  return new Intl.NumberFormat(locale, { style: "currency", currency }).format(price.amount);
+  // Converted (EUR/USD) prices come rounded to a tidy amount, without cents.
+  return formatMoney(price.amount, currency, lang);
 }
 
 export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {

@@ -193,6 +193,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://synelweb.hu/hu/kapcsolat" />
   </url>
   <url>
+    <loc>https://synelweb.hu/hu/weboldal-keszites-sopron</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/weboldal-keszites-sopron" />
+  </url>
+  <url>
+    <loc>https://synelweb.hu/de/webdesign-burgenland-wien</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/webdesign-burgenland-wien" />
+  </url>
+  <url>
     <loc>https://synelweb.hu/adatkezeles</loc>
     <lastmod>2026-11-12</lastmod>
   </url>

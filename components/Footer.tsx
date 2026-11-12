@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
-import { BRAND_NAME, NAV_LINKS } from "./site";
+import { BRAND_NAME, NAV_LINKS, visibleSubLinks } from "./site";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 
@@ -41,6 +41,19 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
               {navLabel(item)}
             </a>
           ))}
+          {visibleNavLinks.flatMap((item) =>
+            visibleSubLinks(item, lang)
+              .filter((sub) => sub.href !== item.href)
+              .map((sub) => (
+                <a
+                  key={sub.href}
+                  href={langHref(sub.href)}
+                  className="text-white/75 transition-colors hover:text-(--accent)"
+                >
+                  {sub.label}
+                </a>
+              ))
+          )}
         </nav>
         <nav
           aria-label="Legal links"

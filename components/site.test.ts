@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BRAND_NAME, NAV_LINKS, SITE_URL } from "./site";
+import { BRAND_NAME, NAV_LINKS, SITE_URL, visibleSubLinks } from "./site";
 
 describe("site constants", () => {
   it("exposes the brand name and site URL from env", () => {
@@ -39,5 +39,24 @@ describe("NAV_LINKS", () => {
     for (const link of nonBlogLinks) {
       expect(link.hiddenInLangs).toBeUndefined();
     }
+  });
+});
+
+describe("visibleSubLinks", () => {
+  const services = NAV_LINKS.find((link) => link.href === "/services")!;
+
+  it("offers each language its own regional page under Services", () => {
+    expect(visibleSubLinks(services, "hu").map((link) => link.href)).toEqual([
+      "/services",
+      "/sopron",
+    ]);
+    expect(visibleSubLinks(services, "de").map((link) => link.href)).toEqual([
+      "/services",
+      "/austria",
+    ]);
+  });
+
+  it("shows no submenu where there is no regional page", () => {
+    expect(visibleSubLinks(services, "en")).toEqual([]);
   });
 });

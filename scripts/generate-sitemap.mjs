@@ -26,6 +26,14 @@ const KNOWN_LOGICAL_PATHS = [
   "/contact",
 ];
 
+// Regional landing pages: one language each, no translations — keep in sync
+// with REGIONAL_PAGES in src/localizedRoutes.ts. Each lists only itself as an
+// hreflang alternate.
+const REGIONAL_PATHS = [
+  { lang: "hu", path: "/hu/weboldal-keszites-sopron" },
+  { lang: "de", path: "/de/webdesign-burgenland-wien" },
+];
+
 // Hungarian-only legal pages: not localized, no language prefix, no
 // cross-language siblings — so no hreflang block for these.
 const LEGAL_PATHS = ["/adatkezeles", "/impresszum", "/aszf"];
@@ -107,6 +115,10 @@ async function buildEntries() {
     entries.push(group);
   }
 
+  for (const { lang, path } of REGIONAL_PATHS) {
+    entries.push({ path, alternates: null, selfLang: lang });
+  }
+
   for (const legalPath of LEGAL_PATHS) {
     entries.push({ path: legalPath, alternates: null });
   }
@@ -115,7 +127,7 @@ async function buildEntries() {
 }
 
 function toXml(entries) {
-  const urlBlocks = entries.map(({ path, alternates }) => {
+  const urlBlocks = entries.map(({ path, alternates, selfLang }) => {
     const lines = [`    <loc>${SITE_URL}${path}</loc>`, `    <lastmod>${TODAY}</lastmod>`];
 
     if (alternates) {
@@ -126,6 +138,12 @@ function toXml(entries) {
       }
       lines.push(
         `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${alternates[DEFAULT_LANG]}" />`
+      );
+    }
+
+    if (selfLang) {
+      lines.push(
+        `    <xhtml:link rel="alternate" hreflang="${selfLang}" href="${SITE_URL}${path}" />`
       );
     }
 

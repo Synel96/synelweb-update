@@ -1,6 +1,13 @@
 import { BRAND_NAME, SITE_URL } from "../components/site";
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "./i18n-config";
-import { localizePath, normalizeLogicalPath, type KnownLogicalPath } from "./localizedRoutes";
+import {
+  isRegionalLogicalPath,
+  localizePath,
+  normalizeLogicalPath,
+  REGIONAL_PAGES,
+  type KnownLogicalPath,
+  type RegionalLogicalPath,
+} from "./localizedRoutes";
 
 type SeoEntry = {
   title: string;
@@ -145,7 +152,25 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
   },
 };
 
+// Regional landing pages: one language each (see REGIONAL_PAGES).
+export const REGIONAL_SEO: Record<RegionalLogicalPath, SeoEntry> = {
+  "/sopron": {
+    title: "Weboldal készítés Sopron | SynelWeb",
+    description:
+      "Egyedi, villámgyors weboldal készítés Sopronban és környékén, személyes egyeztetéssel. Kétnyelvű (magyar–német) oldalak osztrák vendégeknek, helyi SEO és Google Cégprofil.",
+  },
+  "/austria": {
+    title: "Webdesign Burgenland & Wien | SynelWeb",
+    description:
+      "Individuelles, blitzschnelles Webdesign für Unternehmen im Burgenland und in Wien – mit Impressum- und DSGVO-konformer Umsetzung, Preisen in Euro und persönlichen Terminen.",
+  },
+};
+
 export function getSeoEntry(pathname: string, lang: SupportedLang): SeoEntry {
+  const normalized = normalizeLogicalPath(pathname);
+  if (isRegionalLogicalPath(normalized) && REGIONAL_PAGES[normalized].lang === lang) {
+    return REGIONAL_SEO[normalized];
+  }
   const logicalPath = normalizeLogicalPath(pathname) as KnownLogicalPath;
   return PAGE_SEO[lang][logicalPath] ?? { title: BRAND_NAME, description: "" };
 }
@@ -159,17 +184,20 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
     description && description.trim().length > 0 ? description : fallbackMeta.description;
   const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/og-image.png`;
 
-  // hreflang alternates for every supported language + x-default pointing to default lang
-  const alternates = [
-    ...SUPPORTED_LANGS.map((l) => ({
-      hreflang: l,
-      href: new URL(localizePath(logicalPath, l), SITE_URL).toString(),
-    })),
-    {
-      hreflang: "x-default",
-      href: new URL(localizePath(logicalPath, DEFAULT_LANG), SITE_URL).toString(),
-    },
-  ];
+  // hreflang alternates for every supported language + x-default pointing to
+  // default lang. A regional page has no translations: it only names itself.
+  const alternates = isRegionalLogicalPath(logicalPath)
+    ? [{ hreflang: lang, href: canonicalUrl }]
+    : [
+        ...SUPPORTED_LANGS.map((l) => ({
+          hreflang: l,
+          href: new URL(localizePath(logicalPath, l), SITE_URL).toString(),
+        })),
+        {
+          hreflang: "x-default",
+          href: new URL(localizePath(logicalPath, DEFAULT_LANG), SITE_URL).toString(),
+        },
+      ];
 
   return {
     canonicalUrl,

@@ -12,7 +12,11 @@ export type QuoteCtaLocation =
   | "about"
   | "technology"
   | "blog_post"
-  | "certificates";
+  | "certificates"
+  | "sopron_hero"
+  | "sopron_final"
+  | "austria_hero"
+  | "austria_final";
 
 export type ContactMethod = "phone" | "email" | "facebook" | "linkedin";
 

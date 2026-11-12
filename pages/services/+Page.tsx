@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { useTranslation } from "react-i18next";
 import {
+  ArrowRightIcon,
   ChartNoAxesColumnIcon,
   DatabaseIcon,
   GlobeIcon,
   ImageIcon,
   MailIcon,
+  MapPinIcon,
   PenLineIcon,
   RocketIcon,
   StoreIcon,
@@ -25,6 +27,20 @@ import {
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
+
+// Points the visitor of a language to its regional landing page.
+const REGIONAL_TEASERS: Partial<Record<AppLang, { href: string; label: string; text: string }>> = {
+  hu: {
+    href: "/sopron",
+    label: "Sopron és környéke – helyi kedvezménnyel",
+    text: "Sopron és környéke vállalkozásainak kedvezményes árazással dolgozom, és személyesen is egyeztetünk. Nézd meg, mit kapsz helyben.",
+  },
+  de: {
+    href: "/austria",
+    label: "Burgenland & Wien",
+    text: "Webdesign für Unternehmen im Burgenland und in Wien: persönliche Termine, Impressum & DSGVO sauber umgesetzt, Preise in Euro.",
+  },
+};
 
 const SERVICES_BADGES = [
   { key: "googleBusiness", Icon: StoreIcon },
@@ -163,15 +179,28 @@ export default function Page() {
             </p>
           </div>
 
-          {appLang === "hu" ? (
-            <div className="fancy-panel mt-6 rounded-2xl p-5 backdrop-blur-sm sm:p-6">
-              <p className="text-xs font-semibold tracking-[0.16em] text-(--color-secondary-warm) uppercase">
-                {t("servicesPage.localDiscount.label")}
-              </p>
-              <p className="mt-2 text-left text-sm leading-7 text-white/85 sm:text-base">
-                {t("servicesPage.localDiscount.text")}
-              </p>
-            </div>
+          {REGIONAL_TEASERS[appLang] ? (
+            <a
+              href={localizePath(REGIONAL_TEASERS[appLang].href, appLang)}
+              className="fancy-panel group mt-6 flex items-center gap-4 rounded-2xl p-5 text-left backdrop-blur-sm transition-colors hover:border-(--accent)/50 sm:p-6"
+            >
+              <MapPinIcon
+                className="size-6 shrink-0 text-(--color-secondary-warm)"
+                aria-hidden="true"
+              />
+              <span className="flex-1">
+                <span className="block text-xs font-semibold tracking-[0.16em] text-(--color-secondary-warm) uppercase">
+                  {REGIONAL_TEASERS[appLang].label}
+                </span>
+                <span className="mt-2 block text-sm leading-7 text-white/85 sm:text-base">
+                  {REGIONAL_TEASERS[appLang].text}
+                </span>
+              </span>
+              <ArrowRightIcon
+                className="size-5 shrink-0 text-(--accent) transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
           ) : null}
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

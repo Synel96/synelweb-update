@@ -10,7 +10,8 @@
     "contact": "Kapcsolat",
     "openMenu": "Menü megnyitása",
     "closeMenu": "Menü bezárása",
-    "navigationMenu": "Navigációs menü"
+    "navigationMenu": "Navigációs menü",
+    "certificates": "Tanúsítványok"
   },
   "footer": {
     "allRightsReserved": "Minden jog fenntartva."
@@ -602,5 +603,54 @@
     "error": "Nem sikerült elküldeni. Próbáld újra pár perc múlva, vagy írj közvetlenül az info@synelweb.hu címre.",
     "throttled": "Rövid idő alatt túl sok ajánlatkérés érkezett erről az eszközről. Próbáld újra később, vagy írj az info@synelweb.hu címre.",
     "responseTime": "Általában 1 munkanapon belül válaszolok."
+  },
+  "certificatesPage": {
+    "label": "Tanúsítványok",
+    "title": "Tanúsított tudás, a gyakorlatban kipróbálva",
+    "intro": "Rendszeresen képzem magam, hogy a weboldalad mögött naprakész tudás álljon. Itt területenként láthatod a tanúsítványaimat és az elvégzett képzéseimet – mindegyik a kiállító oldalán ellenőrizhető.",
+    "stats": {
+      "count": "{{count}} tanúsítvány",
+      "areas": "{{count}} szakterület",
+      "verifiable": "Mind ellenőrizhető"
+    },
+    "filterAll": "Összes",
+    "countLabel": "{{count}} tanúsítvány",
+    "categories": {
+      "frontend": {
+        "title": "Frontend webfejlesztés",
+        "text": "Felhasználói felületek, reszponzív és akadálymentes weboldalak modern eszközökkel."
+      },
+      "backend": {
+        "title": "Backend",
+        "text": "Szerveroldali logika, API-k és adatbázisok, amik nagy forgalom mellett is stabilan futnak."
+      },
+      "fullstack": {
+        "title": "Fullstack",
+        "text": "A teljes rendszer egy kézben: frontend, backend, adatbázis és telepítés."
+      },
+      "marketing": {
+        "title": "Search Ads és marketing",
+        "text": "Keresőhirdetések, mérés és elemzés, hogy az oldalad ügyfeleket is hozzon."
+      }
+    },
+    "kind": {
+      "exam": "Vizsga",
+      "course": "Kurzus"
+    },
+    "hours": "{{hours}} óra",
+    "validUntil": "Érvényes: {{date}}-ig",
+    "expired": "Lejárt",
+    "verified": "Ellenőrizhető",
+    "view": "Tanúsítvány megtekintése",
+    "swipeHint": "Húzd oldalra",
+    "swipePosition": "{{current}} / {{total}}",
+    "dotAria": "Ugrás a(z) {{index}}. tanúsítványhoz",
+    "emptyState": "Hamarosan itt lesznek a tanúsítványaim.",
+    "fetchError": "A tanúsítványok betöltése most nem sikerült. Próbáld meg később újra.",
+    "cta": {
+      "title": "Ezt a tudást a te projektedbe is beviszem",
+      "text": "Mondd el, mire van szükséged, és 1 munkanapon belül konkrét ajánlattal jelentkezem.",
+      "button": "Ajánlatot kérek"
+    }
   }
 }

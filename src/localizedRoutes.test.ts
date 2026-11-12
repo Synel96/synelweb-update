@@ -122,9 +122,19 @@ describe("KNOWN_LOGICAL_PATHS", () => {
       "/about",
       "/services",
       "/projects",
+      "/certificates",
       "/blog",
       "/technology",
       "/contact",
     ]);
+  });
+});
+
+describe("certificates route", () => {
+  it("is localized in every language and resolves back", () => {
+    expect(localizePath("/certificates", "hu")).toBe("/hu/tanusitvanyok");
+    expect(localizePath("/certificates", "en")).toBe("/en/certificates");
+    expect(localizePath("/certificates", "de")).toBe("/de/zertifikate");
+    expect(resolveLanguageAndLogicalPath("/de/zertifikate").logicalPath).toBe("/certificates");
   });
 });

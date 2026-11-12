@@ -55,6 +55,16 @@
       "permanent": true
     },
     {
+      "source": "/certificates",
+      "destination": "/hu/tanusitvanyok",
+      "permanent": true
+    },
+    {
+      "source": "/certificates/",
+      "destination": "/hu/tanusitvanyok",
+      "permanent": true
+    },
+    {
       "source": "/technology",
       "destination": "/hu/technologia",
       "permanent": true

@@ -168,7 +168,24 @@
         "text": "Hosting, maintenance and add-ons to keep your site running well for the long term."
       }
     },
-    "certifiedWith": "Backed by:"
+    "certifiedWith": "Backed by:",
+    "adsTerms": {
+      "label": "Google Search ads",
+      "title": "What I take on – and what I don't",
+      "doTitle": "What I take on",
+      "doItems": [
+        "Before we start, I check whether there are enough searches for your service in your area and what a click costs. If I don't think it's worth it, I'll tell you.",
+        "I build the campaign: keywords, negative keywords, ad copy, targeting.",
+        "I set up conversion tracking (quote requests, phone calls) so you see exactly what the ads bring.",
+        "I optimize regularly and send you a clear monthly report: spend, clicks, enquiries."
+      ],
+      "dontTitle": "What I don't promise",
+      "dontText": "I don't guarantee a number of new customers or a return on ad spend. Nobody can honestly promise that, because it depends on search demand, competition, your prices and how you handle the enquiries that come in.",
+      "notes": [
+        "The first 4–6 weeks are a learning phase while the system collects data.",
+        "You pay the ad spend directly to Google from your own account – it isn't part of the management fee."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",

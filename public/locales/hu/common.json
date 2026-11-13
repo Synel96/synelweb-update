@@ -174,7 +174,24 @@
         "text": "Tárhely, karbantartás és kiegészítők, hogy az oldalad hosszú távon is rendben működjön."
       }
     },
-    "certifiedWith": "Tanúsítvánnyal igazolva:"
+    "certifiedWith": "Tanúsítvánnyal igazolva:",
+    "adsTerms": {
+      "label": "Google keresőhirdetés",
+      "title": "Mit vállalok – és mit nem",
+      "doTitle": "Amit vállalok",
+      "doItems": [
+        "Indulás előtt megnézem, van-e elég keresés a szolgáltatásodra és a területedre, és mennyibe kerül egy kattintás. Ha szerintem nem éri meg, megmondom.",
+        "Felépítem a kampányt: kulcsszavak, negatív kulcsszavak, hirdetésszövegek, célzás.",
+        "Beállítom a konverziómérést (ajánlatkérés, telefonhívás), hogy pontosan lásd, mit hoz a hirdetés.",
+        "Rendszeresen optimalizálok, és havonta érthető riportot küldök: költés, kattintások, megkeresések."
+      ],
+      "dontTitle": "Amit nem ígérek",
+      "dontText": "Konkrét ügyfélszámot vagy megtérülést nem garantálok. Ezt senki nem tudja tisztességesen megígérni, mert a keresési igénytől, a versenytől, az áraidtól és attól is függ, hogyan kezeled a beérkező megkereséseket.",
+      "notes": [
+        "Az első 4–6 hét tanulási időszak: a rendszer ekkor gyűjti az adatokat.",
+        "A hirdetési költést te fizeted közvetlenül a Google-nek, a saját fiókodból – ez nem része a kezelési díjnak."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",

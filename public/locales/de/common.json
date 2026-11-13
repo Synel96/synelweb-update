@@ -168,7 +168,24 @@
         "text": "Hosting, Wartung und Zusatzleistungen, damit deine Website langfristig zuverlässig läuft."
       }
     },
-    "certifiedWith": "Nachgewiesen durch:"
+    "certifiedWith": "Nachgewiesen durch:",
+    "adsTerms": {
+      "label": "Google-Suchanzeigen",
+      "title": "Was ich übernehme – und was nicht",
+      "doTitle": "Was ich übernehme",
+      "doItems": [
+        "Vor dem Start prüfe ich, ob es genug Suchanfragen für deine Leistung in deiner Region gibt und was ein Klick kostet. Wenn es sich aus meiner Sicht nicht lohnt, sage ich es dir.",
+        "Ich baue die Kampagne auf: Keywords, ausschließende Keywords, Anzeigentexte, Ausrichtung.",
+        "Ich richte das Conversion-Tracking ein (Anfragen, Anrufe), damit du genau siehst, was die Anzeigen bringen.",
+        "Ich optimiere laufend und schicke dir monatlich einen verständlichen Bericht: Kosten, Klicks, Anfragen."
+      ],
+      "dontTitle": "Was ich nicht verspreche",
+      "dontText": "Eine bestimmte Zahl neuer Kunden oder einen garantierten Return verspreche ich nicht. Das kann niemand seriös zusagen, weil es von Nachfrage, Wettbewerb, deinen Preisen und davon abhängt, wie du mit den Anfragen umgehst.",
+      "notes": [
+        "Die ersten 4–6 Wochen sind eine Lernphase, in der das System Daten sammelt.",
+        "Das Werbebudget zahlst du direkt an Google, über dein eigenes Konto – es ist nicht Teil der Betreuungsgebühr."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",

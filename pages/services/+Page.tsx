@@ -15,6 +15,7 @@ import {
   TrendingUpIcon,
   TriangleIcon,
 } from "lucide-react";
+import { AdsTerms } from "@/components/AdsTerms";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
@@ -315,6 +316,8 @@ export default function Page() {
                     </div>
                   ))}
                 </div>
+
+                {category === "marketing" ? <AdsTerms /> : null}
               </section>
             ))}
           </div>

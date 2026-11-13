@@ -626,7 +626,28 @@
     "sentText": "Ich antworte in der Regel innerhalb eines Werktags per E-Mail oder Telefon.",
     "error": "Das Senden hat nicht geklappt. Bitte versuche es in ein paar Minuten erneut oder schreib direkt an info@synelweb.hu.",
     "throttled": "Von diesem Gerät kamen in kurzer Zeit zu viele Anfragen. Bitte versuche es später erneut oder schreib an info@synelweb.hu.",
-    "responseTime": "Ich antworte in der Regel innerhalb eines Werktags."
+    "responseTime": "Ich antworte in der Regel innerhalb eines Werktags.",
+    "adsOnly": "Nur Werbekampagne (Google Ads)",
+    "adsDetailsTitle": "Details zur Kampagne",
+    "adsAccount": "Hast du bereits ein Google-Ads-Konto?",
+    "adsAccountOptions": {
+      "has": "Ja",
+      "none": "Noch nicht",
+      "unsure": "Weiß ich nicht"
+    },
+    "adsWebsiteUrl": "Adresse deiner Website (Ziel der Anzeigen)",
+    "adsWebsiteHint": "Wenn du noch keine Website hast, lass das Feld leer – darüber sprechen wir auch.",
+    "adsLanguages": "In welchen Sprachen möchtest du werben?",
+    "adBudget": "Geplantes monatliches Werbebudget (optional)",
+    "adsTimeline": "Wann soll die Kampagne starten?",
+    "adBudgetOptions": {
+      "under_60k": "Unter {{to}}",
+      "60k_150k": "{{from}} – {{to}}",
+      "150k_300k": "{{from}} – {{to}}",
+      "over_300k": "Über {{from}}",
+      "unsure": "Weiß ich noch nicht"
+    },
+    "adsMessagePlaceholder": "Was macht dein Unternehmen, und was sollen die Anzeigen erreichen?"
   },
   "certificatesPage": {
     "label": "Zertifikate",

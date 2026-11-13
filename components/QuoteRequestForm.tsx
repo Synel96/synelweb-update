@@ -35,6 +35,16 @@ const BUDGET_LIMITS_HUF: Record<(typeof BUDGETS)[number], { from?: number; to?: 
   over_800k: { from: 800_000 },
   unsure: {},
 };
+// "Ad campaign only": asked instead of the website questions.
+const ADS_ACCOUNT = ["has", "none", "unsure"] as const;
+const AD_BUDGETS = ["under_60k", "60k_150k", "150k_300k", "over_300k", "unsure"] as const;
+const AD_BUDGET_LIMITS_HUF: Record<(typeof AD_BUDGETS)[number], { from?: number; to?: number }> = {
+  under_60k: { to: 60_000 },
+  "60k_150k": { from: 60_000, to: 150_000 },
+  "150k_300k": { from: 150_000, to: 300_000 },
+  over_300k: { from: 300_000 },
+  unsure: {},
+};
 const CONTACT_PREFERENCES = ["email", "phone", "online", "in_person"] as const;
 
 type Status = "idle" | "sending" | "sent" | "error" | "throttled";
@@ -158,6 +168,9 @@ export function QuoteRequestForm({
   const [isLocal, setIsLocal] = useState(false);
   const [isGrantFunded, setIsGrantFunded] = useState(false);
   const [contactPreference, setContactPreference] = useState("");
+  const [adsAccount, setAdsAccount] = useState("");
+  const [adBudget, setAdBudget] = useState("");
+  const isAdsOnly = service === ADS_SERVICE_SLUG;
 
   useEffect(() => {
     let isMounted = true;
@@ -182,7 +195,7 @@ export function QuoteRequestForm({
   // The Google Search ads service is priced in code, not in the admin, so
   // it isn't among the backend's services: always offer it.
   const adsOption = useMemo<ServiceOption>(
-    () => ({ value: ADS_SERVICE_SLUG, label: t("adsPage.service.name") }),
+    () => ({ value: ADS_SERVICE_SLUG, label: t("quoteForm.adsOnly") }),
     [t]
   );
 
@@ -257,7 +270,17 @@ export function QuoteRequestForm({
       siteLanguage: lang,
       company,
     };
-    if (mode === "detailed") {
+    if (mode === "detailed" && isAdsOnly) {
+      Object.assign(payload, {
+        websiteUrl: websiteUrl.trim(),
+        languages,
+        adsAccount,
+        adBudget,
+        timeline,
+        isLocal,
+        contactPreference,
+      });
+    } else if (mode === "detailed") {
       Object.assign(payload, {
         existingSite,
         websiteUrl: existingSite && existingSite !== "none" ? websiteUrl.trim() : "",
@@ -415,14 +438,98 @@ export function QuoteRequestForm({
             minLength={10}
             maxLength={4000}
             rows={4}
-            placeholder={t("quoteForm.messagePlaceholder")}
+            placeholder={t(
+              isAdsOnly ? "quoteForm.adsMessagePlaceholder" : "quoteForm.messagePlaceholder"
+            )}
             value={message}
             onChange={(event) => setMessage(event.target.value)}
             className={`${INPUT_CLASS} leading-7`}
           />
         </Field>
 
-        {mode === "detailed" ? (
+        {mode === "detailed" && isAdsOnly ? (
+          <div className="space-y-5 border-t border-white/10 pt-5">
+            <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+              {t("quoteForm.adsDetailsTitle")}
+            </p>
+
+            <ChoiceGroup
+              legend={t("quoteForm.adsAccount")}
+              name={`${formId}-ads-account`}
+              type="radio"
+              options={options(ADS_ACCOUNT, "quoteForm.adsAccountOptions")}
+              value={adsAccount}
+              onChange={(next) => setAdsAccount(next as string)}
+            />
+
+            <Field label={t("quoteForm.adsWebsiteUrl")} hint={t("quoteForm.adsWebsiteHint")}>
+              <input
+                type="text"
+                inputMode="url"
+                maxLength={300}
+                placeholder="https://"
+                value={websiteUrl}
+                onChange={(event) => setWebsiteUrl(event.target.value)}
+                className={INPUT_CLASS}
+              />
+            </Field>
+
+            <ChoiceGroup
+              legend={t("quoteForm.adsLanguages")}
+              name={`${formId}-ads-languages`}
+              type="checkbox"
+              options={options(LANGUAGES, "quoteForm.languageOptions")}
+              value={languages}
+              onChange={(next) => setLanguages(next as string[])}
+            />
+
+            <ChoiceGroup
+              legend={t("quoteForm.adBudget")}
+              name={`${formId}-ad-budget`}
+              type="radio"
+              options={AD_BUDGETS.map((key) => {
+                const { from, to } = AD_BUDGET_LIMITS_HUF[key];
+                return {
+                  value: key,
+                  label: t(`quoteForm.adBudgetOptions.${key}`, {
+                    from: from === undefined ? "" : formatHuf(from),
+                    to: to === undefined ? "" : formatHuf(to),
+                  }),
+                };
+              })}
+              value={adBudget}
+              onChange={(next) => setAdBudget(next as string)}
+            />
+
+            <ChoiceGroup
+              legend={t("quoteForm.adsTimeline")}
+              name={`${formId}-ads-timeline`}
+              type="radio"
+              options={options(TIMELINES, "quoteForm.timelineOptions")}
+              value={timeline}
+              onChange={(next) => setTimeline(next as string)}
+            />
+
+            <ChoiceGroup
+              legend={t("quoteForm.contactPreference")}
+              name={`${formId}-ads-contact`}
+              type="radio"
+              options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
+              value={contactPreference}
+              onChange={(next) => setContactPreference(next as string)}
+            />
+
+            <label className="flex items-start gap-3 text-sm text-white/80">
+              <input
+                type="checkbox"
+                checked={isLocal}
+                onChange={(event) => setIsLocal(event.target.checked)}
+                className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+              />
+              {t("quoteForm.isLocal")}
+            </label>
+          </div>
+        ) : mode === "detailed" ? (
           <div className="space-y-5 border-t border-white/10 pt-5">
             <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
               {t("quoteForm.detailsTitle")}

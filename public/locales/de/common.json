@@ -605,12 +605,12 @@
       "over_800k": "Über {{from}}",
       "unsure": "Weiß ich noch nicht"
     },
-    "contactPreference": "Wie möchtest du dich abstimmen?",
+    "contactPreference": "Wie soll ich mit dir Kontakt aufnehmen?",
     "contactPreferenceOptions": {
       "email": "Per E-Mail",
       "phone": "Telefonisch",
       "online": "Online-Meeting",
-      "in_person": "Persönlich"
+      "in_person": "Persönliches Treffen"
     },
     "isLocal": "Mein Unternehmen liegt in der Nähe von Sopron (lokaler Rabatt)",
     "isGrantFunded": "Ich finanziere es über Fördermittel (z. B. DIMOP Plusz)",
@@ -647,7 +647,37 @@
       "over_300k": "Über {{from}}",
       "unsure": "Weiß ich noch nicht"
     },
-    "adsMessagePlaceholder": "Was macht dein Unternehmen, und was sollen die Anzeigen erreichen?"
+    "adsMessagePlaceholder": "Was macht dein Unternehmen, und was sollen die Anzeigen erreichen?",
+    "steps": {
+      "label": "Schritte der Anfrage",
+      "progress": "Schritt {{current}} von {{total}}",
+      "service": "Leistung",
+      "contact": "Kontakt",
+      "project": "Projekt",
+      "campaign": "Kampagne",
+      "send": "Senden",
+      "back": "Zurück",
+      "next": "Weiter",
+      "titles": {
+        "service": "Wobei kann ich helfen?",
+        "contact": "Wie erreiche ich dich?",
+        "project": "Erzähl mir vom Projekt",
+        "send": "Prüfen und absenden"
+      }
+    },
+    "summary": {
+      "mode": "Art des Angebots",
+      "message": "Nachricht",
+      "edit": "Ändern",
+      "contactPreference": "Kontakt per"
+    },
+    "errors": {
+      "name": "Bitte gib deinen Namen ein (mindestens 2 Zeichen).",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "message": "Bitte schreib ein paar Sätze zum Projekt (mindestens 10 Zeichen).",
+      "consent": "Bitte akzeptiere die Datenschutzerklärung, um zu senden.",
+      "phone": "Für einen Rückruf gib bitte deine Telefonnummer an."
+    }
   },
   "certificatesPage": {
     "label": "Zertifikate",

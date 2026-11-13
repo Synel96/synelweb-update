@@ -605,12 +605,12 @@
       "over_800k": "Over {{from}}",
       "unsure": "Not sure yet"
     },
-    "contactPreference": "How would you like to talk?",
+    "contactPreference": "How should I get in touch with you?",
     "contactPreferenceOptions": {
       "email": "By email",
       "phone": "By phone",
       "online": "Online meeting",
-      "in_person": "In person"
+      "in_person": "In-person meeting"
     },
     "isLocal": "My business is near Sopron (local discount)",
     "isGrantFunded": "I'd fund it from a grant (e.g. DIMOP Plusz)",
@@ -647,7 +647,37 @@
       "over_300k": "Over {{from}}",
       "unsure": "Not sure yet"
     },
-    "adsMessagePlaceholder": "What does your business do, and what would you like the ads to achieve?"
+    "adsMessagePlaceholder": "What does your business do, and what would you like the ads to achieve?",
+    "steps": {
+      "label": "Quote request steps",
+      "progress": "Step {{current}} of {{total}}",
+      "service": "Service",
+      "contact": "Contact",
+      "project": "Project",
+      "campaign": "Campaign",
+      "send": "Send",
+      "back": "Back",
+      "next": "Next",
+      "titles": {
+        "service": "How can I help?",
+        "contact": "How can I reach you?",
+        "project": "Tell me about the project",
+        "send": "Check and send"
+      }
+    },
+    "summary": {
+      "mode": "Quote type",
+      "message": "Message",
+      "edit": "Edit",
+      "contactPreference": "Contact via"
+    },
+    "errors": {
+      "name": "Please enter your name (at least 2 characters).",
+      "email": "Please enter a valid e-mail address.",
+      "message": "Please write a few sentences about the project (at least 10 characters).",
+      "consent": "Please accept the privacy notice to send.",
+      "phone": "To be called back, please enter your phone number."
+    }
   },
   "certificatesPage": {
     "label": "Certificates",

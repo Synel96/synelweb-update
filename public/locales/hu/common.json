@@ -610,12 +610,12 @@
       "over_800k": "{{from}} felett",
       "unsure": "Még nem tudom"
     },
-    "contactPreference": "Hogyan egyeztetnél?",
+    "contactPreference": "Hogyan vegyem fel veled a kapcsolatot?",
     "contactPreferenceOptions": {
       "email": "E-mailben",
       "phone": "Telefonon",
       "online": "Online megbeszélésen",
-      "in_person": "Személyesen"
+      "in_person": "Személyes találkozón"
     },
     "isLocal": "Sopron környéki vállalkozás vagyok (helyi kedvezmény)",
     "isGrantFunded": "Pályázati forrásból (pl. DIMOP Plusz) finanszíroznám",
@@ -652,7 +652,37 @@
       "over_300k": "{{from}} felett",
       "unsure": "Még nem tudom"
     },
-    "adsMessagePlaceholder": "Mivel foglalkozik a vállalkozásod, és mit szeretnél elérni a hirdetéssel?"
+    "adsMessagePlaceholder": "Mivel foglalkozik a vállalkozásod, és mit szeretnél elérni a hirdetéssel?",
+    "steps": {
+      "label": "Az ajánlatkérés lépései",
+      "progress": "{{current}}. lépés / {{total}}",
+      "service": "Szolgáltatás",
+      "contact": "Elérhetőség",
+      "project": "Projekt",
+      "campaign": "Kampány",
+      "send": "Küldés",
+      "back": "Vissza",
+      "next": "Tovább",
+      "titles": {
+        "service": "Miben segíthetek?",
+        "contact": "Hogyan érlek el?",
+        "project": "Mesélj a projektről",
+        "send": "Ellenőrizd, és küldheted"
+      }
+    },
+    "summary": {
+      "mode": "Ajánlat típusa",
+      "message": "Üzenet",
+      "edit": "Módosítás",
+      "contactPreference": "Kapcsolatfelvétel"
+    },
+    "errors": {
+      "name": "Add meg a neved (legalább 2 karakter).",
+      "email": "Adj meg egy érvényes e-mail-címet.",
+      "message": "Írj pár mondatot a projektről (legalább 10 karakter).",
+      "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
+      "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
+    }
   },
   "certificatesPage": {
     "label": "Tanúsítványok",

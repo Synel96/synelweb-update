@@ -18,16 +18,26 @@ const SERVICES = [
   { id: "2", name: "Webshop", slug: "webshop" },
 ];
 
+function next() {
+  fireEvent.click(screen.getByRole("button", { name: /Tovább/ }));
+}
+
+// From the first step: fills in the contact and project steps and stays on
+// the project step, where the detailed questions are.
 function fillContact() {
+  next();
   fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
   fireEvent.change(screen.getByLabelText("E-mail"), { target: { value: "teszt@pelda.hu" } });
+  next();
   fireEvent.change(screen.getByLabelText("Pár mondat a projektről"), {
     target: { value: "Egy egyszerű bemutatkozó oldal kellene." },
   });
-  fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
 }
 
+// Moves on to the last step, accepts the privacy notice and sends.
 function submit() {
+  next();
+  fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
   fireEvent.submit(screen.getByRole("button", { name: /kérek/ }).closest("form")!);
 }
 
@@ -60,6 +70,7 @@ describe("QuoteRequestForm", () => {
     await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
 
     fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+    fillContact();
 
     const addons = screen.getByText("Kiegészítők").closest("fieldset")!;
     const boxes = addons.querySelectorAll('input[type="checkbox"]');
@@ -172,10 +183,10 @@ describe("QuoteRequestForm", () => {
       screen.getByRole("radio", { name: "Csak hirdetési kampány (Google Ads)" })
     ).toBeChecked();
     fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+    fillContact();
     expect(screen.queryByText("Kiegészítők")).not.toBeInTheDocument();
     expect(screen.queryByText("Van már weboldalad?")).not.toBeInTheDocument();
 
-    fillContact();
     fireEvent.click(screen.getByRole("radio", { name: "Nincs még" }));
     fireEvent.change(screen.getByLabelText(/A weboldalad címe/), {
       target: { value: " https://pelda.hu " },
@@ -216,8 +227,8 @@ describe("QuoteRequestForm", () => {
     );
     await screen.findByRole("radio", { name: "Webshop" });
 
-    fireEvent.focus(screen.getByLabelText("Név"));
-    fireEvent.focus(screen.getByLabelText("E-mail"));
+    fireEvent.focus(screen.getByRole("radio", { name: "Webshop" }));
+    fireEvent.focus(screen.getByRole("radio", { name: "Landing oldal" }));
     fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
     fillContact();
     submit();
@@ -226,6 +237,9 @@ describe("QuoteRequestForm", () => {
     expect(trackEvent.mock.calls).toEqual([
       ["quote_form_start", { mode: "simple" }],
       ["quote_form_mode", { mode: "detailed" }],
+      ["quote_form_step", { step: "contact", mode: "detailed" }],
+      ["quote_form_step", { step: "project", mode: "detailed" }],
+      ["quote_form_step", { step: "send", mode: "detailed" }],
       ["quote_form_submit", { mode: "detailed", service: "webshop", result: "success" }],
     ]);
     expect(JSON.stringify(trackEvent.mock.calls)).not.toMatch(/Teszt|pelda\.hu/);
@@ -254,7 +268,8 @@ describe("QuoteRequestForm", () => {
     submit();
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/túl sok ajánlatkérés/);
-    expect(screen.getByLabelText("Név")).toHaveValue("Teszt Elek");
+    // Still on the last step, with the answers kept.
+    expect(screen.getByText("Teszt Elek")).toBeInTheDocument();
   });
 
   it("shows an error with the e-mail fallback when sending fails", async () => {
@@ -273,5 +288,62 @@ describe("QuoteRequestForm", () => {
 
     expect(await screen.findByRole("radio", { name: "Landing oldal" })).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: "SEO alapárban" })).toBeInTheDocument();
+  });
+
+  it("shows where the visitor is and does not move on with an invalid e-mail", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    expect(screen.getByText("1. lépés / 4")).toBeInTheDocument();
+    next();
+    expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "nem-email" } });
+    next();
+
+    expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
+    expect(screen.getByText("Adj meg egy érvényes e-mail-címet.")).toBeInTheDocument();
+    expect(fetchWithTimeout).not.toHaveBeenCalled();
+  });
+
+  it("keeps the answers when going back, and lists them before sending", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    fireEvent.click(screen.getByRole("button", { name: /Vissza/ }));
+    expect(screen.getByLabelText("Név")).toHaveValue("Teszt Elek");
+
+    next();
+    next();
+    expect(screen.getByText("4. lépés / 4")).toBeInTheDocument();
+    expect(screen.getByText("teszt@pelda.hu")).toBeInTheDocument();
+    expect(screen.getByText("Egy egyszerű bemutatkozó oldal kellene.")).toBeInTheDocument();
+  });
+
+  it("asks how to get in touch, needs a number for a call back, and sends it in simple mode", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    next();
+    fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "teszt@pelda.hu" } });
+    fireEvent.click(screen.getByRole("radio", { name: "Telefonon" }));
+    next();
+    expect(
+      screen.getByText("Ha telefonon kérsz visszahívást, add meg a számod.")
+    ).toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole("textbox", { name: /^Telefon/ }), { target: { value: "+36 30 123 4567" } });
+    next();
+    fireEvent.change(screen.getByLabelText("Pár mondat a projektről"), {
+      target: { value: "Egy egyszerű bemutatkozó oldal kellene." },
+    });
+    submit();
+
+    await screen.findByRole("status");
+    expect(sentPayload()).toMatchObject({
+      mode: "simple",
+      contactPreference: "phone",
+      phone: "+36 30 123 4567",
+    });
   });
 });

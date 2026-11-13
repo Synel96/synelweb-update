@@ -191,7 +191,9 @@
         "Az első 4–6 hét tanulási időszak: a rendszer ekkor gyűjti az adatokat.",
         "A hirdetési költést te fizeted közvetlenül a Google-nek, a saját fiókodból – ez nem része a kezelési díjnak."
       ]
-    }
+    },
+    "adsSetupFeeLabel": "Hirdetési fiók beállítása (ha szükséges)",
+    "customMonthly": "Egyedi ár, a kampány méretétől függően"
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
@@ -707,7 +709,7 @@
     "pricing": {
       "label": "Árak",
       "title": "Beállítás és havi kezelés",
-      "text": "Az árak a hirdetési költést nem tartalmazzák – azt közvetlenül a Google-nek fizeted.",
+      "text": "Ha még nincs hirdetési fiókod, egyszeri díjért létrehozom és beállítom. A havi kezelési díj a kampány méretétől függ, ezért arra egyedi ajánlatot adok. A hirdetési költést közvetlenül a Google-nek fizeted.",
       "empty": "Az aktuális árakért kérj ajánlatot – pár percen belül megkapod."
     },
     "certificate": {
@@ -725,7 +727,7 @@
         },
         "setup": {
           "title": "Beállítás",
-          "text": "Kulcsszavak, hirdetésszövegek, célzás és konverziómérés – ez az egyszeri beállítás része."
+          "text": "Ha még nincs hirdetési fiókod, létrehozom és beállítom. Utána felépítem a kampányt: kulcsszavak, hirdetésszövegek, célzás és konverziómérés."
         },
         "learning": {
           "title": "Tanulási időszak",

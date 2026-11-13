@@ -185,7 +185,9 @@
         "Die ersten 4–6 Wochen sind eine Lernphase, in der das System Daten sammelt.",
         "Das Werbebudget zahlst du direkt an Google, über dein eigenes Konto – es ist nicht Teil der Betreuungsgebühr."
       ]
-    }
+    },
+    "adsSetupFeeLabel": "Einrichtung des Werbekontos (falls nötig)",
+    "customMonthly": "Individueller Preis, je nach Kampagnengröße"
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
@@ -702,7 +704,7 @@
     "pricing": {
       "label": "Preise",
       "title": "Einrichtung und monatliche Betreuung",
-      "text": "Die Preise enthalten kein Werbebudget – das zahlst du direkt an Google.",
+      "text": "Wenn du noch kein Werbekonto hast, lege ich es gegen eine einmalige Gebühr an und richte es ein. Die monatliche Betreuungsgebühr hängt von der Größe der Kampagne ab, deshalb mache ich dafür ein individuelles Angebot. Das Werbebudget zahlst du direkt an Google.",
       "empty": "Für aktuelle Preise fordere ein Angebot an – du bekommst es in wenigen Minuten."
     },
     "certificate": {
@@ -720,7 +722,7 @@
         },
         "setup": {
           "title": "Einrichtung",
-          "text": "Keywords, Anzeigentexte, Ausrichtung und Conversion-Tracking – Teil der einmaligen Einrichtung."
+          "text": "Wenn du noch kein Werbekonto hast, lege ich es an und richte es ein. Danach baue ich die Kampagne auf: Keywords, Anzeigentexte, Ausrichtung und Conversion-Tracking."
         },
         "learning": {
           "title": "Lernphase",

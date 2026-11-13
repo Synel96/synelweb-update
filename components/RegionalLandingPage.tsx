@@ -214,6 +214,8 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
                         {" + "}
                         {service.monthlyPrice} {content.perMonth}
                       </span>
+                    ) : service.category === "marketing" ? (
+                      <span className="text-white/70"> {content.customMonthly}</span>
                     ) : null}
                   </span>
                 </li>

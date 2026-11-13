@@ -299,7 +299,16 @@ export default function Page() {
                         hasDiscount={card.hasDiscount}
                         discountLabel={t("servicesPage.discountBadge")}
                         monthlyPrice={card.monthlyPrice}
-                        setupFeeLabel={t("servicesPage.setupFeeLabel")}
+                        setupFeeLabel={t(
+                          card.category === "marketing"
+                            ? "servicesPage.adsSetupFeeLabel"
+                            : "servicesPage.setupFeeLabel"
+                        )}
+                        customMonthlyText={
+                          card.category === "marketing" && !card.monthlyPrice
+                            ? t("servicesPage.customMonthly")
+                            : ""
+                        }
                         monthlyFeeLabel={t("servicesPage.monthlyFeeLabel")}
                         perMonth={(price) => t("servicesPage.perMonth", { price })}
                         certifications={certificationsFor(card.category)}

@@ -174,7 +174,24 @@
         "text": "Tárhely, karbantartás és kiegészítők, hogy az oldalad hosszú távon is rendben működjön."
       }
     },
-    "certifiedWith": "Tanúsítvánnyal igazolva:"
+    "certifiedWith": "Tanúsítvánnyal igazolva:",
+    "adsTerms": {
+      "label": "Google keresőhirdetés",
+      "title": "Mit vállalok – és mit nem",
+      "doTitle": "Amit vállalok",
+      "doItems": [
+        "Indulás előtt megnézem, van-e elég keresés a szolgáltatásodra és a területedre, és mennyibe kerül egy kattintás. Ha szerintem nem éri meg, megmondom.",
+        "Felépítem a kampányt: kulcsszavak, negatív kulcsszavak, hirdetésszövegek, célzás.",
+        "Beállítom a konverziómérést (ajánlatkérés, telefonhívás), hogy pontosan lásd, mit hoz a hirdetés.",
+        "Rendszeresen optimalizálok, és havonta érthető riportot küldök: költés, kattintások, megkeresések."
+      ],
+      "dontTitle": "Amit nem ígérek",
+      "dontText": "Konkrét ügyfélszámot vagy megtérülést nem garantálok. Ezt senki nem tudja tisztességesen megígérni, mert a keresési igénytől, a versenytől, az áraidtól és attól is függ, hogyan kezeled a beérkező megkereséseket.",
+      "notes": [
+        "Az első 4–6 hét tanulási időszak: a rendszer ekkor gyűjti az adatokat.",
+        "A hirdetési költést te fizeted közvetlenül a Google-nek, a saját fiókodból – ez nem része a kezelési díjnak."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
@@ -662,5 +679,89 @@
       "text": "Mondd el, mire van szükséged, és 1 munkanapon belül konkrét ajánlattal jelentkezem.",
       "button": "Ajánlatot kérek"
     }
+  },
+  "adsPage": {
+    "label": "Google keresőhirdetés",
+    "title": "Google Ads kezelés kisvállalkozásoknak",
+    "intro": "Beállítom és kezelem a Google keresőhirdetéseidet, hogy akkor jelenj meg, amikor valaki éppen a szolgáltatásodra keres. Google Ads Search tanúsítvánnyal, átlátható árakkal és havi riporttal.",
+    "introStrong": "Mivel weboldalt is építek, a hirdetés és az oldal, ahová a kattintás érkezik, egy kézből jön – ettől lesz igazán hatékony a kampány.",
+    "cta": "Kérek ajánlatot",
+    "why": {
+      "label": "Miért keresőhirdetés?",
+      "title": "Ott vagy, amikor keresnek",
+      "items": {
+        "intent": {
+          "title": "Valódi keresési szándék",
+          "text": "A hirdetésed annak jelenik meg, aki éppen rákeres arra, amit kínálsz – nem görgetés közben zavarod meg."
+        },
+        "payPerClick": {
+          "title": "Kattintásért fizetsz",
+          "text": "Csak akkor fizetsz, ha valaki rákattint a hirdetésre, és a költési keretet te határozod meg."
+        },
+        "measurable": {
+          "title": "Minden mérhető",
+          "text": "Látod, mennyit költöttél, és hány kattintás, ajánlatkérés vagy hívás jött belőle."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Árak",
+      "title": "Beállítás és havi kezelés",
+      "text": "Az árak a hirdetési költést nem tartalmazzák – azt közvetlenül a Google-nek fizeted.",
+      "empty": "Az aktuális árakért kérj ajánlatot – pár percen belül megkapod."
+    },
+    "certificate": {
+      "label": "Tanúsítvány",
+      "text": "A kampányaidat Google Ads Search tanúsítvánnyal rendelkező szakember kezeli.",
+      "link": "Tanúsítvány ellenőrzése"
+    },
+    "process": {
+      "label": "Hogyan dolgozunk",
+      "title": "Négy lépésben a kampányig",
+      "steps": {
+        "audit": {
+          "title": "Felmérés",
+          "text": "Megnézem a keresési igényt, a versenytársakat és a kattintási árakat, és megmondom, megéri-e."
+        },
+        "setup": {
+          "title": "Beállítás",
+          "text": "Kulcsszavak, hirdetésszövegek, célzás és konverziómérés – ez az egyszeri beállítás része."
+        },
+        "learning": {
+          "title": "Tanulási időszak",
+          "text": "Az első 4–6 hétben a rendszer adatokat gyűjt, ilyenkor finomhangolok a legtöbbet."
+        },
+        "optimize": {
+          "title": "Optimalizálás és riport",
+          "text": "Folyamatos finomítás, havonta érthető riport a költésről és az eredményekről."
+        }
+      }
+    },
+    "faq": {
+      "title": "Gyakori kérdések",
+      "items": [
+        {
+          "q": "Mennyi hirdetési keret kell?",
+          "a": "Ez a szakmától és a területtől függ. Kis, helyi kampánynál jellemzően havi 60–100 ezer Ft-tal érdemes indulni – a pontos javaslatot a felmérés után kapod."
+        },
+        {
+          "q": "Kié lesz a hirdetési fiók?",
+          "a": "A tiéd: a fiók a te nevedre és a te bankkártyádra fut, én kezelőként férek hozzá. Ha egyszer váltanál, minden adat nálad marad."
+        },
+        {
+          "q": "Mikor látszanak az első eredmények?",
+          "a": "Kattintások már az első napokban jönnek, de a kampány az első 4–6 hét tanulási időszak után áll be igazán."
+        },
+        {
+          "q": "Csak a Google keresőben hirdetsz?",
+          "a": "Igen, a Google keresési hirdetésekre szakosodtam: ott jelensz meg, ahol a vásárlási szándék a legerősebb."
+        }
+      ]
+    },
+    "final": {
+      "title": "Nézzük meg, megéri-e neked a hirdetés",
+      "text": "Írd meg pár mondatban, mivel foglalkozol és hol – megnézem a keresési igényt, és őszintén megmondom, érdemes-e elindulni."
+    },
+    "hubLink": "Részletek a Google Ads kezelésről"
   }
 }

@@ -315,6 +315,21 @@ export default function Page() {
                     </div>
                   ))}
                 </div>
+
+                {category === "marketing" ? (
+                  <div className="mt-6 text-center">
+                    <a
+                      href={localizePath("/google-ads", routeLang)}
+                      className="group inline-flex items-center gap-2 text-sm font-semibold tracking-[0.08em] text-(--accent) uppercase transition-colors hover:text-(--primary)"
+                    >
+                      {t("adsPage.hubLink")}
+                      <ArrowRightIcon
+                        className="size-4 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  </div>
+                ) : null}
               </section>
             ))}
           </div>

@@ -168,7 +168,24 @@
         "text": "Hosting, maintenance and add-ons to keep your site running well for the long term."
       }
     },
-    "certifiedWith": "Backed by:"
+    "certifiedWith": "Backed by:",
+    "adsTerms": {
+      "label": "Google Search ads",
+      "title": "What I take on – and what I don't",
+      "doTitle": "What I take on",
+      "doItems": [
+        "Before we start, I check whether there are enough searches for your service in your area and what a click costs. If I don't think it's worth it, I'll tell you.",
+        "I build the campaign: keywords, negative keywords, ad copy, targeting.",
+        "I set up conversion tracking (quote requests, phone calls) so you see exactly what the ads bring.",
+        "I optimize regularly and send you a clear monthly report: spend, clicks, enquiries."
+      ],
+      "dontTitle": "What I don't promise",
+      "dontText": "I don't guarantee a number of new customers or a return on ad spend. Nobody can honestly promise that, because it depends on search demand, competition, your prices and how you handle the enquiries that come in.",
+      "notes": [
+        "The first 4–6 weeks are a learning phase while the system collects data.",
+        "You pay the ad spend directly to Google from your own account – it isn't part of the management fee."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",
@@ -657,5 +674,89 @@
       "text": "Tell me what you need, and I'll get back to you with a concrete quote within 1 business day.",
       "button": "Request a quote"
     }
+  },
+  "adsPage": {
+    "label": "Google Search ads",
+    "title": "Google Ads management for small businesses",
+    "intro": "I set up and manage your Google Search ads so you show up exactly when someone is searching for what you offer. Google Ads Search certified, with transparent pricing and a monthly report.",
+    "introStrong": "Because I build websites too, the ad and the page the click lands on come from one hand – that's what makes a campaign really effective.",
+    "cta": "Request a quote",
+    "why": {
+      "label": "Why search ads?",
+      "title": "Be there when they search",
+      "items": {
+        "intent": {
+          "title": "Real search intent",
+          "text": "Your ad is shown to people who are searching for what you offer right now – not interrupting them while they scroll."
+        },
+        "payPerClick": {
+          "title": "Pay per click",
+          "text": "You only pay when someone clicks your ad, and you set the budget."
+        },
+        "measurable": {
+          "title": "Everything is measurable",
+          "text": "You see what you spent and how many clicks, quote requests and calls it brought."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Pricing",
+      "title": "Setup and monthly management",
+      "text": "Prices don't include ad spend – you pay that directly to Google.",
+      "empty": "Request a quote for current pricing – you'll get it within minutes."
+    },
+    "certificate": {
+      "label": "Certificate",
+      "text": "Your campaigns are managed by a Google Ads Search certified specialist.",
+      "link": "Verify certificate"
+    },
+    "process": {
+      "label": "How we work",
+      "title": "Four steps to your campaign",
+      "steps": {
+        "audit": {
+          "title": "Assessment",
+          "text": "I check search demand, competitors and click prices, and tell you whether it's worth it."
+        },
+        "setup": {
+          "title": "Setup",
+          "text": "Keywords, ad copy, targeting and conversion tracking – all part of the one-time setup."
+        },
+        "learning": {
+          "title": "Learning phase",
+          "text": "In the first 4–6 weeks the system collects data; that's when I fine-tune the most."
+        },
+        "optimize": {
+          "title": "Optimization & reporting",
+          "text": "Ongoing refinement and a clear monthly report on spend and results."
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "How much ad budget do I need?",
+          "a": "It depends on your industry and area. For a small, local campaign it's usually worth starting with around 60–100 thousand HUF a month – you'll get an exact recommendation after the assessment."
+        },
+        {
+          "q": "Who owns the ad account?",
+          "a": "You do: the account runs in your name with your card, and I access it as a manager. If you ever switch, all data stays with you."
+        },
+        {
+          "q": "When will I see results?",
+          "a": "Clicks come in the first days, but the campaign really settles after the 4–6 week learning phase."
+        },
+        {
+          "q": "Do you only run Google Search ads?",
+          "a": "Yes, I specialise in Google Search ads: you show up where purchase intent is strongest."
+        }
+      ]
+    },
+    "final": {
+      "title": "Let's see whether ads are worth it for you",
+      "text": "Tell me in a few sentences what you do and where – I'll check search demand and tell you honestly whether it's worth starting."
+    },
+    "hubLink": "More about Google Ads management"
   }
 }

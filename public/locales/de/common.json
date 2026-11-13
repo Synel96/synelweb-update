@@ -168,7 +168,24 @@
         "text": "Hosting, Wartung und Zusatzleistungen, damit deine Website langfristig zuverlässig läuft."
       }
     },
-    "certifiedWith": "Nachgewiesen durch:"
+    "certifiedWith": "Nachgewiesen durch:",
+    "adsTerms": {
+      "label": "Google-Suchanzeigen",
+      "title": "Was ich übernehme – und was nicht",
+      "doTitle": "Was ich übernehme",
+      "doItems": [
+        "Vor dem Start prüfe ich, ob es genug Suchanfragen für deine Leistung in deiner Region gibt und was ein Klick kostet. Wenn es sich aus meiner Sicht nicht lohnt, sage ich es dir.",
+        "Ich baue die Kampagne auf: Keywords, ausschließende Keywords, Anzeigentexte, Ausrichtung.",
+        "Ich richte das Conversion-Tracking ein (Anfragen, Anrufe), damit du genau siehst, was die Anzeigen bringen.",
+        "Ich optimiere laufend und schicke dir monatlich einen verständlichen Bericht: Kosten, Klicks, Anfragen."
+      ],
+      "dontTitle": "Was ich nicht verspreche",
+      "dontText": "Eine bestimmte Zahl neuer Kunden oder einen garantierten Return verspreche ich nicht. Das kann niemand seriös zusagen, weil es von Nachfrage, Wettbewerb, deinen Preisen und davon abhängt, wie du mit den Anfragen umgehst.",
+      "notes": [
+        "Die ersten 4–6 Wochen sind eine Lernphase, in der das System Daten sammelt.",
+        "Das Werbebudget zahlst du direkt an Google, über dein eigenes Konto – es ist nicht Teil der Betreuungsgebühr."
+      ]
+    }
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
@@ -657,5 +674,89 @@
       "text": "Erzähl mir, was du brauchst, und ich melde mich innerhalb eines Werktags mit einem konkreten Angebot.",
       "button": "Angebot anfordern"
     }
+  },
+  "adsPage": {
+    "label": "Google-Suchanzeigen",
+    "title": "Google Ads Betreuung für kleine Unternehmen",
+    "intro": "Ich richte deine Google-Suchanzeigen ein und betreue sie, damit du genau dann erscheinst, wenn jemand nach deiner Leistung sucht. Mit Google-Ads-Search-Zertifizierung, transparenten Preisen und monatlichem Bericht.",
+    "introStrong": "Weil ich auch Websites baue, kommen Anzeige und Zielseite aus einer Hand – genau das macht eine Kampagne wirklich wirksam.",
+    "cta": "Angebot anfordern",
+    "why": {
+      "label": "Warum Suchanzeigen?",
+      "title": "Da sein, wenn gesucht wird",
+      "items": {
+        "intent": {
+          "title": "Echte Suchabsicht",
+          "text": "Deine Anzeige sehen Menschen, die gerade nach deinem Angebot suchen – nicht beim beiläufigen Scrollen."
+        },
+        "payPerClick": {
+          "title": "Bezahlung pro Klick",
+          "text": "Du zahlst nur, wenn jemand auf deine Anzeige klickt, und das Budget bestimmst du."
+        },
+        "measurable": {
+          "title": "Alles messbar",
+          "text": "Du siehst, was du ausgegeben hast und wie viele Klicks, Anfragen und Anrufe daraus wurden."
+        }
+      }
+    },
+    "pricing": {
+      "label": "Preise",
+      "title": "Einrichtung und monatliche Betreuung",
+      "text": "Die Preise enthalten kein Werbebudget – das zahlst du direkt an Google.",
+      "empty": "Für aktuelle Preise fordere ein Angebot an – du bekommst es in wenigen Minuten."
+    },
+    "certificate": {
+      "label": "Zertifikat",
+      "text": "Deine Kampagnen betreut ein Spezialist mit Google-Ads-Search-Zertifizierung.",
+      "link": "Zertifikat prüfen"
+    },
+    "process": {
+      "label": "So arbeiten wir",
+      "title": "In vier Schritten zur Kampagne",
+      "steps": {
+        "audit": {
+          "title": "Analyse",
+          "text": "Ich prüfe Suchvolumen, Mitbewerber und Klickpreise und sage dir, ob es sich lohnt."
+        },
+        "setup": {
+          "title": "Einrichtung",
+          "text": "Keywords, Anzeigentexte, Ausrichtung und Conversion-Tracking – Teil der einmaligen Einrichtung."
+        },
+        "learning": {
+          "title": "Lernphase",
+          "text": "In den ersten 4–6 Wochen sammelt das System Daten; dann optimiere ich am meisten."
+        },
+        "optimize": {
+          "title": "Optimierung & Bericht",
+          "text": "Laufende Feinabstimmung und ein verständlicher Monatsbericht zu Kosten und Ergebnissen."
+        }
+      }
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "items": [
+        {
+          "q": "Wie viel Werbebudget brauche ich?",
+          "a": "Das hängt von Branche und Region ab. Für eine kleine, lokale Kampagne lohnt sich meist ein Start mit rund 250–400 € pro Monat – die genaue Empfehlung bekommst du nach der Analyse."
+        },
+        {
+          "q": "Wem gehört das Werbekonto?",
+          "a": "Dir: Das Konto läuft auf deinen Namen und deine Karte, ich habe Zugriff als Betreuer. Wenn du einmal wechselst, bleiben alle Daten bei dir."
+        },
+        {
+          "q": "Wann sehe ich erste Ergebnisse?",
+          "a": "Klicks kommen schon in den ersten Tagen, richtig eingespielt ist die Kampagne nach der Lernphase von 4–6 Wochen."
+        },
+        {
+          "q": "Schaltest du nur Google-Suchanzeigen?",
+          "a": "Ja, ich habe mich auf Google-Suchanzeigen spezialisiert: Dort erscheinst du, wo die Kaufabsicht am stärksten ist."
+        }
+      ]
+    },
+    "final": {
+      "title": "Finden wir heraus, ob sich Anzeigen für dich lohnen",
+      "text": "Schreib mir in ein paar Sätzen, was du machst und wo – ich prüfe die Nachfrage und sage dir ehrlich, ob sich ein Start lohnt."
+    },
+    "hubLink": "Mehr zur Google Ads Betreuung"
   }
 }

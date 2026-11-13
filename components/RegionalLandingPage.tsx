@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { trackEvent } from "@/src/analytics";
+import { useAdsServiceCard, withAdsService } from "@/src/hooks/use-ads-service";
 import { useHufFormatter } from "@/src/currency";
 import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
 import { localizePath, type RegionalLogicalPath } from "@/src/localizedRoutes";
@@ -52,7 +53,9 @@ type RegionalLandingPageProps = {
 
 export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPageProps) {
   const content = REGIONAL_CONTENT[page];
-  const [services, setServices] = useState(initial.services);
+  const [apiServices, setServices] = useState(initial.services);
+  const adsCard = useAdsServiceCard(lang);
+  const services = withAdsService(apiServices, adsCard);
   const [reference, setReference] = useState(initial.reference);
   const formatHuf = useHufFormatter(lang);
   const maintenancePrice = formatHuf(MAINTENANCE_STARTING_PRICE_HUF);

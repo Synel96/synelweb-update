@@ -704,8 +704,7 @@
     "pricing": {
       "label": "Pricing",
       "title": "Setup and monthly management",
-      "text": "If you don't have an ad account yet, I create and set it up for a one-time fee. The monthly management fee depends on the size of the campaign, so I quote it individually. You pay the ad spend directly to Google.",
-      "empty": "Request a quote for current pricing – you'll get it within minutes."
+      "text": "If you don't have an ad account yet, I create and set it up for a one-time fee. The monthly management fee depends on the size of the campaign, so I quote it individually. You pay the ad spend directly to Google."
     },
     "certificate": {
       "label": "Certificate",
@@ -759,6 +758,10 @@
       "title": "Let's see whether ads are worth it for you",
       "text": "Tell me in a few sentences what you do and where – I'll check search demand and tell you honestly whether it's worth starting."
     },
-    "hubLink": "More about Google Ads management"
+    "hubLink": "More about Google Ads management",
+    "service": {
+      "name": "Google Search ads management",
+      "description": "Ad account setup, campaign build, conversion tracking and ongoing optimization, with a monthly report."
+    }
   }
 }

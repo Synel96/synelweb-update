@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   BadgeCheckIcon,
   ChevronDownIcon,
@@ -14,19 +13,15 @@ import { AdsTerms } from "@/components/AdsTerms";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { ServiceCard } from "@/components/ServiceCard";
 import { trackEvent } from "@/src/analytics";
+import { useAdsServiceCard } from "@/src/hooks/use-ads-service";
 import { useCertificates } from "@/src/hooks/use-certificates";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import type { Certificate } from "@/src/services/certificatesService";
-import {
-  getServiceCards,
-  type AppLang,
-  type ServiceCard as ServiceCardItem,
-} from "@/src/services/serviceCardsService";
+import type { AppLang } from "@/src/services/serviceCardsService";
 
 type Data = {
-  cards: ServiceCardItem[];
   certificates: Certificate[];
 };
 
@@ -51,23 +46,11 @@ export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { data?: Data; lang?: SupportedLang };
   const lang = (pageContext.lang ?? DEFAULT_LANG) as AppLang;
-  const [cards, setCards] = useState<ServiceCardItem[]>(pageContext.data?.cards ?? []);
+  // The ads service is priced in code (see ADS_SETUP_PRICE_HUF).
+  const card = useAdsServiceCard(lang);
   const certificates = useCertificates(lang, pageContext.data?.certificates ?? []);
   const quoteHref = quoteFormHref(lang);
   const contactHref = localizePath("/contact", lang);
-
-  // The prerendered prices can be stale or missing: refresh them.
-  useEffect(() => {
-    let isMounted = true;
-    getServiceCards(lang)
-      .then((fresh) => {
-        if (isMounted) setCards(fresh.filter((card) => card.category === "marketing"));
-      })
-      .catch(() => {});
-    return () => {
-      isMounted = false;
-    };
-  }, [lang]);
 
   const adsCertificates = certificates.filter(
     (c) => c.category === "marketing" && c.kind === "exam" && !c.isExpired
@@ -155,48 +138,33 @@ export default function Page() {
           </h2>
           <p className="mt-4 text-base leading-7 text-white/75">{t("adsPage.pricing.text")}</p>
         </div>
-        {cards.length > 0 ? (
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {cards.map((card) => (
-              <div
-                key={card.id}
-                className={
-                  cards.length === 1 ? "lg:col-span-2 lg:mx-auto lg:w-full lg:max-w-2xl" : ""
-                }
-              >
-                <ServiceCard
-                  serviceName={card.name}
-                  description={card.description}
-                  regularPrice={card.regularPrice}
-                  discountedPrice={card.discountedPrice}
-                  hasDiscount={card.hasDiscount}
-                  discountLabel={t("servicesPage.discountBadge")}
-                  monthlyPrice={card.monthlyPrice}
-                  setupFeeLabel={t("servicesPage.adsSetupFeeLabel")}
-                  customMonthlyText={card.monthlyPrice ? "" : t("servicesPage.customMonthly")}
-                  monthlyFeeLabel={t("servicesPage.monthlyFeeLabel")}
-                  perMonth={(price) => t("servicesPage.perMonth", { price })}
-                  certifications={adsCertificates.map((c) => ({
-                    title: c.title,
-                    url: c.credentialUrl,
-                  }))}
-                  certifiedLabel={t("servicesPage.certifiedWith")}
-                  expandLabel={t("servicesPage.expandDescription")}
-                  collapseLabel={t("servicesPage.collapseDescription")}
-                  slug={card.slug}
-                  images={card.images}
-                  contactBaseHref={contactHref}
-                  ctaLabel={t("servicesPage.cardCta")}
-                  ctaAriaLabel={t("servicesPage.cardCtaAria")}
-                />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="fancy-panel mx-auto mt-8 max-w-2xl rounded-2xl p-6 text-center text-white/85">
-            {t("adsPage.pricing.empty")}
-          </p>
-        )}
+        <div className="mx-auto mt-8 max-w-2xl">
+          <ServiceCard
+            serviceName={card.name}
+            description={card.description}
+            regularPrice={card.regularPrice}
+            discountedPrice={card.discountedPrice}
+            hasDiscount={card.hasDiscount}
+            discountLabel={t("servicesPage.discountBadge")}
+            monthlyPrice={card.monthlyPrice}
+            setupFeeLabel={t("servicesPage.adsSetupFeeLabel")}
+            customMonthlyText={t("servicesPage.customMonthly")}
+            monthlyFeeLabel={t("servicesPage.monthlyFeeLabel")}
+            perMonth={(price) => t("servicesPage.perMonth", { price })}
+            certifications={adsCertificates.map((c) => ({
+              title: c.title,
+              url: c.credentialUrl,
+            }))}
+            certifiedLabel={t("servicesPage.certifiedWith")}
+            expandLabel={t("servicesPage.expandDescription")}
+            collapseLabel={t("servicesPage.collapseDescription")}
+            slug={card.slug}
+            images={card.images}
+            contactBaseHref={contactHref}
+            ctaLabel={t("servicesPage.cardCta")}
+            ctaAriaLabel={t("servicesPage.cardCtaAria")}
+          />
+        </div>
         <AdsTerms />
       </section>
 

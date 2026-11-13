@@ -704,8 +704,7 @@
     "pricing": {
       "label": "Preise",
       "title": "Einrichtung und monatliche Betreuung",
-      "text": "Wenn du noch kein Werbekonto hast, lege ich es gegen eine einmalige Gebühr an und richte es ein. Die monatliche Betreuungsgebühr hängt von der Größe der Kampagne ab, deshalb mache ich dafür ein individuelles Angebot. Das Werbebudget zahlst du direkt an Google.",
-      "empty": "Für aktuelle Preise fordere ein Angebot an – du bekommst es in wenigen Minuten."
+      "text": "Wenn du noch kein Werbekonto hast, lege ich es gegen eine einmalige Gebühr an und richte es ein. Die monatliche Betreuungsgebühr hängt von der Größe der Kampagne ab, deshalb mache ich dafür ein individuelles Angebot. Das Werbebudget zahlst du direkt an Google."
     },
     "certificate": {
       "label": "Zertifikat",
@@ -759,6 +758,10 @@
       "title": "Finden wir heraus, ob sich Anzeigen für dich lohnen",
       "text": "Schreib mir in ein paar Sätzen, was du machst und wo – ich prüfe die Nachfrage und sage dir ehrlich, ob sich ein Start lohnt."
     },
-    "hubLink": "Mehr zur Google Ads Betreuung"
+    "hubLink": "Mehr zur Google Ads Betreuung",
+    "service": {
+      "name": "Google-Suchanzeigen Betreuung",
+      "description": "Einrichtung des Werbekontos, Kampagnenaufbau, Conversion-Tracking und laufende Optimierung mit monatlichem Bericht."
+    }
   }
 }

@@ -20,6 +20,7 @@ import { ServiceCardSkeleton } from "@/components/ServiceCardSkeleton";
 import { localizePath, resolveCurrentLang } from "@/src/localizedRoutes";
 import { useHufFormatter } from "@/src/currency";
 import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
+import { useAdsServiceCard, withAdsService } from "@/src/hooks/use-ads-service";
 import { useCertificates } from "@/src/hooks/use-certificates";
 import type { Certificate, CertificateCategory } from "@/src/services/certificatesService";
 import {
@@ -149,9 +150,11 @@ export default function Page() {
 
   // One block per category that has services, in SERVICE_CATEGORIES order;
   // a single block gets no heading or jump links.
+  const adsCard = useAdsServiceCard(appLang);
+  const allCards = withAdsService(cards, adsCard);
   const groups = SERVICE_CATEGORIES.map((category) => ({
     category,
-    items: cards.filter((card) => card.category === category),
+    items: allCards.filter((card) => card.category === category),
   })).filter((group) => group.items.length > 0);
   return (
     <>

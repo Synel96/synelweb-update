@@ -709,8 +709,7 @@
     "pricing": {
       "label": "Árak",
       "title": "Beállítás és havi kezelés",
-      "text": "Ha még nincs hirdetési fiókod, egyszeri díjért létrehozom és beállítom. A havi kezelési díj a kampány méretétől függ, ezért arra egyedi ajánlatot adok. A hirdetési költést közvetlenül a Google-nek fizeted.",
-      "empty": "Az aktuális árakért kérj ajánlatot – pár percen belül megkapod."
+      "text": "Ha még nincs hirdetési fiókod, egyszeri díjért létrehozom és beállítom. A havi kezelési díj a kampány méretétől függ, ezért arra egyedi ajánlatot adok. A hirdetési költést közvetlenül a Google-nek fizeted."
     },
     "certificate": {
       "label": "Tanúsítvány",
@@ -764,6 +763,10 @@
       "title": "Nézzük meg, megéri-e neked a hirdetés",
       "text": "Írd meg pár mondatban, mivel foglalkozol és hol – megnézem a keresési igényt, és őszintén megmondom, érdemes-e elindulni."
     },
-    "hubLink": "Részletek a Google Ads kezelésről"
+    "hubLink": "Részletek a Google Ads kezelésről",
+    "service": {
+      "name": "Google keresőhirdetés kezelés",
+      "description": "Hirdetési fiók beállítása, kampányfelépítés, konverziómérés és folyamatos optimalizálás, havi riporttal."
+    }
   }
 }

@@ -298,7 +298,7 @@ describe("QuoteRequestForm", () => {
     expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
-    fireEvent.change(screen.getByLabelText(/E-mail/), { target: { value: "nem-email" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "nem-email" } });
     next();
 
     expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
@@ -318,5 +318,32 @@ describe("QuoteRequestForm", () => {
     expect(screen.getByText("4. lépés / 4")).toBeInTheDocument();
     expect(screen.getByText("teszt@pelda.hu")).toBeInTheDocument();
     expect(screen.getByText("Egy egyszerű bemutatkozó oldal kellene.")).toBeInTheDocument();
+  });
+
+  it("asks how to get in touch, needs a number for a call back, and sends it in simple mode", async () => {
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    next();
+    fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "teszt@pelda.hu" } });
+    fireEvent.click(screen.getByRole("radio", { name: "Telefonon" }));
+    next();
+    expect(
+      screen.getByText("Ha telefonon kérsz visszahívást, add meg a számod.")
+    ).toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole("textbox", { name: /^Telefon/ }), { target: { value: "+36 30 123 4567" } });
+    next();
+    fireEvent.change(screen.getByLabelText("Pár mondat a projektről"), {
+      target: { value: "Egy egyszerű bemutatkozó oldal kellene." },
+    });
+    submit();
+
+    await screen.findByRole("status");
+    expect(sentPayload()).toMatchObject({
+      mode: "simple",
+      contactPreference: "phone",
+      phone: "+36 30 123 4567",
+    });
   });
 });

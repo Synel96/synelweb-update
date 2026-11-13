@@ -610,12 +610,12 @@
       "over_800k": "{{from}} felett",
       "unsure": "Még nem tudom"
     },
-    "contactPreference": "Hogyan egyeztetnél?",
+    "contactPreference": "Hogyan vegyem fel veled a kapcsolatot?",
     "contactPreferenceOptions": {
       "email": "E-mailben",
       "phone": "Telefonon",
       "online": "Online megbeszélésen",
-      "in_person": "Személyesen"
+      "in_person": "Személyes találkozón"
     },
     "isLocal": "Sopron környéki vállalkozás vagyok (helyi kedvezmény)",
     "isGrantFunded": "Pályázati forrásból (pl. DIMOP Plusz) finanszíroznám",
@@ -673,13 +673,15 @@
     "summary": {
       "mode": "Ajánlat típusa",
       "message": "Üzenet",
-      "edit": "Módosítás"
+      "edit": "Módosítás",
+      "contactPreference": "Kapcsolatfelvétel"
     },
     "errors": {
       "name": "Add meg a neved (legalább 2 karakter).",
       "email": "Adj meg egy érvényes e-mail-címet.",
       "message": "Írj pár mondatot a projektről (legalább 10 karakter).",
-      "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót."
+      "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
+      "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
     }
   },
   "certificatesPage": {

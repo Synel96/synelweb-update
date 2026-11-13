@@ -63,7 +63,7 @@ type StepKey = (typeof STEP_KEYS)[number];
 const LAST_STEP = STEP_KEYS.length - 1;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type FieldErrors = Partial<Record<"name" | "email" | "message" | "consent", string>>;
+type FieldErrors = Partial<Record<"name" | "email" | "phone" | "message" | "consent", string>>;
 
 type ServiceOption = { value: string; label: string };
 
@@ -290,6 +290,10 @@ export function QuoteRequestForm({
     if (index === 1) {
       if (name.trim().length < 2) found.name = t("quoteForm.errors.name");
       if (!EMAIL_PATTERN.test(email.trim())) found.email = t("quoteForm.errors.email");
+      // Asked to be called back: a number is needed then.
+      if (contactPreference === "phone" && phone.trim().length < 6) {
+        found.phone = t("quoteForm.errors.phone");
+      }
     }
     if (index === 2 && message.trim().length < 10) found.message = t("quoteForm.errors.message");
     if (index === LAST_STEP && !consent) found.consent = t("quoteForm.errors.consent");
@@ -356,6 +360,7 @@ export function QuoteRequestForm({
       message: message.trim(),
       consent,
       siteLanguage: lang,
+      contactPreference,
       company,
     };
     if (mode === "detailed" && isAdsOnly) {
@@ -366,7 +371,6 @@ export function QuoteRequestForm({
         adBudget,
         timeline,
         isLocal,
-        contactPreference,
       });
     } else if (mode === "detailed") {
       Object.assign(payload, {
@@ -381,7 +385,6 @@ export function QuoteRequestForm({
         budget,
         isLocal,
         isGrantFunded,
-        contactPreference,
       });
     }
 
@@ -439,6 +442,15 @@ export function QuoteRequestForm({
     { label: t("quoteForm.name"), value: name.trim(), step: 1 },
     { label: t("quoteForm.email"), value: email.trim(), step: 1 },
     ...(phone.trim() ? [{ label: t("quoteForm.phone"), value: phone.trim(), step: 1 }] : []),
+    ...(contactPreference
+      ? [
+          {
+            label: t("quoteForm.summary.contactPreference"),
+            value: t(`quoteForm.contactPreferenceOptions.${contactPreference}`),
+            step: 1,
+          },
+        ]
+      : []),
     {
       label: t("quoteForm.summary.message"),
       value: message.trim().length > 160 ? `${message.trim().slice(0, 160)}…` : message.trim(),
@@ -597,10 +609,24 @@ export function QuoteRequestForm({
               </Field>
             </div>
 
-            <Field label={t("quoteForm.phone")} hint={t("quoteForm.phoneHint")}>
+            <ChoiceGroup
+              legend={t("quoteForm.contactPreference")}
+              name={`${formId}-contact`}
+              type="radio"
+              options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
+              value={contactPreference}
+              onChange={(next) => setContactPreference(next as string)}
+            />
+
+            <Field
+              label={t("quoteForm.phone")}
+              hint={contactPreference === "phone" ? undefined : t("quoteForm.phoneHint")}
+              error={errors.phone}
+            >
               <input
                 type="tel"
                 autoComplete="tel"
+                aria-invalid={errors.phone ? true : undefined}
                 maxLength={40}
                 value={phone}
                 onChange={(event) => setPhone(event.target.value)}
@@ -689,15 +715,6 @@ export function QuoteRequestForm({
                   options={options(TIMELINES, "quoteForm.timelineOptions")}
                   value={timeline}
                   onChange={(next) => setTimeline(next as string)}
-                />
-
-                <ChoiceGroup
-                  legend={t("quoteForm.contactPreference")}
-                  name={`${formId}-ads-contact`}
-                  type="radio"
-                  options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
-                  value={contactPreference}
-                  onChange={(next) => setContactPreference(next as string)}
                 />
 
                 <label className="flex items-start gap-3 text-sm text-white/80">
@@ -817,15 +834,6 @@ export function QuoteRequestForm({
                   })}
                   value={budget}
                   onChange={(next) => setBudget(next as string)}
-                />
-
-                <ChoiceGroup
-                  legend={t("quoteForm.contactPreference")}
-                  name={`${formId}-contact`}
-                  type="radio"
-                  options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
-                  value={contactPreference}
-                  onChange={(next) => setContactPreference(next as string)}
                 />
 
                 <div className="space-y-3">

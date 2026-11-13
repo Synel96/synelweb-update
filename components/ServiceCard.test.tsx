@@ -125,6 +125,23 @@ describe("ServiceCard", () => {
     expect(screen.getByText("30 000 Ft / hó")).toBeInTheDocument();
   });
 
+  it("shows a custom monthly fee text when there is no monthly price", () => {
+    render(
+      <ServiceCard
+        {...baseProps}
+        regularPrice="35 000 Ft"
+        customMonthlyText="Egyedi ár, a kampány méretétől függően"
+        setupFeeLabel="Hirdetési fiók beállítása (ha szükséges)"
+        monthlyFeeLabel="Havi díj"
+      />
+    );
+
+    expect(screen.getByText("Hirdetési fiók beállítása (ha szükséges)")).toBeInTheDocument();
+    expect(screen.getByText("35 000 Ft")).toBeInTheDocument();
+    expect(screen.getByText("Havi díj")).toBeInTheDocument();
+    expect(screen.getByText("Egyedi ár, a kampány méretétől függően")).toBeInTheDocument();
+  });
+
   it("shows no fee labels for a one-off service", () => {
     render(<ServiceCard {...baseProps} setupFeeLabel="Egyszeri beállítás" />);
 

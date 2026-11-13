@@ -16,6 +16,8 @@ type ServiceCardProps = {
   discountLabel: string;
   // With a monthly fee, the regular/discounted price is the one-time setup fee.
   monthlyPrice?: string;
+  // Shown in place of a monthly price when the fee is quoted individually.
+  customMonthlyText?: string;
   setupFeeLabel?: string;
   monthlyFeeLabel?: string;
   perMonth?: (price: string) => string;
@@ -39,6 +41,7 @@ export function ServiceCard({
   hasDiscount,
   discountLabel,
   monthlyPrice = "",
+  customMonthlyText = "",
   setupFeeLabel = "",
   monthlyFeeLabel = "",
   perMonth = (price) => price,
@@ -52,6 +55,7 @@ export function ServiceCard({
   ctaLabel,
   ctaAriaLabel,
 }: ServiceCardProps) {
+  const hasMonthly = Boolean(monthlyPrice || customMonthlyText);
   const COLLAPSED_DESCRIPTION_HEIGHT = 112;
   const EXPAND_SCROLL_OFFSET = 96;
   const slides = useMemo(() => images.filter((image) => image.trim().length > 0), [images]);
@@ -134,12 +138,12 @@ export function ServiceCard({
         ) : null}
       </div>
 
-      {monthlyPrice ? (
+      {hasMonthly ? (
         <p className="mt-4 text-[0.68rem] font-semibold tracking-[0.16em] text-white/55 uppercase">
           {setupFeeLabel}
         </p>
       ) : null}
-      <div className={`${monthlyPrice ? "mt-1.5" : "mt-4"} flex flex-wrap items-center gap-3`}>
+      <div className={`${hasMonthly ? "mt-1.5" : "mt-4"} flex flex-wrap items-center gap-3`}>
         {hasDiscount ? (
           <>
             <span className="inline-flex items-center rounded-full border border-transparent bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] px-3 py-1 text-[0.68rem] font-bold tracking-[0.18em] text-[#1a0a06] uppercase">
@@ -159,14 +163,20 @@ export function ServiceCard({
         )}
       </div>
 
-      {monthlyPrice ? (
+      {hasMonthly ? (
         <div className="mt-3">
           <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-white/55 uppercase">
             {monthlyFeeLabel}
           </p>
-          <p className="mt-1.5 text-lg font-extrabold tracking-[0.06em] text-emerald-300 sm:text-xl">
-            {perMonth(monthlyPrice)}
-          </p>
+          {monthlyPrice ? (
+            <p className="mt-1.5 text-lg font-extrabold tracking-[0.06em] text-emerald-300 sm:text-xl">
+              {perMonth(monthlyPrice)}
+            </p>
+          ) : (
+            <p className="mt-1.5 text-base font-semibold text-emerald-300 sm:text-lg">
+              {customMonthlyText}
+            </p>
+          )}
         </div>
       ) : null}
 

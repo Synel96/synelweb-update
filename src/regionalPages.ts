@@ -25,6 +25,8 @@ export type RegionalContent = {
   servicesText: string;
   servicesLink: string;
   perMonth: string;
+  // After the setup fee of a service whose monthly fee is quoted individually.
+  customMonthly: string;
   // Shown under the services; {{price}} is the converted starting fee.
   maintenanceLine: string;
   maintenancePrice: string;
@@ -84,6 +86,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       "Sopron és környéke vállalkozásainak kedvezményes árazással dolgozom: az alábbi listaárakból a helyi kedvezményt az ajánlatban kapod meg. A részleteket és a kiegészítőket a szolgáltatások oldalon látod.",
     servicesLink: "Összes szolgáltatás részletesen",
     perMonth: "/ hó",
+    customMonthly: "+ egyedi havidíj",
     maintenanceLine: "Üzemeltetés és karbantartás – az átadás után is",
     maintenancePrice: "{{price}}-tól / hó",
     areasLabel: "Ahol személyesen is ott vagyok",
@@ -168,6 +171,7 @@ export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
       "Alle Leistungen mit Details und Zusatzoptionen findest du auf der Leistungsseite.",
     servicesLink: "Alle Leistungen im Detail",
     perMonth: "/ Monat",
+    customMonthly: "+ individuelle Monatsgebühr",
     maintenanceLine: "Betrieb & Wartung – auch nach der Übergabe",
     maintenancePrice: "ab {{price}} / Monat",
     areasLabel: "Persönlich vor Ort",

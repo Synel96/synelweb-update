@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import { fetchWithTimeout } from "@/src/fetchWithTimeout";
 import { getServiceCards, type AppLang } from "@/src/services/serviceCardsService";
+import { ADS_SERVICE_SLUG } from "@/src/hooks/use-ads-service";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { trackEvent } from "@/src/analytics";
 import { useHufFormatter } from "@/src/currency";
@@ -163,7 +164,12 @@ export function QuoteRequestForm({
     getServiceCards(lang)
       .then((cards) => {
         if (!isMounted) return;
-        setServices(cards.map((card) => ({ value: card.slug || card.id, label: card.name })));
+        setServices(
+          cards
+            // An ads service also added in the admin would show twice.
+            .filter((card) => !(card.category === "marketing" && /google/i.test(card.name)))
+            .map((card) => ({ value: card.slug || card.id, label: card.name }))
+        );
       })
       .catch(() => {
         // Keep the fallback options.
@@ -173,6 +179,13 @@ export function QuoteRequestForm({
     };
   }, [lang]);
 
+  // The Google Search ads service is priced in code, not in the admin, so
+  // it isn't among the backend's services: always offer it.
+  const adsOption = useMemo<ServiceOption>(
+    () => ({ value: ADS_SERVICE_SLUG, label: t("adsPage.service.name") }),
+    [t]
+  );
+
   const serviceOptions = useMemo<ServiceOption[]>(() => {
     const base =
       services.length > 0
@@ -181,14 +194,18 @@ export function QuoteRequestForm({
             value: key,
             label: t(`homeFlow.services.badges.${key}`),
           }));
-    return [...base, { value: UNSURE, label: t("quoteForm.serviceUnsure") }];
-  }, [services, t]);
+    return [...base, adsOption, { value: UNSURE, label: t("quoteForm.serviceUnsure") }];
+  }, [services, adsOption, t]);
 
   // A service passed in the URL that isn't (or is no longer) on offer would
   // leave nothing visibly selected; fall back to "not sure yet".
   useEffect(() => {
     if (services.length === 0 || !service) return;
-    if (service !== UNSURE && !services.some((option) => option.value === service)) {
+    if (
+      service !== UNSURE &&
+      service !== ADS_SERVICE_SLUG &&
+      !services.some((option) => option.value === service)
+    ) {
       setService(UNSURE);
     }
   }, [services, service]);

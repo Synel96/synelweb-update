@@ -40,6 +40,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Services and development approach in one place: custom, fast, and business-ready web solutions.",
     },
+    "/google-ads": {
+      title: "Google Ads Management for Small Businesses | SynelWeb",
+      description:
+        "Google Search ads set up and managed by a Google Ads Search certified developer: keyword research, conversion tracking, monthly reports and transparent pricing.",
+    },
     "/projects": {
       title: "Projects | SynelWeb",
       description:
@@ -82,6 +87,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Átlátható weblap árak és szolgáltatások egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
     },
+    "/google-ads": {
+      title: "Google Ads kezelés kisvállalkozásoknak | SynelWeb",
+      description:
+        "Google keresőhirdetés beállítás és kezelés Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés, havi riport és átlátható árak – Sopronból, országosan.",
+    },
     "/projects": {
       title: "Projektek | SynelWeb",
       description:
@@ -123,6 +133,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       title: "Webdesign Preise & Leistungen | SynelWeb",
       description:
         "Transparente Preise für Webdesign und Homepage erstellen lassen: individuelle, schnelle und geschäftstaugliche Weblösungen.",
+    },
+    "/google-ads": {
+      title: "Google Ads Betreuung für kleine Unternehmen | SynelWeb",
+      description:
+        "Google-Suchanzeigen einrichten und betreuen lassen – mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte und transparente Preise.",
     },
     "/projects": {
       title: "Projekte | SynelWeb",

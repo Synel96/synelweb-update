@@ -16,7 +16,9 @@ export type QuoteCtaLocation =
   | "sopron_hero"
   | "sopron_final"
   | "austria_hero"
-  | "austria_final";
+  | "austria_final"
+  | "google_ads_hero"
+  | "google_ads_final";
 
 export type ContactMethod = "phone" | "email" | "facebook" | "linkedin";
 

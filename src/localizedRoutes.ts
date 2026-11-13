@@ -4,6 +4,7 @@ export const KNOWN_LOGICAL_PATHS = [
   "/",
   "/about",
   "/services",
+  "/google-ads",
   "/projects",
   "/certificates",
   "/blog",
@@ -23,6 +24,11 @@ const LOCALIZED_SEGMENTS: Record<Exclude<KnownLogicalPath, "/">, Record<Supporte
     en: "services",
     hu: "szolgaltatasok",
     de: "dienstleistungen",
+  },
+  "/google-ads": {
+    en: "google-ads-management",
+    hu: "google-ads-kezeles",
+    de: "google-ads-betreuung",
   },
   "/projects": {
     en: "projects",

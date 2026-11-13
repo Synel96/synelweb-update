@@ -28,7 +28,18 @@ export const NAV_LINKS: readonly NavLink[] = [
     href: "/services",
     labelKey: "nav.services",
     subLinks: [
-      { href: "/services", label: { hu: "Összes szolgáltatás", de: "Alle Leistungen" } },
+      {
+        href: "/services",
+        label: { hu: "Összes szolgáltatás", en: "All services", de: "Alle Leistungen" },
+      },
+      {
+        href: "/google-ads",
+        label: {
+          hu: "Google Ads kezelés",
+          en: "Google Ads management",
+          de: "Google Ads Betreuung",
+        },
+      },
       { href: "/sopron", label: { hu: "Sopron és környéke" } },
       { href: "/austria", label: { de: "Burgenland & Wien" } },
     ],

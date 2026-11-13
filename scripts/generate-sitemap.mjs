@@ -9,6 +9,11 @@ const DEFAULT_LANG = "hu";
 const LOCALIZED_SEGMENTS = {
   "/about": { en: "about", hu: "rolam", de: "ueber-mich" },
   "/services": { en: "services", hu: "szolgaltatasok", de: "dienstleistungen" },
+  "/google-ads": {
+    en: "google-ads-management",
+    hu: "google-ads-kezeles",
+    de: "google-ads-betreuung",
+  },
   "/projects": { en: "projects", hu: "projektek", de: "projekte" },
   "/certificates": { en: "certificates", hu: "tanusitvanyok", de: "zertifikate" },
   "/blog": { en: "blog", hu: "blog", de: "blog" },
@@ -19,6 +24,7 @@ const KNOWN_LOGICAL_PATHS = [
   "/",
   "/about",
   "/services",
+  "/google-ads",
   "/projects",
   "/certificates",
   "/blog",

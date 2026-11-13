@@ -48,15 +48,20 @@ describe("visibleSubLinks", () => {
   it("offers each language its own regional page under Services", () => {
     expect(visibleSubLinks(services, "hu").map((link) => link.href)).toEqual([
       "/services",
+      "/google-ads",
       "/sopron",
     ]);
     expect(visibleSubLinks(services, "de").map((link) => link.href)).toEqual([
       "/services",
+      "/google-ads",
       "/austria",
     ]);
   });
 
-  it("shows no submenu where there is no regional page", () => {
-    expect(visibleSubLinks(services, "en")).toEqual([]);
+  it("offers English the Google Ads page but no regional page", () => {
+    expect(visibleSubLinks(services, "en").map((link) => link.href)).toEqual([
+      "/services",
+      "/google-ads",
+    ]);
   });
 });

@@ -1,5 +1,13 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ReactNode } from "react";
-import { CheckCircle2Icon, ClipboardListIcon, SendIcon, ZapIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CheckCircle2Icon,
+  CheckIcon,
+  ClipboardListIcon,
+  SendIcon,
+  ZapIcon,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
 import { fetchWithTimeout } from "@/src/fetchWithTimeout";
@@ -49,6 +57,14 @@ const CONTACT_PREFERENCES = ["email", "phone", "online", "in_person"] as const;
 
 type Status = "idle" | "sending" | "sent" | "error" | "throttled";
 
+// The form is split into steps; the last one reviews the answers and sends.
+const STEP_KEYS = ["service", "contact", "project", "send"] as const;
+type StepKey = (typeof STEP_KEYS)[number];
+const LAST_STEP = STEP_KEYS.length - 1;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type FieldErrors = Partial<Record<"name" | "email" | "message" | "consent", string>>;
+
 type ServiceOption = { value: string; label: string };
 
 type QuoteRequestFormProps = {
@@ -63,12 +79,23 @@ const INPUT_CLASS =
 
 const LABEL_CLASS = "text-sm font-semibold text-white/85";
 
-function Field({ label, children, hint }: { label: string; children: ReactNode; hint?: string }) {
+function Field({
+  label,
+  children,
+  hint,
+  error,
+}: {
+  label: string;
+  children: ReactNode;
+  hint?: string;
+  error?: string;
+}) {
   return (
     <label className="block">
       <span className={LABEL_CLASS}>{label}</span>
       {children}
       {hint ? <span className="mt-1.5 block text-xs text-white/50">{hint}</span> : null}
+      {error ? <span className="mt-1.5 block text-xs text-red-200">{error}</span> : null}
     </label>
   );
 }
@@ -172,6 +199,13 @@ export function QuoteRequestForm({
   const [adBudget, setAdBudget] = useState("");
   const isAdsOnly = service === ADS_SERVICE_SLUG;
 
+  const [step, setStep] = useState(0);
+  // The furthest step reached, so the step indicator can jump back to it.
+  const [maxStep, setMaxStep] = useState(0);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+
   useEffect(() => {
     let isMounted = true;
     getServiceCards(lang)
@@ -250,8 +284,62 @@ export function QuoteRequestForm({
     trackEvent("quote_form_start", { mode });
   };
 
+  // What a step needs before the visitor can move past it.
+  const stepErrors = (index: number): FieldErrors => {
+    const found: FieldErrors = {};
+    if (index === 1) {
+      if (name.trim().length < 2) found.name = t("quoteForm.errors.name");
+      if (!EMAIL_PATTERN.test(email.trim())) found.email = t("quoteForm.errors.email");
+    }
+    if (index === 2 && message.trim().length < 10) found.message = t("quoteForm.errors.message");
+    if (index === LAST_STEP && !consent) found.consent = t("quoteForm.errors.consent");
+    return found;
+  };
+
+  // Moving back is always allowed; moving forward checks every step passed.
+  const goTo = (target: number) => {
+    for (let index = step; index < target; index += 1) {
+      const found = stepErrors(index);
+      if (Object.keys(found).length > 0) {
+        setErrors(found);
+        if (index !== step) setStep(index);
+        return;
+      }
+    }
+    setErrors({});
+    if (target > step) trackEvent("quote_form_step", { step: STEP_KEYS[target], mode });
+    setStep(target);
+    setMaxStep((current) => Math.max(current, target));
+  };
+
+  // On a new step: bring the form's top into view if it scrolled away, and
+  // move focus to the step's heading so keyboard and screen-reader users
+  // start from there. Not on the first render.
+  const firstStepRender = useRef(true);
+  useEffect(() => {
+    if (firstStepRender.current) {
+      firstStepRender.current = false;
+      return;
+    }
+    const form = formRef.current;
+    if (form && form.getBoundingClientRect().top < 0) {
+      form.scrollIntoView({ block: "start", behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    }
+    headingRef.current?.focus({ preventScroll: true });
+  }, [step]);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // Enter in a field of an earlier step means "next", not "send".
+    if (step < LAST_STEP) {
+      goTo(step + 1);
+      return;
+    }
+    const found = stepErrors(LAST_STEP);
+    if (Object.keys(found).length > 0) {
+      setErrors(found);
+      return;
+    }
     if (status === "sending") return;
     setStatus("sending");
 
@@ -341,333 +429,501 @@ export function QuoteRequestForm({
     { key: "detailed", Icon: ClipboardListIcon },
   ];
 
+  const stepLabel = (key: StepKey) =>
+    key === "project" && isAdsOnly ? t("quoteForm.steps.campaign") : t(`quoteForm.steps.${key}`);
+  const serviceLabel =
+    serviceOptions.find((option) => option.value === (service || UNSURE))?.label ?? "";
+  const summary: Array<{ label: string; value: string; step: number }> = [
+    { label: t("quoteForm.steps.service"), value: serviceLabel, step: 0 },
+    { label: t("quoteForm.summary.mode"), value: t(`quoteForm.modes.${mode}.title`), step: 0 },
+    { label: t("quoteForm.name"), value: name.trim(), step: 1 },
+    { label: t("quoteForm.email"), value: email.trim(), step: 1 },
+    ...(phone.trim() ? [{ label: t("quoteForm.phone"), value: phone.trim(), step: 1 }] : []),
+    {
+      label: t("quoteForm.summary.message"),
+      value: message.trim().length > 160 ? `${message.trim().slice(0, 160)}…` : message.trim(),
+      step: 2,
+    },
+  ];
+
   return (
     <form
+      ref={formRef}
       onSubmit={handleSubmit}
       onFocusCapture={markStarted}
-      className="fancy-card rounded-3xl p-5 sm:p-8"
+      noValidate={step < LAST_STEP}
+      className="fancy-card scroll-mt-28 rounded-3xl p-5 sm:p-8"
     >
-      <div
-        role="radiogroup"
-        aria-label={t("quoteForm.modeLabel")}
-        className="grid gap-2 rounded-2xl bg-black/25 p-1.5 sm:grid-cols-2"
+      <nav aria-label={t("quoteForm.steps.label")}>
+        <p className="text-xs font-semibold tracking-[0.14em] text-white/60 uppercase">
+          {t("quoteForm.steps.progress", { current: step + 1, total: STEP_KEYS.length })}
+          {/* Phones show only numbers under the bars: the current name goes here. */}
+          <span className="normal-case sm:hidden"> · {stepLabel(STEP_KEYS[step])}</span>
+        </p>
+        <ol className="mt-3 grid grid-cols-4 gap-2">
+          {STEP_KEYS.map((key, index) => {
+            const isCurrent = index === step;
+            const isDone = index < step;
+            const canVisit = index <= maxStep && !isCurrent;
+            return (
+              <li key={key} aria-current={isCurrent ? "step" : undefined}>
+                <button
+                  type="button"
+                  onClick={() => goTo(index)}
+                  disabled={!canVisit}
+                  className="group block w-full text-left disabled:cursor-default"
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-colors ${
+                      index <= step
+                        ? "bg-linear-to-r from-(--color-secondary-warm) to-(--accent)"
+                        : "bg-white/15"
+                    }`}
+                    aria-hidden="true"
+                  />
+                  <span
+                    className={`mt-2 flex items-center gap-1 text-[0.7rem] font-semibold sm:text-xs ${
+                      isCurrent
+                        ? "text-white"
+                        : isDone
+                          ? "text-white/70 group-enabled:group-hover:text-white"
+                          : "text-white/40"
+                    }`}
+                  >
+                    {isDone ? (
+                      <CheckIcon
+                        className="size-3.5 shrink-0 text-emerald-300"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <span className="tabular-nums">{index + 1}.</span>
+                    )}
+                    <span className="hidden truncate sm:inline">{stepLabel(key)}</span>
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </nav>
+
+      <h3
+        ref={headingRef}
+        tabIndex={-1}
+        className="mt-6 text-lg font-semibold tracking-tight text-white outline-none sm:text-xl"
       >
-        {modes.map(({ key, Icon }) => {
-          const isActive = mode === key;
-          return (
-            <button
-              key={key}
-              type="button"
-              role="radio"
-              aria-checked={isActive}
-              onClick={() => {
-                if (key !== mode) trackEvent("quote_form_mode", { mode: key });
-                setMode(key);
-              }}
-              className={`flex items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors ${
-                isActive
-                  ? "bg-linear-to-r from-(--color-secondary-warm)/20 to-(--accent)/25 text-white ring-1 ring-(--accent)/50"
-                  : "text-white/65 hover:bg-white/5 hover:text-white"
-              }`}
+        {t(`quoteForm.steps.titles.${STEP_KEYS[step]}`)}
+      </h3>
+
+      <div className="mt-4 space-y-5">
+        {step === 0 ? (
+          <>
+            <div
+              role="radiogroup"
+              aria-label={t("quoteForm.modeLabel")}
+              className="grid gap-2 rounded-2xl bg-black/25 p-1.5 sm:grid-cols-2"
             >
-              <Icon
-                className={`size-5 shrink-0 ${isActive ? "text-(--accent)" : ""}`}
-                aria-hidden="true"
-              />
-              <span>
-                <span className="block text-sm font-semibold">
-                  {t(`quoteForm.modes.${key}.title`)}
-                </span>
-                <span className="block text-xs text-white/55">
-                  {t(`quoteForm.modes.${key}.hint`)}
-                </span>
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      <div className="mt-6 space-y-5">
-        <ChoiceGroup
-          legend={t("quoteForm.service")}
-          name={`${formId}-service`}
-          type="radio"
-          options={serviceOptions}
-          value={service}
-          onChange={(next) => setService(next as string)}
-        />
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field label={t("quoteForm.name")}>
-            <input
-              required
-              minLength={2}
-              maxLength={120}
-              autoComplete="name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              className={INPUT_CLASS}
-            />
-          </Field>
-          <Field label={t("quoteForm.email")}>
-            <input
-              required
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              className={INPUT_CLASS}
-            />
-          </Field>
-        </div>
-
-        <Field label={t("quoteForm.phone")} hint={t("quoteForm.phoneHint")}>
-          <input
-            type="tel"
-            autoComplete="tel"
-            maxLength={40}
-            value={phone}
-            onChange={(event) => setPhone(event.target.value)}
-            className={INPUT_CLASS}
-          />
-        </Field>
-
-        <Field label={t("quoteForm.message")}>
-          <textarea
-            required
-            minLength={10}
-            maxLength={4000}
-            rows={4}
-            placeholder={t(
-              isAdsOnly ? "quoteForm.adsMessagePlaceholder" : "quoteForm.messagePlaceholder"
-            )}
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            className={`${INPUT_CLASS} leading-7`}
-          />
-        </Field>
-
-        {mode === "detailed" && isAdsOnly ? (
-          <div className="space-y-5 border-t border-white/10 pt-5">
-            <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-              {t("quoteForm.adsDetailsTitle")}
-            </p>
+              {modes.map(({ key, Icon }) => {
+                const isActive = mode === key;
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    role="radio"
+                    aria-checked={isActive}
+                    onClick={() => {
+                      if (key !== mode) trackEvent("quote_form_mode", { mode: key });
+                      setMode(key);
+                    }}
+                    className={`flex items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors ${
+                      isActive
+                        ? "bg-linear-to-r from-(--color-secondary-warm)/20 to-(--accent)/25 text-white ring-1 ring-(--accent)/50"
+                        : "text-white/65 hover:bg-white/5 hover:text-white"
+                    }`}
+                  >
+                    <Icon
+                      className={`size-5 shrink-0 ${isActive ? "text-(--accent)" : ""}`}
+                      aria-hidden="true"
+                    />
+                    <span>
+                      <span className="block text-sm font-semibold">
+                        {t(`quoteForm.modes.${key}.title`)}
+                      </span>
+                      <span className="block text-xs text-white/55">
+                        {t(`quoteForm.modes.${key}.hint`)}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
             <ChoiceGroup
-              legend={t("quoteForm.adsAccount")}
-              name={`${formId}-ads-account`}
+              legend={t("quoteForm.service")}
+              name={`${formId}-service`}
               type="radio"
-              options={options(ADS_ACCOUNT, "quoteForm.adsAccountOptions")}
-              value={adsAccount}
-              onChange={(next) => setAdsAccount(next as string)}
+              options={serviceOptions}
+              value={service}
+              onChange={(next) => setService(next as string)}
             />
+          </>
+        ) : null}
 
-            <Field label={t("quoteForm.adsWebsiteUrl")} hint={t("quoteForm.adsWebsiteHint")}>
+        {step === 1 ? (
+          <>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Field label={t("quoteForm.name")} error={errors.name}>
+                <input
+                  required
+                  minLength={2}
+                  maxLength={120}
+                  autoComplete="name"
+                  aria-invalid={errors.name ? true : undefined}
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  className={INPUT_CLASS}
+                />
+              </Field>
+              <Field label={t("quoteForm.email")} error={errors.email}>
+                <input
+                  required
+                  type="email"
+                  autoComplete="email"
+                  aria-invalid={errors.email ? true : undefined}
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  className={INPUT_CLASS}
+                />
+              </Field>
+            </div>
+
+            <Field label={t("quoteForm.phone")} hint={t("quoteForm.phoneHint")}>
               <input
-                type="text"
-                inputMode="url"
-                maxLength={300}
-                placeholder="https://"
-                value={websiteUrl}
-                onChange={(event) => setWebsiteUrl(event.target.value)}
+                type="tel"
+                autoComplete="tel"
+                maxLength={40}
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
                 className={INPUT_CLASS}
               />
             </Field>
+          </>
+        ) : null}
 
-            <ChoiceGroup
-              legend={t("quoteForm.adsLanguages")}
-              name={`${formId}-ads-languages`}
-              type="checkbox"
-              options={options(LANGUAGES, "quoteForm.languageOptions")}
-              value={languages}
-              onChange={(next) => setLanguages(next as string[])}
-            />
+        {step === 2 ? (
+          <>
+            <Field label={t("quoteForm.message")} error={errors.message}>
+              <textarea
+                required
+                minLength={10}
+                maxLength={4000}
+                rows={5}
+                aria-invalid={errors.message ? true : undefined}
+                placeholder={t(
+                  isAdsOnly ? "quoteForm.adsMessagePlaceholder" : "quoteForm.messagePlaceholder"
+                )}
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                className={`${INPUT_CLASS} leading-7`}
+              />
+            </Field>
 
-            <ChoiceGroup
-              legend={t("quoteForm.adBudget")}
-              name={`${formId}-ad-budget`}
-              type="radio"
-              options={AD_BUDGETS.map((key) => {
-                const { from, to } = AD_BUDGET_LIMITS_HUF[key];
-                return {
-                  value: key,
-                  label: t(`quoteForm.adBudgetOptions.${key}`, {
-                    from: from === undefined ? "" : formatHuf(from),
-                    to: to === undefined ? "" : formatHuf(to),
-                  }),
-                };
-              })}
-              value={adBudget}
-              onChange={(next) => setAdBudget(next as string)}
-            />
+            {mode === "detailed" && isAdsOnly ? (
+              <div className="space-y-5 border-t border-white/10 pt-5">
+                <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+                  {t("quoteForm.adsDetailsTitle")}
+                </p>
 
-            <ChoiceGroup
-              legend={t("quoteForm.adsTimeline")}
-              name={`${formId}-ads-timeline`}
-              type="radio"
-              options={options(TIMELINES, "quoteForm.timelineOptions")}
-              value={timeline}
-              onChange={(next) => setTimeline(next as string)}
-            />
+                <ChoiceGroup
+                  legend={t("quoteForm.adsAccount")}
+                  name={`${formId}-ads-account`}
+                  type="radio"
+                  options={options(ADS_ACCOUNT, "quoteForm.adsAccountOptions")}
+                  value={adsAccount}
+                  onChange={(next) => setAdsAccount(next as string)}
+                />
 
-            <ChoiceGroup
-              legend={t("quoteForm.contactPreference")}
-              name={`${formId}-ads-contact`}
-              type="radio"
-              options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
-              value={contactPreference}
-              onChange={(next) => setContactPreference(next as string)}
-            />
+                <Field label={t("quoteForm.adsWebsiteUrl")} hint={t("quoteForm.adsWebsiteHint")}>
+                  <input
+                    type="text"
+                    inputMode="url"
+                    maxLength={300}
+                    placeholder="https://"
+                    value={websiteUrl}
+                    onChange={(event) => setWebsiteUrl(event.target.value)}
+                    className={INPUT_CLASS}
+                  />
+                </Field>
 
-            <label className="flex items-start gap-3 text-sm text-white/80">
+                <ChoiceGroup
+                  legend={t("quoteForm.adsLanguages")}
+                  name={`${formId}-ads-languages`}
+                  type="checkbox"
+                  options={options(LANGUAGES, "quoteForm.languageOptions")}
+                  value={languages}
+                  onChange={(next) => setLanguages(next as string[])}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.adBudget")}
+                  name={`${formId}-ad-budget`}
+                  type="radio"
+                  options={AD_BUDGETS.map((key) => {
+                    const { from, to } = AD_BUDGET_LIMITS_HUF[key];
+                    return {
+                      value: key,
+                      label: t(`quoteForm.adBudgetOptions.${key}`, {
+                        from: from === undefined ? "" : formatHuf(from),
+                        to: to === undefined ? "" : formatHuf(to),
+                      }),
+                    };
+                  })}
+                  value={adBudget}
+                  onChange={(next) => setAdBudget(next as string)}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.adsTimeline")}
+                  name={`${formId}-ads-timeline`}
+                  type="radio"
+                  options={options(TIMELINES, "quoteForm.timelineOptions")}
+                  value={timeline}
+                  onChange={(next) => setTimeline(next as string)}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.contactPreference")}
+                  name={`${formId}-ads-contact`}
+                  type="radio"
+                  options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
+                  value={contactPreference}
+                  onChange={(next) => setContactPreference(next as string)}
+                />
+
+                <label className="flex items-start gap-3 text-sm text-white/80">
+                  <input
+                    type="checkbox"
+                    checked={isLocal}
+                    onChange={(event) => setIsLocal(event.target.checked)}
+                    className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                  />
+                  {t("quoteForm.isLocal")}
+                </label>
+              </div>
+            ) : mode === "detailed" ? (
+              <div className="space-y-5 border-t border-white/10 pt-5">
+                <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+                  {t("quoteForm.detailsTitle")}
+                </p>
+
+                <ChoiceGroup
+                  legend={t("quoteForm.existingSite")}
+                  name={`${formId}-existing`}
+                  type="radio"
+                  options={options(EXISTING_SITE, "quoteForm.existingSiteOptions")}
+                  value={existingSite}
+                  onChange={(next) => setExistingSite(next as string)}
+                />
+                {existingSite && existingSite !== "none" ? (
+                  <Field label={t("quoteForm.websiteUrl")}>
+                    <input
+                      type="text"
+                      inputMode="url"
+                      maxLength={300}
+                      placeholder="https://"
+                      value={websiteUrl}
+                      onChange={(event) => setWebsiteUrl(event.target.value)}
+                      className={INPUT_CLASS}
+                    />
+                  </Field>
+                ) : null}
+
+                <ChoiceGroup
+                  legend={t("quoteForm.domain")}
+                  name={`${formId}-domain`}
+                  type="radio"
+                  options={options(DOMAIN, "quoteForm.domainOptions")}
+                  value={domain}
+                  onChange={(next) => setDomain(next as string)}
+                />
+                {domain === "has" ? (
+                  <Field label={t("quoteForm.domainName")}>
+                    <input
+                      type="text"
+                      inputMode="url"
+                      autoCapitalize="none"
+                      maxLength={253}
+                      placeholder={t("quoteForm.domainNamePlaceholder")}
+                      value={domainName}
+                      onChange={(event) => setDomainName(event.target.value)}
+                      className={INPUT_CLASS}
+                    />
+                  </Field>
+                ) : null}
+
+                <ChoiceGroup
+                  legend={t("quoteForm.size")}
+                  name={`${formId}-size`}
+                  type="radio"
+                  options={options(SIZES, "quoteForm.sizeOptions")}
+                  value={size}
+                  onChange={(next) => setSize(next as string)}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.languages")}
+                  name={`${formId}-languages`}
+                  type="checkbox"
+                  options={options(LANGUAGES, "quoteForm.languageOptions")}
+                  value={languages}
+                  onChange={(next) => setLanguages(next as string[])}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.addons")}
+                  name={`${formId}-addons`}
+                  type="checkbox"
+                  options={ADDONS.map(({ key, isNew }) => ({
+                    value: key,
+                    label: t(`quoteForm.addonOptions.${key}`),
+                    badge: isNew ? t("quoteForm.newBadge") : undefined,
+                  }))}
+                  value={addons}
+                  onChange={(next) => setAddons(next as string[])}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.timeline")}
+                  name={`${formId}-timeline`}
+                  type="radio"
+                  options={options(TIMELINES, "quoteForm.timelineOptions")}
+                  value={timeline}
+                  onChange={(next) => setTimeline(next as string)}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.budget")}
+                  name={`${formId}-budget`}
+                  type="radio"
+                  options={BUDGETS.map((key) => {
+                    const { from, to } = BUDGET_LIMITS_HUF[key];
+                    return {
+                      value: key,
+                      label: t(`quoteForm.budgetOptions.${key}`, {
+                        from: from === undefined ? "" : formatHuf(from),
+                        to: to === undefined ? "" : formatHuf(to),
+                      }),
+                    };
+                  })}
+                  value={budget}
+                  onChange={(next) => setBudget(next as string)}
+                />
+
+                <ChoiceGroup
+                  legend={t("quoteForm.contactPreference")}
+                  name={`${formId}-contact`}
+                  type="radio"
+                  options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
+                  value={contactPreference}
+                  onChange={(next) => setContactPreference(next as string)}
+                />
+
+                <div className="space-y-3">
+                  <label className="flex items-start gap-3 text-sm text-white/80">
+                    <input
+                      type="checkbox"
+                      checked={isLocal}
+                      onChange={(event) => setIsLocal(event.target.checked)}
+                      className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                    />
+                    {t("quoteForm.isLocal")}
+                  </label>
+                  <label className="flex items-start gap-3 text-sm text-white/80">
+                    <input
+                      type="checkbox"
+                      checked={isGrantFunded}
+                      onChange={(event) => setIsGrantFunded(event.target.checked)}
+                      className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                    />
+                    {t("quoteForm.isGrantFunded")}
+                  </label>
+                </div>
+              </div>
+            ) : null}
+          </>
+        ) : null}
+
+        {step === LAST_STEP ? (
+          <>
+            <dl className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-black/20 px-4">
+              {summary.map((row) => (
+                <div
+                  key={row.label}
+                  className="flex flex-wrap items-start gap-x-3 gap-y-1 py-3 text-sm"
+                >
+                  <dt className="w-full text-white/55 sm:w-36 sm:shrink-0">{row.label}</dt>
+                  <dd className="flex min-w-0 flex-1 items-start justify-between gap-3">
+                    <span className="min-w-0 break-words text-white/90">{row.value || "–"}</span>
+                    <button
+                      type="button"
+                      onClick={() => goTo(row.step)}
+                      className="shrink-0 text-xs font-semibold text-(--accent) hover:text-(--primary)"
+                    >
+                      {t("quoteForm.summary.edit")}
+                      <span className="sr-only">: {row.label}</span>
+                    </button>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <label className="flex items-start gap-3 text-sm leading-6 text-white/80">
               <input
                 type="checkbox"
-                checked={isLocal}
-                onChange={(event) => setIsLocal(event.target.checked)}
-                className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                required
+                checked={consent}
+                aria-invalid={errors.consent ? true : undefined}
+                onChange={(event) => setConsent(event.target.checked)}
+                className="mt-1 size-4 shrink-0 accent-(--accent)"
               />
-              {t("quoteForm.isLocal")}
+              <span>
+                {t("quoteForm.consentBefore")}{" "}
+                <a
+                  href={privacyHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-(--accent) underline underline-offset-4"
+                >
+                  {t("quoteForm.consentLink")}
+                </a>
+                {t("quoteForm.consentAfter")}
+              </span>
             </label>
-          </div>
-        ) : mode === "detailed" ? (
-          <div className="space-y-5 border-t border-white/10 pt-5">
-            <p className="fancy-eyebrow text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-              {t("quoteForm.detailsTitle")}
-            </p>
+            {errors.consent ? <p className="-mt-3 text-xs text-red-200">{errors.consent}</p> : null}
 
-            <ChoiceGroup
-              legend={t("quoteForm.existingSite")}
-              name={`${formId}-existing`}
-              type="radio"
-              options={options(EXISTING_SITE, "quoteForm.existingSiteOptions")}
-              value={existingSite}
-              onChange={(next) => setExistingSite(next as string)}
-            />
-            {existingSite && existingSite !== "none" ? (
-              <Field label={t("quoteForm.websiteUrl")}>
-                <input
-                  type="text"
-                  inputMode="url"
-                  maxLength={300}
-                  placeholder="https://"
-                  value={websiteUrl}
-                  onChange={(event) => setWebsiteUrl(event.target.value)}
-                  className={INPUT_CLASS}
-                />
-              </Field>
+            {status === "error" || status === "throttled" ? (
+              <p
+                role="alert"
+                className="rounded-xl border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-100"
+              >
+                {status === "throttled" ? t("quoteForm.throttled") : t("quoteForm.error")}
+              </p>
             ) : null}
 
-            <ChoiceGroup
-              legend={t("quoteForm.domain")}
-              name={`${formId}-domain`}
-              type="radio"
-              options={options(DOMAIN, "quoteForm.domainOptions")}
-              value={domain}
-              onChange={(next) => setDomain(next as string)}
-            />
-            {domain === "has" ? (
-              <Field label={t("quoteForm.domainName")}>
-                <input
-                  type="text"
-                  inputMode="url"
-                  autoCapitalize="none"
-                  maxLength={253}
-                  placeholder={t("quoteForm.domainNamePlaceholder")}
-                  value={domainName}
-                  onChange={(event) => setDomainName(event.target.value)}
-                  className={INPUT_CLASS}
-                />
-              </Field>
-            ) : null}
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="btn-cta group relative flex min-h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-[1.15rem] border border-white/15 px-6 py-3 text-sm font-extrabold tracking-[0.08em] text-[#140814] uppercase ring-1 ring-white/20 transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-70 sm:text-base"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                {status === "sending" ? t("quoteForm.sending") : t(`quoteForm.submit.${mode}`)}
+                <SendIcon className="size-4 shrink-0" aria-hidden="true" />
+              </span>
+              <span className="btn-cta-shine" aria-hidden="true" />
+            </button>
 
-            <ChoiceGroup
-              legend={t("quoteForm.size")}
-              name={`${formId}-size`}
-              type="radio"
-              options={options(SIZES, "quoteForm.sizeOptions")}
-              value={size}
-              onChange={(next) => setSize(next as string)}
-            />
-
-            <ChoiceGroup
-              legend={t("quoteForm.languages")}
-              name={`${formId}-languages`}
-              type="checkbox"
-              options={options(LANGUAGES, "quoteForm.languageOptions")}
-              value={languages}
-              onChange={(next) => setLanguages(next as string[])}
-            />
-
-            <ChoiceGroup
-              legend={t("quoteForm.addons")}
-              name={`${formId}-addons`}
-              type="checkbox"
-              options={ADDONS.map(({ key, isNew }) => ({
-                value: key,
-                label: t(`quoteForm.addonOptions.${key}`),
-                badge: isNew ? t("quoteForm.newBadge") : undefined,
-              }))}
-              value={addons}
-              onChange={(next) => setAddons(next as string[])}
-            />
-
-            <ChoiceGroup
-              legend={t("quoteForm.timeline")}
-              name={`${formId}-timeline`}
-              type="radio"
-              options={options(TIMELINES, "quoteForm.timelineOptions")}
-              value={timeline}
-              onChange={(next) => setTimeline(next as string)}
-            />
-
-            <ChoiceGroup
-              legend={t("quoteForm.budget")}
-              name={`${formId}-budget`}
-              type="radio"
-              options={BUDGETS.map((key) => {
-                const { from, to } = BUDGET_LIMITS_HUF[key];
-                return {
-                  value: key,
-                  label: t(`quoteForm.budgetOptions.${key}`, {
-                    from: from === undefined ? "" : formatHuf(from),
-                    to: to === undefined ? "" : formatHuf(to),
-                  }),
-                };
-              })}
-              value={budget}
-              onChange={(next) => setBudget(next as string)}
-            />
-
-            <ChoiceGroup
-              legend={t("quoteForm.contactPreference")}
-              name={`${formId}-contact`}
-              type="radio"
-              options={options(CONTACT_PREFERENCES, "quoteForm.contactPreferenceOptions")}
-              value={contactPreference}
-              onChange={(next) => setContactPreference(next as string)}
-            />
-
-            <div className="space-y-3">
-              <label className="flex items-start gap-3 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  checked={isLocal}
-                  onChange={(event) => setIsLocal(event.target.checked)}
-                  className="mt-0.5 size-4 shrink-0 accent-(--accent)"
-                />
-                {t("quoteForm.isLocal")}
-              </label>
-              <label className="flex items-start gap-3 text-sm text-white/80">
-                <input
-                  type="checkbox"
-                  checked={isGrantFunded}
-                  onChange={(event) => setIsGrantFunded(event.target.checked)}
-                  className="mt-0.5 size-4 shrink-0 accent-(--accent)"
-                />
-                {t("quoteForm.isGrantFunded")}
-              </label>
-            </div>
-          </div>
+            <p className="text-center text-xs text-white/50">{t("quoteForm.responseTime")}</p>
+          </>
         ) : null}
 
         {/* Honeypot: hidden from people, so only bots fill it in. */}
@@ -684,50 +940,30 @@ export function QuoteRequestForm({
           </label>
         </div>
 
-        <label className="flex items-start gap-3 text-sm leading-6 text-white/80">
-          <input
-            type="checkbox"
-            required
-            checked={consent}
-            onChange={(event) => setConsent(event.target.checked)}
-            className="mt-1 size-4 shrink-0 accent-(--accent)"
-          />
-          <span>
-            {t("quoteForm.consentBefore")}{" "}
-            <a
-              href={privacyHref}
-              target="_blank"
-              rel="noreferrer"
-              className="text-(--accent) underline underline-offset-4"
-            >
-              {t("quoteForm.consentLink")}
-            </a>
-            {t("quoteForm.consentAfter")}
-          </span>
-        </label>
-
-        {status === "error" || status === "throttled" ? (
-          <p
-            role="alert"
-            className="rounded-xl border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-100"
-          >
-            {status === "throttled" ? t("quoteForm.throttled") : t("quoteForm.error")}
-          </p>
-        ) : null}
-
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="btn-cta group relative flex min-h-14 w-full items-center justify-center gap-2 overflow-hidden rounded-[1.15rem] border border-white/15 px-6 py-3 text-sm font-extrabold tracking-[0.08em] text-[#140814] uppercase ring-1 ring-white/20 transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-70 sm:text-base"
+        <div
+          className={`flex items-center gap-3 ${step === 0 ? "justify-end" : "justify-between"}`}
         >
-          <span className="relative z-10 flex items-center gap-2">
-            {status === "sending" ? t("quoteForm.sending") : t(`quoteForm.submit.${mode}`)}
-            <SendIcon className="size-4 shrink-0" aria-hidden="true" />
-          </span>
-          <span className="btn-cta-shine" aria-hidden="true" />
-        </button>
-
-        <p className="text-center text-xs text-white/50">{t("quoteForm.responseTime")}</p>
+          {step > 0 ? (
+            <button
+              type="button"
+              onClick={() => goTo(step - 1)}
+              className="inline-flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold text-white/75 transition-colors hover:bg-white/5 hover:text-white"
+            >
+              <ArrowLeftIcon className="size-4" aria-hidden="true" />
+              {t("quoteForm.steps.back")}
+            </button>
+          ) : null}
+          {step < LAST_STEP ? (
+            <button
+              type="button"
+              onClick={() => goTo(step + 1)}
+              className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-(--color-secondary-warm) to-(--accent) px-5 py-2.5 text-sm font-bold text-[#140814] transition-transform hover:-translate-y-0.5"
+            >
+              {t("quoteForm.steps.next")}
+              <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </button>
+          ) : null}
+        </div>
       </div>
     </form>
   );

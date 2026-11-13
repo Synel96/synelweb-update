@@ -26,6 +26,7 @@ type Events = {
   quote_cta_click: { location: QuoteCtaLocation; service?: string };
   quote_form_start: { mode: string };
   quote_form_mode: { mode: string };
+  quote_form_step: { step: string; mode: string };
   quote_form_submit: { mode: string; service: string; result: "success" | "error" | "throttled" };
   contact_click: { method: ContactMethod; location: string };
 };

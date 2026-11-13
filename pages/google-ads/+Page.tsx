@@ -13,7 +13,7 @@ import { AdsTerms } from "@/components/AdsTerms";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
 import { ServiceCard } from "@/components/ServiceCard";
 import { trackEvent } from "@/src/analytics";
-import { useAdsServiceCard } from "@/src/hooks/use-ads-service";
+import { ADS_SERVICE_SLUG, useAdsServiceCard } from "@/src/hooks/use-ads-service";
 import { useCertificates } from "@/src/hooks/use-certificates";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
@@ -49,7 +49,8 @@ export default function Page() {
   // The ads service is priced in code (see ADS_SETUP_PRICE_HUF).
   const card = useAdsServiceCard(lang);
   const certificates = useCertificates(lang, pageContext.data?.certificates ?? []);
-  const quoteHref = quoteFormHref(lang);
+  // Its buttons open the quote form with "ad campaign only" already picked.
+  const quoteHref = quoteFormHref(lang, ADS_SERVICE_SLUG);
   const contactHref = localizePath("/contact", lang);
 
   const adsCertificates = certificates.filter(

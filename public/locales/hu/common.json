@@ -631,7 +631,28 @@
     "sentText": "Általában 1 munkanapon belül válaszolok a megadott e-mail-címre vagy telefonszámra.",
     "error": "Nem sikerült elküldeni. Próbáld újra pár perc múlva, vagy írj közvetlenül az info@synelweb.hu címre.",
     "throttled": "Rövid idő alatt túl sok ajánlatkérés érkezett erről az eszközről. Próbáld újra később, vagy írj az info@synelweb.hu címre.",
-    "responseTime": "Általában 1 munkanapon belül válaszolok."
+    "responseTime": "Általában 1 munkanapon belül válaszolok.",
+    "adsOnly": "Csak hirdetési kampány (Google Ads)",
+    "adsDetailsTitle": "Részletek a kampányhoz",
+    "adsAccount": "Van már Google Ads fiókod?",
+    "adsAccountOptions": {
+      "has": "Van",
+      "none": "Nincs még",
+      "unsure": "Nem tudom"
+    },
+    "adsWebsiteUrl": "A weboldalad címe (ahová a hirdetés mutat)",
+    "adsWebsiteHint": "Ha még nincs weboldalad, hagyd üresen – azt is megbeszéljük.",
+    "adsLanguages": "Milyen nyelven hirdetnél?",
+    "adBudget": "Tervezett havi hirdetési keret (nem kötelező)",
+    "adsTimeline": "Mikor indulna a kampány?",
+    "adBudgetOptions": {
+      "under_60k": "{{to}} alatt",
+      "60k_150k": "{{from}} – {{to}}",
+      "150k_300k": "{{from}} – {{to}}",
+      "over_300k": "{{from}} felett",
+      "unsure": "Még nem tudom"
+    },
+    "adsMessagePlaceholder": "Mivel foglalkozik a vállalkozásod, és mit szeretnél elérni a hirdetéssel?"
   },
   "certificatesPage": {
     "label": "Tanúsítványok",

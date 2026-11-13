@@ -626,7 +626,28 @@
     "sentText": "I usually reply within 1 business day, by email or phone.",
     "error": "It couldn't be sent. Please try again in a few minutes, or email info@synelweb.hu directly.",
     "throttled": "Too many requests came from this device in a short time. Please try again later, or email info@synelweb.hu.",
-    "responseTime": "I usually reply within 1 business day."
+    "responseTime": "I usually reply within 1 business day.",
+    "adsOnly": "Ad campaign only (Google Ads)",
+    "adsDetailsTitle": "Campaign details",
+    "adsAccount": "Do you already have a Google Ads account?",
+    "adsAccountOptions": {
+      "has": "Yes",
+      "none": "Not yet",
+      "unsure": "Not sure"
+    },
+    "adsWebsiteUrl": "Your website address (where the ads point)",
+    "adsWebsiteHint": "If you don't have a website yet, leave it empty – we'll talk about that too.",
+    "adsLanguages": "In which languages would you advertise?",
+    "adBudget": "Planned monthly ad budget (optional)",
+    "adsTimeline": "When should the campaign start?",
+    "adBudgetOptions": {
+      "under_60k": "Under {{to}}",
+      "60k_150k": "{{from}} – {{to}}",
+      "150k_300k": "{{from}} – {{to}}",
+      "over_300k": "Over {{from}}",
+      "unsure": "Not sure yet"
+    },
+    "adsMessagePlaceholder": "What does your business do, and what would you like the ads to achieve?"
   },
   "certificatesPage": {
     "label": "Certificates",

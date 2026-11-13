@@ -162,6 +162,41 @@ describe("QuoteRequestForm", () => {
     scrollIntoView.mockRestore();
   });
 
+  it("asks about the campaign instead of the website for an ad campaign only", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="google-ads" />
+    );
+    await screen.findByRole("radio", { name: "Webshop" });
+
+    expect(
+      screen.getByRole("radio", { name: "Csak hirdetési kampány (Google Ads)" })
+    ).toBeChecked();
+    fireEvent.click(screen.getByRole("radio", { name: /Részletes ajánlat/ }));
+    expect(screen.queryByText("Kiegészítők")).not.toBeInTheDocument();
+    expect(screen.queryByText("Van már weboldalad?")).not.toBeInTheDocument();
+
+    fillContact();
+    fireEvent.click(screen.getByRole("radio", { name: "Nincs még" }));
+    fireEvent.change(screen.getByLabelText(/A weboldalad címe/), {
+      target: { value: " https://pelda.hu " },
+    });
+    fireEvent.click(screen.getByRole("radio", { name: /^60\s000\sFt – 150\s000\sFt$/ }));
+    submit();
+
+    await screen.findByRole("status");
+    const payload = sentPayload();
+    expect(payload).toMatchObject({
+      mode: "detailed",
+      service: "google-ads",
+      serviceName: "Csak hirdetési kampány (Google Ads)",
+      adsAccount: "none",
+      adBudget: "60k_150k",
+      websiteUrl: "https://pelda.hu",
+    });
+    expect(payload).not.toHaveProperty("addons");
+    expect(payload).not.toHaveProperty("domain");
+  });
+
   it("sends the visitor-facing name of 'not sure yet'", async () => {
     await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
 

@@ -9,6 +9,9 @@ export const SITE_URL = env.VITE_SITE_URL;
 type NavSubLink = {
   href: string;
   label: Partial<Record<SupportedLang, string>>;
+  // Left out of the header menu (desktop dropdown and mobile drawer) but
+  // still linked from the footer, so search engines keep finding it.
+  footerOnly?: boolean;
 };
 
 type NavLink = {
@@ -40,8 +43,9 @@ export const NAV_LINKS: readonly NavLink[] = [
           de: "Google Ads Betreuung",
         },
       },
-      { href: "/sopron", label: { hu: "Sopron és környéke" } },
-      { href: "/austria", label: { de: "Burgenland & Wien" } },
+      // Regional landing pages are for search visitors, not for browsing.
+      { href: "/sopron", label: { hu: "Sopron és környéke" }, footerOnly: true },
+      { href: "/austria", label: { de: "Burgenland & Wien" }, footerOnly: true },
     ],
   },
   { href: "/projects", labelKey: "nav.projects" },
@@ -70,13 +74,15 @@ export const NAV_LINKS: readonly NavLink[] = [
 ];
 
 // The submenu of a nav link in one language: empty unless there is more than
-// the link's own page to offer (e.g. English has no regional pages).
+// the link's own page to offer. The header menu leaves out footer-only
+// entries; the footer (and the active-link check) passes includeFooterOnly.
 export function visibleSubLinks(
   item: NavLink,
-  lang: SupportedLang
+  lang: SupportedLang,
+  { includeFooterOnly = false }: { includeFooterOnly?: boolean } = {}
 ): Array<{ href: string; label: string }> {
   const links = (item.subLinks ?? [])
-    .filter((sub) => sub.label[lang])
+    .filter((sub) => sub.label[lang] && (includeFooterOnly || !sub.footerOnly))
     .map((sub) => ({ href: sub.href, label: sub.label[lang] as string }));
   return links.some((link) => link.href !== item.href) ? links : [];
 }

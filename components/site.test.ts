@@ -45,23 +45,24 @@ describe("NAV_LINKS", () => {
 describe("visibleSubLinks", () => {
   const services = NAV_LINKS.find((link) => link.href === "/services")!;
 
-  it("offers each language its own regional page under Services", () => {
-    expect(visibleSubLinks(services, "hu").map((link) => link.href)).toEqual([
-      "/services",
-      "/google-ads",
-      "/sopron",
-    ]);
-    expect(visibleSubLinks(services, "de").map((link) => link.href)).toEqual([
-      "/services",
-      "/google-ads",
-      "/austria",
-    ]);
+  it("keeps the regional pages out of the header menu", () => {
+    for (const lang of ["hu", "en", "de"] as const) {
+      expect(visibleSubLinks(services, lang).map((link) => link.href)).toEqual([
+        "/services",
+        "/google-ads",
+      ]);
+    }
   });
 
-  it("offers English the Google Ads page but no regional page", () => {
-    expect(visibleSubLinks(services, "en").map((link) => link.href)).toEqual([
-      "/services",
-      "/google-ads",
-    ]);
+  it("lists each language's regional page for the footer", () => {
+    expect(
+      visibleSubLinks(services, "hu", { includeFooterOnly: true }).map((link) => link.href)
+    ).toEqual(["/services", "/google-ads", "/sopron"]);
+    expect(
+      visibleSubLinks(services, "de", { includeFooterOnly: true }).map((link) => link.href)
+    ).toEqual(["/services", "/google-ads", "/austria"]);
+    expect(
+      visibleSubLinks(services, "en", { includeFooterOnly: true }).map((link) => link.href)
+    ).toEqual(["/services", "/google-ads"]);
   });
 });

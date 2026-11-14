@@ -94,7 +94,10 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
     isExactlyActive(href) ||
     NAV_LINKS.some(
       (item) =>
-        item.href === href && visibleSubLinks(item, lang).some((sub) => isExactlyActive(sub.href))
+        item.href === href &&
+        visibleSubLinks(item, lang, { includeFooterOnly: true }).some((sub) =>
+          isExactlyActive(sub.href)
+        )
     );
 
   const navLinkClass = (href: string) =>

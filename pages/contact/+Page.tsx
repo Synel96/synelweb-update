@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { QuoteRequestForm, type QuoteMode } from "@/components/QuoteRequestForm";
 import { QUOTE_FORM_ANCHOR } from "@/src/quoteForm";
+import { localizePath } from "@/src/localizedRoutes";
 import { trackEvent, type ContactMethod } from "@/src/analytics";
 
 const trackContact = (method: ContactMethod, location: string) =>
@@ -61,6 +62,21 @@ function ContactPill({
   );
 }
 
+// The regional landing page of the visitor's language, if there is one.
+const REGIONAL_LINKS: Partial<Record<SupportedLang, { href: string; text: string; link: string }>> =
+  {
+    hu: {
+      href: "/sopron",
+      text: "Sopronban vagy a környékén vagy?",
+      link: "Weboldal készítés Sopronban, helyi kedvezménnyel",
+    },
+    de: {
+      href: "/austria",
+      text: "Aus dem Burgenland oder aus Wien?",
+      link: "Webdesign für Burgenland & Wien",
+    },
+  };
+
 export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { lang?: SupportedLang };
@@ -94,6 +110,18 @@ export default function Page() {
             <p className="mx-auto max-w-2xl text-left text-base leading-8 font-semibold text-white sm:text-lg">
               {t("contact.introStrong")}
             </p>
+
+            {REGIONAL_LINKS[lang] ? (
+              <p className="text-sm text-white/75">
+                {REGIONAL_LINKS[lang].text}{" "}
+                <a
+                  href={localizePath(REGIONAL_LINKS[lang].href, lang)}
+                  className="font-semibold text-(--accent) underline-offset-4 transition-colors hover:text-(--primary) hover:underline"
+                >
+                  {REGIONAL_LINKS[lang].link} →
+                </a>
+              </p>
+            ) : null}
 
             <div className="flex flex-wrap items-center justify-center gap-3">
               {CAPABILITY_BADGES.map(({ key, Icon }) => (

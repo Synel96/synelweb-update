@@ -42,7 +42,7 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
             </a>
           ))}
           {visibleNavLinks.flatMap((item) =>
-            visibleSubLinks(item, lang)
+            visibleSubLinks(item, lang, { includeFooterOnly: true })
               .filter((sub) => sub.href !== item.href)
               .map((sub) => (
                 <a

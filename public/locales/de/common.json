@@ -677,7 +677,8 @@
       "message": "Bitte schreib ein paar Sätze zum Projekt (mindestens 10 Zeichen).",
       "consent": "Bitte akzeptiere die Datenschutzerklärung, um zu senden.",
       "phone": "Für einen Rückruf gib bitte deine Telefonnummer an."
-    }
+    },
+    "isGrantFundedHint": "Ich arbeite auf dem freien Markt (kein akkreditierter MVP-Lieferant) – die Bedingungen der Ausschreibung prüfen wir gemeinsam."
   },
   "certificatesPage": {
     "label": "Zertifikate",

@@ -130,7 +130,8 @@
     "grants": {
       "label": "Pályázati fejlesztéshez is",
       "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",
-      "text": "Egyéni vállalkozóként szabadpiaci árajánlattal vállalok weboldal- és webshopfejlesztést olyan KKV-knak is, akik pályázati forrásból szeretnék fejleszteni digitális jelenlétüket. Modern, gyors (React/TypeScript), reszponzív, SEO-optimalizált és GDPR-konform megoldásokat készítek, és kérésre a projekthez szabályos árajánlatot és teljesítésigazolást is biztosítok. Pályázatíró partnerek megkeresését is szívesen fogadom."
+      "text": "Egyéni vállalkozóként szabadpiaci alapon dolgozom, és nem szerepelek a Modern Vállalkozások Programja minősített szállítói listáján. Ezért ha a pályázati felhívás a weboldalra minősített szállítót ír elő, az nem tőlem számolható el – ezt mindig előre megmondom. Ahol nem ír elő, ott szabályos árajánlatot, szerződést és teljesítésigazolást adok.",
+      "link": "Mire figyelj egy pályázati weboldalnál?"
     },
     "maintenance": {
       "label": "Üzemeltetés",
@@ -682,7 +683,8 @@
       "message": "Írj pár mondatot a projektről (legalább 10 karakter).",
       "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
       "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
-    }
+    },
+    "isGrantFundedHint": "Szabadpiaci alapon dolgozom (nem vagyok minősített MVP szállító) – a felhívás feltételeit átnézzük együtt."
   },
   "certificatesPage": {
     "label": "Tanúsítványok",

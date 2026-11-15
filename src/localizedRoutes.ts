@@ -64,6 +64,8 @@ const LOCALIZED_SEGMENTS: Record<Exclude<KnownLogicalPath, "/">, Record<Supporte
 export const REGIONAL_PAGES = {
   "/sopron": { lang: "hu", segment: "weboldal-keszites-sopron", fallback: "/services" },
   "/austria": { lang: "de", segment: "webdesign-burgenland-wien", fallback: "/services" },
+  // Grant-funded websites (DIMOP Plusz etc.): a Hungarian topic only.
+  "/grants": { lang: "hu", segment: "palyazati-weboldal", fallback: "/services" },
 } as const satisfies Record<
   string,
   { lang: SupportedLang; segment: string; fallback: Exclude<KnownLogicalPath, "/"> }

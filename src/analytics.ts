@@ -18,7 +18,8 @@ export type QuoteCtaLocation =
   | "austria_hero"
   | "austria_final"
   | "google_ads_hero"
-  | "google_ads_final";
+  | "google_ads_final"
+  | "grants";
 
 export type ContactMethod = "phone" | "email" | "facebook" | "linkedin";
 

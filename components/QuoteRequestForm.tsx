@@ -853,7 +853,14 @@ export function QuoteRequestForm({
                       onChange={(event) => setIsGrantFunded(event.target.checked)}
                       className="mt-0.5 size-4 shrink-0 accent-(--accent)"
                     />
-                    {t("quoteForm.isGrantFunded")}
+                    <span>
+                      {t("quoteForm.isGrantFunded")}
+                      {isGrantFunded ? (
+                        <span className="mt-1 block text-xs text-white/55">
+                          {t("quoteForm.isGrantFundedHint")}
+                        </span>
+                      ) : null}
+                    </span>
                   </label>
                 </div>
               </div>

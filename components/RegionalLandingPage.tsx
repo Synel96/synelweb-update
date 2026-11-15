@@ -16,9 +16,13 @@ import { trackEvent } from "@/src/analytics";
 import { useAdsServiceCard, withAdsService } from "@/src/hooks/use-ads-service";
 import { useHufFormatter } from "@/src/currency";
 import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
-import { localizePath, type RegionalLogicalPath } from "@/src/localizedRoutes";
+import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
-import { REGIONAL_CONTENT, type RegionalBenefitIcon } from "@/src/regionalPages";
+import {
+  REGIONAL_CONTENT,
+  type RegionalBenefitIcon,
+  type RegionalLandingPath,
+} from "@/src/regionalPages";
 import { getProjects, type Project } from "@/src/services/projectServices";
 import {
   getServiceCards,
@@ -46,7 +50,7 @@ export function findRegionalReference(projects: Project[]): Project | null {
 }
 
 type RegionalLandingPageProps = {
-  page: RegionalLogicalPath;
+  page: RegionalLandingPath;
   lang: AppLang;
   initial: RegionalPageData;
 };

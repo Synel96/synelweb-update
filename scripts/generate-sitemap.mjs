@@ -38,7 +38,6 @@ const KNOWN_LOGICAL_PATHS = [
 const REGIONAL_PATHS = [
   { lang: "hu", path: "/hu/weboldal-keszites-sopron" },
   { lang: "de", path: "/de/webdesign-burgenland-wien" },
-  { lang: "hu", path: "/hu/palyazati-weboldal" },
 ];
 
 // Hungarian-only legal pages: not localized, no language prefix, no

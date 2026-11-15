@@ -174,11 +174,6 @@ export const REGIONAL_SEO: Record<RegionalLogicalPath, SeoEntry> = {
     description:
       "Egyedi, villámgyors weboldal készítés Sopronban és környékén, személyes egyeztetéssel. Kétnyelvű (magyar–német) oldalak osztrák vendégeknek, helyi SEO és Google Cégprofil.",
   },
-  "/grants": {
-    title: "Pályázati weboldal (DIMOP Plusz) – mire figyelj | SynelWeb",
-    description:
-      "Weboldal pályázati forrásból: sok pályázatnál szabadpiaci szállítótól is elszámolható. Árajánlat, szerződés, teljesítésigazolás – és mire figyelj a felhívásban.",
-  },
   "/austria": {
     title: "Webdesign Burgenland & Wien | SynelWeb",
     description:

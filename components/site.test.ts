@@ -57,7 +57,7 @@ describe("visibleSubLinks", () => {
   it("lists each language's regional page for the footer", () => {
     expect(
       visibleSubLinks(services, "hu", { includeFooterOnly: true }).map((link) => link.href)
-    ).toEqual(["/services", "/google-ads", "/sopron", "/grants"]);
+    ).toEqual(["/services", "/google-ads", "/sopron"]);
     expect(
       visibleSubLinks(services, "de", { includeFooterOnly: true }).map((link) => link.href)
     ).toEqual(["/services", "/google-ads", "/austria"]);

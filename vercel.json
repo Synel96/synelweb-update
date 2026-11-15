@@ -15,6 +15,11 @@
       "permanent": true
     },
     {
+      "source": "/hu/palyazati-weboldal",
+      "destination": "/hu/szolgaltatasok",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/hu/rolam",
       "permanent": true

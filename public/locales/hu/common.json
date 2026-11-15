@@ -206,7 +206,8 @@
       "contactLabel": "Ajánlatot kérek",
       "contactAriaLabel": "Ajánlatkérés indítása",
       "servicesLabel": "Szolgáltatások és árak →"
-    }
+    },
+    "ownProject": "Saját fejlesztés"
   },
   "blogPage": {
     "label": "Blog",

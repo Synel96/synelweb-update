@@ -205,7 +205,8 @@
       "contactLabel": "Request a quote",
       "contactAriaLabel": "Start quote request",
       "servicesLabel": "Services & pricing →"
-    }
+    },
+    "ownProject": "Own project"
   },
   "blogPage": {
     "label": "Blog",

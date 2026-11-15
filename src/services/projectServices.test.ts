@@ -32,6 +32,18 @@ describe("getProjects", () => {
     expect(projects.map((p) => p.name)).toEqual(["Visible"]);
   });
 
+  it("marks SynelWeb's own projects", async () => {
+    mockFetchOnce([
+      { id: 1, name: "SynelWeb", isOwnProject: true },
+      { id: 2, name: "Client site" },
+    ]);
+    const projects = await getProjects("en");
+    expect(Object.fromEntries(projects.map((p) => [p.name, p.isOwnProject]))).toEqual({
+      SynelWeb: true,
+      "Client site": false,
+    });
+  });
+
   it("localizes the description for the requested language", async () => {
     mockFetchOnce([
       { id: 1, name: "Proj", description: { en: "English text", hu: "Magyar szoveg" } },

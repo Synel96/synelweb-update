@@ -12,6 +12,7 @@ type ProjectPreview = {
   id: string;
   name: string;
   previewImage: string;
+  isOwnProject?: boolean;
 };
 
 type ProjectsPreviewCarouselProps = {
@@ -19,6 +20,8 @@ type ProjectsPreviewCarouselProps = {
   prevAriaLabel: string;
   nextAriaLabel: string;
   goToAriaLabel: (index: number) => string;
+  // Badge text for SynelWeb's own projects.
+  ownProjectLabel?: string;
 };
 
 export function ProjectsPreviewCarousel({
@@ -26,6 +29,7 @@ export function ProjectsPreviewCarousel({
   prevAriaLabel,
   nextAriaLabel,
   goToAriaLabel,
+  ownProjectLabel,
 }: ProjectsPreviewCarouselProps) {
   const slides = useMemo(
     () =>
@@ -85,7 +89,14 @@ export function ProjectsPreviewCarousel({
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-x-0 bottom-0 z-[3] bg-gradient-to-t from-black/80 to-transparent p-4 pt-10">
-                <p className="text-sm font-semibold text-white sm:text-base">{slide.name}</p>
+                <p className="flex flex-wrap items-center gap-2 text-sm font-semibold text-white sm:text-base">
+                  {slide.name}
+                  {slide.isOwnProject && ownProjectLabel ? (
+                    <span className="rounded-full border border-white/30 bg-black/40 px-2 py-0.5 text-[0.62rem] font-semibold tracking-[0.1em] text-white uppercase backdrop-blur-sm">
+                      {ownProjectLabel}
+                    </span>
+                  ) : null}
+                </p>
               </div>
             </div>
           </div>

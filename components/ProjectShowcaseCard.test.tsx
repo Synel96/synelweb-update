@@ -42,6 +42,13 @@ describe("ProjectShowcaseCard", () => {
     expect(screen.getByText(shortDescription)).toBeInTheDocument();
   });
 
+  it("shows the own-project badge only when given", () => {
+    const { rerender } = render(<ProjectShowcaseCard {...baseProps} />);
+    expect(screen.queryByText("Saját fejlesztés")).not.toBeInTheDocument();
+    rerender(<ProjectShowcaseCard {...baseProps} ownProjectLabel="Saját fejlesztés" />);
+    expect(screen.getByText("Saját fejlesztés")).toBeInTheDocument();
+  });
+
   it("renders the title as an h2 when headingLevel is set", () => {
     render(<ProjectShowcaseCard {...baseProps} headingLevel="h2" />);
     expect(screen.getByRole("heading", { name: "Acme Website" }).tagName).toBe("H2");

@@ -1,0 +1,40 @@
+name: IndexNow
+
+# After each successful production deploy on Vercel, tell IndexNow search
+# engines (Bing, Yandex, Seznam, Naver – not Google) which URLs the site has,
+# so new and changed pages get crawled sooner. The URL list comes from the
+# live sitemap. The key is public by design: it's served at /<key>.txt.
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    env:
+      HOST: synelweb.hu
+      KEY: 758ccadbd96f49d1a29e89fc08c0a64b
+    steps:
+      - name: Submit the sitemap's URLs
+        run: |
+          set -euo pipefail
+          # The new deployment can take a moment to be served on the domain.
+          sleep 30
+          curl -fsSL "https://$HOST/$KEY.txt" | grep -qx "$KEY"
+          urls=$(curl -fsSL "https://$HOST/sitemap.xml" | grep -oP '(?<=<loc>)[^<]+' | sort -u)
+          echo "Submitting $(echo "$urls" | wc -l) URLs"
+          body=$(echo "$urls" | jq -R . | jq -s \
+            --arg host "$HOST" --arg key "$KEY" \
+            '{host: $host, key: $key, keyLocation: ("https://" + $host + "/" + $key + ".txt"), urlList: .}')
+          status=$(curl -sS -o response.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' -d "$body")
+          echo "IndexNow answered $status"; cat response.txt || true
+          # 200/202: accepted. Anything else is worth a look in the run log.
+          [ "$status" = 200 ] || [ "$status" = 202 ]

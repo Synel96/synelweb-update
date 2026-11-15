@@ -16,7 +16,15 @@ export type SiteCheckResult = {
   };
   lab: Array<{ id: string; title: string; value: string; score: number | null }>;
   field: Array<{ id: "lcp" | "inp" | "cls"; percentile: number; category: string }>;
-  opportunities: Array<{ id: string; title: string; savingsMs: number; value: string }>;
+  // savingsMs: estimated loading time saved; clsSavings: layout shift
+  // removed (CLS score). Either can be 0.
+  opportunities: Array<{
+    id: string;
+    title: string;
+    savingsMs: number;
+    clsSavings?: number;
+    value: string;
+  }>;
 };
 
 // Why a check failed, for a matching message: the address is invalid, the

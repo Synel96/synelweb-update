@@ -84,4 +84,35 @@ describe("site check page", () => {
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/nem sikerült betölteni/);
   });
+
+  it("labels layout-shift wins and doesn't praise a weak page without listed wins", async () => {
+    runSiteCheck.mockResolvedValue({
+      ...RESULT,
+      scores: { ...RESULT.scores, performance: 72 },
+      opportunities: [
+        {
+          id: "cls-culprits-insight",
+          title: "Layout shift culprits",
+          savingsMs: 0,
+          clsSavings: 0.38,
+          value: "",
+        },
+      ],
+    });
+    await renderWithI18n(<Page />);
+    checkSite("pelda.hu");
+    expect(await screen.findByText("Kevesebb elrendezés-ugrálás (CLS)")).toBeInTheDocument();
+  });
+
+  it("only says 'nice work' when performance is 90+", async () => {
+    runSiteCheck.mockResolvedValue({
+      ...RESULT,
+      scores: { ...RESULT.scores, performance: 72 },
+      opportunities: [],
+    });
+    await renderWithI18n(<Page />);
+    checkSite("pelda.hu");
+    expect(await screen.findByText(/van mit javítani/)).toBeInTheDocument();
+    expect(screen.queryByText(/szép munka/)).not.toBeInTheDocument();
+  });
 });

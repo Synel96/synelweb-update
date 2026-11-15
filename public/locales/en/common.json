@@ -888,6 +888,9 @@
         "seo": "The technical basics of SEO: titles, descriptions, indexability, mobile-friendly layout."
       }
     },
-    "note": "The check is run by Google PageSpeed Insights; results can vary slightly between runs. We only store the address and the scores, no personal data."
+    "note": "The check is run by Google PageSpeed Insights; results can vary slightly between runs. We only store the address and the scores, no personal data.",
+    "clsSavings": "Less layout shift (CLS)",
+    "genericSavings": "Faster loading",
+    "noOpportunitiesWeak": "Google didn't name a specific fix this time, but the metrics above show room to improve – happy to take a closer look."
   }
 }

@@ -28,6 +28,7 @@ type ApiProject = {
   lighthouseDesktop?: ScoreItem[];
   liveUrl?: string;
   isActive?: boolean;
+  isOwnProject?: boolean;
   order?: number;
   images?: string[];
   previewImage?: string;
@@ -50,6 +51,8 @@ export type Project = {
   previewImage: string;
   otherImages: string[];
   order: number;
+  // SynelWeb's own project rather than client work (set in the admin).
+  isOwnProject: boolean;
 };
 
 const PROJECTS_ENDPOINT = `${resolveApiBaseUrl()}/api/projects/`;
@@ -120,6 +123,7 @@ export async function getProjects(lang: AppLang): Promise<Project[]> {
         mobileScores: Array.isArray(item.lighthouseMobile) ? item.lighthouseMobile : [],
         desktopScores: Array.isArray(item.lighthouseDesktop) ? item.lighthouseDesktop : [],
         liveUrl: (item.liveUrl || "").trim(),
+        isOwnProject: item.isOwnProject === true,
         previewImage: images[0] || "",
         otherImages: images.slice(1),
         // Without an explicit order from the backend, default to newest-first

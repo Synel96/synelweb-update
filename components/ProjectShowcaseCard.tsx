@@ -30,6 +30,8 @@ type ProjectShowcaseCardProps = {
   desktopScores: ScoreItem[];
   liveHref: string;
   liveLabel: string;
+  // Shown as a badge by the title when the project is SynelWeb's own.
+  ownProjectLabel?: string;
 };
 
 const COLLAPSED_DESCRIPTION_HEIGHT = 112;
@@ -55,6 +57,7 @@ export function ProjectShowcaseCard({
   desktopScores,
   liveHref,
   liveLabel,
+  ownProjectLabel,
 }: ProjectShowcaseCardProps) {
   const HeadingTag = headingLevel;
   const hasLongDescription = description.trim().length > 220;
@@ -109,6 +112,11 @@ export function ProjectShowcaseCard({
         </div>
 
         <div className="lg:order-1">
+          {ownProjectLabel ? (
+            <span className="mb-2 inline-flex items-center rounded-full border border-(--accent)/40 bg-(--accent)/12 px-2.5 py-0.5 text-[0.68rem] font-semibold tracking-[0.1em] text-(--accent) uppercase">
+              {ownProjectLabel}
+            </span>
+          ) : null}
           <HeadingTag className="text-xl font-semibold tracking-tight text-white sm:text-2xl lg:text-[1.7rem]">
             {title}
           </HeadingTag>

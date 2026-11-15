@@ -348,6 +348,7 @@ export default function Page() {
           prevAriaLabel={t("homeFlow.projects.carousel.prevAria")}
           nextAriaLabel={t("homeFlow.projects.carousel.nextAria")}
           goToAriaLabel={(index) => t("homeFlow.projects.carousel.goToAria", { index })}
+          ownProjectLabel={t("projectsPage.ownProject")}
         />
 
         <SectionLink href={langHref("/projects")} label={t("homeFlow.projects.cta")} warm />

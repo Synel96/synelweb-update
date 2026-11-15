@@ -205,7 +205,8 @@
       "contactLabel": "Angebot anfordern",
       "contactAriaLabel": "Angebotsanfrage starten",
       "servicesLabel": "Leistungen & Preise →"
-    }
+    },
+    "ownProject": "Eigenes Projekt"
   },
   "blogPage": {
     "label": "Blog",

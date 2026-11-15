@@ -89,6 +89,7 @@ export default function Page() {
                 }))}
                 liveHref={project.liveUrl}
                 liveLabel={t("homeFlow.projects.liveCta")}
+                ownProjectLabel={project.isOwnProject ? t("projectsPage.ownProject") : undefined}
               />
             ))}
           </div>

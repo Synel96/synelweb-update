@@ -177,7 +177,7 @@ export const REGIONAL_SEO: Record<RegionalLogicalPath, SeoEntry> = {
   "/grants": {
     title: "Pályázati weboldal (DIMOP Plusz) – mire figyelj | SynelWeb",
     description:
-      "Weboldal pályázati forrásból: minősített szállító, kiírások, önerő, fenntartás – és őszintén arról, miben tudok segíteni szabadpiaci webfejlesztőként.",
+      "Weboldal pályázati forrásból: sok pályázatnál szabadpiaci szállítótól is elszámolható. Árajánlat, szerződés, teljesítésigazolás – és mire figyelj a felhívásban.",
   },
   "/austria": {
     title: "Webdesign Burgenland & Wien | SynelWeb",

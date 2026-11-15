@@ -130,7 +130,7 @@
     "grants": {
       "label": "Pályázati fejlesztéshez is",
       "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",
-      "text": "Egyéni vállalkozóként szabadpiaci alapon dolgozom, és nem szerepelek a Modern Vállalkozások Programja minősített szállítói listáján. Ezért ha a pályázati felhívás a weboldalra minősített szállítót ír elő, az nem tőlem számolható el – ezt mindig előre megmondom. Ahol nem ír elő, ott szabályos árajánlatot, szerződést és teljesítésigazolást adok.",
+      "text": "Sok pályázatnál a weboldal szállítója szabadon választható – ilyenkor nálam is elkészíttetheted pályázati forrásból: szabályos, tételes árajánlatot, szerződést, számlát és teljesítésigazolást adok. Kivétel, ha a felhívás minősített (MVP) szállítót ír elő, mint a DIMOP Plusz-1.2.6: ott a weboldal nem tőlem számolható el, ezt mindig előre jelzem.",
       "link": "Mire figyelj egy pályázati weboldalnál?"
     },
     "maintenance": {
@@ -619,7 +619,6 @@
       "in_person": "Személyes találkozón"
     },
     "isLocal": "Sopron környéki vállalkozás vagyok (helyi kedvezmény)",
-    "isGrantFunded": "Pályázati forrásból (pl. DIMOP Plusz) finanszíroznám",
     "consentBefore": "Elolvastam és elfogadom az",
     "consentLink": "adatkezelési tájékoztatót",
     "consentAfter": ", és hozzájárulok, hogy az ajánlatkéréshez megadott adataimat kezeld.",
@@ -683,8 +682,7 @@
       "message": "Írj pár mondatot a projektről (legalább 10 karakter).",
       "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
       "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
-    },
-    "isGrantFundedHint": "Szabadpiaci alapon dolgozom (nem vagyok minősített MVP szállító) – a felhívás feltételeit átnézzük együtt."
+    }
   },
   "certificatesPage": {
     "label": "Tanúsítványok",

@@ -613,7 +613,6 @@
       "in_person": "In-person meeting"
     },
     "isLocal": "My business is near Sopron (local discount)",
-    "isGrantFunded": "I'd fund it from a grant (e.g. DIMOP Plusz)",
     "consentBefore": "I have read and accept the",
     "consentLink": "privacy notice",
     "consentAfter": " and agree to my details being processed for this quote request.",
@@ -677,8 +676,7 @@
       "message": "Please write a few sentences about the project (at least 10 characters).",
       "consent": "Please accept the privacy notice to send.",
       "phone": "To be called back, please enter your phone number."
-    },
-    "isGrantFundedHint": "I work on the open market (not an accredited MVP supplier) – we'll check the call's conditions together."
+    }
   },
   "certificatesPage": {
     "label": "Certificates",

@@ -669,7 +669,9 @@
       "mode": "Art des Angebots",
       "message": "Nachricht",
       "edit": "Ändern",
-      "contactPreference": "Kontakt per"
+      "contactPreference": "Kontakt per",
+      "siteCheck": "Website-Check",
+      "siteCheckAttached": "Angehängt"
     },
     "errors": {
       "name": "Bitte gib deinen Namen ein (mindestens 2 Zeichen).",
@@ -678,7 +680,9 @@
       "consent": "Bitte akzeptiere die Datenschutzerklärung, um zu senden.",
       "phone": "Für einen Rückruf gib bitte deine Telefonnummer an."
     },
-    "siteCheckMessage": "Ich habe {{url}} mit dem Website-Check geprüft und möchte, dass die Seite schneller und besser wird. Ich hätte gern ein Angebot dafür."
+    "siteCheckMessage": "Ich habe {{url}} mit dem Website-Check geprüft und möchte, dass die Seite schneller und besser wird. Ich hätte gern ein Angebot dafür.",
+    "attachSiteCheck": "Ergebnis des Website-Checks anhängen",
+    "attachSiteCheckHint": "{{host}} · {{device}} · Performance: {{score}}"
   },
   "certificatesPage": {
     "label": "Zertifikate",
@@ -868,7 +872,7 @@
       "AVERAGE": "Verbesserungswürdig",
       "SLOW": "Schlecht"
     },
-    "labTitle": "Labormessung",
+    "labTitle": "Detaillierte Messwerte",
     "opportunitiesTitle": "Die größten Verbesserungen",
     "savings": "ca. {{seconds}} s schneller",
     "noOpportunities": "Keine nennenswerten Beschleunigungen mehr – gute Arbeit!",
@@ -891,6 +895,15 @@
     "note": "Die Messung führt Google PageSpeed Insights durch; die Ergebnisse können von Messung zu Messung leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten.",
     "clsSavings": "Weniger Layout-Verschiebungen (CLS)",
     "genericSavings": "Schnelleres Laden",
-    "noOpportunitiesWeak": "Google hat diesmal keine einzelne Maßnahme genannt, aber die Werte oben zeigen Verbesserungspotenzial – ich schaue es mir gern genauer an."
+    "noOpportunitiesWeak": "Google hat diesmal keine einzelne Maßnahme genannt, aber die Werte oben zeigen Verbesserungspotenzial – ich schaue es mir gern genauer an.",
+    "pdf": {
+      "button": "PDF-Bericht herunterladen",
+      "generating": "PDF wird erstellt…",
+      "failed": "Das PDF konnte gerade nicht erstellt werden. Bitte versuch es erneut.",
+      "title": "Website-Check-Bericht",
+      "checkedAt": "Geprüft: {{date}}",
+      "contact": "Angebot anfordern: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
+      "footerNote": "Gemessen mit Google PageSpeed Insights; die Ergebnisse können leicht schwanken."
+    }
   }
 }

@@ -29,6 +29,7 @@ type Events = {
   quote_form_mode: { mode: string };
   quote_form_step: { step: string; mode: string };
   site_check_run: { strategy: string; result: "success" | "error" };
+  site_check_pdf: { strategy: string };
   quote_form_submit: { mode: string; service: string; result: "success" | "error" | "throttled" };
   contact_click: { method: ContactMethod; location: string };
 };

@@ -669,7 +669,9 @@
       "mode": "Quote type",
       "message": "Message",
       "edit": "Edit",
-      "contactPreference": "Contact via"
+      "contactPreference": "Contact via",
+      "siteCheck": "Website check",
+      "siteCheckAttached": "Attached"
     },
     "errors": {
       "name": "Please enter your name (at least 2 characters).",
@@ -678,7 +680,9 @@
       "consent": "Please accept the privacy notice to send.",
       "phone": "To be called back, please enter your phone number."
     },
-    "siteCheckMessage": "I checked {{url}} with the website checker and would like it to be faster and better. I'd like a quote for improving it."
+    "siteCheckMessage": "I checked {{url}} with the website checker and would like it to be faster and better. I'd like a quote for improving it.",
+    "attachSiteCheck": "Attach my website check result",
+    "attachSiteCheckHint": "{{host}} · {{device}} · performance: {{score}}"
   },
   "certificatesPage": {
     "label": "Certificates",
@@ -868,7 +872,7 @@
       "AVERAGE": "Needs improvement",
       "SLOW": "Poor"
     },
-    "labTitle": "Lab measurement",
+    "labTitle": "Detailed metrics",
     "opportunitiesTitle": "Biggest opportunities",
     "savings": "approx. {{seconds}} s faster",
     "noOpportunities": "No significant speed-ups left – nice work!",
@@ -891,6 +895,15 @@
     "note": "The check is run by Google PageSpeed Insights; results can vary slightly between runs. We only store the address and the scores, no personal data.",
     "clsSavings": "Less layout shift (CLS)",
     "genericSavings": "Faster loading",
-    "noOpportunitiesWeak": "Google didn't name a specific fix this time, but the metrics above show room to improve – happy to take a closer look."
+    "noOpportunitiesWeak": "Google didn't name a specific fix this time, but the metrics above show room to improve – happy to take a closer look.",
+    "pdf": {
+      "button": "Download PDF report",
+      "generating": "Creating PDF…",
+      "failed": "The PDF couldn't be created right now. Please try again.",
+      "title": "Website check report",
+      "checkedAt": "Checked: {{date}}",
+      "contact": "Request a quote: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
+      "footerNote": "Measured with Google PageSpeed Insights; results can vary slightly between runs."
+    }
   }
 }

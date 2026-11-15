@@ -74,6 +74,11 @@ describe("site check page", () => {
       strategy: "mobile",
       result: "success",
     });
+    // Kept for the quote form.
+    expect(JSON.parse(sessionStorage.getItem("synelweb:site-check")!).result.url).toBe(
+      "https://pelda.hu"
+    );
+    expect(screen.getByRole("button", { name: /PDF riport letöltése/ })).toBeInTheDocument();
   });
 
   it("explains a site that can't be loaded", async () => {

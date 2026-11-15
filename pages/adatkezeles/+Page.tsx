@@ -1,4 +1,4 @@
-const LAST_UPDATED = "2026. 07. 30.";
+const LAST_UPDATED = "2026. 11. 15.";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -75,15 +75,70 @@ export default function Page() {
             összhangban a GDPR 5. cikk (1) bekezdés e) pontjában foglalt korlátozott tárolhatóság
             elvével.
           </p>
+
+          <p className="pt-4 font-semibold text-white">Ajánlatkérés (ajánlatkérő űrlap)</p>
+          <p>
+            Kezelt adatok: név, e-mail cím, telefonszám (nem kötelező), a választott szolgáltatás, a
+            kapcsolatfelvétel kívánt módja, az üzenet szövege, részletes ajánlatkérés esetén a
+            projektre vonatkozó válaszok (például meglévő weboldal címe, domain, nyelvek,
+            keretösszeg), valamint – ha az érintett kifejezetten kéri – a csatolt
+            weboldal-ellenőrzés eredménye.
+          </p>
+          <p>
+            Cél: az ajánlatkérés megválaszolása, kapcsolatfelvétel és árajánlat készítése. Az
+            ajánlatkérésről e-mail értesítést kapunk, amely a megadott adatokat tartalmazza.
+          </p>
+          <p>
+            Jogalap: az érintett önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont), amelyet
+            az űrlap elküldésekor ad meg.
+          </p>
+          <p>
+            Megőrzési idő: az ajánlatkéréstől számított legfeljebb 1 évig, illetve a hozzájárulás
+            visszavonásáig; ha az ajánlatkérésből szerződés jön létre, a szerződésre vonatkozó
+            jogszabályi megőrzési idők szerint.
+          </p>
+
+          <p className="pt-4 font-semibold text-white">Ingyenes weboldal-ellenőrzés</p>
+          <p>
+            A weboldal-ellenőrző eszköz használatakor az ellenőrzött weboldal címét, a választott
+            eszközt (mobil/asztali), a nyelvet, a mért pontszámokat és a mérés idejét tároljuk; ezek
+            önmagukban nem minősülnek személyes adatnak. Az ellenőrzött címet a mérés elvégzése
+            céljából a Google PageSpeed Insights szolgáltatásának (Google LLC) továbbítjuk; a
+            látogató saját adatait (például IP-címét) a Google felé nem adjuk át.
+          </p>
+          <p>
+            A visszaélések megelőzése érdekében (a mérések számának korlátozásához) a látogató
+            IP-címét legfeljebb egy órán át, átmenetileg kezeljük, majd automatikusan töröljük.
+            Jogalap: jogos érdek (GDPR 6. cikk (1) bekezdés f) pont) – a szolgáltatás
+            rendeltetésszerű működésének biztosítása.
+          </p>
+          <p>
+            A legutóbbi mérés eredményét a böngésző munkamenet-tárhelye (sessionStorage) őrzi meg a
+            látogató saját eszközén, hogy az ajánlatkérésnél csatolni lehessen. Ez nem cookie,
+            hozzánk csak akkor kerül, ha a látogató az ajánlatkérő űrlapon kifejezetten csatolja, és
+            a böngészőlap bezárásával törlődik.
+          </p>
+
+          <p className="pt-4 font-semibold text-white">Látogatottság-mérés</p>
+          <p>
+            A Weboldal látogatottságát a Vercel Web Analytics szolgáltatással mérjük, amely nem
+            használ cookie-kat, és a látogatókat nem azonosítja: összesített statisztikát készít
+            (például oldalmegtekintések, hivatkozó oldalak, eszköztípus), valamint egyes
+            műveletekről (például az ajánlatkérő űrlap lépései, a weboldal-ellenőrzés indítása)
+            személyes adatot nem tartalmazó eseményeket rögzít. Jogalap: jogos érdek (GDPR 6. cikk
+            (1) bekezdés f) pont) – a Weboldal fejlesztése és a szolgáltatások javítása.
+          </p>
         </Section>
 
         <Section title="4. Adatfeldolgozók">
           <p>
             A Weboldal üzemeltetéséhez az alábbi technikai szolgáltatókat vesszük igénybe, amelyek a
             személyes adatokhoz tárhely- és adatbázis-szolgáltatás nyújtása céljából férhetnek
-            hozzá: Fly.io (alkalmazás-hoszting), Neon (adatbázis-hoszting) és Vercel (a Weboldal
-            megjelenítését szolgáló frontend hosztolása). Ezek a szolgáltatók a GDPR 28. cikke
-            szerinti adatfeldolgozóként járnak el, az adatokat saját célra nem használják fel.
+            hozzá: Fly.io (alkalmazás-hoszting), Neon (adatbázis-hoszting), Vercel (a Weboldal
+            megjelenítését szolgáló frontend hosztolása és a látogatottság-mérés), Rackhost (az
+            ajánlatkérésekről szóló e-mail értesítések kézbesítése és a levelezés) és Cloudinary (a
+            Weboldal képeinek és videóinak tárolása és kiszolgálása). Ezek a szolgáltatók a GDPR 28.
+            cikke szerinti adatfeldolgozóként járnak el, az adatokat saját célra nem használják fel.
           </p>
         </Section>
 
@@ -155,9 +210,9 @@ export default function Page() {
 
         <Section title="8. A tájékoztató módosítása">
           <p>
-            Amennyiben a Weboldalon kezelt adatok köre vagy célja bővül (például kapcsolatfelvételi
-            űrlap, hírlevél vagy statisztikai mérés bevezetésével), jelen tájékoztatót frissítjük,
-            és a Weboldalon közzétesszük annak aktuális, hatályos verzióját.
+            Amennyiben a Weboldalon kezelt adatok köre vagy célja bővül (például hírlevél
+            bevezetésével), jelen tájékoztatót frissítjük, és a Weboldalon közzétesszük annak
+            aktuális, hatályos verzióját.
           </p>
         </Section>
       </section>

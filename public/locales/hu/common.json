@@ -127,12 +127,6 @@
       "trendsResearch": "Trends-alapú kulcsszókutatás",
       "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
     },
-    "grants": {
-      "label": "Pályázati fejlesztéshez is",
-      "title": "KKV-digitalizációs pályázatokhoz (pl. DIMOP Plusz) is",
-      "text": "Sok pályázatnál a weboldal szállítója szabadon választható – ilyenkor nálam is elkészíttetheted pályázati forrásból: szabályos, tételes árajánlatot, szerződést, számlát és teljesítésigazolást adok. Kivétel, ha a felhívás minősített (MVP) szállítót ír elő, mint a DIMOP Plusz-1.2.6: ott a weboldal nem tőlem számolható el, ezt mindig előre jelzem.",
-      "link": "Mire figyelj egy pályázati weboldalnál?"
-    },
     "maintenance": {
       "label": "Üzemeltetés",
       "title": "Havi üzemeltetési és karbantartási díj",

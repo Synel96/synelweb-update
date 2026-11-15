@@ -165,12 +165,3 @@ describe("regional landing pages", () => {
     );
   });
 });
-
-describe("grants page", () => {
-  it("is Hungarian only and falls back to the services page elsewhere", () => {
-    expect(localizePath("/grants", "hu")).toBe("/hu/palyazati-weboldal");
-    expect(resolveLanguageAndLogicalPath("/hu/palyazati-weboldal").logicalPath).toBe("/grants");
-    expect(localizePath("/grants", "de")).toBe("/de/dienstleistungen");
-    expect(localizePath("/grants", "en")).toBe("/en/services");
-  });
-});

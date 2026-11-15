@@ -122,6 +122,7 @@ describe("KNOWN_LOGICAL_PATHS", () => {
       "/about",
       "/services",
       "/google-ads",
+      "/site-check",
       "/projects",
       "/certificates",
       "/blog",

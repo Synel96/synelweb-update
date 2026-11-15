@@ -11,7 +11,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "navigationMenu": "Navigation menu",
-    "certificates": "Certificates"
+    "certificates": "Certificates",
+    "siteCheck": "Site check"
   },
   "footer": {
     "allRightsReserved": "All rights reserved."
@@ -676,7 +677,8 @@
       "message": "Please write a few sentences about the project (at least 10 characters).",
       "consent": "Please accept the privacy notice to send.",
       "phone": "To be called back, please enter your phone number."
-    }
+    },
+    "siteCheckMessage": "I checked {{url}} with the website checker and would like it to be faster and better. I'd like a quote for improving it."
   },
   "certificatesPage": {
     "label": "Certificates",
@@ -813,5 +815,79 @@
       "name": "Google Search ads management",
       "description": "Ad account setup, campaign build, conversion tracking and ongoing optimization, with a monthly report."
     }
+  },
+  "siteCheck": {
+    "label": "Free website check",
+    "title": "How fast and good is your website?",
+    "intro": "Check it for free with Google Lighthouse – the same measurement Google uses to evaluate pages. On mobile and desktop, in about half a minute.",
+    "urlLabel": "Website address",
+    "urlPlaceholder": "example.com",
+    "submit": "Check",
+    "checking": "Checking…",
+    "strategy": {
+      "label": "Device",
+      "mobile": "Mobile",
+      "desktop": "Desktop"
+    },
+    "progress": [
+      "Loading the page…",
+      "Measuring performance…",
+      "Checking accessibility and SEO…",
+      "Summing up the results…"
+    ],
+    "progressHint": "A check usually takes 15–40 seconds.",
+    "errors": {
+      "invalid": "That doesn't look like a website address. Try: example.com",
+      "unreachable": "We couldn't load this page. Check the address or try again a bit later.",
+      "throttled": "You've run too many checks. Please try again in an hour.",
+      "busy": "The check didn't work right now – the service is busy. Please try again in a few minutes."
+    },
+    "resultTitle": "Result",
+    "resultFor": "{{host}} · {{device}}",
+    "scores": {
+      "performance": "Performance",
+      "accessibility": "Accessibility",
+      "bestPractices": "Best practices",
+      "seo": "SEO"
+    },
+    "verdict": {
+      "good": "Excellent! Google considers this page fast.",
+      "average": "Room to improve: some visitors may leave while it loads.",
+      "poor": "Needs urgent work: a slow page loses visitors and rankings."
+    },
+    "fieldTitle": "Real-user data (Core Web Vitals)",
+    "fieldHint": "Based on Chrome users' visits over the last 28 days.",
+    "fieldNone": "Google doesn't have enough real-user data for this page yet – that's normal for smaller sites.",
+    "fieldMetrics": {
+      "lcp": "Largest Contentful Paint (LCP)",
+      "inp": "Interaction to Next Paint (INP)",
+      "cls": "Cumulative Layout Shift (CLS)"
+    },
+    "fieldCategory": {
+      "FAST": "Good",
+      "AVERAGE": "Needs improvement",
+      "SLOW": "Poor"
+    },
+    "labTitle": "Lab measurement",
+    "opportunitiesTitle": "Biggest opportunities",
+    "savings": "approx. {{seconds}} s faster",
+    "noOpportunities": "No significant speed-ups left – nice work!",
+    "otherDevice": "Check on {{device}} too",
+    "cta": {
+      "title": "Want your site to score above 90 too?",
+      "text": "The sites I build consistently reach outstanding Lighthouse scores. Get in touch and I'll look at what yours could achieve.",
+      "button": "Request a quote",
+      "projects": "See my projects' scores"
+    },
+    "about": {
+      "title": "What does the check measure?",
+      "items": {
+        "performance": "How quickly the page loads and becomes usable – Google takes it into account for rankings.",
+        "accessibility": "Whether everyone can use it: readable contrast, labels, keyboard navigation.",
+        "bestPractices": "Security and modern techniques: HTTPS, error-free code, up-to-date image formats.",
+        "seo": "The technical basics of SEO: titles, descriptions, indexability, mobile-friendly layout."
+      }
+    },
+    "note": "The check is run by Google PageSpeed Insights; results can vary slightly between runs. We only store the address and the scores, no personal data."
   }
 }

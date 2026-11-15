@@ -11,7 +11,8 @@
     "openMenu": "Menü megnyitása",
     "closeMenu": "Menü bezárása",
     "navigationMenu": "Navigációs menü",
-    "certificates": "Tanúsítványok"
+    "certificates": "Tanúsítványok",
+    "siteCheck": "Weboldal-teszt"
   },
   "footer": {
     "allRightsReserved": "Minden jog fenntartva."
@@ -676,7 +677,8 @@
       "message": "Írj pár mondatot a projektről (legalább 10 karakter).",
       "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
       "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
-    }
+    },
+    "siteCheckMessage": "Lemértem a(z) {{url}} oldalt a weboldal-ellenőrzővel, és szeretném, ha gyorsabb és jobb lenne. Kérnék egy ajánlatot a javításra."
   },
   "certificatesPage": {
     "label": "Tanúsítványok",
@@ -813,5 +815,79 @@
       "name": "Google keresőhirdetés kezelés",
       "description": "Hirdetési fiók beállítása, kampányfelépítés, konverziómérés és folyamatos optimalizálás, havi riporttal."
     }
+  },
+  "siteCheck": {
+    "label": "Ingyenes weboldal-ellenőrzés",
+    "title": "Mennyire gyors és jó a weboldalad?",
+    "intro": "Mérd le ingyen a Google Lighthouse-szal – ugyanazzal a méréssel, amivel a Google is értékeli az oldalakat. Mobilon és asztalin, nagyjából fél perc alatt.",
+    "urlLabel": "A weboldal címe",
+    "urlPlaceholder": "pelda.hu",
+    "submit": "Ellenőrzés",
+    "checking": "Mérés folyamatban…",
+    "strategy": {
+      "label": "Eszköz",
+      "mobile": "Mobil",
+      "desktop": "Asztali"
+    },
+    "progress": [
+      "Az oldal betöltése…",
+      "Teljesítmény mérése…",
+      "Akadálymentesség és SEO vizsgálata…",
+      "Eredmények összesítése…"
+    ],
+    "progressHint": "A mérés általában 15–40 másodpercig tart.",
+    "errors": {
+      "invalid": "Ez nem tűnik weboldalcímnek. Próbáld így: pelda.hu",
+      "unreachable": "Ezt az oldalt nem sikerült betölteni. Ellenőrizd a címet, vagy próbáld újra kicsit később.",
+      "throttled": "Most túl sok mérést indítottál. Próbáld újra egy óra múlva.",
+      "busy": "A mérés most nem sikerült – a szolgáltatás túlterhelt. Próbáld újra pár perc múlva."
+    },
+    "resultTitle": "Eredmény",
+    "resultFor": "{{host}} · {{device}}",
+    "scores": {
+      "performance": "Teljesítmény",
+      "accessibility": "Akadálymentesség",
+      "bestPractices": "Bevált gyakorlatok",
+      "seo": "SEO"
+    },
+    "verdict": {
+      "good": "Kiváló! Ez az oldal a Google szerint is gyors.",
+      "average": "Van hova fejlődni: a látogatók egy része már a betöltésnél elveszhet.",
+      "poor": "Sürgősen javítandó: a lassú oldal látogatókat és helyezéseket is veszít."
+    },
+    "fieldTitle": "Valós látogatói adatok (Core Web Vitals)",
+    "fieldHint": "Az elmúlt 28 nap Chrome-felhasználóinak mérései alapján.",
+    "fieldNone": "Ehhez az oldalhoz a Google-nek még nincs elég valós látogatói adata – ez kisebb forgalmú oldalaknál természetes.",
+    "fieldMetrics": {
+      "lcp": "Legnagyobb tartalom megjelenése (LCP)",
+      "inp": "Reakcióidő (INP)",
+      "cls": "Elrendezés-ugrálás (CLS)"
+    },
+    "fieldCategory": {
+      "FAST": "Jó",
+      "AVERAGE": "Javítandó",
+      "SLOW": "Gyenge"
+    },
+    "labTitle": "Laboratóriumi mérés",
+    "opportunitiesTitle": "A legnagyobb javítási lehetőségek",
+    "savings": "kb. {{seconds}} mp gyorsulás",
+    "noOpportunities": "Nincs jelentős gyorsítási lehetőség – szép munka!",
+    "otherDevice": "Mérés {{device}} nézetben is",
+    "cta": {
+      "title": "Szeretnéd, hogy a te oldalad is 90 felett legyen?",
+      "text": "Az általam épített oldalak rendre kiemelkedő Lighthouse-pontszámokat érnek el. Írd meg, és megnézem, mit lehet kihozni a tiédből.",
+      "button": "Kérek ajánlatot",
+      "projects": "Nézd meg a referenciáim eredményeit"
+    },
+    "about": {
+      "title": "Mit mér az ellenőrzés?",
+      "items": {
+        "performance": "Milyen gyorsan tölt be és válik használhatóvá az oldal – a Google rangsorolásnál is figyelembe veszi.",
+        "accessibility": "Mindenki jól tudja-e használni: olvasható kontraszt, feliratok, billentyűzetes kezelés.",
+        "bestPractices": "Biztonság és modern technikai megoldások: HTTPS, hibamentes futás, korszerű képformátumok.",
+        "seo": "A keresőoptimalizálás technikai alapjai: címek, leírások, indexelhetőség, mobilbarát megjelenés."
+      }
+    },
+    "note": "A mérést a Google PageSpeed Insights végzi, az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem."
   }
 }

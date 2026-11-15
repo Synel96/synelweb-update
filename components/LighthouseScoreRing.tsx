@@ -5,8 +5,20 @@ type LighthouseScoreRingProps = {
   score: number;
 };
 
+// Lighthouse's own colour bands: 90-100 good, 50-89 needs work, 0-49 poor.
+const TONES = {
+  good: { from: "#6ee7b7", to: "#10b981", glow: "rgb(52_211_153/35%)", text: "text-emerald-300" },
+  average: { from: "#fcd34d", to: "#f59e0b", glow: "rgb(245_158_11/35%)", text: "text-amber-300" },
+  poor: { from: "#fda4af", to: "#f43f5e", glow: "rgb(244_63_94/35%)", text: "text-rose-300" },
+} as const;
+
+export function scoreTone(score: number): keyof typeof TONES {
+  return score >= 90 ? "good" : score >= 50 ? "average" : "poor";
+}
+
 export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) {
   const clamped = Math.max(0, Math.min(100, score));
+  const tone = TONES[scoreTone(clamped)];
   const ringRef = useRef<HTMLDivElement | null>(null);
   const hasAnimatedRef = useRef(false);
   const [displayScore, setDisplayScore] = useState(0);
@@ -62,13 +74,14 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
       <div className="relative mt-2 flex items-center justify-center">
         <svg
           viewBox="0 0 64 64"
-          className="size-16 -rotate-90 drop-shadow-[0_0_8px_rgb(52_211_153/35%)]"
+          className="size-16 -rotate-90"
+          style={{ filter: `drop-shadow(0 0 8px ${tone.glow.replace(/_/g, " ")})` }}
           aria-hidden="true"
         >
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#6ee7b7" />
-              <stop offset="100%" stopColor="#10b981" />
+              <stop offset="0%" stopColor={tone.from} />
+              <stop offset="100%" stopColor={tone.to} />
             </linearGradient>
           </defs>
           <circle
@@ -92,7 +105,9 @@ export function LighthouseScoreRing({ label, score }: LighthouseScoreRingProps) 
             style={{ transition: "stroke-dashoffset 500ms ease" }}
           />
         </svg>
-        <span className="pointer-events-none absolute text-sm font-extrabold text-emerald-300 tabular-nums">
+        <span
+          className={`pointer-events-none absolute text-sm font-extrabold tabular-nums ${tone.text}`}
+        >
           {Math.round(displayScore)}
         </span>
       </div>

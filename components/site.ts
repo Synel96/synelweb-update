@@ -48,6 +48,7 @@ export const NAV_LINKS: readonly NavLink[] = [
       { href: "/austria", label: { de: "Burgenland & Wien" }, footerOnly: true },
     ],
   },
+  { href: "/site-check", labelKey: "nav.siteCheck" },
   { href: "/projects", labelKey: "nav.projects" },
   { href: "/certificates", labelKey: "nav.certificates", hiddenInDesktopNav: true },
   {

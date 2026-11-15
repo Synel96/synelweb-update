@@ -1,0 +1,60 @@
+import { resolveApiBaseUrl } from "@/src/apiBaseUrl";
+import { fetchWithTimeout } from "@/src/fetchWithTimeout";
+import type { AppLang } from "@/src/services/serviceCardsService";
+
+export type SiteCheckStrategy = "mobile" | "desktop";
+
+export type SiteCheckResult = {
+  url: string;
+  finalUrl: string;
+  strategy: SiteCheckStrategy;
+  scores: {
+    performance: number | null;
+    accessibility: number | null;
+    bestPractices: number | null;
+    seo: number | null;
+  };
+  lab: Array<{ id: string; title: string; value: string; score: number | null }>;
+  field: Array<{ id: "lcp" | "inp" | "cls"; percentile: number; category: string }>;
+  opportunities: Array<{ id: string; title: string; savingsMs: number; value: string }>;
+};
+
+// Why a check failed, for a matching message: the address is invalid, the
+// site couldn't be loaded, too many checks, or Google/the server is busy.
+export type SiteCheckError = "invalid" | "unreachable" | "throttled" | "busy";
+
+export class SiteCheckFailure extends Error {
+  constructor(public readonly reason: SiteCheckError) {
+    super(reason);
+  }
+}
+
+// A Lighthouse run takes 15-40 seconds; give it room.
+const TIMEOUT_MS = 90_000;
+
+export async function runSiteCheck(
+  url: string,
+  strategy: SiteCheckStrategy,
+  lang: AppLang
+): Promise<SiteCheckResult> {
+  let response: Response;
+  try {
+    response = await fetchWithTimeout(
+      `${resolveApiBaseUrl()}/api/site-check/`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ url, strategy, lang }),
+      },
+      TIMEOUT_MS
+    );
+  } catch {
+    throw new SiteCheckFailure("busy");
+  }
+
+  if (response.ok) return (await response.json()) as SiteCheckResult;
+  if (response.status === 400) throw new SiteCheckFailure("invalid");
+  if (response.status === 422) throw new SiteCheckFailure("unreachable");
+  if (response.status === 429) throw new SiteCheckFailure("throttled");
+  throw new SiteCheckFailure("busy");
+}

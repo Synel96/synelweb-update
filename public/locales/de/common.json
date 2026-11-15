@@ -11,7 +11,8 @@
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "navigationMenu": "Navigationsmenü",
-    "certificates": "Zertifikate"
+    "certificates": "Zertifikate",
+    "siteCheck": "Website-Check"
   },
   "footer": {
     "allRightsReserved": "Alle Rechte vorbehalten."
@@ -676,7 +677,8 @@
       "message": "Bitte schreib ein paar Sätze zum Projekt (mindestens 10 Zeichen).",
       "consent": "Bitte akzeptiere die Datenschutzerklärung, um zu senden.",
       "phone": "Für einen Rückruf gib bitte deine Telefonnummer an."
-    }
+    },
+    "siteCheckMessage": "Ich habe {{url}} mit dem Website-Check geprüft und möchte, dass die Seite schneller und besser wird. Ich hätte gern ein Angebot dafür."
   },
   "certificatesPage": {
     "label": "Zertifikate",
@@ -813,5 +815,79 @@
       "name": "Google-Suchanzeigen Betreuung",
       "description": "Einrichtung des Werbekontos, Kampagnenaufbau, Conversion-Tracking und laufende Optimierung mit monatlichem Bericht."
     }
+  },
+  "siteCheck": {
+    "label": "Kostenloser Website-Check",
+    "title": "Wie schnell und gut ist deine Website?",
+    "intro": "Prüfe sie kostenlos mit Google Lighthouse – derselben Messung, mit der Google Seiten bewertet. Mobil und am Desktop, in etwa einer halben Minute.",
+    "urlLabel": "Adresse der Website",
+    "urlPlaceholder": "beispiel.at",
+    "submit": "Prüfen",
+    "checking": "Wird geprüft…",
+    "strategy": {
+      "label": "Gerät",
+      "mobile": "Mobil",
+      "desktop": "Desktop"
+    },
+    "progress": [
+      "Seite wird geladen…",
+      "Performance wird gemessen…",
+      "Barrierefreiheit und SEO werden geprüft…",
+      "Ergebnisse werden zusammengefasst…"
+    ],
+    "progressHint": "Eine Prüfung dauert meist 15–40 Sekunden.",
+    "errors": {
+      "invalid": "Das sieht nicht nach einer Website-Adresse aus. Versuch es so: beispiel.at",
+      "unreachable": "Diese Seite konnte nicht geladen werden. Prüfe die Adresse oder versuch es etwas später erneut.",
+      "throttled": "Du hast zu viele Prüfungen gestartet. Bitte versuch es in einer Stunde erneut.",
+      "busy": "Die Prüfung hat gerade nicht geklappt – der Dienst ist ausgelastet. Bitte versuch es in ein paar Minuten erneut."
+    },
+    "resultTitle": "Ergebnis",
+    "resultFor": "{{host}} · {{device}}",
+    "scores": {
+      "performance": "Performance",
+      "accessibility": "Barrierefreiheit",
+      "bestPractices": "Best Practices",
+      "seo": "SEO"
+    },
+    "verdict": {
+      "good": "Ausgezeichnet! Auch Google hält diese Seite für schnell.",
+      "average": "Luft nach oben: Ein Teil der Besucher springt womöglich schon beim Laden ab.",
+      "poor": "Dringend verbessern: Eine langsame Seite kostet Besucher und Rankings."
+    },
+    "fieldTitle": "Echte Nutzerdaten (Core Web Vitals)",
+    "fieldHint": "Basierend auf Besuchen von Chrome-Nutzern in den letzten 28 Tagen.",
+    "fieldNone": "Für diese Seite hat Google noch nicht genug echte Nutzerdaten – bei kleineren Websites ist das normal.",
+    "fieldMetrics": {
+      "lcp": "Largest Contentful Paint (LCP)",
+      "inp": "Interaction to Next Paint (INP)",
+      "cls": "Cumulative Layout Shift (CLS)"
+    },
+    "fieldCategory": {
+      "FAST": "Gut",
+      "AVERAGE": "Verbesserungswürdig",
+      "SLOW": "Schlecht"
+    },
+    "labTitle": "Labormessung",
+    "opportunitiesTitle": "Die größten Verbesserungen",
+    "savings": "ca. {{seconds}} s schneller",
+    "noOpportunities": "Keine nennenswerten Beschleunigungen mehr – gute Arbeit!",
+    "otherDevice": "Auch {{device}} prüfen",
+    "cta": {
+      "title": "Soll deine Seite auch über 90 liegen?",
+      "text": "Die Websites, die ich baue, erreichen durchweg herausragende Lighthouse-Werte. Schreib mir, und ich schaue, was aus deiner herauszuholen ist.",
+      "button": "Angebot anfordern",
+      "projects": "Die Werte meiner Referenzen ansehen"
+    },
+    "about": {
+      "title": "Was misst der Check?",
+      "items": {
+        "performance": "Wie schnell die Seite lädt und benutzbar wird – Google berücksichtigt das auch im Ranking.",
+        "accessibility": "Ob alle sie gut nutzen können: lesbarer Kontrast, Beschriftungen, Tastaturbedienung.",
+        "bestPractices": "Sicherheit und moderne Technik: HTTPS, fehlerfreier Code, aktuelle Bildformate.",
+        "seo": "Die technischen SEO-Grundlagen: Titel, Beschreibungen, Indexierbarkeit, mobilfreundliches Layout."
+      }
+    },
+    "note": "Die Messung führt Google PageSpeed Insights durch; die Ergebnisse können von Messung zu Messung leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten."
   }
 }

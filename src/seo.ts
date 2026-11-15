@@ -45,6 +45,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Google Search ads set up and managed by a Google Ads Search certified developer: keyword research, conversion tracking, monthly reports and transparent pricing.",
     },
+    "/site-check": {
+      title: "Free Website Check – Speed, SEO & Accessibility | SynelWeb",
+      description:
+        "Check your website for free: Google Lighthouse scores for performance, accessibility, best practices and SEO, Core Web Vitals and the biggest improvements – on mobile and desktop.",
+    },
     "/projects": {
       title: "Projects | SynelWeb",
       description:
@@ -92,6 +97,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       description:
         "Google keresőhirdetés beállítás és kezelés Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés, havi riport és átlátható árak – Sopronból, országosan.",
     },
+    "/site-check": {
+      title: "Ingyenes weboldal-ellenőrzés – sebesség, SEO, akadálymentesség | SynelWeb",
+      description:
+        "Mérd le ingyen a weboldalad: Google Lighthouse pontszámok teljesítményre, akadálymentességre, bevált gyakorlatokra és SEO-ra, Core Web Vitals és a legnagyobb javítási lehetőségek mobilon és asztalin.",
+    },
     "/projects": {
       title: "Projektek | SynelWeb",
       description:
@@ -138,6 +148,11 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
       title: "Google Ads Betreuung für kleine Unternehmen | SynelWeb",
       description:
         "Google-Suchanzeigen einrichten und betreuen lassen – mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte und transparente Preise.",
+    },
+    "/site-check": {
+      title: "Kostenloser Website-Check – Speed, SEO & Barrierefreiheit | SynelWeb",
+      description:
+        "Prüfe deine Website kostenlos: Google-Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO, Core Web Vitals und die größten Verbesserungen – mobil und am Desktop.",
     },
     "/projects": {
       title: "Projekte | SynelWeb",

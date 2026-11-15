@@ -193,7 +193,6 @@ export function QuoteRequestForm({
   const [timeline, setTimeline] = useState("");
   const [budget, setBudget] = useState("");
   const [isLocal, setIsLocal] = useState(false);
-  const [isGrantFunded, setIsGrantFunded] = useState(false);
   const [contactPreference, setContactPreference] = useState("");
   const [adsAccount, setAdsAccount] = useState("");
   const [adBudget, setAdBudget] = useState("");
@@ -384,7 +383,6 @@ export function QuoteRequestForm({
         timeline,
         budget,
         isLocal,
-        isGrantFunded,
       });
     }
 
@@ -845,22 +843,6 @@ export function QuoteRequestForm({
                       className="mt-0.5 size-4 shrink-0 accent-(--accent)"
                     />
                     {t("quoteForm.isLocal")}
-                  </label>
-                  <label className="flex items-start gap-3 text-sm text-white/80">
-                    <input
-                      type="checkbox"
-                      checked={isGrantFunded}
-                      onChange={(event) => setIsGrantFunded(event.target.checked)}
-                      className="mt-0.5 size-4 shrink-0 accent-(--accent)"
-                    />
-                    <span>
-                      {t("quoteForm.isGrantFunded")}
-                      {isGrantFunded ? (
-                        <span className="mt-1 block text-xs text-white/55">
-                          {t("quoteForm.isGrantFundedHint")}
-                        </span>
-                      ) : null}
-                    </span>
                   </label>
                 </div>
               </div>

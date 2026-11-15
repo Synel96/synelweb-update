@@ -613,7 +613,6 @@
       "in_person": "Persönliches Treffen"
     },
     "isLocal": "Mein Unternehmen liegt in der Nähe von Sopron (lokaler Rabatt)",
-    "isGrantFunded": "Ich finanziere es über Fördermittel (z. B. DIMOP Plusz)",
     "consentBefore": "Ich habe die",
     "consentLink": "Datenschutzerklärung",
     "consentAfter": " gelesen, akzeptiere sie und stimme der Verarbeitung meiner Angaben für diese Anfrage zu.",
@@ -677,8 +676,7 @@
       "message": "Bitte schreib ein paar Sätze zum Projekt (mindestens 10 Zeichen).",
       "consent": "Bitte akzeptiere die Datenschutzerklärung, um zu senden.",
       "phone": "Für einen Rückruf gib bitte deine Telefonnummer an."
-    },
-    "isGrantFundedHint": "Ich arbeite auf dem freien Markt (kein akkreditierter MVP-Lieferant) – die Bedingungen der Ausschreibung prüfen wir gemeinsam."
+    }
   },
   "certificatesPage": {
     "label": "Zertifikate",

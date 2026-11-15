@@ -16,6 +16,11 @@ import { ADS_SERVICE_SLUG } from "@/src/hooks/use-ads-service";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { trackEvent } from "@/src/analytics";
 import { useHufFormatter } from "@/src/currency";
+import {
+  readStoredSiteCheck,
+  siteCheckAttachment,
+  type StoredSiteCheck,
+} from "@/src/siteCheckStorage";
 
 export type QuoteMode = "simple" | "detailed";
 
@@ -62,6 +67,14 @@ const STEP_KEYS = ["service", "contact", "project", "send"] as const;
 type StepKey = (typeof STEP_KEYS)[number];
 const LAST_STEP = STEP_KEYS.length - 1;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function hostOf(url: string) {
+  try {
+    return new URL(url).host.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
 
 type FieldErrors = Partial<Record<"name" | "email" | "phone" | "message" | "consent", string>>;
 
@@ -198,6 +211,12 @@ export function QuoteRequestForm({
   const [contactPreference, setContactPreference] = useState("");
   const [adsAccount, setAdsAccount] = useState("");
   const [adBudget, setAdBudget] = useState("");
+  // A website check run earlier in this tab, which the visitor may attach.
+  const [storedCheck, setStoredCheck] = useState<StoredSiteCheck | null>(null);
+  const [attachCheck, setAttachCheck] = useState(false);
+  useEffect(() => {
+    setStoredCheck(readStoredSiteCheck());
+  }, []);
   const isAdsOnly = service === ADS_SERVICE_SLUG;
 
   const [step, setStep] = useState(0);
@@ -362,6 +381,7 @@ export function QuoteRequestForm({
       consent,
       siteLanguage: lang,
       contactPreference,
+      ...(attachCheck && storedCheck ? { siteCheck: siteCheckAttachment(storedCheck) } : {}),
       company,
     };
     if (mode === "detailed" && isAdsOnly) {
@@ -456,6 +476,15 @@ export function QuoteRequestForm({
       value: message.trim().length > 160 ? `${message.trim().slice(0, 160)}…` : message.trim(),
       step: 2,
     },
+    ...(attachCheck && storedCheck
+      ? [
+          {
+            label: t("quoteForm.summary.siteCheck"),
+            value: t("quoteForm.summary.siteCheckAttached"),
+            step: LAST_STEP,
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -875,6 +904,27 @@ export function QuoteRequestForm({
                 </div>
               ))}
             </dl>
+
+            {storedCheck ? (
+              <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/4 p-4 text-sm text-white/85">
+                <input
+                  type="checkbox"
+                  checked={attachCheck}
+                  onChange={(event) => setAttachCheck(event.target.checked)}
+                  className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                />
+                <span>
+                  <span className="font-semibold">{t("quoteForm.attachSiteCheck")}</span>
+                  <span className="mt-1 block text-xs text-white/60">
+                    {t("quoteForm.attachSiteCheckHint", {
+                      host: hostOf(storedCheck.result.url),
+                      device: t(`siteCheck.strategy.${storedCheck.result.strategy}`),
+                      score: storedCheck.result.scores.performance ?? "–",
+                    })}
+                  </span>
+                </span>
+              </label>
+            ) : null}
 
             <label className="flex items-start gap-3 text-sm leading-6 text-white/80">
               <input

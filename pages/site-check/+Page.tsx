@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import {
   AccessibilityIcon,
   ArrowRightIcon,
+  FileDownIcon,
   GaugeIcon,
   LoaderCircleIcon,
   MonitorIcon,
@@ -28,6 +29,7 @@ import {
   type SiteCheckStrategy,
 } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
+import { storeSiteCheck } from "@/src/siteCheckStorage";
 
 const SCORE_KEYS = ["performance", "accessibility", "bestPractices", "seo"] as const;
 const ABOUT_ICONS: Record<(typeof SCORE_KEYS)[number], LucideIcon> = {
@@ -80,6 +82,9 @@ export default function Page() {
   const [progressIndex, setProgressIndex] = useState(0);
   const [error, setError] = useState<SiteCheckError | null>(null);
   const [result, setResult] = useState<SiteCheckResult | null>(null);
+  const [checkedAt, setCheckedAt] = useState<Date | null>(null);
+  const [isMakingPdf, setIsMakingPdf] = useState(false);
+  const [pdfFailed, setPdfFailed] = useState(false);
   const resultRef = useRef<HTMLDivElement | null>(null);
 
   const progress = t("siteCheck.progress", { returnObjects: true }) as unknown;
@@ -113,12 +118,30 @@ export default function Page() {
     try {
       const next = await runSiteCheck(target.trim(), device, lang);
       setResult(next);
+      setCheckedAt(new Date());
+      // Kept for the quote form, which offers to attach it.
+      storeSiteCheck(next);
       trackEvent("site_check_run", { strategy: device, result: "success" });
     } catch (failure) {
       setError(failure instanceof SiteCheckFailure ? failure.reason : "busy");
       trackEvent("site_check_run", { strategy: device, result: "error" });
     } finally {
       setIsChecking(false);
+    }
+  };
+
+  const downloadPdf = async () => {
+    if (!result || isMakingPdf) return;
+    setIsMakingPdf(true);
+    setPdfFailed(false);
+    try {
+      const { downloadSiteCheckReport } = await import("@/src/siteCheckReport");
+      await downloadSiteCheckReport(result, t, lang, checkedAt ?? new Date());
+      trackEvent("site_check_pdf", { strategy: result.strategy });
+    } catch {
+      setPdfFailed(true);
+    } finally {
+      setIsMakingPdf(false);
     }
   };
 
@@ -373,6 +396,19 @@ export default function Page() {
             <div className="mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-5">
               <button
                 type="button"
+                onClick={() => void downloadPdf()}
+                disabled={isMakingPdf}
+                className="inline-flex items-center gap-2 rounded-xl bg-linear-to-r from-(--color-secondary-warm) to-(--accent) px-4 py-2.5 text-sm font-bold text-[#140814] transition-transform hover:-translate-y-0.5 disabled:cursor-wait disabled:opacity-70"
+              >
+                {isMakingPdf ? (
+                  <LoaderCircleIcon className="size-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <FileDownIcon className="size-4" aria-hidden="true" />
+                )}
+                {isMakingPdf ? t("siteCheck.pdf.generating") : t("siteCheck.pdf.button")}
+              </button>
+              <button
+                type="button"
                 onClick={() => void check(result.url, otherDevice)}
                 disabled={isChecking}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/85 transition-colors hover:border-white/30 hover:text-white disabled:opacity-60"
@@ -386,6 +422,11 @@ export default function Page() {
                   device: t(`siteCheck.strategy.${otherDevice}`).toLowerCase(),
                 })}
               </button>
+              {pdfFailed ? (
+                <p role="alert" className="w-full text-sm text-red-200">
+                  {t("siteCheck.pdf.failed")}
+                </p>
+              ) : null}
             </div>
           </div>
 

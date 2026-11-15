@@ -669,7 +669,9 @@
       "mode": "Ajánlat típusa",
       "message": "Üzenet",
       "edit": "Módosítás",
-      "contactPreference": "Kapcsolatfelvétel"
+      "contactPreference": "Kapcsolatfelvétel",
+      "siteCheck": "Weboldal-teszt",
+      "siteCheckAttached": "Csatolva"
     },
     "errors": {
       "name": "Add meg a neved (legalább 2 karakter).",
@@ -678,7 +680,9 @@
       "consent": "A küldéshez fogadd el az adatkezelési tájékoztatót.",
       "phone": "Ha telefonon kérsz visszahívást, add meg a számod."
     },
-    "siteCheckMessage": "Lemértem a(z) {{url}} oldalt a weboldal-ellenőrzővel, és szeretném, ha gyorsabb és jobb lenne. Kérnék egy ajánlatot a javításra."
+    "siteCheckMessage": "Lemértem a(z) {{url}} oldalt a weboldal-ellenőrzővel, és szeretném, ha gyorsabb és jobb lenne. Kérnék egy ajánlatot a javításra.",
+    "attachSiteCheck": "Mellékelem a weboldal-ellenőrzés eredményét",
+    "attachSiteCheckHint": "{{host}} · {{device}} · teljesítmény: {{score}}"
   },
   "certificatesPage": {
     "label": "Tanúsítványok",
@@ -868,7 +872,7 @@
       "AVERAGE": "Javítandó",
       "SLOW": "Gyenge"
     },
-    "labTitle": "Laboratóriumi mérés",
+    "labTitle": "Részletes mérőszámok",
     "opportunitiesTitle": "A legnagyobb javítási lehetőségek",
     "savings": "kb. {{seconds}} mp gyorsulás",
     "noOpportunities": "Nincs jelentős gyorsítási lehetőség – szép munka!",
@@ -891,6 +895,15 @@
     "note": "A mérést a Google PageSpeed Insights végzi, az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem.",
     "clsSavings": "Kevesebb elrendezés-ugrálás (CLS)",
     "genericSavings": "Gyorsabb betöltés",
-    "noOpportunitiesWeak": "A Google most nem nevezett meg külön javítási tételt, de a fenti mérőszámok alapján van mit javítani – szívesen megnézem részletesen."
+    "noOpportunitiesWeak": "A Google most nem nevezett meg külön javítási tételt, de a fenti mérőszámok alapján van mit javítani – szívesen megnézem részletesen.",
+    "pdf": {
+      "button": "PDF riport letöltése",
+      "generating": "PDF készül…",
+      "failed": "A PDF most nem készült el. Próbáld újra.",
+      "title": "Weboldal-ellenőrzés riport",
+      "checkedAt": "Mérve: {{date}}",
+      "contact": "Kérj ajánlatot: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
+      "footerNote": "A mérést a Google PageSpeed Insights végezte; az eredmény mérésről mérésre kissé eltérhet."
+    }
   }
 }

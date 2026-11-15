@@ -298,7 +298,9 @@ describe("QuoteRequestForm", () => {
     expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
 
     fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
-    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "nem-email" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), {
+      target: { value: "nem-email" },
+    });
     next();
 
     expect(screen.getByText("2. lépés / 4")).toBeInTheDocument();
@@ -325,14 +327,18 @@ describe("QuoteRequestForm", () => {
 
     next();
     fireEvent.change(screen.getByLabelText("Név"), { target: { value: "Teszt Elek" } });
-    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), { target: { value: "teszt@pelda.hu" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^E-mail/ }), {
+      target: { value: "teszt@pelda.hu" },
+    });
     fireEvent.click(screen.getByRole("radio", { name: "Telefonon" }));
     next();
     expect(
       screen.getByText("Ha telefonon kérsz visszahívást, add meg a számod.")
     ).toBeInTheDocument();
 
-    fireEvent.change(screen.getByRole("textbox", { name: /^Telefon/ }), { target: { value: "+36 30 123 4567" } });
+    fireEvent.change(screen.getByRole("textbox", { name: /^Telefon/ }), {
+      target: { value: "+36 30 123 4567" },
+    });
     next();
     fireEvent.change(screen.getByLabelText("Pár mondat a projektről"), {
       target: { value: "Egy egyszerű bemutatkozó oldal kellene." },
@@ -345,5 +351,69 @@ describe("QuoteRequestForm", () => {
       contactPreference: "phone",
       phone: "+36 30 123 4567",
     });
+  });
+
+  it("offers to attach a website check from this tab, and sends it only when ticked", async () => {
+    sessionStorage.setItem(
+      "synelweb:site-check",
+      JSON.stringify({
+        checkedAt: new Date().toISOString(),
+        result: {
+          url: "https://pelda.hu",
+          finalUrl: "https://pelda.hu/",
+          strategy: "mobile",
+          scores: { performance: 72, accessibility: 96, bestPractices: 96, seo: 100 },
+          lab: [{ id: "lcp", title: "Largest Contentful Paint", value: "3,4 s", score: 0.4 }],
+          field: [],
+          opportunities: [
+            { id: "x", title: "Layout shift culprits", savingsMs: 0, clsSavings: 0.38, value: "" },
+          ],
+        },
+      })
+    );
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+
+    fillContact();
+    next();
+    const attach = screen.getByRole("checkbox", { name: /Mellékelem a weboldal-ellenőrzés/ });
+    expect(attach).not.toBeChecked();
+    expect(screen.getByText("pelda.hu · Mobil · teljesítmény: 72")).toBeInTheDocument();
+    fireEvent.click(attach);
+    fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
+    fireEvent.submit(screen.getByRole("button", { name: /kérek/ }).closest("form")!);
+
+    await screen.findByRole("status");
+    expect(sentPayload().siteCheck).toMatchObject({
+      url: "https://pelda.hu",
+      strategy: "mobile",
+      scores: { performance: 72 },
+      lab: [{ title: "Largest Contentful Paint", value: "3,4 s" }],
+      opportunities: [{ title: "Layout shift culprits", savingsMs: 0, clsSavings: 0.38 }],
+    });
+    sessionStorage.clear();
+  });
+
+  it("doesn't send a stored check that wasn't ticked", async () => {
+    sessionStorage.setItem(
+      "synelweb:site-check",
+      JSON.stringify({
+        checkedAt: new Date().toISOString(),
+        result: {
+          url: "https://pelda.hu",
+          finalUrl: "",
+          strategy: "mobile",
+          scores: { performance: 72, accessibility: 1, bestPractices: 1, seo: 1 },
+          lab: [],
+          field: [],
+          opportunities: [],
+        },
+      })
+    );
+    await renderWithI18n(<QuoteRequestForm lang="hu" privacyHref="/adatkezeles" />);
+    fillContact();
+    submit();
+    await screen.findByRole("status");
+    expect(sentPayload()).not.toHaveProperty("siteCheck");
+    sessionStorage.clear();
   });
 });

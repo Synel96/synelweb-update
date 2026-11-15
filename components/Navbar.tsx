@@ -1,4 +1,17 @@
-import { MailIcon, PhoneIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  BadgeCheckIcon,
+  BriefcaseIcon,
+  CpuIcon,
+  FolderKanbanIcon,
+  GaugeIcon,
+  HomeIcon,
+  MailIcon,
+  NewspaperIcon,
+  PhoneIcon,
+  UserRoundIcon,
+  type LucideIcon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
@@ -16,6 +29,24 @@ import { NavDropdown } from "./NavDropdown";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
+import { quoteFormHref } from "@/src/quoteForm";
+import { trackEvent } from "@/src/analytics";
+
+// Icons for the mobile menu's items.
+const NAV_ICONS: Record<string, LucideIcon> = {
+  "/": HomeIcon,
+  "/services": BriefcaseIcon,
+  "/site-check": GaugeIcon,
+  "/projects": FolderKanbanIcon,
+  "/certificates": BadgeCheckIcon,
+  "/blog": NewspaperIcon,
+  "/technology": CpuIcon,
+  "/contact": MailIcon,
+  "/about": UserRoundIcon,
+};
+
+// Items that get a small badge in the mobile menu.
+const NAV_BADGES: Record<string, string> = { "/site-check": "nav.freeBadge" };
 
 function MenuToggleIcon({ open }: { open: boolean }) {
   return (
@@ -193,58 +224,109 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
                 className="border-l-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
               >
                 <PushDrawerTitle className="sr-only">{t("nav.navigationMenu")}</PushDrawerTitle>
-                <nav className="mt-2 flex flex-col gap-1 px-4 pb-6">
-                  {visibleNavLinks.map((item) => (
-                    <div key={item.href} className="flex flex-col gap-1">
-                      <PushDrawerClose asChild>
-                        <a
-                          href={langHref(item.href)}
-                          className={`rounded-md px-3 py-2 text-sm ${
-                            isActive(item.href)
-                              ? "bg-white/15 font-medium text-(--brand-on-surface)"
-                              : "text-white/75 hover:bg-white/10 hover:text-(--brand-on-surface)"
-                          }`}
-                        >
-                          {navLabel(item)}
-                        </a>
-                      </PushDrawerClose>
-                      {visibleSubLinks(item, lang)
-                        .filter((sub) => sub.href !== item.href)
-                        .map((sub) => (
-                          <PushDrawerClose asChild key={sub.href}>
-                            <a
-                              href={langHref(sub.href)}
-                              className={`ml-4 rounded-md border-l border-white/15 px-3 py-1.5 text-sm ${
-                                logicalPath === sub.href
-                                  ? "font-medium text-(--brand-on-surface)"
-                                  : "text-white/60 hover:bg-white/10 hover:text-(--brand-on-surface)"
-                              }`}
-                            >
-                              {sub.label}
-                            </a>
-                          </PushDrawerClose>
-                        ))}
-                    </div>
-                  ))}
+                <div className="px-5 pt-5 pb-3">
+                  <a
+                    href={langHref("/")}
+                    className="brand-tech bg-[linear-gradient(120deg,var(--color-secondary-warm),var(--color-secondary-hot)_62%,var(--color-secondary-warm))] bg-clip-text text-lg font-semibold tracking-[0.14em] text-transparent"
+                  >
+                    {BRAND_NAME}
+                  </a>
+                </div>
+
+                <nav className="flex flex-col gap-0.5 px-3 pb-4">
+                  {visibleNavLinks.map((item) => {
+                    const Icon = NAV_ICONS[item.href];
+                    const active = isActive(item.href);
+                    const badge = NAV_BADGES[item.href];
+                    return (
+                      <div key={item.href} className="flex flex-col">
+                        <PushDrawerClose asChild>
+                          <a
+                            href={langHref(item.href)}
+                            aria-current={logicalPath === item.href ? "page" : undefined}
+                            className={`relative flex items-center gap-3 rounded-xl px-3 py-2 text-[0.95rem] transition-colors ${
+                              active
+                                ? "bg-linear-to-r from-(--color-secondary-warm)/15 to-(--accent)/15 font-medium text-white"
+                                : "text-white/75 hover:bg-white/6 hover:text-white"
+                            }`}
+                          >
+                            {active ? (
+                              <span
+                                className="absolute top-2 bottom-2 left-0 w-1 rounded-full bg-linear-to-b from-(--color-secondary-warm) to-(--accent)"
+                                aria-hidden="true"
+                              />
+                            ) : null}
+                            {Icon ? (
+                              <span
+                                className={`flex size-8 shrink-0 items-center justify-center rounded-lg ${
+                                  active
+                                    ? "bg-white/10 text-(--accent)"
+                                    : "bg-white/5 text-white/60"
+                                }`}
+                              >
+                                <Icon className="size-4" aria-hidden="true" />
+                              </span>
+                            ) : null}
+                            <span className="flex-1">{navLabel(item)}</span>
+                            {badge ? (
+                              <span className="rounded-full border border-emerald-300/40 bg-emerald-400/12 px-2 py-0.5 text-[0.62rem] font-bold tracking-[0.08em] text-emerald-300 uppercase">
+                                {t(badge)}
+                              </span>
+                            ) : null}
+                          </a>
+                        </PushDrawerClose>
+                        {visibleSubLinks(item, lang)
+                          .filter((sub) => sub.href !== item.href)
+                          .map((sub) => (
+                            <PushDrawerClose asChild key={sub.href}>
+                              <a
+                                href={langHref(sub.href)}
+                                aria-current={logicalPath === sub.href ? "page" : undefined}
+                                className={`ml-[1.65rem] border-l border-white/10 py-1.5 pl-5 text-sm transition-colors ${
+                                  logicalPath === sub.href
+                                    ? "border-(--accent) font-medium text-white"
+                                    : "text-white/60 hover:text-white"
+                                }`}
+                              >
+                                {sub.label}
+                              </a>
+                            </PushDrawerClose>
+                          ))}
+                      </div>
+                    );
+                  })}
                 </nav>
 
-                <div className="border-t border-white/10 px-4 pt-4 pb-4">
+                <div className="px-4 pb-5">
+                  <PushDrawerClose asChild>
+                    <a
+                      href={quoteFormHref(lang)}
+                      onClick={() => trackEvent("quote_cta_click", { location: "mobile_menu" })}
+                      className="flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-(--color-secondary-warm) to-(--accent) px-4 py-3 text-sm font-bold tracking-[0.06em] text-[#140814] uppercase shadow-[0_10px_24px_-12px_var(--accent-glow)]"
+                    >
+                      {t("nav.quoteCta")}
+                      <ArrowRightIcon className="size-4" aria-hidden="true" />
+                    </a>
+                  </PushDrawerClose>
+                </div>
+
+                <div className="border-t border-white/10 px-4 py-4">
                   <LanguageSwitcher />
                 </div>
 
                 <div className="flex flex-col gap-2 border-t border-white/10 px-4 pt-4 pb-6">
                   <a
                     href="tel:+36303645516"
-                    className="flex items-center gap-2 text-sm font-medium text-(--accent) transition-colors hover:text-(--accent)/80"
+                    className="flex items-center gap-3 rounded-xl bg-white/5 px-3 py-2.5 text-sm font-medium text-white/85 transition-colors hover:bg-white/10"
                   >
-                    <PhoneIcon className="size-4" aria-hidden="true" />
+                    <PhoneIcon className="size-4 text-(--accent)" aria-hidden="true" />
                     +36 30 364 5516
                   </a>
                   <a
                     href="mailto:info@synelweb.hu"
-                    className="flex items-center gap-2 text-sm font-medium text-(--accent) transition-colors hover:text-(--accent)/80"
+                    className="flex items-center gap-3 rounded-xl bg-white/5 px-3 py-2.5 text-sm font-medium text-white/85 transition-colors hover:bg-white/10"
                   >
-                    <MailIcon className="size-4" aria-hidden="true" />
+                    <MailIcon className="size-4 text-(--accent)" aria-hidden="true" />
                     info@synelweb.hu
                   </a>
                 </div>

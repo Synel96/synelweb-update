@@ -12,7 +12,9 @@
     "closeMenu": "Menü bezárása",
     "navigationMenu": "Navigációs menü",
     "certificates": "Tanúsítványok",
-    "siteCheck": "Weboldal-teszt"
+    "siteCheck": "Weboldal-teszt",
+    "freeBadge": "Ingyenes",
+    "quoteCta": "Kérek ajánlatot"
   },
   "footer": {
     "allRightsReserved": "Minden jog fenntartva."

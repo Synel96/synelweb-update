@@ -12,7 +12,9 @@
     "closeMenu": "Menü schließen",
     "navigationMenu": "Navigationsmenü",
     "certificates": "Zertifikate",
-    "siteCheck": "Website-Check"
+    "siteCheck": "Website-Check",
+    "freeBadge": "Kostenlos",
+    "quoteCta": "Angebot anfordern"
   },
   "footer": {
     "allRightsReserved": "Alle Rechte vorbehalten."

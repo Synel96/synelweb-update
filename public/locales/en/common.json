@@ -12,7 +12,9 @@
     "closeMenu": "Close menu",
     "navigationMenu": "Navigation menu",
     "certificates": "Certificates",
-    "siteCheck": "Site check"
+    "siteCheck": "Site check",
+    "freeBadge": "Free",
+    "quoteCta": "Request a quote"
   },
   "footer": {
     "allRightsReserved": "All rights reserved."

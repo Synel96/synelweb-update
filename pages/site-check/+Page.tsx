@@ -348,13 +348,24 @@ export default function Page() {
                       >
                         <p className="font-medium text-white">{item.title}</p>
                         <p className="mt-1 text-xs font-semibold text-amber-300">
-                          {t("siteCheck.savings", { seconds: formatSeconds(item.savingsMs, lang) })}
+                          {item.savingsMs >= 100
+                            ? t("siteCheck.savings", {
+                                seconds: formatSeconds(item.savingsMs, lang),
+                              })
+                            : (item.clsSavings ?? 0) > 0
+                              ? t("siteCheck.clsSavings")
+                              : t("siteCheck.genericSavings")}
                         </p>
                       </li>
                     ))}
                   </ol>
                 ) : (
-                  <p className="mt-2 text-sm text-white/65">{t("siteCheck.noOpportunities")}</p>
+                  <p className="mt-2 text-sm text-white/65">
+                    {/* Only praise a page that actually scores well. */}
+                    {(performance ?? 0) >= 90
+                      ? t("siteCheck.noOpportunities")
+                      : t("siteCheck.noOpportunitiesWeak")}
+                  </p>
                 )}
               </div>
             </div>

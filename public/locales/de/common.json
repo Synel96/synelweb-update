@@ -888,6 +888,9 @@
         "seo": "Die technischen SEO-Grundlagen: Titel, Beschreibungen, Indexierbarkeit, mobilfreundliches Layout."
       }
     },
-    "note": "Die Messung führt Google PageSpeed Insights durch; die Ergebnisse können von Messung zu Messung leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten."
+    "note": "Die Messung führt Google PageSpeed Insights durch; die Ergebnisse können von Messung zu Messung leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten.",
+    "clsSavings": "Weniger Layout-Verschiebungen (CLS)",
+    "genericSavings": "Schnelleres Laden",
+    "noOpportunitiesWeak": "Google hat diesmal keine einzelne Maßnahme genannt, aber die Werte oben zeigen Verbesserungspotenzial – ich schaue es mir gern genauer an."
   }
 }

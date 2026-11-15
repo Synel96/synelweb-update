@@ -888,6 +888,9 @@
         "seo": "A keresőoptimalizálás technikai alapjai: címek, leírások, indexelhetőség, mobilbarát megjelenés."
       }
     },
-    "note": "A mérést a Google PageSpeed Insights végzi, az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem."
+    "note": "A mérést a Google PageSpeed Insights végzi, az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem.",
+    "clsSavings": "Kevesebb elrendezés-ugrálás (CLS)",
+    "genericSavings": "Gyorsabb betöltés",
+    "noOpportunitiesWeak": "A Google most nem nevezett meg külön javítási tételt, de a fenti mérőszámok alapján van mit javítani – szívesen megnézem részletesen."
   }
 }

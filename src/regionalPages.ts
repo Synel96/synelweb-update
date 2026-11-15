@@ -1,5 +1,3 @@
-import type { RegionalLogicalPath } from "@/src/localizedRoutes";
-
 // Copy for the regional landing pages. Each page targets one market in one
 // language, so the text lives here rather than in the (three-language)
 // locale files.
@@ -41,7 +39,14 @@ export type RegionalContent = {
   finalText: string;
 };
 
-export const REGIONAL_CONTENT: Record<RegionalLogicalPath, RegionalContent> = {
+// The regional landing pages among the single-language pages (REGIONAL_PAGES).
+export type RegionalLandingPath = "/sopron" | "/austria";
+
+export function isRegionalLandingPath(path: string): path is RegionalLandingPath {
+  return path === "/sopron" || path === "/austria";
+}
+
+export const REGIONAL_CONTENT: Record<RegionalLandingPath, RegionalContent> = {
   "/sopron": {
     eyebrow: "Sopron és környéke",
     title: "Weboldal készítés Sopronban",

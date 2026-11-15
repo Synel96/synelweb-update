@@ -53,6 +53,7 @@ export const BREADCRUMB_LABELS: Record<SupportedLang, Record<KnownLogicalPath, s
 export const REGIONAL_BREADCRUMB_LABELS: Record<RegionalLogicalPath, string> = {
   "/sopron": "Weboldal készítés Sopron",
   "/austria": "Webdesign Burgenland & Wien",
+  "/grants": "Pályázati weboldal",
 };
 
 export function isKnownLogicalPath(path: string): path is KnownLogicalPath {

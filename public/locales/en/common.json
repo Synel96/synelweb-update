@@ -677,7 +677,8 @@
       "message": "Please write a few sentences about the project (at least 10 characters).",
       "consent": "Please accept the privacy notice to send.",
       "phone": "To be called back, please enter your phone number."
-    }
+    },
+    "isGrantFundedHint": "I work on the open market (not an accredited MVP supplier) – we'll check the call's conditions together."
   },
   "certificatesPage": {
     "label": "Certificates",

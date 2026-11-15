@@ -370,6 +370,13 @@ export default function Page() {
             <p className="mt-4 text-left text-sm leading-7 text-white/78 sm:text-base">
               {t("servicesPage.grants.text")}
             </p>
+            <a
+              href={localizePath("/grants", routeLang)}
+              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-(--accent) transition-colors hover:text-(--primary)"
+            >
+              {t("servicesPage.grants.link")}
+              <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </a>
           </div>
         </section>
       ) : null}

@@ -46,6 +46,7 @@ export const NAV_LINKS: readonly NavLink[] = [
       // Regional landing pages are for search visitors, not for browsing.
       { href: "/sopron", label: { hu: "Sopron és környéke" }, footerOnly: true },
       { href: "/austria", label: { de: "Burgenland & Wien" }, footerOnly: true },
+      { href: "/grants", label: { hu: "Pályázati weboldal" }, footerOnly: true },
     ],
   },
   { href: "/projects", labelKey: "nav.projects" },

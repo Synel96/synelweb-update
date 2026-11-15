@@ -18,7 +18,7 @@ import {
   type BreadcrumbItem,
 } from "../src/structuredData";
 import { withCloudinaryAutoParams } from "@/src/cloudinary";
-import { REGIONAL_CONTENT } from "@/src/regionalPages";
+import { isRegionalLandingPath, REGIONAL_CONTENT } from "@/src/regionalPages";
 
 type BlogDetailData = {
   post?: {
@@ -95,7 +95,7 @@ export function Head() {
     ];
   }
 
-  const regionalServiceJsonLd = isRegionalLogicalPath(logicalPath)
+  const regionalServiceJsonLd = isRegionalLandingPath(logicalPath)
     ? buildRegionalServiceJsonLd({
         url: meta.canonicalUrl,
         name: REGIONAL_CONTENT[logicalPath].title,

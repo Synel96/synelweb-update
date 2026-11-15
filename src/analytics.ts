@@ -18,7 +18,8 @@ export type QuoteCtaLocation =
   | "austria_hero"
   | "austria_final"
   | "google_ads_hero"
-  | "google_ads_final";
+  | "google_ads_final"
+  | "site_check";
 
 export type ContactMethod = "phone" | "email" | "facebook" | "linkedin";
 
@@ -27,6 +28,7 @@ type Events = {
   quote_form_start: { mode: string };
   quote_form_mode: { mode: string };
   quote_form_step: { step: string; mode: string };
+  site_check_run: { strategy: string; result: "success" | "error" };
   quote_form_submit: { mode: string; service: string; result: "success" | "error" | "throttled" };
   contact_click: { method: ContactMethod; location: string };
 };

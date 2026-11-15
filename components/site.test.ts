@@ -14,6 +14,7 @@ describe("NAV_LINKS", () => {
     expect(hrefs).toEqual([
       "/",
       "/services",
+      "/site-check",
       "/projects",
       "/certificates",
       "/blog",

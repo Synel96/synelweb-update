@@ -72,6 +72,7 @@ type QuoteRequestFormProps = {
   privacyHref: string;
   initialService?: string;
   initialMode?: QuoteMode;
+  initialMessage?: string;
 };
 
 const INPUT_CLASS =
@@ -167,6 +168,7 @@ export function QuoteRequestForm({
   privacyHref,
   initialService = "",
   initialMode = "simple",
+  initialMessage = "",
 }: QuoteRequestFormProps) {
   const { t } = useTranslation();
   const formId = useId();
@@ -179,7 +181,7 @@ export function QuoteRequestForm({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [consent, setConsent] = useState(false);
   const [company, setCompany] = useState("");
 

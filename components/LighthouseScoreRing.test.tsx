@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { LighthouseScoreRing } from "./LighthouseScoreRing";
+import { LighthouseScoreRing, scoreTone } from "./LighthouseScoreRing";
 
 let observedCallback: IntersectionObserverCallback | null = null;
 let disconnectSpy: ReturnType<typeof vi.fn>;
@@ -74,5 +74,15 @@ describe("LighthouseScoreRing", () => {
 
     triggerIntersection(true);
     expect(await screen.findByText("92")).toBeInTheDocument();
+  });
+
+  it("uses Lighthouse's colour bands", () => {
+    expect([scoreTone(100), scoreTone(90), scoreTone(89), scoreTone(50), scoreTone(49)]).toEqual([
+      "good",
+      "good",
+      "average",
+      "average",
+      "poor",
+    ]);
   });
 });

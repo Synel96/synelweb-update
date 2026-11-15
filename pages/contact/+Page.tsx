@@ -83,13 +83,18 @@ export default function Page() {
   const lang = pageContext.lang ?? DEFAULT_LANG;
   // The page is prerendered, so the query string (a service card's
   // ?service=, or ?mode=detailed) is only known in the browser.
-  const [preset, setPreset] = useState<{ service: string; mode: QuoteMode } | null>(null);
+  const [preset, setPreset] = useState<{
+    service: string;
+    mode: QuoteMode;
+    site: string;
+  } | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setPreset({
       service: params.get("service") ?? "",
       mode: params.get("mode") === "detailed" ? "detailed" : "simple",
+      site: (params.get("site") ?? "").slice(0, 300),
     });
   }, []);
 
@@ -273,11 +278,14 @@ export default function Page() {
           </p>
         </div>
         <QuoteRequestForm
-          key={preset ? `${preset.service}-${preset.mode}` : "default"}
+          key={preset ? `${preset.service}-${preset.mode}-${preset.site}` : "default"}
           lang={lang}
           privacyHref="/adatkezeles"
           initialService={preset?.service}
           initialMode={preset?.mode}
+          initialMessage={
+            preset?.site ? t("quoteForm.siteCheckMessage", { url: preset.site }) : undefined
+          }
         />
       </section>
 

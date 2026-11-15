@@ -143,7 +143,7 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-3.5 text-sm lg:flex xl:gap-6 xl:text-base">
           {visibleNavLinks
             .filter((item) => !item.hiddenInDesktopNav)
             .map((item) => {

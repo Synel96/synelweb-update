@@ -29,6 +29,8 @@ import {
   type AppLang,
   type ServiceCard,
 } from "@/src/services/serviceCardsService";
+import { JsonLd } from "@/components/JsonLd";
+import { buildFaqJsonLd } from "@/src/structuredData";
 
 export type RegionalPageData = {
   services: ServiceCard[];
@@ -87,6 +89,11 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
 
   return (
     <>
+      <JsonLd
+        data={buildFaqJsonLd(
+          content.faq.map(({ q, a }) => ({ q, a: a.replace("{{maintenance}}", maintenancePrice) }))
+        )}
+      />
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 text-center sm:pt-40 sm:pb-16">
         <p className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
           {content.eyebrow}

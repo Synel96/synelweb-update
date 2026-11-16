@@ -1,6 +1,6 @@
 import type { SupportedLang } from "../src/i18n-config";
 import { DEFAULT_LANG } from "../src/i18n-config";
-import { getSeoEntry } from "../src/seo";
+import { getSeoEntry, toPostTitle } from "../src/seo";
 
 export default function title(pageContext: {
   urlPathname: string;
@@ -15,7 +15,7 @@ export default function title(pageContext: {
   const blogPostTitle = pageContext.data?.post?.title?.trim();
 
   if (blogPostTitle) {
-    return blogPostTitle;
+    return toPostTitle(blogPostTitle);
   }
 
   return getSeoEntry(pageContext.urlPathname, lang).title;

@@ -1,6 +1,6 @@
 import type { SupportedLang } from "../src/i18n-config";
 import { DEFAULT_LANG } from "../src/i18n-config";
-import { getSeoEntry } from "../src/seo";
+import { getSeoEntry, toMetaDescription } from "../src/seo";
 
 export default function description(pageContext: {
   urlPathname: string;
@@ -15,7 +15,7 @@ export default function description(pageContext: {
   const blogPostDescription = pageContext.data?.post?.description?.trim();
 
   if (blogPostDescription) {
-    return blogPostDescription;
+    return toMetaDescription(blogPostDescription);
   }
 
   return getSeoEntry(pageContext.urlPathname, lang).description;

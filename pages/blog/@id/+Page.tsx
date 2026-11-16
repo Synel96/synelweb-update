@@ -93,8 +93,8 @@ export const markdownComponents = {
 
 type Data = {
   post: BlogPostDetail | null;
-  previousPost: { id: string; title: string } | null;
-  nextPost: { id: string; title: string } | null;
+  previousPost: { id: string; urlKey: string; title: string } | null;
+  nextPost: { id: string; urlKey: string; title: string } | null;
   fetchError: boolean;
   notFound: boolean;
 };
@@ -246,7 +246,7 @@ export default function Page() {
         : translateWithFallback(t, "blogPage.categories.professional", "Szakmai");
   const createdAtLabel = formatDate(post.createdAt, locale);
   const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
-  const postHref = `/${routeLang}/blog/${encodeURIComponent(post.id)}`;
+  const postHref = `/${routeLang}/blog/${encodeURIComponent(post.urlKey)}`;
   const shareActionLabel = translateWithFallback(t, "blogPage.share.action", "Megosztás");
   const shareCopyLabel = translateWithFallback(t, "blogPage.share.copy", "Link másolása");
   const shareCopiedLabel = translateWithFallback(t, "blogPage.share.copied", "Link másolva");
@@ -373,7 +373,7 @@ export default function Page() {
         <nav aria-label={postNavigationLabel} className="mt-10 grid gap-4 sm:grid-cols-2">
           {data.previousPost ? (
             <a
-              href={`/${routeLang}/blog/${encodeURIComponent(data.previousPost.id)}`}
+              href={`/${routeLang}/blog/${encodeURIComponent(data.previousPost.urlKey)}`}
               className="group fancy-card fancy-card-lift rounded-3xl px-5 py-5"
             >
               <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">
@@ -400,7 +400,7 @@ export default function Page() {
 
           {data.nextPost ? (
             <a
-              href={`/${routeLang}/blog/${encodeURIComponent(data.nextPost.id)}`}
+              href={`/${routeLang}/blog/${encodeURIComponent(data.nextPost.urlKey)}`}
               className="group fancy-card fancy-card-lift rounded-3xl px-5 py-5 text-right"
             >
               <span className="text-xs font-semibold tracking-[0.16em] text-white/50 uppercase">

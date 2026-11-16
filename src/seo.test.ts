@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildMeta, getSeoEntry } from "./seo";
+import { buildMeta, getSeoEntry, toMetaDescription, toPostTitle } from "./seo";
 
 describe("getSeoEntry", () => {
   it("returns the localized title/description for a known path", () => {
@@ -87,5 +87,52 @@ describe("buildMeta for single-language pages", () => {
 
     expect(meta.canonicalUrl).toBe("https://synelweb.hu/de/blog");
     expect(meta.alternates.map((a) => a.hreflang)).toEqual(["en", "hu", "de", "x-default"]);
+  });
+});
+
+describe("toMetaDescription", () => {
+  it("leaves a short description alone", () => {
+    expect(toMetaDescription("  Rövid   leírás.  ")).toBe("Rövid leírás.");
+  });
+
+  it("cuts a long one at a word boundary and marks the cut", () => {
+    const long = "szó ".repeat(80).trim();
+    const result = toMetaDescription(long);
+
+    expect(result.length).toBeLessThanOrEqual(155);
+    expect(result.endsWith("szó…")).toBe(true);
+  });
+});
+
+describe("toPostTitle", () => {
+  it("adds the brand when the result still fits a search result", () => {
+    expect(toPostTitle("Rövid cím")).toBe("Rövid cím | SynelWeb");
+  });
+
+  it("keeps a long title bare instead of having the brand cut off", () => {
+    const long = "Miért kerül ennyibe? A funkciók, amik észrevétlenül megdobják az árat";
+    expect(toPostTitle(long)).toBe(long);
+  });
+});
+
+describe("share images", () => {
+  const base = { title: null, description: null, image: null };
+
+  it("gives the site check and Google Ads pages their own image per language", () => {
+    expect(buildMeta({ ...base, pathname: "/site-check", lang: "de" }).image).toBe(
+      "https://synelweb.hu/og/site-check-de.jpg"
+    );
+    expect(buildMeta({ ...base, pathname: "/google-ads", lang: "hu" }).image).toBe(
+      "https://synelweb.hu/og/google-ads-hu.jpg"
+    );
+  });
+
+  it("uses the brand image elsewhere, and a post's own image for a post", () => {
+    expect(buildMeta({ ...base, pathname: "/about", lang: "hu" }).image).toBe(
+      "https://synelweb.hu/og-image.png"
+    );
+    expect(
+      buildMeta({ ...base, pathname: "/blog/x", lang: "hu", image: "https://img/x.jpg" }).image
+    ).toBe("https://img/x.jpg");
   });
 });

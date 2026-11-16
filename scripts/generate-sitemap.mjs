@@ -48,7 +48,6 @@ const LEGAL_PATHS = ["/adatkezeles", "/impresszum", "/aszf"];
 
 const PROD_API_BASE_URL = "https://synelweb.fly.dev";
 const SITE_URL = (process.env.VITE_SITE_URL || "https://synelweb.hu").replace(/\/+$/, "");
-const TODAY = new Date().toISOString().slice(0, 10);
 
 function resolveApiBaseUrl() {
   const configured = (process.env.VITE_API_BASE_URL || "").trim();
@@ -76,10 +75,12 @@ function addLocalizedGroup(groups, logicalPath) {
   }
 }
 
-async function fetchBlogPostIds(lang) {
+// Each post's address key (its slug, or the id if it has none) and the day
+// it last changed.
+async function fetchBlogPosts() {
   try {
     const response = await fetch(`${resolveApiBaseUrl()}/blog/blogposts/`, {
-      headers: { "Accept-Language": lang },
+      headers: { "Accept-Language": DEFAULT_LANG },
       signal: AbortSignal.timeout(10000),
     });
     if (!response.ok) return [];
@@ -88,8 +89,16 @@ async function fetchBlogPostIds(lang) {
     if (!Array.isArray(data)) return [];
 
     return data
-      .map((item) => (item?.id === undefined || item?.id === null ? "" : String(item.id).trim()))
-      .filter(Boolean);
+      .map((item) => {
+        const slug = typeof item?.slug === "string" ? item.slug.trim() : "";
+        const id = item?.id === undefined || item?.id === null ? "" : String(item.id).trim();
+        const changed = String(item?.updated_at ?? item?.created_at ?? "").slice(0, 10);
+        return {
+          key: slug || id,
+          lastmod: /^\d{4}-\d{2}-\d{2}$/.test(changed) ? changed : null,
+        };
+      })
+      .filter((post) => post.key);
   } catch {
     // Keep the build resilient if the blog API is unreachable at build time
     // — the next build picks up any posts missed this time.
@@ -104,7 +113,7 @@ async function buildEntries() {
     addLocalizedGroup(groups, logicalPath);
   }
 
-  const blogPostIds = await fetchBlogPostIds(DEFAULT_LANG);
+  const blogPosts = await fetchBlogPosts();
 
   const seen = new Set();
   const entries = [];
@@ -120,11 +129,12 @@ async function buildEntries() {
 
   // Blog posts are written in Hungarian only: the other languages show the
   // same text and are canonical to the Hungarian URL, so only that is listed.
-  for (const id of blogPostIds) {
+  for (const post of blogPosts) {
     entries.push({
-      path: localizePath(`/blog/${id}`, DEFAULT_LANG),
+      path: localizePath(`/blog/${encodeURIComponent(post.key)}`, DEFAULT_LANG),
       alternates: null,
       selfLang: DEFAULT_LANG,
+      lastmod: post.lastmod,
     });
   }
 
@@ -136,8 +146,12 @@ async function buildEntries() {
 }
 
 function toXml(entries) {
-  const urlBlocks = entries.map(({ path, alternates, selfLang }) => {
-    const lines = [`    <loc>${SITE_URL}${path}</loc>`, `    <lastmod>${TODAY}</lastmod>`];
+  // <lastmod> only where the real date is known (blog posts). Stamping every
+  // page with the build date told search engines that everything changed on
+  // every deploy, which makes them ignore the field.
+  const urlBlocks = entries.map(({ path, alternates, selfLang, lastmod }) => {
+    const lines = [`    <loc>${SITE_URL}${path}</loc>`];
+    if (lastmod) lines.push(`    <lastmod>${lastmod}</lastmod>`);
 
     if (alternates) {
       for (const lang of SUPPORTED_LANGS) {

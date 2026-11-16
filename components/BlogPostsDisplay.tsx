@@ -303,7 +303,7 @@ export default function BlogPostsDisplay({ posts, locale, t }: BlogPostsDisplayP
                 );
         const createdAtLabel = formatDate(post.createdAt, locale);
         const previewImageUrl = getPostPreviewImageUrl(post.previewImageUrl);
-        const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.id)}`;
+        const detailHref = `/${langPrefix}/blog/${encodeURIComponent(post.urlKey)}`;
 
         return (
           <BlogPostCard

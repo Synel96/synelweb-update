@@ -20,10 +20,10 @@ export async function onBeforePrerenderStart() {
       const posts = await getBlogPosts(appLang);
 
       for (const post of posts) {
-        const id = post.id.trim();
-        if (!id) continue;
+        const key = post.urlKey.trim();
+        if (!key) continue;
 
-        const logicalPath = `/blog/${encodeURIComponent(id)}`;
+        const logicalPath = `/blog/${encodeURIComponent(key)}`;
         routes.add(logicalPath);
         routes.add(localizePath(logicalPath, lang));
       }

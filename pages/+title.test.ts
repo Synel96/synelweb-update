@@ -3,7 +3,9 @@ import title from "./+title";
 
 describe("title pageContext hook", () => {
   it("returns the SEO title for a known logical path", () => {
-    expect(title({ urlPathname: "/about", lang: "hu" })).toBe("Rólam – webfejlesztő Sopronból | SynelWeb");
+    expect(title({ urlPathname: "/about", lang: "hu" })).toBe(
+      "Rólam – webfejlesztő Sopronból | SynelWeb"
+    );
   });
 
   it("defaults to the default language when unset", () => {
@@ -17,7 +19,7 @@ describe("title pageContext hook", () => {
         lang: "en",
         data: { post: { title: "  My Post  " } },
       })
-    ).toBe("My Post");
+    ).toBe("My Post | SynelWeb");
   });
 
   it("falls back to the SEO table when there is no post title", () => {

@@ -123,6 +123,9 @@ type BlogPostingInput = {
   description: string;
   image: string;
   datePublished: string;
+  dateModified?: string;
+  // The author's own page (the About page).
+  authorUrl?: string;
 };
 
 export function buildBlogPostingJsonLd({
@@ -131,8 +134,11 @@ export function buildBlogPostingJsonLd({
   description,
   image,
   datePublished,
+  dateModified,
+  authorUrl,
 }: BlogPostingInput) {
-  const hasValidDate = Boolean(datePublished) && !Number.isNaN(Date.parse(datePublished));
+  const isDate = (value?: string) => Boolean(value) && !Number.isNaN(Date.parse(value as string));
+  const hasValidDate = isDate(datePublished);
 
   return {
     "@context": "https://schema.org",
@@ -143,7 +149,10 @@ export function buildBlogPostingJsonLd({
     inLanguage: BLOG_POST_LANG,
     ...(image ? { image } : {}),
     ...(hasValidDate ? { datePublished } : {}),
-    author: { "@type": "Organization", name: BRAND_NAME, url: SITE_URL },
+    ...(isDate(dateModified) ? { dateModified } : {}),
+    // A named person, not the brand: who wrote it is what readers and search
+    // engines look for.
+    author: { "@type": "Person", name: OWNER_NAME, url: authorUrl ?? SITE_URL },
     publisher: {
       "@type": "Organization",
       name: BRAND_NAME,
@@ -176,5 +185,128 @@ export function buildRegionalServiceJsonLd({
     serviceType: "Web design and development",
     provider: { "@id": `${SITE_URL}/#organization` },
     areaServed: areasServed.map((place) => ({ "@type": "Place", name: place })),
+  };
+}
+
+const ORGANIZATION_REF = { "@id": `${SITE_URL}/#organization` };
+
+// The questions a page answers. Empty input gives null: no block at all.
+export function buildFaqJsonLd(items: Array<{ q: string; a: string }>) {
+  const questions = items.filter((item) => item.q.trim() && item.a.trim());
+  if (questions.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
+export type ServiceOffer = {
+  name: string;
+  description?: string;
+  url?: string;
+  // The lowest price the service is sold for (the sale price when on sale).
+  price?: number;
+  currency?: string;
+};
+
+// The services a page lists, with their starting prices.
+export function buildServiceCatalogJsonLd({
+  url,
+  name,
+  services,
+}: {
+  url: string;
+  name: string;
+  services: ServiceOffer[];
+}) {
+  const listed = services.filter((service) => service.name.trim());
+  if (listed.length === 0) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "@id": `${url}#services`,
+    name,
+    url,
+    itemListElement: listed.map((service) => ({
+      "@type": "Offer",
+      ...(typeof service.price === "number"
+        ? { price: service.price, priceCurrency: service.currency ?? "HUF" }
+        : {}),
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        ...(service.description ? { description: service.description } : {}),
+        ...(service.url ? { url: service.url } : {}),
+        provider: ORGANIZATION_REF,
+      },
+    })),
+  };
+}
+
+// One service with its own page (Google Ads management).
+export function buildServiceJsonLd({
+  url,
+  name,
+  description,
+  serviceType,
+  offers,
+}: {
+  url: string;
+  name: string;
+  description: string;
+  serviceType: string;
+  offers: Array<{ name: string; price: number; currency: string }>;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    description,
+    url,
+    serviceType,
+    provider: ORGANIZATION_REF,
+    areaServed: ["HU", "AT"],
+    offers: offers.map((offer) => ({
+      "@type": "Offer",
+      name: offer.name,
+      price: offer.price,
+      priceCurrency: offer.currency,
+    })),
+  };
+}
+
+// The free website checker: a web app anyone can use at no cost.
+export function buildWebApplicationJsonLd({
+  url,
+  name,
+  description,
+  lang,
+}: {
+  url: string;
+  name: string;
+  description: string;
+  lang: SupportedLang;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": `${url}#app`,
+    name,
+    description,
+    url,
+    inLanguage: lang,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Any",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: 0, priceCurrency: "HUF" },
+    provider: ORGANIZATION_REF,
   };
 }

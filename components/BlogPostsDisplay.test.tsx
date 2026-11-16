@@ -13,6 +13,8 @@ async function getT(lang: "hu" | "en" | "de" = "en"): Promise<TFunction> {
 
 const post: BlogPost = {
   id: "1",
+  urlKey: "hello-world",
+  updatedAt: "2026-03-06T00:00:00Z",
   title: "Hello world",
   description: "A short post about testing.",
   previewImageUrl: "https://example.com/pic.png",
@@ -36,7 +38,7 @@ describe("BlogPostsDisplay", () => {
 
     expect(screen.getByRole("link", { name: /vollständigen beitrag lesen/i })).toHaveAttribute(
       "href",
-      "/de/blog/1"
+      "/de/blog/hello-world"
     );
   });
 

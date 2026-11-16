@@ -19,6 +19,8 @@ type ApiBlogPost = {
   preview_image_url?: string | null;
   category?: string;
   created_at?: string;
+  slug?: string;
+  updated_at?: string;
 };
 
 type ApiBlogSection = {
@@ -35,11 +37,16 @@ type ApiBlogPostDetail = {
   preview_image_url?: string | null;
   category?: string;
   created_at?: string;
+  slug?: string;
+  updated_at?: string;
   sections?: ApiBlogSection[];
 };
 
 export type BlogPost = {
   id: string;
+  // What the post's address ends in: its slug, or the id if it has none.
+  urlKey: string;
+  updatedAt: string;
   title: string;
   description: string;
   previewImageUrl: string;
@@ -56,6 +63,8 @@ export type BlogPostSection = {
 
 export type BlogPostDetail = {
   id: string;
+  urlKey: string;
+  updatedAt: string;
   title: string;
   description: string;
   previewImageUrl: string;
@@ -103,8 +112,12 @@ export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
     const title = normalizeText(item.title);
     const createdAt = normalizeText(item.created_at);
 
+    const id = apiId || `${title || "blog-post"}-${createdAt || "date"}-${index}`;
+
     return {
-      id: apiId || `${title || "blog-post"}-${createdAt || "date"}-${index}`,
+      id,
+      urlKey: normalizeText(item.slug) || id,
+      updatedAt: normalizeText(item.updated_at),
       title,
       description: normalizeText(item.description),
       previewImageUrl: normalizeImageUrl(item.preview_image_url),
@@ -114,17 +127,21 @@ export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
   });
 }
 
+// `id` is a post id or its slug: the API answers to both.
 export async function getBlogPostDetail(id: string, lang: AppLang): Promise<BlogPostDetail> {
   const normalizedId = normalizeId(id);
   if (!normalizedId) {
     throw new Error("Blog post ID is required.");
   }
 
-  const response = await fetchWithTimeout(`${BLOG_POSTS_ENDPOINT}${encodeURIComponent(normalizedId)}/`, {
-    headers: {
-      "Accept-Language": lang,
-    },
-  });
+  const response = await fetchWithTimeout(
+    `${BLOG_POSTS_ENDPOINT}${encodeURIComponent(normalizedId)}/`,
+    {
+      headers: {
+        "Accept-Language": lang,
+      },
+    }
+  );
 
   if (!response.ok) {
     throw new BlogApiError("Failed to fetch blog post detail.", response.status);
@@ -136,6 +153,8 @@ export async function getBlogPostDetail(id: string, lang: AppLang): Promise<Blog
 
   return {
     id: resolvedId,
+    urlKey: normalizeText(data.slug) || resolvedId,
+    updatedAt: normalizeText(data.updated_at),
     title: normalizeText(data.title),
     description: normalizeText(data.description),
     previewImageUrl: normalizeImageUrl(data.preview_image_url),

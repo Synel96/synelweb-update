@@ -8,7 +8,7 @@ import {
 } from "@/src/services/blogPostsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
-type BlogNavigationPost = Pick<BlogPost, "id" | "title">;
+type BlogNavigationPost = Pick<BlogPost, "id" | "urlKey" | "title">;
 
 type PageContext = {
   lang?: SupportedLang;
@@ -43,8 +43,11 @@ export async function data(pageContext: PageContext) {
       getBlogPostDetail(id, lang),
       getBlogPosts(lang).catch(() => []),
     ]);
-    const listEntryIndex = posts.findIndex((item) => item.id === post.id || item.id === id);
-    const previousPost = listEntryIndex >= 0 && listEntryIndex < posts.length - 1 ? posts[listEntryIndex + 1] : null;
+    const listEntryIndex = posts.findIndex(
+      (item) => item.id === post.id || item.id === id || item.urlKey === id
+    );
+    const previousPost =
+      listEntryIndex >= 0 && listEntryIndex < posts.length - 1 ? posts[listEntryIndex + 1] : null;
     const nextPost = listEntryIndex > 0 ? posts[listEntryIndex - 1] : null;
     const listEntry = listEntryIndex >= 0 ? posts[listEntryIndex] : null;
     const resolvedDescription = post.description || listEntry?.description || "";
@@ -54,8 +57,12 @@ export async function data(pageContext: PageContext) {
         ...post,
         description: resolvedDescription,
       },
-      previousPost: previousPost ? { id: previousPost.id, title: previousPost.title } : null,
-      nextPost: nextPost ? { id: nextPost.id, title: nextPost.title } : null,
+      previousPost: previousPost
+        ? { id: previousPost.id, urlKey: previousPost.urlKey, title: previousPost.title }
+        : null,
+      nextPost: nextPost
+        ? { id: nextPost.id, urlKey: nextPost.urlKey, title: nextPost.title }
+        : null,
       fetchError: false,
       notFound: false,
     };

@@ -3,9 +3,14 @@
 import "./Layout.css";
 import { usePageContext } from "vike-react/usePageContext";
 import { SITE_URL } from "../components/site";
-import { buildMeta } from "../src/seo";
+import { buildMeta, toMetaDescription, toPostTitle } from "../src/seo";
 import { DEFAULT_LANG, type SupportedLang } from "../src/i18n-config";
-import { isRegionalLogicalPath, localizePath, normalizeLogicalPath } from "../src/localizedRoutes";
+import {
+  BLOG_POST_LANG,
+  isRegionalLogicalPath,
+  localizePath,
+  normalizeLogicalPath,
+} from "../src/localizedRoutes";
 import {
   BREADCRUMB_LABELS,
   REGIONAL_BREADCRUMB_LABELS,
@@ -26,6 +31,7 @@ type BlogDetailData = {
     description?: string;
     previewImageUrl?: string;
     createdAt?: string;
+    updatedAt?: string;
   } | null;
 };
 
@@ -40,6 +46,8 @@ function toAbsoluteUrl(url: string): string {
   }
 }
 
+const OG_LOCALES: Record<SupportedLang, string> = { hu: "hu_HU", en: "en_US", de: "de_DE" };
+
 export function Head() {
   const pageContext = usePageContext() as {
     urlPathname: string;
@@ -51,14 +59,15 @@ export function Head() {
   const postDescription = pageContext.data?.post?.description?.trim() ?? "";
   const postPreviewImage = pageContext.data?.post?.previewImageUrl?.trim() ?? "";
   const postCreatedAt = pageContext.data?.post?.createdAt?.trim() ?? "";
+  const postUpdatedAt = pageContext.data?.post?.updatedAt?.trim() ?? "";
   const resolvedPostImage = postPreviewImage
     ? toAbsoluteUrl(withCloudinaryAutoParams(postPreviewImage))
     : "";
   const meta = buildMeta({
     pathname: pageContext.urlPathname,
     lang,
-    title: postTitle || null,
-    description: postDescription || null,
+    title: postTitle ? toPostTitle(postTitle) : null,
+    description: postDescription ? toMetaDescription(postDescription) : null,
     image: resolvedPostImage || null,
   });
 
@@ -112,6 +121,8 @@ export function Head() {
           description: postDescription,
           image: resolvedPostImage,
           datePublished: postCreatedAt,
+          dateModified: postUpdatedAt,
+          authorUrl: new URL(localizePath("/about", BLOG_POST_LANG), SITE_URL).toString(),
         })
       : null;
 
@@ -166,10 +177,10 @@ export function Head() {
 
       {/* Open Graph / Social Media */}
       <meta property="og:type" content="website" />
-      <meta property="og:locale" content={lang} />
+      <meta property="og:locale" content={OG_LOCALES[lang]} />
       <meta property="og:url" content={meta.canonicalUrl} />
-      <meta property="og:title" content={meta.title} />
-      <meta property="og:description" content={meta.description} />
+      {/* og:title and og:description come from vike-react (the title and
+          description settings); repeating them here doubled the tags. */}
       <meta property="og:image" content={meta.image} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={meta.canonicalUrl} />

@@ -20,6 +20,31 @@
       "permanent": true
     },
     {
+      "source": "/:lang(hu|en|de)/blog/1",
+      "destination": "/:lang/blog/megujult-a-synelweb",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(hu|en|de)/blog/2",
+      "destination": "/:lang/blog/miert-kerul-ennyibe-a-funkciok-amik-eszrevetlenul-megdobjak-a-weboldalad-arat",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(hu|en|de)/blog/3",
+      "destination": "/:lang/blog/fejlesztoi-boncasztal-sima-react-spa-vs-vike",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(hu|en|de)/blog/4",
+      "destination": "/:lang/blog/seo-2026-ban-mit-erdemes-tudnod-mielott-belevagsz",
+      "permanent": true
+    },
+    {
+      "source": "/:lang(hu|en|de)/blog/5",
+      "destination": "/:lang/blog/meta-megfigyeles-",
+      "permanent": true
+    },
+    {
       "source": "/about",
       "destination": "/hu/rolam",
       "permanent": true

@@ -906,6 +906,15 @@
       "checkedAt": "Mérve: {{date}}",
       "contact": "Kérj ajánlatot: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
       "footerNote": "A mérést a Google PageSpeed Insights végezte; az eredmény mérésről mérésre kissé eltérhet."
+    },
+    "didYouKnow": {
+      "title": "Tudtad?",
+      "items": [
+        "Magyarországon a webes forgalom már több mint fele mobilról érkezik – a látogatóid nagy része telefonon találkozik először az oldaladdal.",
+        "A Google 2023 óta a weboldalak mobil változatát veszi alapul az indexeléshez és a rangsoroláshoz. Egy lassú mobiloldal a keresőben is hátrányt jelent.",
+        "A mobilmérés egy átlagos telefont és lassabb mobilnetet szimulál, ezért a mobil pontszám általában alacsonyabb az asztalinál. Épp ezért erre érdemes a legnagyobb figyelmet fordítani."
+      ],
+      "sources": "Források:"
     }
   }
 }

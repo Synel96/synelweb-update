@@ -4,6 +4,7 @@ import {
   ArrowRightIcon,
   FileDownIcon,
   GaugeIcon,
+  LightbulbIcon,
   LoaderCircleIcon,
   MonitorIcon,
   SearchIcon,
@@ -87,6 +88,8 @@ export default function Page() {
   const [pdfFailed, setPdfFailed] = useState(false);
   const resultRef = useRef<HTMLDivElement | null>(null);
 
+  const didYouKnowRaw = t("siteCheck.didYouKnow.items", { returnObjects: true }) as unknown;
+  const didYouKnow = Array.isArray(didYouKnowRaw) ? (didYouKnowRaw as string[]) : [];
   const progress = t("siteCheck.progress", { returnObjects: true }) as unknown;
   const progressSteps = Array.isArray(progress) ? (progress as string[]) : [];
 
@@ -453,6 +456,50 @@ export default function Page() {
           </div>
         </section>
       ) : null}
+
+      <section className="mx-auto w-full max-w-5xl px-6 pb-12 sm:pb-16" data-reveal>
+        <aside className="fancy-card rounded-3xl p-6 sm:p-8">
+          <div className="flex items-center gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-linear-135 from-(--color-secondary-warm) to-(--accent) text-[#140814]">
+              <LightbulbIcon className="size-5" aria-hidden="true" />
+            </span>
+            <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+              {t("siteCheck.didYouKnow.title")}
+            </h2>
+          </div>
+          <ul className="mt-5 space-y-3">
+            {didYouKnow.map((fact) => (
+              <li key={fact} className="flex gap-3 text-sm leading-7 text-white/82 sm:text-base">
+                <SmartphoneIcon
+                  className="mt-1.5 size-4 shrink-0 text-(--accent)"
+                  aria-hidden="true"
+                />
+                <span>{fact}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 border-t border-white/10 pt-4 text-xs text-white/50">
+            {t("siteCheck.didYouKnow.sources")}{" "}
+            <a
+              href="https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/hungary"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-white/80"
+            >
+              StatCounter
+            </a>
+            ,{" "}
+            <a
+              href="https://developers.google.com/search/blog/2023/10/mobile-first-is-here"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-white/80"
+            >
+              Google Search Central
+            </a>
+          </p>
+        </aside>
+      </section>
 
       <section className="mx-auto w-full max-w-5xl px-6 pb-20 sm:pb-24" data-reveal>
         <h2 className="text-center text-2xl font-semibold tracking-tight text-white sm:text-3xl">

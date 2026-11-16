@@ -906,6 +906,15 @@
       "checkedAt": "Checked: {{date}}",
       "contact": "Request a quote: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
       "footerNote": "Measured with Google PageSpeed Insights; results can vary slightly between runs."
+    },
+    "didYouKnow": {
+      "title": "Did you know?",
+      "items": [
+        "More than half of web traffic now comes from mobile devices – most of your visitors first meet your site on a phone.",
+        "Since 2023, Google uses the mobile version of a website for indexing and ranking. A slow mobile site is a disadvantage in search, too.",
+        "The mobile check simulates an average phone on a slower mobile connection, so mobile scores are usually lower than desktop ones – which is exactly why they deserve the most attention."
+      ],
+      "sources": "Sources:"
     }
   }
 }

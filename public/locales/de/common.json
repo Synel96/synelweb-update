@@ -906,6 +906,15 @@
       "checkedAt": "Geprüft: {{date}}",
       "contact": "Angebot anfordern: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
       "footerNote": "Gemessen mit Google PageSpeed Insights; die Ergebnisse können leicht schwanken."
+    },
+    "didYouKnow": {
+      "title": "Schon gewusst?",
+      "items": [
+        "Mehr als die Hälfte des Webtraffics kommt inzwischen von Mobilgeräten – die meisten Besucher sehen deine Website zuerst auf dem Smartphone.",
+        "Seit 2023 nutzt Google die mobile Version einer Website für Indexierung und Ranking. Eine langsame mobile Seite ist auch in der Suche ein Nachteil.",
+        "Die mobile Messung simuliert ein durchschnittliches Smartphone mit langsamerem Mobilnetz, daher sind mobile Werte meist niedriger als am Desktop – genau deshalb verdienen sie die meiste Aufmerksamkeit."
+      ],
+      "sources": "Quellen:"
     }
   }
 }

@@ -104,16 +104,7 @@ async function buildEntries() {
     addLocalizedGroup(groups, logicalPath);
   }
 
-  const blogPostIdsByLang = Object.fromEntries(
-    await Promise.all(SUPPORTED_LANGS.map(async (lang) => [lang, await fetchBlogPostIds(lang)]))
-  );
-  // Only the default language's post list decides which posts exist; the
-  // backend returns the same set of ids for every language (just with
-  // translated content where available), so this avoids duplicate/partial
-  // groups if one language's response is briefly inconsistent.
-  for (const id of blogPostIdsByLang[DEFAULT_LANG]) {
-    addLocalizedGroup(groups, `/blog/${id}`);
-  }
+  const blogPostIds = await fetchBlogPostIds(DEFAULT_LANG);
 
   const seen = new Set();
   const entries = [];
@@ -125,6 +116,16 @@ async function buildEntries() {
 
   for (const { lang, path } of REGIONAL_PATHS) {
     entries.push({ path, alternates: null, selfLang: lang });
+  }
+
+  // Blog posts are written in Hungarian only: the other languages show the
+  // same text and are canonical to the Hungarian URL, so only that is listed.
+  for (const id of blogPostIds) {
+    entries.push({
+      path: localizePath(`/blog/${id}`, DEFAULT_LANG),
+      alternates: null,
+      selfLang: DEFAULT_LANG,
+    });
   }
 
   for (const legalPath of LEGAL_PATHS) {

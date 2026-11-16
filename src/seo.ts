@@ -1,6 +1,9 @@
 import { BRAND_NAME, SITE_URL } from "../components/site";
 import { SUPPORTED_LANGS, DEFAULT_LANG, type SupportedLang } from "./i18n-config";
 import {
+  BLOG_POST_LANG,
+  isBlogPostLogicalPath,
+  isLegalLogicalPath,
   isRegionalLogicalPath,
   localizePath,
   normalizeLogicalPath,
@@ -208,26 +211,35 @@ export function getSeoEntry(pathname: string, lang: SupportedLang): SeoEntry {
 export function buildMeta({ pathname, lang, title, description, image }: BuildMetaInput) {
   const logicalPath = normalizeLogicalPath(pathname) as KnownLogicalPath;
   const fallbackMeta = getSeoEntry(logicalPath, lang);
-  const canonicalUrl = new URL(localizePath(logicalPath, lang), SITE_URL).toString();
   const resolvedTitle = title && title.trim().length > 0 ? title : fallbackMeta.title;
   const resolvedDescription =
     description && description.trim().length > 0 ? description : fallbackMeta.description;
   const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/og-image.png`;
+  const urlFor = (path: string) => new URL(path, SITE_URL).toString();
 
-  // hreflang alternates for every supported language + x-default pointing to
-  // default lang. A regional page has no translations: it only names itself.
-  const alternates = isRegionalLogicalPath(logicalPath)
-    ? [{ hreflang: lang, href: canonicalUrl }]
-    : [
-        ...SUPPORTED_LANGS.map((l) => ({
-          hreflang: l,
-          href: new URL(localizePath(logicalPath, l), SITE_URL).toString(),
-        })),
-        {
-          hreflang: "x-default",
-          href: new URL(localizePath(logicalPath, DEFAULT_LANG), SITE_URL).toString(),
-        },
-      ];
+  // Single-language pages name only themselves; a page shown in the wrong
+  // language points at the original instead of competing with it:
+  // - legal pages are Hungarian and unprefixed (/impresszum),
+  // - blog posts are Hungarian, so /en/blog/4 is canonical to /hu/blog/4,
+  // - a regional page has no translations.
+  let canonicalUrl: string;
+  let alternates: Array<{ hreflang: string; href: string }>;
+  if (isLegalLogicalPath(logicalPath)) {
+    canonicalUrl = urlFor(logicalPath);
+    alternates = [{ hreflang: DEFAULT_LANG, href: canonicalUrl }];
+  } else if (isBlogPostLogicalPath(logicalPath)) {
+    canonicalUrl = urlFor(localizePath(logicalPath, BLOG_POST_LANG));
+    alternates = [{ hreflang: BLOG_POST_LANG, href: canonicalUrl }];
+  } else if (isRegionalLogicalPath(logicalPath)) {
+    canonicalUrl = urlFor(localizePath(logicalPath, lang));
+    alternates = [{ hreflang: lang, href: canonicalUrl }];
+  } else {
+    canonicalUrl = urlFor(localizePath(logicalPath, lang));
+    alternates = [
+      ...SUPPORTED_LANGS.map((l) => ({ hreflang: l, href: urlFor(localizePath(logicalPath, l)) })),
+      { hreflang: "x-default", href: urlFor(localizePath(logicalPath, DEFAULT_LANG)) },
+    ];
+  }
 
   return {
     canonicalUrl,

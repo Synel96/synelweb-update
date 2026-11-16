@@ -38,7 +38,7 @@ function fillContact() {
 function submit() {
   next();
   fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
-  fireEvent.submit(screen.getByRole("button", { name: /kérek/ }).closest("form")!);
+  fireEvent.submit(screen.getByRole("button", { name: /Kérj .*ajánlatot/ }).closest("form")!);
 }
 
 function sentPayload() {
@@ -380,7 +380,7 @@ describe("QuoteRequestForm", () => {
     expect(screen.getByText("pelda.hu · Mobil · teljesítmény: 72")).toBeInTheDocument();
     fireEvent.click(attach);
     fireEvent.click(screen.getByRole("checkbox", { name: /adatkezelési tájékoztatót/ }));
-    fireEvent.submit(screen.getByRole("button", { name: /kérek/ }).closest("form")!);
+    fireEvent.submit(screen.getByRole("button", { name: /Kérj .*ajánlatot/ }).closest("form")!);
 
     await screen.findByRole("status");
     expect(sentPayload().siteCheck).toMatchObject({

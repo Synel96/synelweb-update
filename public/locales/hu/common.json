@@ -118,7 +118,7 @@
     "discountBadge": "Akció",
     "expandDescription": "Több",
     "collapseDescription": "Kevesebb",
-    "cardCta": "Ajánlatot kérek",
+    "cardCta": "Kérj ajánlatot",
     "cardCtaAria": "Ajánlatkérés indítása",
     "seoNote": {
       "label": "Ez az, amiért nálam nem kell külön fizetned",
@@ -202,7 +202,7 @@
     "cta": {
       "title": "Tetszik, amit látsz?",
       "text": "Ha hasonlóan gyors, megbízható és igényes weboldalt szeretnél a vállalkozásodnak, nézzük át közösen az elképzeléseidet.",
-      "contactLabel": "Ajánlatot kérek",
+      "contactLabel": "Kérj ajánlatot",
       "contactAriaLabel": "Ajánlatkérés indítása",
       "servicesLabel": "Szolgáltatások és árak →"
     },
@@ -401,7 +401,7 @@
     "triggerAria": "Kapcsolatfelvételi lehetőségek megnyitása",
     "closeAria": "Bezárás",
     "call": "Hívás",
-    "quote": "Ajánlatot kérek"
+    "quote": "Kérj ajánlatot"
   },
   "contact": {
     "label": "Kapcsolat",
@@ -620,8 +620,8 @@
     "consentLink": "adatkezelési tájékoztatót",
     "consentAfter": ", és hozzájárulok, hogy az ajánlatkéréshez megadott adataimat kezeld.",
     "submit": {
-      "simple": "Ajánlatot kérek",
-      "detailed": "Részletes ajánlatot kérek"
+      "simple": "Kérj ajánlatot",
+      "detailed": "Kérj részletes ajánlatot"
     },
     "sending": "Küldés…",
     "sentTitle": "Köszönöm, megkaptam az ajánlatkérésed!",
@@ -732,7 +732,7 @@
     "cta": {
       "title": "Ezt a tudást a te projektedbe is beviszem",
       "text": "Mondd el, mire van szükséged, és 1 munkanapon belül konkrét ajánlattal jelentkezem.",
-      "button": "Ajánlatot kérek"
+      "button": "Kérj ajánlatot"
     }
   },
   "adsPage": {

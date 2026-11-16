@@ -916,5 +916,14 @@
       ],
       "sources": "Források:"
     }
+  },
+  "pageH1": {
+    "home": "Egyedi weboldal készítés és webfejlesztés",
+    "services": "Weboldal készítés: árak és szolgáltatások",
+    "projects": "Weboldal referenciák és projektek",
+    "blog": "Webfejlesztés és SEO blog",
+    "technology": "Technológia: React, Django, PostgreSQL",
+    "contact": "Kapcsolat és ajánlatkérés",
+    "about": "Rólam – webfejlesztő Sopronból"
   }
 }

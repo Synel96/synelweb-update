@@ -916,5 +916,14 @@
       ],
       "sources": "Quellen:"
     }
+  },
+  "pageH1": {
+    "home": "Individuelles Webdesign & Webentwicklung",
+    "services": "Webdesign: Preise & Leistungen",
+    "projects": "Webdesign Referenzen & Projekte",
+    "blog": "Blog zu Webentwicklung & SEO",
+    "technology": "Technologie: React, Django, PostgreSQL",
+    "contact": "Kontakt & Angebot anfordern",
+    "about": "Über mich – Webentwickler aus Sopron"
   }
 }

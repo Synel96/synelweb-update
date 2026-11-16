@@ -103,12 +103,14 @@ export default function Page() {
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 sm:pt-40 sm:pb-16 lg:pb-20">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-6 text-center">
-            <p className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
-              {t("contact.label")}
-            </p>
-            <h1 className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {t("contact.heading")}
-            </h1>
+            <hgroup className="space-y-6">
+              <h1 className="text-sm font-semibold tracking-[0.24em] text-(--accent) uppercase">
+                {t("pageH1.contact")}
+              </h1>
+              <p className="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {t("contact.heading")}
+              </p>
+            </hgroup>
             <p className="mx-auto max-w-2xl text-left text-base leading-8 text-white/78 sm:text-lg">
               {t("contact.intro")}
             </p>

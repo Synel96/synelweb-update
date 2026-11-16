@@ -3,11 +3,11 @@ import title from "./+title";
 
 describe("title pageContext hook", () => {
   it("returns the SEO title for a known logical path", () => {
-    expect(title({ urlPathname: "/about", lang: "hu" })).toBe("Rólam | SynelWeb");
+    expect(title({ urlPathname: "/about", lang: "hu" })).toBe("Rólam – webfejlesztő Sopronból | SynelWeb");
   });
 
   it("defaults to the default language when unset", () => {
-    expect(title({ urlPathname: "/about" })).toBe("Rólam | SynelWeb");
+    expect(title({ urlPathname: "/about" })).toBe("Rólam – webfejlesztő Sopronból | SynelWeb");
   });
 
   it("prefers the blog post title over the SEO table when present", () => {

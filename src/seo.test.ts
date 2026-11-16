@@ -4,7 +4,7 @@ import { buildMeta, getSeoEntry } from "./seo";
 describe("getSeoEntry", () => {
   it("returns the localized title/description for a known path", () => {
     expect(getSeoEntry("/about", "hu")).toEqual({
-      title: "Rólam | SynelWeb",
+      title: "Rólam – webfejlesztő Sopronból | SynelWeb",
       description:
         "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
     });
@@ -38,7 +38,7 @@ describe("buildMeta", () => {
 
   it("falls back to the SEO table when title/description are blank", () => {
     const meta = buildMeta({ pathname: "/about", lang: "en", title: "  ", description: "" });
-    expect(meta.title).toBe("About | SynelWeb");
+    expect(meta.title).toBe("About – Web Developer from Sopron, Hungary | SynelWeb");
     expect(meta.description).toContain("Learn how I work");
   });
 

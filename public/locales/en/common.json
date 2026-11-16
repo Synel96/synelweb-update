@@ -108,6 +108,77 @@
       "text": "Tell me where you are now, and I will help you define the next step that fits your business best.",
       "cta": "Request consultation / Contact me",
       "ariaLabel": "Request consultation"
+    },
+    "why": {
+      "label": "Why a custom website?",
+      "title": "A website that brings in clients, not one that only looks good",
+      "text": "I build websites, landing pages and online shops for small and medium-sized businesses with custom code, without templates or page-builder plugins. That is what makes your site fast, secure and easy to find, and lets it do exactly what your business needs.",
+      "items": {
+        "speed": {
+          "title": "Measurably fast",
+          "text": "My sites consistently reach outstanding scores in Lighthouse, Google's own measuring tool, on mobile too, where most visitors come from. On a fast site more people stay, and more of them ask for a quote."
+        },
+        "seo": {
+          "title": "SEO included in the base price",
+          "text": "Technical SEO and copy based on real search data (Google Trends) are part of every package. It is not an add-on: the site is built from the start so that Google can find and understand it."
+        },
+        "languages": {
+          "title": "Several languages, several markets",
+          "text": "You get a polished, separately optimised site in Hungarian, English and German. If you also want to reach Austrian or other international clients, the first impression is not left to a translation tool."
+        },
+        "care": {
+          "title": "You edit, I operate",
+          "text": "You can update texts, images and prices yourself in a simple admin interface. I keep looking after the servers, security updates and technical monitoring after the handover."
+        }
+      }
+    },
+    "process": {
+      "label": "How we work together",
+      "title": "From the quote request to the live website",
+      "text": "A transparent four-step process: you always know where we are and what comes next.",
+      "steps": [
+        {
+          "title": "Quote request",
+          "text": "You fill in the quote form in a few minutes, or write or call. You tell me what you need and what the site should achieve."
+        },
+        {
+          "title": "Consultation and quote",
+          "text": "We go through the details online, or in person around Sopron, and you get a specific written quote with a deadline and no hidden costs."
+        },
+        {
+          "title": "Design and development",
+          "text": "I design and build the site. You see it take shape along the way and can give feedback, so the result is really yours."
+        },
+        {
+          "title": "Handover and operation",
+          "text": "I launch the site, show you the admin interface, and keep looking after it: updates, security and technical monitoring."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions about getting a website",
+      "items": [
+        {
+          "q": "How much does a website cost?",
+          "a": "The price depends on the size of the job: a one-page landing page, a multi-page business website and an online shop are different tasks. You can find the current package prices on the services page, and an exact amount in a custom quote based on your needs."
+        },
+        {
+          "q": "How is custom development different from a template website?",
+          "a": "Template sites made with a page builder load a lot of unnecessary code, so they are often slow and hard to extend. A custom site contains only what you need: it is faster, more secure, and can be extended with new features later."
+        },
+        {
+          "q": "What happens after the handover?",
+          "a": "Operation and maintenance are part of every project, from {{maintenance}} per month: servers, database, security updates and technical monitoring. You can still update the content yourself at any time."
+        },
+        {
+          "q": "Can we work together from anywhere?",
+          "a": "Yes. The whole process can be done online by video call and e-mail, so I take on work from anywhere in Hungary, from Austria and beyond. In and around Sopron I am happy to meet in person too."
+        },
+        {
+          "q": "Can you also manage ads for the new site?",
+          "a": "Yes. As a Google Ads Search certified developer I set up and manage Google Search ads, so the website and the campaign come from one hand and work together."
+        }
+      ]
     }
   },
   "servicesPage": {

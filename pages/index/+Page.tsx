@@ -3,6 +3,7 @@ import {
   ArrowRightIcon,
   BriefcaseIcon,
   ChartNoAxesColumnIcon,
+  ChevronDownIcon,
   Code2Icon,
   ExternalLinkIcon,
   GaugeIcon,
@@ -20,6 +21,7 @@ import {
 import { Trans, useTranslation } from "react-i18next";
 import { usePageContext } from "vike-react/usePageContext";
 import { ConversionCtaButton } from "@/components/ConversionCtaButton";
+import { JsonLd } from "@/components/JsonLd";
 import { ProjectsPreviewCarousel } from "@/components/ProjectsPreviewCarousel";
 import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 import { TechnologyLogo } from "@/components/TechnologyLogo";
@@ -30,6 +32,9 @@ import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import { trackEvent } from "@/src/analytics";
+import { useHufFormatter } from "@/src/currency";
+import { MAINTENANCE_STARTING_PRICE_HUF } from "@/src/pricing";
+import { buildFaqJsonLd } from "@/src/structuredData";
 import { getProjects, type Project } from "@/src/services/projectServices";
 import type { Review } from "@/src/services/reviewsService";
 import type { AppLang } from "@/src/services/serviceCardsService";
@@ -50,6 +55,36 @@ const TECHNOLOGY_TEASER = [
   { logo: "django", name: "Django" },
   { logo: "postgresql", name: "PostgreSQL" },
 ] as const;
+
+// What a client gets, in four points (homeFlow.why.items.*).
+const WHY_ITEMS = [
+  { key: "speed", Icon: GaugeIcon },
+  { key: "seo", Icon: SearchIcon },
+  { key: "languages", Icon: LanguagesIcon },
+  { key: "care", Icon: ShieldCheckIcon },
+] as const;
+
+type TextItem = { title: string; text: string };
+type FaqItem = { q: string; a: string };
+
+// i18next returns the key itself while a bundle is missing; only real lists
+// of the expected shape are rendered.
+function asTextItems(value: unknown): TextItem[] {
+  return Array.isArray(value)
+    ? value.filter(
+        (item): item is TextItem =>
+          typeof item?.title === "string" && typeof item?.text === "string"
+      )
+    : [];
+}
+
+function asFaqItems(value: unknown): FaqItem[] {
+  return Array.isArray(value)
+    ? value.filter(
+        (item): item is FaqItem => typeof item?.q === "string" && typeof item?.a === "string"
+      )
+    : [];
+}
 
 // Tighter on phones: the page is long there, and the full desktop rhythm
 // left a lot of empty scrolling between sections.
@@ -168,6 +203,15 @@ export default function Page() {
 
   const langHref = (href: string) =>
     href.startsWith("/#") ? `/${lang}/${href.slice(1)}` : localizePath(href, lang);
+
+  const formatHuf = useHufFormatter(lang as AppLang);
+  const maintenancePrice = formatHuf(MAINTENANCE_STARTING_PRICE_HUF);
+  const processSteps = asTextItems(t("homeFlow.process.steps", { returnObjects: true }));
+  // {{maintenance}} in an answer is the starting maintenance fee, in the
+  // visitor's currency.
+  const faq = asFaqItems(
+    t("homeFlow.faq.items", { returnObjects: true, maintenance: maintenancePrice })
+  );
 
   // The video only gets its source once the page has loaded (the poster
   // shows until then): with the source in the markup, the browser started
@@ -310,6 +354,32 @@ export default function Page() {
 
       <section className={SECTION_CLASS} data-reveal>
         <SectionHeader
+          label={t("homeFlow.why.label")}
+          title={t("homeFlow.why.title")}
+          text={t("homeFlow.why.text")}
+        />
+
+        <ul className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 sm:gap-4">
+          {WHY_ITEMS.map(({ key, Icon }) => (
+            <li key={key} className="fancy-card flex gap-4 rounded-2xl p-5 sm:p-6">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-linear-135 from-(--color-secondary-warm) to-(--color-accent) text-[#140814] shadow-[0_10px_24px_-12px_var(--accent-glow)]">
+                <Icon className="size-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h3 className="text-base font-semibold text-white sm:text-lg">
+                  {t(`homeFlow.why.items.${key}.title`)}
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-white/78 sm:text-base">
+                  {t(`homeFlow.why.items.${key}.text`)}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={SECTION_CLASS} data-reveal>
+        <SectionHeader
           label={t("homeFlow.technology.label")}
           title={t("homeFlow.technology.title")}
           text={t("homeFlow.technology.text")}
@@ -403,6 +473,31 @@ export default function Page() {
 
       <section className={SECTION_CLASS} data-reveal>
         <SectionHeader
+          label={t("homeFlow.process.label")}
+          title={t("homeFlow.process.title")}
+          text={t("homeFlow.process.text")}
+        />
+
+        <ol className="mx-auto mt-8 grid max-w-5xl gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
+          {processSteps.map((step, index) => (
+            <li key={step.title} className="fancy-card rounded-2xl p-5">
+              <span
+                className="flex size-9 items-center justify-center rounded-full bg-linear-135 from-(--color-secondary-warm) to-(--color-accent) text-sm font-bold text-[#140814]"
+                aria-hidden="true"
+              >
+                {index + 1}
+              </span>
+              <h3 className="mt-4 text-base font-semibold text-white">{step.title}</h3>
+              <p className="mt-2 text-sm leading-7 text-white/78">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+
+        <SectionLink href={quoteFormHref(lang)} label={t("hero.ctaLabel")} warm />
+      </section>
+
+      <section className={SECTION_CLASS} data-reveal>
+        <SectionHeader
           label={t("homeFlow.about.label")}
           title={t("homeFlow.about.title")}
           text={t("homeFlow.about.text")}
@@ -416,6 +511,29 @@ export default function Page() {
 
         <SectionLink href={langHref("/about")} label={t("homeFlow.about.cta")} warm />
       </section>
+
+      {faq.length > 0 ? (
+        <section className="mx-auto w-full max-w-3xl px-6 py-12 sm:py-20" data-reveal>
+          <JsonLd data={buildFaqJsonLd(faq)} />
+          <h2 className="text-center text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+            {t("homeFlow.faq.title")}
+          </h2>
+          <div className="mt-8 space-y-3">
+            {faq.map(({ q, a }) => (
+              <details key={q} className="fancy-card group rounded-2xl p-5 open:pb-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-base sm:text-lg">{q}</h3>
+                  <ChevronDownIcon
+                    className="size-5 shrink-0 text-(--accent) transition-transform group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="mt-3 text-base leading-7 text-white/78">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section id="reviews" className="relative" data-reveal>
         <div

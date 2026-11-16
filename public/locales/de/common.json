@@ -108,6 +108,77 @@
       "text": "Sag mir, wo du gerade stehst, und ich helfe dir beim nächsten Schritt, der wirklich zu deinem Unternehmen passt.",
       "cta": "Beratung anfragen / Schreib mir",
       "ariaLabel": "Beratung anfragen"
+    },
+    "why": {
+      "label": "Warum eine individuelle Website?",
+      "title": "Eine Website, die Kunden bringt – nicht nur gut aussieht",
+      "text": "Ich entwickle Websites, Landingpages und Onlineshops für kleine und mittlere Unternehmen mit individuellem Code, ohne Vorlagen und Baukasten-Plugins. Dadurch wird deine Seite schnell, sicher und gut auffindbar – und kann genau das, was dein Unternehmen braucht.",
+      "items": {
+        "speed": {
+          "title": "Messbar schnell",
+          "text": "Meine Seiten erreichen in Lighthouse, Googles eigenem Messwerkzeug, regelmäßig herausragende Werte – auch auf dem Smartphone, von dem die meisten Besucher kommen. Auf einer schnellen Seite bleiben mehr Besucher, und mehr fragen an."
+        },
+        "seo": {
+          "title": "SEO im Grundpreis enthalten",
+          "text": "Technisches SEO und Texte auf Basis echter Suchdaten (Google Trends) gehören zu jedem Paket. Kein nachträgliches Extra: Die Seite ist von Anfang an so aufgebaut, dass Google sie findet und versteht."
+        },
+        "languages": {
+          "title": "Mehrere Sprachen, mehrere Märkte",
+          "text": "Du bekommst eine hochwertige, getrennt optimierte Seite auf Deutsch, Ungarisch und Englisch. Wenn du auch Kunden in anderen Ländern ansprechen willst, überlässt du den ersten Eindruck keinem Übersetzungsprogramm."
+        },
+        "care": {
+          "title": "Du bearbeitest, ich betreibe",
+          "text": "Texte, Bilder und Preise änderst du selbst über eine einfache Admin-Oberfläche. Server, Sicherheitsupdates und technische Überwachung übernehme ich auch nach der Übergabe."
+        }
+      }
+    },
+    "process": {
+      "label": "So arbeiten wir zusammen",
+      "title": "Von der Anfrage bis zur fertigen Website",
+      "text": "Ein transparenter Ablauf in vier Schritten: Du weißt immer, wo wir stehen und was als Nächstes kommt.",
+      "steps": [
+        {
+          "title": "Anfrage",
+          "text": "Du füllst in wenigen Minuten das Anfrageformular aus, schreibst oder rufst an. Du sagst mir, was du brauchst und was die Seite erreichen soll."
+        },
+        {
+          "title": "Abstimmung und Angebot",
+          "text": "Wir besprechen die Details online oder – rund um Sopron, im Burgenland und in Wien – persönlich. Danach bekommst du ein konkretes, schriftliches Angebot mit Termin, ohne versteckte Kosten."
+        },
+        {
+          "title": "Design und Entwicklung",
+          "text": "Ich gestalte und entwickle die Seite. Du siehst unterwegs, wie sie entsteht, und kannst Rückmeldung geben, damit das Ergebnis wirklich deins ist."
+        },
+        {
+          "title": "Übergabe und Betrieb",
+          "text": "Ich stelle die Seite live, zeige dir die Admin-Oberfläche und kümmere mich weiter darum: Updates, Sicherheit und technische Überwachung."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Häufige Fragen zur Website-Erstellung",
+      "items": [
+        {
+          "q": "Was kostet eine Website?",
+          "a": "Der Preis hängt vom Umfang ab: Eine einseitige Landingpage, eine mehrseitige Firmenwebsite und ein Onlineshop sind unterschiedliche Aufgaben. Die aktuellen Paketpreise findest du auf der Leistungsseite, den genauen Betrag in einem individuellen Angebot."
+        },
+        {
+          "q": "Was unterscheidet individuelle Entwicklung von einer Baukasten-Website?",
+          "a": "Baukasten-Seiten laden viel überflüssigen Code und sind deshalb oft langsam und schwer erweiterbar. Eine individuelle Seite enthält nur, was du brauchst: Sie ist schneller, sicherer und lässt sich später um neue Funktionen erweitern."
+        },
+        {
+          "q": "Was passiert nach der Übergabe?",
+          "a": "Betrieb und Wartung gehören zu jedem Projekt, ab {{maintenance}} pro Monat: Server, Datenbank, Sicherheitsupdates und technische Überwachung. Die Inhalte kannst du jederzeit selbst ändern."
+        },
+        {
+          "q": "Können wir von überall aus zusammenarbeiten?",
+          "a": "Ja. Der gesamte Ablauf funktioniert online per Videocall und E-Mail – aus Österreich, Ungarn und darüber hinaus. Im Burgenland, in Wien und rund um Sopron komme ich nach Absprache auch gern persönlich vorbei."
+        },
+        {
+          "q": "Betreust du auch Anzeigen für die neue Website?",
+          "a": "Ja. Mit Google-Ads-Search-Zertifizierung richte ich Google-Suchanzeigen ein und betreue sie – Website und Kampagne kommen so aus einer Hand und sind aufeinander abgestimmt."
+        }
+      ]
     }
   },
   "servicesPage": {

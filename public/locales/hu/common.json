@@ -109,6 +109,77 @@
       "text": "Mondd el, hol tartasz most, én pedig segítek összerakni a vállalkozásodhoz legjobban illő következő lépést.",
       "cta": "Konzultációt kérek / Írj nekem",
       "ariaLabel": "Konzultációt kérek"
+    },
+    "why": {
+      "label": "Miért egyedi weboldal?",
+      "title": "Weboldal, ami ügyfelet hoz – nem csak szépen néz ki",
+      "text": "Egyedi kóddal, sablonok és oldalépítő bővítmények nélkül készítek weboldalakat, landing oldalakat és webshopokat kis- és középvállalkozásoknak. Ettől lesz az oldalad gyors, biztonságos és jól kereshető – és pontosan azt tudja, amire a vállalkozásodnak szüksége van.",
+      "items": {
+        "speed": {
+          "title": "Mérhetően gyors",
+          "text": "Az oldalaim a Google saját mérőeszközén, a Lighthouse-on rendre kiemelkedő pontszámot érnek el – mobilon is, ahonnan a látogatók többsége érkezik. A gyors oldalon többen maradnak, és többen kérnek ajánlatot."
+        },
+        "seo": {
+          "title": "Keresőoptimalizálás az alapárban",
+          "text": "A technikai SEO és a keresési adatokra (Google Trends) épülő szövegezés minden csomag része. Nem utólagos extra: az oldal eleve úgy épül fel, hogy a Google megtalálja és jól értse."
+        },
+        "languages": {
+          "title": "Több nyelven, több piacra",
+          "text": "Magyarul, angolul és németül is igényes, külön optimalizált oldalt kapsz. Ha osztrák vagy más külföldi ügyfeleket is meg szeretnél szólítani, nem fordítóprogramra bízod az első benyomást."
+        },
+        "care": {
+          "title": "Te szerkeszted, én üzemeltetem",
+          "text": "A szövegeket, képeket és árakat egy egyszerű admin felületen magad frissítheted. A szervereket, a biztonsági frissítéseket és a műszaki felügyeletet az átadás után is én viszem."
+        }
+      }
+    },
+    "process": {
+      "label": "Így dolgozunk együtt",
+      "title": "Az ajánlatkéréstől az éles weboldalig",
+      "text": "Átlátható, négylépéses folyamat: mindig tudod, hol tartunk, és mi következik.",
+      "steps": [
+        {
+          "title": "Ajánlatkérés",
+          "text": "Pár perc alatt kitöltöd az ajánlatkérő űrlapot, vagy írsz, telefonálsz. Elmondod, mire van szükséged, és mi a célod az oldallal."
+        },
+        {
+          "title": "Egyeztetés és ajánlat",
+          "text": "Online vagy – Sopron környékén – személyesen átbeszéljük a részleteket, majd konkrét, írásos árajánlatot kapsz határidővel, rejtett költségek nélkül."
+        },
+        {
+          "title": "Tervezés és fejlesztés",
+          "text": "Megtervezem és lefejlesztem az oldalt. Menet közben látod, hogyan alakul, és visszajelzést adhatsz, hogy a végeredmény tényleg a tiéd legyen."
+        },
+        {
+          "title": "Átadás és üzemeltetés",
+          "text": "Élesítem az oldalt, megmutatom az admin felületet, és utána is gondját viselem: frissítések, biztonság, műszaki felügyelet."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Gyakori kérdések a weboldal készítésről",
+      "items": [
+        {
+          "q": "Mennyibe kerül egy weboldal?",
+          "a": "Az ár a feladat méretétől függ: más egy egyoldalas landing oldal, egy többoldalas céges weboldal és egy webshop. Az aktuális csomagárakat a szolgáltatások oldalon találod, pontos összeget pedig az igényeid alapján, egyedi ajánlatban kapsz."
+        },
+        {
+          "q": "Miben más az egyedi fejlesztés, mint egy sablonos weboldal?",
+          "a": "A sablonos, oldalépítővel készült oldalak sok felesleges kódot töltenek be, ezért gyakran lassúak és nehezen bővíthetők. Az egyedi oldalban csak az van, amire szükséged van: gyorsabb, biztonságosabb, és később új funkciókkal bővíthető."
+        },
+        {
+          "q": "Mi történik az átadás után?",
+          "a": "Az üzemeltetés és karbantartás minden projekt része, havi {{maintenance}}-tól: szerverek, adatbázis, biztonsági frissítések és műszaki felügyelet. A tartalmat közben te magad is bármikor frissítheted."
+        },
+        {
+          "q": "Az ország bármely pontjáról dolgozhatunk együtt?",
+          "a": "Igen. A teljes folyamat online is végigvihető videóhívással és e-mailben, így Magyarország bármely részéről és Ausztriából is vállalok munkát. Sopronban és környékén személyesen is szívesen találkozom."
+        },
+        {
+          "q": "Hirdetést is tudsz kezelni az új oldalhoz?",
+          "a": "Igen. Google Ads Search tanúsítvánnyal vállalom a Google keresőhirdetések beállítását és kezelését, így a weboldal és a hirdetés egy kézből, összehangolva készül."
+        }
+      ]
     }
   },
   "servicesPage": {

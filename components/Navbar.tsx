@@ -1,5 +1,4 @@
 import {
-  ArrowRightIcon,
   BadgeCheckIcon,
   BriefcaseIcon,
   CpuIcon,
@@ -29,8 +28,6 @@ import { NavDropdown } from "./NavDropdown";
 import { LanguageSwitcher, LanguageSwitcherDropdown } from "./LanguageSwitcher";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
 import { localizePath, resolveLanguageAndLogicalPath } from "@/src/localizedRoutes";
-import { quoteFormHref } from "@/src/quoteForm";
-import { trackEvent } from "@/src/analytics";
 
 // Icons for the mobile menu's items.
 const NAV_ICONS: Record<string, LucideIcon> = {
@@ -231,6 +228,10 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
                   >
                     {BRAND_NAME}
                   </a>
+                  {/* Up top, so visitors looking for their language find it first. */}
+                  <div className="mt-3">
+                    <LanguageSwitcher />
+                  </div>
                 </div>
 
                 <nav className="flex flex-col gap-0.5 px-3 pb-4">
@@ -296,23 +297,6 @@ export function Navbar({ menuOpen, onMenuOpenChange }: NavbarProps = {}) {
                     );
                   })}
                 </nav>
-
-                <div className="px-4 pb-5">
-                  <PushDrawerClose asChild>
-                    <a
-                      href={quoteFormHref(lang)}
-                      onClick={() => trackEvent("quote_cta_click", { location: "mobile_menu" })}
-                      className="flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-(--color-secondary-warm) to-(--accent) px-4 py-3 text-sm font-bold tracking-[0.06em] text-[#140814] uppercase shadow-[0_10px_24px_-12px_var(--accent-glow)]"
-                    >
-                      {t("nav.quoteCta")}
-                      <ArrowRightIcon className="size-4" aria-hidden="true" />
-                    </a>
-                  </PushDrawerClose>
-                </div>
-
-                <div className="border-t border-white/10 px-4 py-4">
-                  <LanguageSwitcher />
-                </div>
 
                 <div className="flex flex-col gap-2 border-t border-white/10 px-4 pt-4 pb-6">
                   <a

@@ -89,8 +89,9 @@ export function isLegalLogicalPath(path: string): boolean {
   return (LEGAL_PATHS as readonly string[]).includes(path);
 }
 
-// Blog posts are written in Hungarian only; the other languages show the
-// same Hungarian text inside a translated page frame.
+// Blog posts are written in Hungarian; English and German are optional per
+// post. A language without a translation shows the Hungarian text inside a
+// translated page frame.
 export const BLOG_POST_LANG: SupportedLang = "hu";
 
 export function isBlogPostLogicalPath(path: string): boolean {

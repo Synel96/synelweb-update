@@ -37,7 +37,7 @@ function getBlogPageFallbacks(lang: "en" | "hu" | "de") {
       title: "Fachartikel, praktische Notizen und strategische Web-Beiträge.",
       intro:
         "Hier findest du Fachbeiträge, Umsetzungsnotizen und praktische Beobachtungen aus realen Webprojekten.",
-      languageNotice: "Dieser Blog ist derzeit nur auf Ungarisch verfügbar.",
+      languageNotice: "Beiträge ohne deutsche Übersetzung werden auf Ungarisch angezeigt.",
       fetchError:
         "Die Blogbeiträge konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
       emptyState: "Derzeit sind keine Blogbeiträge verfügbar.",
@@ -50,7 +50,7 @@ function getBlogPageFallbacks(lang: "en" | "hu" | "de") {
       title: "Insights, practical notes, and web strategy articles.",
       intro:
         "Here you can find professional articles, implementation notes, and practical observations from real web projects.",
-      languageNotice: "This blog is currently available only in Hungarian.",
+      languageNotice: "Posts without an English translation are shown in Hungarian.",
       fetchError: "Blog posts could not be loaded right now. Please try again later.",
       emptyState: "No blog posts are available right now.",
     };
@@ -61,7 +61,7 @@ function getBlogPageFallbacks(lang: "en" | "hu" | "de") {
     title: "Szakmai cikkek, gyakorlati jegyzetek és webes stratégiai írások.",
     intro:
       "Itt találod a szakmai bejegyzéseimet, megvalósítási tapasztalataimat és a valós webes projektekből származó gyakorlati megfigyeléseket.",
-    languageNotice: "Ez a blog jelenleg csak magyar nyelven érhető el.",
+    languageNotice: "A lefordítatlan bejegyzések magyarul jelennek meg.",
     fetchError: "A blogbejegyzések most nem tölthetők be. Kérlek, próbáld meg később.",
     emptyState: "Jelenleg nincs elérhető blogbejegyzés.",
   };
@@ -232,7 +232,7 @@ export default function Page() {
           <p className="mt-4 text-left text-base leading-8 text-white/80 sm:text-lg">{blogIntro}</p>
         </header>
 
-        {!isHungarianLocale ? (
+        {posts.some((post) => post.language !== routeLang) ? (
           <div
             className="mb-8 rounded-2xl border border-amber-300/40 bg-amber-500/10 px-5 py-4"
             role="status"

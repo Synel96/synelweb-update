@@ -31,6 +31,8 @@ type BuildMetaInput = {
   title?: string | null;
   description?: string | null;
   image?: string | null;
+  // Blog posts only: the languages the post is translated into.
+  postLangs?: readonly SupportedLang[] | null;
 };
 
 export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>> = {
@@ -215,7 +217,14 @@ export function getSeoEntry(pathname: string, lang: SupportedLang): SeoEntry {
   return PAGE_SEO[lang][logicalPath] ?? { title: BRAND_NAME, description: "" };
 }
 
-export function buildMeta({ pathname, lang, title, description, image }: BuildMetaInput) {
+export function buildMeta({
+  pathname,
+  lang,
+  title,
+  description,
+  image,
+  postLangs,
+}: BuildMetaInput) {
   const logicalPath = normalizeLogicalPath(pathname) as KnownLogicalPath;
   const fallbackMeta = getSeoEntry(logicalPath, lang);
   const resolvedTitle = title && title.trim().length > 0 ? title : fallbackMeta.title;
@@ -232,7 +241,8 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
   // Single-language pages name only themselves; a page shown in the wrong
   // language points at the original instead of competing with it:
   // - legal pages are Hungarian and unprefixed (/impresszum),
-  // - blog posts are Hungarian, so /en/blog/4 is canonical to /hu/blog/4,
+  // - a blog post lists the languages it is translated into; in any other
+  //   language it shows the Hungarian text and is canonical to that,
   // - a regional page has no translations.
   let canonicalUrl: string;
   let alternates: Array<{ hreflang: string; href: string }>;
@@ -240,8 +250,16 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
     canonicalUrl = urlFor(logicalPath);
     alternates = [{ hreflang: DEFAULT_LANG, href: canonicalUrl }];
   } else if (isBlogPostLogicalPath(logicalPath)) {
-    canonicalUrl = urlFor(localizePath(logicalPath, BLOG_POST_LANG));
-    alternates = [{ hreflang: BLOG_POST_LANG, href: canonicalUrl }];
+    const langs = SUPPORTED_LANGS.filter((l) => l === BLOG_POST_LANG || postLangs?.includes(l));
+    const pageLang = langs.includes(lang) ? lang : BLOG_POST_LANG;
+    canonicalUrl = urlFor(localizePath(logicalPath, pageLang));
+    alternates = langs.map((l) => ({ hreflang: l, href: urlFor(localizePath(logicalPath, l)) }));
+    if (langs.length > 1) {
+      alternates.push({
+        hreflang: "x-default",
+        href: urlFor(localizePath(logicalPath, BLOG_POST_LANG)),
+      });
+    }
   } else if (isRegionalLogicalPath(logicalPath)) {
     canonicalUrl = urlFor(localizePath(logicalPath, lang));
     alternates = [{ hreflang: lang, href: canonicalUrl }];

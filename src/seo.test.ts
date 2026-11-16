@@ -75,11 +75,26 @@ describe("buildMeta for single-language pages", () => {
     expect(meta.alternates).toEqual([{ hreflang: "hu", href: "https://synelweb.hu/impresszum" }]);
   });
 
-  it("points a blog post shown in another language at the Hungarian original", () => {
-    const meta = buildMeta({ ...base, pathname: "/blog/4", lang: "en" });
+  it("points an untranslated blog post at the Hungarian original", () => {
+    const meta = buildMeta({ ...base, pathname: "/blog/4", lang: "en", postLangs: ["hu"] });
 
     expect(meta.canonicalUrl).toBe("https://synelweb.hu/hu/blog/4");
     expect(meta.alternates).toEqual([{ hreflang: "hu", href: "https://synelweb.hu/hu/blog/4" }]);
+  });
+
+  it("gives a translated blog post its own address and lists its languages", () => {
+    const meta = buildMeta({ ...base, pathname: "/blog/4", lang: "en", postLangs: ["hu", "en"] });
+
+    expect(meta.canonicalUrl).toBe("https://synelweb.hu/en/blog/4");
+    expect(meta.alternates).toEqual([
+      { hreflang: "en", href: "https://synelweb.hu/en/blog/4" },
+      { hreflang: "hu", href: "https://synelweb.hu/hu/blog/4" },
+      { hreflang: "x-default", href: "https://synelweb.hu/hu/blog/4" },
+    ]);
+    // German has no translation: that page still points at the Hungarian one.
+    expect(
+      buildMeta({ ...base, pathname: "/blog/4", lang: "de", postLangs: ["hu", "en"] }).canonicalUrl
+    ).toBe("https://synelweb.hu/hu/blog/4");
   });
 
   it("still lists every language for the blog index", () => {

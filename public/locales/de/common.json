@@ -211,7 +211,7 @@
     "label": "Blog",
     "title": "Fachartikel, praktische Notizen und strategische Web-Beiträge.",
     "intro": "Hier findest du Fachbeiträge, Umsetzungsnotizen und praktische Beobachtungen aus realen Webprojekten.",
-    "languageNotice": "Dieser Blog ist derzeit nur auf Ungarisch verfügbar.",
+    "languageNotice": "Beiträge ohne deutsche Übersetzung werden auf Ungarisch angezeigt.",
     "fetchError": "Die Blogbeiträge konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
     "emptyState": "Derzeit sind keine Blogbeiträge verfügbar.",
     "filteredEmptyState": "Keine Beiträge entsprechen den gewählten Filtern.",

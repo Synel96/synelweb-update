@@ -70,6 +70,10 @@ describe("site check page", () => {
       "href",
       "/hu/kapcsolat?site=https%3A%2F%2Fpelda.hu#ajanlatkeres"
     );
+    expect(trackEvent).toHaveBeenCalledWith("site_check_start", {
+      strategy: "mobile",
+      trigger: "form",
+    });
     expect(trackEvent).toHaveBeenCalledWith("site_check_run", {
       strategy: "mobile",
       result: "success",
@@ -88,6 +92,11 @@ describe("site check page", () => {
     checkSite("nincs-ilyen.hu");
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/nem sikerült betölteni/);
+    expect(trackEvent).toHaveBeenCalledWith("site_check_run", {
+      strategy: "mobile",
+      result: "error",
+      reason: "unreachable",
+    });
   });
 
   it("labels layout-shift wins and doesn't praise a weak page without listed wins", async () => {

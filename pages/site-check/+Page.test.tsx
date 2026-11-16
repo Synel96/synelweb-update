@@ -66,7 +66,7 @@ describe("site check page", () => {
     expect(screen.getByText("Megjelenítést gátló erőforrások")).toBeInTheDocument();
     expect(screen.getByText("kb. 2,1 mp gyorsulás")).toBeInTheDocument();
     expect(screen.getByText("Javítandó")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Kérek ajánlatot/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /Kérj ajánlatot/ })).toHaveAttribute(
       "href",
       "/hu/kapcsolat?site=https%3A%2F%2Fpelda.hu#ajanlatkeres"
     );

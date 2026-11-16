@@ -270,15 +270,22 @@ export default function Page() {
 
         <div className="relative mx-auto flex min-h-svh w-full max-w-6xl flex-col justify-end px-6 pt-32 pb-16 sm:pb-20 md:justify-center md:pt-24 md:pb-14 lg:justify-end lg:pt-32 lg:pb-24">
           <div className="max-w-4xl pb-4 sm:pb-8">
-            <h1 className="hero-motto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
-              <Trans
-                i18nKey="hero.slogan"
-                components={{
-                  engineered: <span className="hero-emphasis hero-emphasis-warm" />,
-                  designed: <span className="hero-emphasis hero-emphasis-accent" />,
-                }}
-              />
-            </h1>
+            {/* The slogan is the visual headline; the page's <h1> is the
+                keyword line under it (an hgroup pairs the two). */}
+            <hgroup>
+              <p className="hero-motto max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+                <Trans
+                  i18nKey="hero.slogan"
+                  components={{
+                    engineered: <span className="hero-emphasis hero-emphasis-warm" />,
+                    designed: <span className="hero-emphasis hero-emphasis-accent" />,
+                  }}
+                />
+              </p>
+              <h1 className="mt-5 text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase sm:text-sm">
+                {t("pageH1.home")}
+              </h1>
+            </hgroup>
             <p className="hero-support mt-6 max-w-xl text-sm leading-7 text-white/72 sm:text-base">
               {t("hero.supportingLine")}
             </p>

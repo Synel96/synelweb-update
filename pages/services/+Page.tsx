@@ -160,12 +160,14 @@ export default function Page() {
     <>
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
-            {t("homeFlow.services.label")}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            {t("homeFlow.services.title")}
-          </h1>
+          <hgroup>
+            <h1 className="text-xs font-semibold tracking-[0.18em] text-(--accent) uppercase">
+              {t("pageH1.services")}
+            </h1>
+            <p className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {t("homeFlow.services.title")}
+            </p>
+          </hgroup>
           <p className="mt-4 text-left text-base leading-8 text-white/80 sm:text-lg">
             {t("homeFlow.services.text")}
           </p>

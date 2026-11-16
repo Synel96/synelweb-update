@@ -84,12 +84,14 @@ export default function Page() {
       <section className="mx-auto w-full max-w-6xl px-6 pt-28 pb-14 sm:pt-32 sm:pb-18">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div className="text-center">
-            <p className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">
-              {t("technology.label")}
-            </p>
-            <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {t("technology.heading")}
-            </h1>
+            <hgroup>
+              <h1 className="text-sm font-semibold tracking-[0.22em] text-(--primary) uppercase">
+                {t("pageH1.technology")}
+              </h1>
+              <p className="mx-auto mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                {t("technology.heading")}
+              </p>
+            </hgroup>
             <p className="mx-auto mt-6 max-w-4xl text-left text-base leading-8 text-white/78 sm:text-lg">
               {t("technology.intro")}
             </p>

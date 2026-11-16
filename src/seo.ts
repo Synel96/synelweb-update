@@ -34,12 +34,12 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Custom, lightning-fast website design, delivered online for clients across Hungary, Europe, and beyond. Forget slow templates! Premium design and future-ready architecture from SynelWeb.",
     },
     "/about": {
-      title: "About | SynelWeb",
+      title: "About – Web Developer from Sopron, Hungary | SynelWeb",
       description:
         "Learn how I work: custom web development, technical SEO, and fast, secure solutions for businesses.",
     },
     "/services": {
-      title: "Services | SynelWeb",
+      title: "Website Design Services & Pricing | SynelWeb",
       description:
         "Services and development approach in one place: custom, fast, and business-ready web solutions.",
     },
@@ -54,27 +54,27 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Check your website for free: Google Lighthouse scores for performance, accessibility, best practices and SEO, Core Web Vitals and the biggest improvements – on mobile and desktop.",
     },
     "/projects": {
-      title: "Projects | SynelWeb",
+      title: "Website Portfolio & Projects | SynelWeb",
       description:
         "Real projects and real technical quality: fast, modern, business-ready web solutions.",
     },
     "/certificates": {
-      title: "Certificates | SynelWeb",
+      title: "Web Development & Google Ads Certificates | SynelWeb",
       description:
         "Verifiable certificates in frontend, backend and full-stack web development and Google Search Ads – the knowledge behind every SynelWeb project.",
     },
     "/blog": {
-      title: "Blog | SynelWeb",
+      title: "Web Development & SEO Blog | SynelWeb",
       description:
         "Insights, practical web development notes, and business-focused articles from SynelWeb.",
     },
     "/technology": {
-      title: "Technology | SynelWeb",
+      title: "Technology: React, Django, PostgreSQL | SynelWeb",
       description:
         "Modern technology stack with TypeScript, Python, Django, and PostgreSQL for fast, secure, future-ready systems.",
     },
     "/contact": {
-      title: "Contact | SynelWeb",
+      title: "Contact & Request a Quote | SynelWeb",
       description:
         "Contact SynelWeb by email, phone, or online — wherever in Hungary you are, with in-person meetings around Sopron.",
     },
@@ -86,7 +86,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Egyedi, villámgyors weboldal készítés bárhol Magyarországon, online egyeztetéssel. Felejtsd el a lassú sablonokat! Prémium dizájn és jövőálló architektúra a SynelWebtől.",
     },
     "/about": {
-      title: "Rólam | SynelWeb",
+      title: "Rólam – webfejlesztő Sopronból | SynelWeb",
       description:
         "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
     },
@@ -101,32 +101,32 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Google keresőhirdetés beállítás és kezelés Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés, havi riport és átlátható árak – Sopronból, országosan.",
     },
     "/site-check": {
-      title: "Ingyenes weboldal-ellenőrzés – sebesség, SEO, akadálymentesség | SynelWeb",
+      title: "Ingyenes weboldal-ellenőrzés: sebesség és SEO | SynelWeb",
       description:
         "Mérd le ingyen a weboldalad: Google Lighthouse pontszámok teljesítményre, akadálymentességre, bevált gyakorlatokra és SEO-ra, Core Web Vitals és a legnagyobb javítási lehetőségek mobilon és asztalin.",
     },
     "/projects": {
-      title: "Projektek | SynelWeb",
+      title: "Weboldal referenciák és projektek | SynelWeb",
       description:
         "Valós projektek, valós technikai minőség: gyors, modern és üzletileg használható webes megoldások.",
     },
     "/certificates": {
-      title: "Tanúsítványok | SynelWeb",
+      title: "Webfejlesztő és Google Ads tanúsítványok | SynelWeb",
       description:
         "Ellenőrizhető tanúsítványok frontend, backend és fullstack webfejlesztésből, valamint Google keresőhirdetésből – a tudás, ami minden SynelWeb-projekt mögött áll.",
     },
     "/blog": {
-      title: "Blog | SynelWeb",
+      title: "Webfejlesztés és SEO blog | SynelWeb",
       description:
         "Szakmai cikkek, gyakorlati webfejlesztési tapasztalatok és üzleti szemléletű bejegyzések a SynelWebtől.",
     },
     "/technology": {
-      title: "Technológia | SynelWeb",
+      title: "Technológia: React, Django, PostgreSQL | SynelWeb",
       description:
         "Modern technológiai háttér TypeScripttel, Pythonnal, Djangóval és PostgreSQL-lel: gyors, biztonságos és jövőálló webes rendszerek.",
     },
     "/contact": {
-      title: "SynelWeb | Kapcsolat",
+      title: "Kapcsolat és ajánlatkérés | SynelWeb",
       description:
         "Lépj kapcsolatba a SynelWebbel e-mailben, telefonon vagy online egyeztetéssel – bárhonnan Magyarországról, Sopronban személyesen is.",
     },
@@ -138,7 +138,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Individuelles, blitzschnelles Webdesign und Homepage erstellen lassen – online verfügbar in ganz Ungarn, Österreich (auch Burgenland) und darüber hinaus. Vergiss langsame Vorlagen! Premium-Design von SynelWeb.",
     },
     "/about": {
-      title: "Über mich | SynelWeb",
+      title: "Über mich – Webentwickler aus Sopron | SynelWeb",
       description:
         "Erfahre, wie ich arbeite: individuelle Webentwicklung, technisches SEO und schnelle, sichere Lösungen für Unternehmen.",
     },
@@ -153,32 +153,32 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Google-Suchanzeigen einrichten und betreuen lassen – mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte und transparente Preise.",
     },
     "/site-check": {
-      title: "Kostenloser Website-Check – Speed, SEO & Barrierefreiheit | SynelWeb",
+      title: "Kostenloser Website-Check: Speed & SEO | SynelWeb",
       description:
         "Prüfe deine Website kostenlos: Google-Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO, Core Web Vitals und die größten Verbesserungen – mobil und am Desktop.",
     },
     "/projects": {
-      title: "Projekte | SynelWeb",
+      title: "Webdesign Referenzen & Projekte | SynelWeb",
       description:
         "Reale Projekte und echte technische Qualität: schnelle, moderne und geschäftstaugliche Weblösungen.",
     },
     "/certificates": {
-      title: "Zertifikate | SynelWeb",
+      title: "Zertifikate: Webentwicklung & Google Ads | SynelWeb",
       description:
         "Überprüfbare Zertifikate in Frontend-, Backend- und Full-Stack-Webentwicklung sowie Google-Suchanzeigen – das Wissen hinter jedem SynelWeb-Projekt.",
     },
     "/blog": {
-      title: "Blog | SynelWeb",
+      title: "Blog zu Webentwicklung & SEO | SynelWeb",
       description:
         "Fachartikel, praktische Webentwicklungsnotizen und geschäftsorientierte Einblicke von SynelWeb.",
     },
     "/technology": {
-      title: "Technologie | SynelWeb",
+      title: "Technologie: React, Django, PostgreSQL | SynelWeb",
       description:
         "Moderner Technologie-Stack mit TypeScript, Python, Django und PostgreSQL für schnelle, sichere und zukunftsfähige Systeme.",
     },
     "/contact": {
-      title: "Kontakt | SynelWeb",
+      title: "Kontakt & Angebot anfordern | SynelWeb",
       description:
         "Kontaktiere SynelWeb per E-Mail, telefonisch oder online – aus Ungarn, Österreich (Burgenland, Wien) oder von überall sonst, mit persönlichen Terminen rund um Sopron.",
     },

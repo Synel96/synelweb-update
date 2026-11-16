@@ -916,5 +916,14 @@
       ],
       "sources": "Sources:"
     }
+  },
+  "pageH1": {
+    "home": "Custom website design & web development",
+    "services": "Website design services & pricing",
+    "projects": "Website portfolio & projects",
+    "blog": "Web development & SEO blog",
+    "technology": "Technology: React, Django, PostgreSQL",
+    "contact": "Contact & request a quote",
+    "about": "About me – web developer from Sopron, Hungary"
   }
 }

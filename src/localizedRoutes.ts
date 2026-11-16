@@ -81,6 +81,22 @@ export function isRegionalLogicalPath(path: string): path is RegionalLogicalPath
   return Object.prototype.hasOwnProperty.call(REGIONAL_PAGES, path);
 }
 
+// Legal pages are Hungarian only and live at the root, without a language
+// prefix (/impresszum, not /hu/impresszum).
+export const LEGAL_PATHS = ["/adatkezeles", "/impresszum", "/aszf"] as const;
+
+export function isLegalLogicalPath(path: string): boolean {
+  return (LEGAL_PATHS as readonly string[]).includes(path);
+}
+
+// Blog posts are written in Hungarian only; the other languages show the
+// same Hungarian text inside a translated page frame.
+export const BLOG_POST_LANG: SupportedLang = "hu";
+
+export function isBlogPostLogicalPath(path: string): boolean {
+  return /^\/blog\/[^/]+$/.test(path);
+}
+
 // Never matches a page, so a regional page asked for in the wrong language
 // (e.g. /en/sopron) is a 404 instead of the page in the wrong language.
 const UNAVAILABLE_LOGICAL_PATH = "/__unavailable";

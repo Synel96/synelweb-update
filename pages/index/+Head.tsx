@@ -11,13 +11,7 @@ export function Head() {
 
   if (!isHomePage) return null;
 
-  return (
-    <link
-      rel="preload"
-      as="image"
-      href={HERO_VIDEO_POSTER_URL}
-      crossOrigin="anonymous"
-      fetchPriority="high"
-    />
-  );
+  // No crossOrigin: the poster <img> is a plain (no-cors) request, and a
+  // preload is only reused when its credentials mode matches.
+  return <link rel="preload" as="image" href={HERO_VIDEO_POSTER_URL} fetchPriority="high" />;
 }

@@ -1,6 +1,7 @@
 import { BRAND_NAME, SITE_URL } from "@/components/site";
 import type { SupportedLang } from "@/src/i18n-config";
 import {
+  BLOG_POST_LANG,
   KNOWN_LOGICAL_PATHS,
   type KnownLogicalPath,
   type RegionalLogicalPath,
@@ -139,6 +140,7 @@ export function buildBlogPostingJsonLd({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: title,
     description,
+    inLanguage: BLOG_POST_LANG,
     ...(image ? { image } : {}),
     ...(hasValidDate ? { datePublished } : {}),
     author: { "@type": "Organization", name: BRAND_NAME, url: SITE_URL },

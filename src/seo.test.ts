@@ -64,3 +64,28 @@ describe("buildMeta", () => {
     expect(xDefault?.href).toBe("https://synelweb.hu/hu/kapcsolat");
   });
 });
+
+describe("buildMeta for single-language pages", () => {
+  const base = { title: null, description: null, image: null };
+
+  it("keeps legal pages at their unprefixed address", () => {
+    const meta = buildMeta({ ...base, pathname: "/impresszum", lang: "hu" });
+
+    expect(meta.canonicalUrl).toBe("https://synelweb.hu/impresszum");
+    expect(meta.alternates).toEqual([{ hreflang: "hu", href: "https://synelweb.hu/impresszum" }]);
+  });
+
+  it("points a blog post shown in another language at the Hungarian original", () => {
+    const meta = buildMeta({ ...base, pathname: "/blog/4", lang: "en" });
+
+    expect(meta.canonicalUrl).toBe("https://synelweb.hu/hu/blog/4");
+    expect(meta.alternates).toEqual([{ hreflang: "hu", href: "https://synelweb.hu/hu/blog/4" }]);
+  });
+
+  it("still lists every language for the blog index", () => {
+    const meta = buildMeta({ ...base, pathname: "/blog", lang: "de" });
+
+    expect(meta.canonicalUrl).toBe("https://synelweb.hu/de/blog");
+    expect(meta.alternates.map((a) => a.hreflang)).toEqual(["en", "hu", "de", "x-default"]);
+  });
+});

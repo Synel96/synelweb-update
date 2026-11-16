@@ -32,6 +32,8 @@ type BlogDetailData = {
     previewImageUrl?: string;
     createdAt?: string;
     updatedAt?: string;
+    language?: SupportedLang;
+    translations?: SupportedLang[];
   } | null;
 };
 
@@ -69,7 +71,9 @@ export function Head() {
     title: postTitle ? toPostTitle(postTitle) : null,
     description: postDescription ? toMetaDescription(postDescription) : null,
     image: resolvedPostImage || null,
+    postLangs: pageContext.data?.post?.translations ?? null,
   });
+  const postLanguage = pageContext.data?.post?.language ?? BLOG_POST_LANG;
 
   const logicalPath = normalizeLogicalPath(pageContext.urlPathname);
   const isBlogPostPage = logicalPath.startsWith("/blog/") && logicalPath.length > "/blog/".length;
@@ -122,7 +126,8 @@ export function Head() {
           image: resolvedPostImage,
           datePublished: postCreatedAt,
           dateModified: postUpdatedAt,
-          authorUrl: new URL(localizePath("/about", BLOG_POST_LANG), SITE_URL).toString(),
+          language: postLanguage,
+          authorUrl: new URL(localizePath("/about", postLanguage), SITE_URL).toString(),
         })
       : null;
 

@@ -92,3 +92,31 @@ describe("getBlogPostDetail", () => {
     expect(detail.sections[0].order).toBe(Number.MAX_SAFE_INTEGER);
   });
 });
+
+describe("post address and language", () => {
+  it("addresses a post by its slug and reads which languages it exists in", async () => {
+    mockFetchOnce([
+      {
+        id: 4,
+        slug: "seo-eszkozok",
+        title: "SEO tools",
+        language: "en",
+        translations: ["hu", "en"],
+      },
+    ]);
+    const [post] = await getBlogPosts("en");
+
+    expect(post.urlKey).toBe("seo-eszkozok");
+    expect(post.language).toBe("en");
+    expect(post.translations).toEqual(["hu", "en"]);
+  });
+
+  it("treats a post without language data as Hungarian only, addressed by id", async () => {
+    mockFetchOnce([{ id: 7, title: "Poszt" }]);
+    const [post] = await getBlogPosts("de");
+
+    expect(post.urlKey).toBe("7");
+    expect(post.language).toBe("hu");
+    expect(post.translations).toEqual(["hu"]);
+  });
+});

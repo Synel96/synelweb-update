@@ -245,7 +245,8 @@
       "copy": "Link másolása",
       "copied": "Link másolva",
       "nativeHint": "Instagram/Story opció mobilon a rendszer megosztóban érhető el."
-    }
+    },
+    "languageNotice": "A lefordítatlan bejegyzések magyarul jelennek meg."
   },
   "blogDetail": {
     "backToList": "← Vissza a bloghoz",

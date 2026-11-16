@@ -124,6 +124,8 @@ type BlogPostingInput = {
   image: string;
   datePublished: string;
   dateModified?: string;
+  // The language the post's text is in.
+  language?: SupportedLang;
   // The author's own page (the About page).
   authorUrl?: string;
 };
@@ -135,6 +137,7 @@ export function buildBlogPostingJsonLd({
   image,
   datePublished,
   dateModified,
+  language,
   authorUrl,
 }: BlogPostingInput) {
   const isDate = (value?: string) => Boolean(value) && !Number.isNaN(Date.parse(value as string));
@@ -146,7 +149,7 @@ export function buildBlogPostingJsonLd({
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: title,
     description,
-    inLanguage: BLOG_POST_LANG,
+    inLanguage: language ?? BLOG_POST_LANG,
     ...(image ? { image } : {}),
     ...(hasValidDate ? { datePublished } : {}),
     ...(isDate(dateModified) ? { dateModified } : {}),

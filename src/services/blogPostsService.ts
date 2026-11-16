@@ -21,6 +21,8 @@ type ApiBlogPost = {
   created_at?: string;
   slug?: string;
   updated_at?: string;
+  language?: string;
+  translations?: string[];
 };
 
 type ApiBlogSection = {
@@ -39,6 +41,8 @@ type ApiBlogPostDetail = {
   created_at?: string;
   slug?: string;
   updated_at?: string;
+  language?: string;
+  translations?: string[];
   sections?: ApiBlogSection[];
 };
 
@@ -47,6 +51,11 @@ export type BlogPost = {
   // What the post's address ends in: its slug, or the id if it has none.
   urlKey: string;
   updatedAt: string;
+  // The language the texts are in: the page's language when the post is
+  // translated into it, Hungarian otherwise.
+  language: AppLang;
+  // Every language the post exists in (always includes Hungarian).
+  translations: AppLang[];
   title: string;
   description: string;
   previewImageUrl: string;
@@ -65,6 +74,11 @@ export type BlogPostDetail = {
   id: string;
   urlKey: string;
   updatedAt: string;
+  // The language the texts are in: the page's language when the post is
+  // translated into it, Hungarian otherwise.
+  language: AppLang;
+  // Every language the post exists in (always includes Hungarian).
+  translations: AppLang[];
   title: string;
   description: string;
   previewImageUrl: string;
@@ -74,6 +88,17 @@ export type BlogPostDetail = {
 };
 
 const BLOG_POSTS_ENDPOINT = `${resolveApiBaseUrl()}/blog/blogposts/`;
+
+const POST_LANGS: readonly AppLang[] = ["hu", "en", "de"];
+
+function normalizeLanguage(value: unknown): AppLang {
+  return POST_LANGS.includes(value as AppLang) ? (value as AppLang) : "hu";
+}
+
+function normalizeTranslations(value: unknown): AppLang[] {
+  const listed = Array.isArray(value) ? POST_LANGS.filter((lang) => value.includes(lang)) : [];
+  return listed.includes("hu") ? listed : ["hu", ...listed];
+}
 
 function normalizeText(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -118,6 +143,8 @@ export async function getBlogPosts(lang: AppLang): Promise<BlogPost[]> {
       id,
       urlKey: normalizeText(item.slug) || id,
       updatedAt: normalizeText(item.updated_at),
+      language: normalizeLanguage(item.language),
+      translations: normalizeTranslations(item.translations),
       title,
       description: normalizeText(item.description),
       previewImageUrl: normalizeImageUrl(item.preview_image_url),
@@ -155,6 +182,8 @@ export async function getBlogPostDetail(id: string, lang: AppLang): Promise<Blog
     id: resolvedId,
     urlKey: normalizeText(data.slug) || resolvedId,
     updatedAt: normalizeText(data.updated_at),
+    language: normalizeLanguage(data.language),
+    translations: normalizeTranslations(data.translations),
     title: normalizeText(data.title),
     description: normalizeText(data.description),
     previewImageUrl: normalizeImageUrl(data.preview_image_url),

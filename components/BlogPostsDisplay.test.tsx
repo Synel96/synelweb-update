@@ -15,6 +15,8 @@ const post: BlogPost = {
   id: "1",
   urlKey: "hello-world",
   updatedAt: "2026-03-06T00:00:00Z",
+  language: "hu",
+  translations: ["hu"],
   title: "Hello world",
   description: "A short post about testing.",
   previewImageUrl: "https://example.com/pic.png",

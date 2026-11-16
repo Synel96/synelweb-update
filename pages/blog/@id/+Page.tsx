@@ -193,7 +193,8 @@ export default function Page() {
     "blogPage.languageNotice",
     "This blog is currently available only in Hungarian."
   );
-  const showLanguageNotice = routeLang === "en" || routeLang === "de";
+  // Only when the visitor is reading a post that has no translation.
+  const showLanguageNotice = Boolean(data.post) && data.post?.language !== routeLang;
   const previousPostLabel = translateWithFallback(t, "blogDetail.previousPost", "← Előző cikk");
   const nextPostLabel = translateWithFallback(t, "blogDetail.nextPost", "Következő cikk →");
   const postNavigationLabel = translateWithFallback(
@@ -317,9 +318,13 @@ export default function Page() {
         ) : (
           post.sections.map((section, index) => (
             <section key={section.id} className="fancy-card rounded-2xl px-6 py-6 sm:px-8">
-              <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                {section.subtitle || `${t("blogDetail.sectionFallbackTitle")} ${index + 1}`}
-              </h2>
+              {/* The text before a post's first "## " heading is its
+                  introduction: a section without a title. */}
+              {section.subtitle || index > 0 ? (
+                <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                  {section.subtitle || `${t("blogDetail.sectionFallbackTitle")} ${index + 1}`}
+                </h2>
+              ) : null}
               {section.content ? (
                 <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
                   {section.content}

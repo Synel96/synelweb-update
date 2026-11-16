@@ -93,9 +93,12 @@ async function fetchBlogPosts() {
         const slug = typeof item?.slug === "string" ? item.slug.trim() : "";
         const id = item?.id === undefined || item?.id === null ? "" : String(item.id).trim();
         const changed = String(item?.updated_at ?? item?.created_at ?? "").slice(0, 10);
+        const listed = Array.isArray(item?.translations) ? item.translations : [];
         return {
           key: slug || id,
           lastmod: /^\d{4}-\d{2}-\d{2}$/.test(changed) ? changed : null,
+          // Hungarian always; English / German when the post is translated.
+          langs: SUPPORTED_LANGS.filter((lang) => lang === DEFAULT_LANG || listed.includes(lang)),
         };
       })
       .filter((post) => post.key);
@@ -127,15 +130,22 @@ async function buildEntries() {
     entries.push({ path, alternates: null, selfLang: lang });
   }
 
-  // Blog posts are written in Hungarian only: the other languages show the
-  // same text and are canonical to the Hungarian URL, so only that is listed.
+  // A blog post is listed in the languages it is translated into. In any
+  // other language the page shows the Hungarian text and is canonical to the
+  // Hungarian URL, so it is left out.
   for (const post of blogPosts) {
-    entries.push({
-      path: localizePath(`/blog/${encodeURIComponent(post.key)}`, DEFAULT_LANG),
-      alternates: null,
-      selfLang: DEFAULT_LANG,
-      lastmod: post.lastmod,
-    });
+    const logicalPath = `/blog/${encodeURIComponent(post.key)}`;
+    const byLang = Object.fromEntries(
+      post.langs.map((lang) => [lang, localizePath(logicalPath, lang)])
+    );
+    for (const lang of post.langs) {
+      entries.push({
+        path: byLang[lang],
+        alternates: post.langs.length > 1 ? byLang : null,
+        selfLang: post.langs.length > 1 ? null : lang,
+        lastmod: post.lastmod,
+      });
+    }
   }
 
   for (const legalPath of LEGAL_PATHS) {
@@ -155,6 +165,7 @@ function toXml(entries) {
 
     if (alternates) {
       for (const lang of SUPPORTED_LANGS) {
+        if (!alternates[lang]) continue;
         lines.push(
           `    <xhtml:link rel="alternate" hreflang="${lang}" href="${SITE_URL}${alternates[lang]}" />`
         );

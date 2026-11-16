@@ -113,8 +113,13 @@ export default function Page() {
     resultRef.current?.focus({ preventScroll: true });
   }, [result]);
 
-  const check = async (target: string, device: SiteCheckStrategy) => {
+  const check = async (
+    target: string,
+    device: SiteCheckStrategy,
+    trigger: "form" | "other_device" = "form"
+  ) => {
     if (!target.trim() || isChecking) return;
+    trackEvent("site_check_start", { strategy: device, trigger });
     setIsChecking(true);
     setError(null);
     setStrategy(device);
@@ -126,8 +131,9 @@ export default function Page() {
       storeSiteCheck(next);
       trackEvent("site_check_run", { strategy: device, result: "success" });
     } catch (failure) {
-      setError(failure instanceof SiteCheckFailure ? failure.reason : "busy");
-      trackEvent("site_check_run", { strategy: device, result: "error" });
+      const reason = failure instanceof SiteCheckFailure ? failure.reason : "busy";
+      setError(reason);
+      trackEvent("site_check_run", { strategy: device, result: "error", reason });
     } finally {
       setIsChecking(false);
     }
@@ -412,7 +418,7 @@ export default function Page() {
               </button>
               <button
                 type="button"
-                onClick={() => void check(result.url, otherDevice)}
+                onClick={() => void check(result.url, otherDevice, "other_device")}
                 disabled={isChecking}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-semibold text-white/85 transition-colors hover:border-white/30 hover:text-white disabled:opacity-60"
               >

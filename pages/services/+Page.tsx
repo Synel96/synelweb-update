@@ -29,6 +29,9 @@ import {
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/components/site";
+import { buildServiceCatalogJsonLd } from "@/src/structuredData";
 
 // Points the visitor of a language to its regional landing page.
 const REGIONAL_TEASERS: Partial<Record<AppLang, { href: string; label: string; text: string }>> = {
@@ -156,8 +159,19 @@ export default function Page() {
     category,
     items: allCards.filter((card) => card.category === category),
   })).filter((group) => group.items.length > 0);
+  const catalogJsonLd = buildServiceCatalogJsonLd({
+    url: new URL(localizePath("/services", appLang), SITE_URL).toString(),
+    name: t("pageH1.services"),
+    services: allCards.map((card) => ({
+      name: card.name,
+      price: card.offer?.price,
+      currency: card.offer?.currency,
+    })),
+  });
+
   return (
     <>
+      <JsonLd data={catalogJsonLd} />
       <header className="mx-auto w-full max-w-6xl px-6 pt-36 pb-16 sm:pt-40 sm:pb-14">
         <div className="mx-auto max-w-3xl text-center">
           <hgroup>

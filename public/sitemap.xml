@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://synelweb.hu/hu/</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/" />
@@ -10,7 +9,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/" />
@@ -18,7 +16,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/" />
@@ -26,7 +23,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/rolam</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/rolam" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/about" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/ueber-mich" />
@@ -34,7 +30,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/about</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/rolam" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/about" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/ueber-mich" />
@@ -42,7 +37,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/ueber-mich</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/rolam" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/about" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/ueber-mich" />
@@ -50,7 +44,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/szolgaltatasok</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/szolgaltatasok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/services" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/dienstleistungen" />
@@ -58,7 +51,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/services</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/szolgaltatasok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/services" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/dienstleistungen" />
@@ -66,7 +58,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/dienstleistungen</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/szolgaltatasok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/services" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/dienstleistungen" />
@@ -74,7 +65,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/google-ads-kezeles</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/google-ads-kezeles" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/google-ads-management" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/google-ads-betreuung" />
@@ -82,7 +72,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/google-ads-management</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/google-ads-kezeles" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/google-ads-management" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/google-ads-betreuung" />
@@ -90,7 +79,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/google-ads-betreuung</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/google-ads-kezeles" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/google-ads-management" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/google-ads-betreuung" />
@@ -98,7 +86,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/weboldal-ellenorzes</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/weboldal-ellenorzes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/website-check" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/website-check" />
@@ -106,7 +93,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/website-check</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/weboldal-ellenorzes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/website-check" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/website-check" />
@@ -114,7 +100,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/website-check</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/weboldal-ellenorzes" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/website-check" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/website-check" />
@@ -122,7 +107,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/projektek</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/projektek" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/projects" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/projekte" />
@@ -130,7 +114,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/projects</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/projektek" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/projects" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/projekte" />
@@ -138,7 +121,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/projekte</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/projektek" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/projects" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/projekte" />
@@ -146,7 +128,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/tanusitvanyok</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/tanusitvanyok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/certificates" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/zertifikate" />
@@ -154,7 +135,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/certificates</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/tanusitvanyok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/certificates" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/zertifikate" />
@@ -162,7 +142,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/zertifikate</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/tanusitvanyok" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/certificates" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/zertifikate" />
@@ -170,7 +149,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/blog</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/blog" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/blog" />
@@ -178,7 +156,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/blog</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/blog" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/blog" />
@@ -186,7 +163,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/blog</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/blog" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/blog" />
@@ -194,7 +170,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/technologia</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/technologia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/technology" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/technologie" />
@@ -202,7 +177,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/technology</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/technologia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/technology" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/technologie" />
@@ -210,7 +184,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/technologie</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/technologia" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/technology" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/technologie" />
@@ -218,7 +191,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/kapcsolat</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/kapcsolat" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/contact" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/kontakt" />
@@ -226,7 +198,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/en/contact</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/kapcsolat" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/contact" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/kontakt" />
@@ -234,7 +205,6 @@
   </url>
   <url>
     <loc>https://synelweb.hu/de/kontakt</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/kapcsolat" />
     <xhtml:link rel="alternate" hreflang="en" href="https://synelweb.hu/en/contact" />
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/kontakt" />
@@ -242,49 +212,44 @@
   </url>
   <url>
     <loc>https://synelweb.hu/hu/weboldal-keszites-sopron</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/weboldal-keszites-sopron" />
   </url>
   <url>
     <loc>https://synelweb.hu/de/webdesign-burgenland-wien</loc>
-    <lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://synelweb.hu/de/webdesign-burgenland-wien" />
   </url>
   <url>
-    <loc>https://synelweb.hu/hu/blog/5</loc>
-    <lastmod>2026-11-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/5" />
+    <loc>https://synelweb.hu/hu/blog/meta-megfigyeles-</loc>
+    <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/meta-megfigyeles-" />
   </url>
   <url>
-    <loc>https://synelweb.hu/hu/blog/4</loc>
-    <lastmod>2026-11-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/4" />
+    <loc>https://synelweb.hu/hu/blog/seo-2026-ban-mit-erdemes-tudnod-mielott-belevagsz</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/seo-2026-ban-mit-erdemes-tudnod-mielott-belevagsz" />
   </url>
   <url>
-    <loc>https://synelweb.hu/hu/blog/3</loc>
-    <lastmod>2026-11-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/3" />
+    <loc>https://synelweb.hu/hu/blog/fejlesztoi-boncasztal-sima-react-spa-vs-vike</loc>
+    <lastmod>2026-07-30</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/fejlesztoi-boncasztal-sima-react-spa-vs-vike" />
   </url>
   <url>
-    <loc>https://synelweb.hu/hu/blog/2</loc>
-    <lastmod>2026-11-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/2" />
+    <loc>https://synelweb.hu/hu/blog/miert-kerul-ennyibe-a-funkciok-amik-eszrevetlenul-megdobjak-a-weboldalad-arat</loc>
+    <lastmod>2026-07-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/miert-kerul-ennyibe-a-funkciok-amik-eszrevetlenul-megdobjak-a-weboldalad-arat" />
   </url>
   <url>
-    <loc>https://synelweb.hu/hu/blog/1</loc>
-    <lastmod>2026-11-16</lastmod>
-    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/1" />
+    <loc>https://synelweb.hu/hu/blog/megujult-a-synelweb</loc>
+    <lastmod>2026-07-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://synelweb.hu/hu/blog/megujult-a-synelweb" />
   </url>
   <url>
     <loc>https://synelweb.hu/adatkezeles</loc>
-    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://synelweb.hu/impresszum</loc>
-    <lastmod>2026-11-16</lastmod>
   </url>
   <url>
     <loc>https://synelweb.hu/aszf</loc>
-    <lastmod>2026-11-16</lastmod>
   </url>
 </urlset>

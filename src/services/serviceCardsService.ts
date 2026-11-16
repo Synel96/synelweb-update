@@ -51,6 +51,8 @@ export type ServiceCard = {
   // Set for services with a monthly fee (e.g. ad management); regularPrice /
   // discountedPrice are then the one-time setup fee.
   monthlyPrice: string;
+  // The price as a number (the sale price when on sale), for structured data.
+  offer?: { price: number; currency: string };
   images: string[];
   order: number;
 };
@@ -89,7 +91,13 @@ export async function getServiceCards(lang: AppLang): Promise<ServiceCard[]> {
       const regularPrice = formatPrice(item.price, lang);
       const discountedPrice = formatPrice(item.salePrice, lang);
       const hasDiscount = discountedPrice.length > 0;
+      const lowest = item.salePrice ?? item.price;
       return {
+        ...(typeof lowest?.amount === "number"
+          ? {
+              offer: { price: lowest.amount, currency: (lowest.currency || "HUF").trim() || "HUF" },
+            }
+          : {}),
         id: String(item.id),
         category: normalizeCategory(item.category),
         name: pickLocalized(item.title, lang),

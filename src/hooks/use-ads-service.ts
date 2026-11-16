@@ -20,6 +20,7 @@ export function useAdsServiceCard(lang: AppLang): ServiceCard {
     discountedPrice: "",
     hasDiscount: false,
     monthlyPrice: "",
+    offer: { price: ADS_SETUP_PRICE_HUF, currency: "HUF" },
     images: [],
     order: Number.MAX_SAFE_INTEGER,
   };

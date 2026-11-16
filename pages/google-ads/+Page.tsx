@@ -20,6 +20,10 @@ import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import type { Certificate } from "@/src/services/certificatesService";
 import type { AppLang } from "@/src/services/serviceCardsService";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/components/site";
+import { ADS_SETUP_PRICE_HUF } from "@/src/pricing";
+import { buildFaqJsonLd, buildServiceJsonLd } from "@/src/structuredData";
 
 type Data = {
   certificates: Certificate[];
@@ -57,9 +61,19 @@ export default function Page() {
     (c) => c.category === "marketing" && c.kind === "exam" && !c.isExpired
   );
   const faq = asFaq(t("adsPage.faq.items", { returnObjects: true }));
+  const serviceJsonLd = buildServiceJsonLd({
+    url: new URL(localizePath("/google-ads", lang), SITE_URL).toString(),
+    name: t("adsPage.title"),
+    description: t("adsPage.intro"),
+    serviceType: "Google Ads management",
+    // The one fixed price; the monthly fee is quoted per campaign.
+    offers: [{ name: card.name, price: ADS_SETUP_PRICE_HUF, currency: "HUF" }],
+  });
 
   return (
     <>
+      <JsonLd data={serviceJsonLd} />
+      <JsonLd data={buildFaqJsonLd(faq)} />
       <section className="mx-auto w-full max-w-6xl px-6 pt-36 pb-12 text-center sm:pt-40 sm:pb-16">
         <p className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
           {t("adsPage.label")}

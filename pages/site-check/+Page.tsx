@@ -31,6 +31,10 @@ import {
 } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 import { storeSiteCheck } from "@/src/siteCheckStorage";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE_URL } from "@/components/site";
+import { getSeoEntry } from "@/src/seo";
+import { buildWebApplicationJsonLd } from "@/src/structuredData";
 
 const SCORE_KEYS = ["performance", "accessibility", "bestPractices", "seo"] as const;
 const ABOUT_ICONS: Record<(typeof SCORE_KEYS)[number], LucideIcon> = {
@@ -170,8 +174,18 @@ export default function Page() {
           ? "average"
           : "poor";
 
+  const seo = getSeoEntry("/site-check", lang);
+
   return (
     <>
+      <JsonLd
+        data={buildWebApplicationJsonLd({
+          url: new URL(localizePath("/site-check", lang), SITE_URL).toString(),
+          name: t("siteCheck.label"),
+          description: seo.description,
+          lang,
+        })}
+      />
       <section className="mx-auto w-full max-w-4xl px-6 pt-36 pb-10 text-center sm:pt-40 sm:pb-14">
         <p className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
           {t("siteCheck.label")}

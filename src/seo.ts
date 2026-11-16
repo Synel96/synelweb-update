@@ -17,6 +17,13 @@ type SeoEntry = {
   description: string;
 };
 
+// Pages with their own 1200x630 share image, one per language, in
+// public/og/<name>-<lang>.jpg.
+const OG_IMAGE_PAGES: Partial<Record<string, string>> = {
+  "/site-check": "site-check",
+  "/google-ads": "google-ads",
+};
+
 type BuildMetaInput = {
   /** Logical pathname without lang prefix, e.g. "/" or "/about" */
   pathname: string;
@@ -31,7 +38,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/": {
       title: "Website Design in Hungary & Europe | SynelWeb Web Development",
       description:
-        "Custom, lightning-fast website design, delivered online for clients across Hungary, Europe, and beyond. Forget slow templates! Premium design and future-ready architecture from SynelWeb.",
+        "Custom, lightning-fast websites for clients across Hungary and Europe, delivered online. Premium design and future-ready architecture from SynelWeb.",
     },
     "/about": {
       title: "About – Web Developer from Sopron, Hungary | SynelWeb",
@@ -51,7 +58,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/site-check": {
       title: "Free Website Check – Speed, SEO & Accessibility | SynelWeb",
       description:
-        "Check your website for free: Google Lighthouse scores for performance, accessibility, best practices and SEO, Core Web Vitals and the biggest improvements – on mobile and desktop.",
+        "Check your website for free with Google Lighthouse: speed, SEO, accessibility and Core Web Vitals on mobile and desktop, with the biggest fixes.",
     },
     "/projects": {
       title: "Website Portfolio & Projects | SynelWeb",
@@ -103,7 +110,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/site-check": {
       title: "Ingyenes weboldal-ellenőrzés: sebesség és SEO | SynelWeb",
       description:
-        "Mérd le ingyen a weboldalad: Google Lighthouse pontszámok teljesítményre, akadálymentességre, bevált gyakorlatokra és SEO-ra, Core Web Vitals és a legnagyobb javítási lehetőségek mobilon és asztalin.",
+        "Mérd le ingyen a weboldalad a Google Lighthouse-szal: sebesség, SEO, akadálymentesség és Core Web Vitals mobilon és asztalin, javítási javaslatokkal.",
     },
     "/projects": {
       title: "Weboldal referenciák és projektek | SynelWeb",
@@ -135,7 +142,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/": {
       title: "Webdesign in Ungarn & Österreich | SynelWeb Webagentur",
       description:
-        "Individuelles, blitzschnelles Webdesign und Homepage erstellen lassen – online verfügbar in ganz Ungarn, Österreich (auch Burgenland) und darüber hinaus. Vergiss langsame Vorlagen! Premium-Design von SynelWeb.",
+        "Individuelles, blitzschnelles Webdesign und Homepage erstellen lassen – für Ungarn und Österreich, auch im Burgenland. Premium-Design von SynelWeb.",
     },
     "/about": {
       title: "Über mich – Webentwickler aus Sopron | SynelWeb",
@@ -155,7 +162,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/site-check": {
       title: "Kostenloser Website-Check: Speed & SEO | SynelWeb",
       description:
-        "Prüfe deine Website kostenlos: Google-Lighthouse-Werte für Performance, Barrierefreiheit, Best Practices und SEO, Core Web Vitals und die größten Verbesserungen – mobil und am Desktop.",
+        "Prüfe deine Website kostenlos mit Google Lighthouse: Speed, SEO, Barrierefreiheit und Core Web Vitals – mobil und am Desktop, mit konkreten Tipps.",
     },
     "/projects": {
       title: "Webdesign Referenzen & Projekte | SynelWeb",
@@ -214,7 +221,12 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
   const resolvedTitle = title && title.trim().length > 0 ? title : fallbackMeta.title;
   const resolvedDescription =
     description && description.trim().length > 0 ? description : fallbackMeta.description;
-  const resolvedImage = image && image.trim().length > 0 ? image : `${SITE_URL}/og-image.png`;
+  // A page with its own share image (see OG_IMAGE_PAGES) uses it; the rest
+  // share the brand image.
+  const ownImage = OG_IMAGE_PAGES[logicalPath]
+    ? `${SITE_URL}/og/${OG_IMAGE_PAGES[logicalPath]}-${lang}.jpg`
+    : `${SITE_URL}/og-image.png`;
+  const resolvedImage = image && image.trim().length > 0 ? image : ownImage;
   const urlFor = (path: string) => new URL(path, SITE_URL).toString();
 
   // Single-language pages name only themselves; a page shown in the wrong
@@ -248,4 +260,27 @@ export function buildMeta({ pathname, lang, title, description, image }: BuildMe
     image: resolvedImage,
     alternates,
   };
+}
+
+// Search results cut a description at roughly this many characters.
+const META_DESCRIPTION_MAX = 155;
+
+// A description that fits a search result: cut at a word boundary, never
+// mid-word, and marked with an ellipsis when something was left off.
+export function toMetaDescription(text: string): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= META_DESCRIPTION_MAX) return clean;
+  const cut = clean.slice(0, META_DESCRIPTION_MAX - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  const base = lastSpace > META_DESCRIPTION_MAX / 2 ? cut.slice(0, lastSpace) : cut;
+  return `${base.replace(/[\s,;:–-]+$/, "")}…`;
+}
+
+// Longer than this and the brand would be cut off in a search result anyway.
+const TITLE_WITH_BRAND_MAX = 65;
+
+// "Post title | SynelWeb" when it fits, the bare title when it doesn't.
+export function toPostTitle(title: string): string {
+  const withBrand = `${title} | ${BRAND_NAME}`;
+  return withBrand.length <= TITLE_WITH_BRAND_MAX ? withBrand : title;
 }

@@ -54,7 +54,7 @@ export const REGIONAL_CONTENT: Record<RegionalLandingPath, RegionalContent> = {
       "Soproni webfejlesztőként egyedi, villámgyors weboldalakat és webshopokat készítek helyi vállalkozásoknak – sablonok nélkül, személyes egyeztetéssel. Az általam írt kód már élesben bizonyított: a Google keresőben és a Google hivatalos méréseiben is.",
     introStrong:
       "Sopronban egy weboldalnak két piacon kell megállnia a helyét: a helyi ügyfelek és a határ túloldaláról érkező osztrák vendégek előtt is. Én mindkettőre építek.",
-    ctaButton: "Kérek ajánlatot",
+    ctaButton: "Kérj ajánlatot",
     benefitsLabel: "Miért helyben?",
     benefitsTitle: "Amit egy soproni vállalkozás kap tőlem",
     benefits: [

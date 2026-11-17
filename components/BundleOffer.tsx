@@ -1,15 +1,12 @@
 import { SparklesIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useHufFormatter } from "@/src/currency";
-import { ADS_SETUP_PRICE_HUF } from "@/src/pricing";
 import { quoteFormHref } from "@/src/quoteForm";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
 // The website + Google Ads bundle offer: ordered together, the ad account
-// setup (ADS_SETUP_PRICE_HUF) is free. Runs until withdrawn.
+// setup is free. Runs until withdrawn.
 export function BundleOffer({ lang, className = "" }: { lang: AppLang; className?: string }) {
   const { t } = useTranslation();
-  const formatHuf = useHufFormatter(lang);
 
   return (
     <aside
@@ -25,9 +22,7 @@ export function BundleOffer({ lang, className = "" }: { lang: AppLang; className
         <p className="mt-1 text-base font-semibold text-white sm:text-lg">
           {t("bundleOffer.title")}
         </p>
-        <p className="mt-1 text-sm leading-7 text-white/78">
-          {t("bundleOffer.text", { price: formatHuf(ADS_SETUP_PRICE_HUF) })}
-        </p>
+        <p className="mt-1 text-sm leading-7 text-white/78">{t("bundleOffer.text")}</p>
       </div>
       <a
         href={quoteFormHref(lang)}

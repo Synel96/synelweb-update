@@ -1,26 +1,22 @@
 import { useTranslation } from "react-i18next";
-import { useHufFormatter } from "@/src/currency";
-import { ADS_SETUP_PRICE_HUF } from "@/src/pricing";
 import type { AppLang, ServiceCard } from "@/src/services/serviceCardsService";
 
 export const ADS_SERVICE_SLUG = "google-ads";
 
-// The Google Search ads service as a service card, priced in code (see
-// ADS_SETUP_PRICE_HUF) and converted for the English/German pages.
+// The Google Search ads service as a service card. It has no fixed price:
+// setup and monthly management are both quoted per campaign.
 export function useAdsServiceCard(lang: AppLang): ServiceCard {
   const { t } = useTranslation();
-  const formatHuf = useHufFormatter(lang);
   return {
     id: ADS_SERVICE_SLUG,
     category: "marketing",
     name: t("adsPage.service.name"),
     slug: ADS_SERVICE_SLUG,
     description: t("adsPage.service.description"),
-    regularPrice: formatHuf(ADS_SETUP_PRICE_HUF),
+    regularPrice: t("adsPage.service.price"),
     discountedPrice: "",
     hasDiscount: false,
     monthlyPrice: "",
-    offer: { price: ADS_SETUP_PRICE_HUF, currency: "HUF" },
     images: [],
     order: Number.MAX_SAFE_INTEGER,
   };

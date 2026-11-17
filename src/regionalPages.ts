@@ -25,6 +25,8 @@ export type RegionalContent = {
   perMonth: string;
   // After the setup fee of a service whose monthly fee is quoted individually.
   customMonthly: string;
+  // Instead of a price, for a service without one (Google Ads).
+  customPrice: string;
   // Shown under the services; {{price}} is the converted starting fee.
   maintenanceLine: string;
   maintenancePrice: string;
@@ -92,6 +94,7 @@ export const REGIONAL_CONTENT: Record<RegionalLandingPath, RegionalContent> = {
     servicesLink: "Összes szolgáltatás részletesen",
     perMonth: "/ hó",
     customMonthly: "+ egyedi havidíj",
+    customPrice: "Egyedi ár, a kampány méretétől függően",
     maintenanceLine: "Üzemeltetés és karbantartás – az átadás után is",
     maintenancePrice: "{{price}}-tól / hó",
     areasLabel: "Ahol személyesen is ott vagyok",
@@ -177,6 +180,7 @@ export const REGIONAL_CONTENT: Record<RegionalLandingPath, RegionalContent> = {
     servicesLink: "Alle Leistungen im Detail",
     perMonth: "/ Monat",
     customMonthly: "+ individuelle Monatsgebühr",
+    customPrice: "Individueller Preis, je nach Kampagnengröße",
     maintenanceLine: "Betrieb & Wartung – auch nach der Übergabe",
     maintenancePrice: "ab {{price}} / Monat",
     areasLabel: "Persönlich vor Ort",

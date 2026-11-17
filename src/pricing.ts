@@ -3,7 +3,5 @@
 // converted with the backend's daily rate (see useHufFormatter).
 export const MAINTENANCE_STARTING_PRICE_HUF = 25_000;
 
-// Google Search ads: the one-time ad account setup (only when the client has
-// no account yet). The monthly management fee is quoted per campaign. There
-// is a single ads service, so it lives here rather than in the admin.
-export const ADS_SETUP_PRICE_HUF = 35_000;
+// Google Search ads have no fixed price: the account setup and the monthly
+// management fee both depend on the campaign, so both are quoted per client.

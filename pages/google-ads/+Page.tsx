@@ -23,7 +23,6 @@ import type { AppLang } from "@/src/services/serviceCardsService";
 import { BundleOffer } from "@/components/BundleOffer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/components/site";
-import { ADS_SETUP_PRICE_HUF } from "@/src/pricing";
 import { buildFaqJsonLd, buildServiceJsonLd } from "@/src/structuredData";
 
 type Data = {
@@ -51,7 +50,6 @@ export default function Page() {
   const { t } = useTranslation();
   const pageContext = usePageContext() as { data?: Data; lang?: SupportedLang };
   const lang = (pageContext.lang ?? DEFAULT_LANG) as AppLang;
-  // The ads service is priced in code (see ADS_SETUP_PRICE_HUF).
   const card = useAdsServiceCard(lang);
   const certificates = useCertificates(lang, pageContext.data?.certificates ?? []);
   // Its buttons open the quote form with "ad campaign only" already picked.
@@ -67,8 +65,8 @@ export default function Page() {
     name: t("adsPage.title"),
     description: t("adsPage.intro"),
     serviceType: "Google Ads management",
-    // The one fixed price; the monthly fee is quoted per campaign.
-    offers: [{ name: card.name, price: ADS_SETUP_PRICE_HUF, currency: "HUF" }],
+    // No fixed price: setup and management are quoted per campaign.
+    offers: [],
   });
 
   return (

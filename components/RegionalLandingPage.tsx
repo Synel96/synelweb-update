@@ -29,6 +29,7 @@ import {
   type AppLang,
   type ServiceCard,
 } from "@/src/services/serviceCardsService";
+import { BundleOffer } from "@/components/BundleOffer";
 import { JsonLd } from "@/components/JsonLd";
 import { buildFaqJsonLd } from "@/src/structuredData";
 
@@ -242,6 +243,7 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
               </span>
             </li>
           </ul>
+          <BundleOffer lang={lang} className="mt-6" />
           <div className="mt-6 text-center">
             <a
               href={servicesHref}

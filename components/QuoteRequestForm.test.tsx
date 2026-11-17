@@ -79,7 +79,11 @@ describe("QuoteRequestForm", () => {
       "google_search_ads",
       "cookieless_analytics",
     ]);
-    expect(screen.getByText("Google keresőhirdetés").closest("label")).toHaveTextContent("Új");
+    expect(
+      screen
+        .getByText("Google keresőhirdetés (csomagban ingyenes fiókbeállítással)")
+        .closest("label")
+    ).toHaveTextContent("Új");
     expect(screen.getByText("Céges e-mail").closest("label")).not.toHaveTextContent("Új");
   });
 
@@ -126,6 +130,29 @@ describe("QuoteRequestForm", () => {
       company: "",
     });
     expect(payload).not.toHaveProperty("addons");
+  });
+
+  it("offers the website + ads bundle and sends it in simple mode", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="landing-oldal" />
+    );
+    await screen.findByRole("radio", { name: "Landing oldal" });
+
+    fireEvent.click(screen.getByRole("checkbox", { name: /Google keresőhirdetést is kérek/ }));
+    fillContact();
+    submit();
+
+    await screen.findByText("Köszönöm, megkaptam az ajánlatkérésed!");
+    expect(sentPayload()).toMatchObject({ mode: "simple", addons: ["google_search_ads"] });
+  });
+
+  it("doesn't offer the bundle for an ad campaign only", async () => {
+    await renderWithI18n(
+      <QuoteRequestForm lang="hu" privacyHref="/adatkezeles" initialService="google-ads" />
+    );
+    await screen.findByRole("radio", { name: "Landing oldal" });
+
+    expect(screen.queryByRole("checkbox", { name: /Google keresőhirdetést is kérek/ })).toBeNull();
   });
 
   it("sends the chosen details in detailed mode", async () => {

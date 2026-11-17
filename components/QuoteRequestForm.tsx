@@ -38,6 +38,7 @@ const ADDONS = [
   { key: "google_search_ads", isNew: true },
   { key: "cookieless_analytics", isNew: false },
 ] as const;
+const BUNDLE_ADDON = "google_search_ads";
 const TIMELINES = ["urgent", "one_two_months", "flexible"] as const;
 const BUDGETS = ["under_200k", "200k_400k", "400k_800k", "over_800k", "unsure"] as const;
 // The band limits in HUF; shown in the page's currency (see useHufFormatter).
@@ -218,6 +219,9 @@ export function QuoteRequestForm({
     setStoredCheck(readStoredSiteCheck());
   }, []);
   const isAdsOnly = service === ADS_SERVICE_SLUG;
+  // The bundle offer: ads with a website. The same add-on as in the detailed
+  // form's add-on list, so ticking either one ticks both.
+  const wantsBundle = !isAdsOnly && addons.includes(BUNDLE_ADDON);
 
   const [step, setStep] = useState(0);
   // The furthest step reached, so the step indicator can jump back to it.
@@ -384,6 +388,9 @@ export function QuoteRequestForm({
       ...(attachCheck && storedCheck ? { siteCheck: siteCheckAttachment(storedCheck) } : {}),
       company,
     };
+    if (mode === "simple" && wantsBundle) {
+      Object.assign(payload, { addons: [BUNDLE_ADDON] });
+    }
     if (mode === "detailed" && isAdsOnly) {
       Object.assign(payload, {
         websiteUrl: websiteUrl.trim(),
@@ -607,6 +614,27 @@ export function QuoteRequestForm({
               value={service}
               onChange={(next) => setService(next as string)}
             />
+
+            {!isAdsOnly ? (
+              <label className="fancy-card flex items-start gap-3 rounded-2xl p-4 text-sm text-white/85">
+                <input
+                  type="checkbox"
+                  checked={wantsBundle}
+                  onChange={(event) =>
+                    setAddons((current) =>
+                      event.target.checked
+                        ? [...current.filter((key) => key !== BUNDLE_ADDON), BUNDLE_ADDON]
+                        : current.filter((key) => key !== BUNDLE_ADDON)
+                    )
+                  }
+                  className="mt-0.5 size-4 shrink-0 accent-(--accent)"
+                />
+                <span>
+                  <span className="font-semibold text-white">{t("quoteForm.bundle")}</span>
+                  <span className="mt-0.5 block text-white/65">{t("quoteForm.bundleHint")}</span>
+                </span>
+              </label>
+            ) : null}
           </>
         ) : null}
 

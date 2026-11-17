@@ -29,6 +29,7 @@ import {
   type AppLang,
   type ServiceCard as ServiceCardItem,
 } from "@/src/services/serviceCardsService";
+import { BundleOffer } from "@/components/BundleOffer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/components/site";
 import { buildServiceCatalogJsonLd } from "@/src/structuredData";
@@ -344,6 +345,7 @@ export default function Page() {
                   ))}
                 </div>
 
+                {category === "marketing" ? <BundleOffer lang={appLang} className="mt-8" /> : null}
                 {category === "marketing" ? (
                   <div className="mt-6 text-center">
                     <a

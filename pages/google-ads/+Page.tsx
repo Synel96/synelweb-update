@@ -20,6 +20,7 @@ import { localizePath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import type { Certificate } from "@/src/services/certificatesService";
 import type { AppLang } from "@/src/services/serviceCardsService";
+import { BundleOffer } from "@/components/BundleOffer";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE_URL } from "@/components/site";
 import { ADS_SETUP_PRICE_HUF } from "@/src/pricing";
@@ -180,6 +181,7 @@ export default function Page() {
             ctaAriaLabel={t("servicesPage.cardCtaAria")}
           />
         </div>
+        <BundleOffer lang={lang} className="mt-6" />
         <AdsTerms />
       </section>
 

@@ -661,7 +661,7 @@
     "addons": "Zusatzleistungen",
     "addonOptions": {
       "business_email": "Geschäftliche E-Mail",
-      "google_search_ads": "Google-Suchanzeigen",
+      "google_search_ads": "Google-Suchanzeigen (im Paket mit kostenloser Kontoeinrichtung)",
       "cookieless_analytics": "Cookie-freie Website-Analyse"
     },
     "newBadge": "Neu",
@@ -755,7 +755,9 @@
     },
     "siteCheckMessage": "Ich habe {{url}} mit dem Website-Check geprüft und möchte, dass die Seite schneller und besser wird. Ich hätte gern ein Angebot dafür.",
     "attachSiteCheck": "Ergebnis des Website-Checks anhängen",
-    "attachSiteCheckHint": "{{host}} · {{device}} · Performance: {{score}}"
+    "attachSiteCheckHint": "{{host}} · {{device}} · Performance: {{score}}",
+    "bundle": "Ich möchte zur Website auch Google-Suchanzeigen",
+    "bundleHint": "Paketangebot: Die Kontoeinrichtung ist dann kostenlos."
   },
   "certificatesPage": {
     "label": "Zertifikate",
@@ -996,5 +998,11 @@
     "technology": "Technologie: React, Django, PostgreSQL",
     "contact": "Kontakt & Angebot anfordern",
     "about": "Über mich – Webentwickler aus Sopron"
+  },
+  "bundleOffer": {
+    "label": "Paketangebot",
+    "title": "Website + Google Ads zusammen",
+    "text": "Bestellst du die Anzeigenbetreuung zusammen mit der Website, ist die Einrichtung des Google-Ads-Kontos ({{price}}) kostenlos.",
+    "cta": "Angebot anfordern"
   }
 }

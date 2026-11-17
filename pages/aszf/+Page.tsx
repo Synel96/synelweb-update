@@ -1,4 +1,4 @@
-const LAST_UPDATED = "2026. 11. 15.";
+const LAST_UPDATED = "2026. 11. 17.";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -101,6 +101,11 @@ export default function Page() {
             dolgozik benne. A hirdetési fiók beállításáért egyszeri díj csak akkor fizetendő, ha a
             Megrendelőnek még nincs fiókja; a havi kezelési díjat a kampány mérete alapján az egyedi
             ajánlat rögzíti. A kampány első 4–6 hete tanulási időszak.
+          </p>
+          <p>
+            Csomagakció: ha a Megrendelő a hirdetéskezelést weboldal-fejlesztéssel együtt rendeli
+            meg, a hirdetési fiók beállításáért egyszeri díjat nem kell fizetnie. Az akció
+            visszavonásig érvényes; visszavonása a már elfogadott ajánlatokat nem érinti.
           </p>
           <p>
             A hirdetésekre a Google hirdetési irányelvei és szerződési feltételei is vonatkoznak. A

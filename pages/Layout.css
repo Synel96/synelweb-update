@@ -165,10 +165,11 @@ html {
   z-index: -1;
   border-radius: inherit;
   pointer-events: none;
+  /* Kept subtle: a hint of light under the pointer, not a lamp. */
   background: radial-gradient(
-    520px circle at var(--fc-x, 50%) var(--fc-y, 0%),
-    color-mix(in oklab, var(--color-accent), transparent 80%),
-    color-mix(in oklab, var(--color-secondary-warm), transparent 92%) 40%,
+    380px circle at var(--fc-x, 50%) var(--fc-y, 0%),
+    color-mix(in oklab, var(--color-accent), transparent 89%),
+    color-mix(in oklab, var(--color-secondary-warm), transparent 96%) 40%,
     transparent 70%
   );
   opacity: 0;

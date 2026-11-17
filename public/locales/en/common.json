@@ -835,7 +835,7 @@
     "pricing": {
       "label": "Pricing",
       "title": "Setup and monthly management",
-      "text": "If you don't have an ad account yet, I create and set it up for a one-time fee. The monthly management fee depends on the size of the campaign, so I quote it individually. You pay the ad spend directly to Google."
+      "text": "If you don't have an ad account yet, I create and set it up. Both the setup and the monthly management fee depend on the size of the campaign, so I quote both individually. You pay the ad spend directly to Google."
     },
     "certificate": {
       "label": "Certificate",
@@ -892,7 +892,8 @@
     "hubLink": "More about Google Ads management",
     "service": {
       "name": "Google Search ads management",
-      "description": "Ad account setup, campaign build, conversion tracking and ongoing optimization, with a monthly report."
+      "description": "Ad account setup, campaign build, conversion tracking and ongoing optimization, with a monthly report.",
+      "price": "Custom price"
     }
   },
   "siteCheck": {
@@ -1002,7 +1003,7 @@
   "bundleOffer": {
     "label": "Bundle offer",
     "title": "Website + Google Ads together",
-    "text": "Order ad management with your website and the Google Ads account setup ({{price}}) is free.",
+    "text": "Order ad management with your website and the Google Ads account setup is free.",
     "cta": "Request a quote"
   }
 }

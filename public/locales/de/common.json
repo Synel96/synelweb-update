@@ -835,7 +835,7 @@
     "pricing": {
       "label": "Preise",
       "title": "Einrichtung und monatliche Betreuung",
-      "text": "Wenn du noch kein Werbekonto hast, lege ich es gegen eine einmalige Gebühr an und richte es ein. Die monatliche Betreuungsgebühr hängt von der Größe der Kampagne ab, deshalb mache ich dafür ein individuelles Angebot. Das Werbebudget zahlst du direkt an Google."
+      "text": "Wenn du noch kein Werbekonto hast, lege ich es an und richte es ein. Einrichtung und monatliche Betreuung hängen von der Größe der Kampagne ab, deshalb mache ich für beides ein individuelles Angebot. Das Werbebudget zahlst du direkt an Google."
     },
     "certificate": {
       "label": "Zertifikat",
@@ -892,7 +892,8 @@
     "hubLink": "Mehr zur Google Ads Betreuung",
     "service": {
       "name": "Google-Suchanzeigen Betreuung",
-      "description": "Einrichtung des Werbekontos, Kampagnenaufbau, Conversion-Tracking und laufende Optimierung mit monatlichem Bericht."
+      "description": "Einrichtung des Werbekontos, Kampagnenaufbau, Conversion-Tracking und laufende Optimierung mit monatlichem Bericht.",
+      "price": "Individueller Preis"
     }
   },
   "siteCheck": {
@@ -1002,7 +1003,7 @@
   "bundleOffer": {
     "label": "Paketangebot",
     "title": "Website + Google Ads zusammen",
-    "text": "Bestellst du die Anzeigenbetreuung zusammen mit der Website, ist die Einrichtung des Google-Ads-Kontos ({{price}}) kostenlos.",
+    "text": "Bestellst du die Anzeigenbetreuung zusammen mit der Website, ist die Einrichtung des Google-Ads-Kontos kostenlos.",
     "cta": "Angebot anfordern"
   }
 }

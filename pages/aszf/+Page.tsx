@@ -98,14 +98,14 @@ export default function Page() {
             A hirdetési költést (a Google felé fizetendő kattintási díjakat) a Megrendelő
             közvetlenül a Google-nek fizeti a saját hirdetési fiókjából; ez nem része a Szolgáltató
             díjának. A hirdetési fiók a Megrendelő tulajdona, a Szolgáltató kezelői hozzáféréssel
-            dolgozik benne. A hirdetési fiók beállításáért egyszeri díj csak akkor fizetendő, ha a
-            Megrendelőnek még nincs fiókja; a havi kezelési díjat a kampány mérete alapján az egyedi
-            ajánlat rögzíti. A kampány első 4–6 hete tanulási időszak.
+            dolgozik benne. A hirdetési fiók beállításáért díj csak akkor fizetendő, ha a
+            Megrendelőnek még nincs fiókja; a beállítás és a havi kezelési díj összegét a kampány
+            mérete alapján az egyedi ajánlat rögzíti. A kampány első 4–6 hete tanulási időszak.
           </p>
           <p>
             Csomagakció: ha a Megrendelő a hirdetéskezelést weboldal-fejlesztéssel együtt rendeli
-            meg, a hirdetési fiók beállításáért egyszeri díjat nem kell fizetnie. Az akció
-            visszavonásig érvényes; visszavonása a már elfogadott ajánlatokat nem érinti.
+            meg, a hirdetési fiók beállításáért díjat nem kell fizetnie. Az akció visszavonásig
+            érvényes; visszavonása a már elfogadott ajánlatokat nem érinti.
           </p>
           <p>
             A hirdetésekre a Google hirdetési irányelvei és szerződési feltételei is vonatkoznak. A

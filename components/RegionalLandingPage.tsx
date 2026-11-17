@@ -223,15 +223,21 @@ export function RegionalLandingPage({ page, lang, initial }: RegionalLandingPage
                 >
                   <span className="font-medium text-white">{service.name}</span>
                   <span className="text-sm font-semibold text-(--color-secondary-warm)">
-                    {price}
-                    {service.monthlyPrice ? (
-                      <span className="text-white/70">
-                        {" + "}
-                        {service.monthlyPrice} {content.perMonth}
-                      </span>
-                    ) : service.category === "marketing" ? (
-                      <span className="text-white/70"> {content.customMonthly}</span>
-                    ) : null}
+                    {service.category === "marketing" && !service.offer ? (
+                      content.customPrice
+                    ) : (
+                      <>
+                        {price}
+                        {service.monthlyPrice ? (
+                          <span className="text-white/70">
+                            {" + "}
+                            {service.monthlyPrice} {content.perMonth}
+                          </span>
+                        ) : service.category === "marketing" ? (
+                          <span className="text-white/70"> {content.customMonthly}</span>
+                        ) : null}
+                      </>
+                    )}
                   </span>
                 </li>
               );

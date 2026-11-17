@@ -277,12 +277,16 @@ export function buildServiceJsonLd({
     serviceType,
     provider: ORGANIZATION_REF,
     areaServed: ["HU", "AT"],
-    offers: offers.map((offer) => ({
-      "@type": "Offer",
-      name: offer.name,
-      price: offer.price,
-      priceCurrency: offer.currency,
-    })),
+    ...(offers.length > 0
+      ? {
+          offers: offers.map((offer) => ({
+            "@type": "Offer",
+            name: offer.name,
+            price: offer.price,
+            priceCurrency: offer.currency,
+          })),
+        }
+      : {}),
   };
 }
 

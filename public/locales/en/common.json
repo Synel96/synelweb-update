@@ -661,7 +661,7 @@
     "addons": "Add-ons",
     "addonOptions": {
       "business_email": "Business email",
-      "google_search_ads": "Google Search ads",
+      "google_search_ads": "Google Search ads (free account setup in the bundle)",
       "cookieless_analytics": "Cookie-free website analytics"
     },
     "newBadge": "New",
@@ -755,7 +755,9 @@
     },
     "siteCheckMessage": "I checked {{url}} with the website checker and would like it to be faster and better. I'd like a quote for improving it.",
     "attachSiteCheck": "Attach my website check result",
-    "attachSiteCheckHint": "{{host}} · {{device}} · performance: {{score}}"
+    "attachSiteCheckHint": "{{host}} · {{device}} · performance: {{score}}",
+    "bundle": "I would also like Google Search ads with the website",
+    "bundleHint": "Bundle offer: the ad account setup is then free."
   },
   "certificatesPage": {
     "label": "Certificates",
@@ -996,5 +998,11 @@
     "technology": "Technology: React, Django, PostgreSQL",
     "contact": "Contact & request a quote",
     "about": "About me – web developer from Sopron, Hungary"
+  },
+  "bundleOffer": {
+    "label": "Bundle offer",
+    "title": "Website + Google Ads together",
+    "text": "Order ad management with your website and the Google Ads account setup ({{price}}) is free.",
+    "cta": "Request a quote"
   }
 }

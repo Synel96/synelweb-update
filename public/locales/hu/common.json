@@ -662,7 +662,7 @@
     "addons": "Kiegészítők",
     "addonOptions": {
       "business_email": "Céges e-mail",
-      "google_search_ads": "Google keresőhirdetés",
+      "google_search_ads": "Google keresőhirdetés (csomagban ingyenes fiókbeállítással)",
       "cookieless_analytics": "Süti-mentes weboldal-analitika"
     },
     "newBadge": "Új",
@@ -756,7 +756,9 @@
     },
     "siteCheckMessage": "Lemértem a(z) {{url}} oldalt a weboldal-ellenőrzővel, és szeretném, ha gyorsabb és jobb lenne. Kérnék egy ajánlatot a javításra.",
     "attachSiteCheck": "Mellékelem a weboldal-ellenőrzés eredményét",
-    "attachSiteCheckHint": "{{host}} · {{device}} · teljesítmény: {{score}}"
+    "attachSiteCheckHint": "{{host}} · {{device}} · teljesítmény: {{score}}",
+    "bundle": "Google keresőhirdetést is kérek a weboldal mellé",
+    "bundleHint": "Csomagakció: így a hirdetési fiók beállítása ingyenes."
   },
   "certificatesPage": {
     "label": "Tanúsítványok",
@@ -997,5 +999,11 @@
     "technology": "Technológia: React, Django, PostgreSQL",
     "contact": "Kapcsolat és ajánlatkérés",
     "about": "Rólam – webfejlesztő Sopronból"
+  },
+  "bundleOffer": {
+    "label": "Csomagakció",
+    "title": "Weboldal + Google Ads együtt",
+    "text": "Ha a weboldal mellé hirdetéskezelést is kérsz, a Google Ads fiók beállítása ({{price}}) ingyenes.",
+    "cta": "Kérj ajánlatot"
   }
 }

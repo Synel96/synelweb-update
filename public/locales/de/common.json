@@ -1009,76 +1009,90 @@
           "pass": "Vorhanden: {{types}}.",
           "missing": "Keine strukturierten Daten: Google weiß nicht sicher, wer die Seite betreibt, und zeigt keine erweiterten Ergebnisse (Adresse, Bewertungen, FAQ).",
           "noBusiness": "Vorhanden ({{types}}), aber die Unternehmensdaten (Organization oder LocalBusiness) fehlen.",
-          "invalid": "{{invalid}} Block/Blöcke strukturierter Daten sind fehlerhaft und für Suchmaschinen nicht lesbar."
+          "invalid": "{{invalid}} Block/Blöcke strukturierter Daten sind fehlerhaft und für Suchmaschinen nicht lesbar.",
+          "help": "Versteckte, maschinenlesbare Daten in der Seite (Firmenname, Adresse, Öffnungszeiten, FAQ). Daraus erkennt Google, wer du bist, und baut erweiterte Ergebnisse."
         },
         "title": {
           "label": "Seitentitel",
           "pass": "{{length}} Zeichen – gute Länge.",
           "warn": "{{length}} Zeichen: ideal sind 30–60, sonst kürzt Google ihn oder findet ihn zu dünn.",
-          "fail": "Kein Seitentitel."
+          "fail": "Kein Seitentitel.",
+          "help": "Der Titel im Browser-Tab und in der ersten Zeile des Google-Ergebnisses – das Erste, was Suchende von dir lesen."
         },
         "description": {
           "label": "Meta-Beschreibung",
           "pass": "{{length}} Zeichen – gute Länge.",
           "warn": "{{length}} Zeichen: ideal sind 70–160.",
-          "fail": "Keine Meta-Beschreibung: Google wählt selbst einen Text."
+          "fail": "Keine Meta-Beschreibung: Google wählt selbst einen Text.",
+          "help": "Die Zusammenfassung in 1–2 Sätzen unter dem Ergebnis. Sie rankt nicht direkt, entscheidet aber, ob geklickt wird."
         },
         "h1": {
           "label": "H1-Überschrift",
           "pass": "Genau eine Hauptüberschrift.",
           "warn": "{{count}} H1-Überschriften; eine pro Seite ist am klarsten.",
-          "fail": "Keine H1-Überschrift."
+          "fail": "Keine H1-Überschrift.",
+          "help": "Die Hauptüberschrift der Seite. Daran erkennen Suchmaschinen am schnellsten, worum es geht."
         },
         "indexable": {
           "label": "Indexierung",
           "pass": "Suchmaschinen dürfen die Seite indexieren.",
-          "fail": "Die Seite ist für Suchmaschinen gesperrt (noindex)!"
+          "fail": "Die Seite ist für Suchmaschinen gesperrt (noindex)!",
+          "help": "Ein „noindex“-Tag hält die Seite aus den Suchergebnissen. Während der Entwicklung nützlich, auf einer Live-Seite fatal."
         },
         "canonical": {
           "label": "Canonical-URL",
           "pass": "Vorhanden.",
-          "warn": "Fehlt: Ist der Inhalt unter mehreren Adressen erreichbar, entscheidet Google selbst."
+          "warn": "Fehlt: Ist der Inhalt unter mehreren Adressen erreichbar, entscheidet Google selbst.",
+          "help": "Sagt Suchmaschinen, welche Adresse die „Original“-Seite ist, wenn derselbe Inhalt unter mehreren erreichbar ist (z. B. mit und ohne www)."
         },
         "viewport": {
           "label": "Mobile Ansicht",
           "pass": "Die Seite ist für Smartphones skaliert.",
-          "fail": "Kein mobiler Viewport: Smartphones zeigen sie verkleinert."
+          "fail": "Kein mobiler Viewport: Smartphones zeigen sie verkleinert.",
+          "help": "Diese Einstellung passt die Seite an den Smartphone-Bildschirm an. Ohne sie zeigen Handys eine winzige, verkleinerte Seite."
         },
         "lang": {
           "label": "Sprache",
           "pass": "Sprache angegeben: {{lang}}.",
-          "warn": "Die Sprache der Seite ist nicht angegeben."
+          "warn": "Die Sprache der Seite ist nicht angegeben.",
+          "help": "Teilt Browsern und Suchmaschinen die Sprache der Seite mit – für richtige Übersetzung, Vorlesen und sprachbezogene Ergebnisse."
         },
         "social": {
           "label": "Teilen-Daten",
           "pass": "Titel und Bild zum Teilen vorhanden (Open Graph).",
-          "warn": "Unvollständig: Auf Facebook erscheint der Link evtl. ohne Bild oder Titel."
+          "warn": "Unvollständig: Auf Facebook erscheint der Link evtl. ohne Bild oder Titel.",
+          "help": "Die Open-Graph-Daten bestimmen, mit welchem Bild und Titel der Link erscheint, wenn ihn jemand auf Facebook oder im Messenger teilt."
         },
         "hreflang": {
           "label": "Sprachversionen",
           "pass": "{{count}} Sprachversionen markiert.",
-          "info": "Keine markiert – bei einer einsprachigen Seite in Ordnung."
+          "info": "Keine markiert – bei einer einsprachigen Seite in Ordnung.",
+          "help": "Verknüpft bei mehrsprachigen Seiten die Sprachversionen, damit jeder das Ergebnis in seiner Sprache bekommt."
         },
         "images": {
           "label": "Bildbeschreibungen",
           "pass": "Alle Bilder haben einen Alt-Text ({{total}} Bilder).",
-          "warn": "{{missingAlt}} von {{total}} Bildern fehlt der Alt-Text."
+          "warn": "{{missingAlt}} von {{total}} Bildern fehlt der Alt-Text.",
+          "help": "Der Alt-Text beschreibt ein Bild: Screenreader lesen ihn blinden Menschen vor, und die Google-Bildersuche versteht das Bild dadurch."
         },
         "https": {
           "label": "HTTPS",
           "pass": "Sichere Verbindung.",
-          "fail": "Kein HTTPS: Browser markieren die Seite als „nicht sicher“."
+          "fail": "Kein HTTPS: Browser markieren die Seite als „nicht sicher“.",
+          "help": "Die verschlüsselte Verbindung. Ohne sie warnen Browser, und Google stuft die Seite schlechter ein."
         },
         "robots": {
           "label": "robots.txt",
           "pass": "Vorhanden.",
           "warn": "Nicht gefunden.",
-          "fail": "Die robots.txt sperrt alle Suchmaschinen aus!"
+          "fail": "Die robots.txt sperrt alle Suchmaschinen aus!",
+          "help": "Eine kleine Datei, die Suchrobotern sagt, wohin sie auf der Seite dürfen. Eine falsche Zeile kann die ganze Seite aussperren."
         },
         "sitemap": {
           "label": "Sitemap",
           "pass": "Vorhanden.",
-          "warn": "Nicht gefunden: Suchmaschinen finden die Unterseiten langsamer."
+          "warn": "Nicht gefunden: Suchmaschinen finden die Unterseiten langsamer.",
+          "help": "Das Inhaltsverzeichnis der Seite für Suchmaschinen: Es listet alle Unterseiten auf, damit sie schneller und vollständiger indexiert werden."
         }
       },
       "tech": {
@@ -1086,55 +1100,80 @@
           "label": "Seitengröße",
           "pass": "{{kb}} kB, {{requests}} Anfragen.",
           "warn": "{{kb}} kB, {{requests}} Anfragen – das bremst mobil bereits.",
-          "fail": "{{kb}} kB, {{requests}} Anfragen – zu schwer, mobil langsam."
+          "fail": "{{kb}} kB, {{requests}} Anfragen – zu schwer, mobil langsam.",
+          "help": "Alle heruntergeladenen Dateien zusammen. Je größer, desto länger lädt die Seite – besonders mobil."
         },
         "fonts": {
           "label": "Schriften",
           "pass": "{{count}} Schriftdateien ({{kb}} kB).",
           "warn": "{{count}} Schriftdateien ({{kb}} kB) – viele: jede ist ein eigener Download, oder Text erscheint spät.",
-          "fail": "{{count}} Schriftdateien ({{kb}} kB) – zu viele Schriften."
+          "fail": "{{count}} Schriftdateien ({{kb}} kB) – zu viele Schriften.",
+          "help": "Jede Schrift und jeder Schnitt ist eine eigene Datei. Viele Schriften bremsen das Laden, und Text kann beim Erscheinen „springen“."
         },
         "javascript": {
           "label": "JavaScript",
           "pass": "{{count}} Dateien, {{kb}} kB.",
-          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB ungenutzt."
+          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB ungenutzt.",
+          "help": "JavaScript macht die Seite interaktiv, aber jedes Kilobyte muss geladen und ausgeführt werden – Smartphone-Prozessoren spüren das am stärksten."
         },
         "codeSplitting": {
           "label": "Code-Splitting",
           "pass": "Das größte Skript hat {{largestKb}} kB – in Ordnung.",
-          "warn": "Das größte Skript hat {{largestKb}} kB: Der Code lädt in einem Stück; pro Seite aufgeteilt wäre er schneller."
+          "warn": "Das größte Skript hat {{largestKb}} kB: Der Code lädt in einem Stück; pro Seite aufgeteilt wäre er schneller.",
+          "help": "Lädt eine Seite den ganzen Code auf einmal, laden Besucher auch Code, den die Seite nicht braucht. Aufgeteilt lädt jede Seite nur das Nötige."
         },
         "css": {
           "label": "CSS",
           "pass": "{{count}} Dateien, {{kb}} kB.",
-          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB überflüssig."
+          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB überflüssig.",
+          "help": "CSS bestimmt das Aussehen der Seite. Ungenutzte Styles sind zusätzliche Downloads und verzögern die erste Anzeige."
         },
         "cache": {
           "label": "Caching",
           "pass": "Dateien können lange gecacht werden.",
-          "warn": "{{shortCache}} Dateien werden nur kurz gecacht: Wiederkehrende Besucher laden sie erneut."
+          "warn": "{{shortCache}} Dateien werden nur kurz gecacht: Wiederkehrende Besucher laden sie erneut.",
+          "help": "Durch Caching lädt der Browser wiederkehrender Besucher unveränderte Dateien nicht erneut. Bei kurzer Cache-Zeit lädt jeder Besuch alles neu."
         },
         "domSize": {
           "label": "Seitenstruktur (DOM)",
           "pass": "{{nodes}} Elemente.",
           "warn": "{{nodes}} Elemente – eine große Struktur, die das Rendern bremst.",
-          "info": "Keine Daten."
+          "info": "Keine Daten.",
+          "help": "Die Zahl der Bausteine der Seite. Bei zu vielen zeichnet und aktualisiert der Browser die Seite langsamer."
         },
         "thirdParty": {
           "label": "Drittanbieter",
           "pass": "{{count}} Drittanbieter-Dienste.",
-          "warn": "{{count}} Drittanbieter-Dienste (Tracker, Chat-Widgets …) – jeder bremst die Seite."
+          "warn": "{{count}} Drittanbieter-Dienste (Tracker, Chat-Widgets …) – jeder bremst die Seite.",
+          "help": "Code anderer Firmen auf der Seite: Analytics, Werbepixel, Chat-Widgets, eingebettete Videos. Jeder bedeutet zusätzlichen Download und Wartezeit."
         },
         "compression": {
           "label": "Komprimierung",
           "pass": "Textdateien kommen komprimiert an.",
-          "warn": "Komprimierung würde etwa {{savingsKb}} kB sparen."
+          "warn": "Komprimierung würde etwa {{savingsKb}} kB sparen.",
+          "help": "Textdateien (HTML, CSS, JS) schrumpfen komprimiert unterwegs auf einen Bruchteil. Eine Servereinstellung, die Besucher nichts kostet."
         },
         "imageFormats": {
           "label": "Bildformate",
           "pass": "Die Bilder sind gut optimiert.",
-          "warn": "Moderne Formate (WebP, AVIF) und Komprimierung würden etwa {{savingsKb}} kB sparen."
+          "warn": "Moderne Formate (WebP, AVIF) und Komprimierung würden etwa {{savingsKb}} kB sparen.",
+          "help": "Moderne Bildformate (WebP, AVIF) sind bei gleicher Qualität deutlich kleiner als JPG und PNG."
         }
+      },
+      "helpLabel": "Was bedeutet das?",
+      "showPassed": "+{{count}} OK – anzeigen",
+      "hidePassed": "Bestandene ausblenden",
+      "summary": "{{fail}} Fehler · {{warn}} verbessern · {{pass}} OK",
+      "allGood": "Alles OK ({{pass}})",
+      "platform": {
+        "title": "Womit wurde die Seite gebaut?",
+        "builder": "Wahrscheinlich: {{name}}.",
+        "custom": "Wahrscheinlich individuell entwickelt: {{name}}.",
+        "unknown": "Nicht erkennbar – wahrscheinlich individuell entwickelt, oder die Spuren sind versteckt.",
+        "themeSuffix": " (Theme {{theme}})",
+        "builderNote": "Mit Baukasten oder Vorlage gebaut: schnell erstellt, lädt aber meist viel überflüssigen Code, der bremst.",
+        "customNote": "Eine individuelle Entwicklung lädt nur den Code, den die Seite wirklich braucht.",
+        "disclaimer": "Erkannt anhand von Spuren im Quelltext der Seite."
       }
     }
   },

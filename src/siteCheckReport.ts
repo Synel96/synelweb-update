@@ -1,5 +1,10 @@
 import type { TFunction } from "i18next";
-import { describeAuditItem, sortAuditItems } from "@/src/siteCheckAudit";
+import {
+  auditItemHelp,
+  describeAuditItem,
+  describePlatform,
+  sortAuditItems,
+} from "@/src/siteCheckAudit";
 import type { SiteCheckResult } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
@@ -283,6 +288,19 @@ export async function downloadSiteCheckReport(
       fail: [205, 45, 60],
       info: COLORS.muted,
     };
+    const platform = result.seo?.platform;
+    if (platform) {
+      const { headline, note } = describePlatform(platform, t);
+      sectionTitle(t("siteCheck.audit.platform.title"));
+      const lines = text(headline, margin, 10, { bold: true, maxWidth: contentWidth });
+      y += lines * 4.6;
+      if (note) {
+        const noteLines = text(note, margin, 8.5, { color: COLORS.muted, maxWidth: contentWidth });
+        y += noteLines * 4;
+      }
+      text(t("siteCheck.audit.platform.disclaimer"), margin, 7.5, { color: COLORS.muted });
+      y += 2;
+    }
     for (const section of auditSections) {
       sectionTitle(t(section.title));
       for (const item of sortAuditItems(section.items)) {
@@ -303,7 +321,20 @@ export async function downloadSiteCheckReport(
           color: COLORS.muted,
           maxWidth: contentWidth - 22,
         });
-        y += lines * 4 + 2.6;
+        y += lines * 4;
+        // What a problem means, for whoever reads the report later.
+        const help =
+          item.status === "fail" || item.status === "warn"
+            ? auditItemHelp(section.group, item, t)
+            : "";
+        if (help) {
+          const helpLines = text(help, margin + 22, 7.5, {
+            color: [120, 126, 140],
+            maxWidth: contentWidth - 22,
+          });
+          y += helpLines * 3.6;
+        }
+        y += 2.6;
       }
     }
   }

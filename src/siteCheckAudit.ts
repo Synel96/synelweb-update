@@ -1,5 +1,5 @@
 import type { TFunction } from "i18next";
-import type { AuditItem, AuditStatus } from "@/src/services/siteCheckService";
+import type { AuditItem, AuditStatus, SitePlatform } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
 export type AuditGroup = "seo" | "tech";
@@ -63,4 +63,39 @@ export function describeAuditItem(
     else if (typeof value === "string") params[name] = value;
   }
   return { label: t(`${base}.label`), message: t(key, params) };
+}
+
+// The help text of an item ("What does this mean?"), or "" when there is none.
+export function auditItemHelp(group: AuditGroup, item: AuditItem, t: TFunction): string {
+  return t(`siteCheck.audit.${group}.${item.id}.help`, { defaultValue: "" });
+}
+
+export function countByStatus(items: AuditItem[]): Record<AuditStatus, number> {
+  const counts: Record<AuditStatus, number> = { fail: 0, warn: 0, info: 0, pass: 0 };
+  for (const item of items) counts[item.status] += 1;
+  return counts;
+}
+
+// The "What is the site built with?" line: the headline and a note.
+export function describePlatform(
+  platform: SitePlatform,
+  t: TFunction
+): { headline: string; note: string } {
+  const theme = platform.theme
+    ? t("siteCheck.audit.platform.themeSuffix", { theme: platform.theme })
+    : "";
+  if (platform.kind === "builder" && platform.builder) {
+    const name = [platform.builder, ...platform.addons].join(" + ") + theme;
+    return {
+      headline: t("siteCheck.audit.platform.builder", { name }),
+      note: t("siteCheck.audit.platform.builderNote"),
+    };
+  }
+  if (platform.kind === "custom" && platform.frameworks.length > 0) {
+    return {
+      headline: t("siteCheck.audit.platform.custom", { name: platform.frameworks.join(", ") }),
+      note: t("siteCheck.audit.platform.customNote"),
+    };
+  }
+  return { headline: t("siteCheck.audit.platform.unknown"), note: "" };
 }

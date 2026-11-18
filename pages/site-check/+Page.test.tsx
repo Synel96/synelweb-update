@@ -136,6 +136,13 @@ describe("site check page", () => {
       seo: {
         finalUrl: "https://www.pelda.hu/",
         clientRendered: true,
+        platform: {
+          builder: "WordPress",
+          addons: ["Elementor"],
+          theme: "astra",
+          frameworks: [],
+          kind: "builder",
+        },
         checks: [
           { id: "h1", status: "pass", data: { count: 1 } },
           {
@@ -153,12 +160,20 @@ describe("site check page", () => {
 
     expect(await screen.findByText("SEO-alapok")).toBeInTheDocument();
     expect(screen.getByText(/Nincs strukturált adat/)).toBeInTheDocument();
+    // Passed checks wait behind "+N OK".
+    expect(screen.queryByText("Pontosan egy fő címsor van.")).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "+1 rendben – mutasd" }));
     expect(screen.getByText("Pontosan egy fő címsor van.")).toBeInTheDocument();
+    // "?" explains the item in place.
+    fireEvent.click(screen.getByRole("button", { name: "Strukturált adatok: Mit jelent ez?" }));
+    expect(screen.getByText(/Rejtett, géppel olvasható adatok/)).toBeInTheDocument();
+    expect(screen.getByText("0 hiba · 1 javítandó · 1 rendben")).toBeInTheDocument();
+    expect(
+      screen.getByText("Valószínűleg: WordPress + Elementor (astra sablon).")
+    ).toBeInTheDocument();
     expect(screen.getByText(/a böngésző rakja össze JavaScripttel/)).toBeInTheDocument();
     expect(screen.getByText("Technikai részletek")).toBeInTheDocument();
     expect(screen.getByText(/7 betűfájl \(210 kB\)/)).toBeInTheDocument();
-    const labels = screen.getAllByText(/Strukturált adatok|H1 címsor/).map((el) => el.textContent);
-    expect(labels[0]).toMatch(/Strukturált adatok/);
   });
 
   it("says so when the SEO basics couldn't be fetched", async () => {

@@ -1010,76 +1010,90 @@
           "pass": "Megvan: {{types}}.",
           "missing": "Nincs strukturált adat: a Google nem tudja biztosan, ki üzemelteti az oldalt, és nem jelenít meg bővített találatot (cím, értékelés, GYIK).",
           "noBusiness": "Van ({{types}}), de hiányzik a cégadat (Organization vagy LocalBusiness).",
-          "invalid": "{{invalid}} strukturált adat blokk hibás, a keresők nem tudják beolvasni."
+          "invalid": "{{invalid}} strukturált adat blokk hibás, a keresők nem tudják beolvasni.",
+          "help": "Rejtett, géppel olvasható adatok az oldalban (pl. cégnév, cím, nyitvatartás, GYIK). Ezekből tudja a Google, ki vagy, és ezekből készülnek a bővített találatok."
         },
         "title": {
           "label": "Oldalcím",
           "pass": "{{length}} karakter – jó hossz.",
           "warn": "{{length}} karakter: az ideális 30–60, különben a Google levágja vagy kevésnek tartja.",
-          "fail": "Nincs oldalcím."
+          "fail": "Nincs oldalcím.",
+          "help": "A böngészőfülön és a Google-találat első sorában megjelenő cím. Ez az első, amit a kereső látogató olvas rólad."
         },
         "description": {
           "label": "Meta leírás",
           "pass": "{{length}} karakter – jó hossz.",
           "warn": "{{length}} karakter: az ideális 70–160.",
-          "fail": "Nincs meta leírás: a Google maga választ szöveget a találathoz."
+          "fail": "Nincs meta leírás: a Google maga választ szöveget a találathoz.",
+          "help": "A találat alatti 1–2 mondatos összefoglaló. Nem rangsorol közvetlenül, de ettől függ, rákattintanak-e."
         },
         "h1": {
           "label": "H1 címsor",
           "pass": "Pontosan egy fő címsor van.",
           "warn": "{{count}} H1 címsor van; egy oldalon egy fő címsor a világos.",
-          "fail": "Nincs H1 címsor."
+          "fail": "Nincs H1 címsor.",
+          "help": "Az oldal fő címsora. A keresők ebből értik meg leggyorsabban, miről szól az oldal."
         },
         "indexable": {
           "label": "Indexelhetőség",
           "pass": "A keresők indexelhetik az oldalt.",
-          "fail": "Az oldal le van tiltva a keresők elől (noindex)!"
+          "fail": "Az oldal le van tiltva a keresők elől (noindex)!",
+          "help": "Egy „noindex” jelzés megtiltja, hogy az oldal megjelenjen a keresőben. Fejlesztés közben hasznos, élesben véletlenül bent hagyva katasztrófa."
         },
         "canonical": {
           "label": "Canonical cím",
           "pass": "Megvan.",
-          "warn": "Hiányzik: ha a tartalom több címen is elérhető, a Google maga dönt, melyiket mutatja."
+          "warn": "Hiányzik: ha a tartalom több címen is elérhető, a Google maga dönt, melyiket mutatja.",
+          "help": "Megmondja a keresőnek, melyik az oldal „eredeti” címe, ha ugyanaz a tartalom több címen is elérhető (pl. www-vel és nélküle)."
         },
         "viewport": {
           "label": "Mobil nézet",
           "pass": "Az oldal mobilra méretezett.",
-          "fail": "Nincs mobil viewport: telefonon kicsinyítve jelenik meg."
+          "fail": "Nincs mobil viewport: telefonon kicsinyítve jelenik meg.",
+          "help": "Ez a beállítás teszi lehetővé, hogy az oldal a telefon képernyőjéhez igazodjon. Nélküle telefonon apró, kicsinyített oldal jelenik meg."
         },
         "lang": {
           "label": "Nyelv jelölése",
           "pass": "Megjelölt nyelv: {{lang}}.",
-          "warn": "Nincs megjelölve az oldal nyelve."
+          "warn": "Nincs megjelölve az oldal nyelve.",
+          "help": "Jelzi a böngészőnek és a keresőnek az oldal nyelvét: ettől jó a fordítás, a felolvasás és a nyelv szerinti találat."
         },
         "social": {
           "label": "Megosztási adatok",
           "pass": "Van megosztási cím és kép (Open Graph).",
-          "warn": "Hiányos: Facebookon kép vagy cím nélkül jelenhet meg a link."
+          "warn": "Hiányos: Facebookon kép vagy cím nélkül jelenhet meg a link.",
+          "help": "Az Open Graph adatok döntik el, milyen képpel és címmel jelenik meg a link, ha valaki megosztja Facebookon vagy Messengeren."
         },
         "hreflang": {
           "label": "Nyelvi változatok",
           "pass": "{{count}} nyelvi változat jelölve.",
-          "info": "Nincs jelölve – egynyelvű oldalnál ez rendben van."
+          "info": "Nincs jelölve – egynyelvű oldalnál ez rendben van.",
+          "help": "Többnyelvű oldalnál összeköti a nyelvi változatokat, hogy mindenki a saját nyelvén kapja meg a találatot."
         },
         "images": {
           "label": "Képek leírása",
           "pass": "Minden képnek van alt szövege ({{total}} kép).",
-          "warn": "{{missingAlt}} képről hiányzik az alt szöveg ({{total}} képből)."
+          "warn": "{{missingAlt}} képről hiányzik az alt szöveg ({{total}} képből).",
+          "help": "Az alt szöveg a kép leírása: a vakon vagy gyengénlátók felolvasóprogramja ezt olvassa fel, és a Google Képkereső is ebből érti a képet."
         },
         "https": {
           "label": "HTTPS",
           "pass": "Biztonságos kapcsolat.",
-          "fail": "Nem HTTPS: a böngészők „nem biztonságos”-nak jelölik."
+          "fail": "Nem HTTPS: a böngészők „nem biztonságos”-nak jelölik.",
+          "help": "A titkosított kapcsolat. Nélküle a böngésző figyelmeztet, és a Google is hátrébb sorolja az oldalt."
         },
         "robots": {
           "label": "robots.txt",
           "pass": "Megvan.",
           "warn": "Nem található.",
-          "fail": "A robots.txt minden keresőt kitilt az oldalról!"
+          "fail": "A robots.txt minden keresőt kitilt az oldalról!",
+          "help": "Egy kis fájl, ami megmondja a keresőrobotoknak, hová mehetnek az oldalon. Egy rossz sor az egész oldalt kitilthatja."
         },
         "sitemap": {
           "label": "Sitemap",
           "pass": "Megvan.",
-          "warn": "Nem találtam: a keresők lassabban fedezik fel az aloldalakat."
+          "warn": "Nem találtam: a keresők lassabban fedezik fel az aloldalakat.",
+          "help": "Az oldal tartalomjegyzéke a keresőknek: felsorolja az összes aloldalt, így gyorsabban és teljesebben indexelik."
         }
       },
       "tech": {
@@ -1087,55 +1101,80 @@
           "label": "Oldalméret",
           "pass": "{{kb}} kB, {{requests}} kérés.",
           "warn": "{{kb}} kB, {{requests}} kérés – mobilneten ez már lassít.",
-          "fail": "{{kb}} kB, {{requests}} kérés – túl nehéz, mobilon lassan tölt be."
+          "fail": "{{kb}} kB, {{requests}} kérés – túl nehéz, mobilon lassan tölt be.",
+          "help": "Minden letöltött fájl együtt. Minél nagyobb, annál tovább tölt – mobilneten különösen."
         },
         "fonts": {
           "label": "Betűtípusok",
           "pass": "{{count}} betűfájl ({{kb}} kB).",
           "warn": "{{count}} betűfájl ({{kb}} kB) – sok: mindegyik külön letöltés, vagy a szöveg később jelenik meg.",
-          "fail": "{{count}} betűfájl ({{kb}} kB) – túl sok betűtípus."
+          "fail": "{{count}} betűfájl ({{kb}} kB) – túl sok betűtípus.",
+          "help": "Minden betűtípus és betűvastagság külön fájl. Sok betűtípus lassítja a betöltést, és a szöveg „ugrálhat” megjelenéskor."
         },
         "javascript": {
           "label": "JavaScript",
           "pass": "{{count}} fájl, {{kb}} kB.",
-          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB nincs használatban."
+          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB nincs használatban.",
+          "help": "A JavaScript teszi interaktívvá az oldalt, de minden kilobájtot le kell tölteni és futtatni – a telefon processzora ezt érzi meg leginkább."
         },
         "codeSplitting": {
           "label": "Kódfelosztás",
           "pass": "A legnagyobb szkript {{largestKb}} kB – rendben.",
-          "warn": "A legnagyobb szkript {{largestKb}} kB: a kód egyben töltődik be, oldalankénti felosztással (code splitting) gyorsabb lenne."
+          "warn": "A legnagyobb szkript {{largestKb}} kB: a kód egyben töltődik be, oldalankénti felosztással (code splitting) gyorsabb lenne.",
+          "help": "Ha az oldal minden kódot egyszerre tölt be, a látogató olyat is letölt, amit az adott oldalon nem használ. Felosztva csak az töltődik be, ami ott kell."
         },
         "css": {
           "label": "CSS",
           "pass": "{{count}} fájl, {{kb}} kB.",
-          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB fölösleges."
+          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB fölösleges.",
+          "help": "A CSS adja az oldal kinézetét. A fel nem használt stílusok fölösleges letöltést jelentenek, és késleltetik az első megjelenést."
         },
         "cache": {
           "label": "Gyorsítótárazás",
           "pass": "A fájlok hosszan gyorsítótárazhatók.",
-          "warn": "{{shortCache}} fájl csak rövid ideig tárolódik: visszatérő látogatónál újra letöltődik."
+          "warn": "{{shortCache}} fájl csak rövid ideig tárolódik: visszatérő látogatónál újra letöltődik.",
+          "help": "A gyorsítótár miatt a visszatérő látogató böngészője nem tölti le újra a változatlan fájlokat. Rövid tárolási idővel minden látogatás újra letöltés."
         },
         "domSize": {
           "label": "Oldalszerkezet (DOM)",
           "pass": "{{nodes}} elem.",
           "warn": "{{nodes}} elem – nagy szerkezet, lassítja a megjelenítést.",
-          "info": "Nincs adat."
+          "info": "Nincs adat.",
+          "help": "Az oldal építőelemeinek száma. Túl sok elemnél a böngésző lassabban rajzolja ki és frissíti az oldalt."
         },
         "thirdParty": {
           "label": "Külső szolgáltatások",
           "pass": "{{count}} külső szolgáltatás.",
-          "warn": "{{count}} külső szolgáltatás (pl. követőkódok, csevegők) – mindegyik lassít."
+          "warn": "{{count}} külső szolgáltatás (pl. követőkódok, csevegők) – mindegyik lassít.",
+          "help": "Más cégek kódjai az oldalon: analitika, hirdetési pixelek, csevegők, beágyazott videók. Mindegyik plusz letöltés és plusz várakozás."
         },
         "compression": {
           "label": "Tömörítés",
           "pass": "A szöveges fájlok tömörítve érkeznek.",
-          "warn": "Tömörítéssel kb. {{savingsKb}} kB spórolható."
+          "warn": "Tömörítéssel kb. {{savingsKb}} kB spórolható.",
+          "help": "A szöveges fájlok (HTML, CSS, JS) tömörítve töredékükre zsugorodnak útközben. Ez szerverbeállítás, a látogatónak semmibe sem kerül."
         },
         "imageFormats": {
           "label": "Képformátumok",
           "pass": "A képek jól optimalizáltak.",
-          "warn": "Modern formátummal (WebP, AVIF) és tömörítéssel kb. {{savingsKb}} kB spórolható."
+          "warn": "Modern formátummal (WebP, AVIF) és tömörítéssel kb. {{savingsKb}} kB spórolható.",
+          "help": "A modern képformátumok (WebP, AVIF) azonos minőség mellett jóval kisebbek a JPG-nél és a PNG-nél."
         }
+      },
+      "helpLabel": "Mit jelent ez?",
+      "showPassed": "+{{count}} rendben – mutasd",
+      "hidePassed": "Rendben lévők elrejtése",
+      "summary": "{{fail}} hiba · {{warn}} javítandó · {{pass}} rendben",
+      "allGood": "Minden rendben ({{pass}})",
+      "platform": {
+        "title": "Mivel készült az oldal?",
+        "builder": "Valószínűleg: {{name}}.",
+        "custom": "Valószínűleg egyedi fejlesztés: {{name}}.",
+        "unknown": "Nem ismerhető fel – valószínűleg egyedi fejlesztés, vagy elrejtett nyomokkal készült.",
+        "themeSuffix": " ({{theme}} sablon)",
+        "builderNote": "Oldalépítővel vagy sablonnal készült oldal: gyorsan összerakható, de jellemzően sok fölösleges kódot tölt be, ami lassít.",
+        "customNote": "Egyedi fejlesztésnél csak az a kód töltődik be, amire az oldalnak szüksége van.",
+        "disclaimer": "A felismerés az oldal forráskódjában hagyott nyomokon alapul."
       }
     }
   },

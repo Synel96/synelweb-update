@@ -45,12 +45,12 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/about": {
       title: "About – Web Developer from Sopron, Hungary | SynelWeb",
       description:
-        "Learn how I work: custom web development, technical SEO, and fast, secure solutions for businesses.",
+        "Meet Szilveszter Németh, the web developer behind SynelWeb in Sopron: custom websites, technical SEO and fast, secure solutions for small businesses.",
     },
     "/services": {
       title: "Website Design Services & Pricing | SynelWeb",
       description:
-        "Services and development approach in one place: custom, fast, and business-ready web solutions.",
+        "Website design services and prices: landing pages, business websites, online shops and Google Ads management – custom-built, fast and SEO-ready.",
     },
     "/google-ads": {
       title: "Google Ads Management for Small Businesses | SynelWeb",
@@ -65,7 +65,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/projects": {
       title: "Website Portfolio & Projects | SynelWeb",
       description:
-        "Real projects and real technical quality: fast, modern, business-ready web solutions.",
+        "Website portfolio: real client projects with their Lighthouse scores – fast, modern, mobile-friendly sites built with custom code, not templates.",
     },
     "/certificates": {
       title: "Web Development & Google Ads Certificates | SynelWeb",
@@ -75,17 +75,17 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/blog": {
       title: "Web Development & SEO Blog | SynelWeb",
       description:
-        "Insights, practical web development notes, and business-focused articles from SynelWeb.",
+        "Practical articles on web development, SEO and website costs for small businesses – what makes a site fast, findable and worth the money.",
     },
     "/technology": {
       title: "Technology: React, Django, PostgreSQL | SynelWeb",
       description:
-        "Modern technology stack with TypeScript, Python, Django, and PostgreSQL for fast, secure, future-ready systems.",
+        "The technology behind every SynelWeb site: React, TypeScript, Django and PostgreSQL for fast, secure websites that are easy to extend later.",
     },
     "/contact": {
       title: "Contact & Request a Quote | SynelWeb",
       description:
-        "Contact SynelWeb by email, phone, or online — wherever in Hungary you are, with in-person meetings around Sopron.",
+        "Contact SynelWeb by email, phone or video call from anywhere in Hungary or Austria, and request a free quote for your website in a few minutes.",
     },
   },
   hu: {
@@ -97,12 +97,12 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/about": {
       title: "Rólam – webfejlesztő Sopronból | SynelWeb",
       description:
-        "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
+        "Németh Szilveszter vagyok, soproni webfejlesztő: egyedi weboldalakat, technikai SEO-t és gyors, biztonságos megoldásokat készítek vállalkozásoknak.",
     },
     "/services": {
       title: "Weblap árak és szolgáltatások | SynelWeb",
       description:
-        "Átlátható weblap árak és szolgáltatások egy helyen: egyedi, gyors és üzletileg használható webes megoldások.",
+        "Weboldal készítés árak: landing oldal, céges weboldal, webshop és Google Ads kezelés – egyedi kóddal, gyorsan, keresőoptimalizálással az alapárban.",
     },
     "/google-ads": {
       title: "Google Ads kezelés kisvállalkozásoknak | SynelWeb",
@@ -117,7 +117,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/projects": {
       title: "Weboldal referenciák és projektek | SynelWeb",
       description:
-        "Valós projektek, valós technikai minőség: gyors, modern és üzletileg használható webes megoldások.",
+        "Weboldal referenciák mért Lighthouse-pontszámokkal: gyors, mobilbarát, egyedi kóddal készült oldalak valódi ügyfeleknek, sablonok nélkül.",
     },
     "/certificates": {
       title: "Webfejlesztő és Google Ads tanúsítványok | SynelWeb",
@@ -127,7 +127,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/blog": {
       title: "Webfejlesztés és SEO blog | SynelWeb",
       description:
-        "Szakmai cikkek, gyakorlati webfejlesztési tapasztalatok és üzleti szemléletű bejegyzések a SynelWebtől.",
+        "Gyakorlati cikkek webfejlesztésről, SEO-ról és weboldal árakról kisvállalkozásoknak: mitől lesz egy oldal gyors, megtalálható és megtérülő.",
     },
     "/technology": {
       title: "Technológia: React, Django, PostgreSQL | SynelWeb",
@@ -149,12 +149,12 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/about": {
       title: "Über mich – Webentwickler aus Sopron | SynelWeb",
       description:
-        "Erfahre, wie ich arbeite: individuelle Webentwicklung, technisches SEO und schnelle, sichere Lösungen für Unternehmen.",
+        "Ich bin Szilveszter Németh, Webentwickler aus Sopron: individuelle Websites, technisches SEO und schnelle, sichere Lösungen für Unternehmen.",
     },
     "/services": {
       title: "Webdesign Preise & Leistungen | SynelWeb",
       description:
-        "Transparente Preise für Webdesign und Homepage erstellen lassen: individuelle, schnelle und geschäftstaugliche Weblösungen.",
+        "Webdesign Preise: Landingpage, Firmenwebsite, Onlineshop und Google-Ads-Betreuung – individuell programmiert, schnell und mit SEO im Grundpreis.",
     },
     "/google-ads": {
       title: "Google Ads Betreuung für kleine Unternehmen | SynelWeb",
@@ -169,7 +169,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/projects": {
       title: "Webdesign Referenzen & Projekte | SynelWeb",
       description:
-        "Reale Projekte und echte technische Qualität: schnelle, moderne und geschäftstaugliche Weblösungen.",
+        "Webdesign Referenzen mit gemessenen Lighthouse-Werten: schnelle, mobilfreundliche Websites für echte Kunden, individuell programmiert statt Vorlagen.",
     },
     "/certificates": {
       title: "Zertifikate: Webentwicklung & Google Ads | SynelWeb",
@@ -179,12 +179,12 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/blog": {
       title: "Blog zu Webentwicklung & SEO | SynelWeb",
       description:
-        "Fachartikel, praktische Webentwicklungsnotizen und geschäftsorientierte Einblicke von SynelWeb.",
+        "Praxisnahe Artikel zu Webentwicklung, SEO und Website-Kosten für kleine Unternehmen: was eine Seite schnell, auffindbar und rentabel macht.",
     },
     "/technology": {
       title: "Technologie: React, Django, PostgreSQL | SynelWeb",
       description:
-        "Moderner Technologie-Stack mit TypeScript, Python, Django und PostgreSQL für schnelle, sichere und zukunftsfähige Systeme.",
+        "Die Technik hinter jeder SynelWeb-Seite: React, TypeScript, Django und PostgreSQL für schnelle, sichere Websites, die sich später leicht erweitern lassen.",
     },
     "/contact": {
       title: "Kontakt & Angebot anfordern | SynelWeb",

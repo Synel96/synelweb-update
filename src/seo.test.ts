@@ -6,7 +6,7 @@ describe("getSeoEntry", () => {
     expect(getSeoEntry("/about", "hu")).toEqual({
       title: "Rólam – webfejlesztő Sopronból | SynelWeb",
       description:
-        "Ismerd meg, hogyan dolgozom: egyedi webfejlesztés, technikai SEO, gyors és biztonságos megoldások helyi vállalkozásoknak.",
+        "Németh Szilveszter vagyok, soproni webfejlesztő: egyedi weboldalakat, technikai SEO-t és gyors, biztonságos megoldásokat készítek vállalkozásoknak.",
     });
   });
 
@@ -39,7 +39,7 @@ describe("buildMeta", () => {
   it("falls back to the SEO table when title/description are blank", () => {
     const meta = buildMeta({ pathname: "/about", lang: "en", title: "  ", description: "" });
     expect(meta.title).toBe("About – Web Developer from Sopron, Hungary | SynelWeb");
-    expect(meta.description).toContain("Learn how I work");
+    expect(meta.description).toContain("Meet Szilveszter Németh");
   });
 
   it("defaults the image to the site share image when none is given", () => {
@@ -149,5 +149,23 @@ describe("share images", () => {
     expect(
       buildMeta({ ...base, pathname: "/blog/x", lang: "hu", image: "https://img/x.jpg" }).image
     ).toBe("https://img/x.jpg");
+  });
+});
+
+describe("meta description length", () => {
+  it("keeps every page description long enough to describe the page", () => {
+    for (const lang of ["hu", "en", "de"] as const) {
+      for (const path of [
+        "/",
+        "/about",
+        "/services",
+        "/projects",
+        "/blog",
+        "/technology",
+        "/contact",
+      ]) {
+        expect(getSeoEntry(path, lang).description.length).toBeGreaterThanOrEqual(120);
+      }
+    }
   });
 });

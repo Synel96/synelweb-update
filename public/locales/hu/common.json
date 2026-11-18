@@ -1094,6 +1094,20 @@
           "pass": "Megvan.",
           "warn": "Nem találtam: a keresők lassabban fedezik fel az aloldalakat.",
           "help": "Az oldal tartalomjegyzéke a keresőknek: felsorolja az összes aloldalt, így gyorsabban és teljesebben indexelik."
+        },
+        "video": {
+          "label": "Videóformátumok",
+          "pass": "Korszerű formátum: {{formats}}.",
+          "warn": "Csak {{formats}}: WebM (VP9/AV1) változattal a videó töredék méretű lenne, Safarira HEVC vagy MP4 tartalékkal.",
+          "none": "Nincs videó az oldalon.",
+          "scripted": "{{count}} videó forrását JavaScript adja hozzá, a forráskódból nem ítélhető meg.",
+          "help": "A modern videóformátumok (WebM VP9/AV1-gyel, illetve HEVC) azonos minőség mellett jóval kisebbek a hagyományos MP4-nél (H.264). A legjobb, ha a böngésző választhat: WebM a Chrome-nak és Androidnak, HEVC vagy MP4 a Safarinak."
+        },
+        "llmsTxt": {
+          "label": "llms.txt",
+          "pass": "Van llms.txt: az AI-asszisztensek gyorsan megértik, miről szól az oldal.",
+          "info": "Nincs llms.txt. Új, nem kötelező, de segít, hogy a ChatGPT-hez hasonló AI-keresők pontosan írjanak rólad.",
+          "help": "Az llms.txt egy rövid, Markdown formátumú leírás az oldal gyökerében: ki vagy, mit kínálsz, és melyek a legfontosabb oldalaid. Az AI-alapú keresők és asszisztensek ebből gyorsabban és pontosabban értik meg az oldalt."
         }
       },
       "tech": {
@@ -1175,7 +1189,8 @@
         "builderNote": "Oldalépítővel vagy sablonnal készült oldal: gyorsan összerakható, de jellemzően sok fölösleges kódot tölt be, ami lassít.",
         "customNote": "Egyedi fejlesztésnél csak az a kód töltődik be, amire az oldalnak szüksége van.",
         "disclaimer": "A felismerés az oldal forráskódjában hagyott nyomokon alapul."
-      }
+      },
+      "autoFormat": "automatikus (a böngészőhöz igazított)"
     }
   },
   "pageH1": {

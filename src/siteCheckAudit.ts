@@ -37,8 +37,19 @@ function variant(item: AuditItem): string {
     if (!item.data.hasBusiness) return "noBusiness";
     return Number(item.data.invalid) > 0 ? "invalid" : "pass";
   }
+  if (item.id === "video" && item.status === "info") {
+    return Number(item.data.count) > 0 ? "scripted" : "none";
+  }
   if (item.status === "fail" && !FAIL_TEXT.has(item.id)) return "warn";
   return item.status;
+}
+
+// Video format ids as people know them.
+const FORMAT_NAMES: Record<string, string> = { webm: "WebM", hevc: "HEVC", mp4: "MP4" };
+
+function formatName(value: string, t: TFunction): string {
+  if (value === "auto") return t("siteCheck.audit.autoFormat");
+  return FORMAT_NAMES[value] ?? value;
 }
 
 // The label and the explanation of one item, in the page's language; null
@@ -59,7 +70,8 @@ export function describeAuditItem(
   const params: Record<string, string> = {};
   for (const [name, value] of Object.entries(item.data)) {
     if (typeof value === "number") params[name] = numberFormat.format(value);
-    else if (Array.isArray(value)) params[name] = value.join(", ");
+    else if (Array.isArray(value))
+      params[name] = value.map((entry) => formatName(entry, t)).join(", ");
     else if (typeof value === "string") params[name] = value;
   }
   return { label: t(`${base}.label`), message: t(key, params) };

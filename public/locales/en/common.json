@@ -1093,6 +1093,20 @@
           "pass": "Present.",
           "warn": "Not found: search engines discover the subpages more slowly.",
           "help": "The site's table of contents for search engines: it lists every subpage so they get indexed faster and more completely."
+        },
+        "video": {
+          "label": "Video formats",
+          "pass": "Modern format: {{formats}}.",
+          "warn": "Only {{formats}}: a WebM (VP9/AV1) version would be a fraction of the size, with an HEVC or MP4 fallback for Safari.",
+          "none": "No video on the page.",
+          "scripted": "The source of {{count}} video(s) is added by JavaScript and can't be judged from the source code.",
+          "help": "Modern video formats (WebM with VP9/AV1, or HEVC) are much smaller than classic MP4 (H.264) at the same quality. Best is to let the browser choose: WebM for Chrome and Android, HEVC or MP4 for Safari."
+        },
+        "llmsTxt": {
+          "label": "llms.txt",
+          "pass": "llms.txt found: AI assistants quickly understand what the site is about.",
+          "info": "No llms.txt. New and optional, but it helps AI search tools like ChatGPT describe you accurately.",
+          "help": "llms.txt is a short Markdown description at the root of the site: who you are, what you offer and which pages matter most. AI search tools and assistants use it to understand the site faster and more accurately."
         }
       },
       "tech": {
@@ -1174,7 +1188,8 @@
         "builderNote": "Built with a site builder or template: quick to put together, but it usually loads a lot of unnecessary code that slows it down.",
         "customNote": "A custom build loads only the code the site actually needs.",
         "disclaimer": "Recognised from traces left in the page's source code."
-      }
+      },
+      "autoFormat": "automatic (chosen per browser)"
     }
   },
   "pageH1": {

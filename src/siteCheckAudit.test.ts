@@ -68,3 +68,34 @@ describe("platform line", () => {
     });
   });
 });
+
+describe("video and llms.txt texts", () => {
+  it("names the video formats and tells no video from a scripted one", async () => {
+    const t = (await getTestI18n("hu")).getFixedT("hu");
+    const warn = describeAuditItem(
+      "seo",
+      { id: "video", status: "warn", data: { count: 1, formats: ["mp4"], scripted: 0 } },
+      t,
+      "hu"
+    );
+    expect(warn?.message).toMatch(/^Csak MP4: WebM/);
+    const auto = describeAuditItem(
+      "seo",
+      { id: "video", status: "pass", data: { count: 1, formats: ["auto"], scripted: 0 } },
+      t,
+      "hu"
+    );
+    expect(auto?.message).toBe("Korszerű formátum: automatikus (a böngészőhöz igazított).");
+    expect(
+      describeAuditItem(
+        "seo",
+        { id: "video", status: "info", data: { count: 0, formats: [] } },
+        t,
+        "hu"
+      )?.message
+    ).toBe("Nincs videó az oldalon.");
+    expect(
+      describeAuditItem("seo", { id: "llmsTxt", status: "info", data: {} }, t, "hu")?.message
+    ).toMatch(/^Nincs llms.txt/);
+  });
+});

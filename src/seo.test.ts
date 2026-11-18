@@ -42,9 +42,9 @@ describe("buildMeta", () => {
     expect(meta.description).toContain("Meet Szilveszter Németh");
   });
 
-  it("defaults the image to the site share image when none is given", () => {
+  it("defaults the image to the page's share image when none is given", () => {
     const meta = buildMeta({ pathname: "/", lang: "hu" });
-    expect(meta.image).toBe("https://synelweb.hu/og-image.png");
+    expect(meta.image).toBe("https://synelweb.hu/og/home-hu.jpg");
   });
 
   it("uses a provided image when non-empty", () => {
@@ -142,8 +142,17 @@ describe("share images", () => {
     );
   });
 
-  it("uses the brand image elsewhere, and a post's own image for a post", () => {
-    expect(buildMeta({ ...base, pathname: "/about", lang: "hu" }).image).toBe(
+  it("gives every main page its own image, and the regional pages theirs", () => {
+    expect(buildMeta({ ...base, pathname: "/", lang: "en" }).image).toBe(
+      "https://synelweb.hu/og/home-en.jpg"
+    );
+    expect(buildMeta({ ...base, pathname: "/sopron", lang: "hu" }).image).toBe(
+      "https://synelweb.hu/og/sopron-hu.jpg"
+    );
+  });
+
+  it("uses the brand image for the legal pages, and a post's own image for a post", () => {
+    expect(buildMeta({ ...base, pathname: "/impresszum", lang: "hu" }).image).toBe(
       "https://synelweb.hu/og-image.png"
     );
     expect(
@@ -168,6 +177,39 @@ describe("meta description length", () => {
         expect(length).toBeGreaterThanOrEqual(120);
         expect(length).toBeLessThanOrEqual(160);
       }
+    }
+  });
+});
+
+describe("share image files", () => {
+  it("exist for every page and language that points at one", async () => {
+    const { existsSync } = await import("node:fs");
+    const { SUPPORTED_LANGS } = await import("./i18n-config");
+    const paths = [
+      "/",
+      "/about",
+      "/services",
+      "/google-ads",
+      "/site-check",
+      "/projects",
+      "/certificates",
+      "/blog",
+      "/technology",
+      "/contact",
+    ];
+    const wanted = [
+      ...paths.flatMap((pathname) =>
+        SUPPORTED_LANGS.map(
+          (lang) => buildMeta({ pathname, lang, title: null, description: null, image: null }).image
+        )
+      ),
+      buildMeta({ pathname: "/sopron", lang: "hu", title: null, description: null, image: null })
+        .image,
+      buildMeta({ pathname: "/austria", lang: "de", title: null, description: null, image: null })
+        .image,
+    ];
+    for (const url of wanted) {
+      expect(existsSync(`public${new URL(url).pathname}`), url).toBe(true);
     }
   });
 });

@@ -18,10 +18,22 @@ type SeoEntry = {
 };
 
 // Pages with their own 1200x630 share image, one per language, in
-// public/og/<name>-<lang>.jpg.
+// public/og/<name>-<lang>.jpg (the regional pages exist in their one
+// language only). Blog posts use their own picture; the rest (legal pages)
+// share the brand image, public/og-image.png.
 const OG_IMAGE_PAGES: Partial<Record<string, string>> = {
-  "/site-check": "site-check",
+  "/": "home",
+  "/about": "about",
+  "/services": "services",
   "/google-ads": "google-ads",
+  "/site-check": "site-check",
+  "/projects": "projects",
+  "/certificates": "certificates",
+  "/blog": "blog",
+  "/technology": "technology",
+  "/contact": "contact",
+  "/sopron": "sopron",
+  "/austria": "austria",
 };
 
 type BuildMetaInput = {

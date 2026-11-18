@@ -129,4 +129,45 @@ describe("site check page", () => {
     expect(await screen.findByText(/van mit javítani/)).toBeInTheDocument();
     expect(screen.queryByText(/szép munka/)).not.toBeInTheDocument();
   });
+
+  it("lists the SEO basics and technical details, problems first", async () => {
+    runSiteCheck.mockResolvedValue({
+      ...RESULT,
+      seo: {
+        finalUrl: "https://www.pelda.hu/",
+        clientRendered: true,
+        checks: [
+          { id: "h1", status: "pass", data: { count: 1 } },
+          {
+            id: "structuredData",
+            status: "warn",
+            data: { types: [], invalid: 0, hasBusiness: false },
+          },
+        ],
+      },
+      tech: [{ id: "fonts", status: "warn", data: { count: 7, kb: 210 } }],
+    });
+    await renderWithI18n(<Page />);
+
+    checkSite("pelda.hu");
+
+    expect(await screen.findByText("SEO-alapok")).toBeInTheDocument();
+    expect(screen.getByText(/Nincs strukturált adat/)).toBeInTheDocument();
+    expect(screen.getByText("Pontosan egy fő címsor van.")).toBeInTheDocument();
+    expect(screen.getByText(/a böngésző rakja össze JavaScripttel/)).toBeInTheDocument();
+    expect(screen.getByText("Technikai részletek")).toBeInTheDocument();
+    expect(screen.getByText(/7 betűfájl \(210 kB\)/)).toBeInTheDocument();
+    const labels = screen.getAllByText(/Strukturált adatok|H1 címsor/).map((el) => el.textContent);
+    expect(labels[0]).toMatch(/Strukturált adatok/);
+  });
+
+  it("says so when the SEO basics couldn't be fetched", async () => {
+    runSiteCheck.mockResolvedValue({ ...RESULT, seo: null, tech: [] });
+    await renderWithI18n(<Page />);
+
+    checkSite("pelda.hu");
+
+    expect(await screen.findByText(/SEO-alapokat most nem sikerült lekérni/)).toBeInTheDocument();
+    expect(screen.queryByText("Technikai részletek")).toBeNull();
+  });
 });

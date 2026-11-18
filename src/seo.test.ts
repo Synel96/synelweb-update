@@ -164,7 +164,9 @@ describe("meta description length", () => {
         "/technology",
         "/contact",
       ]) {
-        expect(getSeoEntry(path, lang).description.length).toBeGreaterThanOrEqual(120);
+        const { length } = getSeoEntry(path, lang).description;
+        expect(length).toBeGreaterThanOrEqual(120);
+        expect(length).toBeLessThanOrEqual(160);
       }
     }
   });

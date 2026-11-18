@@ -989,6 +989,153 @@
         "Die mobile Messung simuliert ein durchschnittliches Smartphone mit langsamerem Mobilnetz, daher sind mobile Werte meist niedriger als am Desktop – genau deshalb verdienen sie die meiste Aufmerksamkeit."
       ],
       "sources": "Quellen:"
+    },
+    "audit": {
+      "seoTitle": "SEO-Grundlagen",
+      "seoText": "Was Googles Geschwindigkeitstest nicht prüft: was Suchmaschinen und soziale Netzwerke aus deiner Seite lesen.",
+      "techTitle": "Technische Details",
+      "techText": "Die Zahlen hinter dem Laden: Größe, Schriften, Code, Caching.",
+      "seoUnavailable": "Die SEO-Grundlagen konnten gerade nicht von dieser Seite abgerufen werden.",
+      "clientRendered": "Der Inhalt der Seite wird im Browser per JavaScript aufgebaut, daher ist im Quelltext nicht alles sichtbar – und manche Suchmaschinen sehen ihn auch nicht.",
+      "status": {
+        "pass": "OK",
+        "warn": "Verbessern",
+        "fail": "Fehler",
+        "info": "Info"
+      },
+      "seo": {
+        "structuredData": {
+          "label": "Strukturierte Daten",
+          "pass": "Vorhanden: {{types}}.",
+          "missing": "Keine strukturierten Daten: Google weiß nicht sicher, wer die Seite betreibt, und zeigt keine erweiterten Ergebnisse (Adresse, Bewertungen, FAQ).",
+          "noBusiness": "Vorhanden ({{types}}), aber die Unternehmensdaten (Organization oder LocalBusiness) fehlen.",
+          "invalid": "{{invalid}} Block/Blöcke strukturierter Daten sind fehlerhaft und für Suchmaschinen nicht lesbar."
+        },
+        "title": {
+          "label": "Seitentitel",
+          "pass": "{{length}} Zeichen – gute Länge.",
+          "warn": "{{length}} Zeichen: ideal sind 30–60, sonst kürzt Google ihn oder findet ihn zu dünn.",
+          "fail": "Kein Seitentitel."
+        },
+        "description": {
+          "label": "Meta-Beschreibung",
+          "pass": "{{length}} Zeichen – gute Länge.",
+          "warn": "{{length}} Zeichen: ideal sind 70–160.",
+          "fail": "Keine Meta-Beschreibung: Google wählt selbst einen Text."
+        },
+        "h1": {
+          "label": "H1-Überschrift",
+          "pass": "Genau eine Hauptüberschrift.",
+          "warn": "{{count}} H1-Überschriften; eine pro Seite ist am klarsten.",
+          "fail": "Keine H1-Überschrift."
+        },
+        "indexable": {
+          "label": "Indexierung",
+          "pass": "Suchmaschinen dürfen die Seite indexieren.",
+          "fail": "Die Seite ist für Suchmaschinen gesperrt (noindex)!"
+        },
+        "canonical": {
+          "label": "Canonical-URL",
+          "pass": "Vorhanden.",
+          "warn": "Fehlt: Ist der Inhalt unter mehreren Adressen erreichbar, entscheidet Google selbst."
+        },
+        "viewport": {
+          "label": "Mobile Ansicht",
+          "pass": "Die Seite ist für Smartphones skaliert.",
+          "fail": "Kein mobiler Viewport: Smartphones zeigen sie verkleinert."
+        },
+        "lang": {
+          "label": "Sprache",
+          "pass": "Sprache angegeben: {{lang}}.",
+          "warn": "Die Sprache der Seite ist nicht angegeben."
+        },
+        "social": {
+          "label": "Teilen-Daten",
+          "pass": "Titel und Bild zum Teilen vorhanden (Open Graph).",
+          "warn": "Unvollständig: Auf Facebook erscheint der Link evtl. ohne Bild oder Titel."
+        },
+        "hreflang": {
+          "label": "Sprachversionen",
+          "pass": "{{count}} Sprachversionen markiert.",
+          "info": "Keine markiert – bei einer einsprachigen Seite in Ordnung."
+        },
+        "images": {
+          "label": "Bildbeschreibungen",
+          "pass": "Alle Bilder haben einen Alt-Text ({{total}} Bilder).",
+          "warn": "{{missingAlt}} von {{total}} Bildern fehlt der Alt-Text."
+        },
+        "https": {
+          "label": "HTTPS",
+          "pass": "Sichere Verbindung.",
+          "fail": "Kein HTTPS: Browser markieren die Seite als „nicht sicher“."
+        },
+        "robots": {
+          "label": "robots.txt",
+          "pass": "Vorhanden.",
+          "warn": "Nicht gefunden.",
+          "fail": "Die robots.txt sperrt alle Suchmaschinen aus!"
+        },
+        "sitemap": {
+          "label": "Sitemap",
+          "pass": "Vorhanden.",
+          "warn": "Nicht gefunden: Suchmaschinen finden die Unterseiten langsamer."
+        }
+      },
+      "tech": {
+        "pageWeight": {
+          "label": "Seitengröße",
+          "pass": "{{kb}} kB, {{requests}} Anfragen.",
+          "warn": "{{kb}} kB, {{requests}} Anfragen – das bremst mobil bereits.",
+          "fail": "{{kb}} kB, {{requests}} Anfragen – zu schwer, mobil langsam."
+        },
+        "fonts": {
+          "label": "Schriften",
+          "pass": "{{count}} Schriftdateien ({{kb}} kB).",
+          "warn": "{{count}} Schriftdateien ({{kb}} kB) – viele: jede ist ein eigener Download, oder Text erscheint spät.",
+          "fail": "{{count}} Schriftdateien ({{kb}} kB) – zu viele Schriften."
+        },
+        "javascript": {
+          "label": "JavaScript",
+          "pass": "{{count}} Dateien, {{kb}} kB.",
+          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB ungenutzt."
+        },
+        "codeSplitting": {
+          "label": "Code-Splitting",
+          "pass": "Das größte Skript hat {{largestKb}} kB – in Ordnung.",
+          "warn": "Das größte Skript hat {{largestKb}} kB: Der Code lädt in einem Stück; pro Seite aufgeteilt wäre er schneller."
+        },
+        "css": {
+          "label": "CSS",
+          "pass": "{{count}} Dateien, {{kb}} kB.",
+          "warn": "{{count}} Dateien, {{kb}} kB, davon etwa {{unusedKb}} kB überflüssig."
+        },
+        "cache": {
+          "label": "Caching",
+          "pass": "Dateien können lange gecacht werden.",
+          "warn": "{{shortCache}} Dateien werden nur kurz gecacht: Wiederkehrende Besucher laden sie erneut."
+        },
+        "domSize": {
+          "label": "Seitenstruktur (DOM)",
+          "pass": "{{nodes}} Elemente.",
+          "warn": "{{nodes}} Elemente – eine große Struktur, die das Rendern bremst.",
+          "info": "Keine Daten."
+        },
+        "thirdParty": {
+          "label": "Drittanbieter",
+          "pass": "{{count}} Drittanbieter-Dienste.",
+          "warn": "{{count}} Drittanbieter-Dienste (Tracker, Chat-Widgets …) – jeder bremst die Seite."
+        },
+        "compression": {
+          "label": "Komprimierung",
+          "pass": "Textdateien kommen komprimiert an.",
+          "warn": "Komprimierung würde etwa {{savingsKb}} kB sparen."
+        },
+        "imageFormats": {
+          "label": "Bildformate",
+          "pass": "Die Bilder sind gut optimiert.",
+          "warn": "Moderne Formate (WebP, AVIF) und Komprimierung würden etwa {{savingsKb}} kB sparen."
+        }
+      }
     }
   },
   "pageH1": {

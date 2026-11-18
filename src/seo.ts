@@ -92,7 +92,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/": {
       title: "Weboldal Készítés Országosan | SynelWeb Webfejlesztés",
       description:
-        "Egyedi, villámgyors weboldal készítés bárhol Magyarországon, online egyeztetéssel. Felejtsd el a lassú sablonokat! Prémium dizájn és jövőálló architektúra a SynelWebtől.",
+        "Egyedi, villámgyors weboldal készítés bárhol Magyarországon, online egyeztetéssel. Lassú sablonok helyett prémium dizájn és jövőálló technika.",
     },
     "/about": {
       title: "Rólam – webfejlesztő Sopronból | SynelWeb",
@@ -107,7 +107,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/google-ads": {
       title: "Google Ads kezelés kisvállalkozásoknak | SynelWeb",
       description:
-        "Google keresőhirdetés beállítás és kezelés Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés, havi riport és átlátható árak – Sopronból, országosan.",
+        "Google keresőhirdetés beállítása és kezelése Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés és havi riport – Sopronból, országosan.",
     },
     "/site-check": {
       title: "Ingyenes weboldal-ellenőrzés: sebesség és SEO | SynelWeb",
@@ -122,7 +122,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/certificates": {
       title: "Webfejlesztő és Google Ads tanúsítványok | SynelWeb",
       description:
-        "Ellenőrizhető tanúsítványok frontend, backend és fullstack webfejlesztésből, valamint Google keresőhirdetésből – a tudás, ami minden SynelWeb-projekt mögött áll.",
+        "Ellenőrizhető tanúsítványok frontend, backend és fullstack webfejlesztésből és Google keresőhirdetésből – a tudás minden SynelWeb-projekt mögött.",
     },
     "/blog": {
       title: "Webfejlesztés és SEO blog | SynelWeb",
@@ -159,7 +159,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/google-ads": {
       title: "Google Ads Betreuung für kleine Unternehmen | SynelWeb",
       description:
-        "Google-Suchanzeigen einrichten und betreuen lassen – mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte und transparente Preise.",
+        "Google-Suchanzeigen einrichten und betreuen lassen, mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte.",
     },
     "/site-check": {
       title: "Kostenloser Website-Check: Speed & SEO | SynelWeb",
@@ -189,7 +189,7 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
     "/contact": {
       title: "Kontakt & Angebot anfordern | SynelWeb",
       description:
-        "Kontaktiere SynelWeb per E-Mail, telefonisch oder online – aus Ungarn, Österreich (Burgenland, Wien) oder von überall sonst, mit persönlichen Terminen rund um Sopron.",
+        "Kontaktiere SynelWeb per E-Mail, Telefon oder online – aus Österreich, Ungarn oder von überall, mit persönlichen Terminen im Burgenland und in Wien.",
     },
   },
 };
@@ -199,12 +199,12 @@ export const REGIONAL_SEO: Record<RegionalLogicalPath, SeoEntry> = {
   "/sopron": {
     title: "Weboldal készítés Sopron | SynelWeb",
     description:
-      "Egyedi, villámgyors weboldal készítés Sopronban és környékén, személyes egyeztetéssel. Kétnyelvű (magyar–német) oldalak osztrák vendégeknek, helyi SEO és Google Cégprofil.",
+      "Egyedi, villámgyors weboldal készítés Sopronban és környékén, személyes egyeztetéssel: magyar–német oldalak, helyi SEO és Google Cégprofil.",
   },
   "/austria": {
     title: "Webdesign Burgenland & Wien | SynelWeb",
     description:
-      "Individuelles, blitzschnelles Webdesign für Unternehmen im Burgenland und in Wien – mit Impressum- und DSGVO-konformer Umsetzung, Preisen in Euro und persönlichen Terminen.",
+      "Individuelles, blitzschnelles Webdesign für Unternehmen im Burgenland und in Wien: DSGVO-konform, mit Preisen in Euro und persönlichen Terminen.",
   },
 };
 

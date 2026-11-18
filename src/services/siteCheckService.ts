@@ -25,6 +25,19 @@ export type SiteCheckResult = {
     clsSavings?: number;
     value: string;
   }>;
+  // The SEO basics read from the page's HTML (null when it couldn't be
+  // fetched) and the technical details from the Lighthouse report. Missing
+  // from checks made before these existed.
+  seo?: { finalUrl: string; checks: AuditItem[]; clientRendered: boolean } | null;
+  tech?: AuditItem[];
+};
+
+export type AuditStatus = "pass" | "warn" | "fail" | "info";
+
+export type AuditItem = {
+  id: string;
+  status: AuditStatus;
+  data: Record<string, number | string | boolean | string[]>;
 };
 
 // Why a check failed, for a matching message: the address is invalid, the

@@ -989,6 +989,153 @@
         "The mobile check simulates an average phone on a slower mobile connection, so mobile scores are usually lower than desktop ones – which is exactly why they deserve the most attention."
       ],
       "sources": "Sources:"
+    },
+    "audit": {
+      "seoTitle": "SEO basics",
+      "seoText": "What Google's speed test doesn't look at: what search engines and social networks read from your page.",
+      "techTitle": "Technical details",
+      "techText": "The numbers behind loading: size, fonts, code, caching.",
+      "seoUnavailable": "The SEO basics couldn't be fetched from this page right now.",
+      "clientRendered": "The page's content is built in the browser with JavaScript, so not everything shows in its source code – and some search engines don't see it either.",
+      "status": {
+        "pass": "OK",
+        "warn": "To fix",
+        "fail": "Error",
+        "info": "Info"
+      },
+      "seo": {
+        "structuredData": {
+          "label": "Structured data",
+          "pass": "Found: {{types}}.",
+          "missing": "No structured data: Google can't be sure who runs the site and shows no rich results (address, ratings, FAQ).",
+          "noBusiness": "Present ({{types}}), but the business details (Organization or LocalBusiness) are missing.",
+          "invalid": "{{invalid}} structured data block(s) are broken and can't be read by search engines."
+        },
+        "title": {
+          "label": "Page title",
+          "pass": "{{length}} characters – a good length.",
+          "warn": "{{length}} characters: 30–60 is ideal, otherwise Google cuts it or finds it too thin.",
+          "fail": "No page title."
+        },
+        "description": {
+          "label": "Meta description",
+          "pass": "{{length}} characters – a good length.",
+          "warn": "{{length}} characters: 70–160 is ideal.",
+          "fail": "No meta description: Google picks a snippet itself."
+        },
+        "h1": {
+          "label": "H1 heading",
+          "pass": "Exactly one main heading.",
+          "warn": "{{count}} H1 headings; one main heading per page is clearest.",
+          "fail": "No H1 heading."
+        },
+        "indexable": {
+          "label": "Indexing",
+          "pass": "Search engines may index the page.",
+          "fail": "The page is blocked from search engines (noindex)!"
+        },
+        "canonical": {
+          "label": "Canonical URL",
+          "pass": "Present.",
+          "warn": "Missing: if the content is reachable at several addresses, Google decides which one to show."
+        },
+        "viewport": {
+          "label": "Mobile view",
+          "pass": "The page is sized for mobile.",
+          "fail": "No mobile viewport: phones show it zoomed out."
+        },
+        "lang": {
+          "label": "Language",
+          "pass": "Language set: {{lang}}.",
+          "warn": "The page's language isn't set."
+        },
+        "social": {
+          "label": "Sharing data",
+          "pass": "Share title and image are set (Open Graph).",
+          "warn": "Incomplete: on Facebook the link may show without an image or title."
+        },
+        "hreflang": {
+          "label": "Language versions",
+          "pass": "{{count}} language versions marked.",
+          "info": "None marked – fine for a single-language site."
+        },
+        "images": {
+          "label": "Image descriptions",
+          "pass": "Every image has alt text ({{total}} images).",
+          "warn": "{{missingAlt}} of {{total}} images have no alt text."
+        },
+        "https": {
+          "label": "HTTPS",
+          "pass": "Secure connection.",
+          "fail": "Not HTTPS: browsers mark it as \"not secure\"."
+        },
+        "robots": {
+          "label": "robots.txt",
+          "pass": "Present.",
+          "warn": "Not found.",
+          "fail": "robots.txt blocks every search engine from the site!"
+        },
+        "sitemap": {
+          "label": "Sitemap",
+          "pass": "Present.",
+          "warn": "Not found: search engines discover the subpages more slowly."
+        }
+      },
+      "tech": {
+        "pageWeight": {
+          "label": "Page weight",
+          "pass": "{{kb}} kB, {{requests}} requests.",
+          "warn": "{{kb}} kB, {{requests}} requests – that already slows mobile connections.",
+          "fail": "{{kb}} kB, {{requests}} requests – too heavy, slow on mobile."
+        },
+        "fonts": {
+          "label": "Fonts",
+          "pass": "{{count}} font files ({{kb}} kB).",
+          "warn": "{{count}} font files ({{kb}} kB) – many: each is a separate download, or text shows late.",
+          "fail": "{{count}} font files ({{kb}} kB) – too many fonts."
+        },
+        "javascript": {
+          "label": "JavaScript",
+          "pass": "{{count}} files, {{kb}} kB.",
+          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused."
+        },
+        "codeSplitting": {
+          "label": "Code splitting",
+          "pass": "The largest script is {{largestKb}} kB – fine.",
+          "warn": "The largest script is {{largestKb}} kB: the code loads in one piece; splitting it per page would be faster."
+        },
+        "css": {
+          "label": "CSS",
+          "pass": "{{count}} files, {{kb}} kB.",
+          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused."
+        },
+        "cache": {
+          "label": "Caching",
+          "pass": "Files can be cached for a long time.",
+          "warn": "{{shortCache}} files are cached only briefly: returning visitors download them again."
+        },
+        "domSize": {
+          "label": "Page structure (DOM)",
+          "pass": "{{nodes}} elements.",
+          "warn": "{{nodes}} elements – a large structure that slows rendering.",
+          "info": "No data."
+        },
+        "thirdParty": {
+          "label": "Third parties",
+          "pass": "{{count}} third-party services.",
+          "warn": "{{count}} third-party services (trackers, chat widgets…) – each one slows the page."
+        },
+        "compression": {
+          "label": "Compression",
+          "pass": "Text files arrive compressed.",
+          "warn": "Compression would save about {{savingsKb}} kB."
+        },
+        "imageFormats": {
+          "label": "Image formats",
+          "pass": "Images are well optimized.",
+          "warn": "Modern formats (WebP, AVIF) and compression would save about {{savingsKb}} kB."
+        }
+      }
     }
   },
   "pageH1": {

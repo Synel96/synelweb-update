@@ -1,4 +1,5 @@
 import type { TFunction } from "i18next";
+import { describeAuditItem, sortAuditItems } from "@/src/siteCheckAudit";
 import type { SiteCheckResult } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
@@ -249,6 +250,62 @@ export async function downloadSiteCheckReport(
     const key =
       (performance ?? 0) >= 90 ? "siteCheck.noOpportunities" : "siteCheck.noOpportunitiesWeak";
     text(t(key), margin, 10, { color: COLORS.muted, maxWidth: contentWidth });
+  }
+
+  // The SEO basics and technical details on their own page(s).
+  const auditSections = [
+    { group: "seo" as const, items: result.seo?.checks ?? [], title: "siteCheck.audit.seoTitle" },
+    { group: "tech" as const, items: result.tech ?? [], title: "siteCheck.audit.techTitle" },
+  ].filter((section) => section.items.length > 0);
+  const drawFooter = () => {
+    const top = 297 - 34;
+    doc.setFillColor(COLORS.surface[0], COLORS.surface[1], COLORS.surface[2]);
+    doc.rect(0, top, pageWidth, 34, "F");
+    const saved = y;
+    y = top + 10;
+    text(t("siteCheck.cta.title"), margin, 12, { bold: true, color: [255, 255, 255] });
+    y += 6.5;
+    text(t("siteCheck.pdf.contact"), margin, 9.5, { color: COLORS.warm });
+    y += 9;
+    text(t("siteCheck.pdf.footerNote"), margin, 7.5, {
+      color: [160, 166, 180],
+      maxWidth: contentWidth,
+    });
+    y = saved;
+  };
+  if (auditSections.length > 0) {
+    drawFooter();
+    doc.addPage();
+    y = 12;
+    const statusColor: Record<string, readonly number[]> = {
+      pass: [16, 150, 100],
+      warn: COLORS.warm,
+      fail: [205, 45, 60],
+      info: COLORS.muted,
+    };
+    for (const section of auditSections) {
+      sectionTitle(t(section.title));
+      for (const item of sortAuditItems(section.items)) {
+        const described = describeAuditItem(section.group, item, t, lang);
+        if (!described) continue;
+        if (y > 297 - 46) {
+          drawFooter();
+          doc.addPage();
+          y = 18;
+        }
+        text(`${t(`siteCheck.audit.status.${item.status}`)}`, margin, 8.5, {
+          bold: true,
+          color: statusColor[item.status],
+        });
+        text(described.label, margin + 22, 9.5, { bold: true });
+        y += 4.6;
+        const lines = text(described.message, margin + 22, 8.5, {
+          color: COLORS.muted,
+          maxWidth: contentWidth - 22,
+        });
+        y += lines * 4 + 2.6;
+      }
+    }
   }
 
   // Footer: the offer and how to get in touch.

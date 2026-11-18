@@ -44,5 +44,8 @@ export function siteCheckAttachment({ result, checkedAt }: StoredSiteCheck) {
       savingsMs,
       clsSavings: clsSavings ?? 0,
     })),
+    // Only what needs attention is listed in the mail.
+    seo: (result.seo?.checks ?? []).map(({ id, status }) => ({ id, status })),
+    tech: (result.tech ?? []).map(({ id, status }) => ({ id, status })),
   };
 }

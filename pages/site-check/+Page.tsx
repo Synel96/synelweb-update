@@ -32,6 +32,7 @@ import {
 import type { AppLang } from "@/src/services/serviceCardsService";
 import { storeSiteCheck } from "@/src/siteCheckStorage";
 import { JsonLd } from "@/components/JsonLd";
+import { SiteCheckAudit } from "@/components/SiteCheckAudit";
 import { SITE_URL } from "@/components/site";
 import { getSeoEntry } from "@/src/seo";
 import { buildWebApplicationJsonLd } from "@/src/structuredData";
@@ -415,6 +416,22 @@ export default function Page() {
                 )}
               </div>
             </div>
+
+            {result.seo === null ? (
+              <p className="mt-8 border-t border-white/10 pt-6 text-sm text-white/65">
+                {t("siteCheck.audit.seoUnavailable")}
+              </p>
+            ) : result.seo ? (
+              <SiteCheckAudit
+                group="seo"
+                items={result.seo.checks}
+                lang={lang}
+                note={result.seo.clientRendered ? t("siteCheck.audit.clientRendered") : undefined}
+              />
+            ) : null}
+            {result.tech && result.tech.length > 0 ? (
+              <SiteCheckAudit group="tech" items={result.tech} lang={lang} />
+            ) : null}
 
             <div className="mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-5">
               <button

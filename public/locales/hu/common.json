@@ -990,6 +990,153 @@
         "A mobilmérés egy átlagos telefont és lassabb mobilnetet szimulál, ezért a mobil pontszám általában alacsonyabb az asztalinál. Épp ezért erre érdemes a legnagyobb figyelmet fordítani."
       ],
       "sources": "Források:"
+    },
+    "audit": {
+      "seoTitle": "SEO-alapok",
+      "seoText": "Amit a Google sebességmérése nem néz: ezeket olvassák ki a keresők és a közösségi oldalak az oldaladból.",
+      "techTitle": "Technikai részletek",
+      "techText": "A betöltés mögötti számok: méret, betűtípusok, kód, gyorsítótár.",
+      "seoUnavailable": "A SEO-alapokat most nem sikerült lekérni erről az oldalról.",
+      "clientRendered": "Az oldal tartalmát a böngésző rakja össze JavaScripttel, ezért a forráskódból nem minden látszik – és a keresők egy része sem látja.",
+      "status": {
+        "pass": "Rendben",
+        "warn": "Javítandó",
+        "fail": "Hiba",
+        "info": "Infó"
+      },
+      "seo": {
+        "structuredData": {
+          "label": "Strukturált adatok",
+          "pass": "Megvan: {{types}}.",
+          "missing": "Nincs strukturált adat: a Google nem tudja biztosan, ki üzemelteti az oldalt, és nem jelenít meg bővített találatot (cím, értékelés, GYIK).",
+          "noBusiness": "Van ({{types}}), de hiányzik a cégadat (Organization vagy LocalBusiness).",
+          "invalid": "{{invalid}} strukturált adat blokk hibás, a keresők nem tudják beolvasni."
+        },
+        "title": {
+          "label": "Oldalcím",
+          "pass": "{{length}} karakter – jó hossz.",
+          "warn": "{{length}} karakter: az ideális 30–60, különben a Google levágja vagy kevésnek tartja.",
+          "fail": "Nincs oldalcím."
+        },
+        "description": {
+          "label": "Meta leírás",
+          "pass": "{{length}} karakter – jó hossz.",
+          "warn": "{{length}} karakter: az ideális 70–160.",
+          "fail": "Nincs meta leírás: a Google maga választ szöveget a találathoz."
+        },
+        "h1": {
+          "label": "H1 címsor",
+          "pass": "Pontosan egy fő címsor van.",
+          "warn": "{{count}} H1 címsor van; egy oldalon egy fő címsor a világos.",
+          "fail": "Nincs H1 címsor."
+        },
+        "indexable": {
+          "label": "Indexelhetőség",
+          "pass": "A keresők indexelhetik az oldalt.",
+          "fail": "Az oldal le van tiltva a keresők elől (noindex)!"
+        },
+        "canonical": {
+          "label": "Canonical cím",
+          "pass": "Megvan.",
+          "warn": "Hiányzik: ha a tartalom több címen is elérhető, a Google maga dönt, melyiket mutatja."
+        },
+        "viewport": {
+          "label": "Mobil nézet",
+          "pass": "Az oldal mobilra méretezett.",
+          "fail": "Nincs mobil viewport: telefonon kicsinyítve jelenik meg."
+        },
+        "lang": {
+          "label": "Nyelv jelölése",
+          "pass": "Megjelölt nyelv: {{lang}}.",
+          "warn": "Nincs megjelölve az oldal nyelve."
+        },
+        "social": {
+          "label": "Megosztási adatok",
+          "pass": "Van megosztási cím és kép (Open Graph).",
+          "warn": "Hiányos: Facebookon kép vagy cím nélkül jelenhet meg a link."
+        },
+        "hreflang": {
+          "label": "Nyelvi változatok",
+          "pass": "{{count}} nyelvi változat jelölve.",
+          "info": "Nincs jelölve – egynyelvű oldalnál ez rendben van."
+        },
+        "images": {
+          "label": "Képek leírása",
+          "pass": "Minden képnek van alt szövege ({{total}} kép).",
+          "warn": "{{missingAlt}} képről hiányzik az alt szöveg ({{total}} képből)."
+        },
+        "https": {
+          "label": "HTTPS",
+          "pass": "Biztonságos kapcsolat.",
+          "fail": "Nem HTTPS: a böngészők „nem biztonságos”-nak jelölik."
+        },
+        "robots": {
+          "label": "robots.txt",
+          "pass": "Megvan.",
+          "warn": "Nem található.",
+          "fail": "A robots.txt minden keresőt kitilt az oldalról!"
+        },
+        "sitemap": {
+          "label": "Sitemap",
+          "pass": "Megvan.",
+          "warn": "Nem találtam: a keresők lassabban fedezik fel az aloldalakat."
+        }
+      },
+      "tech": {
+        "pageWeight": {
+          "label": "Oldalméret",
+          "pass": "{{kb}} kB, {{requests}} kérés.",
+          "warn": "{{kb}} kB, {{requests}} kérés – mobilneten ez már lassít.",
+          "fail": "{{kb}} kB, {{requests}} kérés – túl nehéz, mobilon lassan tölt be."
+        },
+        "fonts": {
+          "label": "Betűtípusok",
+          "pass": "{{count}} betűfájl ({{kb}} kB).",
+          "warn": "{{count}} betűfájl ({{kb}} kB) – sok: mindegyik külön letöltés, vagy a szöveg később jelenik meg.",
+          "fail": "{{count}} betűfájl ({{kb}} kB) – túl sok betűtípus."
+        },
+        "javascript": {
+          "label": "JavaScript",
+          "pass": "{{count}} fájl, {{kb}} kB.",
+          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB nincs használatban."
+        },
+        "codeSplitting": {
+          "label": "Kódfelosztás",
+          "pass": "A legnagyobb szkript {{largestKb}} kB – rendben.",
+          "warn": "A legnagyobb szkript {{largestKb}} kB: a kód egyben töltődik be, oldalankénti felosztással (code splitting) gyorsabb lenne."
+        },
+        "css": {
+          "label": "CSS",
+          "pass": "{{count}} fájl, {{kb}} kB.",
+          "warn": "{{count}} fájl, {{kb}} kB, ebből kb. {{unusedKb}} kB fölösleges."
+        },
+        "cache": {
+          "label": "Gyorsítótárazás",
+          "pass": "A fájlok hosszan gyorsítótárazhatók.",
+          "warn": "{{shortCache}} fájl csak rövid ideig tárolódik: visszatérő látogatónál újra letöltődik."
+        },
+        "domSize": {
+          "label": "Oldalszerkezet (DOM)",
+          "pass": "{{nodes}} elem.",
+          "warn": "{{nodes}} elem – nagy szerkezet, lassítja a megjelenítést.",
+          "info": "Nincs adat."
+        },
+        "thirdParty": {
+          "label": "Külső szolgáltatások",
+          "pass": "{{count}} külső szolgáltatás.",
+          "warn": "{{count}} külső szolgáltatás (pl. követőkódok, csevegők) – mindegyik lassít."
+        },
+        "compression": {
+          "label": "Tömörítés",
+          "pass": "A szöveges fájlok tömörítve érkeznek.",
+          "warn": "Tömörítéssel kb. {{savingsKb}} kB spórolható."
+        },
+        "imageFormats": {
+          "label": "Képformátumok",
+          "pass": "A képek jól optimalizáltak.",
+          "warn": "Modern formátummal (WebP, AVIF) és tömörítéssel kb. {{savingsKb}} kB spórolható."
+        }
+      }
     }
   },
   "pageH1": {

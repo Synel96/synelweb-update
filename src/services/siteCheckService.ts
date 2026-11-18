@@ -28,11 +28,25 @@ export type SiteCheckResult = {
   // The SEO basics read from the page's HTML (null when it couldn't be
   // fetched) and the technical details from the Lighthouse report. Missing
   // from checks made before these existed.
-  seo?: { finalUrl: string; checks: AuditItem[]; clientRendered: boolean } | null;
+  seo?: {
+    finalUrl: string;
+    checks: AuditItem[];
+    clientRendered: boolean;
+    platform?: SitePlatform;
+  } | null;
   tech?: AuditItem[];
 };
 
 export type AuditStatus = "pass" | "warn" | "fail" | "info";
+
+// How the site was probably built (a guess from its source code).
+export type SitePlatform = {
+  builder: string | null;
+  addons: string[];
+  theme: string | null;
+  frameworks: string[];
+  kind: "builder" | "custom" | "unknown";
+};
 
 export type AuditItem = {
   id: string;

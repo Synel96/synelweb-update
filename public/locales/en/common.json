@@ -1009,76 +1009,90 @@
           "pass": "Found: {{types}}.",
           "missing": "No structured data: Google can't be sure who runs the site and shows no rich results (address, ratings, FAQ).",
           "noBusiness": "Present ({{types}}), but the business details (Organization or LocalBusiness) are missing.",
-          "invalid": "{{invalid}} structured data block(s) are broken and can't be read by search engines."
+          "invalid": "{{invalid}} structured data block(s) are broken and can't be read by search engines.",
+          "help": "Hidden, machine-readable data in the page (business name, address, opening hours, FAQ). It tells Google who you are and powers rich results."
         },
         "title": {
           "label": "Page title",
           "pass": "{{length}} characters – a good length.",
           "warn": "{{length}} characters: 30–60 is ideal, otherwise Google cuts it or finds it too thin.",
-          "fail": "No page title."
+          "fail": "No page title.",
+          "help": "The title in the browser tab and the first line of the Google result – the first thing a searcher reads about you."
         },
         "description": {
           "label": "Meta description",
           "pass": "{{length}} characters – a good length.",
           "warn": "{{length}} characters: 70–160 is ideal.",
-          "fail": "No meta description: Google picks a snippet itself."
+          "fail": "No meta description: Google picks a snippet itself.",
+          "help": "The 1–2 sentence summary under the result. It doesn't rank directly, but it decides whether people click."
         },
         "h1": {
           "label": "H1 heading",
           "pass": "Exactly one main heading.",
           "warn": "{{count}} H1 headings; one main heading per page is clearest.",
-          "fail": "No H1 heading."
+          "fail": "No H1 heading.",
+          "help": "The page's main heading. It's the quickest way for search engines to understand what the page is about."
         },
         "indexable": {
           "label": "Indexing",
           "pass": "Search engines may index the page.",
-          "fail": "The page is blocked from search engines (noindex)!"
+          "fail": "The page is blocked from search engines (noindex)!",
+          "help": "A \"noindex\" tag keeps the page out of search results. Useful during development, a disaster when left on a live site."
         },
         "canonical": {
           "label": "Canonical URL",
           "pass": "Present.",
-          "warn": "Missing: if the content is reachable at several addresses, Google decides which one to show."
+          "warn": "Missing: if the content is reachable at several addresses, Google decides which one to show.",
+          "help": "Tells search engines which address is the page's \"original\" when the same content is reachable at several (e.g. with and without www)."
         },
         "viewport": {
           "label": "Mobile view",
           "pass": "The page is sized for mobile.",
-          "fail": "No mobile viewport: phones show it zoomed out."
+          "fail": "No mobile viewport: phones show it zoomed out.",
+          "help": "This setting lets the page fit the phone screen. Without it, phones show a tiny, zoomed-out page."
         },
         "lang": {
           "label": "Language",
           "pass": "Language set: {{lang}}.",
-          "warn": "The page's language isn't set."
+          "warn": "The page's language isn't set.",
+          "help": "Tells browsers and search engines the page's language, for correct translation, read-aloud and language-based results."
         },
         "social": {
           "label": "Sharing data",
           "pass": "Share title and image are set (Open Graph).",
-          "warn": "Incomplete: on Facebook the link may show without an image or title."
+          "warn": "Incomplete: on Facebook the link may show without an image or title.",
+          "help": "Open Graph data decides which image and title appear when someone shares the link on Facebook or Messenger."
         },
         "hreflang": {
           "label": "Language versions",
           "pass": "{{count}} language versions marked.",
-          "info": "None marked – fine for a single-language site."
+          "info": "None marked – fine for a single-language site.",
+          "help": "On a multilingual site it links the language versions, so everyone gets the result in their own language."
         },
         "images": {
           "label": "Image descriptions",
           "pass": "Every image has alt text ({{total}} images).",
-          "warn": "{{missingAlt}} of {{total}} images have no alt text."
+          "warn": "{{missingAlt}} of {{total}} images have no alt text.",
+          "help": "Alt text describes an image: screen readers read it aloud to blind users, and Google Images uses it to understand the picture."
         },
         "https": {
           "label": "HTTPS",
           "pass": "Secure connection.",
-          "fail": "Not HTTPS: browsers mark it as \"not secure\"."
+          "fail": "Not HTTPS: browsers mark it as \"not secure\".",
+          "help": "The encrypted connection. Without it browsers show a warning and Google ranks the page lower."
         },
         "robots": {
           "label": "robots.txt",
           "pass": "Present.",
           "warn": "Not found.",
-          "fail": "robots.txt blocks every search engine from the site!"
+          "fail": "robots.txt blocks every search engine from the site!",
+          "help": "A small file telling search robots where they may go on the site. One wrong line can lock out the whole site."
         },
         "sitemap": {
           "label": "Sitemap",
           "pass": "Present.",
-          "warn": "Not found: search engines discover the subpages more slowly."
+          "warn": "Not found: search engines discover the subpages more slowly.",
+          "help": "The site's table of contents for search engines: it lists every subpage so they get indexed faster and more completely."
         }
       },
       "tech": {
@@ -1086,55 +1100,80 @@
           "label": "Page weight",
           "pass": "{{kb}} kB, {{requests}} requests.",
           "warn": "{{kb}} kB, {{requests}} requests – that already slows mobile connections.",
-          "fail": "{{kb}} kB, {{requests}} requests – too heavy, slow on mobile."
+          "fail": "{{kb}} kB, {{requests}} requests – too heavy, slow on mobile.",
+          "help": "All downloaded files together. The bigger it is, the longer it loads – especially on mobile data."
         },
         "fonts": {
           "label": "Fonts",
           "pass": "{{count}} font files ({{kb}} kB).",
           "warn": "{{count}} font files ({{kb}} kB) – many: each is a separate download, or text shows late.",
-          "fail": "{{count}} font files ({{kb}} kB) – too many fonts."
+          "fail": "{{count}} font files ({{kb}} kB) – too many fonts.",
+          "help": "Every font and weight is a separate file. Many fonts slow loading and can make text \"jump\" as it appears."
         },
         "javascript": {
           "label": "JavaScript",
           "pass": "{{count}} files, {{kb}} kB.",
-          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused."
+          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused.",
+          "help": "JavaScript makes a page interactive, but every kilobyte must be downloaded and run – phone processors feel it most."
         },
         "codeSplitting": {
           "label": "Code splitting",
           "pass": "The largest script is {{largestKb}} kB – fine.",
-          "warn": "The largest script is {{largestKb}} kB: the code loads in one piece; splitting it per page would be faster."
+          "warn": "The largest script is {{largestKb}} kB: the code loads in one piece; splitting it per page would be faster.",
+          "help": "If a page loads all code at once, visitors download code the page doesn't use. Split up, each page loads only what it needs."
         },
         "css": {
           "label": "CSS",
           "pass": "{{count}} files, {{kb}} kB.",
-          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused."
+          "warn": "{{count}} files, {{kb}} kB, about {{unusedKb}} kB of it unused.",
+          "help": "CSS gives the page its look. Unused styles are extra downloads and delay the first render."
         },
         "cache": {
           "label": "Caching",
           "pass": "Files can be cached for a long time.",
-          "warn": "{{shortCache}} files are cached only briefly: returning visitors download them again."
+          "warn": "{{shortCache}} files are cached only briefly: returning visitors download them again.",
+          "help": "Caching lets a returning visitor's browser skip downloading unchanged files. With short cache times every visit downloads them again."
         },
         "domSize": {
           "label": "Page structure (DOM)",
           "pass": "{{nodes}} elements.",
           "warn": "{{nodes}} elements – a large structure that slows rendering.",
-          "info": "No data."
+          "info": "No data.",
+          "help": "The number of building blocks on the page. With too many, the browser draws and updates the page more slowly."
         },
         "thirdParty": {
           "label": "Third parties",
           "pass": "{{count}} third-party services.",
-          "warn": "{{count}} third-party services (trackers, chat widgets…) – each one slows the page."
+          "warn": "{{count}} third-party services (trackers, chat widgets…) – each one slows the page.",
+          "help": "Other companies' code on the page: analytics, ad pixels, chat widgets, embedded videos. Each is an extra download and extra waiting."
         },
         "compression": {
           "label": "Compression",
           "pass": "Text files arrive compressed.",
-          "warn": "Compression would save about {{savingsKb}} kB."
+          "warn": "Compression would save about {{savingsKb}} kB.",
+          "help": "Text files (HTML, CSS, JS) shrink to a fraction of their size in transit when compressed. A server setting that costs visitors nothing."
         },
         "imageFormats": {
           "label": "Image formats",
           "pass": "Images are well optimized.",
-          "warn": "Modern formats (WebP, AVIF) and compression would save about {{savingsKb}} kB."
+          "warn": "Modern formats (WebP, AVIF) and compression would save about {{savingsKb}} kB.",
+          "help": "Modern image formats (WebP, AVIF) are much smaller than JPG and PNG at the same quality."
         }
+      },
+      "helpLabel": "What does this mean?",
+      "showPassed": "+{{count}} OK – show",
+      "hidePassed": "Hide the passed checks",
+      "summary": "{{fail}} errors · {{warn}} to fix · {{pass}} OK",
+      "allGood": "All OK ({{pass}})",
+      "platform": {
+        "title": "What is the site built with?",
+        "builder": "Probably: {{name}}.",
+        "custom": "Probably a custom build: {{name}}.",
+        "unknown": "Not recognisable – probably a custom build, or the traces are hidden.",
+        "themeSuffix": " ({{theme}} theme)",
+        "builderNote": "Built with a site builder or template: quick to put together, but it usually loads a lot of unnecessary code that slows it down.",
+        "customNote": "A custom build loads only the code the site actually needs.",
+        "disclaimer": "Recognised from traces left in the page's source code."
       }
     }
   },

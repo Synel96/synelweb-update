@@ -51,3 +51,20 @@ describe("site check audit texts", () => {
     expect(sorted.map((item) => item.id)).toEqual(["c", "b", "a"]);
   });
 });
+
+describe("platform line", () => {
+  it("names a custom build's framework and admits when it can't tell", async () => {
+    const { describePlatform } = await import("./siteCheckAudit");
+    const t = (await getTestI18n("hu")).getFixedT("hu");
+    const base = { builder: null, addons: [], theme: null };
+
+    expect(describePlatform({ ...base, frameworks: ["Next.js"], kind: "custom" }, t).headline).toBe(
+      "Valószínűleg egyedi fejlesztés: Next.js."
+    );
+    expect(describePlatform({ ...base, frameworks: [], kind: "unknown" }, t)).toEqual({
+      headline:
+        "Nem ismerhető fel – valószínűleg egyedi fejlesztés, vagy elrejtett nyomokkal készült.",
+      note: "",
+    });
+  });
+});

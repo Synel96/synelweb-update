@@ -899,7 +899,7 @@
   "siteCheck": {
     "label": "Kostenloser Website-Check",
     "title": "Wie schnell und gut ist deine Website?",
-    "intro": "Prüfe sie kostenlos mit Google Lighthouse – derselben Messung, mit der Google Seiten bewertet. Mobil und am Desktop, in etwa einer halben Minute.",
+    "intro": "Speed, SEO und Technik in einem Check: Google-Lighthouse-Werte, SEO-Grundlagen (strukturierte Daten, Metadaten, Sitemap, llms.txt), technische Details (Schriften, Caching, Code-Splitting, Videoformate) und womit die Seite gebaut ist. Mobil und am Desktop, in etwa einer halben Minute, mit PDF-Bericht.",
     "urlLabel": "Adresse der Website",
     "urlPlaceholder": "beispiel.at",
     "submit": "Prüfen",
@@ -912,7 +912,8 @@
     "progress": [
       "Seite wird geladen…",
       "Performance wird gemessen…",
-      "Barrierefreiheit und SEO werden geprüft…",
+      "SEO-Grundlagen und technische Details werden geprüft…",
+      "Barrierefreiheit wird geprüft…",
       "Ergebnisse werden zusammengefasst…"
     ],
     "progressHint": "Eine Prüfung dauert meist 15–40 Sekunden.",
@@ -965,10 +966,18 @@
         "performance": "Wie schnell die Seite lädt und benutzbar wird – Google berücksichtigt das auch im Ranking.",
         "accessibility": "Ob alle sie gut nutzen können: lesbarer Kontrast, Beschriftungen, Tastaturbedienung.",
         "bestPractices": "Sicherheit und moderne Technik: HTTPS, fehlerfreier Code, aktuelle Bildformate.",
-        "seo": "Die technischen SEO-Grundlagen: Titel, Beschreibungen, Indexierbarkeit, mobilfreundliches Layout."
+        "seo": "Die technischen SEO-Grundlagen: Titel, Beschreibungen, Indexierbarkeit, mobilfreundliches Layout.",
+        "seoBasics": "Was Googles Geschwindigkeitstest nicht prüft: strukturierte Daten, Titel und Beschreibung, H1, Indexierbarkeit, Teilen-Daten, Sitemap, robots.txt und llms.txt.",
+        "tech": "Die Zahlen hinter dem Laden: Seitengröße, Schriften, JavaScript und Code-Splitting, Caching, Drittanbieter, Bild- und Videoformate.",
+        "platform": "Womit die Seite gebaut ist: Baukasten oder Shopsystem (z. B. WordPress mit Elementor, Wix, Shopify) oder individuelle Entwicklung."
+      },
+      "titles": {
+        "seoBasics": "SEO-Grundlagen",
+        "tech": "Technische Details",
+        "platform": "Womit gebaut?"
       }
     },
-    "note": "Die Messung führt Google PageSpeed Insights durch; die Ergebnisse können von Messung zu Messung leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten.",
+    "note": "Die Werte misst Google PageSpeed Insights, die SEO-Grundlagen und technischen Details liest das eigene Prüfwerkzeug von SynelWeb aus; die Ergebnisse können leicht schwanken. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten.",
     "clsSavings": "Weniger Layout-Verschiebungen (CLS)",
     "genericSavings": "Schnelleres Laden",
     "noOpportunitiesWeak": "Google hat diesmal keine einzelne Maßnahme genannt, aber die Werte oben zeigen Verbesserungspotenzial – ich schaue es mir gern genauer an.",

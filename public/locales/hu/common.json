@@ -900,7 +900,7 @@
   "siteCheck": {
     "label": "Ingyenes weboldal-ellenőrzés",
     "title": "Mennyire gyors és jó a weboldalad?",
-    "intro": "Mérd le ingyen a Google Lighthouse-szal – ugyanazzal a méréssel, amivel a Google is értékeli az oldalakat. Mobilon és asztalin, nagyjából fél perc alatt.",
+    "intro": "Egy mérésben a sebesség, a SEO és a technika: Google Lighthouse-pontszámok, SEO-alapok (strukturált adatok, meta adatok, sitemap, llms.txt), technikai részletek (betűtípusok, gyorsítótár, kódfelosztás, videóformátumok), és az is, mivel készült az oldal. Mobilon és asztalin, nagyjából fél perc alatt, PDF riporttal.",
     "urlLabel": "A weboldal címe",
     "urlPlaceholder": "pelda.hu",
     "submit": "Ellenőrzés",
@@ -913,7 +913,8 @@
     "progress": [
       "Az oldal betöltése…",
       "Teljesítmény mérése…",
-      "Akadálymentesség és SEO vizsgálata…",
+      "SEO-alapok és technikai részletek vizsgálata…",
+      "Akadálymentesség ellenőrzése…",
       "Eredmények összesítése…"
     ],
     "progressHint": "A mérés általában 15–40 másodpercig tart.",
@@ -966,10 +967,18 @@
         "performance": "Milyen gyorsan tölt be és válik használhatóvá az oldal – a Google rangsorolásnál is figyelembe veszi.",
         "accessibility": "Mindenki jól tudja-e használni: olvasható kontraszt, feliratok, billentyűzetes kezelés.",
         "bestPractices": "Biztonság és modern technikai megoldások: HTTPS, hibamentes futás, korszerű képformátumok.",
-        "seo": "A keresőoptimalizálás technikai alapjai: címek, leírások, indexelhetőség, mobilbarát megjelenés."
+        "seo": "A keresőoptimalizálás technikai alapjai: címek, leírások, indexelhetőség, mobilbarát megjelenés.",
+        "seoBasics": "Amit a Google sebességmérése nem néz: strukturált adatok, oldalcím és leírás, H1, indexelhetőség, megosztási adatok, sitemap, robots.txt és llms.txt.",
+        "tech": "A betöltés mögötti számok: oldalméret, betűtípusok, JavaScript és kódfelosztás, gyorsítótárazás, külső szolgáltatások, kép- és videóformátumok.",
+        "platform": "Mivel készült az oldal: oldalépítő vagy webshop-rendszer (pl. WordPress és Elementor, Wix, Shopify, UNAS) vagy egyedi fejlesztés."
+      },
+      "titles": {
+        "seoBasics": "SEO-alapok",
+        "tech": "Technikai részletek",
+        "platform": "Mivel készült?"
       }
     },
-    "note": "A mérést a Google PageSpeed Insights végzi, az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem.",
+    "note": "A pontszámokat a Google PageSpeed Insights méri, a SEO-alapokat és a technikai részleteket a SynelWeb saját ellenőrzője olvassa ki; az eredmény mérésről mérésre kissé eltérhet. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem.",
     "clsSavings": "Kevesebb elrendezés-ugrálás (CLS)",
     "genericSavings": "Gyorsabb betöltés",
     "noOpportunitiesWeak": "A Google most nem nevezett meg külön javítási tételt, de a fenti mérőszámok alapján van mit javítani – szívesen megnézem részletesen.",

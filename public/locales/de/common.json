@@ -1093,6 +1093,20 @@
           "pass": "Vorhanden.",
           "warn": "Nicht gefunden: Suchmaschinen finden die Unterseiten langsamer.",
           "help": "Das Inhaltsverzeichnis der Seite für Suchmaschinen: Es listet alle Unterseiten auf, damit sie schneller und vollständiger indexiert werden."
+        },
+        "video": {
+          "label": "Videoformate",
+          "pass": "Modernes Format: {{formats}}.",
+          "warn": "Nur {{formats}}: Eine WebM-Version (VP9/AV1) wäre nur ein Bruchteil so groß, mit HEVC- oder MP4-Fallback für Safari.",
+          "none": "Kein Video auf der Seite.",
+          "scripted": "Die Quelle von {{count}} Video(s) wird per JavaScript eingefügt und ist im Quelltext nicht beurteilbar.",
+          "help": "Moderne Videoformate (WebM mit VP9/AV1 oder HEVC) sind bei gleicher Qualität deutlich kleiner als klassisches MP4 (H.264). Am besten wählt der Browser: WebM für Chrome und Android, HEVC oder MP4 für Safari."
+        },
+        "llmsTxt": {
+          "label": "llms.txt",
+          "pass": "llms.txt vorhanden: KI-Assistenten verstehen schnell, worum es auf der Seite geht.",
+          "info": "Keine llms.txt. Neu und optional, hilft aber KI-Suchen wie ChatGPT, dich korrekt zu beschreiben.",
+          "help": "Die llms.txt ist eine kurze Markdown-Beschreibung im Stammverzeichnis: wer du bist, was du anbietest und welche Seiten am wichtigsten sind. KI-Suchen und -Assistenten verstehen die Seite dadurch schneller und genauer."
         }
       },
       "tech": {
@@ -1174,7 +1188,8 @@
         "builderNote": "Mit Baukasten oder Vorlage gebaut: schnell erstellt, lädt aber meist viel überflüssigen Code, der bremst.",
         "customNote": "Eine individuelle Entwicklung lädt nur den Code, den die Seite wirklich braucht.",
         "disclaimer": "Erkannt anhand von Spuren im Quelltext der Seite."
-      }
+      },
+      "autoFormat": "automatisch (je nach Browser)"
     }
   },
   "pageH1": {

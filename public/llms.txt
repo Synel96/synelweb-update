@@ -1,26 +1,37 @@
 # SynelWeb
 
-> SynelWeb is a multilingual marketing website for modern web development services.
+> SynelWeb is the one-person web development business of Szilveszter Németh in Sopron, Hungary. It builds custom, fast websites, landing pages and online shops for small businesses in Hungary and Austria (Burgenland, Vienna), without templates or page builders, and manages Google Search ads. Every project includes ongoing hosting and maintenance.
 
-This file describes the main public pages, their purpose, and basic usage guidance for LLM-based summarization and navigation.
+Languages: Hungarian (main), English, German. Contact: info@synelweb.hu, +36 30 364 5516. Meetings in person around Sopron, Burgenland and Vienna, or online anywhere.
 
-## Main Pages
+## Services
 
-- [Homepage](https://synelweb.hu/): Main overview of the brand, positioning, and primary calls to action.
-- [Blog](https://synelweb.hu/blog): Public blog index with articles, practical notes, and detail pages.
-- [Services](https://synelweb.hu/services): Public overview of available web development services.
-- [Projects](https://synelweb.hu/projects): Showcase of selected projects and implementation examples.
-- [Technology](https://synelweb.hu/technology): Summary of the technology stack and technical approach.
-- [About](https://synelweb.hu/about): Background information about SynelWeb and the person behind the brand.
-- [Reviews](https://synelweb.hu/#reviews): Public client feedback and review content (a section on the homepage).
-- [Contact](https://synelweb.hu/contact): Current public contact details and contact options.
+- [Services and prices (HU)](https://synelweb.hu/hu/szolgaltatasok): landing page, business website, online shop, Google Ads management, monthly hosting and maintenance
+- [Services and prices (EN)](https://synelweb.hu/en/services)
+- [Leistungen und Preise (DE)](https://synelweb.hu/de/dienstleistungen)
+- [Google Ads management (HU)](https://synelweb.hu/hu/google-ads-kezeles): Google Ads Search certified setup and management for small businesses
+- [Website design in Sopron (HU)](https://synelweb.hu/hu/weboldal-keszites-sopron)
+- [Webdesign for Burgenland and Vienna (DE)](https://synelweb.hu/de/webdesign-burgenland-wien)
 
-## Usage Notes
+## Tools
 
-- [Language handling](https://synelweb.hu/): Respect the language shown in the URL prefix and prefer the visible localized page content.
-- [Content reliability](https://synelweb.hu/): Use public page content as the source of truth and do not invent pricing, project results, or unavailable details.
-- [Indexing scope](https://synelweb.hu/): Public marketing pages and metadata may be summarized, but private admin or internal endpoints are not intended for crawling.
+- [Free website check (HU)](https://synelweb.hu/hu/weboldal-ellenorzes): Google Lighthouse scores plus SEO basics, technical details and the platform a site is built with, with a PDF report
+- [Free website check (EN)](https://synelweb.hu/en/website-check)
+
+## About and proof
+
+- [About Szilveszter Németh (HU)](https://synelweb.hu/hu/rolam)
+- [Projects and references (HU)](https://synelweb.hu/hu/projektek): client sites with measured Lighthouse scores
+- [Certificates (HU)](https://synelweb.hu/hu/tanusitvanyok): verifiable web development and Google Ads certificates
+- [Technology (HU)](https://synelweb.hu/hu/technologia): React, TypeScript, Vike, Django, PostgreSQL
+
+## Contact
+
+- [Contact and quote request (HU)](https://synelweb.hu/hu/kapcsolat)
+- [Contact (EN)](https://synelweb.hu/en/contact)
 
 ## Optional
 
-- [Brand website](https://synelweb.hu/): Canonical public website for SynelWeb.
+- [Blog (HU)](https://synelweb.hu/hu/blog): articles on web development, SEO and website costs
+- [Terms (HU)](https://synelweb.hu/aszf)
+- [Privacy notice (HU)](https://synelweb.hu/adatkezeles)

@@ -2,8 +2,11 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import {
   AccessibilityIcon,
   ArrowRightIcon,
+  CpuIcon,
   FileDownIcon,
+  FileSearchIcon,
   GaugeIcon,
+  LayersIcon,
   LightbulbIcon,
   LoaderCircleIcon,
   MonitorIcon,
@@ -44,6 +47,12 @@ const ABOUT_ICONS: Record<(typeof SCORE_KEYS)[number], LucideIcon> = {
   bestPractices: ShieldCheckIcon,
   seo: SearchIcon,
 };
+// What the check adds beyond the four Lighthouse scores.
+const EXTRA_ABOUT: Array<{ key: "seoBasics" | "tech" | "platform"; Icon: LucideIcon }> = [
+  { key: "seoBasics", Icon: FileSearchIcon },
+  { key: "tech", Icon: CpuIcon },
+  { key: "platform", Icon: LayersIcon },
+];
 const PROGRESS_STEP_MS = 7000;
 
 function hostOf(url: string) {
@@ -562,6 +571,23 @@ export default function Page() {
               </li>
             );
           })}
+          {EXTRA_ABOUT.map(({ key, Icon }) => (
+            // The odd one out spans the row instead of leaving a gap.
+            <li
+              key={key}
+              className={`fancy-card flex gap-4 rounded-2xl p-5 ${key === "platform" ? "sm:col-span-2" : ""}`}
+            >
+              <span className="fancy-tile flex size-11 shrink-0 items-center justify-center rounded-xl">
+                <Icon className="size-5 text-(--accent)" aria-hidden="true" />
+              </span>
+              <div>
+                <h3 className="font-semibold text-white">{t(`siteCheck.about.titles.${key}`)}</h3>
+                <p className="mt-1 text-sm leading-6 text-white/75">
+                  {t(`siteCheck.about.items.${key}`)}
+                </p>
+              </div>
+            </li>
+          ))}
         </ul>
         <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-5 text-white/50">
           {t("siteCheck.note")}

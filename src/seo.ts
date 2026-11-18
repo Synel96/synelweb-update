@@ -58,9 +58,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Google Search ads set up and managed by a Google Ads Search certified developer: keyword research, conversion tracking, monthly reports and transparent pricing.",
     },
     "/site-check": {
-      title: "Free Website Check – Speed, SEO & Accessibility | SynelWeb",
+      title: "Free Website Check: Speed, SEO & Tech | SynelWeb",
       description:
-        "Check your website for free with Google Lighthouse: speed, SEO, accessibility and Core Web Vitals on mobile and desktop, with the biggest fixes.",
+        "Free website check: Lighthouse scores, SEO basics, technical details and the platform a site is built with, on mobile and desktop, with a PDF report.",
     },
     "/projects": {
       title: "Website Portfolio & Projects | SynelWeb",
@@ -110,9 +110,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Google keresőhirdetés beállítása és kezelése Google Ads Search tanúsítvánnyal: kulcsszókutatás, konverziómérés és havi riport – Sopronból, országosan.",
     },
     "/site-check": {
-      title: "Ingyenes weboldal-ellenőrzés: sebesség és SEO | SynelWeb",
+      title: "Weboldal-ellenőrzés: sebesség, SEO, technika | SynelWeb",
       description:
-        "Mérd le ingyen a weboldalad a Google Lighthouse-szal: sebesség, SEO, akadálymentesség és Core Web Vitals mobilon és asztalin, javítási javaslatokkal.",
+        "Ingyenes weboldal-ellenőrzés: Lighthouse-pontszámok, SEO-alapok, technikai részletek és az oldal platformja mobilon és asztalin, PDF riporttal.",
     },
     "/projects": {
       title: "Weboldal referenciák és projektek | SynelWeb",
@@ -162,9 +162,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
         "Google-Suchanzeigen einrichten und betreuen lassen, mit Google-Ads-Search-Zertifizierung: Keyword-Recherche, Conversion-Tracking, monatliche Berichte.",
     },
     "/site-check": {
-      title: "Kostenloser Website-Check: Speed & SEO | SynelWeb",
+      title: "Kostenloser Website-Check: Speed, SEO, Technik | SynelWeb",
       description:
-        "Prüfe deine Website kostenlos mit Google Lighthouse: Speed, SEO, Barrierefreiheit und Core Web Vitals – mobil und am Desktop, mit konkreten Tipps.",
+        "Kostenloser Website-Check: Lighthouse-Werte, SEO-Grundlagen, technische Details und die Plattform der Seite, mobil und am Desktop, mit PDF-Bericht.",
     },
     "/projects": {
       title: "Webdesign Referenzen & Projekte | SynelWeb",

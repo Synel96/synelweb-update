@@ -158,7 +158,9 @@ describe("site check page", () => {
 
     checkSite("pelda.hu");
 
-    expect(await screen.findByText("SEO-alapok")).toBeInTheDocument();
+    // The headings also appear in "What the check measures" further down.
+    expect(await screen.findByText(/Nincs strukturált adat/)).toBeInTheDocument();
+    expect(screen.getAllByText("SEO-alapok")).toHaveLength(2);
     expect(screen.getByText(/Nincs strukturált adat/)).toBeInTheDocument();
     // Passed checks wait behind "+N OK".
     expect(screen.queryByText("Pontosan egy fő címsor van.")).toBeNull();
@@ -172,7 +174,7 @@ describe("site check page", () => {
       screen.getByText("Valószínűleg: WordPress + Elementor (astra sablon).")
     ).toBeInTheDocument();
     expect(screen.getByText(/a böngésző rakja össze JavaScripttel/)).toBeInTheDocument();
-    expect(screen.getByText("Technikai részletek")).toBeInTheDocument();
+    expect(screen.getAllByText("Technikai részletek")).toHaveLength(2);
     expect(screen.getByText(/7 betűfájl \(210 kB\)/)).toBeInTheDocument();
   });
 
@@ -183,6 +185,6 @@ describe("site check page", () => {
     checkSite("pelda.hu");
 
     expect(await screen.findByText(/SEO-alapokat most nem sikerült lekérni/)).toBeInTheDocument();
-    expect(screen.queryByText("Technikai részletek")).toBeNull();
+    expect(screen.getAllByText("Technikai részletek")).toHaveLength(1);
   });
 });

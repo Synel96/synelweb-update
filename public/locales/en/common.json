@@ -899,7 +899,7 @@
   "siteCheck": {
     "label": "Free website check",
     "title": "How fast and good is your website?",
-    "intro": "Check it for free with Google Lighthouse – the same measurement Google uses to evaluate pages. On mobile and desktop, in about half a minute.",
+    "intro": "Speed, SEO and tech in one check: Google Lighthouse scores, SEO basics (structured data, meta data, sitemap, llms.txt), technical details (fonts, caching, code splitting, video formats) and what the site is built with. On mobile and desktop, in about half a minute, with a PDF report.",
     "urlLabel": "Website address",
     "urlPlaceholder": "example.com",
     "submit": "Check",
@@ -912,7 +912,8 @@
     "progress": [
       "Loading the page…",
       "Measuring performance…",
-      "Checking accessibility and SEO…",
+      "Checking SEO basics and technical details…",
+      "Checking accessibility…",
       "Summing up the results…"
     ],
     "progressHint": "A check usually takes 15–40 seconds.",
@@ -965,10 +966,18 @@
         "performance": "How quickly the page loads and becomes usable – Google takes it into account for rankings.",
         "accessibility": "Whether everyone can use it: readable contrast, labels, keyboard navigation.",
         "bestPractices": "Security and modern techniques: HTTPS, error-free code, up-to-date image formats.",
-        "seo": "The technical basics of SEO: titles, descriptions, indexability, mobile-friendly layout."
+        "seo": "The technical basics of SEO: titles, descriptions, indexability, mobile-friendly layout.",
+        "seoBasics": "What Google's speed test doesn't cover: structured data, title and description, H1, indexability, sharing data, sitemap, robots.txt and llms.txt.",
+        "tech": "The numbers behind loading: page weight, fonts, JavaScript and code splitting, caching, third parties, image and video formats.",
+        "platform": "What the site is built with: a site builder or shop system (e.g. WordPress with Elementor, Wix, Shopify) or a custom build."
+      },
+      "titles": {
+        "seoBasics": "SEO basics",
+        "tech": "Technical details",
+        "platform": "Built with?"
       }
     },
-    "note": "The check is run by Google PageSpeed Insights; results can vary slightly between runs. We only store the address and the scores, no personal data.",
+    "note": "Scores are measured by Google PageSpeed Insights; the SEO basics and technical details are read by SynelWeb's own checker. Results can vary slightly between runs. We only store the address and the scores, no personal data.",
     "clsSavings": "Less layout shift (CLS)",
     "genericSavings": "Faster loading",
     "noOpportunitiesWeak": "Google didn't name a specific fix this time, but the metrics above show room to improve – happy to take a closer look.",

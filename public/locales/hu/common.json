@@ -980,7 +980,7 @@
       "title": "Weboldal-ellenőrzés riport",
       "checkedAt": "Mérve: {{date}}",
       "contact": "Kérj ajánlatot: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
-      "footerNote": "A mérést a Google PageSpeed Insights végezte; az eredmény mérésről mérésre kissé eltérhet."
+      "footerNote": "A pontszámokat a Google PageSpeed Insights mérte, a SEO-alapokat a SynelWeb saját ellenőrzője; az eredmény mérésről mérésre kissé eltérhet."
     },
     "didYouKnow": {
       "title": "Tudtad?",

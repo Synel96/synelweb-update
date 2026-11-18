@@ -979,7 +979,7 @@
       "title": "Website check report",
       "checkedAt": "Checked: {{date}}",
       "contact": "Request a quote: synelweb.hu  ·  info@synelweb.hu  ·  +36 30 364 5516",
-      "footerNote": "Measured with Google PageSpeed Insights; results can vary slightly between runs."
+      "footerNote": "Scores measured with Google PageSpeed Insights, SEO basics by SynelWeb's own checker; results can vary slightly between runs."
     },
     "didYouKnow": {
       "title": "Did you know?",

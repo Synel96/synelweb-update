@@ -209,9 +209,9 @@ export const PAGE_SEO: Record<SupportedLang, Record<KnownLogicalPath, SeoEntry>>
 // Regional landing pages: one language each (see REGIONAL_PAGES).
 export const REGIONAL_SEO: Record<RegionalLogicalPath, SeoEntry> = {
   "/sopron": {
-    title: "Weboldal készítés Sopron | SynelWeb",
+    title: "Weboldal és honlap készítés Sopronban | SynelWeb",
     description:
-      "Egyedi, villámgyors weboldal készítés Sopronban és környékén, személyes egyeztetéssel: magyar–német oldalak, helyi SEO és Google Cégprofil.",
+      "Egyedi, villámgyors weboldal- és honlapkészítés Sopronban és környékén, személyes egyeztetéssel: magyar–német oldalak, helyi SEO és Google Cégprofil.",
   },
   "/austria": {
     title: "Webdesign Burgenland & Wien | SynelWeb",

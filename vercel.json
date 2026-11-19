@@ -123,6 +123,176 @@
       "source": "/blog/:id/",
       "destination": "/hu/blog/:id",
       "permanent": true
+    },
+    {
+      "source": "/szolgaltatasok",
+      "destination": "/hu/szolgaltatasok",
+      "permanent": true
+    },
+    {
+      "source": "/szolgaltatasok/",
+      "destination": "/hu/szolgaltatasok",
+      "permanent": true
+    },
+    {
+      "source": "/elerhetoseg",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/elerhetoseg/",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/projektek",
+      "destination": "/hu/projektek",
+      "permanent": true
+    },
+    {
+      "source": "/projektek/",
+      "destination": "/hu/projektek",
+      "permanent": true
+    },
+    {
+      "source": "/rolam",
+      "destination": "/hu/rolam",
+      "permanent": true
+    },
+    {
+      "source": "/rolam/",
+      "destination": "/hu/rolam",
+      "permanent": true
+    },
+    {
+      "source": "/velemenyek",
+      "destination": "/hu/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/velemenyek/",
+      "destination": "/hu/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/hu/elerhetoseg",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/hu/elerhetoseg/",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/hu/velemenyek",
+      "destination": "/hu/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/hu/velemenyek/",
+      "destination": "/hu/#reviews",
+      "permanent": true
+    },
+    {
+      "source": "/hu/contact",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/hu/contact/",
+      "destination": "/hu/kapcsolat",
+      "permanent": true
+    },
+    {
+      "source": "/hu/about",
+      "destination": "/hu/rolam",
+      "permanent": true
+    },
+    {
+      "source": "/hu/about/",
+      "destination": "/hu/rolam",
+      "permanent": true
+    },
+    {
+      "source": "/hu/services",
+      "destination": "/hu/szolgaltatasok",
+      "permanent": true
+    },
+    {
+      "source": "/hu/services/",
+      "destination": "/hu/szolgaltatasok",
+      "permanent": true
+    },
+    {
+      "source": "/hu/projects",
+      "destination": "/hu/projektek",
+      "permanent": true
+    },
+    {
+      "source": "/hu/projects/",
+      "destination": "/hu/projektek",
+      "permanent": true
+    },
+    {
+      "source": "/hu/technology",
+      "destination": "/hu/technologia",
+      "permanent": true
+    },
+    {
+      "source": "/hu/technology/",
+      "destination": "/hu/technologia",
+      "permanent": true
+    },
+    {
+      "source": "/hu/certificates",
+      "destination": "/hu/tanusitvanyok",
+      "permanent": true
+    },
+    {
+      "source": "/hu/certificates/",
+      "destination": "/hu/tanusitvanyok",
+      "permanent": true
+    },
+    {
+      "source": "/sopron",
+      "destination": "/hu/weboldal-keszites-sopron",
+      "permanent": true
+    },
+    {
+      "source": "/sopron/",
+      "destination": "/hu/weboldal-keszites-sopron",
+      "permanent": true
+    },
+    {
+      "source": "/austria",
+      "destination": "/de/webdesign-burgenland-wien",
+      "permanent": true
+    },
+    {
+      "source": "/austria/",
+      "destination": "/de/webdesign-burgenland-wien",
+      "permanent": true
+    },
+    {
+      "source": "/google-ads",
+      "destination": "/hu/google-ads-kezeles",
+      "permanent": true
+    },
+    {
+      "source": "/google-ads/",
+      "destination": "/hu/google-ads-kezeles",
+      "permanent": true
+    },
+    {
+      "source": "/site-check",
+      "destination": "/hu/weboldal-ellenorzes",
+      "permanent": true
+    },
+    {
+      "source": "/site-check/",
+      "destination": "/hu/weboldal-ellenorzes",
+      "permanent": true
     }
   ],
   "headers": [

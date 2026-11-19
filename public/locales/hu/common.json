@@ -101,7 +101,8 @@
         "onlineMeetings": "Online megbeszélések",
         "cookieFreeAnalytics": "Cookie-mentes weboldal-analitika"
       },
-      "cta": "Bemutatkozás és háttér →"
+      "cta": "Bemutatkozás és háttér →",
+      "regionalCta": "Weboldal készítés Sopronban és környékén →"
     },
     "finalCta": {
       "label": "Stratégiai zárás",

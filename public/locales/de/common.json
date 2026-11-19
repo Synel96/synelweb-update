@@ -100,7 +100,8 @@
         "onlineMeetings": "Online-Termine",
         "cookieFreeAnalytics": "Cookie-freie Website-Analyse"
       },
-      "cta": "Hintergrund und Vorstellung →"
+      "cta": "Hintergrund und Vorstellung →",
+      "regionalCta": "Webdesign für Burgenland & Wien →"
     },
     "finalCta": {
       "label": "Strategischer Abschluss",

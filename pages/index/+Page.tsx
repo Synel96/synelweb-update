@@ -29,7 +29,7 @@ import { cloudinaryVideoUrl } from "@/src/cloudinary";
 import { prefersReducedMotion } from "@/src/prefersReducedMotion";
 import { useBackgroundVideo } from "@/src/hooks/use-background-video";
 import { DEFAULT_LANG, type SupportedLang } from "@/src/i18n-config";
-import { localizePath } from "@/src/localizedRoutes";
+import { localizePath, type RegionalLogicalPath } from "@/src/localizedRoutes";
 import { quoteFormHref } from "@/src/quoteForm";
 import { trackEvent } from "@/src/analytics";
 import { useHufFormatter } from "@/src/currency";
@@ -175,6 +175,12 @@ const PROJECT_BADGES = [
   { key: "customCode", Icon: Code2Icon },
   { key: "liveReferences", Icon: ExternalLinkIcon },
 ] as const;
+
+// Each language's regional landing page, if it has one (src/localizedRoutes.ts).
+const REGIONAL_PAGE_FOR_LANG: Partial<Record<SupportedLang, RegionalLogicalPath>> = {
+  hu: "/sopron",
+  de: "/austria",
+};
 
 const ABOUT_BADGES = [
   { key: "location", Icon: MapPinIcon },
@@ -510,6 +516,13 @@ export default function Page() {
         </BadgeGrid>
 
         <SectionLink href={langHref("/about")} label={t("homeFlow.about.cta")} warm />
+        {/* The regional landing page for this language (Sopron in Hungarian,
+            Burgenland & Vienna in German), linked from the page's own
+            content: a footer link alone tells search engines little about
+            which page answers "weboldal készítés Sopron". */}
+        {REGIONAL_PAGE_FOR_LANG[lang] ? (
+          <SectionLink href={langHref(REGIONAL_PAGE_FOR_LANG[lang])} label={t("homeFlow.about.regionalCta")} />
+        ) : null}
       </section>
 
       {faq.length > 0 ? (

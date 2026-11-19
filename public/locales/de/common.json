@@ -501,7 +501,10 @@
     "facebookCardText": "Folge mir auf Facebook für neue Projekte, praktische Tipps und aktuelle Web-Updates.",
     "linkedinCardText": "Professionelles Profil, Referenzen und direkter Kontakt an einem Ort.",
     "closingTitle": "Eine Idee? Lass uns darüber sprechen.",
-    "closingText": "Schon nach der ersten Nachricht bekommst du ein klareres Bild davon, wie dein Projekt aussehen könnte, wie viel Zeit du ungefähr einplanen solltest und welche Lösung am besten zu deinen Zielen passt."
+    "closingText": "Schon nach der ersten Nachricht bekommst du ein klareres Bild davon, wie dein Projekt aussehen könnte, wie viel Zeit du ungefähr einplanen solltest und welche Lösung am besten zu deinen Zielen passt.",
+    "mapShow": "Karte anzeigen",
+    "mapConsent": "Die Karte stammt von Google, das beim Laden Cookies setzen kann. Sie wird erst nach Klick auf die Schaltfläche geladen.",
+    "mapOpen": "In Google Maps öffnen"
   },
   "technology": {
     "label": "Technologie und Qualität",

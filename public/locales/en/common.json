@@ -500,7 +500,10 @@
     "facebookCardText": "Follow on Facebook for fresh projects, practical tips, and current web updates.",
     "linkedinCardText": "Professional profile, references, and direct contact in one place.",
     "closingTitle": "Got an idea? Let's talk it through.",
-    "closingText": "Right after the first message, you'll get a clearer picture of what your project could look like, how much time it may take, and which solution fits your goals best."
+    "closingText": "Right after the first message, you'll get a clearer picture of what your project could look like, how much time it may take, and which solution fits your goals best.",
+    "mapShow": "Show the map",
+    "mapConsent": "The map is provided by Google, which may set cookies when it loads. It loads only when you click the button.",
+    "mapOpen": "Open in Google Maps"
   },
   "technology": {
     "label": "Technology and quality",

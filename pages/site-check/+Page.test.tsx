@@ -220,4 +220,17 @@ describe("site check page", () => {
     expect(screen.getByText(/1 sütit használó szolgáltatás fut/)).toBeInTheDocument();
     expect(screen.getByText(/nem jogi tanácsadás/)).toBeInTheDocument();
   });
+
+  it("has a keyword h1 and answers the common questions", async () => {
+    const { container } = await renderWithI18n(<Page />);
+
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Ingyenes weboldal-ellenőrzés és sebességteszt"
+    );
+    expect(screen.getByText("Mi számít jó pontszámnak?")).toBeInTheDocument();
+    const faqJsonLd = Array.from(container.querySelectorAll('script[type="application/ld+json"]'))
+      .map((el) => JSON.parse(el.textContent ?? "{}"))
+      .find((data) => data["@type"] === "FAQPage");
+    expect(faqJsonLd.mainEntity).toHaveLength(6);
+  });
 });

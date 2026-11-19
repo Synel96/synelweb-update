@@ -374,6 +374,15 @@ export default function Page() {
             {t("servicesPage.projectsLink.cta")}
           </a>
         </p>
+        <p className="mt-2 text-center text-sm leading-7 text-white/70">
+          {t("servicesPage.siteCheckLink.text")}{" "}
+          <a
+            href={localizePath("/site-check", routeLang)}
+            className="font-semibold text-(--accent) transition-colors hover:text-(--primary)"
+          >
+            {t("servicesPage.siteCheckLink.cta")}
+          </a>
+        </p>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-6 pb-16 sm:pb-20" data-reveal>

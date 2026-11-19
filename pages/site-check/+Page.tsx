@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import {
+  ChevronDownIcon,
   AccessibilityIcon,
   ArrowRightIcon,
   CpuIcon,
@@ -38,7 +39,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SiteCheckAudit, SiteCheckPlatform, SiteCheckScreens } from "@/components/SiteCheckAudit";
 import { SITE_URL } from "@/components/site";
 import { getSeoEntry } from "@/src/seo";
-import { buildWebApplicationJsonLd } from "@/src/structuredData";
+import { buildFaqJsonLd, buildWebApplicationJsonLd } from "@/src/structuredData";
 
 const SCORE_KEYS = ["performance", "accessibility", "bestPractices", "seo"] as const;
 const ABOUT_ICONS: Record<(typeof SCORE_KEYS)[number], LucideIcon> = {
@@ -102,6 +103,13 @@ export default function Page() {
   const [pdfFailed, setPdfFailed] = useState(false);
   const resultRef = useRef<HTMLDivElement | null>(null);
 
+  const faqRaw = t("siteCheck.faq.items", { returnObjects: true }) as unknown;
+  const faq = Array.isArray(faqRaw)
+    ? (faqRaw as Array<{ q?: unknown; a?: unknown }>).filter(
+        (item): item is { q: string; a: string } =>
+          typeof item.q === "string" && typeof item.a === "string"
+      )
+    : [];
   const didYouKnowRaw = t("siteCheck.didYouKnow.items", { returnObjects: true }) as unknown;
   const didYouKnow = Array.isArray(didYouKnowRaw) ? (didYouKnowRaw as string[]) : [];
   const progress = t("siteCheck.progress", { returnObjects: true }) as unknown;
@@ -197,12 +205,16 @@ export default function Page() {
         })}
       />
       <section className="mx-auto w-full max-w-4xl px-6 pt-36 pb-10 text-center sm:pt-40 sm:pb-14">
-        <p className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
-          {t("siteCheck.label")}
-        </p>
-        <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">
-          {t("siteCheck.title")}
-        </h1>
+        {/* The question is the visual headline; the keyword line above it is
+            the page's <h1> (as on the other main pages). */}
+        <hgroup>
+          <h1 className="fancy-eyebrow text-xs font-semibold tracking-[0.2em] text-(--accent) uppercase">
+            {t("siteCheck.h1")}
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">
+            {t("siteCheck.title")}
+          </p>
+        </hgroup>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-pretty text-white/78 sm:text-lg">
           {t("siteCheck.intro")}
         </p>
@@ -560,7 +572,7 @@ export default function Page() {
         </aside>
       </section>
 
-      <section className="mx-auto w-full max-w-5xl px-6 pb-20 sm:pb-24" data-reveal>
+      <section className="mx-auto w-full max-w-5xl px-6 pb-14 sm:pb-16" data-reveal>
         <h2 className="text-center text-2xl font-semibold tracking-tight text-white sm:text-3xl">
           {t("siteCheck.about.title")}
         </h2>
@@ -603,6 +615,29 @@ export default function Page() {
           {t("siteCheck.note")}
         </p>
       </section>
+
+      {faq.length > 0 ? (
+        <section className="mx-auto w-full max-w-3xl px-6 pb-20 sm:pb-24" data-reveal>
+          <JsonLd data={buildFaqJsonLd(faq)} />
+          <h2 className="text-center text-2xl font-semibold tracking-tight text-balance text-white sm:text-3xl">
+            {t("siteCheck.faq.title")}
+          </h2>
+          <div className="mt-6 space-y-3">
+            {faq.map(({ q, a }) => (
+              <details key={q} className="fancy-card group rounded-2xl p-5 open:pb-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-white [&::-webkit-details-marker]:hidden">
+                  <h3 className="text-base sm:text-lg">{q}</h3>
+                  <ChevronDownIcon
+                    className="size-5 shrink-0 text-(--accent) transition-transform group-open:rotate-180"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="mt-3 text-base leading-7 text-white/78">{a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

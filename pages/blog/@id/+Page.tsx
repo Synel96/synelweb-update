@@ -371,6 +371,16 @@ export default function Page() {
               "Nézd meg a weboldal készítés szolgáltatásaimat →"
             )}
           </a>
+          <a
+            href={localizePath("/site-check", routeLang)}
+            className="text-sm font-semibold tracking-[0.08em] text-(--color-secondary-warm) uppercase transition-colors hover:text-(--color-secondary-hot)"
+          >
+            {translateWithFallback(
+              t,
+              "blogDetail.ctaSiteCheckLabel",
+              "Mérd le ingyen a weboldalad →"
+            )}
+          </a>
         </div>
       </div>
 

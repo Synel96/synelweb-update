@@ -1198,7 +1198,61 @@
         "customNote": "A custom build loads only the code the site actually needs.",
         "disclaimer": "Recognised from traces left in the page's source code."
       },
-      "autoFormat": "automatic (chosen per browser)"
+      "autoFormat": "automatic (chosen per browser)",
+      "privacy": {
+        "trackers": {
+          "label": "Tracking",
+          "none": "No tracking scripts found.",
+          "tracking": "Services using cookies: {{tracking}}.",
+          "both": "Services using cookies: {{tracking}}. Cookieless measurement: {{cookieless}}.",
+          "cookieless": "Only cookieless measurement: {{cookieless}} – no consent needed.",
+          "help": "Tracking scripts (e.g. Google Analytics, Meta Pixel) measure visitor behaviour and usually set cookies. In the EU they need the visitor's prior consent."
+        },
+        "consent": {
+          "label": "Cookie consent",
+          "passTool": "Consent tool found: {{tools}}.",
+          "pass": "Cookie banner or Google Consent Mode found.",
+          "notNeeded": "No tracking that uses cookies, so no cookie banner is needed.",
+          "warn": "Embedded content (e.g. a map or video) sets cookies without consent – consider loading it on click.",
+          "fail": "{{tracking}} service(s) using cookies run, but no cookie banner was found: a GDPR risk.",
+          "help": "Under EU rules, cookies that aren't strictly necessary (analytics, ads) may only be set after the visitor agrees. That's what a cookie banner or consent tool is for."
+        },
+        "privacyPolicy": {
+          "label": "Privacy notice",
+          "pass": "Links to a privacy notice.",
+          "fail": "No privacy notice found – required on almost every site (GDPR).",
+          "help": "If a site handles any personal data (contact form, newsletter, analytics), the GDPR requires a clear notice: what, why, how long and on whose behalf."
+        },
+        "imprint": {
+          "label": "Imprint",
+          "pass": "An imprint is present.",
+          "warn": "No imprint (provider details) found.",
+          "help": "A business website must show the provider's details (name, address, contact, registration and tax number, host). In Austria the Impressum is particularly strict."
+        },
+        "terms": {
+          "label": "Terms",
+          "pass": "Links to terms and conditions.",
+          "warn": "Terms are required for an online shop, but none were found.",
+          "info": "No terms found – not necessarily required outside online shops.",
+          "help": "Terms set the conditions of buying or ordering (prices, delivery, withdrawal, warranty). Required for shops, strongly recommended for services."
+        },
+        "cookiePolicy": {
+          "label": "Cookie policy",
+          "pass": "A cookie policy is present.",
+          "warn": "The site runs services that use cookies, but no cookie policy was found.",
+          "info": "No separate cookie policy – not needed without services that use cookies.",
+          "help": "A cookie policy lists which cookies the site uses, why and for how long. It can be part of the privacy notice."
+        }
+      },
+      "privacyTitle": "Privacy and legal pages",
+      "privacyText": "Tracking, cookie consent and the required legal pages – from the source code.",
+      "privacyDisclaimer": "For information only, based on what the source code shows; not legal advice.",
+      "shotsTitle": {
+        "mobile": "What the phone sees",
+        "desktop": "What the desktop sees"
+      },
+      "shotsText": "Snapshots of the loading: this is how long it takes for the content to appear.",
+      "frameAt": "{{seconds}} s"
     }
   },
   "pageH1": {

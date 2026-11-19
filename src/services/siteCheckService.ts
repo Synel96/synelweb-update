@@ -33,8 +33,11 @@ export type SiteCheckResult = {
     checks: AuditItem[];
     clientRendered: boolean;
     platform?: SitePlatform;
+    privacy?: AuditItem[];
   } | null;
   tech?: AuditItem[];
+  // What the device shows while the page loads (Lighthouse), as data URIs.
+  screenshots?: { final: string | null; filmstrip: Array<{ timing: number; data: string }> };
 };
 
 export type AuditStatus = "pass" | "warn" | "fail" | "info";

@@ -1198,7 +1198,61 @@
         "customNote": "Eine individuelle Entwicklung lädt nur den Code, den die Seite wirklich braucht.",
         "disclaimer": "Erkannt anhand von Spuren im Quelltext der Seite."
       },
-      "autoFormat": "automatisch (je nach Browser)"
+      "autoFormat": "automatisch (je nach Browser)",
+      "privacy": {
+        "trackers": {
+          "label": "Tracking",
+          "none": "Keine Tracking-Skripte gefunden.",
+          "tracking": "Dienste mit Cookies: {{tracking}}.",
+          "both": "Dienste mit Cookies: {{tracking}}. Cookielose Messung: {{cookieless}}.",
+          "cookieless": "Nur cookielose Messung: {{cookieless}} – keine Einwilligung nötig.",
+          "help": "Tracking-Skripte (z. B. Google Analytics, Meta Pixel) messen das Besucherverhalten und setzen meist Cookies. In der EU brauchen sie die vorherige Einwilligung der Besucher."
+        },
+        "consent": {
+          "label": "Cookie-Einwilligung",
+          "passTool": "Einwilligungs-Tool gefunden: {{tools}}.",
+          "pass": "Cookie-Banner oder Google Consent Mode gefunden.",
+          "notNeeded": "Kein Tracking mit Cookies, daher ist kein Cookie-Banner nötig.",
+          "warn": "Eingebettete Inhalte (z. B. Karte, Video) setzen Cookies ohne Einwilligung – besser erst per Klick laden.",
+          "fail": "{{tracking}} Dienst(e) mit Cookies laufen, aber kein Cookie-Banner gefunden: ein DSGVO-Risiko.",
+          "help": "Nach EU-Recht dürfen nicht notwendige Cookies (Analyse, Werbung) erst nach Zustimmung gesetzt werden. Dafür gibt es Cookie-Banner bzw. Einwilligungs-Tools."
+        },
+        "privacyPolicy": {
+          "label": "Datenschutzerklärung",
+          "pass": "Link zur Datenschutzerklärung vorhanden.",
+          "fail": "Keine Datenschutzerklärung gefunden – auf fast jeder Website Pflicht (DSGVO).",
+          "help": "Verarbeitet eine Seite personenbezogene Daten (Kontaktformular, Newsletter, Analyse), verlangt die DSGVO eine verständliche Erklärung: was, wozu, wie lange und in wessen Namen."
+        },
+        "imprint": {
+          "label": "Impressum",
+          "pass": "Impressum vorhanden.",
+          "warn": "Kein Impressum (Anbieterangaben) gefunden.",
+          "help": "Auf einer Unternehmenswebsite sind die Anbieterangaben Pflicht (Name, Adresse, Kontakt, Register- und Steuernummer, Hoster). In Österreich ist das Impressum besonders streng geregelt."
+        },
+        "terms": {
+          "label": "AGB",
+          "pass": "Link zu den AGB vorhanden.",
+          "warn": "Für einen Onlineshop sind AGB nötig, aber keine gefunden.",
+          "info": "Keine AGB gefunden – außerhalb von Onlineshops nicht unbedingt Pflicht.",
+          "help": "AGB regeln die Bedingungen von Kauf oder Auftrag (Preise, Lieferung, Rücktritt, Gewährleistung). Für Shops Pflicht, für Dienstleistungen dringend empfohlen."
+        },
+        "cookiePolicy": {
+          "label": "Cookie-Richtlinie",
+          "pass": "Cookie-Richtlinie vorhanden.",
+          "warn": "Die Seite nutzt Dienste mit Cookies, aber keine Cookie-Richtlinie gefunden.",
+          "info": "Keine eigene Cookie-Richtlinie – ohne Dienste mit Cookies auch nicht nötig.",
+          "help": "Eine Cookie-Richtlinie listet, welche Cookies die Seite wofür und wie lange nutzt. Sie kann Teil der Datenschutzerklärung sein."
+        }
+      },
+      "privacyTitle": "Datenschutz und Rechtstexte",
+      "privacyText": "Tracking, Cookie-Einwilligung und die nötigen Rechtstexte – aus dem Quelltext.",
+      "privacyDisclaimer": "Nur zur Information, anhand der Spuren im Quelltext; keine Rechtsberatung.",
+      "shotsTitle": {
+        "mobile": "So sieht es das Smartphone",
+        "desktop": "So sieht es der Desktop"
+      },
+      "shotsText": "Momentaufnahmen des Ladens: so lange dauert es, bis der Inhalt erscheint.",
+      "frameAt": "{{seconds}} s"
     }
   },
   "pageH1": {

@@ -99,3 +99,33 @@ describe("video and llms.txt texts", () => {
     ).toMatch(/^Nincs llms.txt/);
   });
 });
+
+describe("privacy texts", () => {
+  it("explains tracking, consent and the legal pages", async () => {
+    const t = (await getTestI18n("hu")).getFixedT("hu");
+    const say = (item: AuditItem) => describeAuditItem("privacy", item, t, "hu")?.message;
+
+    expect(
+      say({
+        id: "trackers",
+        status: "info",
+        data: { tracking: ["Google Analytics", "Meta Pixel"], cookieless: [] },
+      })
+    ).toBe("Sütit használó szolgáltatások: Google Analytics, Meta Pixel.");
+    expect(say({ id: "trackers", status: "info", data: { tracking: [], cookieless: [] } })).toBe(
+      "Nem találtam követőkódot az oldalon."
+    );
+    expect(say({ id: "consent", status: "fail", data: { tracking: 2, tools: [] } })).toMatch(
+      /^2 sütit használó szolgáltatás fut, de nem találtam sütibannert/
+    );
+    expect(
+      say({ id: "consent", status: "pass", data: { tracking: 1, tools: ["Cookiebot"] } })
+    ).toBe("Van hozzájárulás-kezelő: Cookiebot.");
+    expect(say({ id: "consent", status: "pass", data: { tracking: 0, tools: [] } })).toMatch(
+      /^Nincs sütit használó/
+    );
+    expect(say({ id: "privacyPolicy", status: "fail", data: {} })).toMatch(
+      /^Nem találtam adatkezelési/
+    );
+  });
+});

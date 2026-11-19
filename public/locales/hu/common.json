@@ -1199,7 +1199,61 @@
         "customNote": "Egyedi fejlesztésnél csak az a kód töltődik be, amire az oldalnak szüksége van.",
         "disclaimer": "A felismerés az oldal forráskódjában hagyott nyomokon alapul."
       },
-      "autoFormat": "automatikus (a böngészőhöz igazított)"
+      "autoFormat": "automatikus (a böngészőhöz igazított)",
+      "privacy": {
+        "trackers": {
+          "label": "Követőkódok",
+          "none": "Nem találtam követőkódot az oldalon.",
+          "tracking": "Sütit használó szolgáltatások: {{tracking}}.",
+          "both": "Sütit használó szolgáltatások: {{tracking}}. Süti nélküli mérés: {{cookieless}}.",
+          "cookieless": "Csak süti nélküli mérés: {{cookieless}} – ehhez nem kell hozzájárulás.",
+          "help": "A követőkódok (pl. Google Analytics, Meta Pixel) a látogatók viselkedését mérik, és többnyire sütiket helyeznek el. Ezekhez az EU-ban a látogató előzetes hozzájárulása kell."
+        },
+        "consent": {
+          "label": "Sütihozzájárulás",
+          "passTool": "Van hozzájárulás-kezelő: {{tools}}.",
+          "pass": "Van sütibanner vagy Google Consent Mode.",
+          "notNeeded": "Nincs sütit használó követőkód, így sütibanner sem kell.",
+          "warn": "Beágyazott tartalom (pl. térkép, videó) tölt be sütit hozzájárulás nélkül – érdemes kattintásra betölteni.",
+          "fail": "{{tracking}} sütit használó szolgáltatás fut, de nem találtam sütibannert: ez GDPR-kockázat.",
+          "help": "Az EU-s szabályok szerint a nem feltétlenül szükséges sütiket (mérés, hirdetés) csak a látogató beleegyezése után szabad elhelyezni. Erre szolgál a sütibanner vagy hozzájárulás-kezelő."
+        },
+        "privacyPolicy": {
+          "label": "Adatkezelési tájékoztató",
+          "pass": "Van link az adatkezelési tájékoztatóra.",
+          "fail": "Nem találtam adatkezelési tájékoztatót – ez szinte minden oldalon kötelező (GDPR).",
+          "help": "Ha az oldal bármilyen személyes adatot kezel (kapcsolatfelvételi űrlap, hírlevél, analitika), a GDPR szerint közérthető tájékoztatót kell adni róla: mit, miért, meddig és kinek a nevében kezelsz."
+        },
+        "imprint": {
+          "label": "Impresszum",
+          "pass": "Van impresszum.",
+          "warn": "Nem találtam impresszumot (szolgáltatói adatok).",
+          "help": "Vállalkozás weboldalán kötelező feltüntetni a szolgáltató adatait (név, cím, elérhetőség, nyilvántartási szám, adószám, tárhelyszolgáltató). Ausztriában az Impressum különösen szigorú követelmény."
+        },
+        "terms": {
+          "label": "ÁSZF",
+          "pass": "Van link az általános szerződési feltételekre.",
+          "warn": "Webshopnál az ÁSZF kötelező, de nem találtam.",
+          "info": "Nem találtam ÁSZF-et – nem webshopnál ez nem feltétlenül kötelező.",
+          "help": "Az ÁSZF rögzíti a vásárlás vagy megrendelés feltételeit (árak, szállítás, elállás, garancia). Webshopnál kötelező, szolgáltatásnál erősen ajánlott."
+        },
+        "cookiePolicy": {
+          "label": "Süti tájékoztató",
+          "pass": "Van süti tájékoztató.",
+          "warn": "Az oldal sütit használó szolgáltatásokat futtat, de nem találtam süti tájékoztatót.",
+          "info": "Nincs külön süti tájékoztató – sütit használó szolgáltatás nélkül nem is kell.",
+          "help": "A süti tájékoztató felsorolja, milyen sütiket használ az oldal, mire és meddig. Lehet az adatkezelési tájékoztató része is."
+        }
+      },
+      "privacyTitle": "Adatvédelem és jogi oldalak",
+      "privacyText": "Követőkódok, sütihozzájárulás és a kötelező jogi oldalak – a forráskód alapján.",
+      "privacyDisclaimer": "Tájékoztató jellegű, a forráskódból kiolvasható jelek alapján; nem jogi tanácsadás.",
+      "shotsTitle": {
+        "mobile": "Így látja a telefon",
+        "desktop": "Így látja az asztali gép"
+      },
+      "shotsText": "A betöltés pillanatképei: ennyi idő alatt jelenik meg a tartalom.",
+      "frameAt": "{{seconds}} mp"
     }
   },
   "pageH1": {

@@ -2,7 +2,7 @@ import type { TFunction } from "i18next";
 import type { AuditItem, AuditStatus, SitePlatform } from "@/src/services/siteCheckService";
 import type { AppLang } from "@/src/services/serviceCardsService";
 
-export type AuditGroup = "seo" | "tech";
+export type AuditGroup = "seo" | "tech" | "privacy";
 
 // Items with their own text for "fail"; the rest say the same as "warn".
 const FAIL_TEXT = new Set([
@@ -15,6 +15,8 @@ const FAIL_TEXT = new Set([
   "robots",
   "pageWeight",
   "fonts",
+  "consent",
+  "privacyPolicy",
 ]);
 
 const SEVERITY: Record<AuditStatus, number> = { fail: 0, warn: 1, info: 2, pass: 3 };
@@ -36,6 +38,16 @@ function variant(item: AuditItem): string {
     if (types.length === 0) return "missing";
     if (!item.data.hasBusiness) return "noBusiness";
     return Number(item.data.invalid) > 0 ? "invalid" : "pass";
+  }
+  if (item.id === "trackers") {
+    const tracking = Array.isArray(item.data.tracking) ? item.data.tracking.length : 0;
+    const cookieless = Array.isArray(item.data.cookieless) ? item.data.cookieless.length : 0;
+    if (tracking && cookieless) return "both";
+    return tracking ? "tracking" : cookieless ? "cookieless" : "none";
+  }
+  if (item.id === "consent" && item.status === "pass") {
+    if (!Number(item.data.tracking)) return "notNeeded";
+    return Array.isArray(item.data.tools) && item.data.tools.length > 0 ? "passTool" : "pass";
   }
   if (item.id === "video" && item.status === "info") {
     return Number(item.data.count) > 0 ? "scripted" : "none";

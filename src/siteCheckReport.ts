@@ -260,6 +260,11 @@ export async function downloadSiteCheckReport(
   // The SEO basics and technical details on their own page(s).
   const auditSections = [
     { group: "seo" as const, items: result.seo?.checks ?? [], title: "siteCheck.audit.seoTitle" },
+    {
+      group: "privacy" as const,
+      items: result.seo?.privacy ?? [],
+      title: "siteCheck.audit.privacyTitle",
+    },
     { group: "tech" as const, items: result.tech ?? [], title: "siteCheck.audit.techTitle" },
   ].filter((section) => section.items.length > 0);
   const drawFooter = () => {
@@ -288,6 +293,45 @@ export async function downloadSiteCheckReport(
       fail: [205, 45, 60],
       info: COLORS.muted,
     };
+    // The loading filmstrip (JPEG/PNG frames), with the time of each frame.
+    const frames = (result.screenshots?.filmstrip ?? []).filter((frame) =>
+      /^data:image\/(jpeg|png);base64,/.test(frame.data)
+    );
+    if (frames.length > 0) {
+      sectionTitle(t(`siteCheck.audit.shotsTitle.${result.strategy}`));
+      const gap = 3;
+      const width = (contentWidth - gap * (frames.length - 1)) / frames.length;
+      let tallest = 0;
+      frames.forEach((frame, index) => {
+        try {
+          const { width: w, height: h } = doc.getImageProperties(frame.data);
+          const height = Math.min((h / w) * width, 60);
+          tallest = Math.max(tallest, height);
+          const format = frame.data.startsWith("data:image/png") ? "PNG" : "JPEG";
+          const x = margin + index * (width + gap);
+          doc.addImage(frame.data, format, x, y, width, height);
+          // A frame: a still-blank page would vanish on the white paper.
+          doc.setDrawColor(COLORS.line[0], COLORS.line[1], COLORS.line[2]);
+          doc.rect(x, y, width, height);
+        } catch {
+          // A frame the PDF library can't read is left out.
+        }
+      });
+      y += tallest + 4;
+      frames.forEach((frame, index) => {
+        text(
+          t("siteCheck.audit.frameAt", {
+            seconds: (frame.timing / 1000).toLocaleString(locale(lang), {
+              maximumFractionDigits: 1,
+            }),
+          }),
+          margin + index * (width + gap) + width / 2,
+          7.5,
+          { color: COLORS.muted, align: "center" }
+        );
+      });
+      y += 3;
+    }
     const platform = result.seo?.platform;
     if (platform) {
       const { headline, note } = describePlatform(platform, t);

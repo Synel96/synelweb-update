@@ -35,7 +35,7 @@ import {
 import type { AppLang } from "@/src/services/serviceCardsService";
 import { storeSiteCheck } from "@/src/siteCheckStorage";
 import { JsonLd } from "@/components/JsonLd";
-import { SiteCheckAudit, SiteCheckPlatform } from "@/components/SiteCheckAudit";
+import { SiteCheckAudit, SiteCheckPlatform, SiteCheckScreens } from "@/components/SiteCheckAudit";
 import { SITE_URL } from "@/components/site";
 import { getSeoEntry } from "@/src/seo";
 import { buildWebApplicationJsonLd } from "@/src/structuredData";
@@ -426,6 +426,13 @@ export default function Page() {
               </div>
             </div>
 
+            {result.screenshots ? (
+              <SiteCheckScreens
+                screenshots={result.screenshots}
+                strategy={result.strategy}
+                lang={lang}
+              />
+            ) : null}
             {result.seo === null ? (
               <p className="mt-8 border-t border-white/10 pt-6 text-sm text-white/65">
                 {t("siteCheck.audit.seoUnavailable")}
@@ -440,6 +447,9 @@ export default function Page() {
                   note={result.seo.clientRendered ? t("siteCheck.audit.clientRendered") : undefined}
                 />
               </>
+            ) : null}
+            {result.seo?.privacy && result.seo.privacy.length > 0 ? (
+              <SiteCheckAudit group="privacy" items={result.seo.privacy} lang={lang} />
             ) : null}
             {result.tech && result.tech.length > 0 ? (
               <SiteCheckAudit group="tech" items={result.tech} lang={lang} />

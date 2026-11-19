@@ -47,5 +47,6 @@ export function siteCheckAttachment({ result, checkedAt }: StoredSiteCheck) {
     // Only what needs attention is listed in the mail.
     seo: (result.seo?.checks ?? []).map(({ id, status }) => ({ id, status })),
     tech: (result.tech ?? []).map(({ id, status }) => ({ id, status })),
+    privacy: (result.seo?.privacy ?? []).map(({ id, status }) => ({ id, status })),
   };
 }

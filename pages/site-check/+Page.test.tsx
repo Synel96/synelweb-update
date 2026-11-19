@@ -187,4 +187,37 @@ describe("site check page", () => {
     expect(await screen.findByText(/SEO-alapokat most nem sikerült lekérni/)).toBeInTheDocument();
     expect(screen.getAllByText("Technikai részletek")).toHaveLength(1);
   });
+
+  it("shows what the phone saw and the privacy checks", async () => {
+    runSiteCheck.mockResolvedValue({
+      ...RESULT,
+      screenshots: {
+        final: "data:image/jpeg;base64,AAAA",
+        filmstrip: [
+          { timing: 400, data: "data:image/jpeg;base64,AAAA" },
+          { timing: 1200, data: "data:image/jpeg;base64,AAAA" },
+        ],
+      },
+      seo: {
+        finalUrl: "https://pelda.hu/",
+        clientRendered: false,
+        checks: [],
+        privacy: [
+          { id: "consent", status: "fail", data: { tracking: 1, tools: [] } },
+          { id: "privacyPolicy", status: "pass", data: {} },
+        ],
+      },
+      tech: [],
+    });
+    await renderWithI18n(<Page />);
+
+    checkSite("pelda.hu");
+
+    expect(await screen.findByText("Így látja a telefon")).toBeInTheDocument();
+    expect(screen.getByText("0,4 mp")).toBeInTheDocument();
+    expect(screen.getByText("1,2 mp")).toBeInTheDocument();
+    expect(screen.getByText("Adatvédelem és jogi oldalak")).toBeInTheDocument();
+    expect(screen.getByText(/1 sütit használó szolgáltatás fut/)).toBeInTheDocument();
+    expect(screen.getByText(/nem jogi tanácsadás/)).toBeInTheDocument();
+  });
 });

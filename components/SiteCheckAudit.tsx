@@ -114,7 +114,7 @@ export function SiteCheckAudit({
       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-4 sm:px-5 [&::-webkit-details-marker]:hidden">
         <span>
           <span className="block text-lg font-semibold text-white">
-            {t(group === "seo" ? "siteCheck.audit.seoTitle" : "siteCheck.audit.techTitle")}
+            {t(`siteCheck.audit.${group}Title`)}
           </span>
           <span className="mt-0.5 block text-xs font-semibold text-white/60">
             {hasProblems
@@ -129,9 +129,7 @@ export function SiteCheckAudit({
       </summary>
 
       <div className="px-4 pb-5 sm:px-5">
-        <p className="text-sm text-white/65">
-          {t(group === "seo" ? "siteCheck.audit.seoText" : "siteCheck.audit.techText")}
-        </p>
+        <p className="text-sm text-white/65">{t(`siteCheck.audit.${group}Text`)}</p>
         {note ? (
           <p className="mt-3 rounded-xl border border-sky-300/30 bg-sky-400/10 px-4 py-3 text-sm text-sky-100">
             {note}
@@ -167,6 +165,9 @@ export function SiteCheckAudit({
             ) : null}
           </>
         ) : null}
+        {group === "privacy" ? (
+          <p className="mt-4 text-xs text-white/45">{t("siteCheck.audit.privacyDisclaimer")}</p>
+        ) : null}
       </div>
     </details>
   );
@@ -187,6 +188,67 @@ export function SiteCheckPlatform({ platform }: { platform: SitePlatform }) {
         <p className="mt-1 text-sm font-medium text-white/90">{headline}</p>
         {note ? <p className="mt-1 text-sm text-white/65">{note}</p> : null}
         <p className="mt-2 text-xs text-white/45">{t("siteCheck.audit.platform.disclaimer")}</p>
+      </div>
+    </section>
+  );
+}
+
+// Snapshots of the loading as the measured device saw them: the last one
+// large, the filmstrip under it with the time each frame was taken.
+export function SiteCheckScreens({
+  screenshots,
+  strategy,
+  lang,
+}: {
+  screenshots: { final: string | null; filmstrip: Array<{ timing: number; data: string }> };
+  strategy: "mobile" | "desktop";
+  lang: AppLang;
+}) {
+  const { t } = useTranslation();
+  if (!screenshots.final && screenshots.filmstrip.length === 0) return null;
+  const seconds = (ms: number) =>
+    (ms / 1000).toLocaleString(lang === "en" ? "en-US" : lang === "de" ? "de-DE" : "hu-HU", {
+      maximumFractionDigits: 1,
+    });
+
+  return (
+    <section className="mt-8 rounded-2xl border border-white/10 bg-white/3 px-4 py-5 sm:px-5">
+      <h3 className="text-lg font-semibold text-white">
+        {t(`siteCheck.audit.shotsTitle.${strategy}`)}
+      </h3>
+      <p className="mt-1 text-sm text-white/65">{t("siteCheck.audit.shotsText")}</p>
+      <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-start">
+        {screenshots.final ? (
+          <img
+            src={screenshots.final}
+            alt={t(`siteCheck.audit.shotsTitle.${strategy}`)}
+            className={`mx-auto shrink-0 rounded-xl border border-white/15 bg-white shadow-lg md:mx-0 ${
+              strategy === "mobile" ? "w-44" : "w-full max-w-sm"
+            }`}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : null}
+        {screenshots.filmstrip.length > 0 ? (
+          <ol className="flex min-w-0 gap-3 overflow-x-auto pb-2">
+            {screenshots.filmstrip.map((frame) => (
+              <li key={frame.timing} className="shrink-0 text-center">
+                <img
+                  src={frame.data}
+                  alt=""
+                  className={`rounded-md border border-white/10 bg-white ${
+                    strategy === "mobile" ? "h-28" : "h-20"
+                  } w-auto`}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="mt-1 block text-xs font-semibold text-white/60">
+                  {t("siteCheck.audit.frameAt", { seconds: seconds(frame.timing) })}
+                </span>
+              </li>
+            ))}
+          </ol>
+        ) : null}
       </div>
     </section>
   );

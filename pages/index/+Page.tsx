@@ -382,6 +382,8 @@ export default function Page() {
             </li>
           ))}
         </ul>
+
+        <SectionLink href={langHref("/site-check")} label={t("homeFlow.why.siteCheckCta")} warm />
       </section>
 
       <section className={SECTION_CLASS} data-reveal>
@@ -521,7 +523,10 @@ export default function Page() {
             content: a footer link alone tells search engines little about
             which page answers "weboldal készítés Sopron". */}
         {REGIONAL_PAGE_FOR_LANG[lang] ? (
-          <SectionLink href={langHref(REGIONAL_PAGE_FOR_LANG[lang])} label={t("homeFlow.about.regionalCta")} />
+          <SectionLink
+            href={langHref(REGIONAL_PAGE_FOR_LANG[lang])}
+            label={t("homeFlow.about.regionalCta")}
+          />
         ) : null}
       </section>
 

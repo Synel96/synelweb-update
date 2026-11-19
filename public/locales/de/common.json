@@ -131,7 +131,8 @@
           "title": "Du bearbeitest, ich betreibe",
           "text": "Texte, Bilder und Preise änderst du selbst über eine einfache Admin-Oberfläche. Server, Sicherheitsupdates und technische Überwachung übernehme ich auch nach der Übergabe."
         }
-      }
+      },
+      "siteCheckCta": "Teste deine eigene Seite kostenlos"
     },
     "process": {
       "label": "So arbeiten wir zusammen",
@@ -261,7 +262,11 @@
       ]
     },
     "adsSetupFeeLabel": "Einrichtung des Werbekontos (falls nötig)",
-    "customMonthly": "Individueller Preis, je nach Kampagnengröße"
+    "customMonthly": "Individueller Preis, je nach Kampagnengröße",
+    "siteCheckLink": {
+      "text": "Du weißt nicht, wo deine Seite gerade steht?",
+      "cta": "Kostenlos mit dem Website-Check testen"
+    }
   },
   "projectsPage": {
     "fetchError": "Projekte konnten gerade nicht geladen werden. Bitte versuche es später erneut.",
@@ -337,7 +342,8 @@
     "ctaTitle": "Webentwicklung, die tatsächlich Kunden bringt",
     "ctaText": "Wenn du eine ebenso durchdachte, schnelle und SEO-freundliche Website brauchst, besprechen wir gemeinsam deine Anforderungen.",
     "ctaServicesLabel": "Meine Webentwicklungs-Leistungen ansehen →",
-    "ctaContactLabel": "Kostenlose Beratung anfordern"
+    "ctaContactLabel": "Kostenlose Beratung anfordern",
+    "ctaSiteCheckLabel": "Teste deine Website kostenlos →"
   },
   "underDevelopment": {
     "title": "Diese Seite befindet sich in Entwicklung.",
@@ -1257,6 +1263,36 @@
       },
       "shotsText": "Momentaufnahmen des Ladens: so lange dauert es, bis der Inhalt erscheint.",
       "frameAt": "{{seconds}} s"
+    },
+    "h1": "Kostenloser Website-Check und Speedtest",
+    "faq": {
+      "title": "Häufige Fragen zum Website-Test",
+      "items": [
+        {
+          "q": "Was ist ein guter Wert?",
+          "a": "Google bewertet 90–100 als gut (grün), 50–89 als verbesserungswürdig (orange) und unter 50 als schwach (rot). Viele Baukasten-Seiten erreichen mobil deutlich weniger, daher ist alles über 90 herausragend."
+        },
+        {
+          "q": "Warum ist das mobile Ergebnis schlechter als am Desktop?",
+          "a": "Der mobile Test simuliert ein Mittelklasse-Smartphone mit langsamerem Mobilnetz, daher schneidet dieselbe Seite mobil fast immer schlechter ab. Da die meisten Besucher vom Handy kommen und Google die mobile Version fürs Ranking nutzt, zählt das mobile Ergebnis mehr."
+        },
+        {
+          "q": "Was sind Core Web Vitals?",
+          "a": "Googles drei Messwerte für echtes Nutzererlebnis: wann der größte Inhalt erscheint (LCP), wie schnell die Seite auf einen Klick reagiert (INP) und wie sehr der Inhalt beim Laden springt (CLS). Google nutzt sie auch fürs Ranking."
+        },
+        {
+          "q": "Wie genau ist die Messung?",
+          "a": "Die Werte misst Google PageSpeed Insights mit demselben Lighthouse, das Google selbst verwendet. Je nach Netz und Server können sie von Messung zu Messung um einige Punkte abweichen – mehrmals messen lohnt sich."
+        },
+        {
+          "q": "Brauche ich einen Cookie-Banner?",
+          "a": "Nutzt die Seite einen Dienst, der Cookies setzt – etwa Google Analytics, Meta Pixel oder eine eingebettete Karte –, verlangt das EU-Recht zuerst die Einwilligung der Besucher. Mit nur cookieloser Messung ist kein Banner nötig. Der Check zeigt, was auf deiner Seite läuft."
+        },
+        {
+          "q": "Ist es kostenlos? Was speichert ihr?",
+          "a": "Ja, kostenlos und ohne Anmeldung. Wir speichern nur die Adresse und die Werte, keine personenbezogenen Daten. Das Ergebnis kannst du als PDF herunterladen oder einer Anfrage beifügen."
+        }
+      ]
     }
   },
   "pageH1": {

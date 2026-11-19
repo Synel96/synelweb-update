@@ -132,7 +132,8 @@
           "title": "Te szerkeszted, én üzemeltetem",
           "text": "A szövegeket, képeket és árakat egy egyszerű admin felületen magad frissítheted. A szervereket, a biztonsági frissítéseket és a műszaki felügyeletet az átadás után is én viszem."
         }
-      }
+      },
+      "siteCheckCta": "Mérd le ingyen a saját oldaladat"
     },
     "process": {
       "label": "Így dolgozunk együtt",
@@ -262,7 +263,11 @@
       ]
     },
     "adsSetupFeeLabel": "Hirdetési fiók beállítása (ha szükséges)",
-    "customMonthly": "Egyedi ár, a kampány méretétől függően"
+    "customMonthly": "Egyedi ár, a kampány méretétől függően",
+    "siteCheckLink": {
+      "text": "Nem tudod, hol tart most az oldalad?",
+      "cta": "Mérd le ingyen a weboldal-teszttel"
+    }
   },
   "projectsPage": {
     "fetchError": "A projektek betöltése most nem sikerült. Próbáld meg később újra.",
@@ -338,7 +343,8 @@
     "ctaTitle": "Weboldal készítés, ami tényleg hoz ügyfeleket",
     "ctaText": "Ha hasonlóan átgondolt, gyors és SEO-barát weboldalra van szükséged, nézzük át közösen az igényeidet.",
     "ctaServicesLabel": "Nézd meg a weboldal készítés szolgáltatásaimat →",
-    "ctaContactLabel": "Kérj ingyenes konzultációt"
+    "ctaContactLabel": "Kérj ingyenes konzultációt",
+    "ctaSiteCheckLabel": "Mérd le ingyen a weboldalad →"
   },
   "underDevelopment": {
     "title": "Ez az oldal fejlesztés alatt áll.",
@@ -1258,6 +1264,36 @@
       },
       "shotsText": "A betöltés pillanatképei: ennyi idő alatt jelenik meg a tartalom.",
       "frameAt": "{{seconds}} mp"
+    },
+    "h1": "Ingyenes weboldal-ellenőrzés és sebességteszt",
+    "faq": {
+      "title": "Gyakori kérdések a weboldal-tesztről",
+      "items": [
+        {
+          "q": "Mi számít jó pontszámnak?",
+          "a": "A Google a 90–100 közötti pontszámot tekinti jónak (zöld), az 50–89 közöttit javítandónak (narancs), az 50 alattit gyengének (piros). Sok sablonos oldal mobilon ennél jóval alacsonyabb pontot ér el, ezért a 90 feletti eredmény már kiemelkedő."
+        },
+        {
+          "q": "Miért rosszabb a mobil eredmény, mint az asztali?",
+          "a": "A mobilmérés egy közepes telefont és lassabb mobilnetet szimulál, ezért ugyanaz az oldal mobilon szinte mindig gyengébb pontot kap. Mivel a látogatók többsége telefonról jön, és a Google is a mobilváltozatot veszi alapul, a mobil eredmény a fontosabb."
+        },
+        {
+          "q": "Mi az a Core Web Vitals?",
+          "a": "A Google három mérőszáma a valós felhasználói élményről: mikor jelenik meg a legnagyobb tartalom (LCP), milyen gyorsan reagál az oldal egy kattintásra (INP), és mennyit ugrál a tartalom betöltés közben (CLS). A Google ezeket a rangsorolásnál is figyelembe veszi."
+        },
+        {
+          "q": "Mennyire pontos a mérés?",
+          "a": "A pontszámokat a Google PageSpeed Insights méri, ugyanazzal a Lighthouse-szal, amit a Google is használ. Az eredmény mérésről mérésre néhány ponttal eltérhet a hálózat és a szerver pillanatnyi állapotától függően, ezért érdemes többször is mérni."
+        },
+        {
+          "q": "Kell sütibanner az oldalamra?",
+          "a": "Ha az oldal olyan szolgáltatást használ, ami sütiket helyez el – például Google Analytics, Meta Pixel vagy beágyazott térkép –, akkor az EU-s szabályok szerint előbb a látogató hozzájárulását kell kérni. Ha csak süti nélküli mérést használsz, banner sem kell. Az ellenőrző megmutatja, mi fut az oldaladon."
+        },
+        {
+          "q": "Ingyenes? Mit tároltok?",
+          "a": "Igen, ingyenes és regisztráció nélkül használható. Csak a megadott címet és a pontszámokat tároljuk, személyes adatot nem. Az eredményt PDF-ben letöltheted, vagy csatolhatod egy ajánlatkéréshez."
+        }
+      ]
     }
   },
   "pageH1": {

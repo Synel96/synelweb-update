@@ -130,7 +130,8 @@
           "title": "You edit, I operate",
           "text": "You can update texts, images and prices yourself in a simple admin interface. I keep looking after the servers, security updates and technical monitoring after the handover."
         }
-      }
+      },
+      "siteCheckCta": "Test your own site for free"
     },
     "process": {
       "label": "How we work together",
@@ -260,7 +261,11 @@
       ]
     },
     "adsSetupFeeLabel": "Ad account setup (if needed)",
-    "customMonthly": "Custom pricing, based on campaign size"
+    "customMonthly": "Custom pricing, based on campaign size",
+    "siteCheckLink": {
+      "text": "Not sure where your site stands?",
+      "cta": "Test it for free with the website check"
+    }
   },
   "projectsPage": {
     "fetchError": "Projects could not be loaded right now. Please try again later.",
@@ -336,7 +341,8 @@
     "ctaTitle": "Web development that actually brings in customers",
     "ctaText": "If you need an equally well thought-out, fast, and SEO-friendly website, let's go over your needs together.",
     "ctaServicesLabel": "See my web development services →",
-    "ctaContactLabel": "Request a free consultation"
+    "ctaContactLabel": "Request a free consultation",
+    "ctaSiteCheckLabel": "Test your website for free →"
   },
   "underDevelopment": {
     "title": "This page is under development.",
@@ -1256,6 +1262,36 @@
       },
       "shotsText": "Snapshots of the loading: this is how long it takes for the content to appear.",
       "frameAt": "{{seconds}} s"
+    },
+    "h1": "Free website check and speed test",
+    "faq": {
+      "title": "Frequently asked questions about the website test",
+      "items": [
+        {
+          "q": "What counts as a good score?",
+          "a": "Google treats 90–100 as good (green), 50–89 as needing improvement (orange) and below 50 as poor (red). Many template-based sites score far lower on mobile, so anything above 90 is outstanding."
+        },
+        {
+          "q": "Why is the mobile result worse than desktop?",
+          "a": "The mobile test simulates a mid-range phone on a slower mobile connection, so the same page almost always scores lower on mobile. Since most visitors come from phones and Google uses the mobile version for ranking, the mobile result matters more."
+        },
+        {
+          "q": "What are Core Web Vitals?",
+          "a": "Google's three measures of real user experience: when the largest content appears (LCP), how quickly the page responds to a click (INP), and how much the content jumps around while loading (CLS). Google also uses them for ranking."
+        },
+        {
+          "q": "How accurate is the check?",
+          "a": "The scores are measured by Google PageSpeed Insights, with the same Lighthouse Google uses. Results can differ by a few points between runs depending on the network and server at that moment, so it's worth testing more than once."
+        },
+        {
+          "q": "Do I need a cookie banner?",
+          "a": "If the site uses a service that sets cookies – such as Google Analytics, Meta Pixel or an embedded map – EU rules require asking for the visitor's consent first. With only cookieless measurement, no banner is needed. The checker shows what runs on your site."
+        },
+        {
+          "q": "Is it free? What do you store?",
+          "a": "Yes, it's free and needs no sign-up. We only store the address and the scores, no personal data. You can download the result as a PDF or attach it to a quote request."
+        }
+      ]
     }
   },
   "pageH1": {

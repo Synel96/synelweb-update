@@ -1,4 +1,4 @@
-const LAST_UPDATED = "2026. 11. 15.";
+const LAST_UPDATED = "2026. 11. 19.";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -145,13 +145,14 @@ export default function Page() {
         <Section title="5. Külső szolgáltató által beágyazott tartalom (Google Térkép)">
           <p>
             A Kapcsolat oldalon a szolgáltatás helyszínének bemutatásához a Google Térkép (Google
-            Maps) beágyazott térképét használjuk. Ennek jogalapja a GDPR 6. cikk (1) bekezdés f)
-            pontja szerinti jogos érdek: a helyszín könnyű beazonosítása. A térkép betöltésekor a
-            böngésződ közvetlenül kapcsolatba lép a Google szervereivel; ennek során a Google
-            adatokat gyűjthet (például IP-cím, eszközadatok), és cookie-kat helyezhet el a saját
-            adatvédelmi szabályzata szerint. Ezen adatkezelés felett nincs ráhatásunk; arra a Google
-            (Google Ireland Limited) önálló adatkezelőként eljárva, saját adatvédelmi tájékoztatója
-            az irányadó:{" "}
+            Maps) beágyazott térképét kínáljuk. A térkép alapértelmezésként nem töltődik be: csak
+            akkor jelenik meg, ha a látogató a „Térkép megjelenítése” gombra kattint. Ennek
+            jogalapja a GDPR 6. cikk (1) bekezdés a) pontja szerinti hozzájárulás, amelyet a
+            látogató a gomb megnyomásával ad meg. A térkép betöltésekor a böngésződ közvetlenül
+            kapcsolatba lép a Google szervereivel; ennek során a Google adatokat gyűjthet (például
+            IP-cím, eszközadatok), és cookie-kat helyezhet el a saját adatvédelmi szabályzata
+            szerint. Ezen adatkezelés felett nincs ráhatásunk; arra a Google (Google Ireland
+            Limited) önálló adatkezelőként eljárva, saját adatvédelmi tájékoztatója az irányadó:{" "}
             <a
               href="https://policies.google.com/privacy"
               target="_blank"
@@ -160,7 +161,8 @@ export default function Page() {
             >
               policies.google.com/privacy
             </a>
-            .
+            . A gomb mellett elérhető „Megnyitás a Google Térképen” link a Google saját oldalát
+            nyitja meg, a Weboldalra nem tölt be semmit.
           </p>
         </Section>
 

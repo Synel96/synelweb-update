@@ -502,7 +502,10 @@
     "facebookCardText": "Kövess Facebookon friss projektekért, tippekért és aktuális webes tartalmakért.",
     "linkedinCardText": "Szakmai profil, referenciák és kapcsolatfelvétel egy helyen.",
     "closingTitle": "Van egy ötleted? Beszéljük át.",
-    "closingText": "Már az első üzenet után pontosabb képet kapsz arról, hogyan nézne ki a projekted, mennyi idővel lehet számolni, és milyen megoldás illik legjobban a céljaidhoz."
+    "closingText": "Már az első üzenet után pontosabb képet kapsz arról, hogyan nézne ki a projekted, mennyi idővel lehet számolni, és milyen megoldás illik legjobban a céljaidhoz.",
+    "mapShow": "Térkép megjelenítése",
+    "mapConsent": "A térképet a Google szolgáltatja: betöltéskor a Google sütiket helyezhet el. Csak a gombra kattintva töltjük be.",
+    "mapOpen": "Megnyitás a Google Térképen"
   },
   "technology": {
     "label": "Technológia és minőség",

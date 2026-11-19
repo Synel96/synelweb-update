@@ -29,6 +29,8 @@ const PHONE = "+36303645516";
 const FACEBOOK_HREF = "https://www.facebook.com/profile.php?id=61586963195763";
 const LINKEDIN_HREF = "https://www.linkedin.com/in/szilveszter-nemeth-636689332/";
 const SOPRON_MAP_HREF = "https://www.google.com/maps?q=Sopron&z=14&output=embed";
+// A plain link to Google Maps: opens Google's site, embeds nothing here.
+const SOPRON_MAPS_LINK = "https://www.google.com/maps?q=Sopron";
 
 const CAPABILITY_BADGES = [
   { key: "location", Icon: MapPinIcon },
@@ -83,6 +85,7 @@ export default function Page() {
   const lang = pageContext.lang ?? DEFAULT_LANG;
   // The page is prerendered, so the query string (a service card's
   // ?service=, or ?mode=detailed) is only known in the browser.
+  const [showMap, setShowMap] = useState(false);
   const [preset, setPreset] = useState<{
     service: string;
     mode: QuoteMode;
@@ -312,25 +315,43 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="fancy-card relative overflow-hidden rounded-3xl">
-            {/* Shows until the lazily loaded map paints over it, instead of
-                an empty black box. */}
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[radial-gradient(circle_at_50%_45%,color-mix(in_oklab,var(--color-accent),transparent_85%),transparent_55%),repeating-linear-gradient(0deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px),repeating-linear-gradient(90deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px)]"
-              aria-hidden="true"
-            >
-              <MapPinIcon className="size-9 animate-bounce text-(--accent) motion-reduce:animate-none" />
-              <span className="text-sm font-semibold text-white/70">
-                {t("contact.mapLocationTitle")}
-              </span>
-            </div>
-            <iframe
-              title={t("contact.mapTitle")}
-              src={SOPRON_MAP_HREF}
-              className="relative h-105 w-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          {/* The Google map loads only on request (two-click embed): Google
+              may set cookies when it loads, which needs the visitor's
+              consent. Until then a placeholder with the button shows. */}
+          <div className="fancy-card relative h-105 overflow-hidden rounded-3xl">
+            {showMap ? (
+              <iframe
+                title={t("contact.mapTitle")}
+                src={SOPRON_MAP_HREF}
+                className="h-full w-full"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : (
+              <div className="flex h-full flex-col items-center justify-center gap-4 bg-[radial-gradient(circle_at_50%_45%,color-mix(in_oklab,var(--color-accent),transparent_85%),transparent_55%),repeating-linear-gradient(0deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px),repeating-linear-gradient(90deg,rgb(255_255_255/3%)_0_1px,transparent_1px_40px)] px-6 text-center">
+                <MapPinIcon className="size-9 text-(--accent)" aria-hidden="true" />
+                <span className="text-sm font-semibold text-white/80">
+                  {t("contact.mapLocationTitle")}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowMap(true)}
+                  className="rounded-xl bg-linear-to-r from-(--color-secondary-warm) to-(--accent) px-5 py-2.5 text-sm font-bold text-[#140814] transition-transform hover:-translate-y-0.5"
+                >
+                  {t("contact.mapShow")}
+                </button>
+                <p className="max-w-sm text-xs leading-5 text-white/60">
+                  {t("contact.mapConsent")}
+                </p>
+                <a
+                  href={SOPRON_MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-semibold text-(--accent) underline underline-offset-4 hover:text-white"
+                >
+                  {t("contact.mapOpen")}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>

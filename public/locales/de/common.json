@@ -1251,6 +1251,7 @@
           "pass": "Cookie-Richtlinie vorhanden.",
           "warn": "Die Seite nutzt Dienste mit Cookies, aber keine Cookie-Richtlinie gefunden.",
           "info": "Keine eigene Cookie-Richtlinie – ohne Dienste mit Cookies auch nicht nötig.",
+          "inPrivacy": "Keine eigene Cookie-Richtlinie. Das ist in Ordnung, wenn die Datenschutzerklärung die verwendeten Cookies aufführt.",
           "help": "Eine Cookie-Richtlinie listet, welche Cookies die Seite wofür und wie lange nutzt. Sie kann Teil der Datenschutzerklärung sein."
         }
       },

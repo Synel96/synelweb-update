@@ -127,5 +127,10 @@ describe("privacy texts", () => {
     expect(say({ id: "privacyPolicy", status: "fail", data: {} })).toMatch(
       /^Nem találtam adatkezelési/
     );
+    // Tracking with a privacy notice but no separate cookie notice.
+    expect(
+      say({ id: "cookiePolicy", status: "info", data: { tracking: 3, inPrivacy: true } })
+    ).toMatch(/^Nincs külön süti tájékoztató\. Ez rendben van/);
+    expect(say({ id: "cookiePolicy", status: "info", data: {} })).toMatch(/nem is kell\.$/);
   });
 });

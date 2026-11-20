@@ -1250,6 +1250,7 @@
           "pass": "A cookie policy is present.",
           "warn": "The site runs services that use cookies, but no cookie policy was found.",
           "info": "No separate cookie policy – not needed without services that use cookies.",
+          "inPrivacy": "No separate cookie notice. That's fine if the privacy notice lists the cookies the site uses.",
           "help": "A cookie policy lists which cookies the site uses, why and for how long. It can be part of the privacy notice."
         }
       },

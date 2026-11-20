@@ -49,6 +49,10 @@ function variant(item: AuditItem): string {
     if (!Number(item.data.tracking)) return "notNeeded";
     return Array.isArray(item.data.tools) && item.data.tools.length > 0 ? "passTool" : "pass";
   }
+  // Tracking, no separate cookie notice, but a privacy notice that may cover it.
+  if (item.id === "cookiePolicy" && item.status === "info" && item.data.inPrivacy) {
+    return "inPrivacy";
+  }
   if (item.id === "video" && item.status === "info") {
     return Number(item.data.count) > 0 ? "scripted" : "none";
   }

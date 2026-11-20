@@ -1252,6 +1252,7 @@
           "pass": "Van süti tájékoztató.",
           "warn": "Az oldal sütit használó szolgáltatásokat futtat, de nem találtam süti tájékoztatót.",
           "info": "Nincs külön süti tájékoztató – sütit használó szolgáltatás nélkül nem is kell.",
+          "inPrivacy": "Nincs külön süti tájékoztató. Ez rendben van, ha az adatkezelési tájékoztató felsorolja, milyen sütiket használ az oldal.",
           "help": "A süti tájékoztató felsorolja, milyen sütiket használ az oldal, mire és meddig. Lehet az adatkezelési tájékoztató része is."
         }
       },

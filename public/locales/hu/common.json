@@ -966,8 +966,8 @@
     "noOpportunities": "Nincs jelentős gyorsítási lehetőség – szép munka!",
     "otherDevice": "Mérés {{device}} nézetben is",
     "cta": {
-      "title": "Szeretnéd, hogy a te oldalad is 90 felett legyen?",
-      "text": "Az általam épített oldalak rendre kiemelkedő Lighthouse-pontszámokat érnek el. Írd meg, és megnézem, mit lehet kihozni a tiédből.",
+      "title": "Szeretnéd rendbe tenni, amit a mérés talált?",
+      "text": "Sebesség, keresőoptimalizálás, technika: átnézem veled az eredményt, közérthetően elmondom, mi a legfontosabb, és mennyibe kerülne a javítás – vagy egy új oldal.",
       "button": "Kérj ajánlatot",
       "projects": "Nézd meg a referenciáim eredményeit"
     },

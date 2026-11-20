@@ -964,8 +964,8 @@
     "noOpportunities": "No significant speed-ups left – nice work!",
     "otherDevice": "Check on {{device}} too",
     "cta": {
-      "title": "Want your site to score above 90 too?",
-      "text": "The sites I build consistently reach outstanding Lighthouse scores. Get in touch and I'll look at what yours could achieve.",
+      "title": "Want to fix what the check found?",
+      "text": "Speed, search visibility, technical setup: I'll go through your results with you, explain in plain words what matters most, and what fixing it – or a new site – would cost.",
       "button": "Request a quote",
       "projects": "See my projects' scores"
     },

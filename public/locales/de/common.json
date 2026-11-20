@@ -965,8 +965,8 @@
     "noOpportunities": "Keine nennenswerten Beschleunigungen mehr – gute Arbeit!",
     "otherDevice": "Auch {{device}} prüfen",
     "cta": {
-      "title": "Soll deine Seite auch über 90 liegen?",
-      "text": "Die Websites, die ich baue, erreichen durchweg herausragende Lighthouse-Werte. Schreib mir, und ich schaue, was aus deiner herauszuholen ist.",
+      "title": "Möchtest du beheben, was die Prüfung gefunden hat?",
+      "text": "Geschwindigkeit, Suchmaschinenoptimierung, Technik: Ich gehe das Ergebnis mit dir durch, erkläre verständlich, was am wichtigsten ist, und was die Verbesserung – oder eine neue Website – kosten würde.",
       "button": "Angebot anfordern",
       "projects": "Die Werte meiner Referenzen ansehen"
     },

@@ -11,6 +11,8 @@ import {
   LightbulbIcon,
   LoaderCircleIcon,
   MonitorIcon,
+  RocketIcon,
+  UsersIcon,
   SearchIcon,
   ShieldCheckIcon,
   SmartphoneIcon,
@@ -36,7 +38,12 @@ import {
 import type { AppLang } from "@/src/services/serviceCardsService";
 import { storeSiteCheck } from "@/src/siteCheckStorage";
 import { JsonLd } from "@/components/JsonLd";
-import { SiteCheckAudit, SiteCheckPlatform, SiteCheckScreens } from "@/components/SiteCheckAudit";
+import {
+  SectionIcon,
+  SiteCheckAudit,
+  SiteCheckPlatform,
+  SiteCheckScreens,
+} from "@/components/SiteCheckAudit";
 import { SITE_URL } from "@/components/site";
 import { getSeoEntry } from "@/src/seo";
 import { buildFaqJsonLd, buildWebApplicationJsonLd } from "@/src/structuredData";
@@ -78,6 +85,25 @@ function formatField(id: "lcp" | "inp" | "cls", percentile: number, lang: AppLan
   return (percentile / 100).toLocaleString(lang === "en" ? "en-US" : "hu-HU", {
     maximumFractionDigits: 2,
   });
+}
+
+// The verdict under the result's title, coloured like the performance score.
+const VERDICT_CLASS = {
+  good: "border-emerald-300/30 bg-emerald-400/10 text-emerald-100",
+  average: "border-amber-300/30 bg-amber-400/10 text-amber-100",
+  poor: "border-rose-300/35 bg-rose-500/10 text-rose-100",
+} as const;
+const VERDICT_DOT = {
+  good: "bg-emerald-300",
+  average: "bg-amber-300",
+  poor: "bg-rose-300",
+} as const;
+
+function labTone(score: number | null) {
+  if (score === null) return { text: "text-white", dot: "bg-white/40" };
+  if (score >= 0.9) return { text: "text-emerald-300", dot: "bg-emerald-300" };
+  if (score >= 0.5) return { text: "text-amber-300", dot: "bg-amber-300" };
+  return { text: "text-rose-300", dot: "bg-rose-300" };
 }
 
 const CATEGORY_CLASS: Record<string, string> = {
@@ -321,12 +347,21 @@ export default function Page() {
               })}
             </h2>
             {verdict ? (
-              <p className="mt-2 text-base text-white/78">{t(`siteCheck.verdict.${verdict}`)}</p>
+              <p
+                className={`mt-4 inline-flex items-start gap-2.5 rounded-xl border px-4 py-2.5 text-sm leading-6 sm:text-base ${VERDICT_CLASS[verdict]}`}
+              >
+                <span
+                  className={`mt-2 size-2 shrink-0 rounded-full ${VERDICT_DOT[verdict]}`}
+                  aria-hidden="true"
+                />
+                {t(`siteCheck.verdict.${verdict}`)}
+              </p>
             ) : null}
 
-            <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {/* Equal-width tiles, whatever the length of the label. */}
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
               {SCORE_KEYS.map((key) => (
-                <li key={key} className="flex justify-center">
+                <li key={key} className="grid [&>div]:w-full">
                   <LighthouseScoreRing
                     label={t(`siteCheck.scores.${key}`)}
                     score={result.scores[key] ?? 0}
@@ -337,10 +372,13 @@ export default function Page() {
 
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
               <div>
-                <h3 className="text-lg font-semibold text-white">{t("siteCheck.fieldTitle")}</h3>
+                <div className="flex items-center gap-3">
+                  <SectionIcon Icon={UsersIcon} />
+                  <h3 className="text-lg font-semibold text-white">{t("siteCheck.fieldTitle")}</h3>
+                </div>
                 {result.field.length > 0 ? (
                   <>
-                    <p className="mt-1 text-xs text-white/55">{t("siteCheck.fieldHint")}</p>
+                    <p className="mt-2 text-xs text-white/55">{t("siteCheck.fieldHint")}</p>
                     <ul className="mt-3 space-y-2">
                       {result.field.map((metric) => (
                         <li
@@ -376,54 +414,71 @@ export default function Page() {
 
                 {result.lab.length > 0 ? (
                   <>
-                    <h3 className="mt-6 text-lg font-semibold text-white">
-                      {t("siteCheck.labTitle")}
-                    </h3>
-                    <ul className="mt-3 divide-y divide-white/10 rounded-xl border border-white/10 bg-white/4 px-4">
-                      {result.lab.map((metric) => (
-                        <li key={metric.id} className="flex justify-between gap-3 py-2.5 text-sm">
-                          <span className="text-white/75">{metric.title}</span>
-                          <span
-                            className={`font-semibold ${
-                              metric.score === null
-                                ? "text-white"
-                                : metric.score >= 0.9
-                                  ? "text-emerald-300"
-                                  : metric.score >= 0.5
-                                    ? "text-amber-300"
-                                    : "text-rose-300"
-                            }`}
+                    <div className="mt-7 flex items-center gap-3">
+                      <SectionIcon Icon={GaugeIcon} />
+                      <h3 className="text-lg font-semibold text-white">
+                        {t("siteCheck.labTitle")}
+                      </h3>
+                    </div>
+                    <ul className="mt-3 divide-y divide-white/8 rounded-xl border border-white/10 bg-white/4 px-4">
+                      {result.lab.map((metric) => {
+                        const tone = labTone(metric.score);
+                        return (
+                          <li
+                            key={metric.id}
+                            className="flex items-center justify-between gap-3 py-2.5 text-sm"
                           >
-                            {metric.value}
-                          </span>
-                        </li>
-                      ))}
+                            <span className="flex items-center gap-2.5 text-white/75">
+                              <span
+                                className={`size-1.5 shrink-0 rounded-full ${tone.dot}`}
+                                aria-hidden="true"
+                              />
+                              {metric.title}
+                            </span>
+                            <span className={`font-semibold tabular-nums ${tone.text}`}>
+                              {metric.value}
+                            </span>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </>
                 ) : null}
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold text-white">
-                  {t("siteCheck.opportunitiesTitle")}
-                </h3>
+                <div className="flex items-center gap-3">
+                  <SectionIcon Icon={RocketIcon} />
+                  <h3 className="text-lg font-semibold text-white">
+                    {t("siteCheck.opportunitiesTitle")}
+                  </h3>
+                </div>
                 {result.opportunities.length > 0 ? (
                   <ol className="mt-3 space-y-2">
-                    {result.opportunities.map((item) => (
+                    {result.opportunities.map((item, index) => (
                       <li
                         key={item.id}
-                        className="rounded-xl border border-white/10 bg-white/4 px-4 py-3 text-sm"
+                        className="flex gap-3 rounded-xl border border-white/10 bg-white/4 px-4 py-3 text-sm transition-colors hover:border-white/20"
                       >
-                        <p className="font-medium text-white">{item.title}</p>
-                        <p className="mt-1 text-xs font-semibold text-amber-300">
-                          {item.savingsMs >= 100
-                            ? t("siteCheck.savings", {
-                                seconds: formatSeconds(item.savingsMs, lang),
-                              })
-                            : (item.clsSavings ?? 0) > 0
-                              ? t("siteCheck.clsSavings")
-                              : t("siteCheck.genericSavings")}
-                        </p>
+                        <span
+                          className="flex size-7 shrink-0 items-center justify-center rounded-full bg-linear-135 from-(--color-secondary-warm) to-(--accent) text-xs font-bold text-[#140814] tabular-nums"
+                          aria-hidden="true"
+                        >
+                          {index + 1}
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-medium text-white">{item.title}</p>
+                          <p className="mt-1.5 inline-flex items-center gap-1 rounded-full border border-amber-300/30 bg-amber-400/10 px-2 py-0.5 text-xs font-semibold text-amber-200">
+                            <ZapIcon className="size-3" aria-hidden="true" />
+                            {item.savingsMs >= 100
+                              ? t("siteCheck.savings", {
+                                  seconds: formatSeconds(item.savingsMs, lang),
+                                })
+                              : (item.clsSavings ?? 0) > 0
+                                ? t("siteCheck.clsSavings")
+                                : t("siteCheck.genericSavings")}
+                          </p>
+                        </div>
                       </li>
                     ))}
                   </ol>
